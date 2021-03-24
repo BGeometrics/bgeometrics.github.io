@@ -1,10 +1,73 @@
- category |  description   |  today   | yesterday | weekly | monthly | daily_change | weekly_change | monthly_change |  the_date  
-----------+----------------+----------+-----------+--------+---------+--------------+---------------+----------------+------------
- Humpback | >10000 BTC     |       94 |         0 |      0 |       0 |            0 |             0 |              0 | 2021-03-23
- Whale    | 1000-10000 BTC |     2168 |         0 |      0 |       0 |            0 |             0 |              0 | 2021-03-23
- Shark    | 100-1000 BTC   |    13947 |         0 |      0 |       0 |            0 |             0 |              0 | 2021-03-23
- Fish     | 10-100 BTC     |    97161 |         0 |      0 |       0 |            0 |             0 |              0 | 2021-03-23
- Crab     | 1-100 BTC      |   670852 |         0 |      0 |       0 |            0 |             0 |              0 | 2021-03-23
- Shrimp   | <1 BTC         | 36021450 |         0 |      0 |       0 |            0 |             0 |              0 | 2021-03-23
-(6 filas)
-
+<!DOCTYPE html>
+<html>
+<body>
+<table border="1" border=2>
+  <tr valign="top">
+    <td align="left">Humpback</td>
+    <td align="left">&gt;10000 BTC</td>
+    <td align="right">93</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Whale</td>
+    <td align="left">1000-10000 BTC</td>
+    <td align="right">2168</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Shark</td>
+    <td align="left">100-1000 BTC</td>
+    <td align="right">13947</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Fish</td>
+    <td align="left">10-100 BTC</td>
+    <td align="right">97161</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Crab</td>
+    <td align="left">1-100 BTC</td>
+    <td align="right">670852</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+  <tr valign="top">
+    <td align="left">Shrimp</td>
+    <td align="left">&lt;1 BTC</td>
+    <td align="right">36021450</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+  </tr>
+</table>
+</body>
+</html>
