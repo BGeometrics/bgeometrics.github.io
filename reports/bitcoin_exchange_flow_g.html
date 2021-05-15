@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><title>Flow balance on exchanges</title><script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head><body><h1> </h1><div id="chart"><script>var data1 = {x: ['2021-05-03','2021-05-04','2021-05-05','2021-05-06','2021-05-07','2021-05-08','2021-05-09','2021-05-10','2021-05-11','2021-05-12','2021-05-13','2021-05-14','2021-05-15'],y: [8684643.0,8716206.0,8738754.0,8726213.0,8675017.0,8682953.0,8735342.0,8753676.0,8774418.0,7732843.0,8918809.0,8929010.0,7467795.0], type: 'scatter', name:'Flow balance', yaxis:'y', 
+    line:{width: 2, color:'blue',dash:'solid'}, marker:{size:1, color:'blue'}};var data2 = {x: ['2021-05-03','2021-05-04','2021-05-05','2021-05-06','2021-05-07','2021-05-08','2021-05-09','2021-05-10','2021-05-11','2021-05-12','2021-05-13','2021-05-14'],y: [57243.0,53724.1,57342.0,56527.4,57341.1,58736.1,58288.4,55902.9,56612.1,50972.4,49368.6,49997.4], type: 'scatter', name:'BTC price', yaxis:'y2', 
+    line:{width: 1, color:'black',dash:'solid'}, marker:{ size: 1, color:'black'}};
+ var layout = {title: 'Flow balance on exchanges', 
+    xaxis: {titlefont: {color: 'blue'}, 
+        tickfont: {color: 'blue'}, 
+        showgrid: false}, 
+    yaxis: {title: 'Flow balance'}, 
+    yaxis2: {title: 'BTC price', overlaying: 'y', side: 'right'}, 
+    legend: {orientation: 'h', x: 0.5, xanchor: 'center'},  'annotations': [{'font': {'color': 'rgb(50,50,50)', 'family': 'Courier New, monospace', 'size': 16}, 'opacity': 0.75, 'showarrow': false, 'text': 'JSimon @BGeometrics', 'x': 0.5, 'xref': 'paper', 'y': 1.0, 'yref': 'paper'}]};var data = [data1, data2];
+    Plotly.newPlot('chart', data, layout);
+</script><a href="https://bgeometrics.com" target="_blank"><img src="https://bgeometrics.github.io/Logo_BGeometrics.png" alt="BGeometrics" width="15%" height="15%"></a></div></body></html>
