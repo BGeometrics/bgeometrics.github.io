@@ -93,6 +93,47 @@
                 margin-right: auto;
                 transition: all 1s ease-out;
             }
+            .gauge-text{
+                z-index: 4;
+                color: black;
+                font-size: 0.7em;
+                line-height: 25px;
+                position: absolute;
+                width: 200px;
+                height: 100px;
+                top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+                transition: all 1s ease-out;
+            }
+            .gauge-text-right{
+                z-index: 4;
+                color: black;
+                font-size: 0.7em;
+                line-height: 25px;
+                font-weight: bold;
+                position: absolute;
+                width: 200px;
+                height: 100px;
+                top: 80px;
+                margin-left: 80px;
+                margin-right: auto;
+                transition: all 1s ease-out;
+            }
+            .gauge-text-left{
+                z-index: 4;
+                color: black;
+                font-size: 0.7em;
+                line-height: 25px;
+                font-weight: bold;
+                position: absolute;
+                width: 200px;
+                height: 100px;
+                top: 80px;
+                margin-left: -80px;
+                margin-right: auto;
+                transition: all 1s ease-out;
+            }
         </style>
     </head>
     <body>
@@ -103,6 +144,8 @@
             <a href='https://studio.glassnode.com/metrics?a=BTC&category=&m=indicators.Sopr' target='_blank'>
                 <div class="gauge-data"><h1 id="percent">103%</h1><h3>SOPR</h3></div>
             </a>
+            <div class="gauge-text-right">Buy</div>
+            <div class="gauge-text-left">Sell</div>
         </div>
     </body>
     </html>
