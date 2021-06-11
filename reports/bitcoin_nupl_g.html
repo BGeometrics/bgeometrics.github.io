@@ -5,21 +5,7 @@
     line:{width: 1, color:'black',dash:'solid'}, marker:{ size: 1, color:'black'}};
  var layout = {title: 'NUPL (Net Unrealized Profit/Loss)',
         xaxis: {titlefont: {color: 'blue'}, tickfont: {color: 'blue'}, showgrid: false},
-        yaxis: {titlefont: {color: 'blue'}, tickfont: {color: 'blue'}, showgrid: false}, shapes: [{
-            'type': 'rect',
-            'xref': 'x',
-            # y-reference is assigned to the plot paper [0,1]
-            'yref': 'paper',
-            'x0': 0,
-            'y0': 0,
-            'x1': 1,
-            'y1': 1,
-            'fillcolor': '#d3d3d3',
-            'opacity': 0.2,
-            'line': {
-                'width': 0,
-            }
-        ], 
+        yaxis: {titlefont: {color: 'blue'}, tickfont: {color: 'blue'}, showgrid: false},
         yaxis2: {overlaying: 'y', side: 'right', range: [30000,90000]},
         legend: {orientation: 'h', x: 0.5, xanchor: 'center'},  'annotations': [{'font': {'color': 'rgb(50,50,50)', 'family': 'Courier New, monospace', 'size': 16}, 'opacity': 0.75, 'showarrow': false, 'text': 'JSimon @BGeometrics', 'x': 0.5, 'xref': 'paper', 'y': 1.0, 'yref': 'paper'}]};var data = [data1, data2];
     Plotly.newPlot('chart', data, layout);
