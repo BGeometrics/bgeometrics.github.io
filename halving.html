@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bitcoin NUPL</title>
-  <meta content="NUPL (Net Unrealized Profit/Loss)" name="description">
+  <title>Bitcoin Halving</title>
+  <meta content="Bitcoin halving charts" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -47,10 +47,10 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
           <li class="dropdown"><a href="#"><span>BTC Metrics</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="nupl.html" class="active">NUPL</a></li>
+              <li><a href="nupl.html">NUPL</a></li>
               <li><a href="reports/bitcoin_charts_g_sopr.html">SOPR</a></li>
               <li><a href="reports/bitcoin_sopr_7d_g.html">SOPR 7d</a></li>
               <li><a href="reports/bitcoin_sopr_30d_g.html">SOPR 30d</a></li>
@@ -126,42 +126,100 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
     </div>
+  
   </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2><span>Bitcoin</span> Halving</h2>
+          <p>The Bitcoin halving is a scheduled event that occurs every 210,000 blocks, approximately every 4 years, where the bitcoin with which miners are rewarded for inserting a block into the blockchain is halved. 
+          </p>
+          <p>Every time a new block is mined, new Bitcoins are issued as a reward to the miner who solves it.
+It is a key aspect of the Bitcoin protocol designed to control the issuance of new coins and keep the total supply of Bitcoin limited. 
+          The purpose behind the halving is to create a limited supply of Bitcoin over time. By reducing miner rewards, it slows down the rate at which new coins are issued, ultimately leading to a maximum total supply of 21 million Bitcoins.
+          </p>
+          <p>Historically, the halving has had a great impact on the price of BTC, here we are going to show several graphs that show how the price has evolved and the bullish and bearish cycles that this event has caused.
+           </p> 
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
 
   <main id="main" data-aos="fade" data-aos-delay="1500">
 
-    <!-- ======= End Page Header ======= -->
-    <div class="page-header d-flex align-items-center">
-      <div class="container position-relative">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-6 text-center">
-            <h3><a href="reports/bitcoin_nupl_g.html" >NUPL (Net Unrealized Profit/Loss)</a></h3>
-            <p>It represents investor sentiment and shows what Bitcoin holders would gain or lose if they sold now.
-              It is calculated by dividing the unrealized gain/loss by the market capitalization.
-              Unrealized gains/losses are the subtraction of the price at which it was purchased from the value it now has in the market.
-            </p>
-            <p>NUPL = (Market Cap - Realized Cap) / Market Cap</p>
-            <p>Historically, the periods in which this metric has been below 0 have been good times to buy BTC and when this indicator falls below 0.6 it has been a good time to sell.</p>
-          </div>
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+      <div class="container-fluid">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/Bitcoin_halving_cycle.png" class="img-fluid" alt="Bitcoin Halving Cycle">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_halving_cycle_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin Halving Cycle</h6>
+                <p>The evolution of the price of BTC in the 3 halvings is compared</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-price-log-rect.png" class="img-fluid" alt="BTC Price log">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_price_g_log.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>BTC Price log</h6>
+                <p>Bitcoin price showing the bullish and bearish periods</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-4-year-cycle.png" class="img-fluid" alt="Bitcoin price halving radar chart">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_halving_radar_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin price halving radar chart</h6>
+                <p>A complete turn corresponds to 4 years, which is approximately when the halving occurs</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-yearly-candles.png" class="img-fluid" alt="Bitcoin Yearly Candles">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_year_candle_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin Yearly Candles</h6>
+                <p>Chart showing the yearly candles of the BTC price</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="https://bgeometrics.com/wp-content/uploads/2023/06/Influence_halving_monthly_price.jpg" class="img-fluid" alt="Influence of the halving on the monthly price of bitcoin">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_halving_month_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Influence of the halving on the monthly price</h6>
+                <p>Each bar corresponds to the percentage of rise or fall of BTC in a month during the halving cycles</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+
         </div>
-      </div>
-    </div><!-- End Page Header -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="embed-responsive embed-responsive-1by1">
-          <iframe class="embed-responsive-item" src="reports/bitcoin_nupl_g.html" seamless width="100%" height="600" allowfullscreen></iframe>
-        </div>
-        <p><a href="reports/bitcoin_nupl_g.html" >Open chart NUPL (Net Unrealized Profit / Loss)</a></p>
       </div>
-      <div class="container">
-        <p>When the NUPL metric is analyzed, market analysts and BTC holders can gain insight into Bitcoin investor sentiment. When the NUPL is high, it indicates that a significant portion of the market is in a profit state, which could result in profit-taking or selling pressure. Conversely, when the NUPL is low, it suggests that most market participants are in a losing state, which could lead to more buying activity or bullish sentiment.</p>
-        <p>NUPL is often used in conjunction with other metrics and indicators to understand market dynamics and make informed trading decisions. Helps identify potential market highs or lows by tracking changes in investor sentiment and their impact on price movements.</p>
-      </div>
-
-    </section><!-- End About Section -->
+    </section><!-- End Gallery Section -->
 
   </main><!-- End #main -->
 
