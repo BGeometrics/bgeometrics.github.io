@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Bitcoin Realized Price</title>
+  <meta content="Bitcoin realized price charts" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/cropped-Bcubium_logo_colores_ico_32_32.png" rel="icon">
+  <link href="assets/img/cropped-Bcubium_logo_colores_ico_32_32.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+      <a href="https://bgeometrics.com" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <img src="assets/img/logo.png" alt="BGeometrics">
+        <h1>BGeometrics</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown"><a href="#"><span>BTC Metrics</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="nupl.html">NUPL</a></li>
+              <li><a href="reports/bitcoin_charts_g_sopr.html">SOPR</a></li>
+              <li><a href="reports/bitcoin_sopr_7d_g.html">SOPR 7d</a></li>
+              <li><a href="reports/bitcoin_sopr_30d_g.html">SOPR 30d</a></li>
+              <li><a href="reports/bitcoin_asopr_g.html">aSOPR</a></li>
+              <li><a href="reports/bitcoin_lthsopr_g.html">LTH-SOPR</a></li>
+              <li><a href="reports/bitcoin_sthsopr_g.html">STH-SOPR</a></li>
+              <li><a href="reports/bitcoin_soprratio_g.html">SOPR Ratio</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>BTC Market Cycles</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="reports/bitcoin_realized_price_g.html">BTC realized price</a></li>
+              <li><a href="reports/bitcoin_halving_cycle_g.html">BTC halving cycle</a></li>
+              <li><a href="reports/bitcoin_200_moving_average_g.html">200 moving average</a></li>
+              <li><a href="reports/bitcoin_halving_month_g.html">BTC halving month</a></li>
+              <li><a href="reports/bitcoin_halving_radar_g.html">BTC halving radar</a></li>
+              <li><a href="reports/bitcoin_200_moving_average_heatmap_g.html">200 moving average heatmap</a></li>
+              <li><a href="reports/bitcoin_fear_greed_img.html">BTC fear and greed heatmap</a></li>
+              <li><a href="reports/bitcoin_sopr_7d_g.html">SOPR 7 day</a></li>
+              <li><a href="reports/bitcoin_puell_multiple_g.html">Puell multiple</a></li>
+              <li><a href="reports/bitcoin_year_candle_g.html">BTC year candles</a></li>
+              <li><a href="nupl.html">NUPL</a></li>
+              <li><a href="reports/bitcoin_realized_short_g.html">STH Realized Price</a></li>
+              <li><a href="reports/bitcoin_realized_short_1w_1m_g.html">STH 1w-1m Realized Price</a></li>
+              <li><a href="reports/bitcoin_realized_short_1d_1w_g.html">STH 1d-1w Realized Price</a></li>
+              <li><a href="reports/bitcoin_price_g_log.html">BTC Price log</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>BTC Distribution</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="https://bgeometrics.com/bitcoin-distribution/">Bitcoin distribution</a></li>
+              <li><a href="reports/bitcoin_distribution_coin.html">BTC Distribution Coin Table</a></li>
+              <li><a href="reports/bitcoin_distribution_addr.html">BTC Distribution Address Table</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g.html">BTC Distribution Coin</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g_humpback.html">Coin humpback</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g_whale.html">Coin whale</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g_shark.html">Coin shark</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g_fish.html">Coin fish</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g_crab.html">Coin crab</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_g_shrimp.html">Coin shrimp</a></li>
+              <li><a href="reports/bitcoin_distribution_addr_g_humpback.html">Address humpback</a></li>
+              <li><a href="reports/bitcoin_distribution_addr_g_whale.html">Address whale</a></li>
+              <li><a href="reports/bitcoin_distribution_addr_g_shark.html">Address shark</a></li>
+              <li><a href="reports/bitcoin_distribution_addr_g_fish.html">Address fish</a></li>
+              <li><a href="reports/bitcoin_distribution_addr_g_crab.html">Address crab</a></li>
+              <li><a href="reports/bitcoin_distribution_addr_g_shrimp.html">Address shrimp</a></li>
+              <li><a href="reports/bitcoin_distribution_heatmap_g.html">BTC Distribution Heatmap</a></li>
+              <li><a href="reports/bitcoin_distribution_heatmap_norm_g.html">BTC Accumulation Trend</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_30d_heatmap_g.html">BTC coin change 30d Heatmap</a></li>
+              <li><a href="reports/bitcoin_distribution_coin_pie_g.html">BTC Distribution Coin Pie</a></li>
+            </ul>
+          </li>
+          <li><a href="halving.html">Halving</a></li>
+          <li><a href="realized_price.html" class="active">Realized Price</a></li>
+          <li class="dropdown"><a href="#"><span>Others charts</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="reports/bitcoin_sp500_correlation_g.html">S&P 500 Correlation</a></li>
+              <li><a href="https://bgeometrics.com/simulation-of-the-price-of-btc-with-monte-carlo/">Monte Carlo Simulation</a></li>
+              <li><a href="reports/SM_100.png">Monte Carlo Simulation next 100 days</a></li>
+              <li><a href="reports/SM_365.png">Monte Carlo Simulation past 365 days</a></li>
+              <li><a href="reports/bitcoin_ex_reserve_g.html">Exchange Reserve</a></li>
+              <li><a href="reports/bitcoin_price_usd_day_g.html">Bitcoin Price a like day today</a></li>
+              <li><a href="reports/bitcoin_volatility_g.html">Bitcoin Price Volatility</a></li>
+              <li><a href="reports/bitcoin_price_histogram_g.html">Bitcoin Price Distribution</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="https://twitter.com/BGeometrics" class="twitter"><i class="bi bi-twitter"></i></a>
+      </div>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2><span>Bitcoin</span> Realized Price</h2>
+          <p>
+          </p>
+          <p>
+          </p>
+          <p>
+           </p> 
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+      <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-realized-price.png" class="img-fluid" alt="">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_realized_price_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin Realized and Delta Price</h6>
+                <p>It's the value of all coins at the price they were bought divided by the amount of BTC that is in circulation</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-sopr.png" class="img-fluid" alt="Bitcoin SOPR">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_charts_g_sopr.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin SOPR</h6>
+                <p>Spent Output Profit Ratio (SOPR) is calculated by dividing the price sold by the price paid in USD</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-sopr-7d.png" class="img-fluid" alt="Bitcoin SOPR 7d moving average">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_sopr_7d_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin SOPR 7d moving average</h6>
+                <p>Spent Output Profit Ratio (SOPR) is calculated by dividing the price sold by the price paid in USD</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-nupl.png" class="img-fluid" alt="Bitcoin NUPL (Net Uprealized Profit/Lost)">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="nupl.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>NUPL (Net Uprealized Profit/Lost)</h6>
+                <p>It is calculated using the current price vs. when it was purchased. (MarketCap - RealizedCap) / MarketCap</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+
+
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/STH-Realized-Price.png" class="img-fluid" alt="Short Term Hodler Realized Price">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_realized_short_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>STH Realized Price</h6>
+                <p>The realized price of STH is the average price of the BTC purchase of the holders in the short term of 1 to 3 months</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->
+
+    <!-- ======= Clock Halving Section ======= -->
+    <section>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <!--<h2><span>Bitcoin</span> Halving</h2>-->
+            <h4>Next Bitcoin halving 2024</h4>
+        </div>
+        
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="350" height="350" scrolling="no" id="nhiframe" allowfullscreen></iframe>
+              <!--<iframe src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="400" height="350" scrolling="no" id="nhiframe"></iframe>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-5 content">
+            <h2>About the Bitcoin halving</h2>
+            <p class="py-3">
+              Bitcoin was designed as a deflationary currency.
+            </p>
+            <p class="py-3">
+Bitcoin's computer code is programmed for a miner to write a block containing transactions approximately every 10 minutes on the blockchain and is rewarded with BTC for performing this action.
+Every 210,000 blocks this amount is halved and this event is called halving and is scheduled to occur until approximately the year 2140.
+The next event that will occur in the year 2024 and will decrease the reward to the miners for the extraction of the block to 3,125 bitcoin.
+            </p>
+            <p class="py-3">
+It is the network that is in charge of controlling the issuance of Bitcoins, derived by consensus of all Bitcoin participants.
+21000000 bitcoins will be produced
+10 minute block interval goal
+Halving event occurs every 210000 blocks, about 4 years.
+Any changes to these rules would require the Bitcoin full node implementers to agree to approve the change.
+            </p>
+            <p class="py-3">
+Past dates of halving events:
+              <ul>
+                <li>The first halving event occurred on 28 November 2012 (UTC) at block 210000.</li>
+                <li>The second halving event occurred on 9 July 2016 (UTC) at block 420000.</li>
+                <li>The third halving event occurred on May 11, 2020 (UTC) at block 630000.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <!--
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+        -->
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
