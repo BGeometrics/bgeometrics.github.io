@@ -48,18 +48,6 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
-          <li class="dropdown"><a href="#"><span>BTC Metrics</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="nupl.html">NUPL</a></li>
-              <li><a href="reports/bitcoin_charts_g_sopr.html">SOPR</a></li>
-              <li><a href="reports/bitcoin_sopr_7d_g.html">SOPR 7d</a></li>
-              <li><a href="reports/bitcoin_sopr_30d_g.html">SOPR 30d</a></li>
-              <li><a href="reports/bitcoin_asopr_g.html">aSOPR</a></li>
-              <li><a href="reports/bitcoin_lthsopr_g.html">LTH-SOPR</a></li>
-              <li><a href="reports/bitcoin_sthsopr_g.html">STH-SOPR</a></li>
-              <li><a href="reports/bitcoin_soprratio_g.html">SOPR Ratio</a></li>
-            </ul>
-          </li>
           <li class="dropdown"><a href="#"><span>BTC Market Cycles</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="reports/bitcoin_realized_price_g.html">BTC realized price</a></li>
@@ -137,11 +125,11 @@
         <div class="col-lg-6 text-center">
           <h2><span>Bitcoin</span> Realized Price</h2>
           <p>
+            In Bitcoin there are numerous metrics related to the realized price, which is a concept that describes the average price at which people bought their bitcoin.
           </p>
           <p>
+            The differences that occur between the realized price and the current price of BTC cause feelings that make investors sell or buy and to analyze these relationships there are multiple metrics. Here we show the graphs of some of them.
           </p>
-          <p>
-           </p> 
         </div>
       </div>
     </div>
@@ -217,26 +205,87 @@
             </div>
           </div><!-- End Gallery Item -->
 
-        </div>
 
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-mvrv-ratio.png" class="img-fluid" alt="MVRV Ratio">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_mvrv_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>MVRV Ratio</h6>
+                <p>Market Value / Realized Value</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-lth-sopr.png" class="img-fluid" alt="Bitcoin Long Term Hodler SOPR">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_lthsopr_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>LTH SOPR</h6>
+                <p>Long Term Hodler SOPR</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-sth-sopr.png" class="img-fluid" alt="Bitcoin Short Term Hodler SOPR">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_sthsopr_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>STH SOPR</h6>
+                <p>Short Term Hodler SOPR</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-sopr-ratio.png" class="img-fluid" alt="Bitcoin SOPR Ratio">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_soprratio_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>SOPR Ratio</h6>
+                <p>LTH SOPR / STH SOPR</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-asopr.png" class="img-fluid" alt="Bitcoin Ajusted SOPR">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_asopr_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>aSOPR</h6>
+                <p>SOPR relationship excluding those that are less than one hour old</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+
+        </div>
       </div>
     </section><!-- End Gallery Section -->
 
-    <!-- ======= Clock Halving Section ======= -->
     <section>
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6 text-center">
-            <!--<h2><span>Bitcoin</span> Halving</h2>-->
-            <h4>Next Bitcoin halving 2024</h4>
-        </div>
-        
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="350" height="350" scrolling="no" id="nhiframe" allowfullscreen></iframe>
-              <!--<iframe src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="400" height="350" scrolling="no" id="nhiframe"></iframe>-->
-            </div>
+          <div class="col-lg-5 content">
+            <h3>About Bitcoin Realized Price</h3>
+            <p class="py-3">
+              This concept is especially useful for analyzing the profitability of Bitcoin investors based on when they purchased their coins. The realized price is calculated by adding the value of all bitcoin purchase transactions and then dividing it by the total number of bitcoins purchased in that period. This provides a more realistic perspective of how investors have experienced price fluctuations over time.
+            </p>
+            <p class="py-3">
+              Since the Bitcoin market price is very volatile and can experience large fluctuations in a short period, the realized price can be useful to better understand the behavior of investors in the long term and how they have been affected by market fluctuations. It can also provide information on support and resistance levels based on the prices at which investors have purchased your assets.
+            </p>
+            <p class="py-3">
+              In short, the Bitcoin realized price is a metric that reflects the actual average cost at which investors have acquired their bitcoins, which can provide valuable insight into market psychology and behavior over time.
+            </p>
           </div>
         </div>
       </div>
