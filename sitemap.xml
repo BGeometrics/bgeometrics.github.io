@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://charts.bgeometrics.com/</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/index.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/market_cycles.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/halving.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/distribution.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/realized-price.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/others.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_price_usd_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_realized_price_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_sopr_7d_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_200_moving_average_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_realized_short_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_cdd_ajusted_90dma_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_aviv_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_fear_greed_img.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_halving_cycle_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_halving_month_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_halving_radar_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_200_moving_average_heatmap_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_puell_multiple_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_year_candle_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/nupl.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_price_g_log.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_tables.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_whale_accumulation_heatmap_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g_humpback.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g_whale.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g_shark.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g_fish.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g_crab.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_g_shrimp.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_humpback.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_whale.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_shark.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_fish.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_crab.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_shrimp.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_pie_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_heatmap_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_heatmap_norm_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_30d_heatmap_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_charts_g_sopr.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_realized_short_1w_1m_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_realized_short_1d_1w_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_mvrv_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_lthsopr_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_sthsopr_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_soprratio_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_asopr_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_price_histogram_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_ex_reserve_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_fear_greed_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_price_usd_day_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_volatility_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_dominance_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_exchange_position_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_exchange_netflow_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_ex_inflow_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_ex_change_held_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_miner_reserve_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_miner_pool_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_cdd_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_daily_price_performance_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_liveliness_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_ohlc_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_sp500_correlation_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/reports/bitcoin_nupl_g.html</loc>
+  <lastmod>2023-09-01T16:07:20+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
