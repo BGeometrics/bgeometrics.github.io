@@ -113,41 +113,32 @@
                     text: 'BTC price'
                 },
                 opposite: false
-            }, {
-                plotBands: [{
-                    from: 0.3,
-                    to: 0.7,
-                    color: 'rgba(68, 170, 213, 0.2)',
-                    label: {
-                        text: 'XXXX'
-                    }
-                }]
             }],
 
             series: [{
                 id:'mvrv_zscore',
-                name: 'MVRV-ZScore',
+                name: 'MVRV Z-Score',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Price',
+                name: 'BTC price',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 1
-            }, {
-                plotLines: [{
-                    value: 30000,
-                    width: 4,
-                    color: 'red'
-                }],
-                yAxis: 0
-            }
-        ],
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                align:'center'
+            },
+
             rangeSelector: {
                 selected: 4
             },
