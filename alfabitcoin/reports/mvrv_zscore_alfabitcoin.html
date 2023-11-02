@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MVRV Z-Score</title>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+<script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+<script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+<script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+<script src="https://code.highcharts.com/modules/full-screen.js"></script>
+<script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+<script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/indicators/indicators.js"></script>
+
+<div id="container" style="width:100%; height:600px;"></div>
+
+    <script>
+        (async () => {
+            const data_metrics = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv_zscore.json'
+            ).then(response => response.json());
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/btc_price.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'toggleAnnotations', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            // Change the button icon.
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            // Deselect button after click.
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'Bitcoin: MVRV Z-Score',
+                align: 'left',
+            },
+
+            chart: {
+                renderTo: 'container',
+                events: {
+                    load: function() {
+                        this.renderer.image('https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.jpg', 700, 200, 200, 150)
+                        .css({opacity: 0.1})
+                        .attr({zIndex:1000})
+                        .add();
+                    }
+                }
+            },
+            
+            yAxis: [{
+                title: {
+                    text: 'MVRV Z-Score'
+                },
+            }, {
+                title: {
+                    text: 'BTC price'
+                },
+                opposite: false
+            }, {
+                plotBands: [{
+                    from: 0.3,
+                    to: 0.7,
+                    color: 'rgba(68, 170, 213, 0.2)',
+                    label: {
+                        text: 'XXXX'
+                    }
+                }]
+            }],
+
+            series: [{
+                id:'mvrv_zscore',
+                name: 'MVRV-ZScore',
+                data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Price',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                plotLines: [{
+                    value: 30000,
+                    width: 4,
+                    color: 'red'
+                }],
+                yAxis: 0
+            }
+        ],
+            rangeSelector: {
+                selected: 4
+            },
+            credits: {
+                text: 'Designed by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                }
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        }
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+
+</body>
+</html>
