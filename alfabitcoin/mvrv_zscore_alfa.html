@@ -24,7 +24,7 @@
                 'https://charts.bgeometrics.com/files/mvrv_zscore.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/btc_price.json'
+                'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
