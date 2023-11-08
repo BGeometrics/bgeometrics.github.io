@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin OHLC</title>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+</head>
+<body>
+    <h1>Bitcon OHLC 1m</h1>
+    <div id="container" style="height: 400px; min-width: 310px"></div>
+    <script type="module" src="script.js"></script>
+
+    <script>
+
+    const  chart = new Highcharts.stockChart('container',{
+
+    chart: {
+        events: {
+        load() {
+            let chart = this;
+            //let cdata = []
+            
+            ( function () {
+                fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=1000')
+                .then(res =>  res.json())
+                .then(data => {
+                    
+                    let cdata = data.map(d => {
+                    return [d[0], parseFloat(d[1]),parseFloat(d[2]),parseFloat(d[3]), parseFloat(d[4])]  
+                    //{time:d[0]/1000,open:parseFloat(d[1]),high:parseFloat(d[2]),low:parseFloat(d[3]),close:parseFloat(d[4])}
+            
+                    });
+                                        console.log(cdata)
+                    chart.series[0].update({
+                    data: cdata
+                    }) 
+                    
+                })
+            }())
+        
+        }
+        }
+    },
+
+    plotOptions: {
+    candlestick: {
+        lineColor: "#333",
+        color: '#e55600',
+        upColor: '#690'
+    }
+    },    
+    xAxis: {
+    crosshair: true,
+    },
+    yAxis: {
+    crosshair: true
+    },
+
+    navigation: {
+    bindings: {
+    rect: {
+    annotationOptions: {
+        ShapeOptions: {
+        fill:'rgba(255,0,0,0.8)'
+        }
+
+    }
+
+    }
+
+    },
+
+    annotationOptions:{
+    typeOptions: {
+    line: {
+    stroke: 'rgba(0,255,0,0.8)',  
+    strokeWidth: 3
+    }
+
+
+    }
+
+    } },  
+
+    rangeSelector: {
+        selected: 1 
+    },
+
+    series: [{
+    type: 'candlestick',
+    name: "BTCUSDT" ,
+    groupPadding: 0.03,
+    pointPadding: 0.03,
+    _dataGrouping: {
+    units: [
+        [
+            'week', // unit name
+            [1] // allowed multiples
+        ], [
+            'month',
+            [1, 2, 3, 4, 6]
+        ]
+    ]
+    }
+
+    }]
+    });   
+
+    let binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m  ");
+    let message= []
+    var dataframe 
+    binanceSocket.onmessage= (ticker)=> {
+    message =JSON.parse(ticker.data)
+    dataframe = [
+    Number(message.k.T), // the date
+    Number(message.k.o), // open
+    Number(message.k.h), // high
+    Number(message.k.l), // low
+    Number(message.k.c)  // close
+    ]
+
+    chart.series[0].addPoint(dataframe, true ) 
+
+    //chart.series[0].setData(dataframe,true)
+
+    } 
+
+</script>
+
+</body>
+</html>
