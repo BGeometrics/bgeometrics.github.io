@@ -95,6 +95,9 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
+
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
                     }
                 }
             },
@@ -148,9 +151,7 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        },
-                        stockTools: {gui:false},
-                        legend: {enabled:false}
+                        }
                     }
                 }]
             }
