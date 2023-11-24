@@ -100,18 +100,18 @@
 
             yAxis: [{
                 title: {
-                    text: 'Supply in Profit / Loss'
+                    text: 'Supply in Profit / Loss (%)'
                 },
             }, {
                 title: {
                     text: 'BTC price'
                 },
-                #type: 'logarithmic',
+                //type: 'logarithmic',
             }],
 
             series: [{
                 id:'supply_profit_loss',
-                name: 'Supply Profit Loss',
+                name: 'Supply Profit / Loss (%)',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
@@ -134,7 +134,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 4
             },
 
             credits: {
