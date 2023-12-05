@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Address 1K to 1OK bitcoin</title>
+    <title>Bitcoin: Volume BTC by price</title>
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
 <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
-<script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-<script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-<script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-<script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-<script src="https://code.highcharts.com/modules/full-screen.js"></script>
-<script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-<script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <div id="container" style="width:100%; height:600px;"></div>
@@ -61,20 +54,19 @@
                     }
                 },
                 title: {
-                    text: 'Corn vs wheat estimated production for 2020',
+                    text: 'Bitcoin: Volume BTC by price',
                     align: 'left'
                 },
                 xAxis: {
                     categories: data_x,
                     crosshair: true,
                     accessibility: {
-                        description: 'Countries'
+                        description: 'BTC price'
                     },
                     plotLines: [{
                         color: 'orange',
-                        width: 1,
+                        width: 2,
                         value: data_price_index,
-                        //label: "data_price"
                         label: {
                             text: data_price + ' BTC',
                             style: {
@@ -86,22 +78,17 @@
                 yAxis: {
                     min: 0,
                     title: {
-                        text: '1000 metric tons (MT)'
+                        text: 'Volume BTC'
                     }
-                },
-                tooltip: {
-                    valueSuffix: ' (1000 MT)'
                 },
                 plotOptions: {
                     column: {
-                        //pointPadding: 0.2,
                         borderWidth: 0
                     }
                 },
                 series: [
                     {
-                        name: 'Wheat',
-                        //data: [51086, 136000, 5500, 141000, 107180, 77000]
+                        name: 'Volume BTC',
                         data: data_y
                     }
                 ],
