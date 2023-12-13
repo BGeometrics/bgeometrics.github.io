@@ -22,6 +22,7 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/btc_price_last.json'
             ).then(response => response.json());
+            let data_price_2 = parseFloat(data_price).toFixed(2)
             const data_price_index = await fetch(
                 'https://charts.bgeometrics.com/files/btc_price_last_pos.json'
             ).then(response => response.json());
@@ -68,7 +69,7 @@
                         width: 2,
                         value: data_price_index,
                         label: {
-                            text: data_price + ' BTC',
+                            text: data_price_2 + ' BTC',
                             style: {
                                 color: 'gray'
                             }
