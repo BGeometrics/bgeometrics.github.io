@@ -92,7 +92,6 @@
             },
 
             chart: {
-                type: 'area',
                 renderTo: 'container',
                 events: {
                     load: function() {
@@ -129,18 +128,6 @@
                 opposite: false,
             }],
 
-            plotOptions: {
-                area: {
-                    stacking: 'normal',
-                    lineColor: '#666666',
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: '#666666'
-                    }
-                }
-            }, 
-
             series: [{
                 id:'stablecoin_supply',
                 name: 'Total Stablecoin Supply',
@@ -153,7 +140,6 @@
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
-                type: 'line',
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -215,11 +201,10 @@
             },
 
             credits: {
-                text: 'Source: coinmetrics.io &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
+                text: 'Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
-                    font: '11px sans-serif, Verdana, "Trebuchet MS"',
-                    color: 'black',
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
