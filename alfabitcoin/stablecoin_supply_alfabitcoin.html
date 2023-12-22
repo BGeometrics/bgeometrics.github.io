@@ -39,9 +39,6 @@
             const data_usdt = await fetch(
                 'https://charts.bgeometrics.com/files/stablecoin_usdt.json'
             ).then(response => response.json());
-            const data_stablecoins = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoins.json'
-            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/stablecoin_supply_btc_price.json'
             ).then(response => response.json());
@@ -142,14 +139,6 @@
             }, 
 
             series: [{
-                id:'stablecoin_supply',
-                name: 'Total Stablecoin Supply',
-                data: data_stablecoins,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
