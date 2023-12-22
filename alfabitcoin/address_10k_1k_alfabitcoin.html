@@ -15,6 +15,7 @@
 <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
 <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<style>:root {--highcharts-neutral-color-3: orange;}</style>
 
 <div id="container" style="width:100%; height:600px;"></div>
 
@@ -119,6 +120,7 @@
                 yAxis: 0
             }, {
                 name: 'BTC price',
+                color: 'black',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
@@ -142,7 +144,12 @@
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
-                }
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
             },
             responsive: {
                 rules: [{
