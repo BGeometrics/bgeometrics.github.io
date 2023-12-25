@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="keywords" content="html, css bootstrap, mega menu, navbar, large dropdown, menu CSS examples" />
+	<meta name="description" content="Bootstrap 5 navbar megamenu examples with simple css demo code" />  
+
+	<title>Demo - Bootstrap navbar megamenu dropdown. html code example </title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+
+<style type="text/css">
+.navbar .megamenu{ padding: 1rem; }
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+	
+	.navbar .has-megamenu{position:static!important;}
+	.navbar .megamenu{left:0; right:0; width:100%; margin-top:0;  }
+	
+}	
+/* ============ desktop view .end// ============ */
+
+
+/* ============ mobile view ============ */
+@media(max-width: 991px){
+	.navbar.fixed-top .navbar-collapse, .navbar.sticky-top .navbar-collapse{
+		overflow-y: auto;
+	    max-height: 90vh;
+	    margin-top:10px;
+	}
+}
+/* ============ mobile view .end// ============ */
+</style>
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(){
+        /////// Prevent closing from click inside dropdown
+        document.querySelectorAll('.dropdown-menu').forEach(function(element){
+        	element.addEventListener('click', function (e) {
+        		e.stopPropagation();
+        	});
+        })
+    }); 
+	// DOMContentLoaded  end
+</script>
+
+</head>
+<body>
+
+	<header class="section-header py-4">
+		<div class="container">
+			<h2>Demo page </h2> 
+		</div>
+	</header> <!-- section-header.// -->
+
+
+
+	<div class="container">
+
+<!-- ============= COMPONENT ============== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div class="container-fluid">
+	<a class="navbar-brand" href="#">Brand</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="main_nav">
+		<ul class="navbar-nav">
+			<li class="nav-item dropdown has-megamenu">
+				<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Mega menu  </a>
+				<div class="dropdown-menu megamenu" role="menu">
+					<div class="row g-3">
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Title Menu One</h6>
+								<ul class="list-unstyled">
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Title Menu Two</h6>
+								<ul class="list-unstyled">
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Title Menu Three</h6>
+								<ul class="list-unstyled">
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div>    
+						<div class="col-lg-3 col-6">
+							<div class="col-megamenu">
+								<h6 class="title">Title Menu Four</h6>
+								<ul class="list-unstyled">
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+									<li><a href="#">Custom Menu</a></li>
+								</ul>
+							</div>  <!-- col-megamenu.// -->
+						</div><!-- end col-3 -->
+					</div><!-- end row --> 
+				</div> <!-- dropdown-mega-menu.// -->
+			</li>
+		</ul>
+		<ul class="navbar-nav ms-auto">
+			<li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+			<li class="nav-item dropdown">
+				<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
+			    <ul class="dropdown-menu dropdown-menu-end">
+				  <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+				  <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+			    </ul>
+			</li>
+		</ul>
+	</div> <!-- navbar-collapse.// -->
+</div> <!-- container-fluid.// -->
+</nav>
+<!-- ============= COMPONENT END// ============== -->
+
+		<section class="section-content py-5">
+
+			<h6>Demo for Navbar with megamenu dropdown. <br> Based on Bootstrap 5 CSS framework.  </h6>
+			<p>For this demo page you should connect to the internet to receive files from CDN  like Bootstrap5 CSS, Bootstrap5 JS</p>
+
+			<a href="https://bootstrap-menu.com/detail-megamenu.html" class="btn btn-success"> &laquo Back to tutorial or Download code</a>
+
+		</section>
+
+	</div><!-- container //  -->
+
+</body>
+</html>
