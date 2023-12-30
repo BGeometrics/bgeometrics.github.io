@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Capitalization</title>
+    <title>Realized Price</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -23,20 +23,14 @@
 
     <script>
         (async () => {
-            const data_market_cap = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
+            const data_realized_price = await fetch(
+                'https://charts.bgeometrics.com/files/realized_price.json'
             ).then(response => response.json());
-            const data_investor_cap = await fetch(
-                'https://charts.bgeometrics.com/files/investor_cap.json'
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
             ).then(response => response.json());
-            const data_thermo_cap = await fetch(
-                'https://charts.bgeometrics.com/files/thermo_cap.json'
-            ).then(response => response.json());
-            const data_realized_cap = await fetch(
-                'https://charts.bgeometrics.com/files/realized_cap.json'
-            ).then(response => response.json());
-            const thermocap_realizedcap_ratio = await fetch(
-                'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
+            const data_delta_cap = await fetch(
+                'https://charts.bgeometrics.com/files/delta_cap.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
@@ -84,7 +78,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Capitalization',
+                text: 'Bitcoin: Realized Price',
                 align: 'left',
             },
 
@@ -115,37 +109,29 @@
                 type: 'logarithmic',
             }, {
                 title: {
-                    text: 'Capitalization (USD)'
+                    text: 'BTC price'
                 },
                 type: 'logarithmic',
                 //opposite: false,
             }],
 
             series: [{
-                id:'market_cap',
-                name: 'Market Cap',
-                data: data_market_cap,
+                name: 'BTC price',
+                data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Realized Cap',
-                data: data_realized_cap,
+                name: 'Realized Price',
+                data: data_realized_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Investor Cap',
-                data: data_investor_cap,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'Thermo Cap',
-                data: data_thermo_cap,
+                name: 'Delta price',
+                data: data_delta_cap,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -193,45 +179,25 @@
     </script>
     <section>
         <div>
-            <h4>Bitcoin Capitalization</h4>
+            <h4>Bitcoin Realized Price</h4>
             <p>
-                Market capitalization (Marketcap) refers to the total value of all units of the cryptocurrency in circulation. It is calculated by multiplying the current price of one unit of the cryptocurrency by the total number of units in circulation.
-                The formula is the following:  
+                Realized price is the average price at which bitcoins were purchased/spent/transferred.
+                It is a metric that takes into account the price at which each individual bitcoin last moved on the blockchain.
             </p> 
-            <span class="katex"><span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext>Market Capitalization</mtext></mrow><mo>=</mo><mtext>Current bitcoin price</mtext><mo>×</mo><mrow><mtext>Total amount of BTC in circulation</mtext></mrow></mrow><annotation encoding="application/x-tex">\text{Market Capitalization} = \text{Current Price BTC} \times \text{Total amount of BTC in circulation}</annotation></semantics>
-                </math>
-            </span>
-            <p>
-                Realized capitalization (Realizedcap) is calculated by multiplying the number of bitcoins in circulation by the price at which the last purchase/spend/transaction was made.
-                Mathematically it can be expressed as follows:    
+            <p> The realized price of Bitcoin is typically calculated by dividing the realized market capitalization by the realized supply. 
+                Here is the formula:
             </p>
+            <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics><mrow><mtext>Realized Price</mtext><mo>=</mo><mfrac><mtext>Realized Market Capitalization</mtext>
+                    <mtext>Realized Supply</mtext></mfrac></mrow>
+                </semantics></math>
+            </span>
+            <p>Delta Realized price of bitcoin is the realized price minus the average value of the realized price up to the current day</p>
             <span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Realized Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Bitcoin&nbsp;Units</mtext><mo>×</mo><mtext>Last&nbsp;Transaction&nbsp;Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Realized Capitalization} = \sum (\text{Bitcoin Units} \times \text{Last Transaction Price})</annotation>
-                    </semantics>
+                    <semantics><mrow><mtext>Delta Realized Price</mtext><mo>=</mo><mo>Realized Price</mo><mo>-</mo><mtext>AVG(Realized Price)</mtext></mrow></semantics>
                 </math>
             </span>
-            <p>
-                Thermo capitalization (Thermocap) is the sum of all mined BTC for the price they had when mined.
-                Thermocap could be called the primary market.
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Thermo Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Issuance</mtext><mo>×</mo><mtext>Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Thermo Capitalization} = \sum (\text{Issuance} \times \text{Price})</annotation>
-                    </semantics>
-                </math>
-            </span>
-            <p>
-                Coins are revalued each time they are spent on-chain, creating an evolving realized valuation as owners make profits, losses, or spend until they break even. 
-                ARK Invest previously defined this metric as the investor capitalization, calculated by summing the value realized across all transactions (T) across all block heights (N) (excluding mining coinbase transactions).
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Investor Capitalization</mtext><mo>=</mo><mo>Realized Capitalization</mo><mo>-</mo><mtext>Thermo Capitalization</mtext></mrow></semantics>
-                </math>
-            </span>
-
         </div>
     </section>
 </body>
