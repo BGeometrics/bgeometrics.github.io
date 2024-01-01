@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Capitalization</title>
+    <title>Bitcoin moving average</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -23,20 +23,20 @@
 
     <script>
         (async () => {
-            const data_market_cap = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/moving_average_price.json'
             ).then(response => response.json());
-            const data_investor_cap = await fetch(
-                'https://charts.bgeometrics.com/files/investor_cap.json'
+            const data_50dma = await fetch(
+                'https://charts.bgeometrics.com/files/50dma.json'
             ).then(response => response.json());
-            const data_thermo_cap = await fetch(
-                'https://charts.bgeometrics.com/files/thermo_cap.json'
+            const data_155dma = await fetch(
+                'https://charts.bgeometrics.com/files/155dma.json'
             ).then(response => response.json());
-            const data_realized_cap = await fetch(
-                'https://charts.bgeometrics.com/files/realized_cap.json'
+            const data_200dma = await fetch(
+                'https://charts.bgeometrics.com/files/200dma.json'
             ).then(response => response.json());
-            const thermocap_realizedcap_ratio = await fetch(
-                'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
+            const data_200wma = await fetch(
+                'https://charts.bgeometrics.com/files/200wma.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
@@ -84,7 +84,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Capitalization',
+                text: 'Bitcoin: Moving Average Price',
                 align: 'left',
             },
 
@@ -115,37 +115,44 @@
                 type: 'logarithmic',
             }, {
                 title: {
-                    text: 'Capitalization (USD)'
+                    text: 'BTC price'
                 },
                 type: 'logarithmic',
-                //opposite: false,
             }],
 
             series: [{
-                id:'market_cap',
-                name: 'Market Cap',
-                data: data_market_cap,
+                name: 'BTC price',
+                data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Realized Cap',
-                data: data_realized_cap,
+                name: '50 dma',
+                data: data_50dma,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Investor Cap',
-                data: data_investor_cap,
+                name: '155 dma',
+                data: data_155dma,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Thermo Cap',
-                data: data_thermo_cap,
+                name: '200 dma',
+                data: data_200dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '200 wma',
+                data: data_200wma,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -191,48 +198,5 @@
     })();
 
     </script>
-    <section>
-        <div>
-            <h4>Bitcoin Capitalization</h4>
-            <p>
-                Market capitalization (Marketcap) refers to the total value of all units of the cryptocurrency in circulation. It is calculated by multiplying the current price of one unit of the cryptocurrency by the total number of units in circulation.
-                The formula is the following:  
-            </p> 
-            <span class="katex"><span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext>Market Capitalization</mtext></mrow><mo>=</mo><mtext>Current bitcoin price</mtext><mo>×</mo><mrow><mtext>Total amount of BTC in circulation</mtext></mrow></mrow><annotation encoding="application/x-tex">\text{Market Capitalization} = \text{Current Price BTC} \times \text{Total amount of BTC in circulation}</annotation></semantics>
-                </math>
-            </span>
-            <p>
-                Realized capitalization (Realizedcap) is calculated by multiplying the number of bitcoins in circulation by the price at which the last purchase/spend/transaction was made.
-                Mathematically it can be expressed as follows:    
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Realized Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Bitcoin&nbsp;Units</mtext><mo>×</mo><mtext>Last&nbsp;Transaction&nbsp;Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Realized Capitalization} = \sum (\text{Bitcoin Units} \times \text{Last Transaction Price})</annotation>
-                    </semantics>
-                </math>
-            </span>
-            <p>
-                Thermo capitalization (Thermocap) is the sum of all mined BTC for the price they had when mined.
-                Thermocap could be called the primary market.
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Thermo Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Issuance</mtext><mo>×</mo><mtext>Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Thermo Capitalization} = \sum (\text{Issuance} \times \text{Price})</annotation>
-                    </semantics>
-                </math>
-            </span>
-            <p>
-                Coins are revalued each time they are spent on-chain, creating an evolving realized valuation as owners make profits, losses, or spend until they break even.
-                ARK Invest previously defined this metric in the white paper <a href="https://ark-invest.com/white-papers/cointime-economics/?utm_campaign=Cointime%20Economics&utm_content=261766789">cointime-economics</a>, as the investor's capitalization, calculated by adding the value obtained in all transactions (T) in all block heights (N) (excluding coinbase mining transactions).
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Investor Capitalization</mtext><mo>=</mo><mo>Realized Capitalization</mo><mo>-</mo><mtext>Thermo Capitalization</mtext></mrow></semantics>
-                </math>
-            </span>
-
-        </div>
-    </section>
 </body>
 </html>

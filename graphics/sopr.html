@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Capitalization</title>
+    <title>SOPR (Spent Output Profit Ratio)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -23,20 +23,17 @@
 
     <script>
         (async () => {
-            const data_market_cap = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
             ).then(response => response.json());
-            const data_investor_cap = await fetch(
-                'https://charts.bgeometrics.com/files/investor_cap.json'
+            const data_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/sopr.json'
             ).then(response => response.json());
-            const data_thermo_cap = await fetch(
-                'https://charts.bgeometrics.com/files/thermo_cap.json'
+            const data_lth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/lth_sopr.json'
             ).then(response => response.json());
-            const data_realized_cap = await fetch(
-                'https://charts.bgeometrics.com/files/realized_cap.json'
-            ).then(response => response.json());
-            const thermocap_realizedcap_ratio = await fetch(
-                'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
+            const data_sth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/sth_sopr.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
@@ -70,10 +67,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -84,7 +79,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Capitalization',
+                text: 'Bitcoin: SOPR (Spent Output Profit Ratio)',
                 align: 'left',
             },
 
@@ -112,40 +107,47 @@
             },
 
             yAxis: [{
-                type: 'logarithmic',
+                title: {
+                    text: 'SOPR'
+                },
+                plotBands: [{ 
+                    from: 1,
+                    to: 0.8,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
-                    text: 'Capitalization (USD)'
+                    text: 'BTC price'
                 },
-                type: 'logarithmic',
-                //opposite: false,
+                opposite: false
             }],
 
             series: [{
-                id:'market_cap',
-                name: 'Market Cap',
-                data: data_market_cap,
+                name: 'BTC price',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                name: 'SOPR',
+                data: data_sopr,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Realized Cap',
-                data: data_realized_cap,
+                name: 'LTH SOPR',
+                data: data_lth_sopr,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Investor Cap',
-                data: data_investor_cap,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'Thermo Cap',
-                data: data_thermo_cap,
+                name: 'STH SOPR',
+                data: data_sth_sopr,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -160,7 +162,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 2
             },
 
             credits: {
@@ -193,45 +195,14 @@
     </script>
     <section>
         <div>
-            <h4>Bitcoin Capitalization</h4>
-            <p>
-                Market capitalization (Marketcap) refers to the total value of all units of the cryptocurrency in circulation. It is calculated by multiplying the current price of one unit of the cryptocurrency by the total number of units in circulation.
-                The formula is the following:  
-            </p> 
-            <span class="katex"><span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext>Market Capitalization</mtext></mrow><mo>=</mo><mtext>Current bitcoin price</mtext><mo>×</mo><mrow><mtext>Total amount of BTC in circulation</mtext></mrow></mrow><annotation encoding="application/x-tex">\text{Market Capitalization} = \text{Current Price BTC} \times \text{Total amount of BTC in circulation}</annotation></semantics>
-                </math>
-            </span>
-            <p>
-                Realized capitalization (Realizedcap) is calculated by multiplying the number of bitcoins in circulation by the price at which the last purchase/spend/transaction was made.
-                Mathematically it can be expressed as follows:    
+            <h4>SOPR (Spent Output Profit Ratio)</h4>
+            <p> 
+                SOPR indicates the BTC spent in profit or loss in the last day.
+            </p><p> 
+                Values > 1 indicate that more investors are selling at a profit.
+                <br>
+                Values < 1 indicate that more investors are selling at a loss.
             </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Realized Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Bitcoin&nbsp;Units</mtext><mo>×</mo><mtext>Last&nbsp;Transaction&nbsp;Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Realized Capitalization} = \sum (\text{Bitcoin Units} \times \text{Last Transaction Price})</annotation>
-                    </semantics>
-                </math>
-            </span>
-            <p>
-                Thermo capitalization (Thermocap) is the sum of all mined BTC for the price they had when mined.
-                Thermocap could be called the primary market.
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Thermo Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Issuance</mtext><mo>×</mo><mtext>Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Thermo Capitalization} = \sum (\text{Issuance} \times \text{Price})</annotation>
-                    </semantics>
-                </math>
-            </span>
-            <p>
-                Coins are revalued each time they are spent on-chain, creating an evolving realized valuation as owners make profits, losses, or spend until they break even.
-                ARK Invest previously defined this metric in the white paper <a href="https://ark-invest.com/white-papers/cointime-economics/?utm_campaign=Cointime%20Economics&utm_content=261766789">cointime-economics</a>, as the investor's capitalization, calculated by adding the value obtained in all transactions (T) in all block heights (N) (excluding coinbase mining transactions).
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Investor Capitalization</mtext><mo>=</mo><mo>Realized Capitalization</mo><mo>-</mo><mtext>Thermo Capitalization</mtext></mrow></semantics>
-                </math>
-            </span>
-
         </div>
     </section>
 </body>
