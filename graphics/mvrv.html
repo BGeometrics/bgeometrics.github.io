@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SOPR (Spent Output Profit Ratio)</title>
+    <title>MVRV (Market Value Realized Value)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -24,18 +24,21 @@
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
+                'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'
             ).then(response => response.json());
-            const data_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sopr.json'
+            const data_mvrv = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv.json'
             ).then(response => response.json());
-            const data_lth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/lth_sopr.json'
+            const data_mvrv_zscore = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv_zscore.json'
             ).then(response => response.json());
-            const data_sth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sth_sopr.json'
+            const data_lth_mvrv = await fetch(
+                'https://charts.bgeometrics.com/files/lth_mvrv.json'
             ).then(response => response.json());
- 
+            const data_sth_mvrv = await fetch(
+                'https://charts.bgeometrics.com/files/sth_mvrv.json'
+            ).then(response => response.json());
+
         var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
@@ -58,10 +61,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -79,7 +78,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: SOPR (Spent Output Profit Ratio)',
+                text: 'Bitcoin: MVRV (Market Value Realized Value)',
                 align: 'left',
             },
 
@@ -105,20 +104,16 @@
                     }
                 }
             },
-
+            
             yAxis: [{
                 title: {
-                    text: 'SOPR'
+                    text: 'MVRV'
                 },
-                plotBands: [{ 
-                    from: 1,
-                    to: 0.8,
-                    color: 'rgba(0, 255, 0, 0.1)'
-                }]
             }, {
                 title: {
                     text: 'BTC price'
                 },
+                type: 'logarithmic',
                 opposite: false
             }],
 
@@ -130,32 +125,40 @@
                 },
                 yAxis: 1
             }, {
-                id:'sopr',
-                name: 'SOPR',
-                data: data_sopr,
+                id:'mvrv_zscore',
+                name: 'MVRV Z-Score',
+                data: data_mvrv_zscore,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'lth_sopr',
-                name: 'LTH SOPR',
-                data: data_lth_sopr,
+                name: 'LTH-MVRV',
+                data: data_lth_mvrv,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'sth_sopr',
-                name: 'STH SOPR',
-                data: data_sth_sopr,
+                name: 'STH-MVRV',
+                data: data_sth_mvrv,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }],
+            /*
+            }, {
+                name: 'MVRV',
+                data: data_mvrv,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            */
 
             legend:{
                 enabled:true,
@@ -165,7 +168,7 @@
             },
 
             rangeSelector: {
-                selected: 2
+                selected: 5
             },
 
             credits: {
@@ -199,29 +202,31 @@
 
     <section>
         <div>
-            <h4>SOPR (Spent Output Profit Ratio)</h4>
-            <p> 
-                SOPR indicates the BTC spent in profit or loss in the last day.
+            <h4>MVRV (Market Value Realized Value)</h4>
+            <p>MVRV is the ratio of market value to realized value.</p>
+            <span class="katex-mathml">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics><mrow><mtext>MVRV</mtext><mo>=</mo><mo>Market Value</mo><mo>/</mo><mtext>Realized Value</mtext></mrow></semantics>
+                </math>
+            </span>
+            <p>MVRV Z-Score is an indicator that is based on the MVRV (market value/realized value) ratio. The Z-Score adds a statistical element to the MVRV index by measuring the extent to which the current MVRV value deviates from its historical average, penalizing periods of greater volatility.</p>
+            <span class="katex-mathml">
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <semantics><mrow><mtext>MVRV Z-Score</mtext><mo>=</mo>
+                    	<mo>MVRV - MVRV mean</mo><mo>/</mo><mtext>MVRV std</mtext></mrow>
+                    </semantics>
+                </math>
+            </span>
+            <p>
+                MVRV is the current Market Value to Realized Value ratio.<br>
+                MVRV mean is the historical average of the MVRV ratio.<br>
+                MVRV std is the standard deviation of the MVRV ratio over time.<br>
             </p>
-            <p> 
-                Values > 1 indicate that more investors are selling at a profit.
-                <br>
-                Values < 1 indicate that more investors are selling at a loss.
-            </p>
-            <p>SOPR Short Term Hodler (STH-SOPR) is the index that shows the BTC profit of short-term investors who are those who have spent/transferred bitcoins in the last 155 days.
-            </p>
-            <p> 
-                Values > 1 indicate that more short-term investors are selling at a profit.
-                <br>
-                Values < 1 indicate that more short-term investors are selling at a loss.
-            </p>
-            <p> 
-                SOPR Long Term Hodler (LTH-SOPR) is the index that shows the BTC profit of long-term investors who are those who have spent / transferred bitcoins after the last 155 days.
-            </p>
-            <p> 
-                Values > 1 indicate that more long-term investors are selling at a profit.
-                <br>
-                Values < 1 indicate that more short-term investors are selling at a loss.
+            <p>Interpretation of MVRV Z score:<br>
+                High values indicate that the current price of BTC is much higher than the prices at which BTC was purchased even including the volatility correction.<br>
+                Low values indicate that the current BTC price is lower than the purchase prices.<br>
+                MVRV Z-Score > 0: This could indicate that the market is in an overbought state and there could be a higher risk of market correction or sell-off.<br>
+                MVRV Z-Score < 0: This could suggest that the market is undervalued compared to its historical average, which could present a buying opportunity.
             </p>
         </div>
     </section>

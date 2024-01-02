@@ -70,10 +70,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -128,6 +126,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'50_dma',
                 name: '50 dma',
                 data: data_50dma,
                 tooltip: {
@@ -135,6 +134,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'155_dma',
                 name: '155 dma',
                 data: data_155dma,
                 visible: false,
@@ -143,6 +143,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'200_dma',
                 name: '200 dma',
                 data: data_200dma,
                 tooltip: {
@@ -150,6 +151,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'200_wma',
                 name: '200 wma',
                 data: data_200wma,
                 visible: false,

@@ -118,7 +118,6 @@
                     text: 'Capitalization (USD)'
                 },
                 type: 'logarithmic',
-                //opposite: false,
             }],
 
             series: [{
@@ -130,6 +129,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'realized_cap',
                 name: 'Realized Cap',
                 data: data_realized_cap,
                 tooltip: {
@@ -137,6 +137,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'investor_cap',
                 name: 'Investor Cap',
                 data: data_investor_cap,
                 tooltip: {
@@ -144,6 +145,7 @@
                 },
                 yAxis: 0
             }, {
+                id:'thermo_cap',
                 name: 'Thermo Cap',
                 data: data_thermo_cap,
                 tooltip: {
