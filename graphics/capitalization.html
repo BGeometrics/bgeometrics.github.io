@@ -197,42 +197,77 @@
         <div>
             <h4>Bitcoin Capitalization</h4>
             <p>
-                Market capitalization (Marketcap) refers to the total value of all units of the cryptocurrency in circulation. It is calculated by multiplying the current price of one unit of the cryptocurrency by the total number of units in circulation.
-                The formula is the following:  
+                Navigating the complex world of Bitcoin valuation involves understanding various metrics that shed light on its market dynamics. 
+                <br>Market capitalization (Marketcap), Realized capitalization (Realizedcap), Thermal capitalization (Thermocap), and investor capitalization collectively offer a nuanced perspective on the value of BTC. 
+                <br>Let's explore each metric to gain insight into its importance within the Bitcoin ecosystem.
             </p> 
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li>
+                            <strong>Market capitalization (Marketcap):</strong>
+                            <p>
+                                Marketcap means the total value of all Bitcoin units in circulation. It is obtained by multiplying the current price of a Bitcoin by the total number of units in circulation. 
+                                <br>This metric provides a snapshot of Bitcoin's overall market value at any given time.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Realized capitalization (Realizedcap):</strong>
+                            <p>
+                               Realizedcap introduces a dynamic element to Bitcoin valuation. It is calculated by multiplying the number of Bitcoins in circulation by the price at which the last purchase, expenditure or transaction occurred. This metric captures the realized value of Bitcoin, emphasizing the actual prices at which transactions were made. 
+                            </p>
+                        </li>
+                        <li> 
+                            <strong>Thermo capitalization (Thermocap):</strong>
+                            <p>
+                                Thermocap represents the sum of all BTC mined at the prices they were at when mined, often referred to as the primary market.
+                                <br>This metric provides information on the cumulative value of all mined bitcoins, reflecting the historical cost of creating the Bitcoin supply.
+                            </p>
+                        </li>
+                        <li> 
+                            <strong>Investor capitalization:</strong>
+                            <p>
+                                Investor capitalization is obtained by subtracting Thermocap from Realizedcap.
+                                <br>This metric isolates the impact of mining-related securities, offering a clearer picture of the value created through investor transactions.
+                                <br>In essence, it represents the realized value created by investor activity in the secondary market.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p>As Bitcoin continues to evolve, understanding these key metrics (market capitalization, realized capitalization, investor capitalization, and thermal capitalization) provides a comprehensive framework for investors and analysts.</p>
+            <p>While Marketcap offers a high-level snapshot, Realizedcap, Investor Cap, and Thermocap delve into investor-specific and realized valuations, presenting a more nuanced understanding of Bitcoin's intrinsic value.</p>
+            <p>These metrics, together, contribute to a holistic assessment of the health of the Bitcoin market and investor sentiment.</p>
+
             <span class="katex"><span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext>Market Capitalization</mtext></mrow><mo>=</mo><mtext>Current bitcoin price</mtext><mo>×</mo><mrow><mtext>Total amount of BTC in circulation</mtext></mrow></mrow><annotation encoding="application/x-tex">\text{Market Capitalization} = \text{Current Price BTC} \times \text{Total amount of BTC in circulation}</annotation></semantics>
                 </math>
             </span>
-            <p>
-                Realized capitalization (Realizedcap) is calculated by multiplying the number of bitcoins in circulation by the price at which the last purchase/spend/transaction was made.
-                Mathematically it can be expressed as follows:    
-            </p>
+            <br>
             <span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <semantics><mrow><mtext>Realized Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Bitcoin&nbsp;Units</mtext><mo>×</mo><mtext>Last&nbsp;Transaction&nbsp;Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Realized Capitalization} = \sum (\text{Bitcoin Units} \times \text{Last Transaction Price})</annotation>
                     </semantics>
                 </math>
             </span>
-            <p>
-                Thermo capitalization (Thermocap) is the sum of all mined BTC for the price they had when mined.
-                Thermocap could be called the primary market.
-            </p>
+            <br>
             <span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <semantics><mrow><mtext>Thermo Capitalization</mtext><mo>=</mo><mo>∑</mo><mo stretchy="false">(</mo><mtext>Issuance</mtext><mo>×</mo><mtext>Price</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{Thermo Capitalization} = \sum (\text{Issuance} \times \text{Price})</annotation>
                     </semantics>
                 </math>
             </span>
-            <p>
-                Coins are revalued each time they are spent on-chain, creating an evolving realized valuation as owners make profits, losses, or spend until they break even.
-                ARK Invest previously defined this metric in the white paper <a href="https://ark-invest.com/white-papers/cointime-economics/?utm_campaign=Cointime%20Economics&utm_content=261766789">cointime-economics</a>, as the investor's capitalization, calculated by adding the value obtained in all transactions (T) in all block heights (N) (excluding coinbase mining transactions).
-            </p>
+            <br>
             <span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <semantics><mrow><mtext>Investor Capitalization</mtext><mo>=</mo><mo>Realized Capitalization</mo><mo>-</mo><mtext>Thermo Capitalization</mtext></mrow></semantics>
                 </math>
             </span>
+            <br>
+            <p>
+                Coins are revalued each time they are spent on-chain, creating an evolving realized valuation as owners make profits, losses, or spend until they break even.
+                ARK Invest previously defined this metric in the white paper <a href="https://ark-invest.com/white-papers/cointime-economics/?utm_campaign=Cointime%20Economics&utm_content=261766789">cointime-economics</a>, as the investor's capitalization, calculated by adding the value obtained in all transactions (T) in all block heights (N) (excluding coinbase mining transactions).
+            </p>
 
         </div>
     </section>

@@ -2,6 +2,13 @@
  */
   var names = [
     { name: "Bitcoin Price USD", link: "reports/bitcoin_price_usd_g.html" },
+    { name: "Bitcoin Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin Realized Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin Investor Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin Thermo Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin MVRV (Market Value Realized Price)", link: "graphics/mvrv.html" },
+    { name: "Bitcoin MVRV Z-Score", link: "graphics/mvrv.html" },
+    { name: "MVRV, LTH (Long Term Hodler) and STH (Short Term Hodler)", link: "graphics/mvrv.html" },
     { name: "Bitcoin Realized Price", link: "reports/bitcoin_realized_price_g.html" },
     { name: "SOPR (Spent Output Profit Ratio)", link: "reports/bitcoin_charts_g_sopr.html" },
     { name: "Day moving average", link: "reports/bitcoin_200_moving_average_g.html" },
