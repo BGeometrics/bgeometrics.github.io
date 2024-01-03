@@ -70,9 +70,16 @@
       resultsContainer.innerHTML = '<ul>';
 
       for (var j = 0; j < results.length; j++) {
-        resultsContainer.innerHTML += '<li><a href="' + results[j].link + '">' + results[j].name + '</a></li>';
+        resultsContainer.innerHTML += '<li><a href="' + results[j].link + '" target="_blank">' + results[j].name + '</a></li>';
       }
 
       resultsContainer.innerHTML += '</ul></br>';
+    }
+  }
+
+  function handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      search(); 
+      event.preventDefault();
     }
   }
