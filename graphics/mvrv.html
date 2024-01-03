@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MVRV (Market Value Realized Value)</title>
+    <title>MVRV Z-Score (Market Value Realized Value)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -78,7 +78,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: MVRV (Market Value Realized Value)',
+                text: 'Bitcoin: MVRV Z-Score (Market Value Realized Value)',
                 align: 'left',
             },
 
@@ -201,32 +201,75 @@
     </script>
 
     <section>
+        <h3>Bitcoin MVRV</h3>
         <div>
-            <h4>MVRV (Market Value Realized Value)</h4>
-            <p>MVRV is the ratio of market value to realized value.</p>
+            <p>
+                <strong>Market Value Realized Value (MVRV)</strong> along with its Z-Score statistical correction, are a powerful tool for investors and traders seeking information on market valuation trends.
+                <br>MVRV provides a relationship between Bitcoin's current market value and the value it was purchased for (realized value), offering a unique perspective on the cryptocurrency's price dynamics.
+            </p>
             <span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <semantics><mrow><mtext>MVRV</mtext><mo>=</mo><mo>Market Value</mo><mo>/</mo><mtext>Realized Value</mtext></mrow></semantics>
                 </math>
             </span>
-            <p>MVRV Z-Score is an indicator that is based on the MVRV (market value/realized value) ratio. The Z-Score adds a statistical element to the MVRV index by measuring the extent to which the current MVRV value deviates from its historical average, penalizing periods of greater volatility.</p>
+            <br>
             <span class="katex-mathml">
                 <math xmlns="http://www.w3.org/1998/Math/MathML">
                     <semantics><mrow><mtext>MVRV Z-Score</mtext><mo>=</mo>
-                    	<mo>MVRV - MVRV mean</mo><mo>/</mo><mtext>MVRV std</mtext></mrow>
+                    	<mo>(MVRV - MVRV mean)</mo><mo>/</mo><mtext>MVRV std</mtext></mrow>
                     </semantics>
                 </math>
             </span>
             <p>
-                MVRV is the current Market Value to Realized Value ratio.<br>
-                MVRV mean is the historical average of the MVRV ratio.<br>
-                MVRV std is the standard deviation of the MVRV ratio over time.<br>
+                <strong>The MVRV Z-Score</strong>, an extension of the MVRV, introduces a statistical element by measuring deviations from the historical average, penalizing volatility and thus improving its analytical capabilities.
             </p>
-            <p>Interpretation of MVRV Z score:<br>
-                High values indicate that the current price of BTC is much higher than the prices at which BTC was purchased even including the volatility correction.<br>
-                Low values indicate that the current BTC price is lower than the purchase prices.<br>
-                MVRV Z-Score > 0: This could indicate that the market is in an overbought state and there could be a higher risk of market correction or sell-off.<br>
-                MVRV Z-Score < 0: This could suggest that the market is undervalued compared to its historical average, which could present a buying opportunity.
+            <p><strong>The MVRV indicator consists of three key components:</strong></p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li>
+                            <strong>MVRV ratio:</strong> 
+                            <p>This is the main component, which represents the current market value of Bitcoin divided by its purchase value. It reflects the potential profitability of current market participants relative to historical investors.</p>
+                        </li>
+                        <li>
+                            <strong>Average MVRV (mean):</strong>
+                            <p>The average MVRV is the historical average of the MVRV ratio. It provides a basis for evaluating current market conditions, allowing the identification of periods of overvaluation or undervaluation.</p>
+                        </li>
+                        <li> 
+                            <strong>MVRV Std (Standard Deviation):</strong>
+                            <p>The standard deviation of the MVRV ratio over time quantifies the degree of variability or volatility in the MVRV values. Higher standard deviations indicate more significant price fluctuations.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <h3>MVRV Z-Score</h3>
+            <p>
+                Adds a layer of statistical analysis to the MVRV index, allowing investors to make more informed decisions based on historical patterns. Here's how to interpret the MVRV Z-Score:
+            </p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul>
+                        <li>
+                            <strong>High values (MVRV Z-Score > 5):</strong>
+                            <p>
+                                Indicate that the current price of Bitcoin is significantly higher than average purchase prices, even after accounting for volatility corrections.
+                                Historically suggests an overbought market condition, indicating that the price of Bitcoin may be approaching a high.
+                            </p>
+                        </li>
+                        <li>
+                            <strong>Low values (MVRV Z-Score < 0):</strong> 
+                            <p>
+                                - Indicates that the current price of Bitcoin is lower than the purchase prices, which could indicate an undervalued market.
+                                - Presents a potential buying opportunity, as the market may be primed for a reversion to historical average values.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p>
+                The MVRV indicator, enriched with Z-Score, provides investors with a comprehensive framework to evaluate market conditions. 
+                <br>
+                By considering current market value relative to historical averages and taking volatility into account, the MVRV Z-Score helps identify potential overbought or oversold states, helping traders make more informed investment decisions in the dynamic world. of cryptocurrencies.
             </p>
         </div>
     </section>
