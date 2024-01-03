@@ -9,7 +9,7 @@
     { name: "SOPR (Spent Output Profit Ratio)", link: "graphics/sopr.html" },
     { name: "LTH-SOPR (Long Term Hodler)", link: "graphics/sopr.html" },
     { name: "STH-SOPR (Short Term Hodler)", link: "graphics/sopr.html" },
-    { name: "Bitcoin MVRV (Market Value Realized Price)", link: "graphics/mvrv.html" },
+    { name: "Bitcoin MVRV (Market Value Realized Value)", link: "graphics/mvrv.html" },
     { name: "Bitcoin MVRV Z-Score", link: "graphics/mvrv.html" },
     { name: "MVRV, LTH (Long Term Hodler) and STH (Short Term Hodler)", link: "graphics/mvrv.html" },
     { name: "Bitcoin Realized Price", link: "reports/bitcoin_realized_price_g.html" },
