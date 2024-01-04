@@ -12,12 +12,11 @@
     { name: "Bitcoin MVRV (Market Value Realized Value)", link: "graphics/mvrv.html" },
     { name: "Bitcoin MVRV Z-Score", link: "graphics/mvrv.html" },
     { name: "MVRV, LTH (Long Term Hodler) and STH (Short Term Hodler)", link: "graphics/mvrv.html" },
-    { name: "Bitcoin Realized Price", link: "reports/bitcoin_realized_price_g.html" },
-    { name: "Day moving average", link: "reports/bitcoin_200_moving_average_g.html" },
+    { name: "Bitcoin Coin Days Destroyed (CDD)", link: "graphics/cdd.html" },
+    { name: "CDD Terminal Adjusted 90-Day", link: "graphics/cdd.html" },
     { name: "NUPL (Net Unrealized Profit / Loss)", link: "reports/bitcoin_nupl_g.html" },
     { name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
     { name: "Short Term Hodler Realized Price", link: "reports/bitcoin_realized_short_g.html" },
-    { name: "Bitcoin Coin Destroyed Days Terminal Adjusted 90d", link: "reports/bitcoin_cdd_ajusted_90dma_g.html" },
     { name: "Hodl Waves", link: "reports/bitcoin_hodl_waves_relative_g.html" },
     { name: "Change BTC on exchanges", link: "reports/bitcoin_ex_change_held_g.html" },
     { name: "Bitcoin Fear and Greed", link: "reports/bitcoin_fear_greed_g.html" },
@@ -34,7 +33,6 @@
     { name: "Bitcoin distribution Whale 1000-10K", link: "reports/bitcoin_distribution_coin_g_whale.html" },
     { name: "Whale (1K-10K) Net Position BTC in 30d", link: "reports/bitcoin_whale_30d_sum_g.html" },
     { name: "Shark (100-1000) Net Position BTC 30d", link: "reports/bitcoin_shark_30d_sum_g.html" },
-    { name: "MVRV Z-Score", link: "reports/bitcoin_mvrv_zscore_g.html" },
     { name: "Bitcoin realized price distribution (URPD)", link: "reports/bitcoin_price_histogram_g.html" },
     { name: "History bitcoin price on a day like today", link: "reports/bitcoin_price_usd_day_g.html" },
     { name: "Bitcoin Volatility", link: "reports/bitcoin_volatility_g.html" },
@@ -42,9 +40,11 @@
     { name: "Bitcoin Dominance", link: "reports/bitcoin_dominance_g.html" },
     { name: "Bitcoin Daily Price Performance", link: "reports/bitcoin_daily_price_performance_g.html" },
     { name: "Bitcoin Liveniness", link: "reports/bitcoin_liveliness_g.html" },
+    { name: "MVRV Z-Score (Plotly)", link: "reports/bitcoin_mvrv_zscore_g.html" },
+    { name: "Bitcoin Realized Price (Plotly)", link: "reports/bitcoin_realized_price_g.html" },
+    { name: "Day moving average (Plotly)", link: "reports/bitcoin_200_moving_average_g.html" },
+    { name: "Bitcoin Coin Destroyed Days Terminal Adjusted 90d (Plotly)", link: "reports/bitcoin_cdd_ajusted_90dma_g.html" },
     { name: "Long Term Hodler vs Short Term Hodler", link: "reports/bitcoin_lth_sth_g.html" },
-    { name: "", link: "" },
-    { name: "", link: "" }
   ];
 
   function search() {
