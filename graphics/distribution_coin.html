@@ -1,34 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Realized Price</title>
+    <title>Bitcoin: Distribution Coin</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
 <body>
-    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
-    <script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <style>:root {--highcharts-neutral-color-3: orange;}</style>
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+<script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+<script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+<script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+<script src="https://code.highcharts.com/modules/full-screen.js"></script>
+<script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+<script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <div id="container" style="width:100%; height:600px;"></div>
+<div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_metrics = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price.json'
-            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+                'https://charts.bgeometrics.com/files/distribution_coin_btc_price.json'
+            ).then(response => response.json());
+            const data_humpback = await fetch(
+                'https://charts.bgeometrics.com/files/humpback_coin.json'
+            ).then(response => response.json());
+            const data_whale = await fetch(
+                'https://charts.bgeometrics.com/files/whale_coin.json'
+            ).then(response => response.json());
+            const data_shark = await fetch(
+                'https://charts.bgeometrics.com/files/shark_coin.json'
+            ).then(response => response.json());
+            const data_fish = await fetch(
+                'https://charts.bgeometrics.com/files/fish_coin.json'
+            ).then(response => response.json());
+            const data_crab = await fetch(
+                'https://charts.bgeometrics.com/files/crab_coin.json'
+            ).then(response => response.json());
+            const data_shrimp = await fetch(
+                'https://charts.bgeometrics.com/files/shrimp_coin.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
@@ -62,10 +76,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -76,20 +88,21 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Realized Price',
+                text: 'Bitcoin: Distribution Coins',
                 align: 'left',
             },
 
             chart: {
+                type: 'area',
                 renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/cropped-Bcubium_logo_colores_ico_128_128-3.png";
                         image.src = adresse_image;
 
-                        var height_image = 250;
-                        var width_image = 320;
+                        var height_image = 128;
+                        var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
@@ -99,36 +112,86 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
-
-                        let chart1 = this;
-                        chart1.stockTools.showhideBtn.click();
                     }
                 }
             },
 
             yAxis: [{
-                type: 'logarithmic',
+                title: {
+                    text: 'Coins'
+                },
             }, {
                 title: {
                     text: 'BTC price'
                 },
-                type: 'logarithmic',
-                //opposite: false,
+                //type: 'logarithmic',
+                opposite: false
             }],
 
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineColor: '#666666',
+                    lineWidth: 1,
+                    marker: {
+                        lineWidth: 1,
+                        lineColor: '#666666'
+                    }
+                }
+            }, 
+
             series: [{
-                id:'realized_price',
-                name: 'Realized Price',
-                color: 'orange',
-                data: data_metrics,
+                name: 'BTC price',
+                data: data_price,
+                type: 'line',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                id:'humpback',
+                name: 'Humpback',
+                data: data_humpback,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'BTC price',
-                color: 'black',
-                data: data_price,
+                id:'whale',
+                name: 'Whale',
+                data: data_whale,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'shark',
+                name: 'Shark',
+                data: data_shark,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'fish',
+                name: 'Fish',
+                data: data_fish,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'crab',
+                name: 'Crab',
+                data: data_crab,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'shrimp',
+                name: 'Shrimp',
+                data: data_shrimp,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -174,6 +237,17 @@
     })();
 
     </script>
-
+    <section>
+        <div>
+            <h4>Bitcoin: </h4>
+            <p>
+            </p>
+            <p>
+            </p>
+            <h4></h4>
+            <p>
+            </p>
+        </div>
+    </section>
 </body>
 </html>
