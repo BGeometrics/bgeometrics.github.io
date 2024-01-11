@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Distribution Coin</title>
+    <title>Bitcoin, S&P 500, Gold, Tesla</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-<link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
-<script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-<script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-<script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-<script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-<script src="https://code.highcharts.com/modules/full-screen.js"></script>
-<script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-<script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<div id="container" style="width:100%; height:600px;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/distribution_coin_btc_price.json'
+                'https://charts.bgeometrics.com/files/btc_yf.json'
             ).then(response => response.json());
-            const data_humpback = await fetch(
-                'https://charts.bgeometrics.com/files/humpback_coin.json'
+            const data_sp500 = await fetch(
+                'https://charts.bgeometrics.com/files/sp500_yf.json'
             ).then(response => response.json());
-            const data_whale = await fetch(
-                'https://charts.bgeometrics.com/files/whale_coin.json'
+            const data_gold = await fetch(
+                'https://charts.bgeometrics.com/files/gold_yf.json'
             ).then(response => response.json());
-            const data_shark = await fetch(
-                'https://charts.bgeometrics.com/files/shark_coin.json'
-            ).then(response => response.json());
-            const data_fish = await fetch(
-                'https://charts.bgeometrics.com/files/fish_coin.json'
-            ).then(response => response.json());
-            const data_crab = await fetch(
-                'https://charts.bgeometrics.com/files/crab_coin.json'
-            ).then(response => response.json());
-            const data_shrimp = await fetch(
-                'https://charts.bgeometrics.com/files/shrimp_coin.json'
+            const data_tesla = await fetch(
+                'https://charts.bgeometrics.com/files/tsla_yf.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
@@ -88,12 +79,11 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Distribution Coins</a>',
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin, S&P 500, Gold, Tesla</a>',
                 align: 'left',
             },
 
             chart: {
-                type: 'area',
                 renderTo: 'container',
                 events: {
                     load: function() {
@@ -118,80 +108,50 @@
 
             yAxis: [{
                 title: {
-                    text: 'Coins'
+                    text: 'Bitcoin, Tesla'
                 },
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 opposite: false
+            }, {
+                title: {
+                    text: 'S&P 500'
+                },
+            }, {
+                title: {
+                    text: 'Gold'
+                },
             }],
-
-            plotOptions: {
-                area: {
-                    stacking: 'normal',
-                    lineColor: '#666666',
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: '#666666'
-                    }
-                }
-            }, 
 
             series: [{
                 name: 'BTC price',
                 data: data_price,
-                type: 'line',
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 1,
-                zIndex: 2
+                yAxis: 1
             }, {
-                id:'humpback',
-                name: 'Humpback',
-                data: data_humpback,
+                id:'sp500',
+                name: 'S&P 500',
+                data: data_sp500,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 2
             }, {
-                id:'whale',
-                name: 'Whale',
-                data: data_whale,
+                id:'gold',
+                name: 'Gold',
+                data: data_gold,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 3
             }, {
-                id:'shark',
-                name: 'Shark',
-                data: data_shark,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'fish',
-                name: 'Fish',
-                data: data_fish,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'crab',
-                name: 'Crab',
-                data: data_crab,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'shrimp',
-                name: 'Shrimp',
-                data: data_shrimp,
+                id:'tesla',
+                name: 'Tesla',
+                data: data_tesla,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -239,11 +199,6 @@
     </script>
     <section>
         <div>
-            <h4></h4>
-            <p>
-            </p>
-            <p>
-            </p>
             <h4></h4>
             <p>
             </p>

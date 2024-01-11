@@ -88,23 +88,12 @@
       <div class="container-fluid">
 
         <div class="row gy-4 justify-content-center">
+
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="gallery-item h-100">
-              <img src="assets/img/gallery/bitcoin-price-history.png" class="img-fluid" alt="Bitcoin Price USD">
+              <img src="assets/img/gallery/realized_price.png" class="img-fluid" alt="">
               <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="reports/bitcoin_price_usd_g.html" class="stretched-link"></a>
-              </div>
-              <div class="service-item position-relative">
-                <h6>Bitcoin Price USD</h6>
-                <p>The price of BTC throughout its history</p>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="assets/img/gallery/bitcoin-realized-price.png" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="reports/bitcoin_realized_price_g.html" class="stretched-link"></a>
+                <a href="graphics/realized_price.html" class="stretched-link"></a>
               </div>
               <div class="service-item position-relative">
                 <h6>Bitcoin Realized and Delta Price</h6>
@@ -114,9 +103,9 @@
           </div><!-- End Gallery Item -->
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="gallery-item h-100">
-              <img src="assets/img/gallery/bitcoin-sopr.png" class="img-fluid" alt="Bitcoin SOPR 7d moving average">
+              <img src="assets/img/gallery/sopr.png" class="img-fluid" alt="Bitcoin SOPR 7d moving average">
               <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="reports/bitcoin_charts_g_sopr.html" class="stretched-link"></a>
+                <a href="graphics/sopr.html" class="stretched-link"></a>
               </div>
               <div class="service-item position-relative">
                 <h6>Bitcoin SOPR </h6>
@@ -124,16 +113,39 @@
               </div>
             </div>
           </div><!-- End Gallery Item -->
-
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="gallery-item h-100">
-              <img src="assets/img/gallery/bitcoin-50-200-sma.png" class="img-fluid" alt="50 and 200 day moving average">
+              <img src="assets/img/gallery/moving_average.png" class="img-fluid" alt="50 and 200 day moving average">
               <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="reports/bitcoin_200_moving_average_g.html" class="stretched-link"></a>
+                <a href="graphics/moving_average.html" class="stretched-link"></a>
               </div>
               <div class="service-item position-relative">
                 <h6>50, 155 and 200 day moving average</h6>
                 <p>The moving average of 50, 155 and 200 days are calculated by adding the last 50 or 200 values and then dividing the result</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/cdd.png" class="img-fluid" alt="Bitcoin CDD Terminal Adjusted 90d MA">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="graphics/cdd.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin CDD Adjusted 90d MA</h6>
+                <p>Bitcoin Days Destroyed (BDD) indicates a distribution of ancient coins by long-term holders. All previous market spikes have been accompanied by a period of high destruction of old coins, so the metric can be used to capture the late stages of bullish cycles</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/bitcoin-price-history.png" class="img-fluid" alt="Bitcoin Price USD">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="reports/bitcoin_price_usd_g.html" class="stretched-link"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin Price USD</h6>
+                <p>The price of BTC throughout its history</p>
               </div>
             </div>
           </div><!-- End Gallery Item -->
@@ -158,18 +170,6 @@
               <div class="service-item position-relative">
                 <h6>STH Realized Price</h6>
                 <p>The realized price of STH is the average price of the BTC purchase of the holders in the short term</p>
-              </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="assets/img/gallery/bitcoin-cdd-ajusted-90dma.png" class="img-fluid" alt="Bitcoin CDD Terminal Adjusted 90d MA">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="reports/bitcoin_cdd_ajusted_90dma_g.html" class="stretched-link"></a>
-              </div>
-              <div class="service-item position-relative">
-                <h6>Bitcoin CDD Adjusted 90d MA</h6>
-                <p>Bitcoin Days Destroyed (BDD) indicates a distribution of ancient coins by long-term holders. All previous market spikes have been accompanied by a period of high destruction of old coins, so the metric can be used to capture the late stages of bullish cycles</p>
               </div>
             </div>
           </div><!-- End Gallery Item -->
@@ -219,17 +219,6 @@
                 <h6>AVIV Ratio</h6>
                 <p>It is the ratio of active capitalization as it weights market capitalization with vivacity and investor capitalization. It manages to evaluate with very good precision when bitcoin is overvalued and undervalued</p>
               </div>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-xl-4 col-lg-4 col-md-4">
-            <p><a href="reports/bitcoin_sopr.html">SOPR open chart</a></p>
-            <div class="embed-responsive embed-responsive-1by1">
-              <iframe class="embed-responsive-item" src="reports/bitcoin_sopr_min.html" seamless width="100%" height="325px" allowfullscreen></iframe>
-            </div>
-            <div class="service-item position-relative">
-              <h6>Bitcoin SOPR </h6>
-                <p>Spent Output Profit Ratio (SOPR) is calculated by dividing the price sold by the price paid in USD</p>
             </div>
           </div><!-- End Gallery Item -->
 
