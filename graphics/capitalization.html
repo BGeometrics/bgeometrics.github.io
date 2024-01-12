@@ -20,8 +20,8 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <section>
+    <div>
     <div id="container" style="width:100%; height:600px;"></div>
-    </section>
 
     <script>
         (async () => {
@@ -72,10 +72,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -86,7 +84,7 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Capitalization 2</a>',
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Capitalization</a>',
                 align: 'left',
             },
 
@@ -195,6 +193,8 @@
     })();
 
     </script>
+    </div>
+    </section>
     <section>
     <div>
         <div>
