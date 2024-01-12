@@ -56,6 +56,15 @@
         </ul>
       </nav><!-- .navbar -->
 
+      <form class="d-flex">
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchInput" placeholder="" onkeydown="handleKeyPress(event)">
+          <button class="btn btn-outline-secondary" type="button" onclick="search()">
+          <i class="bi bi-search"></i>
+        </button>
+        </div>
+      </form>
+
       <div class="header-social-links">
         <a href="https://twitter.com/BGeometrics" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="mailto:bgeometrics@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
@@ -146,6 +155,18 @@
               <div class="service-item position-relative">
                 <h6>Bitcoin OHLC</h6>
                 <p>Bitcoin Open, High, Low, Close, which refers to the four key measures of daily stock price activity.</p>
+              </div>
+            </div>
+          </div><!-- End Gallery Item -->
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <img src="assets/img/gallery/capitalization.png" class="img-fluid" alt="Bitcoin Capitalization">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="graphics/capitalization.html" class="stretched-link" target="_blank"></a>
+              </div>
+              <div class="service-item position-relative">
+                <h6>Bitcoin Capitalization</h6>
+                <p>Market Cap, Realized Cap, Investor Cap and Thermo Cap/p>
               </div>
             </div>
           </div><!-- End Gallery Item -->
@@ -266,11 +287,6 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="container">
-      <!--
-      <div class="copyright">
-        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
-      </div>
-        -->
       <div class="credits">
         <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
       </div>
@@ -292,9 +308,8 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
 
 </body>
 
