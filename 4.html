@@ -77,15 +77,15 @@
   </header><!-- End Header -->
 
   <main id="main" data-aos="fade" data-aos-delay="1500">
-
     <section id="hero" class="hero" data-aos="fade" data-aos-delay="1500">
+      <div class="mt-3" id="searchResults"></div>
       <iframe width="100%" height="600" src="https://charts.bgeometrics.com/graphics/sopr.html" allow="fullscreen" title="Highcharts example" scrolling="no" frameBorder="0">
       </iframe>
     </section>
 
     <section>
       <div class="container">
-            <h4>SOPR (Spent Output Profit Ratio)</h4>
+            <h5>SOPR (Spent Output Profit Ratio)</h5>
             <p> 
                 SOPR, STH-SOPR (Short Term Hodler SOPR) and LTH-SOPR (Long Term Hodler SOPR) offer valuable insights into investor behavior and market sentiment. 
                 <br>These indices offer a nuanced view of profit and loss dynamics, shedding light on both short- and long-term investor motivations.
@@ -135,37 +135,6 @@
             </p>
         </div> 
 
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-5 content">
-            <h3>About Bitcoin halving</h3>
-            <p class="py-3">
-              Bitcoin was designed as a deflationary currency.
-            </p>
-            <p class="py-3">
-              Historically, the halving has had a great impact on the price of BTC, here we are going to show several graphs that show how the price has evolved and the bullish and bearish cycles that this event has caused.
-            </p> 
-            <p class="py-3">
-Bitcoin's computer code is programmed for a miner to write a block containing transactions approximately every 10 minutes on the blockchain and is rewarded with BTC for performing this action.
-Every 210,000 blocks this amount is halved and this event is called halving and is scheduled to occur until approximately the year 2140.
-The next event that will occur in the year 2024 and will decrease the reward to the miners for the extraction of the block to 3,125 bitcoin.
-            </p>
-            <p class="py-3">
-It is the network that is in charge of controlling the issuance of Bitcoins, derived by consensus of all Bitcoin participants.
-21000000 bitcoins will be produced
-10 minute block interval goal
-Halving event occurs every 210000 blocks, about 4 years.
-Any changes to these rules would require the Bitcoin full node implementers to agree to approve the change.
-            </p>
-            <p class="py-3">
-Past dates of halving events:
-              <ul>
-                <li>The first halving event occurred on 28 November 2012 (UTC) at block 210000.</li>
-                <li>The second halving event occurred on 9 July 2016 (UTC) at block 420000.</li>
-                <li>The third halving event occurred on May 11, 2020 (UTC) at block 630000.</li>
-              </ul>
-            </p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -198,6 +167,100 @@ Past dates of halving events:
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
+
+  <script>
+
+  var names = [
+    { name: "Bitcoin Price USD", link: "reports/bitcoin_price_usd_g.html" },
+    { name: "Bitcoin Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin Realized Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin Investor Capitalization", link: "graphics/capitalization.html" },
+    { name: "Bitcoin Thermo Capitalization", link: "graphics/capitalization.html" },
+    { name: "SOPR (Spent Output Profit Ratio)", link: "graphics/sopr.html" },
+    { name: "LTH-SOPR (Long Term Hodler)", link: "graphics/sopr.html" },
+    { name: "STH-SOPR (Short Term Hodler)", link: "graphics/sopr.html" },
+    { name: "Bitcoin MVRV (Market Value Realized Value)", link: "graphics/mvrv.html" },
+    { name: "Bitcoin MVRV Z-Score", link: "graphics/mvrv.html" },
+    { name: "MVRV, LTH (Long Term Hodler) and STH (Short Term Hodler)", link: "graphics/mvrv.html" },
+    { name: "Bitcoin Coin Days Destroyed (CDD)", link: "graphics/cdd.html" },
+    { name: "CDD Terminal Adjusted 90-Day", link: "graphics/cdd.html" },
+    { name: "Bitcoin, SP500 or S&P 500, Gold, Tesla", link: "graphics/sp500_gold.html" },
+    { name: "Bitcoin Coin and Address Distribution Table", link: "reports/bitcoin_distribution_tables.html" },
+    { name: "Bitcoin Coin Distribution", link: "graphics/distribution_coin.html" },
+    { name: "Bitcoin Address Distribution", link: "graphics/distribution_addr.html" },
+    { name: "Bitcoin OHLC (Open High Low Close)", link: "graphics/bitcoin_ohlc.html" },
+    { name: "NUPL (Net Unrealized Profit / Loss)", link: "reports/bitcoin_nupl_g.html" },
+    { name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
+    { name: "Short Term Hodler Realized Price", link: "reports/bitcoin_realized_short_g.html" },
+    { name: "Hodl Waves", link: "reports/bitcoin_hodl_waves_relative_g.html" },
+    { name: "Change BTC on exchanges", link: "reports/bitcoin_ex_change_held_g.html" },
+    { name: "Bitcoin Fear and Greed", link: "reports/bitcoin_fear_greed_g.html" },
+    { name: "AVIV (Asset Value to Investor Value) Ratio", link: "reports/bitcoin_aviv_g.html" },
+    { name: "Bitcoin Halving Cycle", link: "reports/bitcoin_halving_cycle_g.html" },
+    { name: "BTC price history and halving timeline", link: "reports/bitcoin_price_g_log.html" },
+    { name: "Bitcoin Halving Radar", link: "reports/bitcoin_halving_radar_g.html" },
+    { name: "Bitcoin Years Candles", link: "reports/bitcoin_year_candle_g.html" },
+    { name: "Influence of the halving on the monthly price of bitcoin", link: "reports/bitcoin_halving_month_g.html" },
+    { name: "Bitcoin Distribution Coin", link: "reports/bitcoin_distribution_coin_g.html" },
+    { name: "Whale Accumulation Heat Map", link: "reports/bitcoin_whale_accumulation_heatmap_g.html" },
+    { name: "Bitcoin distribution Humpback >10K", link: "reports/bitcoin_distribution_coin_g_humpback.html" },
+    { name: "Bitcoin distribution Whale 1000-10K", link: "reports/bitcoin_distribution_coin_g_whale.html" },
+    { name: "Whale (1K-10K) Net Position BTC in 30d", link: "reports/bitcoin_whale_30d_sum_g.html" },
+    { name: "Shark (100-1000) Net Position BTC 30d", link: "reports/bitcoin_shark_30d_sum_g.html" },
+    { name: "Bitcoin realized price distribution (URPD)", link: "reports/bitcoin_price_histogram_g.html" },
+    { name: "History bitcoin price on a day like today", link: "reports/bitcoin_price_usd_day_g.html" },
+    { name: "Bitcoin Volatility", link: "reports/bitcoin_volatility_g.html" },
+    { name: "Bitcoin Dominance", link: "reports/bitcoin_dominance_g.html" },
+    { name: "Bitcoin Daily Price Performance", link: "reports/bitcoin_daily_price_performance_g.html" },
+    { name: "Bitcoin Liveniness", link: "reports/bitcoin_liveliness_g.html" },
+    { name: "Bitcoin S&P 500 correlation (Plotly)", link: "reports/bitcoin_sp500_correlation_g.html" },
+    { name: "MVRV Z-Score (Plotly)", link: "reports/bitcoin_mvrv_zscore_g.html" },
+    { name: "Bitcoin Realized Price (Plotly)", link: "reports/bitcoin_realized_price_g.html" },
+    { name: "Day moving average (Plotly)", link: "reports/bitcoin_200_moving_average_g.html" },
+    { name: "Bitcoin Coin Destroyed Days Terminal Adjusted 90d (Plotly)", link: "reports/bitcoin_cdd_ajusted_90dma_g.html" },
+    { name: "Long Term Hodler vs Short Term Hodler", link: "reports/bitcoin_lth_sth_g.html" },
+  ];
+
+  function search() {
+    var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    var results = [];
+
+    for (var i = 0; i < names.length; i++) {
+      if (names[i].name.toLowerCase().includes(searchQuery)) {
+        results.push(names[i]);
+      }
+    }
+
+    displayResults(results);
+  }
+
+  function displayResults(results) {
+    var resultsContainer = document.getElementById('searchResults');
+    resultsContainer.innerHTML = '';
+
+    if (results.length === 0) {
+      resultsContainer.innerHTML = '<p>No results found.</p>';
+    } else {
+      resultsContainer.innerHTML = '<ul>';
+
+      for (var j = 0; j < results.length; j++) {
+        resultsContainer.innerHTML += '<li><a href="' + results[j].link + '" target="_blank">' + results[j].name + '</a></li>';
+      }
+
+      resultsContainer.innerHTML += '</ul></br>';
+    }
+  }
+
+  function handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      search(); 
+      event.preventDefault();
+    }
+  }
+
+
+  </script>
+
 
 </body>
 
