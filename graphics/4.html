@@ -19,7 +19,7 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <div id="container" style="width:900; height:400px;"></div>
+    <div id="container" style="width:810; height:300px;"></div>
 
     <script>
         (async () => {
@@ -36,6 +36,18 @@
                 'https://charts.bgeometrics.com/files/sth_sopr.json'
             ).then(response => response.json());
  
+        Highcharts.wrap(Highcharts.Pointer.prototype, 'pinch', function (proceed, e) {
+            if (e.touches.length === 1 && e.type === 'touchmove') {
+                this.chart.pan(e, this.chart.options.panning);
+            } else {
+                proceed.call(this, e);
+                if (e.type === 'touchstart') {
+                    this.chart.mouseDownX = this.pinchDown[0].chartX;
+                    this.chart.mouseDownY = this.pinchDown[0].chartY;
+                }
+            }
+        })
+
         var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
