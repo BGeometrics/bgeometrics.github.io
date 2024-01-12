@@ -19,6 +19,7 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <div>
     <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
@@ -64,10 +65,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -179,7 +178,6 @@
     })();
 
     </script>
-    <section>
         <div>
             <h4>Bitcoin Realized Price</h4>
             <p>
@@ -201,9 +199,10 @@
                 </math>
             </span>
         </div>
-    </section>
     <div class="credits">
         Power by <a href="https://charts.bgeometrics.com/">BGeometrics</a>
     </div>
+    </div>
+
 </body>
 </html>
