@@ -18,6 +18,7 @@
     { name: "Bitcoin Coin and Address Distribution Table", link: "reports/bitcoin_distribution_tables.html" },
     { name: "Bitcoin Coin Distribution", link: "graphics/distribution_coin.html" },
     { name: "Bitcoin Address Distribution", link: "graphics/distribution_addr.html" },
+    { name: "Bitcoin OHLC (Open High Low Close)", link: "graphics/bitcoin_ohlc.html" },
     { name: "NUPL (Net Unrealized Profit / Loss)", link: "reports/bitcoin_nupl_g.html" },
     { name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
     { name: "Short Term Hodler Realized Price", link: "reports/bitcoin_realized_short_g.html" },
