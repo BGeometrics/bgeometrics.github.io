@@ -49,6 +49,7 @@
     { name: "Day moving average (Plotly)", link: "reports/bitcoin_200_moving_average_g.html" },
     { name: "Bitcoin Coin Destroyed Days Terminal Adjusted 90d (Plotly)", link: "reports/bitcoin_cdd_ajusted_90dma_g.html" },
     { name: "Long Term Hodler vs Short Term Hodler", link: "reports/bitcoin_lth_sth_g.html" },
+    { name: "Services, custom charts, graphics", link: "services.html" },
   ];
 
   function search() {
