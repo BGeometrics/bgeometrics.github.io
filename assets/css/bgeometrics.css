@@ -11,13 +11,13 @@
 @media (min-width: 576px) {
 .col-sm-3 {
     flex: 0 0 auto;
-    width: 600px;
+    width: 700px;
   }
   .iframe {
-    width: 600px;
+    width: 700px;
   }
   .container {
-    width: 600px;
+    width: 700px;
   }
 }
 
