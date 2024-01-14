@@ -24,13 +24,13 @@
 @media (min-width: 576px) {
 .col-sm-3-iframe {
     flex: 0 0 auto;
-    width: 525px;
+    width: 500px;
   }
   .iframe {
-    width: 525px;
+    width: 500px;
   }
   .container-iframe {
-    width: 525px;
+    width: 50px;
   }
 }
 
