@@ -11,14 +11,14 @@
 @media (min-width: 576px) {
 .col-sm-3 {
     flex: 0 0 auto;
-    width: 400px;
+    width: 700px;
   }
 }
 
 @media (min-width: 768px) {
 .col-md-6 {
     flex: 0 0 auto;
-    width: 600px;
+    width: 900px;
   }
 }
 
