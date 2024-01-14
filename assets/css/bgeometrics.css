@@ -9,53 +9,53 @@
 }
 
 @media (min-width: 200px) {
-.col-sm-3 {
+.col-sm-3-iframe {
     flex: 0 0 auto;
-    width: 400px;
+    width: 300px;
   }
   .iframe {
-    width: 400px;
+    width: 300px;
   }
-  .container {
-    width: 400px;
+  .container-iframe {
+    width: 300px;
   }
 }
 
 @media (min-width: 576px) {
-.col-sm-3 {
+.col-sm-3-iframe {
     flex: 0 0 auto;
     width: 600px;
   }
   .iframe {
     width: 600px;
   }
-  .container {
+  .container-iframe {
     width: 600px;
   }
 }
 
 @media (min-width: 768px) {
-.col-md-6 {
+.col-md-6-iframe {
     flex: 0 0 auto;
-    width: 700px;
+    width: 100%;
   }
   .iframe {
-    width: 700px;
+    width: 100%;
   }
-  .container {
-    width: 700px;
+  .container-iframe {
+    width: 100%;
   }
 }
 
 @media (min-width: 992px) {
-  .col-lg-12 {
+  .col-lg-12-iframe {
     flex: 0 0 auto;
     width: 100%;
   }
   .iframe {
     width: 100%;
   }
-  .container {
+  .container-iframe {
     width: 100%;
   }
 }
