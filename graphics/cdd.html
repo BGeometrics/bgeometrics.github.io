@@ -190,57 +190,7 @@
             }
         });
     })();
-
     </script>
-    <section>
-        <div>
-            <h4>Bitcoin: Coin Days Destroyed</h4>
-            <p>
-                Also known as Bitcoin Days Destroyed (BDD) is a metric that offers information that can be instrumental in forecasting bullish market periods.
-                <br>This metric aims to quantify Bitcoin activity by merging the number of coins moved and the time they have remained inactive. 
-                <br>In essence, CDD measures the depletion of "coin days" with each transaction, operating under the premise that the longer coins remain idle, the greater their value in terms of accumulated "coin days."
-            </p>
-            <p>
-                The Coin Days Destroyed calculation involves multiplying two key components: the number of bitcoins being transferred (coins moved) and the number of days these coins have been idle prior to the transaction.
-                <br>This process provides a nuanced understanding of the cryptocurrency ecosystem, reflecting the dynamics between transaction volume and the temporal aspect of currency downtime.
-            </p>
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics><mrow><mtext>Coin Days Destroyed</mtext><mo>=</mo>
-                        <mo>Coins Moved</mo><mo>x</mo><mtext>Inactive Days</mtext></mrow>
-                    </semantics>
-                </math>
-            </span>
-            <h4>CDD Terminal Adjusted</h4>
-            <p>
-                An improvement to this metric involves introducing a weighting factor based on the relationship between the current supply of bitcoins in circulation (CurrentSupply) and the maximum potential supply of BTC (TotalSupply).
-                <br>This adjustment is further refined by applying a 90-day moving average (90-day MA) to both CurrentSupply and TotalSupply.
-                <br>The addition of the 90-day moving average serves a dual purpose: it smoothes out daily fluctuations and accentuates long-term trends, culminating in the BDD terminal-adjusted 90-day MA indicator.
-            </p>
-            <p>
-                By incorporating this weighted approach, the Coin Days Destroyed metric becomes more robust and reflects sustained trends in Bitcoin activity.
-                <br>The BDD Terminal Adjusted 90-Day MA Indicator is valuable in discerning overall market dynamics, allowing analysts and investors to gain deeper insight into cryptocurrency behavior.
-                <br>This sophisticated metric thus becomes a valuable tool for anticipating the peak of bullish periods, contributing to a more informed decision-making process within the dynamic realm of Bitcoin investment.
-            </p>
 
-            <span class="katex-mathml">
-                <math xmlns="http://www.w3.org/1998/Math/MathML">
-                    <semantics>
-                        <mrow><mtext>CDD 90 dMA</mtext><mo>=</mo>
-                            <mo>CurrentSupply</mo>
-                            <mo>x</mo>
-                            <mtext>Sum (CoinAge x CoinValue)</mtext>
-                            <mo>/</mo>
-                            <mtext>TotalSupply</mtext>
-                        </mrow>
-                    </semantics>
-                </math>
-            </span>
-
-        </div>
-    </section>
-    <div class="credits">
-        Power by <a href="https://charts.bgeometrics.com/">BGeometrics</a>
-    </div>
 </body>
 </html>
