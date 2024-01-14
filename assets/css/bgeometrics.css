@@ -11,7 +11,7 @@
 @media (min-width: 576px) {
 .col-sm-3 {
     flex: 0 0 auto;
-    width: 500px;
+    width: 400px;
   }
 }
 
