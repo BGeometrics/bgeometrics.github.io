@@ -36,7 +36,8 @@
             const data_sth_sopr = await fetch(
                 'https://charts.bgeometrics.com/files/sth_sopr.json'
             ).then(response => response.json());
- 
+        
+        /*
         Highcharts.wrap(Highcharts.Pointer.prototype, 'pinch', function (proceed, e) {
             if (e.touches.length === 1 && e.type === 'touchmove') {
                 this.chart.pan(e, this.chart.options.panning);
@@ -48,6 +49,7 @@
                 }
             }
         })
+        */
 
         var chart = Highcharts.stockChart('container', {
             stockTools: {
