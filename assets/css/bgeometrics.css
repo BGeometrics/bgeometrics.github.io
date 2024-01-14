@@ -7,3 +7,24 @@
   padding: 20px 0px 0px 0px;
   background-color: #000;
 }
+
+@media (min-width: 576px) {
+.col-sm-3 {
+    flex: 0 0 auto;
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
