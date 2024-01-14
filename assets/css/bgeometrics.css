@@ -11,26 +11,26 @@
 @media (min-width: 200px) {
   .col-sm-3-iframe {
     flex: 0 0 auto;
-    width: 350px;
+    width: 400px;
   }
   .iframe {
-    width: 350px;
+    width: 400px;
   }
   .container-iframe {
-    width: 350px;
+    width: 400px;
   }
 }
 
 @media (min-width: 576px) {
   .col-sm-3-iframe {
     flex: 0 0 auto;
-    width: 600px;
+    width: 700px;
   }
   .iframe {
-    width: 600px;
+    width: 700px;
   }
   .container-iframe {
-    width: 600px;
+    width: 700px;
   }
 }
 
