@@ -11,39 +11,39 @@
 @media (min-width: 200px) {
 .col-sm-3 {
     flex: 0 0 auto;
-    width: 500px;
+    width: 400px;
   }
   .iframe {
-    width: 500px;
+    width: 400px;
   }
   .container {
-    width: 500px;
+    width: 400px;
   }
 }
 
 @media (min-width: 576px) {
 .col-sm-3 {
     flex: 0 0 auto;
-    width: 700px;
+    width: 600px;
   }
   .iframe {
-    width: 700px;
+    width: 600px;
   }
   .container {
-    width: 700px;
+    width: 600px;
   }
 }
 
 @media (min-width: 768px) {
 .col-md-6 {
     flex: 0 0 auto;
-    width: 900px;
+    width: 700px;
   }
   .iframe {
-    width: 900px;
+    width: 700px;
   }
   .container {
-    width: 900px;
+    width: 700px;
   }
 }
 
