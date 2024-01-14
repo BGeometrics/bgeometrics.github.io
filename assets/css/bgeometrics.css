@@ -13,6 +13,9 @@
     flex: 0 0 auto;
     width: 700px;
   }
+  .iframe {
+    width: 700px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -20,11 +23,17 @@
     flex: 0 0 auto;
     width: 900px;
   }
+  .iframe {
+    width: 900px;
+  }
 }
 
 @media (min-width: 992px) {
   .col-lg-12 {
     flex: 0 0 auto;
+    width: 100%;
+  }
+  .iframe {
     width: 100%;
   }
 }
