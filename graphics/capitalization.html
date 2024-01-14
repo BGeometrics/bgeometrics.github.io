@@ -39,18 +39,6 @@
                 'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
             ).then(response => response.json());
  
-        Highcharts.wrap(Highcharts.Pointer.prototype, 'pinch', function (proceed, e) {
-            if (e.touches.length === 1 && e.type === 'touchmove') {
-                this.chart.pan(e, this.chart.options.panning);
-            } else {
-                proceed.call(this, e);
-                if (e.type === 'touchstart') {
-                    this.chart.mouseDownX = this.pinchDown[0].chartX;
-                    this.chart.mouseDownY = this.pinchDown[0].chartY;
-                }
-            }
-        })
-
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
