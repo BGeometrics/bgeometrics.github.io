@@ -195,7 +195,8 @@
                 }                
             },
             responsive: {
-                rules: [{
+                rules: [
+                {
                     condition: {
                         maxWidth: 800
                     },
@@ -204,6 +205,18 @@
                             inputEnabled: false
                         },
                     }
+                }, {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {
+                            enabled: false,
+                        },
+                    },
                 }]
             }
         });
