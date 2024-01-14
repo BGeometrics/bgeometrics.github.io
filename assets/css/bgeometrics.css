@@ -16,6 +16,9 @@
   .iframe {
     width: 700px;
   }
+  .container {
+    width: 700px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -24,6 +27,9 @@
     width: 900px;
   }
   .iframe {
+    width: 900px;
+  }
+  .container {
     width: 900px;
   }
 }
@@ -35,5 +41,8 @@
   }
   .iframe {
     width: 100%;
+  }
+  .container {
+    width: 100px;
   }
 }
