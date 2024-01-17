@@ -38,6 +38,12 @@
             const data_200wma = await fetch(
                 'https://charts.bgeometrics.com/files/200wma.json'
             ).then(response => response.json());
+            const data_111dma = await fetch(
+                'https://charts.bgeometrics.com/files/111dma.json'
+            ).then(response => response.json());
+            const data_350dma_x2 = await fetch(
+                'https://charts.bgeometrics.com/files/350dma_x2.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -154,6 +160,24 @@
                 id:'200_wma',
                 name: '200 wma',
                 data: data_200wma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'111_dma',
+                name: '111 dma',
+                data: data_111dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'350_dma_x2',
+                name: '350 dma x2',
+                data: data_350dma_x2,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
