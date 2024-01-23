@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stablecoin Supply</title>
+    <title>Pi Cycle</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -24,26 +24,14 @@
 
     <script>
         (async () => {
-            const data_pax = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_pax.json'
+            const data_111dma = await fetch(
+                'https://charts.bgeometrics.com/files/111dma.json'
             ).then(response => response.json());
-            const data_gusd = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_gusd.json'
-            ).then(response => response.json());
-            const data_busd = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_busd.json'
-            ).then(response => response.json());
-            const data_dai = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_dai.json'
-            ).then(response => response.json());
-            const data_usdc = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_usdc.json'
-            ).then(response => response.json());
-            const data_usdt = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_usdt.json'
+            const data_350dma_x2 = await fetch(
+                'https://charts.bgeometrics.com/files/350dma_x2.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/stablecoin_supply_btc_price.json'
+                'https://charts.bgeometrics.com/files/pi_cycle_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
@@ -73,10 +61,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -87,12 +73,11 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Total Stablecoin Supply',
+                text: 'Bitcoin: Pi Cycle',
                 align: 'left',
             },
 
             chart: {
-                type: 'area',
                 renderTo: 'container',
                 events: {
                     load: function() {
@@ -119,83 +104,41 @@
             },
 
             yAxis: [{
-                title: {
-                    text: 'Total Stablecoins Supply',
-                    startOnTick: false,
-                    endOnTick: false
-                },
-            }, {
+                type: 'logarithmic',
+                startOnTick: false,
+                endOnTick: false
+            },{
                 title: {
                     text: 'BTC price'
                 },
-                opposite: false,
+                type: 'logarithmic',
             }],
-
-            plotOptions: {
-                area: {
-                    stacking: 'normal',
-                    lineColor: '#666666',
-                    lineWidth: 1,
-                    marker: {
-                        lineWidth: 1,
-                        lineColor: '#666666'
-                    }
-                }
-            }, 
 
             series: [{
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
-                type: 'line',
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 1
-            }, {
-                name: 'USDT',
-                data: data_usdt,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'USDC',
-                data: data_usdc,
+                id:'111_dma',
+                name: 'Price 111 DMA',
+                data: data_111dma,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'DAI',
-                data: data_dai,
+                id:'350_dma_x2',
+                name: 'Price 350 DMA x2',
+                data: data_350dma_x2,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
-            }, {
-                name: 'BUSD',
-                data: data_busd,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'PAX',
-                data: data_pax,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'GUSD',
-                data: data_gusd,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }
-            ],
+            }],
 
             legend:{
                 enabled:true,
@@ -209,11 +152,10 @@
             },
 
             credits: {
-                text: 'Source: coinmetrics.io &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
+                text: 'Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
-                    font: '11px sans-serif, Verdana, "Trebuchet MS"',
-                    color: 'black',
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',

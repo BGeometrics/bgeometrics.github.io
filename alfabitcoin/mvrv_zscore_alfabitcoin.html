@@ -58,10 +58,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -106,6 +104,7 @@
                 title: {
                     text: 'MVRV Z-Score'
                 },
+
                 plotBands: [{ 
                     from: 5.5,
                     to: 9,
