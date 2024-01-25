@@ -5,28 +5,28 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bitcoin Charts and Data</title>
-  <meta content="BTC Charts and Data" name="description">
+  <title>BGeometrics</title>
+  <meta content="Services" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/cropped-Bcubium_logo_colores_ico_32_32.png" rel="icon">
-  <link href="assets/img/cropped-Bcubium_logo_colores_ico_32_32.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/bgeometrics.css" rel="stylesheet">
 
   <!-- Google tag (gtag.js) --> 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
@@ -37,81 +37,449 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-      <a href="https://bgeometrics.com" class="logo d-flex align-items-center  me-auto me-lg-0">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="BGeometrics">
-        <h1>BGeometrics</h1>
+        <span class="d-none d-lg-block">BGeometrics</span>
       </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html">Price Trend</a></li>
-          <li><a href="halving.html">Halving</a></li>
-          <li><a href="distribution.html">Distribution</a></li>
-          <li><a href="others.html">Others</a></li>
-          <li><a href="services.html" class="active">Services</a></li>
-          <li><a href="https://bitcoin-data.com/api/swagger-ui/index.html">Bitcoin API Free (Beta)</a></li>
-        </ul>
-      </nav><!-- .navbar -->
-
-      <form class="d-flex">
-        <div class="input-group">
-          <input type="text" class="form-control" id="searchInput" placeholder="" onkeydown="handleKeyPress(event)">
-          <button class="btn btn-outline-secondary" type="button" onclick="search()">
-          <i class="bi bi-search"></i>
-        </button>
-        </div>
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search" title="Enter search keyword" onkeydown="handleKeyPress(event)">
+        <button class="btn btn-outline-secondary" type="button" onclick="search()"><i class="bi bi-search"></i></button>
       </form>
+    </div><!-- End Search Bar -->
 
-      <div class="header-social-links">
-        <a href="https://twitter.com/BGeometrics" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="mailto:bgeometrics@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
-      </div>
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
 
-    </div>
-  
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="https://twitter.com/BGeometrics">
+            <i class="bi bi-twitter"></i>
+          </a><!-- End Notification Icon -->
+        </li>
+        <li>
+          <a class="nav-link nav-icon" href="mailto:bgeometrics@gmail.com" target="_blank">
+            <i class="bi bi-envelope"></i>
+          </a><!-- End Notification Icon -->
+        </li>    
+
+      </ul>
+
+    </nav><!-- End Icons Navigation -->
+
   </header><!-- End Header -->
 
-  <main id="main" data-aos="fade" data-aos-delay="1500">
-    <div id="searchResults"></div>
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
-    <!-- ======= End Page Header ======= -->
-    <div class="page-header d-flex align-items-center">
-      <div class="container position-relative">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-6 text-center">
-            <h2>Bitcoin Charts and Data</h2>
-            <p>Specialists in data analysis and generating graphs on Bitcoin metrics</p>
-            <p>Boost your strategic decision-making about Bitcoin with personalized charts generated according to your instructions, mixing data from different sources, which will allow you to reveal trends, patterns and essential metrics in the Bitcoin ecosystem.</p>
-            <p>The generated graphics are incorporated into your website without any difficulty using an iframe in the same way as YouTube videos...</p>
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="bitcoin_price_usd_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Price</span>
+            </a>
+          </li>
+          <li>
+            <a href="ohlc.html">
+              <i class="bi bi-circle"></i><span>OHLC</span>
+            </a>
+          </li>
+          <li>
+            <a href="moving_average.html">
+              <i class="bi bi-circle"></i><span>BTC Moving Average</span>
+            </a>
+          </li>
+          <li>
+            <a href="capitalization.html">
+              <i class="bi bi-circle"></i><span>BTC Capitalization</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_price_usd_day_g.html">
+              <i class="bi bi-circle"></i><span>BTC Price a day like</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Halving</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="bitcoin_price_g_log.html">
+              <i class="bi bi-circle"></i><span>BTC Price Log</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_halving_radar_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Halving Radar </span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_year_candle_g.html">
+              <i class="bi bi-circle"></i><span>Candles Yearly</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_halving_month_g.html">
+              <i class="bi bi-circle"></i><span>Halving Month</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_halving_cycle_g.html">
+              <i class="bi bi-circle"></i><span>Halving Cycle</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#market-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="realized_price_g.html">
+              <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
+            </a>
+          </li>
+          <li>
+            <a href="sopr.html">
+              <i class="bi bi-circle"></i><span>SOPR</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_hodl_waves_relative_g.html">
+              <i class="bi bi-circle"></i><span>Hodl Waves</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_reacap_hodl_waves_g.html">
+              <i class="bi bi-circle"></i><span>Hodl Waves Realized Cap</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_nupl_g.html">
+              <i class="bi bi-circle"></i><span>NUPL</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_realized_short_g.html">
+              <i class="bi bi-circle"></i><span>STH Realized Price</span>
+            </a>
+          </li>
+          <li>
+            <a href="mvrv.html">
+              <i class="bi bi-circle"></i><span>MVRV Ratio</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_price_histogram_g.html">
+              <i class="bi bi-circle"></i><span>Realized Price Distribution (URPD)</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_aviv_g.html">
+              <i class="bi bi-circle"></i><span>AVIV Ratio</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_cdd_g.html">
+              <i class="bi bi-circle"></i><span>Coins Days Destroyed</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_cdd_ajusted_90dma_g.html">
+              <i class="bi bi-circle"></i><span>CDD Ajusted 90dma</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_realized_pnl_g.html">
+              <i class="bi bi-circle"></i><span>Net Realized Profit and Loss</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_liveliness_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Liveliness</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#address-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Address</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="bitcoin_distribution_tables.html">
+              <i class="bi bi-circle"></i><span>Distribution Coins</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_distribution_coin_g.html">
+              <i class="bi bi-circle"></i><span>Coins</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_distribution_coin_g_humpback.html">
+              <i class="bi bi-circle"></i><span>Coins Humpback > 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_distribution_coin_g_whale.html">
+              <i class="bi bi-circle"></i><span>Coins Whale 1K - 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_shark.html">
+              <i class="bi bi-circle"></i><span>Coins Shark 100 - 1K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_fish.html">
+              <i class="bi bi-circle"></i><span>Coins Fish 10 - 100 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_crab.html">
+              <i class="bi bi-circle"></i><span>Coins Crab 1 - 10 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_shrimp.html">
+              <i class="bi bi-circle"></i><span>Coins Shrimp < 1 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_humpback.html">
+              <i class="bi bi-circle"></i><span>Addr Humpback > 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_whale.html">
+              <i class="bi bi-circle"></i><span>Addr Whale 1K - 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_shark.html">
+              <i class="bi bi-circle"></i><span>Addr Shark 100 - 1K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_fish.html">
+              <i class="bi bi-circle"></i><span>Addr Fish 10 - 100 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_crab.html">
+              <i class="bi bi-circle"></i><span>Addr Crab 1 - 10 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_shrimp.html">
+              <i class="bi bi-circle"></i><span>Addr Shrimp < 1 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_whale_accumulation_heatmap_g.html">
+              <i class="bi bi-circle"></i><span>Whale Accumulation Heat Map</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_whale_30d_sum_g.html">
+              <i class="bi bi-circle"></i><span>Whale Net Position BTC 30 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_shark_30d_sum_g.html">
+              <i class="bi bi-circle"></i><span>Shark Net Position BTC 30 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_shrimp_30d_sum_g.html">
+              <i class="bi bi-circle"></i><span>Shrimp Net Position BTC 30 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_pie_g.html">
+              <i class="bi bi-circle"></i><span>Distribution two years</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Others charts</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="bitcoin_ex_change_held_g.html">
+              <i class="bi bi-circle"></i><span>Change BTC on exchanges</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_fear_greed_img.html">
+              <i class="bi bi-circle"></i><span>Fear and Greed index color</span>
+            </a>
+          </li>
+          <li>
+            <a href="sp500_gold.html">
+              <i class="bi bi-circle"></i><span>BTC, S&P500, Gold, Tesla</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_volatility_g.html">
+              <i class="bi bi-circle"></i><span>BTC Volatility</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_dominance_g.html">
+              <i class="bi bi-circle"></i><span>BTC Dominance</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_hashprice_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_hashribbons_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Hashribbons</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Charts Nav -->
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="services.html">
+          <i class="bi bi-person"></i>
+          <span>Services</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="https://bitcoin-data.com/api/swagger-ui/index.html" target="_blank">
+          <i class="bi bi-arrow-right"></i>
+          <span>Bitcoin API Free</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+        
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <section class="section dashboard">
+      <div class="row">
+        <div id="searchResults"></div>
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <div id="searchResults"></div>
+
           </div>
-        </div>
+        </div><!-- End Left side columns -->
+
       </div>
-    </div><!-- End Page Header -->
+    </section>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-5 content">
-            <h2>Analytics as you want</h2>
-            <p>We offer a unique experience allowing you to customize and adapt Bitcoin data to your specific needs. Build your analysis, however you want.</p>
-            <h2>Relevant Charts, Significant Results</h2>
-            <p>Discover the true value of your Bitcoin investments with our accurate and easy-to-understand metrics. From hash rates to confirmed transactions, we provide you with the information that matters.</p>
-            <h2>The graphics that speak for themselves</h2>
-            <p>Our graphical visualizations are more than images; They are interactive and reveal the complete history of your Bitcoin data. Understand, interpret and act in an informed manner.</p>
+    <section>
+      <div class="pagetitle">
+        <h1>Bitcoin Charts and Data Services</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="row align-items-top">
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Services</h5>
+              Navigating the complex world of Bitcoin valuation involves understanding various metrics that shed light on its market dynamics. 
+              <br>Market capitalization (Marketcap), Realized capitalization (Realizedcap), Thermal capitalization (Thermocap), and investor capitalization collectively offer a nuanced perspective on the value of BTC. 
+              <br>Let's explore each metric to gain insight into its importance within the Bitcoin ecosystem.
+              <p>The generated graphics are incorporated into your website without any difficulty using an iframe in the same way as YouTube videos...</p>
+            </div>  
           </div>
+          <!-- Card with header and footer -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Analytics as you want</h5>
+              We offer a unique experience allowing you to customize and adapt Bitcoin data to your specific needs. Build your analysis, however you want.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Relevant Charts, Significant Results</h5>
+              Discover the true value of your Bitcoin investments with our accurate and easy-to-understand metrics. From hash rates to confirmed transactions, we provide you with the information that matters.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">The graphics that speak for themselves</h5>
+              Our graphical visualizations are more than images; They are interactive and reveal the complete history of your Bitcoin data. Understand, interpret and act in an informed manner.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Simple Integration, Powerful Results</h5>
+              With our platform, integrating Bitcoin data is easy and hassle-free, as easy as incorporating a line of code into your website. Focus your energy on making strategic decisions, while we provide you with the necessary information.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Personalized Support, Customized Solutions</h5>
+              We are here to help you every step of the way. From data customization to result interpretation, our team of experts is ready to provide you with the support you need.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Boost your Success with BGeometrics</h5>
+              Elevate your business strategy with the power of data. At BGeometrics, we are committed to providing you with the tools you need to achieve success in the fascinating world of cryptocurrencies.
+              With our platform, integrating Bitcoin data is easy and hassle-free, as easy as incorporating a line of code into your website. Focus your energy on making strategic decisions, while we provide you with the necessary information.
+            </div>
+          </div>
+        </div>   
+    </section>
+
+      <div class="container">
+        
+        <div class="row">
           <div class="col-lg-5 content">
-            <h2>Simple Integration, Powerful Results</h2>
-            <p>With our platform, integrating Bitcoin data is easy and hassle-free, as easy as incorporating a line of code into your website. Focus your energy on making strategic decisions, while we provide you with the necessary information.</p>
-            <h2>Personalized Support, Customized Solutions</h2>
-            <p>We are here to help you every step of the way. From data customization to result interpretation, our team of experts is ready to provide you with the support you need.</p>
-            <h2>Boost your Success with BGeometrics</h2>
-            <p>Elevate your business strategy with the power of data. At BGeometrics, we are committed to providing you with the tools you need to achieve success in the fascinating world of cryptocurrencies.</p>
+            <h2></h2>
           </div>
         </div>
       </div>
@@ -127,60 +495,8 @@
         </div>
         <p><a href="reports/bitcoin_nupl_g.html">Open NUPL</a></p>
       </div>
-    
-    </section><!-- End About Section -->
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Prices</h2>
-          <p>Check our good price</p>
-        </div>
-
-        <div class="row gy-4 gx-lg-5">
-
-          <div class="col-lg-6">
-            <div class="pricing-item d-flex justify-content-between">
-              <h3>Creating a custom daily update chart plus dataset in json and cvs format.</h3>
-              <h4>$250.00</h4>
-            </div>
-          </div><!-- End Pricing Item -->
-
-        </div>
-    </section><!-- End Pricing Section -->
-  
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="row gy-4 justify-content-center">
-
-          <div class="col-lg-3">
-            <div class="info-item d-flex">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h4>Email:</h4>
-                <p>bgeometrics@gmail.com</p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-          <div class="col-lg-3">
-            <div class="info-item d-flex">
-              <i class="bi bi-twitter flex-shrink-0"></i>
-              <div>
-                <h4>Twitter</h4>
-                <p><a href="https://twitter.com/BGeometrics" class="twitter">BGeometrics</a></p>
-              </div>
-            </div>
-          </div><!-- End Info Item -->
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
+    </section>
 
   </main><!-- End #main -->
 
@@ -191,6 +507,8 @@
         &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
       </div>
       <div class="credits">
         Power by <a href="https://bgeometrics.com/">BGeometrics</a>
@@ -205,10 +523,13 @@
   </div>
 
   <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>

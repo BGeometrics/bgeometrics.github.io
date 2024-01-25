@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 20px 0px 0px 0px;
+  background-color: #000;
+}
+
+@media (min-width: 200px) {
+  .col-sm-3-iframe {
+    flex: 0 0 auto;
+    width: 400px;
+  }
+  .iframe {
+    width: 400px;
+  }
+  .container-iframe {
+    width: 400px;
+  }
+}
+
+@media (min-width: 576px) {
+  .col-sm-3-iframe {
+    flex: 0 0 auto;
+    width: 700px;
+  }
+  .iframe {
+    width: 700px;
+  }
+  .container-iframe {
+    width: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-6-iframe {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .iframe {
+    width: 100%;
+  }
+  .container-iframe {
+    width: 100%;
+  }
+}
