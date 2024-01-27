@@ -65,7 +65,7 @@ output_file_path = 'web-generation-model-out.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate charts pages
-file_name = 'web-generation-pages.txt'
+file_name = 'web-generation-pages-all.txt'
 file_model = output_file_path 
 checkWords = ("__title__","__description__","__keywords__", "__iframe__")
 
@@ -112,8 +112,6 @@ output_file_path = '/tmp/web/index.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Only generate new pages in web-generation-pages.txt
-"""
 # Generate page services.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-services-end.html'
@@ -127,4 +125,4 @@ file2_path = 'web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/pages-contact.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
-"""
+

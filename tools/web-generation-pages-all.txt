@@ -7,7 +7,7 @@
 /tmp/web/bitcoin_price_g_log.html,web-generation-end.html,Bitcoin Price Log,reports/bitcoin_price_g_log.html,Bitcoin Price Log,,
 /tmp/web/bitcoin_halving_radar_g.html,web-generation-end.html,Bitcoin Halving Radar,reports/bitcoin_halving_radar_g.html,Bitcoin Halving Radar,,
 /tmp/web/bitcoin_year_candle_g.html,web-generation-end.html,Candles Yearly,reports/bitcoin_year_candle_g.html,Candles Yearly,,
-/tmp/web/bitcoin_halving_month_g.html,web-gnupeneration-end.html,Halving Month,reports/bitcoin_halving_month_g.html,Halving Month,,
+/tmp/web/bitcoin_halving_month_g.html,web-generation-end.html,Halving Month,reports/bitcoin_halving_month_g.html,Halving Month,,
 /tmp/web/bitcoin_halving_cycle_g.html,web-generation-end.html,Halving Cycle,reports/bitcoin_halving_cycle_g.html,Halving Cycle,,
 /tmp/web/realized_price_g.html,web-generation-end-realized-price.html,Bitcoin Realized and Delta Price,graphics/realized_price_g.html,Bitcoin and Delta Price,,
 /tmp/web/sopr.html,web-generation-end.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR,,
