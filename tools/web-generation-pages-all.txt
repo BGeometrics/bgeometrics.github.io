@@ -13,7 +13,7 @@
 /tmp/web/sopr.html,web-generation-end.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR,,
 /tmp/web/bitcoin_hodl_waves_relative_g.html,web-generation-end.html,Hold Waves,reports/bitcoin_hodl_waves_relative_g.html,Hodl Waves,,
 /tmp/web/bitcoin_reacap_hodl_waves_g.html,web-generation-end.html,Hodl Waves Realized,reports/bitcoin_reacap_hodl_waves_g.html,Hodl Waves Realized,,
-/tmp/web/bitcoin_nupl_g.html,web-generation-end.html,NUPL,reports/bitcoin_nupl_g.html,NUPL,,
+/tmp/web/bitcoin_nupl_g.html,web-generation-end.html,NUPL,graphics/bitcoin_nupl_g.html,NUPL,,
 /tmp/web/bitcoin_realized_short_g.html,web-generation-end.html,STH Realized Price,reports/bitcoin_realized_short_g.html,STH Realized Price,,
 /tmp/web/mvrv.html,web-generation-end-mvrv.html,MVRV,graphics/mvrv.html,MVRV,,
 /tmp/web/bitcoin_price_histogram_g.html,web-generation-end.html,Realized Price Distribution (URPD),reports/bitcoin_price_histogram_g.html,Realized Price Distribution (URPD),,
