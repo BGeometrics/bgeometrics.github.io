@@ -1,0 +1,2 @@
+#file_name,file_end,title,iframe_html,description,keywords,file_model
+/tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR (Spend Out Profit Ratio),,
