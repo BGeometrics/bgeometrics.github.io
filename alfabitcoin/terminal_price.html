@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>Terminal Price</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -18,25 +18,20 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <style>:root {--highcharts-neutral-color-3: orange;}</style>
 
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
+            const data_metrics = await fetch(
+                'https://charts.bgeometrics.com/files/terminal_price.json'
+            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
-            ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
+                'https://charts.bgeometrics.com/files/terminal_price_btc_price.json'
             ).then(response => response.json());
  
-        var chart = Highcharts.stockChart('container-iframe', {
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -67,8 +62,10 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -79,20 +76,20 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Coin Days Destroyed</a>',
+                text: 'Bitcoin: Terminal Price',
                 align: 'left',
             },
 
             chart: {
-                renderTo: 'container-iframe',
-                events:{
+                renderTo: 'container',
+                events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
                         image.src = adresse_image;
 
-                        var height_image = 128;
-                        var width_image = 128;
+                        var height_image = 250;
+                        var width_image = 320;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
@@ -102,51 +99,36 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
+
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
                     }
                 }
             },
 
             yAxis: [{
-                title: {
-                    text: 'CDD'
-                },
+                type: 'logarithmic',
+                startOnTick: false,
+                endOnTick: false
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-                opposite: false
             }],
 
             series: [{
+                id:'terminal_price',
+                name: 'Terminal Price',
+                data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
                 name: 'BTC price',
+                color: 'black',
                 data: data_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 1
-            }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -190,6 +172,7 @@
             }
         });
     })();
+
     </script>
 
 </body>
