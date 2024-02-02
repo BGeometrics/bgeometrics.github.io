@@ -2,20 +2,24 @@
 
 """
 Script para generar las páginas web con el menú.
-Las páginas que se crearán tienen que estar dadas de alta en web-generation-pages.txt con estos campos
+Pasos:
+- Se crea la página con el gráfico
+- Se añade la opción de menú en el fichero web-generation-model.html
+- Se añade en el fichero web-generation-pages-all.txt con estos campos
 file_name,file_end,title,iframe_html,description,keywords
-
-Se forman concatenando ficheros html. 
-En el fichero web-generation-model.html está la configuración de menú
-Donde se especifica las páginas a abrirse en los iframe
-
-En los ficheros web-generation-*-end-* están la parte html del final de cada páginas/s 
+- Si tiene texto explicativo se añade en el fichero web-generation-*-end-* están la parte html del final de cada páginas/s 
+- Se ejecuta este script web-generation-pages.py
 
 Para copiar al proyecto las páginas generadas
 cp /tmp/web/* /home/pi/bgeometrics.github.io/
 
 Para llevarlas a local,
 scp pi@192.168.1.66:/tmp/web/* .
+
+Por último hay que subirlas a github
+git add *
+...
+
 """
 
 import os

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open Interest Futures</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container" style="width:100%; height:600px;"></div>
+
+    <script>
+        (async () => {
+            const data_binance = await fetch(
+                'https://charts.bgeometrics.com/files/oi_binance.json'
+            ).then(response => response.json());
+            const data_bitfinex = await fetch(
+                'https://charts.bgeometrics.com/files/oi_bitfinex.json'
+            ).then(response => response.json());
+            const data_bitget = await fetch(
+                'https://charts.bgeometrics.com/files/oi_bitget.json'
+            ).then(response => response.json());
+            const data_bitmex = await fetch(
+                'https://charts.bgeometrics.com/files/oi_bitmex.json'
+            ).then(response => response.json());
+            const data_bybit = await fetch(
+                'https://charts.bgeometrics.com/files/oi_bybit.json'
+            ).then(response => response.json());
+            const data_cryptocom = await fetch(
+                'https://charts.bgeometrics.com/files/oi_cryptocom.json'
+            ).then(response => response.json());
+            const data_delta_exchange = await fetch(
+                'https://charts.bgeometrics.com/files/oi_delta_exchange.json'
+            ).then(response => response.json());
+            const data_deribit = await fetch(
+                'https://charts.bgeometrics.com/files/oi_deribit.json'
+            ).then(response => response.json());
+            const data_gateio = await fetch(
+                'https://charts.bgeometrics.com/files/oi_gateio.json'
+            ).then(response => response.json());
+            const data_huobi = await fetch(
+                'https://charts.bgeometrics.com/files/oi_huobi.json'
+            ).then(response => response.json());
+            const data_kucoin = await fetch(
+                'https://charts.bgeometrics.com/files/oi_kucoin.json'
+            ).then(response => response.json());
+            const data_okx = await fetch(
+                'https://charts.bgeometrics.com/files/oi_okx.json'
+            ).then(response => response.json());
+            const data_kraken = await fetch(
+                'https://charts.bgeometrics.com/files/oi_kraken.json'
+            ).then(response => response.json());
+            const data_dydx = await fetch(
+                'https://charts.bgeometrics.com/files/oi_dydx.json'
+            ).then(response => response.json());
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/open_interest_futures_btc_price.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'Bitcoin: Open Interest Futures',
+                align: 'left',
+            },
+
+            chart: {
+                type: 'area',
+                renderTo: 'container',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'Open Interest Futures',
+                    startOnTick: false,
+                    endOnTick: false
+                },
+            }, {
+                title: {
+                    text: 'BTC price'
+                },
+                opposite: false,
+            }],
+
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineWidth: 1,
+                    lineColor: '#FFFFFF',
+                }
+            }, 
+
+            series: [{
+                name: 'BTC price',
+                color: 'black',
+                data: data_price,
+                type: 'line',
+                zIndex: 3,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                name: 'Binance',
+                color: '#33DDFF',
+                data: data_binance,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Bybit',
+                color: '#43DDFF',
+                data: data_bybit,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Bitget',
+                color: '#53DDFF',
+                data: data_bitget,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'OKX',
+                color: '#63DDFF',
+                data: data_okx,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Deribit',
+                color: '#73DDFF',
+                data: data_deribit,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Gate.io',
+                color: '#83DDFF',
+                data: data_gateio,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Kucoin',
+                color: '#93DDFF',
+                data: data_kucoin,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'BitMEX',
+                color: '#A3DDFF',
+                data: data_bitmex,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Gate.io',
+                color: '#B3DDFF',
+                data: data_gateio,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Huobi',
+                color: '#C3DDFF',
+                data: data_huobi,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Kraken',
+                color: '#D3DDFF',
+                data: data_kraken,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'crypto.com',
+                color: '#E3DDFF',
+                data: data_cryptocom,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'dYdX',
+                color: '#F3DDFF',
+                data: data_dydx,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'Delta Exchange',
+                color: '#F3DDFF',
+                data: data_delta_exchange,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }
+            ],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'bottom',
+                y: 25,
+                align:'center'
+            },
+
+            rangeSelector: {
+                selected: 4
+            },
+
+            credits: {
+                text: 'Power by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"',
+                    color: 'black',
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {enabled:false}
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+
+</body>
+</html>

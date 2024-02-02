@@ -34,4 +34,4 @@
 /tmp/web/bitcoin_hashprice_g.html,web-generation-end.html,Bitcoin Hashprice,reports/bitcoin_hashprice_g.html,BTC Hashprice,,
 /tmp/web/bitcoin_hashribbons_g.html,web-generation-end.html,Bitcoin Hashribbons,reports/bitcoin_hashribbons_g.html,Bitcoin Hashribbons,,
 /tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR (Spend Out Profit Ratio),,
-/tmp/web/.html,web-generation-end.html,,reports/.html,,,
+/tmp/web/open_interest_futures.html,web-generation-end.html,Bitcoin Open Interest Futures,graphics/open_interest_futures.html,Bitcoin Open Interest Future,,
