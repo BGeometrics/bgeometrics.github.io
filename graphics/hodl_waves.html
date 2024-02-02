@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin Hodl Waves</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container" style="width:100%; height:600px;"></div>
+
+    <script>
+        (async () => {
+            const data_hw_age_8y_ = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_8y_.json'
+            ).then(response => response.json());
+            const data_hw_age_4y_8y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_4y_8y.json'
+            ).then(response => response.json());
+            const data_hw_age_3y_4y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_3y_4y.json'
+            ).then(response => response.json());
+            const data_hw_age_2y_3y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_2y_3y.json'
+            ).then(response => response.json());
+            const data_hw_age_1y_2y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1y_2y.json'
+            ).then(response => response.json());
+            const data_hw_age_6m_1y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_6m_1y.json'
+            ).then(response => response.json());
+            const data_hw_age_3m_6m = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_3m_6m.json'
+            ).then(response => response.json());
+            const data_hw_age_1m_3m = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1m_3m.json'
+            ).then(response => response.json());
+            const data_hw_age_1w_1m = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1w_1m.json'
+            ).then(response => response.json());
+            const data_hw_age_1d_1w = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1d_1w.json'
+            ).then(response => response.json());
+            const data_hw_age_0d_1d = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_0d_1d.json'
+            ).then(response => response.json());
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/hodl_waves_btc_price.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'Bitcoin Hodl Waves',
+                align: 'left',
+            },
+
+            chart: {
+                type: 'area',
+                renderTo: 'container',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
+                    }
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'Bitcoin Hodl Waves',
+                    startOnTick: false,
+                    endOnTick: false
+                },
+            }, {
+                title: {
+                    text: 'BTC price'
+                },
+                opposite: false,
+                type: 'logarithmic',
+            }],
+
+            plotOptions: {
+                area: {
+                    stacking: 'normal',
+                    lineWidth: 0,
+                }
+            }, 
+
+            series: [{
+                name: 'BTC price',
+                color: 'black',
+                data: data_price,
+                type: 'line',
+                zIndex: 3,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                name: '8y to ...',
+                color: 'rgba(94, 79, 162,0.8)',
+                data: data_hw_age_8y_,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '4y to 8y',
+                color: 'rgba(54, 130, 186, 0.8)',
+                data: data_hw_age_4y_8y,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '3y to 4y',
+                color: 'rgba(91, 182, 169, 0.8)',
+                data: data_hw_age_3y_4y,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '2y to 3y',
+                color: 'rgba(150, 213, 164, 0.8)',
+                data: data_hw_age_2y_3y,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '1y to 2y',
+                color: 'rgba(209, 236, 156, 0.8)',
+                data: data_hw_age_1y_2y,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '6m to 1y',
+                color: 'rgba(243, 250, 173, 0.8)',
+                data: data_hw_age_6m_1y,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '3m to 6m',
+                color: 'rgba(253, 206, 124, 0.8)',
+                data: data_hw_age_3m_6m,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '1m to 3m',
+                color: 'rgba(250, 154, 88, 0.8)',
+                data: data_hw_age_1m_3m,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '1w to 1m',
+                color: 'rgba(237, 99, 69, 0.8)',
+                data: data_hw_age_1w_1m,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '1d to 1w',
+                color: 'rgba(207, 56, 77, 0.8)',
+                data: data_hw_age_1d_1w,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '0d to 1d',
+                color: 'rgb(158, 1, 66, 0.8)',
+                data: data_hw_age_0d_1d,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }
+            ],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'bottom',
+                y: 25,
+                align:'center'
+            },
+
+            rangeSelector: {
+                selected: 5
+            },
+
+            credits: {
+                text: 'Power by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"',
+                    color: 'black',
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {enabled:false}
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+
+</body>
+</html>
