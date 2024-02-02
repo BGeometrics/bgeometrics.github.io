@@ -8,7 +8,7 @@ Pasos:
 - Se añade en el fichero web-generation-pages-all.txt con estos campos
 file_name,file_end,title,iframe_html,description,keywords
 - Si tiene texto explicativo se añade en el fichero web-generation-*-end-* están la parte html del final de cada páginas/s 
-- Se ejecuta este script web-generation-pages.py en ~/bgeometrics.github.io/tools/
+- Se ejecuta este script web-generation-pages-all.py en ~/bgeometrics.github.io/tools/
 
 Para copiar al proyecto las páginas generadas
 cp /tmp/web/* /home/pi/bgeometrics.github.io/
