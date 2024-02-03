@@ -1,2 +1,2 @@
 #file_name,file_end,title,iframe_html,description,keywords,file_model
-/tmp/web/open_interest_futures.html,web-generation-end.html,Bitcoin Open Interest Futures,graphics/open_interest_futures.html,Bitcoin Open Interest Future,,
+/tmp/web/hodl_waves.html,web-generation-end-hodl-waves.html,Bitcoin Hodl Waves,graphics/hodl_waves.html,Bitcoin Hodl Waves,,
