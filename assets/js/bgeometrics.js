@@ -18,11 +18,11 @@
     { name: "Bitcoin Coin and Address Distribution Table", link: "reports/bitcoin_distribution_tables.html" },
     { name: "Bitcoin Coin Distribution", link: "graphics/distribution_coin.html" },
     { name: "Bitcoin Address Distribution", link: "graphics/distribution_addr.html" },
-    { name: "Bitcoin OHLC (Open High Low Close)", link: "graphics/bitcoin_ohlc.html" },
+    { name: "Bitcoin OHLC (Open High Low Close)", link: "ohlc.html" },
     { name: "NUPL (Net Unrealized Profit / Loss)", link: "reports/bitcoin_nupl_g.html" },
     { name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
     { name: "Short Term Hodler Realized Price", link: "reports/bitcoin_realized_short_g.html" },
-    { name: "Hodl Waves", link: "reports/bitcoin_hodl_waves_relative_g.html" },
+    { name: "Hodl Waves", link: "hodl_waves.html" },
     { name: "Change BTC on exchanges", link: "reports/bitcoin_ex_change_held_g.html" },
     { name: "Bitcoin Fear and Greed", link: "reports/bitcoin_fear_greed_g.html" },
     { name: "AVIV (Asset Value to Investor Value) Ratio", link: "reports/bitcoin_aviv_g.html" },
@@ -50,6 +50,7 @@
     { name: "Bitcoin Coin Destroyed Days Terminal Adjusted 90d (Plotly)", link: "reports/bitcoin_cdd_ajusted_90dma_g.html" },
     { name: "Long Term Hodler vs Short Term Hodler", link: "reports/bitcoin_lth_sth_g.html" },
     { name: "Services, custom charts, graphics", link: "services.html" },
+    { name: "Open Interest Futures", link: "open_interest_futures.html" },
   ];
 
   function search() {
