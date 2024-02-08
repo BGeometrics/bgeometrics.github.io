@@ -131,6 +131,8 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
 print("For copy generate pages to project") 
-print("cp /tmp/web/XXX* /home/pi/bgeometrics.github.io/")
+print("cp /tmp/web/* /home/pi/bgeometrics.github.io/")
+print("cd ..")
+print("git commit -a -m... ")
 print("")
 
