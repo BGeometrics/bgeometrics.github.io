@@ -17,7 +17,7 @@
 /tmp/web/mvrv.html,web-generation-end-mvrv.html,MVRV,graphics/mvrv.html,MVRV,,
 /tmp/web/bitcoin_price_histogram_g.html,web-generation-end.html,Realized Price Distribution (URPD),reports/bitcoin_price_histogram_g.html,Realized Price Distribution (URPD),,
 /tmp/web/bitcoin_aviv_g.html,web-generation-end.html,AVIV Ratio,reports/bitcoin_aviv_g.html,AVIV Ratio,,
-/tmp/web/bitcoin_cdd_g.html,web-generation-end-cdd.html,Coins Days Destroyed (CDD),reports/bitcoin_cdd_g.html,Coins Days Destroyed (CDD),,
+/tmp/web/cdd.html,web-generation-end-cdd.html,Coins Days Destroyed (CDD),graphics/cdd.html,Coins Days Destroyed (CDD),,
 /tmp/web/bitcoin_cdd_ajusted_90dma_g.html,web-generation-end.html,CDD Ajusted 90 dma,reports/bitcoin_cdd_ajusted_90dma_g.html,CDD Ajusted 90 dma,,
 /tmp/web/bitcoin_realized_pnl_g.html,web-generation-end.html,Net Realized Profit and Loss,reports/bitcoin_realized_pnl_g.html,Net Realized Profit and Loss,,
 /tmp/web/bitcoin_liveliness_g.html,web-generation-end.html,Bitcoin Liveliness,reports/bitcoin_liveliness_g.html,Bitcoin Liveliness,,
