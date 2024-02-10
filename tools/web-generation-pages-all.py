@@ -134,5 +134,6 @@ print("For copy generate pages to project")
 print("cp /tmp/web/* /home/pi/bgeometrics.github.io/")
 print("cd ..")
 print("git commit -a -m... ")
+print("git push")
 print("")
 
