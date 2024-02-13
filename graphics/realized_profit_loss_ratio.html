@@ -24,10 +24,10 @@
     <script>
         (async () => {
             const data_metrics = await fetch(
-                'https://charts.bgeometrics.com/files/realized_profit_loss_ratio_btc_price.json'
+                'https://charts.bgeometrics.com/files/realized_profit_loss_ratio.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_profit_loss_ratio.json'
+                'https://charts.bgeometrics.com/files/realized_profit_loss_ratio_btc_price.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
@@ -103,18 +103,38 @@
             },
 
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false
-            }, {
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
+                type: 'logarithmic',
+                startOnTick: false,
+                endOnTick: false,
+                plotBands: [{ 
+                    from: 9,
+                    to: 9,
+                    color: 'rgba(255, 0, 0, 0.9)'
+                }, {
+                    from: 3,
+                    to: 3,
+                    color: 'orange'
+                }, {
+                    from: 1,
+                    to: 1,
+                    color: 'rgba(0, 255, 0, 0.9)'
+                }],
             }],
 
             series: [{
+                name: 'BTC price',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
                 id:'realized_profit_loss_ratio',
                 name: 'Realized Profit Loss Ratio',
                 data: data_metrics,
@@ -122,13 +142,6 @@
                     valueDecimals: 2
                 },
                 yAxis: 1
-            }, {
-                name: 'BTC price',
-                data: data_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
             }],
 
             legend:{
