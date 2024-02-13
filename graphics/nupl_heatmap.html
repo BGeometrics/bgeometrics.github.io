@@ -21,7 +21,6 @@
         fetch("https://charts.bgeometrics.com/files/nupl_heatmap.json")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
 
             // Substring template helper for the responsive labels
             Highcharts.Templating.helpers.substr = (s, from, length) =>
