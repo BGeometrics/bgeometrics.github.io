@@ -68,6 +68,7 @@
 
                 tooltip: {
                     formatter: function() {
+                        // For clarity of the graph, the data is every 7 days, so the correction is made on the date
                         var date = new Date()
                         date.setDate(date.getDate() - data.length * 7 + this.point.x * 7 + 6)
 
