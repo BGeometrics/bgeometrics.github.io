@@ -72,8 +72,13 @@
                 },
 
                 tooltip: {
-                    format: '<b>Realized Profit Loss</b> <br>' +
-                        '<b>{point.value}</b>'
+                    formatter: function() {
+                        var date = new Date()
+                        date.setDate(date.getDate() - data.length * 7 + this.point.x * 7 + 6)
+
+                        return '<b>' + this.series.name + ' ' + this.point.value + '</b><br>' + 
+                            ' ' + Highcharts.dateFormat('%e - %b - %Y', date)  
+                    }
                 },
 
                 series: [{
