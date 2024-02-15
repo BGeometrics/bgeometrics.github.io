@@ -67,6 +67,14 @@
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
+                            })
+                            chart.yAxis[2].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            })
+                            chart.yAxis[3].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
@@ -110,21 +118,25 @@
 
             yAxis: [{
                 title: {
-                    text: 'Bitcoin, Tesla'
+                    text: 'Bitcoin, Tesla',
                 },
+                type: 'logarithmic'
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'BTC price',
                 },
+                type: 'logarithmic',
                 opposite: false
             }, {
                 title: {
                     text: 'S&P 500'
                 },
+                type: 'logarithmic',
             }, {
                 title: {
                     text: 'Gold'
                 },
+                type: 'logarithmic',
             }],
 
             series: [{
