@@ -1,6 +1,6 @@
-#file_name,file_end,title,iframe_html,description,keywords,file_model
+#file_name,text file_end,title,iframe_html,description,keywords,file_model
 /tmp/web/bitcoin_price_usd_g.html,web-generation-end-price.html,Bitcoin Price,reports/bitcoin_price_usd_g.html,Bitcoin Price,,
-/tmp/web/ohlc.html,web-generation-end.html,Bitcoin OHLC,graphics/ohlc.html,Bitcoin OHLC,,
+/tmp/web/ohlc.html,web-generation-end-ohlc.html,Bitcoin OHLC,graphics/ohlc.html,Bitcoin OHLC,,
 /tmp/web/moving_average.html,web-generation-end.html,Bitcoin Moving Average,graphics/moving_average.html,Bitcoin Moving Average,,
 /tmp/web/capitalization.html,web-generation-end-capitalization.html,Bitcoin Capitalization,graphics/capitalization.html,Bitcoin Capitalization,,
 /tmp/web/bitcoin_price_usd_day_g.html,web-generation-end.html,Bitcoin Price day like today,reports/bitcoin_price_usd_day_g.html,Bitcoin Price day like today,,
