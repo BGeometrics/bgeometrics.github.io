@@ -17,6 +17,7 @@ cp $DIR_TEMP/* $DIR
 cd $DIR
 
 git pull
+git add *
 git commit -a -m"daily"
 git push
 
