@@ -12,7 +12,7 @@
 /tmp/web/realized_price_g.html,web-generation-end-realized-price.html,Bitcoin Realized and Delta Price,graphics/realized_price_g.html,Bitcoin and Delta Price,,
 /tmp/web/bitcoin_hodl_waves_relative_g.html,web-generation-end.html,Hold Waves,reports/bitcoin_hodl_waves_relative_g.html,Hodl Waves,,
 /tmp/web/bitcoin_reacap_hodl_waves_g.html,web-generation-end.html,Hodl Waves Realized,reports/bitcoin_reacap_hodl_waves_g.html,Hodl Waves Realized,,
-/tmp/web/nupl.html,web-generation-end-nupl.html,NUPL,graphics/nupl.html,NUPL,,
+/tmp/web/nupl.html,web-generation-end-nupl.html,NUPL (Net Unrealized Profit Loss),graphics/nupl.html,NUPL (Net Unrealized Profit Loss),,
 /tmp/web/sth_realized_price.html,web-generation-end-sth-realized-price.html,STH Realized Price,graphics/sth_realized_price.html,STH Realized Price,,
 /tmp/web/lth_realized_price.html,web-generation-end-lth-realized-price.html,LTH Realized Price,graphics/lth_realized_price.html,LTH Realized Price,,
 /tmp/web/mvrv.html,web-generation-end-mvrv.html,MVRV,graphics/mvrv.html,MVRV,,
