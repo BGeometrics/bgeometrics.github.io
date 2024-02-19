@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MVRV Z-Score Heatmap last 180 days</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container" style="height: 130px; width: 100%; margin: 0 auto"></div>
+
+    <script>
+        fetch("https://charts.bgeometrics.com/files/mvrv_zscore_heatmap_6m.json")
+        .then(response => response.json())
+        .then(data => {
+
+            // Substring template helper for the responsive labels
+            Highcharts.Templating.helpers.substr = (s, from, length) =>
+                s.substr(from, length);
+
+            Highcharts.chart('container', {
+
+                chart: {
+                    type: 'heatmap',
+                },
+
+                title: {
+                    text: '<a href="https://charts.bgeometrics.com/mvrv.html" target="_blank">MVRV Z-Score in the last 180 days</a>',
+                    align: 'left',
+                    style: {
+                        fontSize: '14px'
+                    }
+                },
+
+                xAxis: {
+                    visible: false
+                },
+
+                yAxis: {
+                    title: '',
+                    visible: false,
+                },
+
+                colorAxis: {
+                    id: 'color-axs',
+                    stops: [
+                        [0, '#00ff00'], 
+                        [0.25, '#fff573'], 
+                        [0.5, '#ffa53b'], 
+                        [1, '#ff0000'] 
+                    ],
+                    startOnTick: false,
+                    endOnTick: false
+                },
+
+                legend: {
+                    enabled: false,
+                    align: 'center',
+                    layout: 'horizontal',
+                    margin: 0,
+                    verticalAlign: 'bottom',
+                    y: 5,
+                },
+
+                tooltip: {
+                    formatter: function() {
+                        var date = new Date()
+                        date.setDate(date.getDate() - data.length + this.point.x)
+
+                        return '<b>' + this.series.name + ' ' + this.point.value + '</b><br>' + 
+                            ' ' + Highcharts.dateFormat('%e - %b - %Y', date)  
+                    }
+                },
+
+                series: [{
+                    name: 'MVRV Z-Score',
+                    data: data,
+                    dataLabels: {
+                        enabled: false,
+                        color: '#000000'
+                    }
+                }],
+
+                credits: {
+                    enabled : false,
+                },
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            yAxis: {
+                                labels: {
+                                    format: '{substr value 0 1}'
+                                }
+                            }
+                        }
+                    }]
+                }
+
+            });
+        });
+
+    </script>
+</body>
+</html>

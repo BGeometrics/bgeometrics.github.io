@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin Price last 180 days</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container-iframe" style="width:100%; height:200px; margin: 0 auto;"></div>
+
+    <script>
+        (async () => {
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/price_heatmap_6m.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container-iframe', {
+            navigator: {
+                enabled : false
+            },
+            scrollbar: {
+                enabled: false
+			},
+            title: {
+                text: '<a href="https://charts.bgeometrics.com/ohlc.html" target="_blank">Bitcoin price in the last 180 days</a>',
+                align: 'left',
+                fontSize: '9px', 
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+            },
+            
+            xAxis: {
+                visible: true
+            },
+
+            yAxis: [{
+                title: {
+                    text: ''
+                },
+                visible: true,
+            }],
+
+            series: [{
+                name: 'BTC price',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }],
+
+
+            legend:{
+                enabled:false,
+            },
+
+            rangeSelector: {
+                enabled : false,
+                visible : false
+            },
+
+
+            credits: {
+                enabled : false,
+                visible: false,
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        }
+                    }
+                }]
+            }
+        });
+    })();
+    </script>
+
+</body>
+</html>
