@@ -16,6 +16,7 @@
 /tmp/web/sth_realized_price.html,web-generation-end-sth-realized-price.html,STH Realized Price,graphics/sth_realized_price.html,STH Realized Price,,
 /tmp/web/lth_realized_price.html,web-generation-end-lth-realized-price.html,LTH Realized Price,graphics/lth_realized_price.html,LTH Realized Price,,
 /tmp/web/mvrv.html,web-generation-end-mvrv.html,MVRV,graphics/mvrv.html,MVRV,,
+/tmp/web/mvrv_ratio.html,web-generation-end-mvrv.html,MVRV Ratio,graphics/mvrv_ratio.html,MVRV Ratio,,
 /tmp/web/sth_mvrv.html,web-generation-end.html,STH MVRV,graphics/sth_mvrv.html,STH MVRV,,
 /tmp/web/lth_mvrv.html,web-generation-end.html,LTH MVRV,graphics/lth_mvrv.html,LTH MVRV,,
 /tmp/web/bitcoin_price_histogram_g.html,web-generation-end.html,Realized Price Distribution (URPD),reports/bitcoin_price_histogram_g.html,Realized Price Distribution (URPD),,
