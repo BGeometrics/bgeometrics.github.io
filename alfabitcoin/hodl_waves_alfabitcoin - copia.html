@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Open Interest Futures</title>
+    <title>Bitcoin Hodl Waves</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -18,60 +18,47 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <style>:root {--highcharts-neutral-color-3: orange;}</style>
 
     <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_binance = await fetch(
-                'https://charts.bgeometrics.com/files/oi_binance.json'
+            const data_hw_age_8y_ = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_8y_.json'
             ).then(response => response.json());
-            const data_bitfinex = await fetch(
-                'https://charts.bgeometrics.com/files/oi_bitfinex.json'
+            const data_hw_age_4y_8y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_4y_8y.json'
             ).then(response => response.json());
-            const data_bitget = await fetch(
-                'https://charts.bgeometrics.com/files/oi_bitget.json'
+            const data_hw_age_3y_4y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_3y_4y.json'
             ).then(response => response.json());
-            const data_bitmex = await fetch(
-                'https://charts.bgeometrics.com/files/oi_bitmex.json'
+            const data_hw_age_2y_3y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_2y_3y.json'
             ).then(response => response.json());
-            const data_bybit = await fetch(
-                'https://charts.bgeometrics.com/files/oi_bybit.json'
+            const data_hw_age_1y_2y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1y_2y.json'
             ).then(response => response.json());
-            const data_cryptocom = await fetch(
-                'https://charts.bgeometrics.com/files/oi_cryptocom.json'
+            const data_hw_age_6m_1y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_6m_1y.json'
             ).then(response => response.json());
-            const data_delta_exchange = await fetch(
-                'https://charts.bgeometrics.com/files/oi_delta_exchange.json'
+            const data_hw_age_3m_6m = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_3m_6m.json'
             ).then(response => response.json());
-            const data_deribit = await fetch(
-                'https://charts.bgeometrics.com/files/oi_deribit.json'
+            const data_hw_age_1m_3m = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1m_3m.json'
             ).then(response => response.json());
-            const data_gateio = await fetch(
-                'https://charts.bgeometrics.com/files/oi_gateio.json'
+            const data_hw_age_1w_1m = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1w_1m.json'
             ).then(response => response.json());
-            const data_huobi = await fetch(
-                'https://charts.bgeometrics.com/files/oi_huobi.json'
+            const data_hw_age_1d_1w = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_1d_1w.json'
             ).then(response => response.json());
-            const data_kucoin = await fetch(
-                'https://charts.bgeometrics.com/files/oi_kucoin.json'
-            ).then(response => response.json());
-            const data_okx = await fetch(
-                'https://charts.bgeometrics.com/files/oi_okx.json'
-            ).then(response => response.json());
-            const data_kraken = await fetch(
-                'https://charts.bgeometrics.com/files/oi_kraken.json'
-            ).then(response => response.json());
-            const data_dydx = await fetch(
-                'https://charts.bgeometrics.com/files/oi_dydx.json'
+            const data_hw_age_0d_1d = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_0d_1d.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/open_interest_futures_btc_price.json'
-            ).then(response => response.json());
-            const data_total = await fetch(
-                'https://charts.bgeometrics.com/files/oi_total.json'
+                'https://charts.bgeometrics.com/files/hodl_waves_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
@@ -101,8 +88,10 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -113,7 +102,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Open Interest Futures',
+                text: 'Bitcoin: Hodl Waves',
                 align: 'left',
             },
 
@@ -123,11 +112,11 @@
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
                         image.src = adresse_image;
 
-                        var height_image = 128;
-                        var width_image = 128;
+                        var height_image = 250;
+                        var width_image = 320;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
@@ -137,13 +126,16 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
+
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
                     }
                 }
             },
 
             yAxis: [{
                 title: {
-                    text: 'Open Interest Futures',
+                    text: 'Bitcoin: Hodl Waves',
                     startOnTick: false,
                     endOnTick: false
                 },
@@ -152,13 +144,13 @@
                     text: 'BTC price'
                 },
                 opposite: false,
+                type: 'logarithmic',
             }],
 
             plotOptions: {
                 area: {
                     stacking: 'normal',
-                    lineWidth: 1,
-                    lineColor: '#FFFFFF',
+                    lineWidth: 0,
                 }
             }, 
 
@@ -169,145 +161,112 @@
                 type: 'line',
                 zIndex: 3,
                 tooltip: {
-                    enabled: true,
                     valueDecimals: 2
                 },
                 yAxis: 1
             }, {
-                name: 'Total',
-                color: 'rgba(155, 155, 155, 0.7)',
-                data: data_total,
-                type: 'line',
-                zIndex: 2,
+                name: '8y to ...',
+                color: 'rgba(94, 79, 162,0.8)',
+                data: data_hw_age_8y_,
                 tooltip: {
-                    enabled: true,
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Binance',
-                color: 'rgba(51, 221, 255, 0.7)',
-                data: data_binance,
+                name: '4y to 8y',
+                color: 'rgba(54, 130, 186, 0.8)',
+                data: data_hw_age_4y_8y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Bybit',
-                color: 'rgba(40, 221, 255, 0.7)',
-                data: data_bybit,
+                name: '3y to 4y',
+                color: 'rgba(91, 182, 169, 0.8)',
+                data: data_hw_age_3y_4y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Bitget',
-                color: 'rgba(60, 221, 255, 0.7)',
-                data: data_bitget,
+                name: '2y to 3y',
+                color: 'rgba(150, 213, 164, 0.8)',
+                data: data_hw_age_2y_3y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'OKX',
-                color: 'rgba(80, 221, 255, 0.7)',
-                data: data_okx,
+                name: '1y to 2y',
+                color: 'rgba(209, 236, 156, 0.8)',
+                data: data_hw_age_1y_2y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Deribit',
-                color: 'rgba(100, 221, 255, 0.7)',
-                data: data_deribit,
+                name: '6m to 1y',
+                color: 'rgba(243, 250, 173, 0.8)',
+                data: data_hw_age_6m_1y,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Kucoin',
-                color: 'rgba(120, 221, 255, 0.7)',
-                data: data_kucoin,
+                name: '3m to 6m',
+                color: 'rgba(253, 206, 124, 0.8)',
+                data: data_hw_age_3m_6m,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'BitMEX',
-                color: 'rgba(140, 221, 255, 0.7)',
-                data: data_bitmex,
+                name: '1m to 3m',
+                color: 'rgba(250, 154, 88, 0.8)',
+                data: data_hw_age_1m_3m,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Gate.io',
-                color: 'rgba(160, 221, 255, 0.7)',
-                data: data_gateio,
+                name: '1w to 1m',
+                color: 'rgba(237, 99, 69, 0.8)',
+                data: data_hw_age_1w_1m,
+                visible: false,
                 tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Huobi',
-                color: 'rgba(180, 221, 255, 0.7)',
-                data: data_huobi,
+                name: '1d to 1w',
+                color: 'rgba(207, 56, 77, 0.8)',
+                data: data_hw_age_1d_1w,
+                visible: false,
                 tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }, {
-                name: 'Bitfinex',
-                color: 'rgba(200, 221, 255, 0.7)',
-                data: data_bitfinex,
+                name: '0d to 1d',
+                color: 'rgb(158, 1, 66, 0.8)',
+                data: data_hw_age_0d_1d,
+                visible: false,
                 tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
-                },
-                yAxis: 0
-            }, {
-                name: 'Kraken',
-                color: 'rgba(220, 221, 255, 0.7)',
-                data: data_kraken,
-                tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
-                },
-                yAxis: 0
-            }, {
-                name: 'crypto.com',
-                color: 'rgba(240, 221, 255, 0.7)',
-                data: data_cryptocom,
-                tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
-                },
-                yAxis: 0
-            }, {
-                name: 'dYdX',
-                color: 'rgba(255, 221, 255, 0.7)',
-                data: data_dydx,
-                tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
-                },
-                yAxis: 0
-            }, {
-                name: 'Delta Exchange',
-                color: 'rgba(255, 221, 255, 0.7)',
-                data: data_delta_exchange,
-                tooltip: {
-                    pointFormatter: function() {
-                        return ''
-                    }
+                    valueDecimals: 2,
+                    valueSuffix: ' ({point.percentage:.0f}%)'
                 },
                 yAxis: 0
             }
@@ -322,7 +281,7 @@
             },
 
             rangeSelector: {
-                selected: 4
+                selected: 5
             },
 
             credits: {

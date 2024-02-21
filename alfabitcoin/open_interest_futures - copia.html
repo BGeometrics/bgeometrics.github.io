@@ -18,8 +18,7 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <style>:root {--highcharts-neutral-color-3: orange;}</style>
 
     <div id="container" style="width:100%; height:600px;"></div>
 
@@ -101,8 +100,10 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -123,11 +124,11 @@
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
                         image.src = adresse_image;
 
-                        var height_image = 128;
-                        var width_image = 128;
+                        var height_image = 250;
+                        var width_image = 320;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
@@ -137,6 +138,9 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
+
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
                     }
                 }
             },
@@ -186,63 +190,77 @@
                 yAxis: 0
             }, {
                 name: 'Binance',
-                color: 'rgba(51, 221, 255, 0.7)',
+                color: 'rgba(63, 255, 51, 0.7)',
                 data: data_binance,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Bybit',
-                color: 'rgba(40, 221, 255, 0.7)',
+                color: 'rgba(79, 255, 51, 0.7)',
                 data: data_bybit,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Bitget',
-                color: 'rgba(60, 221, 255, 0.7)',
+                color: 'rgba(95, 255, 51, 0.7)',
                 data: data_bitget,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'OKX',
-                color: 'rgba(80, 221, 255, 0.7)',
+                color: 'rgba(111, 255, 51, 0.7)',
                 data: data_okx,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Deribit',
-                color: 'rgba(100, 221, 255, 0.7)',
+                color: 'rgba(127, 255, 51, 0.7)',
                 data: data_deribit,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Kucoin',
-                color: 'rgba(120, 221, 255, 0.7)',
+                color: 'rgba(159, 255, 51, 0.7)',
                 data: data_kucoin,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'BitMEX',
-                color: 'rgba(140, 221, 255, 0.7)',
+                color: 'rgba(175, 255, 51, 0.7)',
                 data: data_bitmex,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Gate.io',
-                color: 'rgba(160, 221, 255, 0.7)',
+                color: 'rgba(191, 255, 51, 0.7)',
                 data: data_gateio,
                 tooltip: {
                     pointFormatter: function() {
@@ -252,7 +270,7 @@
                 yAxis: 0
             }, {
                 name: 'Huobi',
-                color: 'rgba(180, 221, 255, 0.7)',
+                color: 'rgba(255, 255, 51, 0.7)',
                 data: data_huobi,
                 tooltip: {
                     pointFormatter: function() {
@@ -262,7 +280,7 @@
                 yAxis: 0
             }, {
                 name: 'Bitfinex',
-                color: 'rgba(200, 221, 255, 0.7)',
+                color: 'rgba(255, 255, 51, 0.7)',
                 data: data_bitfinex,
                 tooltip: {
                     pointFormatter: function() {
@@ -272,7 +290,7 @@
                 yAxis: 0
             }, {
                 name: 'Kraken',
-                color: 'rgba(220, 221, 255, 0.7)',
+                color: 'rgba(255, 255, 51, 0.7)',
                 data: data_kraken,
                 tooltip: {
                     pointFormatter: function() {
@@ -282,7 +300,7 @@
                 yAxis: 0
             }, {
                 name: 'crypto.com',
-                color: 'rgba(240, 221, 255, 0.7)',
+                color: 'rgba(255, 255, 51, 0.7)',
                 data: data_cryptocom,
                 tooltip: {
                     pointFormatter: function() {
@@ -292,7 +310,7 @@
                 yAxis: 0
             }, {
                 name: 'dYdX',
-                color: 'rgba(255, 221, 255, 0.7)',
+                color: 'rgba(255, 255, 51, 0.7)',
                 data: data_dydx,
                 tooltip: {
                     pointFormatter: function() {
@@ -302,7 +320,7 @@
                 yAxis: 0
             }, {
                 name: 'Delta Exchange',
-                color: 'rgba(255, 221, 255, 0.7)',
+                color: 'rgba(255, 255, 51, 0.7)',
                 data: data_delta_exchange,
                 tooltip: {
                     pointFormatter: function() {
@@ -316,7 +334,7 @@
             legend:{
                 enabled:true,
                 floating: true,
-                verticalAlign: 'top',
+                verticalAlign: 'bottom',
                 y: 25,
                 align:'center'
             },
