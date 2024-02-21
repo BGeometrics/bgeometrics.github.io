@@ -46,8 +46,9 @@
                     pline = { 
                         color: 'red',
                         dashStyle: 'Dash',
-                        width: 1,
-                        value: max_time[i]};
+                        width: 0.8,
+                        value: max_time[i]
+                    };
 
                     plotlines.push(pline);
                     i++;
@@ -133,13 +134,15 @@
             yAxis: [{
                 type: 'logarithmic',
                 startOnTick: false,
-                endOnTick: false
+                endOnTick: false,
             },{
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-            }],
+            },
+        
+        ],
 
             series: [{
                 name: 'BTC price',
@@ -152,6 +155,7 @@
             }, {
                 id:'111_dma',
                 name: 'Price 111 DMA',
+                color: 'green',
                 data: data_111dma,
                 tooltip: {
                     valueDecimals: 2
@@ -160,6 +164,7 @@
             }, {
                 id:'350_dma_x2',
                 name: 'Price 350 DMA x2',
+                color: 'blue',
                 data: data_350dma_x2,
                 tooltip: {
                     valueDecimals: 2
