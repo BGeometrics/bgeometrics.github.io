@@ -195,8 +195,6 @@
                 yAxis: 1
             }, {
                 name: 'Total',
-                //color: 'rgba(155, 155, 155, 0.7)',
-                //color: 'rgba(255, 255, 0, 0.5)',
                 color: 'rgba(0, 100, 0, 0.7)',
                 data: data_total,
                 shared: false,
@@ -207,10 +205,10 @@
                 },
                 yAxis: 0
             }, {
+            /*
                 name: 'All',
                 color: 'rgba(255, 255, 51, 0.7)',
                 visible: false,
-                data: data_delta_exchange,
                 tooltip: {
                     valueDecimals: 2,
                 },
@@ -220,11 +218,11 @@
             	        var shown = this.visible ? false : true;
 
                         if (shown){ 
-                            for (i=2; i<16; i++)
+                            for (i=2; i<17; i++)
                                 this.chart.series[i].visible = true; 
                         } 
                         else {
-                            for (i=2; i<16; i++)
+                            for (i=2; i<17; i++)
                                 this.chart.series[i].visible = false; 
                         }
 
@@ -234,6 +232,7 @@
                     }
                 }
             }, {
+            */
                 name: 'Binance',
                 color: 'rgba(63, 255, 51, 0.7)',
                 visible: false,
@@ -350,6 +349,15 @@
                     valueDecimals: 2,
                 },
                 yAxis: 0
+            }, {
+                name: 'Delta',
+                color: 'rgba(255, 255, 51, 0.7)',
+                visible: false,
+                data: data_delta_exchange,
+                tooltip: {
+                    valueDecimals: 2,
+                },
+                yAxis: 0,
             }
             ],
 
