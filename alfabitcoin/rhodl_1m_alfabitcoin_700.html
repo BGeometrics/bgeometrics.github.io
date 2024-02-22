@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pi Cycle</title>
+    <title>RHodl 1m and Realized Capitalization</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -20,43 +20,19 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <style>:root {--highcharts-neutral-color-3: orange;}</style>
 
-    <div id="container" style="width:100%; height:600px;"></div>
+    <div id="container" style="width:100%; height:700px;"></div>
 
     <script>
         (async () => {
-            const data_111dma = await fetch(
-                'https://charts.bgeometrics.com/files/111dma.json'
+            const data_rhodl_1m = await fetch(
+                'https://charts.bgeometrics.com/files/rhodl_1m.json'
             ).then(response => response.json());
-            const data_350dma_x2 = await fetch(
-                'https://charts.bgeometrics.com/files/350dma_x2.json'
+            const data_realized_cap = await fetch(
+                'https://charts.bgeometrics.com/files/realized_cap.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/pi_cycle_price.json'
+                'https://charts.bgeometrics.com/files/rhodl_1m_btc_price.json'
             ).then(response => response.json());
-
-            row_old_111 = 0;
-            row_old_350 = 0;
-            max_time = [];
-            plotlines = [];
-            i = 0;
-            for (var row = 0; row < data_111dma.length; row++) {
-                if ((row_old_111 < row_old_350) && (data_111dma[row][1] > data_350dma_x2[row][1])) {
-                    max_time[i] = data_111dma[row][0];
-                    console.log(max_time[i]);
-                    pline = { 
-                        color: 'red',
-                        dashStyle: 'Dash',
-                        width: 0.8,
-                        value: max_time[i]
-                    };
-
-                    plotlines.push(pline);
-                    i++;
-                }
-
-                row_old_111 = data_111dma[row][1];
-                row_old_350 = data_350dma_x2[row][1];
-            }
 
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -96,10 +72,6 @@
                     }
                 }
             },
-            title: {
-                text: 'Bitcoin: Pi Cycle',
-                align: 'left',
-            },
 
             chart: {
                 renderTo: 'container',
@@ -127,22 +99,25 @@
                 }
             },
 
-            xAxis: {
-                plotLines: plotlines
-            },
-
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false,
-            },{
+                title: {
+                    text: 'RHodl 1m'
+                },
+                plotLines: [{
+                    color: 'green',
+                    width: 2,
+                    value: 6      
+                }]
+            }, {
                 title: {
                     text: 'BTC price'
                 },
-                type: 'logarithmic',
-            },
-        
-        ],
+                opposite: false,
+            }, {
+                title: {
+                    text: 'Realized Cap'
+                },
+            }],
 
             series: [{
                 name: 'BTC price',
@@ -151,25 +126,23 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 1
             }, {
-                id:'111_dma',
-                name: 'Price 111 DMA',
-                color: 'green',
-                data: data_111dma,
+                id:'rhodl_1m',
+                name: 'RHodl 1m',
+                data: data_rhodl_1m,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'350_dma_x2',
-                name: 'Price 350 DMA x2',
-                color: 'blue',
-                data: data_350dma_x2,
+                id:'realized_cap',
+                name: 'Realized Cap',
+                data: data_realized_cap,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 2
             }],
 
             legend:{
@@ -180,7 +153,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 4
             },
 
             credits: {
@@ -210,7 +183,6 @@
             }
         });
     })();
-
 
     </script>
 

@@ -34,6 +34,30 @@
                 'https://charts.bgeometrics.com/files/pi_cycle_price.json'
             ).then(response => response.json());
 
+            row_old_111 = 0;
+            row_old_350 = 0;
+            max_time = [];
+            plotlines = [];
+            i = 0;
+            for (var row = 0; row < data_111dma.length; row++) {
+                if ((row_old_111 < row_old_350) && (data_111dma[row][1] > data_350dma_x2[row][1])) {
+                    max_time[i] = data_111dma[row][0];
+                    console.log(max_time[i]);
+                    pline = { 
+                        color: 'red',
+                        dashStyle: 'Dash',
+                        width: 0.8,
+                        value: max_time[i]
+                    };
+
+                    plotlines.push(pline);
+                    i++;
+                }
+
+                row_old_111 = data_111dma[row][1];
+                row_old_350 = data_350dma_x2[row][1];
+            }
+
         var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
@@ -103,16 +127,22 @@
                 }
             },
 
+            xAxis: {
+                plotLines: plotlines
+            },
+
             yAxis: [{
                 type: 'logarithmic',
                 startOnTick: false,
-                endOnTick: false
+                endOnTick: false,
             },{
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-            }],
+            },
+        
+        ],
 
             series: [{
                 name: 'BTC price',
@@ -125,6 +155,7 @@
             }, {
                 id:'111_dma',
                 name: 'Price 111 DMA',
+                color: 'green',
                 data: data_111dma,
                 tooltip: {
                     valueDecimals: 2
@@ -133,6 +164,7 @@
             }, {
                 id:'350_dma_x2',
                 name: 'Price 350 DMA x2',
+                color: 'blue',
                 data: data_350dma_x2,
                 tooltip: {
                     valueDecimals: 2
@@ -178,6 +210,7 @@
             }
         });
     })();
+
 
     </script>
 
