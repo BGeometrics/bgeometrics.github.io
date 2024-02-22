@@ -69,6 +69,10 @@
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
 
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
