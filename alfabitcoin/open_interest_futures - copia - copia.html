@@ -73,7 +73,6 @@
                 'https://charts.bgeometrics.com/files/oi_total.json'
             ).then(response => response.json());
 
-        var visibility = 'hidden';
         var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
@@ -190,14 +189,15 @@
                 type: 'line',
                 zIndex: 3,
                 tooltip: {
+                    enabled: true,
+                    shared: true,
                     valueDecimals: 2
                 },
                 yAxis: 1
             }, {
                 name: 'Total',
-                color: 'rgba(0, 100, 0, 0.7)',
+                color: 'rgba(155, 155, 155, 0.7)',
                 data: data_total,
-                shared: false,
                 type: 'line',
                 zIndex: 2,
                 tooltip: {
@@ -205,159 +205,145 @@
                 },
                 yAxis: 0
             }, {
-            /*
-                name: 'All',
-                color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2,
-                },
-                yAxis: 0,
-                events: {
-                    legendItemClick: function(e) {
-            	        var shown = this.visible ? false : true;
-
-                        if (shown){ 
-                            for (i=2; i<17; i++)
-                                this.chart.series[i].visible = true; 
-                        } 
-                        else {
-                            for (i=2; i<17; i++)
-                                this.chart.series[i].visible = false; 
-                        }
-
-                        this.update({visible: shown});
-                        
-                        return false;
-                    }
-                }
-            }, {
-            */
                 name: 'Binance',
                 color: 'rgba(63, 255, 51, 0.7)',
-                visible: false,
                 data: data_binance,
                 tooltip: {
-                    valueDecimals: 2
+                    pointFormatter: function() {
+                        return ''
+                    },
                 },
                 yAxis: 0,
             }, {
                 name: 'Bybit',
                 color: 'rgba(79, 255, 51, 0.7)',
-                visible: false,
                 data: data_bybit,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    },
                 },
                 yAxis: 0,
             }, {
                 name: 'Bitget',
                 color: 'rgba(95, 255, 51, 0.7)',
                 data: data_bitget,
-                visible: false,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'OKX',
                 color: 'rgba(111, 255, 51, 0.7)',
                 data: data_okx,
-                visible: false,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Deribit',
                 color: 'rgba(127, 255, 51, 0.7)',
-                visible: false,
                 data: data_deribit,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Kucoin',
                 color: 'rgba(159, 255, 51, 0.7)',
-                visible: false,
                 data: data_kucoin,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'BitMEX',
                 color: 'rgba(175, 255, 51, 0.7)',
-                visible: false,
                 data: data_bitmex,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Gate.io',
                 color: 'rgba(191, 255, 51, 0.7)',
-                visible: false,
                 data: data_gateio,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Huobi',
                 color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
                 data: data_huobi,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Bitfinex',
                 color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
                 data: data_bitfinex,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'Kraken',
                 color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
                 data: data_kraken,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'crypto.com',
                 color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
                 data: data_cryptocom,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
                 name: 'dYdX',
                 color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
                 data: data_dydx,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
                 yAxis: 0
             }, {
-                name: 'Delta',
+                name: 'Delta Exchange',
                 color: 'rgba(255, 255, 51, 0.7)',
-                visible: false,
                 data: data_delta_exchange,
                 tooltip: {
-                    valueDecimals: 2,
+                    pointFormatter: function() {
+                        return ''
+                    }
                 },
-                yAxis: 0,
+                yAxis: 0
             }
             ],
 
