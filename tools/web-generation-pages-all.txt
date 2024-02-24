@@ -23,7 +23,7 @@
 /tmp/web/bitcoin_aviv_g.html,web-generation-end.html,AVIV Ratio,reports/bitcoin_aviv_g.html,AVIV Ratio,,
 /tmp/web/cdd.html,web-generation-end-cdd.html,Coins Days Destroyed (CDD),graphics/cdd.html,Coins Days Destroyed (CDD),,
 /tmp/web/bitcoin_cdd_ajusted_90dma_g.html,web-generation-end.html,CDD Ajusted 90 dma,reports/bitcoin_cdd_ajusted_90dma_g.html,CDD Ajusted 90 dma,,
-/tmp/web/bitcoin_realized_pnl_g.html,web-generation-end.html,Net Realized Profit and Loss,reports/bitcoin_realized_pnl_g.html,Net Realized Profit and Loss,,
+/tmp/web/realized_profit_loss_ratio.html,web-generation-end.html,Net Realized Profit and Loss,graphics/realized_profit_loss_ratio.html,Net Realized Profit and Loss,,
 /tmp/web/bitcoin_liveliness_g.html,web-generation-end.html,Bitcoin Liveliness,reports/bitcoin_liveliness_g.html,Bitcoin Liveliness,,
 /tmp/web/bitcoin_distribution_coins_tables.html,web-generation-end.html,Coins Distribution BTC,reports/bitcoin_distribution_coins_tables.html,Coins distribution BTC,,
 /tmp/web/bitcoin_distribution_addr_tables.html,web-generation-end.html,Address Distribution BTC,reports/bitcoin_distribution_addr_tables.html,Address Distribution BTC,,
