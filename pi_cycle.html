@@ -453,41 +453,13 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/realized_price_g.html" allow="fullscreen" title="Bitcoin Realized and Delta Price" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/pi_cycle.html" allow="fullscreen" title="Bitcoin Pi Cycle" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
           </div>
         </div><!-- End Left side columns -->
 
-      </div>
-    </section>
-  <br>
-
-  
-    <section>
-      <div class="container">
-        <a href="graphics/realized_price.html">
-          <h5>Bitcoin Realized Price</h5>
-        </a>
-        <p> 
-          Realized price is the average price at which bitcoins were purchased/spent/transferred.
-          It is a metric that takes into account the price at which each individual bitcoin last moved on the blockchain.
-        </p>
-        <p> The realized price of Bitcoin is typically calculated by dividing the realized market capitalization by the realized supply. 
-            Here is the formula:
-        </p>
-        <span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML">
-            <semantics><mrow><mtext>Realized Price</mtext><mo>=</mo><mfrac><mtext>Realized Market Capitalization</mtext>
-                <mtext>Realized Supply</mtext></mfrac></mrow>
-            </semantics></math>
-        </span>
-        <p>Delta Realized price of bitcoin is the realized price minus the average value of the realized price up to the current day</p>
-        <span class="katex-mathml">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <semantics><mrow><mtext>Delta Realized Price</mtext><mo>=</mo><mo>Realized Price</mo><mo>-</mo><mtext>AVG(Realized Price)</mtext></mrow></semantics>
-            </math>
-        </span>
       </div>
     </section>
 
@@ -516,10 +488,13 @@
   </div>
 
   <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
