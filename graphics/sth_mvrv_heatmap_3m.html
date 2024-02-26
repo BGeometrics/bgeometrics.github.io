@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin STH MVRV Heatmap last 90 days</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container" style="height: 130px; width: 100%; margin: 0 auto"></div>
+
+    <script>
+        fetch("https://charts.bgeometrics.com/files/sth_mvrv_heatmap_3m.json")
+        .then(response => response.json())
+        .then(data => {
+            //console.log(data)
+
+            // Substring template helper for the responsive labels
+            Highcharts.Templating.helpers.substr = (s, from, length) =>
+                s.substr(from, length);
+
+            Highcharts.chart('container', {
+
+                chart: {
+                    type: 'heatmap',
+                },
+
+                title: {
+                    text: '<a href="https://charts.bgeometrics.com/sth_mvrv.html" target="_blank">STH MVRV in the last 90 days</a>',
+                    align: 'left',
+                    style: {
+                        fontSize: '14px'
+                    }
+                },
+
+                xAxis: {
+                    visible: false
+                },
+
+                yAxis: {
+                    title: '',
+                    visible: false,
+                },
+
+                colorAxis: {
+                    id: 'color-axs',
+                    stops: [
+                        [0.1, '#00ff00'], 
+                        [0.3, '#fff573'], 
+                        [0.6, '#ffa53b'], 
+                        [0.9, '#ff0000'] 
+                    ],
+                    startOnTick: false,
+                    endOnTick: false
+                },
+
+                legend: {
+                    enabled: false,
+                },
+
+                tooltip: {
+                    formatter: function() {
+                        var date = new Date()
+                        date.setDate(date.getDate() - data.length + this.point.x)
+
+                        return '<b>' + this.series.name + ' ' + this.point.value + '</b><br>' + 
+                            ' ' + Highcharts.dateFormat('%e - %b - %Y', date)  
+                    }
+                },
+
+                series: [{
+                    name: 'SOPR',
+                    data: data,
+                    dataLabels: {
+                        enabled: false,
+                        color: '#000000'
+                    }
+                }],
+
+                credits: {
+                    enabled : false,
+                },
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            yAxis: {
+                                labels: {
+                                    format: '{substr value 0 1}'
+                                }
+                            }
+                        }
+                    }]
+                }
+
+            });
+        });
+
+    </script>
+</body>
+</html>
