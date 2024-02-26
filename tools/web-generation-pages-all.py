@@ -122,6 +122,13 @@ output_file_path = '/tmp/web/index_6m.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate index_3m.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-end-index-3m.html'
+output_file_path = '/tmp/web/index_3m.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
 # Generate page services.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-services-end.html'
