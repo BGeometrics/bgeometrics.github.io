@@ -65,6 +65,7 @@ def search_replace_dark(_file):
 
     filedata = filedata.replace('.html', '_dark.html')
     filedata = filedata.replace('swagger-ui/index_dark.hrml', 'swagger-ui/index.html')
+    filedata = filedata.replace('/style.css', '/style-dark.css')
 
     with open(_file_out, 'w') as file:
         file.write(filedata)
@@ -117,6 +118,7 @@ def generate_pages(_mode):
             f_out.close()
             f_model.close()
 
+
 # Asegurarse que existe el directorio
 directory_path = '/tmp/web'
 
@@ -135,7 +137,8 @@ concatenate_files(file1_path, file2_path, output_file_path)
 generate_pages('light')
 
 # Dark
-file_out_dark = search_replace_dark('web-generation-model-dark.html')
+file_out_dark = search_replace_dark(file1_path)
+print(file_out_dark)
 file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
 
