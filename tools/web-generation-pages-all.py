@@ -22,6 +22,7 @@ git add *
 """
 
 import os
+import fileinput
 
 
 def concatenate_files(file1_path, file2_path, output_file_path):
@@ -56,54 +57,92 @@ def remove_files_in_directory(directory_path):
     except Exception as e:
         print(f"Error: {e}")
 
-# Remove files directory
+def search_replace_dark(_file):
+    _file_out = 'web-generation-model-dark.html' 
+
+    with open(_file, 'r') as file:
+        filedata = file.read()
+
+    filedata = filedata.replace('.html', '_dark.html')
+    filedata = filedata.replace('swagger-ui/index_dark.hrml', 'swagger-ui/index.html')
+
+    with open(_file_out, 'w') as file:
+        file.write(filedata)
+    
+    file.close()
+
+    return _file_out
+
+# Generate charts pages
+def generate_pages(_mode):
+    file_name = 'web-generation-pages-all.txt'
+    file_model = output_file_path 
+    checkWords = ("__title__","__description__","__keywords__", "__iframe__")
+
+    with open(file_name, 'r') as archive:
+        next(archive)
+
+        for line in archive:
+            line = line.strip()
+            fields = line.split(',')
+            
+            file_out = fields[0]
+            file_end = fields[1]
+            title = fields[2]
+            iframe = fields[3]
+            keywords = fields[4]
+            description = fields[5]
+            
+            if _mode == 'dark':
+                file_out = fields[0].replace(".html", "_dark.html")
+                iframe = fields[3].replace(".html", "_dark.html")
+
+            print(file_out)
+            print(iframe)
+
+            repWords = (title,description,keywords,iframe)
+
+            f_model = open(file_model, 'r')
+            f_out = open(file_out, 'w')
+            
+            for line in f_model:
+                for check, rep in zip(checkWords, repWords):
+                    line = line.replace(check, rep)
+                f_out.write(line)
+
+            with open(file_end) as fp:
+                f_end = fp.read()
+
+            f_out.write(f_end)
+            f_out.close()
+            f_model.close()
+
+# Asegurarse que existe el directorio
 directory_path = '/tmp/web'
-remove_files_in_directory(directory_path)
+
+if not os.path.exists(directory_path):
+    os.makedirs(directory)
+    print("Directory created successfully!")
 
 # Remove files directory
+remove_files_in_directory(directory_path)
+
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
+generate_pages('light')
 
-# Generate charts pages
-file_name = 'web-generation-pages-all.txt'
-file_model = output_file_path 
-checkWords = ("__title__","__description__","__keywords__", "__iframe__")
+# Dark
+file_out_dark = search_replace_dark(file1_path)
+file2_path = 'web-generation-model-charts-end.html'
+output_file_path = 'web-generation-model-out-dark.html'
 
-with open(file_name, 'r') as archive:
-    next(archive)
+concatenate_files(file_out_dark, file2_path, output_file_path)
+generate_pages('dark')
 
-    for line in archive:
-        line = line.strip()
-        fields = line.split(',')
 
-        file_out = fields[0]
-        file_end = fields[1]
-        title = fields[2]
-        iframe = fields[3]
-        keywords = fields[4]
-        description = fields[5]
-
-        print(file_out)
-
-        repWords = (title,description,keywords,iframe)
-
-        f_model = open(file_model, 'r')
-        f_out = open(file_out, 'w')
-        
-        for line in f_model:
-            for check, rep in zip(checkWords, repWords):
-                line = line.replace(check, rep)
-            f_out.write(line)
-
-        with open(file_end) as fp:
-            f_end = fp.read()
-
-        f_out.write(f_end)
-        f_out.close()
-        f_model.close()
 
 
 # Generate index.html with menu
@@ -141,7 +180,9 @@ output_file_path = '/tmp/web/pages-contact.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+
 ### Mode dark 
+
 # Generate index.html with menu
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-index-end.html'
