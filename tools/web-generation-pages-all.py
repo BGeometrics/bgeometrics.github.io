@@ -141,6 +141,16 @@ output_file_path = '/tmp/web/pages-contact.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+### Mode dark 
+# Generate index.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-index-end.html'
+output_file_path = '/tmp/web/index_dark.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
+
+
 print("")
 print("For copy generate pages to project") 
 print("cp /tmp/web/* /home/pi/bgeometrics.github.io/")
