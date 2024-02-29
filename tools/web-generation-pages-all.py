@@ -65,6 +65,7 @@ def search_replace_dark(_file):
         filedata = file.read()
 
     filedata = filedata.replace('.html', '_dark.html')
+    filedata = filedata.replace('item" href="index_dark.html"', 'item" href="index.html"')
     filedata = filedata.replace('index_dark_dark.html', 'index_dark.html')
     filedata = filedata.replace('swagger-ui/index_dark.html', 'swagger-ui/index.html')
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
