@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>NUPL (Net Unrealized Profit Loss)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -20,27 +20,23 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
+            const data_metrics = await fetch(
+                'https://charts.bgeometrics.com/files/nupl.json'
+            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
+                'https://charts.bgeometrics.com/files/nupl_btc_price.json'
             ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
-            ).then(response => response.json());
- 
-        var chart = Highcharts.stockChart('container-iframe', {
+
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -62,10 +58,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -83,13 +75,13 @@
                 }
             },
             title: {
-                text: 'Bitcoin Coin Days Destroyed',
+                text: 'Bitcoin: NUPL (Net Unrealized Profit / Loss)',
                 align: 'left',
             },
 
             chart: {
-                renderTo: 'container-iframe',
-                events:{
+                renderTo: 'container',
+                events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
@@ -112,49 +104,41 @@
 
             yAxis: [{
                 title: {
-                    text: 'CDD'
+                    text: 'NUPL',
                 },
+                plotBands: [{ 
+                    from: 0.6,
+                    to: 1,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0,
+                    to: -1,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-                opposite: false
+                opposite: false,
             }],
 
             series: [{
+                id:'nupl',
+                name: 'NUPL',
+                data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
                 name: 'BTC price',
+                color: 'black',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 1
-            }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
             }],
 
             legend:{
@@ -188,12 +172,14 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {enabled:false}
                     }
                 }]
             }
         });
     })();
+
     </script>
 
 </body>

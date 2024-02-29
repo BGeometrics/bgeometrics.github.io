@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>STH SOPR (Short Term Hodler Spent Output Profit Ratio)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -21,25 +21,17 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
-
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container-iframe" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
+                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
             ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
+            const data_sth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/sth_sopr.json'
             ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
-            ).then(response => response.json());
- 
+        
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -83,13 +75,13 @@
                 }
             },
             title: {
-                text: 'Bitcoin Coin Days Destroyed',
+                text: 'Bitcoin: STH SOPR (Short Term Hodler Spent Output Profit Ratio)',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                events:{
+                events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
@@ -112,13 +104,17 @@
 
             yAxis: [{
                 title: {
-                    text: 'CDD'
+                    text: 'STH SOPR'
                 },
+                plotBands: [{ 
+                    from: 1,
+                    to: 0.8,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
                     text: 'BTC price'
                 },
-                type: 'logarithmic',
                 opposite: false
             }],
 
@@ -130,27 +126,9 @@
                 },
                 yAxis: 1
             }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
+                id:'sth_sopr',
+                name: 'STH SOPR',
+                data: data_sth_sopr,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -165,7 +143,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 2
             },
 
             credits: {
@@ -181,20 +159,52 @@
                 }                
             },
             responsive: {
-                rules: [{
+                rules: [
+                {
                     condition: {
-                        maxWidth: 800
+                        maxWidth: 1000
                     },
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {
+                            enabled: false,
+                        },
                     }
+                }, {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {
+                            enabled: false,
+                        },
+                        yAxis: [{
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: ''
+                            }
+                        }, {
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: ''
+                            }
+
+                        }]
+                    },
                 }]
             }
         });
     })();
-    </script>
 
+    </script>
 </body>
 </html>

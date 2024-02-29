@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>Bitcoin, S&P 500, Gold, Tesla</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -28,16 +28,16 @@
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
+                'https://charts.bgeometrics.com/files/btc_yf.json'
             ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
+            const data_sp500 = await fetch(
+                'https://charts.bgeometrics.com/files/sp500_yf.json'
             ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
+            const data_gold = await fetch(
+                'https://charts.bgeometrics.com/files/gold_yf.json'
             ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
+            const data_tesla = await fetch(
+                'https://charts.bgeometrics.com/files/tsla_yf.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
@@ -69,6 +69,14 @@
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
+                            })
+                            chart.yAxis[2].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            })
+                            chart.yAxis[3].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
@@ -83,13 +91,13 @@
                 }
             },
             title: {
-                text: 'Bitcoin Coin Days Destroyed',
+                text: 'Bitcoin, S&P 500, Gold, Tesla',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                events:{
+                events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
@@ -112,14 +120,25 @@
 
             yAxis: [{
                 title: {
-                    text: 'CDD'
+                    text: 'Bitcoin, Tesla',
                 },
+                type: 'logarithmic'
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'BTC price',
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
+                title: {
+                    text: 'S&P 500'
+                },
+                type: 'logarithmic',
+            }, {
+                title: {
+                    text: 'Gold'
+                },
+                type: 'logarithmic',
             }],
 
             series: [{
@@ -130,27 +149,25 @@
                 },
                 yAxis: 1
             }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
+                id:'sp500',
+                name: 'S&P 500',
+                data: data_sp500,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 2
             }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
-                visible: false,
+                id:'gold',
+                name: 'Gold',
+                data: data_gold,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 3
             }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
+                id:'tesla',
+                name: 'Tesla',
+                data: data_tesla,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -194,7 +211,17 @@
             }
         });
     })();
-    </script>
 
+    </script>
+    <section>
+        <div>
+            <h4></h4>
+            <p>
+            </p>
+        </div>
+    </section>
+    <div class="credits">
+        Power by <a href="https://charts.bgeometrics.com/">BGeometrics</a>
+    </div>
 </body>
 </html>

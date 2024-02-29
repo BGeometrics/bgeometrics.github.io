@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>Bitcoin Realized Profit Loss Ratio</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -18,29 +18,21 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
+            const data_metrics = await fetch(
+                'https://charts.bgeometrics.com/files/realized_profit_loss_ratio.json'
+            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
-            ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
+                'https://charts.bgeometrics.com/files/realized_profit_loss_ratio_btc_price.json'
             ).then(response => response.json());
  
-        var chart = Highcharts.stockChart('container-iframe', {
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -71,8 +63,10 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -83,13 +77,13 @@
                 }
             },
             title: {
-                text: 'Bitcoin Coin Days Destroyed',
+                text: 'Bitcoin Realized Profit Loss Ratio',
                 align: 'left',
             },
 
             chart: {
-                renderTo: 'container-iframe',
-                events:{
+                renderTo: 'container',
+                events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
@@ -112,14 +106,27 @@
 
             yAxis: [{
                 title: {
-                    text: 'CDD'
-                },
-            }, {
-                title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
+                type: 'logarithmic',
+                startOnTick: false,
+                endOnTick: false,
+                plotBands: [{ 
+                    from: 9,
+                    to: 9,
+                    color: 'rgba(255, 0, 0, 0.9)'
+                }, {
+                    from: 3,
+                    to: 3,
+                    color: 'orange'
+                }, {
+                    from: 1,
+                    to: 1,
+                    color: 'rgba(0, 255, 0, 0.9)'
+                }],
             }],
 
             series: [{
@@ -128,33 +135,15 @@
                 tooltip: {
                     valueDecimals: 2
                 },
+                yAxis: 0
+            }, {
+                id:'realized_profit_loss_ratio',
+                name: 'Realized Profit Loss Ratio',
+                data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
                 yAxis: 1
-            }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
             }],
 
             legend:{
@@ -165,7 +154,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 4
             },
 
             credits: {
@@ -194,6 +183,7 @@
             }
         });
     })();
+
     </script>
 
 </body>

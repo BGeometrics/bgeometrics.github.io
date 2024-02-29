@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>MVRV Ratio (Market Value Realized Value)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -28,18 +28,15 @@
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
+                'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'
             ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
+            const data_mvrv = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv.json'
             ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
+            const data_mvrv_zscore = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv_zscore.json'
             ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
-            ).then(response => response.json());
- 
+
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -62,10 +59,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -83,13 +76,13 @@
                 }
             },
             title: {
-                text: 'Bitcoin Coin Days Destroyed',
+                text: 'Bitcoin MVRV Ratio (Market Value Realized Value)',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                events:{
+                events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
@@ -109,10 +102,10 @@
                     }
                 }
             },
-
+            
             yAxis: [{
                 title: {
-                    text: 'CDD'
+                    text: 'MVRV Ratio'
                 },
             }, {
                 title: {
@@ -130,27 +123,18 @@
                 },
                 yAxis: 1
             }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
+                id:'mvrv_ratio',
+                name: 'MVRV Ratio',
+                data: data_mvrv,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
+                id:'mvrv_zscore',
+                name: 'MVRV Z-Score',
+                data: data_mvrv_zscore,
                 visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
                 tooltip: {
                     valueDecimals: 2
                 },

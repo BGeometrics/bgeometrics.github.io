@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Coin Days Destroyed</title>
+    <title>Bitcoin OHLC</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -18,8 +18,7 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
 
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
@@ -27,18 +26,20 @@
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
-            ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
-            ).then(response => response.json());
-            const data_cdd_terminal_ajusted_90dma = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
-            ).then(response => response.json());
+            const data = await fetch(
+                'https://charts.bgeometrics.com/files/btc_ohlc.json'
+            ).then(response => response.json());    
+
+        const ohlc = [],
+        volume = [],
+        dataLength = data.length;
+
+        for (let i = 0; i < dataLength; i += 1) {
+            volume.push([
+                data[i][0], // the date
+                data[i][5] // the volume
+            ]);
+        }
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -83,13 +84,13 @@
                 }
             },
             title: {
-                text: 'Bitcoin Coin Days Destroyed',
+                text: 'Bitcoin OHLC',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                events:{
+                events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
@@ -111,50 +112,34 @@
             },
 
             yAxis: [{
-                title: {
-                    text: 'CDD'
+                height: '80%',
+                resize: {
+                    enabled: true
+                },
+                labels: {
+                    align: 'right',
+                    x: 22,
                 },
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'Volume BTC'
                 },
-                type: 'logarithmic',
-                opposite: false
+                top: '80%',
+                height: '20%',
+                offset: 0,
             }],
 
             series: [{
-                name: 'BTC price',
-                data: data_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
+                type: 'hollowcandlestick',
+                name: 'Bitcoin OHLC',
+                data: data,
+                yAxis: 0
+            }, {
+                type: 'column',
+                id: 'volume',
+                name: 'Volume BTC',
+                data: volume,
                 yAxis: 1
-            }, {
-                id:'cdd',
-                name: 'Coin Days Destroyed',
-                data: data_cdd,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted',
-                name: 'CDD Terminal Ajusted',
-                data: data_cdd_terminal_ajusted,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'cdd_terminal_ajusted_90dma',
-                name: 'CDD Terminal Ajusted 90dma',
-                data: data_cdd_terminal_ajusted_90dma,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
             }],
 
             legend:{
@@ -165,7 +150,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 2
             },
 
             credits: {
@@ -194,7 +179,10 @@
             }
         });
     })();
-    </script>
 
+    </script>
+    <div class="credits">
+        Power by <a href="https://charts.bgeometrics.com/">BGeometrics</a>
+    </div>
 </body>
 </html>

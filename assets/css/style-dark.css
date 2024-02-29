@@ -7,7 +7,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #000000;
+  background: #222222;
   color: #bbbbbb;
 }
 
@@ -56,7 +56,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -228,7 +228,7 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #ffffff;
+  color: #111111;
   font-family: "Poppins", sans-serif;
 }
 
@@ -602,7 +602,7 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #000;
+  background-color: #111111;
 }
 
 @media (max-width: 1199px) {
@@ -691,7 +691,7 @@ h6 {
 
 .sidebar-nav .nav-link.collapsed {
   color: #ffffff;
-  background: #000;
+  background: #111111;
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -1023,7 +1023,7 @@ h6 {
 }
 
 .profile .profile-overview .card-title {
-  color: #ffffff;
+  color: #111111;
 }
 
 .profile .profile-overview .label {
