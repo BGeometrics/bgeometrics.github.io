@@ -101,13 +101,11 @@ def generate_pages(_mode):
             # Reprocesamos los campos que hay que cambiar
             if _mode == 'dark':
                 file_out = fields[0].replace(".html", "_dark.html")
-                print("fields3 " + fields[3])
 
                 if fields[3].find('reports') == -1:
                     iframe = fields[3].replace(".html", "_dark.html")
 
-                print("file out " + file_out)
-                print("iframe " + iframe)
+                print(file_out)
 
             repWords = (title,description,keywords,iframe)
 
