@@ -43,4 +43,5 @@
 /tmp/web/open_interest_futures.html,web-generation-end.html,Bitcoin Open Interest Futures,graphics/open_interest_futures.html,Bitcoin Open Interest Future,,
 /tmp/web/hodl_waves.html,web-generation-end-hodl-waves.html,Bitcoin Hodl Waves,graphics/hodl_waves.html,Bitcoin Hodl Waves,,
 /tmp/web/pi_cycle.html,web-generation-end.html,Bitcoin Pi Cycle,graphics/pi_cycle.html,Bitcoin Pi Cycle,,
-/tmp/web/montecarlo_100.html,web-generation-end.html,Bitcoin Simulation Montecarlo nest 100 days,graphics/montecarlo_100.html,Simulation Montecarlo next 100 days,,
+/tmp/web/montecarlo_100.html,web-generation-end.html,Bitcoin Simulation Montecarlo next 100 days,graphics/montecarlo_100.html,Simulation Montecarlo next 100 days,,
+/tmp/web/montecarlo_365.html,web-generation-end.html,Bitcoin Simulation Montecarlo last 365 days,graphics/montecarlo_365.html,Simulation Montecarlo last 365 days,,
