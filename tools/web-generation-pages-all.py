@@ -162,6 +162,7 @@ generate_pages('light')
 # Dark
 file_out_dark = search_replace_dark(file1_path)
 file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
+file_model_index_dark = 'web-generation-model-index-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
 print(output_file_path)
 
