@@ -135,7 +135,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 generate_pages('light')
 
 # Dark
-file_out_dark = search_replace_dark(file1_path)
+file_out_dark = search_replace_dark('web-generation-model-dark.html')
 file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
 
