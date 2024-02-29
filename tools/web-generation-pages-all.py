@@ -195,7 +195,6 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 ### Mode dark 
 
-# Dark
 _file_out = 'web-generation-model-dark.html' 
 file_out_dark = search_replace_dark(file1_path, _file_out)
 #file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
@@ -207,35 +206,35 @@ concatenate_files(file_out_dark, file2_path, output_file_path)
 generate_pages('dark')
 
 
-# Generate index.html with menu
+# Generate index.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-index-end-dark.html'
 output_file_path = '/tmp/web/index_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Generate index_6m.html with menu
+# Generate index_6m.html with menu dark
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-end-index-6m.html'
+file2_path = 'web-generation-model-end-index-6m-dark.html'
 output_file_path = '/tmp/web/index_6m_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Generate index_3m.html with menu
+# Generate index_3m.html with menu dark
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-end-index-3m.html'
+file2_path = 'web-generation-model-end-index-3m-dark.html'
 output_file_path = '/tmp/web/index_3m_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Generate page services.html with menu
+# Generate page services.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-services-end.html'
 output_file_path = '/tmp/web/services_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Generate page contact.html with menu
+# Generate page contact.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/pages-contact_dark.html'
