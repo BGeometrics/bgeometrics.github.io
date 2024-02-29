@@ -7,8 +7,8 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
-  color: #444444;
+  background: #000000;
+  color: #999999;
 }
 
 a {
@@ -56,7 +56,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color: #000000;
 }
 
 /*--------------------------------------------------------------
@@ -78,13 +78,13 @@ h6 {
 
 .back-to-top i {
   font-size: 24px;
-  color: #fff;
+  color: #000;
   line-height: 0;
 }
 
 .back-to-top:hover {
   background: #6776f4;
-  color: #fff;
+  color: #000;
 }
 
 .back-to-top.active {
@@ -114,7 +114,7 @@ h6 {
 }
 
 .dropdown-menu .dropdown-footer a {
-  color: #444444;
+  color: #999999;
   text-decoration: underline;
 }
 
@@ -148,7 +148,7 @@ h6 {
     content: "";
     width: 13px;
     height: 13px;
-    background: #fff;
+    background: #000;
     position: absolute;
     top: -7px;
     right: 20px;
@@ -194,8 +194,8 @@ h6 {
 }
 
 .bg-warning-light {
-  background-color: #fff3cd;
-  border-color: #fff3cd;
+  background-color: #0003cd;
+  border-color: #0003cd;
 }
 
 .bg-info-light {
@@ -219,7 +219,7 @@ h6 {
 .card-header,
 .card-footer {
   border-color: #ebeef4;
-  background-color: #fff;
+  background-color: #000;
   color: #798eb3;
   padding: 15px;
 }
@@ -228,7 +228,7 @@ h6 {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #ffffff;
   font-family: "Poppins", sans-serif;
 }
 
@@ -274,7 +274,7 @@ h6 {
 }
 
 .accordion-button:not(.collapsed) {
-  color: #012970;
+  color: #ffffff;
   background-color: #f6f9ff;
 }
 
@@ -338,7 +338,7 @@ h6 {
 }
 
 .nav-tabs-bordered .nav-link.active {
-  background-color: #fff;
+  background-color: #000;
   color: #4154f1;
   border-bottom: 2px solid #4154f1;
 }
@@ -364,7 +364,7 @@ h6 {
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #ffffff;
   font-family: "Nunito", sans-serif;
 }
 
@@ -373,7 +373,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #000;
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -383,7 +383,7 @@ h6 {
   font-size: 32px;
   padding-left: 10px;
   cursor: pointer;
-  color: #012970;
+  color: #ffffff;
 }
 
 .header .search-bar {
@@ -420,7 +420,7 @@ h6 {
 .header .search-form input {
   border: 0;
   font-size: 14px;
-  color: #012970;
+  color: #ffffff;
   border: 1px solid rgba(1, 41, 112, 0.2);
   padding: 7px 38px 7px 8px;
   border-radius: 3px;
@@ -443,7 +443,7 @@ h6 {
 }
 
 .header .search-form button i {
-  color: #012970;
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -460,13 +460,13 @@ h6 {
 
 .header-nav .nav-icon {
   font-size: 22px;
-  color: #012970;
+  color: #ffffff;
   margin-right: 25px;
   position: relative;
 }
 
 .header-nav .nav-profile {
-  color: #012970;
+  color: #ffffff;
 }
 
 .header-nav .nav-profile img {
@@ -540,7 +540,7 @@ h6 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #444444;
+  color: #999999;
 }
 
 .header-nav .messages .message-item p {
@@ -563,7 +563,7 @@ h6 {
   font-size: 18px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #444444;
+  color: #999999;
 }
 
 .header-nav .profile .dropdown-header span {
@@ -602,7 +602,7 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #000;
 }
 
 @media (max-width: 1199px) {
@@ -614,7 +614,7 @@ h6 {
 .sidebar::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  background-color: #fff;
+  background-color: #000;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
@@ -690,8 +690,8 @@ h6 {
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
-  background: #fff;
+  color: #ffffff;
+  background: #000;
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -727,7 +727,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: #ffffff;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -797,7 +797,7 @@ h6 {
 
 .dashboard .info-card h6 {
   font-size: 28px;
-  color: #012970;
+  color: #ffffff;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -857,7 +857,7 @@ h6 {
   line-height: 0;
   border-radius: 50%;
   flex-shrink: 0;
-  border: 3px solid #fff;
+  border: 3px solid #000;
   flex-grow: 0;
 }
 
@@ -893,7 +893,7 @@ h6 {
 }
 
 .dashboard .news h4 a {
-  color: #012970;
+  color: #ffffff;
   transition: 0.3s;
 }
 
@@ -962,10 +962,10 @@ h6 {
 }
 
 .iconslist .icon {
-  background-color: #fff;
+  background-color: #000;
   border-radius: 0.25rem;
   text-align: center;
-  color: #012970;
+  color: #ffffff;
   padding: 15px 0;
 }
 
@@ -1014,7 +1014,7 @@ h6 {
 }
 
 .profile .profile-card .social-links a:hover {
-  color: #012970;
+  color: #ffffff;
 }
 
 .profile .profile-overview .row {
@@ -1023,7 +1023,7 @@ h6 {
 }
 
 .profile .profile-overview .card-title {
-  color: #012970;
+  color: #ffffff;
 }
 
 .profile .profile-overview .label {
@@ -1068,7 +1068,7 @@ h6 {
 
 .contact .info-box h3 {
   font-size: 20px;
-  color: #012970;
+  color: #ffffff;
   font-weight: 700;
   margin: 20px 0 10px 0;
 }
@@ -1082,7 +1082,7 @@ h6 {
 
 .contact .php-email-form .error-message {
   display: none;
-  color: #fff;
+  color: #000;
   background: #ed3c0d;
   text-align: left;
   padding: 15px;
@@ -1092,7 +1092,7 @@ h6 {
 
 .contact .php-email-form .sent-message {
   display: none;
-  color: #fff;
+  color: #000;
   background: #18d26e;
   text-align: center;
   padding: 15px;
@@ -1102,7 +1102,7 @@ h6 {
 
 .contact .php-email-form .loading {
   display: none;
-  background: #fff;
+  background: #000;
   text-align: center;
   padding: 15px;
   margin-bottom: 24px;
@@ -1145,7 +1145,7 @@ h6 {
   background: #4154f1;
   border: 0;
   padding: 10px 30px;
-  color: #fff;
+  color: #000;
   transition: 0.4s;
   border-radius: 4px;
 }
@@ -1182,13 +1182,13 @@ h6 {
 .error-404 h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #012970;
+  color: #ffffff;
   margin-bottom: 30px;
 }
 
 .error-404 .btn {
   background: #51678f;
-  color: #fff;
+  color: #000;
   padding: 8px 30px;
 }
 
@@ -1209,17 +1209,17 @@ h6 {
   padding: 20px 0;
   font-size: 14px;
   transition: all 0.3s;
-  border-top: 1px solid #cddfff;
+  border-top: 1px solid #cdd000;
 }
 
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: #ffffff;
 }
 
 .footer .credits {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #012970;
+  color: #ffffff;
 }
