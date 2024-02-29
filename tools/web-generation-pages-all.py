@@ -149,7 +149,33 @@ output_file_path = '/tmp/web/index_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate index_6m.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-end-index-6m.html'
+output_file_path = '/tmp/web/index_6m_dark.html'
 
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate index_3m.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-end-index-3m.html'
+output_file_path = '/tmp/web/index_3m_dark.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page services.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-services-end.html'
+output_file_path = '/tmp/web/services_dark.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page contact.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-contact-end.html'
+output_file_path = '/tmp/web/pages-contact_dark.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
 print("For copy generate pages to project") 
