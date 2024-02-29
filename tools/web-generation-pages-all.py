@@ -78,15 +78,13 @@ with open(file_name, 'r') as archive:
     for line in archive:
         line = line.strip()
         fields = line.split(',')
-        #print(fields)
 
         file_out = fields[0]
         file_end = fields[1]
         title = fields[2]
         iframe = fields[3]
-        description = fields[4]
-        #keywords = fields[5]
-        keywords = title
+        keywords = fields[4]
+        description = fields[5]
 
         print(file_out)
 

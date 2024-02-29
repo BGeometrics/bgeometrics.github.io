@@ -71,7 +71,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 # Generate charts pages
 file_name = 'web-generation-pages.txt'
 file_model = output_file_path 
-checkWords = ("__title__","__description__","__keywords__", "__iframe__")
+checkWords = ("__title__","__description__","__keykwords__", "__iframe__")
 
 with open(file_name, 'r') as archive:
     next(archive)
@@ -86,9 +86,10 @@ with open(file_name, 'r') as archive:
         title = fields[2]
         iframe = fields[3]
         description = fields[4]
-        #keywords = fields[5]
-        keywords = title
+        keywords = fields[5]
+        #keywords = title
 
+        print(keywords)
         print(file_out)
 
         repWords = (title,description,keywords,iframe)
