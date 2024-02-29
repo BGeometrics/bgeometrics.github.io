@@ -65,7 +65,7 @@ def search_replace_dark(_file):
 
     filedata = filedata.replace('.html', '_dark.html')
     filedata = filedata.replace('swagger-ui/index_dark.hrml', 'swagger-ui/index.html')
-    filedata = filedata.replace('/style.css', '/style-dark.css')
+    filedata = filedata.replace('css/style.css', 'css/style-dark.css')
 
     with open(_file_out, 'w') as file:
         file.write(filedata)
@@ -97,13 +97,13 @@ def generate_pages(_mode):
             # Reprocesamos los campos que hay que cambiar
             if _mode == 'dark':
                 file_out = fields[0].replace(".html", "_dark.html")
-                print(fields[3]
-                        )
-                if fields[3].find('reports') != -1:
+                print("fields3 " + fields[3])
+
+                if fields[3].find('reports') == -1:
                     iframe = fields[3].replace(".html", "_dark.html")
 
-                print(file_out)
-                print(iframe)
+                print("file out " + file_out)
+                print("iframe " + iframe)
 
             repWords = (title,description,keywords,iframe)
 
