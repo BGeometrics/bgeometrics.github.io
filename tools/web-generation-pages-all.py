@@ -161,12 +161,12 @@ generate_pages('light')
 
 # Dark
 file_out_dark = search_replace_dark(file1_path)
-file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
-file_model_index_dark = 'web-generation-model-index-end.html'
+#file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
+file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
 print(output_file_path)
 
-concatenate_files(file_out_dark, file_model_index_dark, output_file_path)
+concatenate_files(file_out_dark, file2_path, output_file_path)
 generate_pages('dark')
 
 
