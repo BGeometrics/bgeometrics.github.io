@@ -10,6 +10,7 @@ file_name,file_end,title,iframe_html,description,keywords
 - Si tiene texto explicativo se añade en el fichero web-generation-*-end-* están la parte html del final de cada páginas/s 
 - Se ejecuta este script web-generation-pages-all.py en ~/bgeometrics.github.io/tools/
 
+Esto lo hace el script web-generation-pages-all.sh
 Para copiar al proyecto las páginas generadas
 cp /tmp/web/* /home/pi/bgeometrics.github.io/
 
@@ -64,8 +65,11 @@ def search_replace_dark(_file):
         filedata = file.read()
 
     filedata = filedata.replace('.html', '_dark.html')
-    filedata = filedata.replace('swagger-ui/index_dark.hrml', 'swagger-ui/index.html')
+    filedata = filedata.replace('swagger-ui/index_dark.html', 'swagger-ui/index.html')
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
+    filedata = filedata.replace('>Light<', '>Dark<')
+    filedata = filedata.replace('fa-flag-usa" aria-hidden="true"></i> Light', 'fa-flag-usa" aria-hidden="true"></i> Dark')
+    filedata = filedata.replace('fa-flag-es" aria-hidden="true"></i> Dark', 'fa-flag-es" aria-hidden="true"></i> Light')
 
     with open(_file_out, 'w') as file:
         file.write(filedata)
