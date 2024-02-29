@@ -59,8 +59,7 @@ def remove_files_in_directory(directory_path):
         print(f"Error: {e}")
 
 # Se modifica el fichero general de los menús (web-generation-model.html) para adaptarlo al modo dark
-def search_replace_dark(_file):
-    _file_out = 'web-generation-model-dark.html' 
+def search_replace_dark(_file, _file_out):
 
     with open(_file, 'r') as file:
         filedata = file.read()
@@ -159,17 +158,6 @@ output_file_path = 'web-generation-model-out.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 generate_pages('light')
 
-# Dark
-file_out_dark = search_replace_dark(file1_path)
-#file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
-file2_path = 'web-generation-model-charts-end.html'
-output_file_path = 'web-generation-model-out-dark.html'
-print(output_file_path)
-
-concatenate_files(file_out_dark, file2_path, output_file_path)
-generate_pages('dark')
-
-
 # Generate index.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-index-end.html'
@@ -206,6 +194,18 @@ output_file_path = '/tmp/web/pages-contact.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 ### Mode dark 
+
+# Dark
+_file_out = 'web-generation-model-dark.html' 
+file_out_dark = search_replace_dark(file1_path, _file_out)
+#file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
+file2_path = 'web-generation-model-charts-end.html'
+output_file_path = 'web-generation-model-out-dark.html'
+print(output_file_path)
+
+concatenate_files(file_out_dark, file2_path, output_file_path)
+generate_pages('dark')
+
 
 # Generate index.html with menu
 file1_path = 'web-generation-model-dark.html'
