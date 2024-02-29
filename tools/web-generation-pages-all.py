@@ -58,20 +58,20 @@ def remove_files_in_directory(directory_path):
     except Exception as e:
         print(f"Error: {e}")
 
+# Se modifica el fichero general de los menús (web-generation-model.html) para adaptarlo al modo dark
 def search_replace_dark(_file):
     _file_out = 'web-generation-model-dark.html' 
 
     with open(_file, 'r') as file:
         filedata = file.read()
 
-    filedata = filedata.replace('.html', '_dark.html')
-    filedata = filedata.replace('item" href="index_dark.html"', 'item" href="index.html"')
-    filedata = filedata.replace('index_dark_dark.html', 'index_dark.html')
-    filedata = filedata.replace('swagger-ui/index_dark.html', 'swagger-ui/index.html')
-    filedata = filedata.replace('css/style.css', 'css/style-dark.css')
     filedata = filedata.replace('>Light<', '>Dark<')
     filedata = filedata.replace('fa-flag-usa" aria-hidden="true"></i> Light', 'fa-flag-usa" aria-hidden="true"></i> Dark')
     filedata = filedata.replace('fa-flag-es" aria-hidden="true"></i> Dark', 'fa-flag-es" aria-hidden="true"></i> Light')
+    filedata = filedata.replace('.html', '_dark.html')
+    filedata = filedata.replace('index_dark_dark.html', 'index.html')
+    filedata = filedata.replace('swagger-ui/index_dark.html', 'swagger-ui/index.html')
+    filedata = filedata.replace('css/style.css', 'css/style-dark.css')
 
     with open(_file_out, 'w') as file:
         file.write(filedata)
