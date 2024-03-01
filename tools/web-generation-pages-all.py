@@ -119,12 +119,13 @@ def generate_pages(_mode):
             # Reprocesamos los campos que hay que cambiar por el modo oscuro
             if _mode == 'dark':
                 file_out = fields[0].replace(".html", "_dark.html")
-                #print("")
                 print(file_out)
 
-                if fields[3].find('reports') == -1:
+                if fields[3].find('reports') == -1 and fields[3].find('montecarlo') == -1:
                     iframe = fields[3].replace(".html", "_dark.html")
                 #else:
+                #    print("")
+                #    print(file_out)
                 #    print("A estas páginas no se le añade el dark")
                 #    print(iframe)
 
