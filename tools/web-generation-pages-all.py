@@ -79,6 +79,7 @@ def search_replace_dark(_file, _file_out):
 
     return _file_out
 
+"""
 def search_replace_index_dark(_file):
     _file_out = 'web-generation-model-index-end-dark.html'
 
@@ -93,6 +94,7 @@ def search_replace_index_dark(_file):
     file.close()
 
     return _file_out
+"""
 
 # Generate charts pages
 def generate_pages(_mode):
@@ -103,25 +105,28 @@ def generate_pages(_mode):
     with open(file_name, 'r') as archive:
         next(archive)
 
+        #file_name,text file_end,title,iframe_html,description,keywords,file_model
         for line in archive:
             line = line.strip()
             fields = line.split(',')
+            file_out = fields[0]    # Nombre del fichero final
+            file_end = fields[1]    # Nombre del fichero que se va a concatenar al final
+            title = fields[2]       # Título
+            iframe = fields[3]      # URL del gráfico que se añade al iframe 
+            keywords = fields[4]    # Palabras claves de la página, es para los buscadores
+            description = fields[5] # Descripción de la página. No lo estoy utilizando
             
-            file_out = fields[0]
-            file_end = fields[1]
-            title = fields[2]
-            iframe = fields[3]
-            keywords = fields[4]
-            description = fields[5]
-            
-            # Reprocesamos los campos que hay que cambiar
+            # Reprocesamos los campos que hay que cambiar por el modo oscuro
             if _mode == 'dark':
                 file_out = fields[0].replace(".html", "_dark.html")
+                print(file_out)
+                print("")
 
                 if fields[3].find('reports') == -1:
                     iframe = fields[3].replace(".html", "_dark.html")
-
-                print(file_out)
+                else:
+                    print("A estas páginas no se le añade el dark")
+                    print(iframe)
 
             repWords = (title,description,keywords,iframe)
 

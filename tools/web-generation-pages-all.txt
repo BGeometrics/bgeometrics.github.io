@@ -30,6 +30,7 @@
 /tmp/web/bitcoin_distribution_coin_g.html,web-generation-end.html,Bitcoin Address Coins,reports/bitcoin_distribution_coin_g.html,BTC Address Coins,,
 /tmp/web/bitcoin_distribution_coin_g_humpback.html,web-generation-end.html,Address Coins Humpback > 10K BTC,reports/bitcoin_distribution_coin_g_humpback.html,Address Coin Humpback > 10 BTC,,
 /tmp/web/bitcoin_distribution_coin_g_whale.html,web-generation-end.html,Address Coins Whale 1K to 10K BTC,reports/bitcoin_distribution_coin_g_whale.html,Address Coins Whale 1K to 10K BTC,,
+/tmp/web/bitcoin_distribution_coin_g_shark.html,web-generation-end.html,Address Coins Shark 100 to 1K BTC,reports/bitcoin_distribution_coin_g_shale.html,Address Coins Shale 100 to 1K BTC,,
 /tmp/web/bitcoin_ex_change_held_g.html,web-generation-end.html,Change BTC on exchanges,reports/bitcoin_ex_change_held_g.html,Change BTC on exchanges,,
 /tmp/web/bitcoin_fear_greed_img.html,web-generation-end.html,Fear and Greed index color,reports/bitcoin_fear_greed_img.html,Fear and Greed index color,,
 /tmp/web/sp500_gold.html,web-generation-end.html,BTC S&P 500 Gold Tesla,graphics/sp500_gold.html,BTC S&P 500 Gold Tesla,,
