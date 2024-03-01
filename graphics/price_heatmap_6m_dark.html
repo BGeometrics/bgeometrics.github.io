@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Price last 90 days</title>
+    <title>Bitcoin Price last 180 days</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -15,12 +15,14 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+
     <div id="container-iframe" style="width:100%; height:200px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/price_heatmap_3m.json'
+                'https://charts.bgeometrics.com/files/price_heatmap_6m.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -31,7 +33,7 @@
                 enabled: false
 			},
             title: {
-                text: '<a href="https://charts.bgeometrics.com/ohlc.html" target="_blank">Bitcoin price in the last 90 days</a>',
+                text: '<a href="https://charts.bgeometrics.com/ohlc.html" style="color:#dddddd;" target="_blank">Bitcoin price in the last 180 days</a>',
                 align: 'left',
                 fontSize: '9px', 
             },
