@@ -138,14 +138,11 @@ def generate_pages(_mode):
             f_model = open(file_model, 'r')
             f_out = open(file_out, 'w')
             
-            # Textos a buscar para que se muestren los menús desplegados y activos
+            # Textos a buscar para remplazar y que se muestren los menús desplegados y activos
             menu_file = '<ul id="' + menu + '" class="nav-content collapse"'
             pos = file_out.rfind('/')
             file_name = file_out[pos+1:]
             file_link = '<a href="' + file_name + '"'
-            print("")
-            print(file_link)
-
 
             for line in f_model:
                 for check, rep in zip(checkWords, repWords):
@@ -155,13 +152,9 @@ def generate_pages(_mode):
                 if line.find(menu_file) != -1:
                     line = line.replace('nav-content collapse', 'nav-content')
 
+                # Para que la opción de menú se vea activa
                 if line.find(file_link) != -1:
                     line = line.replace(file_link, file_link + ' class="active"')
-                    print("")
-                    print("")
-                    print("")
-                    print("")
-                    print(line)
 
                 f_out.write(line)
 
