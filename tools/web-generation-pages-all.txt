@@ -47,11 +47,11 @@
 /tmp/web/bitcoin_dominance_g.html,web-generation-end.html,Bitcoin Dominace,reports/bitcoin_dominance_g.html,BTC Dominance,,charts-nav
 /tmp/web/bitcoin_hashprice_g.html,web-generation-end.html,Bitcoin Hashprice,reports/bitcoin_hashprice_g.html,BTC Hashprice,,charts-nav
 /tmp/web/bitcoin_hashribbons_g.html,web-generation-end.html,Bitcoin Hashribbons,reports/bitcoin_hashribbons_g.html,Bitcoin Hashribbons,,charts-nav
-/tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR (Spend Out Profit Ratio),,
-/tmp/web/sth_sopr.html,web-generation-end.html,Bitcoin STH SOPR,graphics/sth_sopr.html,Bitcoin STH SOPR (Short Term Hodler Spend Out Profit Ratio),,
-/tmp/web/lth_sopr.html,web-generation-end.html,Bitcoin LTH SOPR,graphics/lth_sopr.html,Bitcoin LTH SOPR (Long Term Hodler Spend Out Profit Ratio),,
+/tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR (Spend Out Profit Ratio),,market-nav
+/tmp/web/sth_sopr.html,web-generation-end.html,Bitcoin STH SOPR,graphics/sth_sopr.html,Bitcoin STH SOPR (Short Term Hodler Spend Out Profit Ratio),,market-nav
+/tmp/web/lth_sopr.html,web-generation-end.html,Bitcoin LTH SOPR,graphics/lth_sopr.html,Bitcoin LTH SOPR (Long Term Hodler Spend Out Profit Ratio),,market-nav
 /tmp/web/open_interest_futures.html,web-generation-end.html,Bitcoin Open Interest Futures,graphics/open_interest_futures.html,Bitcoin Open Interest Future,,charts-nav
-/tmp/web/hodl_waves.html,web-generation-end-hodl-waves.html,Bitcoin Hodl Waves,graphics/hodl_waves.html,Bitcoin Hodl Waves,,
-/tmp/web/pi_cycle.html,web-generation-end.html,Bitcoin Pi Cycle,graphics/pi_cycle.html,Bitcoin Pi Cycle,,
+/tmp/web/hodl_waves.html,web-generation-end-hodl-waves.html,Bitcoin Hodl Waves,graphics/hodl_waves.html,Bitcoin Hodl Waves,,market-nav
+/tmp/web/pi_cycle.html,web-generation-end.html,Bitcoin Pi Cycle,graphics/pi_cycle.html,Bitcoin Pi Cycle,,components-nav
 /tmp/web/montecarlo_100.html,web-generation-end.html,Bitcoin Simulation Montecarlo next 100 days,graphics/montecarlo_100.html,Simulation Montecarlo next 100 days,,charts-nav
 /tmp/web/montecarlo_365.html,web-generation-end.html,Bitcoin Simulation Montecarlo last 365 days,graphics/montecarlo_365.html,Simulation Montecarlo last 365 days,,charts-nav
