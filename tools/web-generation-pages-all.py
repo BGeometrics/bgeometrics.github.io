@@ -3,7 +3,7 @@
 """
 Script para generar las páginas web con el menú.
 Pasos:
-- Se crea la página con el gráfico
+- Se crea las páginas, modo light y modo dark, con el gráfico
 - Se añade la opción de menú en el fichero web-generation-model.html
 - Se añade en el fichero web-generation-pages-all.txt con estos campos
 file_name,file_end,title,iframe_html,description,keywords
@@ -105,6 +105,8 @@ def generate_pages(_mode):
     with open(file_name, 'r') as archive:
         next(archive)
 
+        menu = ''
+
         #file_name,text file_end,title,iframe_html,description,keywords,file_model
         for line in archive:
             line = line.strip()
@@ -115,6 +117,7 @@ def generate_pages(_mode):
             iframe = fields[3]      # URL del gráfico que se añade al iframe 
             keywords = fields[4]    # Palabras claves de la página, es para los buscadores
             description = fields[5] # Descripción de la página. No lo estoy utilizando
+            menu = fields[6]        # Grupo de menú en el que se encuentra
             
             # Reprocesamos los campos que hay que cambiar por el modo oscuro
             if _mode == 'dark':
@@ -134,9 +137,20 @@ def generate_pages(_mode):
             f_model = open(file_model, 'r')
             f_out = open(file_out, 'w')
             
+            
+            menu_file = '<ul id="' + menu + '" class="nav-content collapse"'
+
             for line in f_model:
                 for check, rep in zip(checkWords, repWords):
                     line = line.replace(check, rep)
+
+                    # Para que el grupo de menu de la gráfica aparezca desplegado
+                    if line.find(menu_file) != -1:
+                        line = line.replace('nav-content collapse', 'nav-content')
+                        print("")
+                        print("ENCONTRADA")
+                        print("")
+                        print(line)
                 f_out.write(line)
 
             with open(file_end) as fp:
