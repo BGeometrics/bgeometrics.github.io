@@ -29,13 +29,13 @@
 /tmp/web/bitcoin_distribution_addr_tables.html,web-generation-end.html,Address Distribution BTC,reports/bitcoin_distribution_addr_tables.html,Address Distribution BTC,,address-nav
 /tmp/web/bitcoin_distribution_coin_g.html,web-generation-end.html,Bitcoin Address Coins,reports/bitcoin_distribution_coin_g.html,BTC Address Coins,,address-nav
 /tmp/web/bitcoin_distribution_coin_g_humpback.html,web-generation-end.html,Address Coins Humpback > 10K BTC,reports/bitcoin_distribution_coin_g_humpback.html,Address Coin Humpback > 10 BTC,,address-nav
-/tmp/web/bitcoin_distribution_coin_g_whale.html,web-generation-end.html,Address Coins Whale 1K to 10K BTC,reports/bitcoin_distribution_coin_g_whale.html,Address Coins Whale 1K to 10K BTC,,address-nav
+/tmp/web/distribution_coin_whale.html,web-generation-end.html,Coins Whale Addresses 1K to 10 BTC,graphics/distribution_coin_whale.html,Coins Whale Addresses 1K to 10K BTC,,address-nav
 /tmp/web/bitcoin_distribution_coin_g_shark.html,web-generation-end.html,Address Coins Shark 100 to 1K BTC,reports/bitcoin_distribution_coin_g_shark.html,Address Coins Shark 100 to 1K BTC,,address-nav
 /tmp/web/bitcoin_distribution_coin_g_fish.html,web-generation-end.html,Address Coins Fish 10 to 100 BTC,reports/bitcoin_distribution_coin_g_fish.html,Address Coins Fish 10 to 100 BTC,,address-nav
 /tmp/web/bitcoin_distribution_coin_g_crab.html,web-generation-end.html,Address Coins Crab 1 to 10 BTC,reports/bitcoin_distribution_coin_g_crab.html,Address Coins Crab 1 to 10 BTC,,address-nav
 /tmp/web/bitcoin_distribution_coin_g_shrimp.html,web-generation-end.html,Address Coins Shimp < 1 BTC,reports/bitcoin_distribution_coin_g_shimp.html,Address Coins Shimp < 1 BTC,,address-nav
 /tmp/web/bitcoin_distribution_addr_g_humpback.html,web-generation-end.html,Address Humpback > 10K BTC,reports/bitcoin_distribution_addr_g_humpback.html,Address Humpback > 10K BTC,,address-nav
-/tmp/web/distribution_addr_whale.html,web-generation-end.html,Address Whale 1K to 10 BTC,graphics/distribution_addr_whale.html,Address Humpback 1K to 10K BTC,,address-nav
+/tmp/web/distribution_addr_whale.html,web-generation-end.html,Address Whale 1K to 10 BTC,graphics/distribution_addr_whale.html,Address Whalek 1K to 10K BTC,,address-nav
 /tmp/web/bitcoin_distribution_addr_g_shark.html,web-generation-end.html,Address Shark 100 to 1K BTC,reports/bitcoin_distribution_addr_g_shark.html,Address Shark 100 to 10K BTC,,address-nav
 /tmp/web/bitcoin_distribution_addr_g_fish.html,web-generation-end.html,Address Fish 10 to 100 BTC,reports/bitcoin_distribution_addr_g_fish.html,Address Fish 10 to 100 BTC,,address-nav
 /tmp/web/bitcoin_distribution_addr_g_crab.html,web-generation-end.html,Address Crab 1 to 10 BTC,reports/bitcoin_distribution_addr_g_crab.html,Address Crab 1 to 10 BTC,,address-nav
