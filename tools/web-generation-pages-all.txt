@@ -1,4 +1,4 @@
-#file_name,text file_end,title,iframe_html,description,keywords,file_model
+#file_name,text file_end,title,iframe_html,description,keywords,file_model,group_menu
 /tmp/web/bitcoin_price_usd_g.html,web-generation-end-price.html,Bitcoin Price,reports/bitcoin_price_usd_g.html,Bitcoin Price,,components-nav
 /tmp/web/ohlc.html,web-generation-end-ohlc.html,Bitcoin OHLC,graphics/ohlc.html,Bitcoin OHLC,,components-nav
 /tmp/web/moving_average.html,web-generation-end.html,Bitcoin Moving Average,graphics/moving_average.html,Bitcoin Moving Average,,components-nav

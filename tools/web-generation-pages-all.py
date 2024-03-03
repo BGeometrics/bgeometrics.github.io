@@ -108,7 +108,7 @@ def generate_pages(_mode):
         menu = ''
         file_out = ''
 
-        #file_name,text file_end,title,iframe_html,description,keywords,file_model
+        #file_name,text file_end,title,iframe_html,description,keywords,file_model,group_menu
         for line in archive:
             line = line.strip()
             fields = line.split(',')
