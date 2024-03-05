@@ -1,0 +1,7 @@
+Sitemap: https://charts.bgeometrics.com/sitemap.xml
+
+User-agent: *
+Disallow: /*dark
+
+User-agent: *
+Allow: /
