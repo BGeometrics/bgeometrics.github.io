@@ -57,4 +57,4 @@
 /tmp/web/pi_cycle.html,web-generation-end.html,Bitcoin Pi Cycle,graphics/pi_cycle.html,Bitcoin Pi Cycle,,components-nav
 /tmp/web/montecarlo_100.html,web-generation-end.html,Bitcoin Simulation Montecarlo next 100 days,graphics/montecarlo_100.html,Simulation Montecarlo next 100 days,,charts-nav
 /tmp/web/montecarlo_365.html,web-generation-end.html,Bitcoin Simulation Montecarlo last 365 days,graphics/montecarlo_365.html,Simulation Montecarlo last 365 days,,charts-nav
-/tmp/web/m2.html,web-generation-end.html,M2 Money Stock,graphics/m2.html,M2 Money Stock,,charts-nav
+/tmp/web/m2.html,web-generation-end-m2.html,M2 Money Stock,graphics/m2.html,M2 Money Stock,,charts-nav
