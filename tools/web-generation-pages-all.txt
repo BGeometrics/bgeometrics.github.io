@@ -20,7 +20,7 @@
 /tmp/web/sth_mvrv.html,web-generation-end.html,STH MVRV,graphics/sth_mvrv.html,STH MVRV,,market-nav
 /tmp/web/lth_mvrv.html,web-generation-end.html,LTH MVRV,graphics/lth_mvrv.html,LTH MVRV,,market-nav
 /tmp/web/distribution_realized_price.html,web-generation-end.html,Bitcoin Realized Price Distribution (URPD),graphics/distribution_realized_price.html,Realized Price Distribution (URPD),,market-nav
-/tmp/web/bitcoin_aviv_g.html,web-generation-end.html,AVIV Ratio,reports/bitcoin_aviv_g.html,AVIV Ratio,,market-nav
+/tmp/web/aviv.html,web-generation-end.html,AVIV Ratio,graphics/aviv.html,AVIV Ratio,,market-nav
 /tmp/web/cdd.html,web-generation-end-cdd.html,Coins Days Destroyed (CDD),graphics/cdd.html,Coins Days Destroyed (CDD),,market-nav
 /tmp/web/bitcoin_cdd_ajusted_90dma_g.html,web-generation-end.html,CDD Ajusted 90 dma,reports/bitcoin_cdd_ajusted_90dma_g.html,CDD Ajusted 90 dma,,market-nav
 /tmp/web/realized_profit_loss_ratio.html,web-generation-end.html,Net Realized Profit and Loss,graphics/realized_profit_loss_ratio.html,Net Realized Profit and Loss,,market-nav
