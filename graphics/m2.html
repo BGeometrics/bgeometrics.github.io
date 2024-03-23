@@ -31,6 +31,9 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/m2_btc_price.json'
             ).then(response => response.json());
+            const data_value = await fetch(
+                'https://charts.bgeometrics.com/files/m2_value.json'
+            ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -54,10 +57,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -112,6 +111,10 @@
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
+                title: {
+                    text: 'M2 (Billions of Dollars)'
+                },
             }],
 
             series: [{
@@ -122,17 +125,28 @@
                 },
                 yAxis: 1
             },{
-                name: 'M2',
+                name: 'M2 Growth',
                 type: 'column',
                 data: data,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
+            },{
+                name: 'M2',
+                type: 'line',
+                data: data_value,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
             }],
 
             legend:{
-                enabled:false,
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                align:'center'
             },
             credits: {
                 text: 'Source: fred.stlouisfed.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
