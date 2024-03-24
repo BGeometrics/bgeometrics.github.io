@@ -122,6 +122,13 @@
             }],
 
             series: [{
+                name: 'BTC price',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
                 id:'nupl',
                 name: 'NUPL',
                 data: data_metrics,
@@ -129,13 +136,6 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
-            }, {
-                name: 'BTC price',
-                data: data_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 1
             }],
 
             legend:{
