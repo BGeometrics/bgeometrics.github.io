@@ -112,6 +112,7 @@
             },
 
             yAxis: [{
+                type: 'logarithmic',
                 height: '80%',
                 resize: {
                     enabled: true
@@ -150,6 +151,11 @@
                 yAxis: 1
             }, {
                 type: 'rsi',
+                params: {
+                    period: 14,
+                    //overbought: 70,
+                    //oversold: 30
+                },
                 linkedTo: 'BTC Week',
                 yAxis: 2
             }],
