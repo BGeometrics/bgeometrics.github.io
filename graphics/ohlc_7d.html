@@ -125,6 +125,13 @@
                 top: '80%',
                 height: '20%',
                 offset: 0,
+            }, {
+                title: {
+                    text: 'RSI BTC'
+                },
+                top: '80%',
+                height: '20%',
+                offset: 0,
             }],
 
             series: [{
@@ -139,6 +146,10 @@
                 name: 'Volume BTC',
                 data: volume,
                 yAxis: 1
+            }, {
+                type: 'rsi',
+                linkedTo: 'BTC Week',
+                yAxis: 2
             }],
 
             legend:{
@@ -149,7 +160,7 @@
             },
 
             rangeSelector: {
-                selected: 4
+                selected: 5
             },
 
             credits: {
