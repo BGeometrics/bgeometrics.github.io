@@ -63,4 +63,4 @@
 /tmp/web/fedfunds.html,web-generation-end-fedfunds.html,Bitcoin and Fed Funds,graphics/fedfunds.html,Bitcoin and Fed Funds,,macro-nav
 /tmp/web/address_active.html,web-generation-end-address-active.html,Active Addresses,graphics/address_active.html,Active Addresses,,address-nav
 /tmp/web/supply_in_profit.html,web-generation-end.html,Supply in Profit,graphics/supply_in_profit.html,Supply in Profit,,market-nav
-/tmp/web/etf.html,web-generation-end.html,Bitcoin ETF total balance and flow,graphics/etf.html,Bitcoin ETF total balanace and flow,,charts-nav
+/tmp/web/etf.html,web-generation-end-etf.html,Bitcoin ETF total balance and flow,graphics/etf.html,Bitcoin ETF total balanace and flow,,charts-nav
