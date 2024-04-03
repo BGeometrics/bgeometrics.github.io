@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin OHLC Minute Binance</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/hollowcandlestick.js"></script>
+
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+
+    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+    <script>
+
+    const  chart = new Highcharts.stockChart('container-iframe',{
+
+    chart: {
+        events: {
+            load() {
+                let chart = this;
+                
+                ( function () {
+                    /*
+                    var image = new Image();
+                    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                    image.src = adresse_image;
+
+                    var height_image = 128;
+                    var width_image = 128;
+                    var textX = this.plotLeft + (this.plotWidth * 0.5);
+                    var textY = this.plotTop + (this.plotHeight * 0.5);
+                    var position_x = textX - width_image / 2;
+                    var position_y = textY - height_image / 2;
+                    console.log(position_x + " " + position_y);
+                    this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                        .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                        .attr({zIndex: 1})
+                        .add();
+                    */
+
+                    fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=1000')
+                    .then(res =>  res.json())
+                    .then(data => {
+                        
+                        let cdata = data.map(d => {
+                        return [d[0], parseFloat(d[1]),parseFloat(d[2]),parseFloat(d[3]), parseFloat(d[4])]  
+                
+                        });
+
+                        console.log(cdata)
+                        chart.series[0].update({
+                        data: cdata
+                        }) 
+                    })
+
+                }())
+        
+            }
+        }
+    },
+
+    plotOptions: {
+        candlestick: {
+            lineColor: "#333",
+            color: '#e55700',
+            upColor: '#690'
+        }
+    },
+
+    xAxis: {
+        crosshair: true,
+    },
+    yAxis: {
+        labels: {
+            align: 'left',
+        },
+        crosshair: true
+    },
+
+    navigation: {
+        bindings: {
+            rect: {
+                annotationOptions: {
+                    ShapeOptions: {
+                        fill:'rgba(255,0,0,0.8)'
+                    }
+                }
+            }
+        },
+
+        annotationOptions:{
+            typeOptions: {
+                line: {
+                    stroke: 'rgba(0,255,0,0.8)',  
+                    strokeWidth: 3
+                }
+            }
+        } 
+    },  
+    title: {
+        text: 'Bitcoin OHLC Minute Binance',
+        align: 'left',
+    },
+
+    rangeSelector: {
+        enabled: false,
+    },
+
+    series: [{
+        type: 'candlestick',
+        name: "BTCUSDT" ,
+        /*
+        groupPadding: 0.03,
+        pointPadding: 0.03,
+        _dataGrouping: {
+        units: [
+            [
+                'week', // unit name
+                [1] // allowed multiples
+            ], [
+                'month',
+                [1, 2, 3, 4, 6]
+            ]
+        ]
+        }
+        */
+    }]
+    });   
+
+    let binanceSocket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@kline_1m  ");
+    let message= []
+    var dataframe 
+    binanceSocket.onmessage= (ticker)=> {
+        message =JSON.parse(ticker.data)
+        dataframe = [
+            Number(message.k.T), // the date
+            Number(message.k.o), // open
+            Number(message.k.h), // high
+            Number(message.k.l), // low
+            Number(message.k.c)  // close
+        ]
+
+        chart.series[0].addPoint(dataframe, true ) 
+    } 
+
+</script>
+
+</body>
+</html>
