@@ -62,3 +62,4 @@
 /tmp/web/m2.html,web-generation-end-m2.html,Bitcoin and M2 Money Stock,graphics/m2.html,Bitcoin and M2 Money Stock,,macro-nav
 /tmp/web/fedfunds.html,web-generation-end-fedfunds.html,Bitcoin and Fed Funds,graphics/fedfunds.html,Bitcoin and Fed Funds,,macro-nav
 /tmp/web/address_active.html,web-generation-end-address-active.html,Active Addresses,graphics/address_active.html,Active Addresses,,address-nav
+/tmp/web/supply_in_profit.html,web-generation-end.html,Supply in Profit,graphics/supply_in_profit.html,Supply in Profit,,market-nav
