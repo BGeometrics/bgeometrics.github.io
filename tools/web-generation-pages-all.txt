@@ -2,6 +2,7 @@
 /tmp/web/bitcoin_price_usd_g.html,web-generation-end-price.html,Bitcoin Price,reports/bitcoin_price_usd_g.html,Bitcoin Price,,components-nav
 /tmp/web/ohlc.html,web-generation-end-ohlc.html,Bitcoin OHLC,graphics/ohlc.html,Bitcoin OHLC,,components-nav
 /tmp/web/ohlc_7d.html,web-generation-end-ohlc-7d.html,Bitcoin OHLC,graphics/ohlc_7d.html,Bitcoin OHLC Week,,components-nav
+/tmp/web/ohlc_1m.html,web-generation-end-ohlc.html,Bitcoin OHLC Minute Binance,graphics/ohlc_1m.html,Bitcoin OHLC Minute Binance,,components-nav
 /tmp/web/moving_average.html,web-generation-end.html,Bitcoin Moving Average,graphics/moving_average.html,Bitcoin Moving Average,,components-nav
 /tmp/web/capitalization.html,web-generation-end-capitalization.html,Bitcoin Capitalization,graphics/capitalization.html,Bitcoin Capitalization,,components-nav
 /tmp/web/bitcoin_price_usd_day_g.html,web-generation-end.html,Bitcoin Price day like today,reports/bitcoin_price_usd_day_g.html,Bitcoin Price day like today,,components-nav
