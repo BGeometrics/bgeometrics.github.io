@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin, S&P 500, Gold, Tesla</title>
+    <title>Bitcoin, S&P 500, Gold, Tesla, MicroStrategy</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -38,6 +38,9 @@
             ).then(response => response.json());
             const data_tesla = await fetch(
                 'https://charts.bgeometrics.com/files/tsla_yf.json'
+            ).then(response => response.json());
+            const data_microstrategy = await fetch(
+                'https://charts.bgeometrics.com/files/mstr_yf.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
@@ -78,6 +81,10 @@
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
+                            chart.yAxis[4].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
 
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
@@ -91,7 +98,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin, S&P 500, Gold, Tesla',
+                text: 'Bitcoin, S&P 500, Gold, Tesla, MicroStrategy',
                 align: 'left',
             },
 
@@ -120,7 +127,7 @@
 
             yAxis: [{
                 title: {
-                    text: 'Bitcoin, Tesla',
+                    text: 'Tesla',
                 },
                 type: 'logarithmic'
             }, {
@@ -137,6 +144,11 @@
             }, {
                 title: {
                     text: 'Gold'
+                },
+                type: 'logarithmic',
+            }, {
+                title: {
+                    text: 'MicroStrategy'
                 },
                 type: 'logarithmic',
             }],
@@ -173,6 +185,14 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id:'microstrategy',
+                name: 'MicroStrategy',
+                data: data_microstrategy,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 4
             }],
 
             legend:{
