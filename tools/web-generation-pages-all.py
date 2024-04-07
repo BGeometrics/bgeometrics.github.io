@@ -218,6 +218,14 @@ output_file_path = '/tmp/web/pages-contact.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page donation.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-donation-end.html'
+output_file_path = '/tmp/web/donation.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
+
 ### Mode dark 
 
 _file_out = 'web-generation-model-dark.html' 
@@ -263,6 +271,13 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/pages-contact_dark.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page contact.html with menu dark
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-donation-end.html'
+output_file_path = '/tmp/web/donation_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 

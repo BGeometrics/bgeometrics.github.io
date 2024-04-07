@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin LTH SOPR (Long Term Hodler Spend Out Profit Ratio)" name="keywords">
+  <meta content="__keywords__" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -25,7 +25,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style-dark.css" rel="stylesheet">
   <link href="assets/css/bgeometrics.css" rel="stylesheet">
 
   <!-- Google tag (gtag.js) --> 
@@ -40,7 +40,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index_dark.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="BGeometrics">
         <span class="d-none d-lg-block">BGeometrics</span>
       </a>
@@ -66,17 +66,17 @@
 	<li>
           <div class="dropdown d-inline language-switcher">
             <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <span id="currentMode">Light</span>
+              <span id="currentMode">Dark</span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="modeDropdown">
               <li>
-		<a class="dropdown-item" href="index.html">
-                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Light
+		<a class="dropdown-item" href="index_dark.html">
+                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Dark
 	        </a>
 	      </li>
               <li>
-		<a class="dropdown-item" href="index_dark.html">
-                  <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Dark
+		<a class="dropdown-item" href="index.html">
+                  <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Light
                 </a>
 	      </li>
             </ul>
@@ -114,42 +114,42 @@
         </a>
         <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="bitcoin_price_usd_g.html">
+            <a href="bitcoin_price_usd_g_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Price</span>
             </a>
           </li>
           <li>
-            <a href="ohlc.html">
+            <a href="ohlc_dark.html">
               <i class="bi bi-circle"></i><span>OHLC</span>
             </a>
           </li>
           <li>
-            <a href="ohlc_7d.html">
+            <a href="ohlc_7d_dark.html">
               <i class="bi bi-circle"></i><span>OHLC Week</span>
             </a>
           </li>
           <li>
-            <a href="ohlc_1m.html">
+            <a href="ohlc_1m_dark.html">
               <i class="bi bi-circle"></i><span>Price Live</span>
             </a>
           </li>
           <li>
-            <a href="moving_average.html">
+            <a href="moving_average_dark.html">
               <i class="bi bi-circle"></i><span>BTC Moving Average</span>
             </a>
           </li>
           <li>
-            <a href="capitalization.html">
+            <a href="capitalization_dark.html">
               <i class="bi bi-circle"></i><span>BTC Capitalization</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_price_usd_day_g.html">
+            <a href="bitcoin_price_usd_day_g_dark.html">
               <i class="bi bi-circle"></i><span>BTC Price a day like</span>
             </a>
           </li>
           <li>
-            <a href="pi_cycle.html">
+            <a href="pi_cycle_dark.html">
               <i class="bi bi-circle"></i><span>Pi Cycle</span>
             </a>
           </li>
@@ -162,27 +162,27 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="bitcoin_price_g_log.html">
+            <a href="bitcoin_price_g_log_dark.html">
               <i class="bi bi-circle"></i><span>BTC Price Log</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_halving_radar_g.html">
+            <a href="bitcoin_halving_radar_g_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Halving Radar </span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_year_candle_g.html">
+            <a href="bitcoin_year_candle_g_dark.html">
               <i class="bi bi-circle"></i><span>Candles Yearly</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_halving_month_g.html">
+            <a href="bitcoin_halving_month_g_dark.html">
               <i class="bi bi-circle"></i><span>Halving Month</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_halving_cycle_g.html">
+            <a href="bitcoin_halving_cycle_g_dark.html">
               <i class="bi bi-circle"></i><span>Halving Cycle</span>
             </a>
           </li>
@@ -193,104 +193,104 @@
         <a class="nav-link collapsed" data-bs-target="#market-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="market-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="realized_price_g.html">
+            <a href="realized_price_g_dark.html">
               <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
             </a>
           </li>
           <li>
-            <a href="hodl_waves.html">
+            <a href="hodl_waves_dark.html">
               <i class="bi bi-circle"></i><span>Hodl Waves</span>
             </a>
           </li>
           <li>
-            <a href="hodl_waves_realized_cap.html">
+            <a href="hodl_waves_realized_cap_dark.html">
               <i class="bi bi-circle"></i><span>Hodl Waves Realized Cap</span>
             </a>
           </li>
           <li>
-            <a href="nupl.html">
+            <a href="nupl_dark.html">
               <i class="bi bi-circle"></i><span>NUPL</span>
             </a>
           </li>
           <li>
-            <a href="sth_realized_price.html">
+            <a href="sth_realized_price_dark.html">
               <i class="bi bi-circle"></i><span>STH Realized Price</span>
             </a>
           </li>
           <li>
-            <a href="lth_realized_price.html">
+            <a href="lth_realized_price_dark.html">
               <i class="bi bi-circle"></i><span>LTH Realized Price</span>
             </a>
           </li>
           <li>
-            <a href="sopr.html">
+            <a href="sopr_dark.html">
               <i class="bi bi-circle"></i><span>SOPR</span>
             </a>
           </li>
           <li>
-            <a href="sth_sopr.html">
+            <a href="sth_sopr_dark.html">
               <i class="bi bi-circle"></i><span>STH SOPR</span>
             </a>
           </li>
           <li>
-            <a href="lth_sopr.html" class="active">
+            <a href="lth_sopr_dark.html">
               <i class="bi bi-circle"></i><span>LTH SOPR</span>
             </a>
           </li>
           <li>
-            <a href="mvrv.html">
+            <a href="mvrv_dark.html">
               <i class="bi bi-circle"></i><span>MVRV Z-Score</span>
             </a>
           </li>
           <li>
-            <a href="mvrv_ratio.html">
+            <a href="mvrv_ratio_dark.html">
               <i class="bi bi-circle"></i><span>MVRV Ratio</span>
             </a>
           </li>
           <li>
-            <a href="sth_mvrv.html">
+            <a href="sth_mvrv_dark.html">
               <i class="bi bi-circle"></i><span>STH MVRV</span>
             </a>
           </li>
           <li>
-            <a href="lth_mvrv.html">
+            <a href="lth_mvrv_dark.html">
               <i class="bi bi-circle"></i><span>LTH MVRV</span>
             </a>
           </li>
           <li>
-            <a href="distribution_realized_price.html">
+            <a href="distribution_realized_price_dark.html">
               <i class="bi bi-circle"></i><span>Realized Price Distribution</span>
             </a>
           </li>
           <li>
-            <a href="aviv.html">
+            <a href="aviv_dark.html">
               <i class="bi bi-circle"></i><span>AVIV Ratio</span>
             </a>
           </li>
           <li>
-            <a href="cdd.html">
+            <a href="cdd_dark.html">
               <i class="bi bi-circle"></i><span>Coins Days Destroyed</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_cdd_ajusted_90dma_g.html">
+            <a href="bitcoin_cdd_ajusted_90dma_g_dark.html">
               <i class="bi bi-circle"></i><span>CDD Ajusted 90dma</span>
             </a>
           </li>
           <li>
-            <a href="realized_profit_loss_ratio.html">
+            <a href="realized_profit_loss_ratio_dark.html">
               <i class="bi bi-circle"></i><span>Net Realized Profit and Loss</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_liveliness_g.html">
+            <a href="bitcoin_liveliness_g_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Liveliness</span>
             </a>
           </li>
           <li>
-            <a href="supply_in_profit.html">
+            <a href="supply_in_profit_dark.html">
               <i class="bi bi-circle"></i><span>Supply in Profit</span>
             </a>
           </li>
@@ -303,107 +303,107 @@
         </a>
         <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="address_active.html">
+            <a href="address_active_dark.html">
               <i class="bi bi-circle"></i><span>Active Addresses</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_coins_tables.html">
+            <a href="bitcoin_distribution_coins_tables_dark.html">
               <i class="bi bi-circle"></i><span>BTC Coins Distribution</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_addr_tables.html">
+            <a href="bitcoin_distribution_addr_tables_dark.html">
               <i class="bi bi-circle"></i><span>BTC Addresses Distribution</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_coin_g.html">
+            <a href="bitcoin_distribution_coin_g_dark.html">
               <i class="bi bi-circle"></i><span>Coins</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_coin_g_humpback.html">
+            <a href="bitcoin_distribution_coin_g_humpback_dark.html">
               <i class="bi bi-circle"></i><span>Coins Humpback > 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="distribution_coin_whale.html">
+            <a href="distribution_coin_whale_dark.html">
               <i class="bi bi-circle"></i><span>Coins Whale 1K - 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_shark.html">
+            <a href="reports/bitcoin_distribution_coin_g_shark_dark.html">
               <i class="bi bi-circle"></i><span>Coins Shark 100 - 1K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_fish.html">
+            <a href="reports/bitcoin_distribution_coin_g_fish_dark.html">
               <i class="bi bi-circle"></i><span>Coins Fish 10 - 100 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_crab.html">
+            <a href="reports/bitcoin_distribution_coin_g_crab_dark.html">
               <i class="bi bi-circle"></i><span>Coins Crab 1 - 10 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_shrimp.html">
+            <a href="reports/bitcoin_distribution_coin_g_shrimp_dark.html">
               <i class="bi bi-circle"></i><span>Coins Shrimp < 1 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_humpback.html">
+            <a href="reports/bitcoin_distribution_addr_g_humpback_dark.html">
               <i class="bi bi-circle"></i><span>Addr Humpback > 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="distribution_addr_whale.html">
+            <a href="distribution_addr_whale_dark.html">
               <i class="bi bi-circle"></i><span>Addr Whale 1K - 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_shark.html">
+            <a href="reports/bitcoin_distribution_addr_g_shark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Shark 100 - 1K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_fish.html">
+            <a href="reports/bitcoin_distribution_addr_g_fish_dark.html">
               <i class="bi bi-circle"></i><span>Addr Fish 10 - 100 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_crab.html">
+            <a href="reports/bitcoin_distribution_addr_g_crab_dark.html">
               <i class="bi bi-circle"></i><span>Addr Crab 1 - 10 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_shrimp.html">
+            <a href="reports/bitcoin_distribution_addr_g_shrimp_dark.html">
               <i class="bi bi-circle"></i><span>Addr Shrimp < 1 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_whale_accumulation_heatmap_g.html">
+            <a href="reports/bitcoin_whale_accumulation_heatmap_g_dark.html">
               <i class="bi bi-circle"></i><span>Whale Accumulation Heat Map</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_whale_30d_sum_g.html">
+            <a href="reports/bitcoin_whale_30d_sum_g_dark.html">
               <i class="bi bi-circle"></i><span>Whale Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_shark_30d_sum_g.html">
+            <a href="reports/bitcoin_shark_30d_sum_g_dark.html">
               <i class="bi bi-circle"></i><span>Shark Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_shrimp_30d_sum_g.html">
+            <a href="reports/bitcoin_shrimp_30d_sum_g_dark.html">
               <i class="bi bi-circle"></i><span>Shrimp Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_pie_g.html">
+            <a href="reports/bitcoin_distribution_coin_pie_g_dark.html">
               <i class="bi bi-circle"></i><span>Distribution two years</span>
             </a>
           </li>
@@ -416,62 +416,62 @@
         </a>
         <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="etf.html">
+            <a href="etf_dark.html">
 	      <i class="bi bi-circle"></i><span>ETF Total Balance</span>
             </a>
           </li>
           <li>
-            <a href="stablecoin_supply.html">
+            <a href="stablecoin_supply_dark.html">
               <i class="bi bi-circle"></i><span>Stablecoin supply</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_ex_change_held_g.html">
+            <a href="bitcoin_ex_change_held_g_dark.html">
               <i class="bi bi-circle"></i><span>Change BTC on exchanges</span>
             </a>
           </li>
           <li>
-            <a href="fear_greed.html">
+            <a href="fear_greed_dark.html">
               <i class="bi bi-circle"></i><span>Fear and Greed</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_fear_greed_img.html">
+            <a href="bitcoin_fear_greed_img_dark.html">
               <i class="bi bi-circle"></i><span>Fear and Greed index color</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_volatility_g.html">
+            <a href="bitcoin_volatility_g_dark.html">
               <i class="bi bi-circle"></i><span>BTC Volatility</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_dominance_g.html">
+            <a href="bitcoin_dominance_g_dark.html">
               <i class="bi bi-circle"></i><span>BTC Dominance</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_hashprice_g.html">
+            <a href="bitcoin_hashprice_g_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_hashribbons_g.html">
+            <a href="bitcoin_hashribbons_g_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashribbons</span>
             </a>
           </li>
           <li>
-            <a href="open_interest_futures.html">
+            <a href="open_interest_futures_dark.html">
               <i class="bi bi-circle"></i><span>Open Interest Futures</span>
             </a>
           </li>
           <li>
-            <a href="montecarlo_100.html">
+            <a href="montecarlo_100_dark.html">
               <i class="bi bi-circle"></i><span>Montecarlo next 100 days</span>
             </a>
           </li>
           <li>
-            <a href="montecarlo_365.html">
+            <a href="montecarlo_365_dark.html">
               <i class="bi bi-circle"></i><span>Montecarlo last 365 days</span>
             </a>
           </li>
@@ -484,17 +484,17 @@
         </a>
         <ul id="macro-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="sp500_gold.html">
+            <a href="sp500_gold_dark.html">
               <i class="bi bi-circle"></i><span>SP500, Gold, Tesla, MSTR</span>
             </a>
           </li>
           <li>
-            <a href="m2.html">
+            <a href="m2_dark.html">
               <i class="bi bi-circle"></i><span>M2 Money Stock</span>
             </a>
           </li>
           <li>
-            <a href="fedfunds.html">
+            <a href="fedfunds_dark.html">
               <i class="bi bi-circle"></i><span>Fed Funds</span>
             </a>
           </li>
@@ -504,7 +504,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="services.html">
+        <a class="nav-link collapsed" href="services_dark.html">
           <i class="bi bi-person"></i>
           <span>Services</span>
         </a>
@@ -518,14 +518,14 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="pages-contact_dark.html">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="donation.html">
+        <a class="nav-link collapsed" href="donation_dark.html">
           <i class="bi bi-envelope"></i>
           <span>Donation</span>
         </a>
@@ -537,23 +537,26 @@
 
   <main id="main" class="main">
 
-    <section class="section dashboard">
-      <div class="row">
-        <div id="searchResults"></div>
+    <section class="section contact">
 
-        <!-- Left side columns -->
-        <div class="col-lg-12">
+      <div class="row gy-4">
+
+        <div class="col-xl-6">
+
           <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/lth_sopr.html" allow="fullscreen" title="Bitcoin LTH SOPR" scrolling="no" frameBorder="0"></iframe>
+            <div class="col-lg-6">
+              <div class="info-box card">
+                <i class="bi bi-envelope"></i>
+                <h3>Donation Lightning Network</h3>
+                <p>lnurl1dp68gurn8ghj7ampd3kx2ar0veekzar0wd5xjtnrdakj7tnhv4kxctttdehhwm30d3h82unvwqhkyem9dakk2arjd93hx2sg3sm</p>
+                <p>Wallets support: Wallet Of Satoshi, Blink, Strike, CoinCorner, Alby, Nicehash, Stacker News...</p>
+		<p><a href='https://lightningaddress.com/#providers'>Providers lnd address</a></p>
               </div>
             </div>
-
           </div>
-        </div><!-- End Left side columns -->
-
+        </div>
       </div>
+
     </section>
 
   </main><!-- End #main -->
