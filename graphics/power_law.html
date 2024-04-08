@@ -28,6 +28,9 @@
             const data_power_law = await fetch(
                 'https://charts.bgeometrics.com/files/power_law.json'
             ).then(response => response.json());
+            const data_power_law_floor = await fetch(
+                'https://charts.bgeometrics.com/files/power_law_floor.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
             ).then(response => response.json());
@@ -125,6 +128,14 @@
                 id:'btc_power_law',
                 name: 'BTC Power Law',
                 data: data_power_law,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'btc_power_law_floor',
+                name: 'BTC Power Law Floor',
+                data: data_power_law_floor,
                 tooltip: {
                     valueDecimals: 2
                 },
