@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="AVIV Ratio" name="keywords">
+  <meta content="Bitcoin Power Law" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -193,7 +193,7 @@
         <a class="nav-link collapsed" data-bs-target="#market-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="market-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="realized_price_g_dark.html">
               <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
@@ -265,7 +265,7 @@
             </a>
           </li>
           <li>
-            <a href="aviv_dark.html" class="active">
+            <a href="aviv_dark.html">
               <i class="bi bi-circle"></i><span>AVIV Ratio</span>
             </a>
           </li>
@@ -414,7 +414,7 @@
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Others charts</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="charts-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="etf_dark.html">
 	      <i class="bi bi-circle"></i><span>ETF Total Balance</span>
@@ -466,7 +466,7 @@
             </a>
           </li>
           <li>
-            <a href="power_law_dark.html">
+            <a href="power_law_dark.html" class="active">
               <i class="bi bi-circle"></i><span>BTC Power Law</span>
             </a>
           </li>
@@ -551,7 +551,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/aviv_dark.html" allow="fullscreen" title="AVIV Ratio" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/power_law_dark.html" allow="fullscreen" title="Bitcoin Power Law" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -559,28 +559,6 @@
         </div><!-- End Left side columns -->
 
       </div>
-    </section>
-    <br>
-    <section>
-      <div class="container">
-        <a href="graphics/aviv.html">
-          <h5>AVIV Ratio</h5>
-        </a>
-        <p> 
-	  The asset value-investor value ratio is the relationship between active capitalization (ActiveCap), which is the BTC that is in motion at a given time, and investors' realized capitalization (InverstorCap).
-          <br><br>
-	  The investors realized price capitalization (InvertorCap) is the realized capital (RealizedCap), which is the price at which the BTC have been purchased but discounting what was delivered to the miners.
-          <br><br>
-	  The AVIV ratio, then, is a way to measure what proportion of the money in Bitcoin is actually in motion, active capitalization, compared to how much money investors have invested in total, Investor realized capitalization.
-          <br><br>
-	  When this ratio is above 250%, it suggests that Bitcoin is overvalued and a recession is likely to begin, as there is a large amount of money in motion relative to the investment made.
-	  <br>
-	  On the other hand, when the ratio is below 55%, it indicates oversold and an upward trend, since there is relatively little money in movement compared to the investment made, which suggests that there may be interesting investment opportunities.
-          <br><br>
-	  More information in the white paper of <a href="https://ark-invest.com/white-papers/cointime-economics/?utm_campaign=Cointime%20Economics&utm_content=261766789">Cointime Economics</a> on @ARKInvest by @dpuellARK and @Checkmatey
-        </p>
-      </div>
-
     </section>
 
   </main><!-- End #main -->
