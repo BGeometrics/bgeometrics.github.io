@@ -51,6 +51,17 @@
     { name: "Long Term Hodler vs Short Term Hodler", link: "reports/bitcoin_lth_sth_g.html" },
     { name: "Services, custom charts, graphics", link: "services.html" },
     { name: "Open Interest Futures", link: "open_interest_futures.html" },
+    { name: "ETF", link: "etf.html" },
+    { name: "Price Live", link: "ohlc_1m.html" },
+    { name: "OHLC Week", link: "ohlc_7d.html" },
+    { name: "Pi Cycle", link: "pi_cycle.html" },
+    { name: "Addresses Active", link: "address_active.html" },
+    { name: "Stablecoin Supply", link: "stablecoin_supply.html" },
+    { name: "BTC Power Law", link: "power_law.html" },
+    { name: "S&P 500 Gold Tesla MSTR", link: "sp500_gold.html" },
+    { name: "M2 Money Stock", link: "m2.html" },
+    { name: "Fed Funds", link: "fedfunds.html" },
+    { name: "Donation", link: "donation.html" },
   ];
 
   function search() {
