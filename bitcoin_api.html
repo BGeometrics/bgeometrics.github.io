@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin STH SOPR (Short Term Hodler Spend Out Profit Ratio)" name="keywords">
+  <meta content="__keywords__" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -193,7 +193,7 @@
         <a class="nav-link collapsed" data-bs-target="#market-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="market-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="realized_price_g.html">
               <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
@@ -230,7 +230,7 @@
             </a>
           </li>
           <li>
-            <a href="sth_sopr.html" class="active">
+            <a href="sth_sopr.html">
               <i class="bi bi-circle"></i><span>STH SOPR</span>
             </a>
           </li>
@@ -542,23 +542,38 @@
 
   <main id="main" class="main">
 
-    <section class="section dashboard">
-      <div class="row">
-        <div id="searchResults"></div>
+    <div class="row">
+      <div id="searchResults"></div>
+    </div>
 
-        <!-- Left side columns -->
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/sth_sopr.html" allow="fullscreen" title="Bitcoin STH SOPR" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-
-          </div>
-        </div><!-- End Left side columns -->
-
+    <section>
+      <div class="pagetitle">
+	      <h1><a href='https://bitcoin-data.com/api/swagger-ui/index.html' target='_blank'>Bitcoin Data On Chain API Free</a></h1>
+	      <br><br>
       </div>
+    </section>
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+	      <br>The beta version page is on <a href='https://bitcoin-data.com/api/swagger-ui/index.html' target='_blank'>Bitcoin API</a>.
+	      <br><br>This is the provisional website of bitcoin-data.com, a website where Bitcoin data will be made available for free through a REST API, it will be mostly On Chain metrics of the Bitcoin Blockchain.
+            </div>  
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <!-- Card with header and footer -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Metrics On-Chain</h5>
+	      With the free bitcoin API you can easily access the most relevant On Chain metrics extracted from the Bitcoin blockchain offering information on the current price of Bitcoin, market trends, transaction volumes and much more.
+            </div>
+          </div>
+        </div>
+      </div>   
     </section>
 
   </main><!-- End #main -->
@@ -600,3 +615,4 @@
 </body>
 
 </html>
+

@@ -225,6 +225,12 @@ output_file_path = '/tmp/web/donation.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page donation.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-bitcoin-api-end.html'
+output_file_path = '/tmp/web/bitcoin_api.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
 
 ### Mode dark 
 
