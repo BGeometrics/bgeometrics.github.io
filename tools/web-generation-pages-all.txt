@@ -64,4 +64,5 @@
 /tmp/web/address_active.html,web-generation-end-address-active.html,Active Addresses,graphics/address_active.html,Active Addresses,,address-nav
 /tmp/web/supply_in_profit.html,web-generation-end.html,Supply in Profit,graphics/supply_in_profit.html,Supply in Profit,,market-nav
 /tmp/web/etf.html,web-generation-end-etf.html,Bitcoin ETF total balance and daily flow,graphics/etf.html,Bitcoin ETF total balanace and daily flow,,charts-nav
+/tmp/web/etf_btc.html,web-generation-end.html,BTC held by ETFs and % of supply they represent,graphics/etf_btc.html,BTC held by ETFs and % of supply they represent,,charts-nav
 /tmp/web/power_law.html,web-generation-end-power-law.html,Bitcoin Power Law,graphics/power_law.html,Bitcoin Power Law,,charts-nav
