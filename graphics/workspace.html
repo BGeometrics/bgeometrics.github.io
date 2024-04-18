@@ -18,8 +18,6 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <figure class="highcharts-figure">
         <select class="form-select" id="metrics">
@@ -40,9 +38,8 @@
             <option value="lth_mvrv_axis">MVRV LTH</option>
             <option value="nupl_axis">NUPL</option>
             <option value="fear_greed">Fear and Greed</option>
-
         </select>
-
+        &nbsp;
         <button id="showButton">Show</button>
 
         <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
@@ -50,8 +47,6 @@
 
 
     <script>
-
-
         (async () => {
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
