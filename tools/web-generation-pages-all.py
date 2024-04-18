@@ -206,7 +206,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu
 file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-end.html'
+file2_path = 'web-generation-model-workpace-end.html'
 output_file_path = '/tmp/web/workspace.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
@@ -274,7 +274,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu dark
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-end.html'
+file2_path = 'web-generation-model-workpace-end.html'
 output_file_path = '/tmp/web/workspace_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
