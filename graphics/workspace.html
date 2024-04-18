@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Realized Price</title>
+    <title>BGeometrics Workspace</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -22,14 +22,25 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <figure class="highcharts-figure">
-        <p class="highcharts-description">
-        </p>
-    
-        <select class="form-select" aria-label="Default select example" id="metrics">
+        <select class="form-select" id="metrics">
             <option selected>Metrics On-Chain</option>
-            <option value="fear_greed">Fear and Greed</option>
             <option value="realized_price">Realized Price</option>
             <option value="delta_cap">Delta cap</option>
+            <option value="aviv">AVIV</option>
+            <option value="power_law">Power Law</option>
+            <option value="50dma">50 day MA</option>
+            <option value="155dma">155 day MA</option>
+            <option value="200dma">200 day MA</option>
+            <option value="sopr_axis">SOPR</option>
+            <option value="sth_sopr_axis">SOPR STH</option>
+            <option value="lth_sopr_axis">SOPR LTH</option>
+            <option value="mvrv_zscore_axis">MVRV Z-Score</option>
+            <option value="mvrv_axis">MVRV</option>
+            <option value="sth_mvrv_axis">MVRV STH</option>
+            <option value="lth_mvrv_axis">MVRV LTH</option>
+            <option value="nupl_axis">NUPL</option>
+            <option value="fear_greed">Fear and Greed</option>
+
         </select>
 
         <button id="showButton">Show</button>
@@ -89,7 +100,7 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Realized Price</a>',
+                text: 'BGeometrics Workspace',
                 align: 'left',
             },
 
@@ -107,7 +118,6 @@
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
                         var position_y = textY - height_image / 2;
-                        //console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
@@ -117,14 +127,12 @@
             },
 
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false
-            }, {
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
+            }, {
+                opposite: false
             }],
 
             series: [{
@@ -178,21 +186,31 @@
 
     document.getElementById('showButton').addEventListener('click', function() {
         var e = document.getElementById("metrics");
-        console.log(e.value);
-        console.log(e.options[e.selectedIndex].text);
+        var value = e.value;
+        var text = e.options[e.selectedIndex].text;
+        var yAxis = 0;
 
-        data3 = fetch('https://charts.bgeometrics.com/files/' + e.value + '.json')
+        console.log(e.value);
+        console.log(text);
+
+        console.log(value.indexOf('_axis'));
+        if (value.indexOf('_axis') > 0) {
+            value = value.substring(0, value.indexOf('_axis'));
+            yAxis = 1;
+        }
+        data = fetch('https://charts.bgeometrics.com/files/' + value + '.json')
             .then(response => response.json());
 
-        Promise.all([data3]).then(values => {
+        Promise.all([data]).then(values => {
             chart.addSeries({
-                id: e.value,
-                name: e.options[e.selectedIndex].text,
+                id: value,
+                name: text,
                 data: values[0],
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: yAxis
+                
             });
         });
 
