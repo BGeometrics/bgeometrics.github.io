@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BGeometrics Workspace</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+
+    <figure class="highcharts-figure">
+        <select class="form-select" id="metrics">
+            <option selected>Metrics On-Chain</option>
+            <option value="realized_price">Realized Price</option>
+            <option value="delta_cap">Delta cap</option>
+            <option value="aviv">AVIV</option>
+            <option value="power_law">Power Law</option>
+            <option value="50dma">50 day MA</option>
+            <option value="155dma">155 day MA</option>
+            <option value="200dma">200 day MA</option>
+            <option value="sopr_axis">SOPR</option>
+            <option value="sth_sopr_axis">SOPR STH</option>
+            <option value="lth_sopr_axis">SOPR LTH</option>
+            <option value="mvrv_zscore_axis">MVRV Z-Score</option>
+            <option value="mvrv_axis">MVRV</option>
+            <option value="sth_mvrv_axis">MVRV STH</option>
+            <option value="lth_mvrv_axis">MVRV LTH</option>
+            <option value="nupl_axis">NUPL</option>
+            <option value="fear_greed">Fear and Greed</option>
+        </select>
+        &nbsp;
+        <button id="showButton">Show</button>
+
+        <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    </figure>
+
+
+    <script>
+        (async () => {
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+            ).then(response => response.json());
+
+        chart = Highcharts.stockChart('container-iframe', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            }, false)    
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'BGeometrics Workspace (Beta)',
+                align: 'left',
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'BTC price'
+                },
+                type: 'logarithmic',
+            }, {
+                opposite: false
+            }],
+
+            series: [{
+                name: 'BTC price',
+                color: 'white',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                y: 25,
+                align:'center'
+            },
+
+            rangeSelector: {
+                selected: 5
+            },
+
+            credits: {
+                text: 'Power by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        }
+                    }
+                }]
+            }
+        });
+    })();
+
+    document.getElementById('showButton').addEventListener('click', function() {
+        var e = document.getElementById("metrics");
+        var value = e.value;
+        var text = e.options[e.selectedIndex].text;
+        var yAxis = 0;
+
+        console.log(e.value);
+        console.log(text);
+
+        console.log(value.indexOf('_axis'));
+        if (value.indexOf('_axis') > 0) {
+            value = value.substring(0, value.indexOf('_axis'));
+            yAxis = 1;
+        }
+        data = fetch('https://charts.bgeometrics.com/files/' + value + '.json')
+            .then(response => response.json());
+
+        Promise.all([data]).then(values => {
+            chart.addSeries({
+                id: value,
+                name: text,
+                data: values[0],
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: yAxis
+                
+            });
+        });
+
+    });
+
+    </script>
+
+</body>
+</html>
