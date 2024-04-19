@@ -294,7 +294,7 @@ output_file_path = '/tmp/web/pages-contact_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Generate page contact.html with menu dark
+# Generate page donation.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/donation_dark.html'
