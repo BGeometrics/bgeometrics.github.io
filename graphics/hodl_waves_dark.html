@@ -27,6 +27,9 @@
 
     <script>
         (async () => {
+            const data_hw_age_6m_ = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_6m_.json'
+            ).then(response => response.json());
             const data_hw_age_8y_ = await fetch(
                 'https://charts.bgeometrics.com/files/hw_age_8y_.json'
             ).then(response => response.json());
@@ -157,7 +160,7 @@
 
             series: [{
                 name: 'BTC price',
-                color: 'black',
+                color: 'white',
                 data: data_price,
                 type: 'line',
                 zIndex: 3,
@@ -165,6 +168,18 @@
                     valueDecimals: 2
                 },
                 yAxis: 1
+            }, {
+                name: '6m to ...',
+                color: 'rgba(0, 0, 0, 0.7)',
+                data: data_hw_age_6m_,
+                shared: false,
+                type: 'line',
+                zIndex: 2,
+                tooltip: {
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
+                },
+                yAxis: 0
             }, {
                 name: '8y to ...',
                 color: 'rgba(94, 79, 162,0.8)',
