@@ -101,3 +101,35 @@
       event.preventDefault();
     }
   }
+
+  function getMetric() {
+      var e = document.getElementById("metrics");
+      var value = e.value;
+      var text = e.options[e.selectedIndex].text;
+      var yAxis = 0;
+
+      console.log(e.value);
+      console.log(text);
+
+      console.log(value.indexOf('_axis'));
+      if (value.indexOf('_axis') > 0) {
+          value = value.substring(0, value.indexOf('_axis'));
+          yAxis = 1;
+      }
+      data = fetch('https://charts.bgeometrics.com/files/' + value + '.json')
+          .then(response => response.json());
+
+      Promise.all([data]).then(values => {
+          chart.addSeries({
+              id: value,
+              name: text,
+              data: values[0],
+              tooltip: {
+                  valueDecimals: 2
+              },
+              yAxis: yAxis
+              
+          });
+      });
+  }
+
