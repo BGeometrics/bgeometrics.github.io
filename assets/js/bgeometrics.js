@@ -63,6 +63,7 @@
     { name: "M2 Money Stock", link: "m2.html" },
     { name: "Fed Funds", link: "fedfunds.html" },
     { name: "Donation", link: "donation.html" },
+    { name: "BGeometrics Workspace", link: "workspace.html" },
   ];
 
   function search() {
