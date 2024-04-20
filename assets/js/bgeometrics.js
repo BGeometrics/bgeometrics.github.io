@@ -103,6 +103,7 @@
     }
   }
 
+  /*
   function getMetric() {
       var e = document.getElementById("metrics");
       var value = e.value;
@@ -145,6 +146,7 @@
 
       addCharts(e.value, text);
   }
+*/
 
 function addCharts(_metricId, _text){
     var e = document.getElementById("metrics");
@@ -202,10 +204,6 @@ function changeMetrics() {
     var value = e.value;
     var text = e.options[e.selectedIndex].text;
 
-    addCharts(value, text);
-    
-    deleteCookie(COOKIE_NAME);
-
     // set cookie
     if(!metricsId.includes(value)){
         if(metricsId.length == 0) 
@@ -213,6 +211,8 @@ function changeMetrics() {
         else
             metricsId = metricsId + "!$" + value;
 
+        addCharts(value, text);
+        deleteCookie(COOKIE_NAME);
         setCookie(metricsId);
     }
 }
