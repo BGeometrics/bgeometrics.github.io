@@ -6,8 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
-
-<body onload="init()">
+<body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
@@ -53,16 +52,11 @@
             <option value="hw_age_6m__axis">BTC LTH (>6m) %</option>
             <option value="address_10k_1k_axis">Addr. coins BTC &gt;1000 &lt;10000</option>
         </select>
-        &nbsp;
-        <button onclick="deleteSeries()">Remove</button>
 
         <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
     </figure>
 
     <script>
-        var metricsId = "";
-        const COOKIE_NAME = "bg";
-
         (async () => {
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
@@ -195,30 +189,7 @@
         });
     })();
 
-    function init(){
-        //console.log("get cookie " + document.cookie);
-        cook = getCookieValue(COOKIE_NAME);
-
-        if(!(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0))) {
-            var metric = cook.split('!$');
-            //console.log(metric);
-            
-            for (i = 0; i < metric.length; i++) {
-                // Get text drop-down
-                Object.values(document.getElementById('metrics').options).
-                    forEach(function (option) {
-                        if(option.value == metric[i]){
-                            text = option.text;
-                            console.log(option.text);
-                        }
-                    });
-
-                addCharts(metric[i], text);
-            }
-        }
-    }
-
-    document.getElementById('metrics').addEventListener("change", changeMetrics);
+    document.getElementById('metrics').addEventListener("change", getMetric);
 
     </script>
 
