@@ -193,17 +193,17 @@
 
     function setCookie(_metricsId, name){
         console.log("metricsId " + _metricsId);
+        console.log("name " + name);
         console.log(_metricsId.includes(name));
         if(_metricsId.includes(name)){
             console.log(name + " incluido");
         }
         else {
             _metricsId = _metricsId + "!$" + name; 
-            console.log(metricsId);
-            var cookieString = metricsId;
+            console.log("metricsId " + _metricsId);
+            var cookieString = "bg=" + _metricsId;
             var date = new Date();
-            var dateString = date.toGMTString();
-            date.setTime(date.getTime() + (30*24*60*60*1000));
+            date.setTime(date.getTime() + (90*24*60*60*1000)); // 90 days
             expires = "; expires=" + date.toUTCString();
             console.log("Set cookie " + cookieString + expires);
             document.cookie = cookieString + expires + "; path=/";
@@ -212,12 +212,25 @@
         return _metricsId
     }
 
+
+    function getCookieValue(name) {
+      console.log("Get cookie in getCookie " + document.cookie);
+      const regex = new RegExp(`(^| )${name}=([^;]+)`)
+      const match = document.cookie.match(regex)
+      console.log("match " + match);
+      if (match) {
+        return match[2]
+      }
+   }
+
     function test() {
+        console.log("get cookie " + document.cookie);
+        cook = getCookieValue("bg");
+        console.log("get cookie bg " + cook);
+
         var e = document.getElementById("metrics");
         var value = e.value;
         metricsId = setCookie(metricsId, value);
-        //console.log(metricsId);
-        console.log("get cookie " + document.cookie);
 
     }
 
