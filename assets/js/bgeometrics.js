@@ -172,3 +172,52 @@ function addCharts(_metricId, _text){
         });
     });
 }
+
+function setCookie(_metricsId){
+    var cookieString = COOKIE_NAME + "=" + _metricsId;
+    var date = new Date();
+    date.setTime(date.getTime() + (90*24*60*60*1000)); // cookie 90 days
+    expires = "; expires=" + date.toUTCString();
+    document.cookie = cookieString + expires + "; path=/";
+    console.log("Set cookie " + cookieString + expires);
+
+    return _metricsId
+}
+
+function getCookieValue(name) {
+    const regex = new RegExp(`(^| )${name}=([^;]+)`)
+    const match = document.cookie.match(regex)
+    if (match) {
+        return match[2]
+    }
+}
+
+function deleteCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    console.log("Delete cookie " + name);
+}
+
+function changeMetrics() {
+    var e = document.getElementById("metrics");
+    var value = e.value;
+    var text = e.options[e.selectedIndex].text;
+
+    addCharts(value, text);
+    
+    deleteCookie(COOKIE_NAME);
+
+    // set cookie
+    if(!metricsId.includes(value)){
+        if(metricsId.length == 0) 
+            metricsId = value;
+        else
+            metricsId = metricsId + "!$" + value;
+
+        setCookie(metricsId);
+    }
+}
+
+function deleteSeries() {
+    chart.series[1].remove(false);
+    deleteCookie(COOKIE_NAME);
+}
