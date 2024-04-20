@@ -103,7 +103,7 @@
     }
   }
 
-  function getMetric2() {
+  function getMetric() {
       var e = document.getElementById("metrics");
       var value = e.value;
       var text = e.options[e.selectedIndex].text;
