@@ -239,7 +239,7 @@
                 // Get text drop-down
                 Object.values(document.getElementById('metrics').options).
                     forEach(function (option) {
-                        if(option.value == _metricId){
+                        if(option.value == metric[i]){
                             text = option.text;
                             console.log(option.text);
                         }
@@ -253,6 +253,7 @@
 
         }
 
+        // Set cookie
         var e = document.getElementById("metrics");
         var value = e.value;
         
