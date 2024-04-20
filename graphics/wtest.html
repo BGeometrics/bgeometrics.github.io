@@ -6,6 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
+
 <body onload="init()">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
@@ -52,6 +53,8 @@
             <option value="hw_age_6m__axis">BTC LTH (>6m) %</option>
             <option value="address_10k_1k_axis">Addr. coins BTC &gt;1000 &lt;10000</option>
         </select>
+        &nbsp;
+        <button onclick="deleteSeries()">Remove</button>
 
         <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
     </figure>
@@ -221,7 +224,6 @@
         var e = document.getElementById("metrics");
         var value = e.value;
         var text = e.options[e.selectedIndex].text;
-        //var yAxis = 0;
 
         addCharts(value, text);
         
@@ -230,7 +232,11 @@
 
         // set cookie
         if(!metricsId.includes(value)){
-            metricsId = metricsId + "!$" + value;
+            if(metricsId.length == 0) 
+                metricsId = value;
+            else
+                metricsId = metricsId + "!$" + value;
+
             setCookie(metricsId);
         }
     }
@@ -241,14 +247,16 @@
     function init(){
         console.log("get cookie " + document.cookie);
         cook = getCookieValue(COOKIE_NAME);
-        console.log("cook " + cook);
+
+        //TODO: Borrar
+        //console.log("cook " + cook);
+        //cook = "realized_price!$power_law!$200dma";
 
         if(!(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0))) {
             var metric = cook.split('!$');
+            console.log(metric);
             
             for (i = 0; i < metric.length; i++) {
-                console.log(metric[i]);
-                
                 // Get text drop-down
                 Object.values(document.getElementById('metrics').options).
                     forEach(function (option) {
@@ -261,6 +269,10 @@
                 addCharts(metric[i], text);
             }
         }
+    }
+
+    function deleteSeries() {
+        chart.series[1].remove(false);
     }
 
     </script>
