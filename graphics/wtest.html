@@ -195,15 +195,13 @@
         });
     })();
 
-    document.getElementById('metrics').addEventListener("change", changeMetrics);
-
     function init(){
-        console.log("get cookie " + document.cookie);
+        //console.log("get cookie " + document.cookie);
         cook = getCookieValue(COOKIE_NAME);
 
         if(!(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0))) {
             var metric = cook.split('!$');
-            console.log(metric);
+            //console.log(metric);
             
             for (i = 0; i < metric.length; i++) {
                 // Get text drop-down
@@ -219,6 +217,8 @@
             }
         }
     }
+
+    document.getElementById('metrics').addEventListener("change", changeMetrics);
 
     </script>
 
