@@ -58,6 +58,7 @@
 
     <script>
         var metricsId = "";
+        const COOKIE_NAME = "bg";
 
         (async () => {
             const data_price = await fetch(
@@ -192,7 +193,7 @@
     })();
 
     function setCookie(_metricsId){
-        var cookieString = "bg=" + _metricsId;
+        var cookieString = COOKIE_NAME + "=" + _metricsId;
         var date = new Date();
         date.setTime(date.getTime() + (90*24*60*60*1000)); // 90 days
         expires = "; expires=" + date.toUTCString();
@@ -219,7 +220,7 @@
 
     function test() {
         console.log("get cookie " + document.cookie);
-        cook = getCookieValue("bg");
+        cook = getCookieValue(COOKIE_NAME);
 
         if(cook === undefined){
             getMetric2();
@@ -246,8 +247,8 @@
                 addCharts(metric[i], text);
             }
 
-            deleteCookie("bg");
-            console.log("delete cookie bg");
+            deleteCookie(COOKIE_NAME);
+            console.log("delete cookie " + COOKIE_NAME);
 
             var e = document.getElementById("metrics");
             var value = e.value;
