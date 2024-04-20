@@ -218,15 +218,13 @@
     }
 
     function test() {
-
-        //var e = document.getElementById("metrics");
-        //var text = e.options['delta_cap'].text;
-        //console.log(text);
-
         console.log("get cookie " + document.cookie);
         cook = getCookieValue("bg");
 
-        if(!cook === undefined){
+        if(cook === undefined){
+            getMetric2();
+        }
+        else {
             var text;
 
             /* Add charts */
@@ -261,6 +259,7 @@
                 setCookie(metricsId);
             }
         }
+
     }
 
     document.getElementById('metrics').addEventListener("change", test);
