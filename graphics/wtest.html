@@ -191,27 +191,16 @@
         });
     })();
 
-    function setCookie(_metricsId, name){
-        console.log("metricsId " + _metricsId);
-        console.log("name " + name);
-        console.log(_metricsId.includes(name));
-        if(_metricsId.includes(name)){
-            console.log(name + " incluido");
-        }
-        else {
-            _metricsId = _metricsId + "!$" + name; 
-            console.log("metricsId " + _metricsId);
-            var cookieString = "bg=" + _metricsId;
-            var date = new Date();
-            date.setTime(date.getTime() + (90*24*60*60*1000)); // 90 days
-            expires = "; expires=" + date.toUTCString();
-            console.log("Set cookie " + cookieString + expires);
-            document.cookie = cookieString + expires + "; path=/";
-        }
+    function setCookie(_metricsId){
+        var cookieString = "bg=" + _metricsId;
+        var date = new Date();
+        date.setTime(date.getTime() + (90*24*60*60*1000)); // 90 days
+        expires = "; expires=" + date.toUTCString();
+        console.log("Set cookie " + cookieString + expires);
+        document.cookie = cookieString + expires + "; path=/";
 
         return _metricsId
     }
-
 
     function getCookieValue(name) {
       console.log("Get cookie in getCookie " + document.cookie);
@@ -237,8 +226,13 @@
 
         var e = document.getElementById("metrics");
         var value = e.value;
-        metricsId = setCookie(metricsId, value);
+        
+        console.log("metricsId " + metricsId);
 
+        if(!metricsId.includes(value)){
+            metricsId = metricsId + "!$" + value;
+            setCookie(metricsId);
+        }
     }
 
     document.getElementById('metrics').addEventListener("change", test);
