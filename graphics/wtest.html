@@ -198,7 +198,7 @@
     function setCookie(_metricsId){
         var cookieString = COOKIE_NAME + "=" + _metricsId;
         var date = new Date();
-        date.setTime(date.getTime() + (90*24*60*60*1000)); // 90 days
+        date.setTime(date.getTime() + (90*24*60*60*1000)); // cookie 90 days
         expires = "; expires=" + date.toUTCString();
         document.cookie = cookieString + expires + "; path=/";
         console.log("Set cookie " + cookieString + expires);
@@ -207,7 +207,7 @@
     }
 
     function getCookieValue(name) {
-        console.log("Get cookie in getCookie " + document.cookie);
+        //console.log("Get cookie in getCookie " + document.cookie);
         const regex = new RegExp(`(^| )${name}=([^;]+)`)
         const match = document.cookie.match(regex)
         if (match) {
@@ -228,7 +228,6 @@
         addCharts(value, text);
         
         deleteCookie(COOKIE_NAME);
-        console.log("delete cookie " + COOKIE_NAME);
 
         // set cookie
         if(!metricsId.includes(value)){
