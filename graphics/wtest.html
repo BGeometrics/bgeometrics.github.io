@@ -218,16 +218,34 @@
     }
 
     function test() {
+
+        //var e = document.getElementById("metrics");
+        //var text = e.options['delta_cap'].text;
+        //console.log(text);
+
         console.log("get cookie " + document.cookie);
         cook = getCookieValue("bg");
 
         if(!cook === undefined){
+            var text;
+
             /* Add charts */
             console.log("Add charts: " + cook);
             var metric = cook.split('!$');
+            
             for (i = 0; i < metric.length; i++) {
-                console.log(metric[i]); 
-                addCharts(metric[i]);
+                console.log(metric[i]);
+                
+                // Get test select
+                Object.values(document.getElementById('metrics').options).
+                    forEach(function (option) {
+                        if(option.value == _metricId){
+                            text = option.text;
+                            console.log(option.text);
+                        }
+                    });
+
+                addCharts(metric[i], test);
             }
 
             deleteCookie("bg");

@@ -103,7 +103,7 @@
     }
   }
 
-  function getMetric() {
+  function getMetric2() {
       var e = document.getElementById("metrics");
       var value = e.value;
       var text = e.options[e.selectedIndex].text;
@@ -112,9 +112,6 @@
       console.log(e.value);
       console.log(text);
 
-      addCharts(e.value);
-
-      /*
       console.log(value.indexOf('_axis'));
       if (value.indexOf('_axis') > 0) {
           value = value.substring(0, value.indexOf('_axis'));
@@ -135,10 +132,25 @@
               
           });
       });
-      */
   }
 
-function addCharts(_metricId){
+  function getMetric2() {
+      var e = document.getElementById("metrics");
+      var value = e.value;
+      var text = e.options[e.selectedIndex].text;
+      var yAxis = 0;
+
+      console.log(e.value);
+      console.log(text);
+
+      addCharts(e.value, text);
+  }
+
+function addCharts(_metricId, _text){
+    var e = document.getElementById("metrics");
+    var text;
+    var yAxis = 0;
+
     console.log(_metricId.indexOf('_axis'));
     if (_metricId.indexOf('_axis') > 0) {
         _metricId = _metricId.substring(0, value.indexOf('_axis'));
@@ -150,7 +162,7 @@ function addCharts(_metricId){
     Promise.all([data]).then(values => {
         chart.addSeries({
             id: _metricId,
-            name: text,
+            name: _text,
             data: values[0],
             tooltip: {
                 valueDecimals: 2
