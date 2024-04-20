@@ -153,7 +153,7 @@ function addCharts(_metricId, _text){
 
     console.log(_metricId.indexOf('_axis'));
     if (_metricId.indexOf('_axis') > 0) {
-        _metricId = _metricId.substring(0, value.indexOf('_axis'));
+        _metricId = _metricId.substring(0, _metricId.indexOf('_axis'));
         yAxis = 1;
     }
     data = fetch('https://charts.bgeometrics.com/files/' + _metricId + '.json')

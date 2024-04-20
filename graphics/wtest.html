@@ -221,8 +221,9 @@
     function test() {
         console.log("get cookie " + document.cookie);
         cook = getCookieValue(COOKIE_NAME);
+        console.log("cook " + cook);
 
-        if(cook === undefined){
+        if(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0)) {
             getMetric2();
         }
         else {
@@ -250,17 +251,17 @@
             deleteCookie(COOKIE_NAME);
             console.log("delete cookie " + COOKIE_NAME);
 
-            var e = document.getElementById("metrics");
-            var value = e.value;
-            
-            console.log("metricsId " + metricsId);
-
-            if(!metricsId.includes(value)){
-                metricsId = metricsId + "!$" + value;
-                setCookie(metricsId);
-            }
         }
 
+        var e = document.getElementById("metrics");
+        var value = e.value;
+        
+        console.log("metricsId " + metricsId);
+
+        if(!metricsId.includes(value)){
+            metricsId = metricsId + "!$" + value;
+            setCookie(metricsId);
+        }
     }
 
     document.getElementById('metrics').addEventListener("change", test);
