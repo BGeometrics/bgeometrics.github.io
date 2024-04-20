@@ -221,19 +221,27 @@
         console.log("get cookie " + document.cookie);
         cook = getCookieValue("bg");
 
-        /* Add charts */
-        console.log("Add charts: " + cook);
+        if(!cook === undefined){
+            /* Add charts */
+            console.log("Add charts: " + cook);
+            var metric = cook.split('!$');
+            for (i = 0; i < metric.length; i++) {
+                console.log(metric[i]); 
+                addCharts(metric[i]);
+            }
 
-        deleteCookie("bg");
+            deleteCookie("bg");
+            console.log("delete cookie bg");
 
-        var e = document.getElementById("metrics");
-        var value = e.value;
-        
-        console.log("metricsId " + metricsId);
+            var e = document.getElementById("metrics");
+            var value = e.value;
+            
+            console.log("metricsId " + metricsId);
 
-        if(!metricsId.includes(value)){
-            metricsId = metricsId + "!$" + value;
-            setCookie(metricsId);
+            if(!metricsId.includes(value)){
+                metricsId = metricsId + "!$" + value;
+                setCookie(metricsId);
+            }
         }
     }
 
