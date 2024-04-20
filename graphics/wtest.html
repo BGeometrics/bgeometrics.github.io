@@ -57,6 +57,8 @@
     </figure>
 
     <script>
+        var metricsId = "";
+
         (async () => {
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
@@ -189,30 +191,37 @@
         });
     })();
 
-    function setCookie(){
-        var date = new Date("Februari 10, 2025");
-        var dateString = date.toGMTString();
-        var cookieString = "bg=document.getElementById('css').href" + dateString;
-        date.setTime(date.getTime() + (10*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-        console.log(cookieString + expires);
-        document.cookie = cookieString + expires + "; path=/";
+    function setCookie(_metricsId, name){
+        console.log("metricsId " + _metricsId);
+        console.log(_metricsId.includes(name));
+        if(_metricsId.includes(name)){
+            console.log(name + " incluido");
+        }
+        else {
+            _metricsId = _metricsId + "!$" + name; 
+            console.log(metricsId);
+            var cookieString = metricsId;
+            var date = new Date();
+            var dateString = date.toGMTString();
+            date.setTime(date.getTime() + (30*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+            console.log("Set cookie " + cookieString + expires);
+            document.cookie = cookieString + expires + "; path=/";
+        }
+
+        return _metricsId
     }
 
-    function getCookie(){
-        console.log(document.cookie);
-        //alert(document.cookie);
-        return document.cookie;
+    function test() {
+        var e = document.getElementById("metrics");
+        var value = e.value;
+        metricsId = setCookie(metricsId, value);
+        //console.log(metricsId);
+        console.log("get cookie " + document.cookie);
+
     }
 
     document.getElementById('metrics').addEventListener("change", test);
-
-    function test() {
-        setCookie();
-        cook = getCookie();
-        console.log(cook);
-
-    }
 
     </script>
 
