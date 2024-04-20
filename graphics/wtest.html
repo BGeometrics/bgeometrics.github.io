@@ -6,7 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
-<body>
+<body onload="init()">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
@@ -219,18 +219,32 @@
     }
 
     function test() {
+        var e = document.getElementById("metrics");
+        var value = e.value;
+        var text = e.options[e.selectedIndex].text;
+        var yAxis = 0;
+
+        addCharts(value, text);
+        
+        deleteCookie(COOKIE_NAME);
+        console.log("delete cookie " + COOKIE_NAME);
+
+        // set cookie
+        if(!metricsId.includes(value)){
+            metricsId = metricsId + "!$" + value;
+            setCookie(metricsId);
+        }
+    }
+
+    document.getElementById('metrics').addEventListener("change", test);
+
+
+    function init(){
         console.log("get cookie " + document.cookie);
         cook = getCookieValue(COOKIE_NAME);
         console.log("cook " + cook);
 
-        if(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0)) {
-            getMetric2();
-        }
-        else {
-            var text;
-
-            /* Add charts */
-            console.log("Add charts: " + cook);
+        if(!(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0))) {
             var metric = cook.split('!$');
             
             for (i = 0; i < metric.length; i++) {
@@ -247,25 +261,8 @@
 
                 addCharts(metric[i], text);
             }
-
-            deleteCookie(COOKIE_NAME);
-            console.log("delete cookie " + COOKIE_NAME);
-
-        }
-
-        // Set cookie
-        var e = document.getElementById("metrics");
-        var value = e.value;
-        
-        console.log("metricsId " + metricsId);
-
-        if(!metricsId.includes(value)){
-            metricsId = metricsId + "!$" + value;
-            setCookie(metricsId);
         }
     }
-
-    document.getElementById('metrics').addEventListener("change", test);
 
     </script>
 
