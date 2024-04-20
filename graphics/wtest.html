@@ -234,7 +234,7 @@
             for (i = 0; i < metric.length; i++) {
                 console.log(metric[i]);
                 
-                // Get test select
+                // Get text drop-down
                 Object.values(document.getElementById('metrics').options).
                     forEach(function (option) {
                         if(option.value == _metricId){
@@ -243,7 +243,7 @@
                         }
                     });
 
-                addCharts(metric[i], test);
+                addCharts(metric[i], text);
             }
 
             deleteCookie("bg");
