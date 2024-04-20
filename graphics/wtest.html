@@ -197,20 +197,19 @@
         var date = new Date();
         date.setTime(date.getTime() + (90*24*60*60*1000)); // 90 days
         expires = "; expires=" + date.toUTCString();
-        console.log("Set cookie " + cookieString + expires);
         document.cookie = cookieString + expires + "; path=/";
+        console.log("Set cookie " + cookieString + expires);
 
         return _metricsId
     }
 
     function getCookieValue(name) {
-      console.log("Get cookie in getCookie " + document.cookie);
-      const regex = new RegExp(`(^| )${name}=([^;]+)`)
-      const match = document.cookie.match(regex)
-      console.log("match " + match);
-      if (match) {
-        return match[2]
-      }
+        console.log("Get cookie in getCookie " + document.cookie);
+        const regex = new RegExp(`(^| )${name}=([^;]+)`)
+        const match = document.cookie.match(regex)
+        if (match) {
+            return match[2]
+        }
    }
 
     function deleteCookie(name) {
@@ -222,7 +221,7 @@
         var e = document.getElementById("metrics");
         var value = e.value;
         var text = e.options[e.selectedIndex].text;
-        var yAxis = 0;
+        //var yAxis = 0;
 
         addCharts(value, text);
         
