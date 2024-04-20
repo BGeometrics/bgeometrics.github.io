@@ -112,6 +112,9 @@
       console.log(e.value);
       console.log(text);
 
+      addCharts(e.value);
+
+      /*
       console.log(value.indexOf('_axis'));
       if (value.indexOf('_axis') > 0) {
           value = value.substring(0, value.indexOf('_axis'));
@@ -132,5 +135,28 @@
               
           });
       });
+      */
   }
 
+function addCharts(_metricId){
+    console.log(_metricId.indexOf('_axis'));
+    if (_metricId.indexOf('_axis') > 0) {
+        _metricId = _metricId.substring(0, value.indexOf('_axis'));
+        yAxis = 1;
+    }
+    data = fetch('https://charts.bgeometrics.com/files/' + _metricId + '.json')
+        .then(response => response.json());
+
+    Promise.all([data]).then(values => {
+        chart.addSeries({
+            id: _metricId,
+            name: text,
+            data: values[0],
+            tooltip: {
+                valueDecimals: 2
+            },
+            yAxis: yAxis
+            
+        });
+    });
+}
