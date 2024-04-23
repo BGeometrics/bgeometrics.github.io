@@ -153,7 +153,6 @@ function addCharts(_metricId, _text){
     var text;
     var yAxis = 0;
 
-    console.log(_metricId.indexOf('_axis'));
     if (_metricId.indexOf('_axis') > 0) {
         _metricId = _metricId.substring(0, _metricId.indexOf('_axis'));
         yAxis = 1;
@@ -181,7 +180,7 @@ function setCookie(_metricsId){
     date.setTime(date.getTime() + (90*24*60*60*1000)); // cookie 90 days
     expires = "; expires=" + date.toUTCString();
     document.cookie = cookieString + expires + "; path=/";
-    console.log("Set cookie " + cookieString + expires);
+    //console.log("Set cookie " + cookieString + expires);
 
     return _metricsId
 }
@@ -196,7 +195,7 @@ function getCookieValue(name) {
 
 function deleteCookie(name) {
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    console.log("Delete cookie " + name);
+    //console.log("Delete cookie " + name);
 }
 
 function changeMetrics() {
@@ -218,6 +217,9 @@ function changeMetrics() {
 }
 
 function deleteSeries() {
-    chart.series[1].remove(false);
+    for (i=0; i<=chart.series.length; i++) {
+       chart.series[1].remove(false);
+    }
     deleteCookie(COOKIE_NAME);
+    metricsId = "";
 }
