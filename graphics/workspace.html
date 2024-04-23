@@ -221,6 +221,27 @@
         }
     }
 
+
+function deleteSeries() {
+    console.log("metricsId: " + metricsId);
+    chart.series[1].remove(false);
+    deleteCookie(COOKIE_NAME);
+    metricsNew = deleteLast(metricsId, "!$");
+    console.log("metricsNew: " + metricsNew);
+    setCookie(metricsNew);
+    console.log("New cookie: " + getCookieValue(COOKIE_NAME));
+}
+
+function deleteLast(cad, subcad) {
+    var index = cad.lastIndexOf(subcad);
+    if (index !== -1) {
+        console.log("index");
+        return cad.substring(0, index);
+    }
+    return cadena;
+}
+
+    
     document.getElementById('metrics').addEventListener("change", changeMetrics);
 
     </script>

@@ -217,7 +217,9 @@ function changeMetrics() {
     }
 }
 
+/*
 function deleteSeries() {
     chart.series[1].remove(false);
     deleteCookie(COOKIE_NAME);
 }
+*/
