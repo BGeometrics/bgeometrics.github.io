@@ -223,18 +223,6 @@
 
     document.getElementById('metrics').addEventListener("change", changeMetrics);
 
-function deleteSeries() {
-    console.log("delete series");
-    console.log(chart.series.length);
-    console.log(chart.series[1].length);
-    //series_ids = ['realized_price','power_law']
-    for (i=0; i<=chart.series.length; i++) {
-       chart.series[1].remove(false);
-    }
-    //chart.series[1].remove(false);
-    deleteCookie(COOKIE_NAME);
-    metricsId = "";
-}
     </script>
 
 </body>
