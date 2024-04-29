@@ -571,7 +571,7 @@
       <div id="searchResults"></div>
 
       <div class="row">
-        <div class="col">
+        <div class="col-lg-3">
           <select class="form-select" id="metrics" style="width:300px;">
               <option selected>Bitcoin Metrics On-Chain</option>
               <option value="realized_price">Realized Price</option>
@@ -605,30 +605,28 @@
               <option value="gold_yf_axis">Gold</option>
               <option value="tsla_yf_axis">Tesla</option>
               <option value="mstr_yf_axis">MicroStrategy</option>
-            </select>
-          </div>
+          </select>
+        </div>
 
-          <div class="col">
-              <button class="btn" onclick="deleteSeries()">Remove</button>
-          </div>
+        <div class="col-lg-3">
+          <button class="btn" onclick="deleteSeries()">Remove</button>
+        </div>
 
-          <div class="col">
-            <select class="form-select" id="zoom" style="width:120px;">
-                <option selected>Zoom</option>
-                <option value="600">600px</option>
-                <option value="700">700px</option>
-                <option value="800">800px</option>
-                <option value="900">900px</option>
-                <option value="1000">1000px</option>
-                <option value="1100">1100px</option>
-                <option value="1200">1200px</option>
-                <option value="1300">1300px</option>
-                <option value="1400">1400px</option>
-                <option value="1500">1500px</option>
-                <option value="1600">1600px</option>
-            </select>
-          </div>
-
+        <div class="col-lg-3">
+          <select class="form-select" id="zoom" style="width:120px;">
+	    <option selected>Zoom</option>
+	    <option value="600">600px</option>
+	    <option value="700">700px</option>
+	    <option value="800">800px</option>
+	    <option value="900">900px</option>
+	    <option value="1000">1000px</option>
+	    <option value="1100">1100px</option>
+	    <option value="1200">1200px</option>
+	    <option value="1300">1300px</option>
+	    <option value="1400">1400px</option>
+	    <option value="1500">1500px</option>
+	    <option value="1600">1600px</option>
+          </select>
         </div>
 
         <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
