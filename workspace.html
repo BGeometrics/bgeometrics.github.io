@@ -695,9 +695,8 @@
                     events: {
                         load: function() {
                             var image = new Image();
-                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+			    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                             image.src = adresse_image;
-
                             var height_image = 128;
                             var width_image = 128;
                             var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -724,7 +723,7 @@
                 series: [{
                     id:'BTC price',
                     name: 'BTC price',
-                    color: 'black',
+                    color: 'white',
                     data: data_price,
                     tooltip: {
                         valueDecimals: 2

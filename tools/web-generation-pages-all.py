@@ -296,11 +296,34 @@ output_file_path = '/tmp/web/index_3m_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-workspace-end-dark.html'
-output_file_path = '/tmp/web/workspace_dark.html'
+with open('web-generation-model-dark.html', 'r') as file:
+  filedata = file.read()
+
+filedata = filedata.replace("""<body>""", """<body onload="init()">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>""")
+filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
+
+with open('web-generation-model-workspace-dark.html', 'w') as file:
+  file.write(filedata)
+
+file1_path = 'web-generation-model-workspace-dark.html'
+file2_path = 'web-generation-workspace-2-dark.html'
+output_file_path = '/tmp/web/workspace-dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
+
 
 # Generate page services.html with menu dark
 file1_path = 'web-generation-model-dark.html'
