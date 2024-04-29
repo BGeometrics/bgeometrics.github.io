@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BGeometrics Workspace Charts</title>
+  <meta content="Bitcoin Price" name="description">
+  <meta content="__keywords__" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/bgeometrics.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+
+</head>
+
+<body onload="init()">
+
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="BGeometrics">
+        <span class="d-none d-lg-block">BGeometrics</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search" title="Enter search keyword" onkeydown="handleKeyPress(event)">
+        <button class="btn btn-outline-secondary" type="button" onclick="search()"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="workspace.html" alt="BGeometrics Workspace Charts">
+	    <i class="bi bi-person-workspace"></i>
+          </a>
+        </li>
+
+	<li>
+          <div class="dropdown d-inline language-switcher">
+            <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="currentMode">Light</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="modeDropdown">
+              <li>
+		<a class="dropdown-item" href="index.html">
+                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Light
+	        </a>
+	      </li>
+              <li>
+		<a class="dropdown-item" href="index_dark.html">
+                  <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Dark
+                </a>
+	      </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="https://twitter.com/BGeometrics">
+            <i class="bi bi-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link nav-icon" href="mailto:bgeometrics@gmail.com" target="_blank">
+            <i class="bi bi-envelope"></i>
+          </a>
+        </li>    
+
+      </ul>
+
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
