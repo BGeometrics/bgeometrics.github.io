@@ -210,6 +210,9 @@ with open('web-generation-model.html', 'r') as file:
   filedata = file.read()
 
 filedata = filedata.replace("""<body>""", """<body onload="init()">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
   <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
   <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
