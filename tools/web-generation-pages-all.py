@@ -212,7 +212,7 @@ with open('web-generation-model.html', 'r') as file:
 filedata = filedata.replace('<body>', '<body onload="init()">')
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
-with open('/tmp/web-generation-model-workspace.html', 'w') as file:
+with open('/tmp/web/web-generation-model-workspace.html', 'w') as file:
   file.write(filedata)
 
 file1_path = 'web-generation-model.html'
