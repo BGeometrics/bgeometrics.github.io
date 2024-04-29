@@ -205,7 +205,6 @@ output_file_path = '/tmp/web/index_3m.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu
-#sed 's/<body>/<body onload="init()">/' web-generation-model.html > web-generation-model-workspace.html
 with open('web-generation-model.html', 'r') as file:
   filedata = file.read()
 
@@ -228,11 +227,9 @@ filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Wo
 with open('web-generation-model-workspace.html', 'w') as file:
   file.write(filedata)
 
-#file1_path = 'web-generation-model.html'
-#file2_path = 'web-generation-model-workspace-end.html'
 file1_path = 'web-generation-model-workspace.html'
 file2_path = 'web-generation-workspace-2.html'
-output_file_path = '/tmp/web/workspace_zoom.html'
+output_file_path = '/tmp/web/workspace.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
