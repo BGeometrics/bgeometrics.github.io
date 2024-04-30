@@ -23,42 +23,46 @@
     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
     <figure class="highcharts-figure">
-        <select class="form-select" id="metrics">
-            <option selected>Bitcoin Metrics On-Chain</option>
-            <option value="realized_price">Realized Price</option>
-            <option value="delta_cap">Delta cap</option>
-            <option value="power_law">Power Law</option>
-            <option value="power_law_floor">Power Law Floor</option>
-            <option value="50dma">50 day MA</option>
-            <option value="155dma">155 day MA</option>
-            <option value="200dma">200 day MA</option>
-            <option value="sopr_axis">SOPR</option>
-            <option value="sth_sopr_axis">SOPR STH</option>
-            <option value="lth_sopr_axis">SOPR LTH</option>
-            <option value="mvrv_zscore_axis">MVRV Z-Score</option>
-            <option value="mvrv_axis">MVRV</option>
-            <option value="sth_mvrv_axis">MVRV STH</option>
-            <option value="lth_mvrv_axis">MVRV LTH</option>
-            <option value="sth_realized_price">Realized Price STH</option>
-            <option value="lth_realized_price">Realized Price LTH</option>
-            <option value="nupl_axis">NUPL</option>
-            <option value="aviv_axis">AVIV</option>
-            <option value="addresses_active_axis">Active Addresses</option>
-            <option value="rhodl_1m_axis">RHodl 1m</option>
-            <option value="market_cap_axis">Market Capitalization</option>
-            <option value="realized_cap_axis">Realized Capitalization</option>
-            <option value="investor_cap_axis">Investor Capitalization</option>
-            <option value="thermo_cap_axis">Thermo Capitalization</option>
-            <option value="fear_greed_axis">Fear and Greed</option>
-            <option value="hw_age_6m__axis">BTC LTH (>6m) %</option>
-            <option value="address_10k_1k_axis">Coins Addr. BTC &gt;1000 &lt;10000</option>
-            <option value="sp500_yf_axis">SP&500</option>
-            <option value="gold_yf_axis">Gold</option>
-            <option value="tsla_yf_axis">Tesla</option>
-            <option value="mstr_yf_axis">MicroStrategy</option>
+
+        <div class="form-group">
+            <label class="">Purchase Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input id="amountSubunits" name="amountSubunits" placeholder="" min="1" max="10000" step="1" type="number" class="form-control-lg form-control" value="10">
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+        </div>
+        <select class="form-select" id="repeatPurchase">
+            <option value="1">Dayly</option>
+            <option value="7" selected>Weekly</option>
+            <option value="14">Every two weeks</option>
+            <option value="30">Monthly</option>
         </select>
-        &nbsp;
-        <button onclick="deleteSeries()">Remove</button>
+        <select class="form-select" id="metrics">
+            <option selected>Purchase Amount</option>
+            <option value="10">10</option>
+            <option value="1000">100</option>
+        </select>
+        <div class="form-group">
+            <label class="">Starting</label>
+            <select name="startDateAgo" class="form-control-lg form-control">
+                <option value="6_months">6 Months Ago</option>
+                <option value="1_year">1 Year Ago</option>
+                <option value="2_years">2 Years Ago</option>
+                <option value="3_years">3 Years Ago</option>
+                <option value="4_years">4 Years Ago</option>
+                <option value="5_years">5 Years Ago</option>
+                <option value="6_years">6 Years Ago</option>
+                <option value="7_years">7 Years Ago</option>
+                <option value="8_years">8 Years Ago</option>
+                <option value="9_years">9 Years Ago</option>
+                <option value="custom">On Specific Date</option>
+            </select>
+        </div>
 
         <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
     </figure>
@@ -251,14 +255,15 @@
             totalBitcoin += amountBought;
             totalDollar += amountBought * currentPrice;
             date = new Date(day[i]);
-            console.log("Day " + date.getDate() + ' ' + date.getMonth() + ' ' + date.getFullYear());
+            //console.log("Day " + date.getDate() + ' ' + date.getMonth() + ' ' + date.getFullYear());
             theDate =  date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-            console.log("totalBitcoin " + totalBitcoin);
-            console.log("totalDollar " + totalDollar);
+            //console.log("totalBitcoin " + totalBitcoin);
+            //console.log("totalDollar " + totalDollar);
             dca.push([day[i], totalDollar]); 
 
-            console.log(dca);    
         }
+
+        //console.log(dca);    
 
         return dca;
     }
@@ -275,18 +280,20 @@
         for (let i = 0; i < data_price.length; i++) {
             const subArray = data_price[i];
             if (subArray.length > 0) {
-                //primeraColumna.push([subArray[0], subArray[1]]); 
                 primeraColumna.push(subArray[1]); 
                 dayColumn.push(subArray[0]);
             }
         }
 
-        const investment = 100; // Inversión
-        const frequency = 7; // Weekly
+        //const investment = 100; // Inversión
+        //const frequency = 7; // Weekly
         const duration = 52*2; // Year
         
-        console.log(primeraColumna);
-        result = calculateDCA(investment, frequency, duration, primeraColumna, dayColumn);
+        frequency = document.getElementById("repeatPurchase");
+        investment = document.getElementById("amountSubunits");
+        console.log("Frequency: " + frequency.value);
+        console.log("Investment: " + investment.value);
+        result = calculateDCA(Number(investment.value), Number(frequency.value), duration, primeraColumna, dayColumn);
 
         chart.addSeries({
             id: 'id',
