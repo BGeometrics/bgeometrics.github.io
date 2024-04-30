@@ -320,7 +320,7 @@ with open('web-generation-model-workspace-dark.html', 'w') as file:
 
 file1_path = 'web-generation-model-workspace-dark.html'
 file2_path = 'web-generation-workspace-2-dark.html'
-output_file_path = '/tmp/web/workspace-dark.html'
+output_file_path = '/tmp/web/workspace_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
