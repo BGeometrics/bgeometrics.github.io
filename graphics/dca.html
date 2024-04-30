@@ -222,82 +222,71 @@
     }
 
     function calculateDCA(investment, frequency, duration, priceHistory, day) {
-  // Input validation (optional)
-  if (typeof investment !== 'number' || investment <= 0) {
-    throw new Error('Investment amount must be a positive number');
-  }
-  if (typeof frequency !== 'number' || frequency <= 0) {
-    throw new Error('Frequency must be a positive number (e.g., number of days)');
-  }
-  if (typeof duration !== 'number' || duration <= 0) {
-    throw new Error('Duration must be a positive number (e.g., number of days)');
-  }
-  if (!Array.isArray(priceHistory) || priceHistory.length === 0) {
-    throw new Error('Price history must be an array with at least one price');
-  }
+        // Input validation (optional)
+        if (typeof investment !== 'number' || investment <= 0) {
+            throw new Error('Investment amount must be a positive number');
+        }
+        if (typeof frequency !== 'number' || frequency <= 0) {
+            throw new Error('Frequency must be a positive number (e.g., number of days)');
+        }
+        if (typeof duration !== 'number' || duration <= 0) {
+            throw new Error('Duration must be a positive number (e.g., number of days)');
+        }
+        if (!Array.isArray(priceHistory) || priceHistory.length === 0) {
+            throw new Error('Price history must be an array with at least one price');
+        }
 
-  // Initialize variables
-  const totalInvestment = investment * (duration / frequency);
-  let totalBitcoin = 0;
-  let totalDollar = 0;
-  let averagePrice = 0;
-  dca = [];
-  dca2 = [];
-  
+        // Initialize variables
+        const totalInvestment = investment * (duration / frequency);
+        let totalBitcoin = 0;
+        let totalDollar = 0;
+        let averagePrice = 0;
+        dca = [];
 
-  // Loop through price history
-  for (let i = 0; i < priceHistory.length; i += frequency) {
-    const currentPrice = priceHistory[i];
-    const amountBought = investment / currentPrice;
-    
-    totalBitcoin += amountBought;
-    totalDollar += amountBought * currentPrice;
-    date = new Date(day[i]);
-    console.log("Day " + date.getDate() + ' ' + date.getMonth() + ' ' + date.getFullYear());
-    theDate =  date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-    console.log("totalBitcoin " + totalBitcoin);
-    console.log("totalDollar " + totalDollar);
-    dca.push([day[i], totalDollar]); 
-    //dca.push(totalDollar, day[i]); 
-    //dca2.push(theDate, totalDollar); 
-    //dca.push(totalDollar); 
+        // Loop through price history
+        for (let i = 0; i < priceHistory.length; i += frequency) {
+            const currentPrice = priceHistory[i];
+            const amountBought = investment / currentPrice;
+            
+            totalBitcoin += amountBought;
+            totalDollar += amountBought * currentPrice;
+            date = new Date(day[i]);
+            console.log("Day " + date.getDate() + ' ' + date.getMonth() + ' ' + date.getFullYear());
+            theDate =  date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+            console.log("totalBitcoin " + totalBitcoin);
+            console.log("totalDollar " + totalDollar);
+            dca.push([day[i], totalDollar]); 
 
-  console.log(dca);    
+            console.log(dca);    
+        }
 
-
-  // Calculate average price
-  //averagePrice = totalInvestment / totalBitcoin;
-
-  return dca;
-}
-
+        return dca;
+    }
 
 
     document.getElementById('metrics').addEventListener("change", temp);
 
-function temp(){
-    //console.log(data_price);
+    function temp(){
+        //console.log(data_price);
 
-    const primeraColumna = [];
-    const dayColumn = [];
+        const primeraColumna = [];
+        const dayColumn = [];
 
-    for (let i = 0; i < data_price.length; i++) {
-        const subArray = data_price[i];
-        if (subArray.length > 0) {
-            //primeraColumna.push([subArray[0], subArray[1]]); 
-            primeraColumna.push(subArray[1]); 
-            dayColumn.push(subArray[0]);
+        for (let i = 0; i < data_price.length; i++) {
+            const subArray = data_price[i];
+            if (subArray.length > 0) {
+                //primeraColumna.push([subArray[0], subArray[1]]); 
+                primeraColumna.push(subArray[1]); 
+                dayColumn.push(subArray[0]);
+            }
         }
-    }
 
-    const investment = 100; // Inversión
-    const frequency = 7; // Weekly
-    const duration = 52*2; // Year
-    
-    console.log(primeraColumna);
-    result = calculateDCA(investment, frequency, duration, primeraColumna, dayColumn);
-    //console.log('result');
-    //console.log(result);
+        const investment = 100; // Inversión
+        const frequency = 7; // Weekly
+        const duration = 52*2; // Year
+        
+        console.log(primeraColumna);
+        result = calculateDCA(investment, frequency, duration, primeraColumna, dayColumn);
 
         chart.addSeries({
             id: 'id',
@@ -310,8 +299,7 @@ function temp(){
             
         });
 
-}
-
+    }
 
     </script>
 
