@@ -49,8 +49,8 @@
         </select>
         <div class="form-group">
             <label class="">Starting</label>
-            <select name="startDateAgo" class="form-control-lg form-control">
-                <option value="6_months">6 Months Ago</option>
+            <select id="startDateAgo" name="startDateAgo" class="form-control-lg form-control">
+                <option value="183">6 Months Ago</option>
                 <option value="1_year">1 Year Ago</option>
                 <option value="2_years">2 Years Ago</option>
                 <option value="3_years">3 Years Ago</option>
@@ -225,7 +225,7 @@
 
     }
 
-    function calculateDCA(investment, frequency, duration, priceHistory, day) {
+    function calculateDCA(investment, frequency, duration, priceHistory, day, daysAgo) {
         // Input validation (optional)
         if (typeof investment !== 'number' || investment <= 0) {
             throw new Error('Investment amount must be a positive number');
@@ -247,11 +247,17 @@
         let averagePrice = 0;
         dca = [];
 
+        console.log("daysAgo: " + daysAgo);
+        //console.log("Rest day: " + day - daysAgo);
+
         // Loop through price history
         for (let i = 0; i < priceHistory.length; i += frequency) {
             const currentPrice = priceHistory[i];
             const amountBought = investment / currentPrice;
             
+            console.log("Rest day: " + daysAgo);
+            console.log("day: " + day[i]);
+
             totalBitcoin += amountBought;
             totalDollar += amountBought * currentPrice;
             date = new Date(day[i]);
@@ -288,12 +294,22 @@
         //const investment = 100; // Inversión
         //const frequency = 7; // Weekly
         const duration = 52*2; // Year
+        const millisecondsInDay = 24 * 60 * 60 * 1000;
+        const currentDate = new Date();
+        const currentTimestamp = currentDate.getTime(); // This gives you the current timestamp in milliseconds
         
         frequency = document.getElementById("repeatPurchase");
         investment = document.getElementById("amountSubunits");
+        days = document.getElementById("startDateAgo");
+        const timestampDaysAgo = currentTimestamp - (Number(days.value) * millisecondsInDay);
+
         console.log("Frequency: " + frequency.value);
         console.log("Investment: " + investment.value);
-        result = calculateDCA(Number(investment.value), Number(frequency.value), duration, primeraColumna, dayColumn);
+        //console.log("Days: " + days.value);
+        //console.log("timesstampDaysAgo: " + timestampDaysAgo);
+        //console.log("dayColumn: " + dayColumn);
+        //console.log("dayRest: " + dayColumn - timestampDaysAgo);
+        result = calculateDCA(Number(investment.value), Number(frequency.value), duration, primeraColumna, dayColumn, timestampDaysAgo);
 
         chart.addSeries({
             id: 'id',
