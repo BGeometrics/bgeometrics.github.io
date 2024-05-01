@@ -23,113 +23,63 @@
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
     <figure class="highcharts-figure">
-
         <div class="row">
-        <div class="col-lg-3">
-            <!--<label class="">Purchase Amount</label>-->
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">$</span>
+            <div class="col-lg-3">
+                <!--<label class="">Purchase Amount</label>-->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input id="amountSubunits" name="amountSubunits" placeholder="" min="1" max="10000" step="1" type="number" class="form-select form-control-lg form-control" value="10">
                 </div>
-                <input id="amountSubunits" name="amountSubunits" placeholder="" min="1" max="10000" step="1" type="number" class="form-select form-control-lg form-control" value="10">
+            </div>
+            <div class="col-lg-3">
+                <select class="form-select" id="repeatPurchase">
+                    <option selected>Frequency</option>
+                    <option value="1">Daily</option>
+                    <option value="7">Weekly</option>
+                    <option value="14">Biweekly</option>
+                    <option value="30">Monthly</option>
+                    <option value="60">BiMonthy</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <select id="startDateAgo" name="startDateAgo" class="form-select">
+                    <option value="183">6 Months Ago</option>
+                    <option value="365">1 Year Ago</option>
+                    <option value="730">2 Years Ago</option>
+                    <option value="1095">3 Years Ago</option>
+                    <option value="1461">4 Years Ago</option>
+                    <option value="1826">5 Years Ago</option>
+                    <option value="2191">6 Years Ago</option>
+                    <option value="2556">7 Years Ago</option>
+                    <option value="2922">8 Years Ago</option>
+                    <option value="3287">9 Years Ago</option>
+                    <option value="1000000">From the beginning</option>
+                    <option value="custom">On Specific Date</option>
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <input id="startDateTemp" name="startDateTemp" placeholder="YYYY-MM-DD" type="text" class="form-control" value="2015-01-01" style="margin-top: 10px; display: none">
             </div>
         </div>
-        <div class="col-lg-3">
-            <select class="form-select" id="repeatPurchase">
-                <option selected>Frequency</option>
-                <option value="1">Daily</option>
-                <option value="7">Weekly</option>
-                <option value="14">Biweekly</option>
-                <option value="30">Monthly</option>
-                <option value="60">BiMonthy</option>
-            </select>
-        </div>
-        <div class="col-lg-3">
-            <select id="startDateAgo" name="startDateAgo" class="form-select">
-                <option value="183">6 Months Ago</option>
-                <option value="365">1 Year Ago</option>
-                <option value="730">2 Years Ago</option>
-                <option value="1095">3 Years Ago</option>
-                <option value="1461">4 Years Ago</option>
-                <option value="1826">5 Years Ago</option>
-                <option value="2191">6 Years Ago</option>
-                <option value="2556">7 Years Ago</option>
-                <option value="2922">8 Years Ago</option>
-                <option value="3287">9 Years Ago</option>
-                <option value="1000000">From the beginning</option>
-                <option value="custom">On Specific Date</option>
-            </select>
-        </div>
-        </div>
 
-        <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+        <div id="container-iframe" style="width:100%; height:700px; margin: 0 auto;"></div>
     </figure>
 
     <script>
-        var metricsId = "";
-        const COOKIE_NAME = "bg";
-        //var data_price;
-
         (async () => {
             data_price = await fetch(
                 'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
             ).then(response => response.json());
 
         chart = Highcharts.stockChart('container-iframe', {
-            stockTools: {
-                gui: {
-                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
-                    definitions: {
-                        linLogSwitch: {
-                            className: 'highcharts-lin-log-switch',
-                            symbol: 'logarithmic.svg'
-                        }
-                    }
-                }
-            },
-            navigation: {
-                bindings: {
-                    linLogSwitch: {
-                        className: 'highcharts-lin-log-switch',
-                        init: function (button) {
-                            const chart = this.chart,
-                                isLogarithmic = chart.yAxis[1].logarithmic,
-                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
-                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
-
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
-                            chart.yAxis[1].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            });
-
-                            button.firstChild.style['background-image'] = `url(${iconURL})`;
-
-                            Highcharts.fireEvent(
-                                this,
-                                'deselectButton',
-                                { button: button }
-                            );
-                        }
-                    }
-                }
-            },
             title: {
-                text: 'BGeometrics Workspace',
+                text: 'Bitcoin DCA Calculator',
                 align: 'left',
             },
 
@@ -155,49 +105,33 @@
                 }
             },
 
-            /*
-            xAxis:[{
-                labels:{
-                    formatter:function(){
-                        return Highcharts.dateFormat('%Y %M %d',this.value);
-                    }
-                }
-            }],
-            */
-
             yAxis: [{
                 title: {
                     text: ''
                 },
-                //type: 'logarithmic',
-            }, {
+                labels: {                
+                    formatter: function () {
+                        return '$' + this.value;
+                    }
+                },
                 opposite: false
             }],
 
-            series: [
-                /*
-                {
-                id:'BTC price',
-                name: 'BTC price',
-                color: 'black',
-                data: data_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }
-        */],
-
             legend:{
-                enabled:true,
-                floating: true,
-                verticalAlign: 'top',
-                y: 25,
-                align:'center'
+                enabled:false,
+            },
+
+            tooltip: {
+                formatter: function() {
+                    return '<b>$' + Highcharts.numberFormat(this.point.y, 2) + '</b>'
+                }
             },
 
             rangeSelector: {
-                selected: 5
+                enabled: false,
+            },
+            navigator: {
+                enabled: false,
             },
 
             credits: {
@@ -209,7 +143,7 @@
                 position: {
                     align: 'right',
                     x: -70,
-                    y: -124
+                    y: -90
                 }                
             },
             responsive: {
@@ -217,30 +151,16 @@
                     condition: {
                         maxWidth: 800
                     },
-                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        }
-                    }
                 }]
             }
         });
     })();
 
-    function init(){
-        console.log(data_price);
-
-
-
-    }
-
     /*
-        DCA se compra cada cierto tiempo la misma cantidad de dolares o euros
-        Calculo de beneficios o pérdidas
-        Cada vez que se compra se calcula el número de BTC que se tiene y se multiplica por el precio de BTC en dolares
+        DCA compras periódicas con la misma candidad dolares/euros de BTC
+        Cálculo, cada vez que se compra se suma los BTC a los que se tiene y se multiplica por el precio de BTC en dolares
     */
     function calculateDCA(investment, frequency, duration, priceHistory, day, daysAgo) {
-        // Input validation (optional)
         if (typeof investment !== 'number' || investment <= 0) {
             throw new Error('Investment amount must be a positive number');
         }
@@ -254,33 +174,20 @@
             throw new Error('Price history must be an array with at least one price');
         }
 
-        // Initialize variables
         const totalInvestment = investment * (duration / frequency);
         let totalBitcoin = 0;
         let totalDollar = 0;
         let averagePrice = 0;
         dca = [];
 
-        console.log("daysAgo: " + daysAgo);
-        //console.log("Rest day: " + day - daysAgo);
-
-        // Loop through price history
         for (let i = 0; i < priceHistory.length; i += frequency) {
             if (day[i] >= daysAgo) {
                 const currentPrice = priceHistory[i];
                 const amountBought = investment / currentPrice;
                
-                //const delta = priceHistory [i] / priceHistory[i-1];
-
-                
-                console.log("priceHistory[i]: " + priceHistory[i]);
-                console.log("priceHistory[i-1]: " + priceHistory[i-1]);
-                //console.log(priceHistory [i] / priceHistory[i-1]);
-
                 totalBitcoin += amountBought;
                 totalDollar = totalBitcoin * currentPrice;
                 date = new Date(day[i]);
-                //console.log("Day " + date.getDate() + ' ' + date.getMonth() + ' ' + date.getFullYear());
                 theDate =  date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
                 dca.push([day[i], totalDollar]); 
             }
@@ -289,8 +196,24 @@
         return dca;
     }
 
-    document.getElementById('startDateAgo').addEventListener("change", calculate);
+    document.getElementById('startDateAgo').addEventListener("change", startDate);
+    document.getElementById('startDateTemp').addEventListener("change", startDate);
     document.getElementById('repeatPurchase').addEventListener("change", calculate);
+
+
+    function startDate() { 
+        var e = document.getElementById("startDateAgo");
+
+        if (e.value === 'custom'){
+            document.getElementById("startDateTemp");
+            showInputElement(document.getElementById("startDateTemp"));
+        }
+        else {
+            hideInputElement(document.getElementById("startDateTemp"));
+        }
+
+        calculate();
+    }
 
     function calculate(){
         const priceBTC = [];
@@ -305,14 +228,13 @@
         }
 
         const millisecondsInDay = 24 * 60 * 60 * 1000;
-        const currentDate = new Date();
-        const currentTimestamp = currentDate.getTime(); // This gives you the current timestamp in milliseconds
+        const currentTimestamp = (new Date()).getTime(); // This gives you the current timestamp in milliseconds
         
         frequency = document.getElementById("repeatPurchase");
         investment = document.getElementById("amountSubunits");
-        days = document.getElementById("startDateAgo");
-        const timestampDaysAgo = currentTimestamp - (Number(days.value) * millisecondsInDay);
-        const duration = Number(days.value);
+
+        const duration = getDaysAgo();
+        const timestampDaysAgo = currentTimestamp - (duration * millisecondsInDay);
 
         console.log("Duration: " + duration);
         console.log("Frequency: " + frequency.value);
@@ -327,6 +249,7 @@
         chart.addSeries({
             id: 'DCA',
             name: 'DCA',
+            color: 'orange',
             data: result,
             tooltip: {
                 valueDecimals: 2
@@ -334,6 +257,29 @@
             yAxis: 0
         });
 
+    }
+
+    function getDaysAgo() {
+        var duration;
+
+        // Check si está la opción personalizada
+        var e = document.getElementById("startDateAgo");
+
+        if (e.value === 'custom'){
+            const dateString = document.getElementById('startDateTemp').value;
+            const dateObject = convertStringToDate(dateString);
+            dateObjectMilis = convertStringToDate(dateString).getTime();
+            dateNow = new Date().getTime(); 
+            const millisecondsDiff = dateNow - dateObjectMilis;
+            duration = Math.floor(millisecondsDiff / (1000 * 60 * 60 * 24));
+
+            console.log("daysDiff: " + duration);
+        }
+        else {
+            duration = Number(e.value);
+        }
+
+        return Number(duration);
     }
 
     </script>
