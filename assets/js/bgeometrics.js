@@ -186,7 +186,6 @@ function hideInputElement(element) {
 }
 
 function showInputElement(element) {
-    console.log(element);
     if (element && element instanceof HTMLElement) {
         console.log(element);
         element.style.display = 'block'; // Restore default display (e.g., 'block' or 'inline')

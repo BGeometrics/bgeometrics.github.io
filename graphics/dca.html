@@ -156,6 +156,10 @@
         });
     })();
 
+    document.getElementById('startDateAgo').addEventListener("change", startDate);
+    document.getElementById('startDateTemp').addEventListener("change", startDate);
+    document.getElementById('repeatPurchase').addEventListener("change", calculate);
+
     /*
         DCA compras periódicas con la misma candidad dolares/euros de BTC
         Cálculo, cada vez que se compra se suma los BTC a los que se tiene y se multiplica por el precio de BTC en dolares
@@ -196,11 +200,6 @@
         return dca;
     }
 
-    document.getElementById('startDateAgo').addEventListener("change", startDate);
-    document.getElementById('startDateTemp').addEventListener("change", startDate);
-    document.getElementById('repeatPurchase').addEventListener("change", calculate);
-
-
     function startDate() { 
         var e = document.getElementById("startDateAgo");
 
@@ -236,10 +235,6 @@
         const duration = getDaysAgo();
         const timestampDaysAgo = currentTimestamp - (duration * millisecondsInDay);
 
-        console.log("Duration: " + duration);
-        console.log("Frequency: " + frequency.value);
-        console.log("Investment: " + investment.value);
-
         result = calculateDCA(Number(investment.value), Number(frequency.value), duration, priceBTC, dayColumn, timestampDaysAgo);
 
         if (chart.series[0] !== undefined) {
@@ -272,8 +267,6 @@
             dateNow = new Date().getTime(); 
             const millisecondsDiff = dateNow - dateObjectMilis;
             duration = Math.floor(millisecondsDiff / (1000 * 60 * 60 * 24));
-
-            console.log("daysDiff: " + duration);
         }
         else {
             duration = Number(e.value);
