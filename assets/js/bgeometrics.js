@@ -21,7 +21,7 @@ var names = [
 { name: "Bitcoin OHLC (Open High Low Close)", link: "ohlc.html" },
 { name: "NUPL (Net Unrealized Profit / Loss)", link: "reports/bitcoin_nupl_g.html" },
 { name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
-{ name: "Short Term Hodler Realized Price", link: "reports/bitcoin_realized_short_g.html" },
+{ name: "Short Term Hodler (STH) Realized Price", link: "reports/bitcoin_realized_short_g.html" },
 { name: "Hodl Waves", link: "hodl_waves.html" },
 { name: "Change BTC on exchanges", link: "reports/bitcoin_ex_change_held_g.html" },
 { name: "Bitcoin Fear and Greed", link: "reports/bitcoin_fear_greed_g.html" },
