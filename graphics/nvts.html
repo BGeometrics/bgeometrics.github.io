@@ -30,8 +30,8 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'
             ).then(response => response.json());
-            const data_mvrv_zscore = await fetch(
-                'https://charts.bgeometrics.com/files/mvrv_zscore.json'
+            const data_realized_price = await fetch(
+                'https://charts.bgeometrics.com/files/realized_price.json'
             ).then(response => response.json());
 
         chart = Highcharts.stockChart('container-iframe', {
@@ -116,11 +116,13 @@
                 opposite: false
             }],
 
+            /*
             plotOptions: {
                 areaspline: {
                     fillOpacity: 0.9
                 }
             },
+            */
 
             series: [{
                 name: 'BTC price',
@@ -133,19 +135,21 @@
             }, {
                 id:'mvrv_zscore',
                 name: 'MVRV Z-Score',
-                data: data_mvrv_zscore,
+                data: data_realized_price,
                 color: 'rgba(0, 0, 255, 0.5)',
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0, 
+                yAxis: 1, 
 
+                /*
                 zones: [{
                     value: 5,
                     color: '#7cb5ec'
                 }, {
                     color: '#90ed7d'
                 }]
+                */
             },
         ],
 
@@ -187,7 +191,7 @@
         });
 
         // Add plot bands
-
+        /*
         j = 12000000000
         color_max = 'rgba(255, 0, 0, 0.1)';
         color_min = 'rgba(0, 255, 0, 0.1)';
@@ -210,6 +214,70 @@
                     //id: 'plot-band ' + key
             });
         }
+        */
+
+        row_old_price = 0;
+        row_old_realized = 0;
+        min_time = 0;
+        max_time = 0;
+
+        i = 0;
+
+
+        //const iterator = data_realized_price[][0].keys();
+        //console.log(data_realized_price);
+        //const column_time = data_realized_price.map(row => row[0]);
+        //console.log(column_time); // Output: ['A', 'B', 'C', 'D']
+
+        for (var row = 1; row < data_price.length-1; row++) {
+
+            //console.log(data_price[row]);
+            //console.log(data_price[row][1]);
+
+            //if ((row_old_price < row_old_realized) && (data_price[row][1] > data_realized_price[row][1])) {
+            if ((data_price[row-1][1] < data_realized_price[row-1][1]) && (data_price[row][1] > data_realized_price[row][1])) {
+                if(max_time == 0) {
+                    min_time = data_price[row][0];
+                    console.log("### min_time " + timeConverter(min_time));
+                    console.log("data_price[row][0] " + data_price[row-1][1]); 
+                    console.log("data_realized_price[row][0] " + data_realized_price[row-1][1]);
+                    console.log("data_price[row][1] " + data_price[row][1]); 
+                    console.log("data_realized_price[row][1] " + data_realized_price[row][1]);
+                }
+
+            }
+
+            //if ((row_old_price > row_old_realized) && (data_price[row][1] < data_realized_price[row][1])) {
+            if ((data_price[row-1][1] > data_realized_price[row-1][1]) && (data_price[row][1] < data_realized_price[row][1])) {
+                if(min_time != 0) {
+                    max_time = data_price[row][0];
+                    console.log("### max_time " + timeConverter(max_time));
+                    console.log("data_price[row][0] " + data_price[row-1][1]); 
+                    console.log("data_realized_price[row][0] " + data_realized_price[row-1][1]);
+                    console.log("data_price[row][1] " + data_price[row][1]); 
+                    console.log("data_realized_price[row][1] " + data_realized_price[row][1]);
+                }
+            }
+
+            if (min_time != 0 && max_time !=0) {
+                console.log("min_time " + timeConverter(min_time));
+                console.log("max_time " + timeConverter(max_time));
+
+                chart.xAxis[0].addPlotBand({
+                    from: min_time,
+                    to: max_time,
+                    color: 'rgba(255, 0, 0, 0.1)',
+                    zIndex: 3
+                    //id: 'plot-band ' + key
+                });
+                min_time = 0;
+                max_time = 0;
+            }
+            //i++;
+            //row_old_price = data_price[row][1];
+            //row_old_realized = data_realized_price[row][1];
+        }
+
 
         /*
             row_old_111 = 0;
@@ -245,8 +313,15 @@
 
     })();
 
+    function timeConverter(UNIX_timestamp){
+        var a = new Date(UNIX_timestamp);
+        var year = a.getFullYear();
+        var month = a.getMonth();
+        var date = a.getDate();
+        var time = date + ' ' + month + ' ' + year;
 
-
+        return time;
+    }
 
     </script>
 
