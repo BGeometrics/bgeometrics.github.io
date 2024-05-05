@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MVRV Z-Score (Market Value Realized Value)</title>
+    <title>NVT</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -28,10 +28,19 @@
 
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'
+                'https://charts.bgeometrics.com/files/nvtadj90_btc_price.json'
             ).then(response => response.json());
-            const data_realized_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price.json'
+            const data_nvt = await fetch(
+                'https://charts.bgeometrics.com/files/nvtadj90.json'
+            ).then(response => response.json());
+            const data_nvt_200dma = await fetch(
+                'https://charts.bgeometrics.com/files/nvtadj90_200dma.json'
+            ).then(response => response.json());
+            const data_nvt_high = await fetch(
+                'https://charts.bgeometrics.com/files/nvtadj90_200dma_high.json'
+            ).then(response => response.json());
+            const data_nvt_low = await fetch(
+                'https://charts.bgeometrics.com/files/nvtadj90_200dma_low.json'
             ).then(response => response.json());
 
         chart = Highcharts.stockChart('container-iframe', {
@@ -116,14 +125,6 @@
                 opposite: false
             }],
 
-            /*
-            plotOptions: {
-                areaspline: {
-                    fillOpacity: 0.9
-                }
-            },
-            */
-
             series: [{
                 name: 'BTC price',
                 color: 'rgba(0, 0, 0, 1)',
@@ -133,24 +134,43 @@
                 },
                 yAxis: 1
             }, {
-                id:'mvrv_zscore',
-                name: 'MVRV Z-Score',
-                data: data_realized_price,
+                id:'nvt',
+                name: 'NVT',
+                data: data_nvt,
                 color: 'rgba(0, 0, 255, 0.5)',
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 1, 
-
-                /*
-                zones: [{
-                    value: 5,
-                    color: '#7cb5ec'
-                }, {
-                    color: '#90ed7d'
-                }]
-                */
+                yAxis: 0, 
+            }, {
+                id:'nvt 200dma',
+                name: 'NVT 200dma',
+                data: data_nvt_200dma,
+                color: 'rgba(0, 255, 255, 0.5)',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0, 
+            }, {
+                id:'nvt high',
+                name: 'NVT high',
+                data: data_nvt_high,
+                color: 'rgba(0, 255, 0, 0.5)',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0, 
+            }, {
+                id:'nvt low',
+                name: 'NVT low',
+                data: data_nvt_low,
+                color: 'rgba(255, 0, 0, 0.5)',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0, 
             },
+
         ],
 
             legend:{
@@ -216,47 +236,44 @@
         }
         */
 
-        row_old_price = 0;
-        row_old_realized = 0;
         min_time = 0;
         max_time = 0;
 
-        i = 0;
 
 
-        //const iterator = data_realized_price[][0].keys();
-        //console.log(data_realized_price);
-        //const column_time = data_realized_price.map(row => row[0]);
+        //const iterator = data_nvt_high[][0].keys();
+        //console.log(data_nvt_high);
+        //const column_time = data_nvt_high.map(row => row[0]);
         //console.log(column_time); // Output: ['A', 'B', 'C', 'D']
 
         // Los dos dataset tienen que empezar en el mismo origen de tiempos y tener la misma longitud
-        for (var row = 1; row < data_price.length-1; row++) {
+        for (var row = 1; row < data_nvvt.length-1; row++) {
 
-            //console.log(data_price[row]);
-            //console.log(data_price[row][1]);
+            //console.log(data_nvt[row]);
+            //console.log(data_nvt[row][1]);
 
-            //if ((row_old_price < row_old_realized) && (data_price[row][1] > data_realized_price[row][1])) {
-            if ((data_price[row-1][1] < data_realized_price[row-1][1]) && (data_price[row][1] > data_realized_price[row][1])) {
+            //if ((row_old_price < row_old_realized) && (data_nvt[row][1] > data_nvt_high[row][1])) {
+            if ((data_nvt[row-1][1] < data_nvt_high[row-1][1]) && (data_nvt[row][1] > data_nvt_high[row][1])) {
                 if(max_time == 0) {
-                    min_time = data_price[row][0];
+                    min_time = data_nvt[row][0];
                     console.log("### min_time " + timeConverter(min_time));
-                    console.log("data_price[row][0] " + data_price[row-1][1]); 
-                    console.log("data_realized_price[row][0] " + data_realized_price[row-1][1]);
-                    console.log("data_price[row][1] " + data_price[row][1]); 
-                    console.log("data_realized_price[row][1] " + data_realized_price[row][1]);
+                    console.log("data_nvt[row][0] " + data_nvt[row-1][1]); 
+                    console.log("data_nvt_high[row][0] " + data_nvt_high[row-1][1]);
+                    console.log("data_nvt[row][1] " + data_nvt[row][1]); 
+                    console.log("data_nvt_high[row][1] " + data_nvt_high[row][1]);
                 }
 
             }
 
-            //if ((row_old_price > row_old_realized) && (data_price[row][1] < data_realized_price[row][1])) {
-            if ((data_price[row-1][1] > data_realized_price[row-1][1]) && (data_price[row][1] < data_realized_price[row][1])) {
+            //if ((row_old_price > row_old_realized) && (data_nvt[row][1] < data_nvt_high[row][1])) {
+            if ((data_nvt[row-1][1] > data_nvt_high[row-1][1]) && (data_nvt[row][1] < data_nvt_high[row][1])) {
                 if(min_time != 0) {
-                    max_time = data_price[row][0];
+                    max_time = data_nvt[row][0];
                     console.log("### max_time " + timeConverter(max_time));
-                    console.log("data_price[row][0] " + data_price[row-1][1]); 
-                    console.log("data_realized_price[row][0] " + data_realized_price[row-1][1]);
-                    console.log("data_price[row][1] " + data_price[row][1]); 
-                    console.log("data_realized_price[row][1] " + data_realized_price[row][1]);
+                    console.log("data_nvt[row][0] " + data_nvt[row-1][1]); 
+                    console.log("data_nvt_high[row][0] " + data_nvt_high[row-1][1]);
+                    console.log("data_nvt[row][1] " + data_nvt[row][1]); 
+                    console.log("data_nvt_high[row][1] " + data_nvt_high[row][1]);
                 }
             }
 
@@ -275,8 +292,8 @@
                 max_time = 0;
             }
             //i++;
-            //row_old_price = data_price[row][1];
-            //row_old_realized = data_realized_price[row][1];
+            //row_old_price = data_nvt[row][1];
+            //row_old_realized = data_nvt_high[row][1];
         }
 
 
@@ -313,16 +330,6 @@
             */
 
     })();
-
-    function timeConverter(UNIX_timestamp){
-        var a = new Date(UNIX_timestamp);
-        var year = a.getFullYear();
-        var month = a.getMonth();
-        var date = a.getDate();
-        var time = date + ' ' + month + ' ' + year;
-
-        return time;
-    }
 
     </script>
 
