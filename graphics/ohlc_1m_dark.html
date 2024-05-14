@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin OHLC, 10m UTC. Minute Update (Binance)<title>
+    <title>Bitcoin OHLC, 10m UTC. Minute Update (Binance)</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
@@ -33,23 +33,6 @@
                 let chart = this;
                 
                 ( function () {
-                    /*
-                    var image = new Image();
-                    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
-                    image.src = adresse_image;
-
-                    var height_image = 128;
-                    var width_image = 128;
-                    var textX = this.plotLeft + (this.plotWidth * 0.5);
-                    var textY = this.plotTop + (this.plotHeight * 0.5);
-                    var position_x = textX - width_image / 2;
-                    var position_y = textY - height_image / 2;
-                    console.log(position_x + " " + position_y);
-                    this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                        .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
-                        .attr({zIndex: 1})
-                        .add();
-                    */
 
                     fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=1000')
                     .then(res =>  res.json())
@@ -122,22 +105,7 @@
     series: [{
         type: 'candlestick',
         name: "BTCUSDT" ,
-        /*
-        groupPadding: 0.03,
-        pointPadding: 0.03,
-        _dataGrouping: {
-        units: [
-            [
-                'week', // unit name
-                [1] // allowed multiples
-            ], [
-                'month',
-                [1, 2, 3, 4, 6]
-            ]
-        ]
-        }
-        */
-    }],
+    }], 
 
             credits: {
                 text: 'Power by BGeometrics.com',
@@ -151,6 +119,7 @@
                     y: -124
                 }                
             },
+
 
     });   
 
