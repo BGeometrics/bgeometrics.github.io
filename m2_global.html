@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Candles Yearly" name="keywords">
+  <meta content="Bitcoin and M2 Growth Global of YoY" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -166,7 +166,7 @@
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Halving</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="bitcoin_price_g_log.html">
               <i class="bi bi-circle"></i><span>BTC Price Log</span>
@@ -178,7 +178,7 @@
             </a>
           </li>
           <li>
-            <a href="bitcoin_year_candle_g.html" class="active">
+            <a href="bitcoin_year_candle_g.html">
               <i class="bi bi-circle"></i><span>Candles Yearly</span>
             </a>
           </li>
@@ -498,14 +498,14 @@
         <a class="nav-link collapsed" data-bs-target="#macro-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Macro</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="macro-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="macro-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="sp500_gold.html">
               <i class="bi bi-circle"></i><span>SP500, Gold, Tesla, MSTR</span>
             </a>
           </li>
           <li>
-            <a href="m2_global.html">
+            <a href="m2_global.html" class="active">
               <i class="bi bi-circle"></i><span>M2 Growth Global YoY</span>
             </a>
           </li>
@@ -567,7 +567,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="reports/bitcoin_year_candle_g.html" allow="fullscreen" title="Candles Yearly" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/m2_global.html" allow="fullscreen" title="Bitcoin and M2 Growth Global of YoY" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -575,6 +575,35 @@
         </div><!-- End Left side columns -->
 
       </div>
+    </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/m2_global.html">
+          <h5>Bitcoin and M2 Growth Global of YoY</h5>
+        </a>
+        <p> 
+	  The Global Money Supply (M2) Growth graph shows the money supply growth of the top 21 central banks versus the price of Bitcoin.
+          <br><br>
+	The monetary mass or global liquidity includes cash, deposits in checks, savings, market accounts, funds and deposits of less than $100,000.
+          <br><br>
+	If global liquidity is increasing it means that major central banks are making more money available to their country. They do this by reducing interest rates or by purchasing government bonds and other securities to increase the money supply.
+          <br><br>
+	If we compare the price of BTC with the M2 growth rate of the central banks (FED, ECB, PBoC, BoJ...) it is observed that bitcoin moves together as the growth rate of the M2 money supply. Historically, Bitcoin bull markets have coincided with the expansion of global liquidity.
+          <br><br>
+	The money supply data has been taken from 21 central banks.
+          <br>
+	From North America Data: USM and CAM
+	From the EUROZONE: EUM
+	From non-eurozone Europe: CHM, GBM, FIPOP and RUM
+	Pacific: NZM
+	From Asia: CNM, TWM, HKM, INM, JPM, PHM and SGM
+	From Latin America: BRM, COM and MXM
+	From Middle East: AEM and TRM
+	From Africa: ZAM 
+        </p>
+      </div>
+
     </section>
 
   </main><!-- End #main -->
