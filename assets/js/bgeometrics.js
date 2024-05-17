@@ -158,18 +158,6 @@ function changeMetrics() {
     var value = e.value;
     var text = e.options[e.selectedIndex].text;
 
-    // set cookie
-    if(!metricsId.includes(value)){
-        if(metricsId.length == 0) 
-            metricsId = value;
-        else
-            metricsId = metricsId + "!$" + value;
-
-        addCharts(value, text);
-        deleteCookie(COOKIE_NAME);
-        setCookie(metricsId);
-    }
-
     // Show halvings
     if(value == "halving") {
         console.log(value);
@@ -211,6 +199,20 @@ function changeMetrics() {
             ]
         });
     }
+    else {
+        // set cookie
+        if(!metricsId.includes(value)){
+            if(metricsId.length == 0) 
+                metricsId = value;
+            else
+                metricsId = metricsId + "!$" + value;
+
+            addCharts(value, text);
+            deleteCookie(COOKIE_NAME);
+            setCookie(metricsId);
+        }
+    }
+
 }
 
 function deleteSeries() {
