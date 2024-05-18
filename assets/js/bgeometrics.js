@@ -160,7 +160,6 @@ function changeMetrics() {
 
     // Show halvings
     if(value == "halving") {
-        console.log(value);
 
         chart.xAxis[0].update({
               plotLines: [{
@@ -195,6 +194,28 @@ function changeMetrics() {
                     color: '#777777',
                     dashStyle: 'Dash',
                     value: 1713571200000
+              }
+            ]
+        });
+    }
+    else if(value == "relevant") {
+        chart.xAxis[0].update({
+              plotLines: [{
+                    name: 'COVID-19',
+                    label: {
+                        text:'COVID-19',
+                    },
+                    color: 'red',
+                    dashStyle: 'Dash',
+                    value: 1584662400000
+              }, {
+                    name: 'Russia Ukraine War',
+                    label: {
+                        text:'Russia Ukraine War',
+                    },
+                    color: 'red',
+                    dashStyle: 'Dash',
+                    value: 1645660800000
               }
             ]
         });
