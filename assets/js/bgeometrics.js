@@ -216,14 +216,6 @@ function changeMetrics() {
                     color: 'red',
                     dashStyle: 'Dash',
                     value: 1645660800000
-              }, {
-                    name: 'Crisis financial 2008',
-                    label: {
-			text:'Crisis financial 2008',
-                    },
-                    color: 'red',
-                    dashStyle: 'Dash',
-                    value: 1221436800000
               }
             ]
         });
