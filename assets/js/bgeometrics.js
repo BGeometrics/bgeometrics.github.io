@@ -201,6 +201,38 @@ function changeMetrics() {
     else if(value == "relevant") {
         chart.xAxis[0].update({
               plotLines: [{
+                    name: '1st halving',
+                    label: {
+                        text:'1st halving',
+                    },
+                    color: '#777777',
+                    dashStyle: 'Dash',
+                    value: 1354060800000
+              }, {
+                    name: '2nd halving',
+                    label: {
+                        text:'2nd halving',
+                    },
+                    color: '#777777',
+                    dashStyle: 'Dash',
+                    value: 1468022400000
+              }, {
+                    name: '3rd halving',
+                    label: {
+                        text:'3rd halving',
+                    },
+                    color: '#777777',
+                    dashStyle: 'Dash',
+                    value: 1589155200000
+              }, {
+                    name: '4th halving',
+                    label: {
+                        text:'4th halving',
+                    },
+                    color: '#777777',
+                    dashStyle: 'Dash',
+                    value: 1713571200000
+              }, {
                     name: 'COVID-19',
                     label: {
                         text:'COVID-19',
