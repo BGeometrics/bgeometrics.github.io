@@ -28,6 +28,12 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/moving_average_price.json'
             ).then(response => response.json());
+            const data_10dma = await fetch(
+                'https://charts.bgeometrics.com/files/10dma.json'
+            ).then(response => response.json());
+            const data_20dma = await fetch(
+                'https://charts.bgeometrics.com/files/20dma.json'
+            ).then(response => response.json());
             const data_50dma = await fetch(
                 'https://charts.bgeometrics.com/files/50dma.json'
             ).then(response => response.json());
@@ -137,6 +143,24 @@
                 },
                 yAxis: 0
             }, {
+                id:'10dma',
+                name: '10 dma',
+                data: data_10dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'20dma',
+                name: '20 dma',
+                data: data_20dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
                 id:'50_dma',
                 name: '50 dma',
                 data: data_50dma,
@@ -194,7 +218,8 @@
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
-                align:'center'
+                align:'center',
+                y: 25,
             },
 
             rangeSelector: {
