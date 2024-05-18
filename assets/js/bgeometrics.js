@@ -216,6 +216,38 @@ function changeMetrics() {
                     color: 'red',
                     dashStyle: 'Dash',
                     value: 1645660800000
+              }, {
+                    name: 'ETFs debut',
+                    label: {
+			text:'ETFs debut',
+                    },
+                    color: 'green',
+                    dashStyle: 'Dash',
+                    value: 1704931200000
+              }, {
+                    name: 'Fork BCH',
+                    label: {
+			text:'Fork BCH',
+                    },
+                    color: 'green',
+                    dashStyle: 'Dash',
+                    value: 1501545600000
+              }, {
+                    name: 'Mt. Gox close',
+                    label: {
+			text:'Mt. Gox close',
+                    },
+                    color: 'red',
+                    dashStyle: 'Dash',
+                    value: 1393545600000
+              }, {
+                    name: 'FBI closes Silk Road',
+                    label: {
+			text:'FBI closes Silk Road',
+                    },
+                    color: 'green',
+                    dashStyle: 'Dash',
+                    value: 1380672000000
               }
             ]
         });
