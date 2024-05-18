@@ -581,16 +581,13 @@
         <div class="col">
           <select class="form-select" id="metrics" style="width:300px;">
               <option selected>Bitcoin Metrics On-Chain</option>
-              <option value="halving">Halvings</option>
               <option value="realized_price">Realized Price</option>
               <option value="delta_cap">Delta cap</option>
               <option value="power_law">Power Law</option>
               <option value="power_law_floor">Power Law Floor</option>
-              <option value="10dma">10 day SMA</option>
-              <option value="20dma">20 day SMA</option>
-              <option value="50dma">50 day SMA</option>
-              <option value="155dma">155 day SMA</option>
-              <option value="200dma">200 day SMA</option>
+              <option value="50dma">50 day MA</option>
+              <option value="155dma">155 day MA</option>
+              <option value="200dma">200 day MA</option>
               <option value="sopr_axis">SOPR</option>
               <option value="sth_sopr_axis">SOPR STH</option>
               <option value="lth_sopr_axis">SOPR LTH</option>
@@ -615,9 +612,6 @@
               <option value="gold_yf_axis">Gold</option>
               <option value="tsla_yf_axis">Tesla</option>
               <option value="mstr_yf_axis">MicroStrategy</option>
-              <option value="glm2_axis">M2 Global</option>
-              <option value="m2_yoy_change_axis">M2 Growth Global</option>
-              <option value="relevant">Relevant dates</option>
             </select>
           </div>
 
@@ -708,7 +702,7 @@
                     events: {
                         load: function() {
                             var image = new Image();
-                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+			    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                             image.src = adresse_image;
 
                             var height_image = 128;
@@ -722,12 +716,6 @@
                                 .attr({zIndex: 1})
                                 .add();
                         }
-                    }
-                },
-
-                plotOptions:{
-                    series:{
-                        showInLegend:true
                     }
                 },
 
