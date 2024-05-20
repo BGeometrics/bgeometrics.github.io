@@ -19,37 +19,37 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-# In[4]:
+# In[2]:
 
 
 symbol = 'BTC-USD'
-data = yf.download(symbol, start='2016-01-01', end='2024-05-15', interval='1d')
+data = yf.download(symbol, start='2016-01-01', end='2024-05-19', interval='1d')
 data = data[['Adj Close']]
 data.rename(columns={'Adj Close': 'price_usd'}, inplace=True)
 
 
-# In[5]:
+# In[3]:
 
 
-short_window = 50
+short_window = 40
 long_window = 200
 
-data['SMA50'] = data['price_usd'].rolling(window=short_window, min_periods=1).mean()
+data['SMA40'] = data['price_usd'].rolling(window=short_window, min_periods=1).mean()
 data['SMA200'] = data['price_usd'].rolling(window=long_window, min_periods=1).mean()
 
 
-# In[7]:
+# In[4]:
 
 
 data['Signal'] = 0
 #data['Signal'][short_window:] = np.where(data['SMA50'][short_window:] > data['SMA200'][short_window:], 1, 0)
-data['Signal'][short_window:] =  np.where(data['price_usd'][short_window:] > data['SMA50'][short_window:], 1, 0)
+data['Signal'][short_window:] =  np.where(data['price_usd'][short_window:] > data['SMA40'][short_window:], 1, 0)
 data['Position'] = data['Signal'].diff()
 
 #print(data)
 
 
-# In[8]:
+# In[5]:
 
 
 # Initial capital
@@ -73,19 +73,19 @@ portfolio['total'] = portfolio[symbol] + portfolio['cash']
 portfolio['returns'] = portfolio['total'].pct_change()
 
 # Plot the strategy
-plt.figure(figsize=(12, 8))
+plt.figure(figsize=(20, 12))
 plt.plot(data['price_usd'], label='price_usd')
-plt.plot(data['SMA50'], label='50-day SMA')
-plt.plot(data['SMA200'], label='200-day SMA')
+plt.plot(data['SMA40'], label='40-day SMA')
+#plt.plot(data['SMA200'], label='200-day SMA')
 
 # Buy signals
 plt.plot(data[data['Position'] == 1].index, 
-         data['SMA50'][data['Position'] == 1], 
+         data['SMA40'][data['Position'] == 1], 
          '^', markersize=10, color='g', lw=0, label='Buy Signal')
 
 # Sell signals
 plt.plot(data[data['Position'] == -1].index, 
-         data['SMA50'][data['Position'] == -1], 
+         data['SMA40'][data['Position'] == -1], 
          'v', markersize=10, color='r', lw=0, label='Sell Signal')
 
 plt.title(f'{symbol} Price with SMA Crossover Strategy')
@@ -99,7 +99,7 @@ plt.show()
 
 
 
-# In[9]:
+# In[32]:
 
 
 # Calculate cumulative returns
@@ -136,14 +136,14 @@ print(f"Total Return: {(final_value - initial_capital) / initial_capital:.2%}")
 
 
 
-# In[24]:
+# In[33]:
 
 
 #### Bucle por los distintos valores de SMA para ver el que mejor rendimientos da
 
 initial_capital = 100000.0
 date_start = '2016-01-01'
-date_end = '2024-05-15'
+date_end = '2024-05-19'
 
 symbol = 'BTC-USD'
 data = yf.download(symbol, start=date_start, end=date_end, interval='1d')
@@ -197,7 +197,7 @@ for sma in range (10, 100, 10):
 print(f"Date start:\t " + date_start)
 print(f"Date end:\t " + date_end)
 print(f"The best SMA " + str(sma_name))
-print(f"Total Return: {sma_max:.2%}")
+print(f"Total return: {sma_max:.2%}")
 
 
 # In[ ]:
