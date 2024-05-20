@@ -136,16 +136,17 @@ print(f"Total Return: {(final_value - initial_capital) / initial_capital:.2%}")
 
 
 
-# In[21]:
+# In[24]:
 
 
 #### Bucle por los distintos valores de SMA para ver el que mejor rendimientos da
 
-# Initial capital
 initial_capital = 100000.0
+date_start = '2016-01-01'
+date_end = '2024-05-15'
 
 symbol = 'BTC-USD'
-data = yf.download(symbol, start='2016-01-01', end='2024-05-15', interval='1d')
+data = yf.download(symbol, start=date_start, end=date_end, interval='1d')
 data = data[['Adj Close']]
 data.rename(columns={'Adj Close': 'price_usd'}, inplace=True)
 
@@ -193,6 +194,8 @@ for sma in range (10, 100, 10):
     #print(f"Total Return: {ret:.2%}")
     #print("")
 
+print(f"Date start:\t " + date_start)
+print(f"Date end:\t " + date_end)
 print(f"The best SMA " + str(sma_name))
 print(f"Total Return: {sma_max:.2%}")
 
