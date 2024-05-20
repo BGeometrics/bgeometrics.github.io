@@ -34,6 +34,9 @@
             const data_20dma = await fetch(
                 'https://charts.bgeometrics.com/files/20dma.json'
             ).then(response => response.json());
+            const data_40dma = await fetch(
+                'https://charts.bgeometrics.com/files/40dma.json'
+            ).then(response => response.json());
             const data_50dma = await fetch(
                 'https://charts.bgeometrics.com/files/50dma.json'
             ).then(response => response.json());
@@ -162,6 +165,15 @@
             }, {
                 id:'20 SMA',
                 name: '20 SMA',
+                data: data_20dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'40 SMA',
+                name: '40 SMA',
                 data: data_20dma,
                 visible: false,
                 tooltip: {
