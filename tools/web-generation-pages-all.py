@@ -12,10 +12,10 @@ file_name,file_end,title,iframe_html,description,keywords
 
 Esto lo hace el script web-generation-pages-all.sh
 Para copiar al proyecto las páginas generadas
-cp /tmp/web/* /home/pi/bgeometrics.github.io/
+cp ~/tmp/web/* /home/pi/bgeometrics.github.io/
 
 Para llevarlas a local,
-scp pi@192.168.1.66:/tmp/web/* .
+scp pi@192.168.1.66:~/tmp/web/* .
 
 Por último hay que subirlas a github
 git add *
@@ -167,7 +167,7 @@ def generate_pages(_mode):
 
 
 # Asegurarse que existe el directorio
-directory_path = '/tmp/web'
+directory_path = '~/tmp/web'
 
 if not os.path.exists(directory_path):
     os.makedirs(directory)
@@ -186,21 +186,21 @@ generate_pages('light')
 # Generate index.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-index-end.html'
-output_file_path = '/tmp/web/index.html'
+output_file_path = '~/tmp/web/index.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_6m.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-end-index-6m.html'
-output_file_path = '/tmp/web/index_6m.html'
+output_file_path = '~/tmp/web/index_6m.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_3m.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-end-index-3m.html'
-output_file_path = '/tmp/web/index_3m.html'
+output_file_path = '~/tmp/web/index_3m.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
@@ -229,35 +229,35 @@ with open('web-generation-model-workspace.html', 'w') as file:
 
 file1_path = 'web-generation-model-workspace.html'
 file2_path = 'web-generation-workspace-2.html'
-output_file_path = '/tmp/web/workspace.html'
+output_file_path = '~/tmp/web/workspace.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page services.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-services-end.html'
-output_file_path = '/tmp/web/services.html'
+output_file_path = '~/tmp/web/services.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-contact-end.html'
-output_file_path = '/tmp/web/pages-contact.html'
+output_file_path = '~/tmp/web/pages-contact.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-donation-end.html'
-output_file_path = '/tmp/web/donation.html'
+output_file_path = '~/tmp/web/donation.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page api.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-bitcoin-api-end.html'
-output_file_path = '/tmp/web/bitcoin_api.html'
+output_file_path = '~/tmp/web/bitcoin_api.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
@@ -277,21 +277,21 @@ generate_pages('dark')
 # Generate index.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-index-end-dark.html'
-output_file_path = '/tmp/web/index_dark.html'
+output_file_path = '~/tmp/web/index_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_6m.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-end-index-6m-dark.html'
-output_file_path = '/tmp/web/index_6m_dark.html'
+output_file_path = '~/tmp/web/index_6m_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_3m.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-end-index-3m-dark.html'
-output_file_path = '/tmp/web/index_3m_dark.html'
+output_file_path = '~/tmp/web/index_3m_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
@@ -322,7 +322,7 @@ with open('web-generation-model-workspace-dark.html', 'w') as file:
 
 file1_path = 'web-generation-model-workspace-dark.html'
 file2_path = 'web-generation-workspace-2-dark.html'
-output_file_path = '/tmp/web/workspace_dark.html'
+output_file_path = '~/tmp/web/workspace_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
@@ -330,27 +330,27 @@ concatenate_files(file1_path, file2_path, output_file_path)
 # Generate page services.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-services-end.html'
-output_file_path = '/tmp/web/services_dark.html'
+output_file_path = '~/tmp/web/services_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-contact-end.html'
-output_file_path = '/tmp/web/pages-contact_dark.html'
+output_file_path = '~/tmp/web/pages-contact_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-donation-end.html'
-output_file_path = '/tmp/web/donation_dark.html'
+output_file_path = '~/tmp/web/donation_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
 print("For copy generate pages to project") 
-print("cp /tmp/web/* /home/pi/bgeometrics.github.io/")
+print("cp ~/tmp/web/* /home/pi/bgeometrics.github.io/")
 print("cd ..")
 print("git commit -a -m... ")
 print("git push")
