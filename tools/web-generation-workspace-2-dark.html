@@ -8,81 +8,114 @@
       <div class="row">
         <div class="col">
           <select class="form-select" id="metrics" style="width:300px;">
-              <option selected>Bitcoin Metrics On-Chain</option>
-	      <option value="halving">Halvings</option>
-              <option value="realized_price">Realized Price</option>
-              <option value="delta_cap">Delta cap</option>
-              <option value="power_law">Power Law</option>
-              <option value="power_law_floor">Power Law Floor</option>
-              <option value="sopr_axis">SOPR</option>
-              <option value="sth_sopr_axis">SOPR STH</option>
-              <option value="lth_sopr_axis">SOPR LTH</option>
-              <option value="mvrv_zscore_axis">MVRV Z-Score</option>
-              <option value="mvrv_axis">MVRV</option>
-              <option value="sth_mvrv_axis">MVRV STH</option>
-              <option value="lth_mvrv_axis">MVRV LTH</option>
-              <option value="sth_realized_price">Realized Price STH</option>
-              <option value="lth_realized_price">Realized Price LTH</option>
-              <option value="nupl_axis">NUPL</option>
-              <option value="aviv_axis">AVIV</option>
-              <option value="addresses_active_axis">Active Addresses</option>
-              <option value="rhodl_1m_axis">RHodl 1m</option>
-              <option value="10dma">10 day SMA</option>
-              <option value="20dma">20 day SMA</option>
-              <option value="40dma">40 day SMA</option>
-              <option value="50dma">50 day SMA</option>
-              <option value="155dma">155 day SMA</option>
-              <option value="200dma">200 day SMA</option>
-              <option value="market_cap_axis">Market Capitalization</option>
-              <option value="realized_cap_axis">Realized Capitalization</option>
-              <option value="investor_cap_axis">Investor Capitalization</option>
-              <option value="thermo_cap_axis">Thermo Capitalization</option>
-              <option value="fear_greed_axis">Fear and Greed</option>
-              <option value="hw_age_6m__axis">BTC LTH (>6m) %</option>
-              <option value="hw_age_6m_sth_axis">BTC STH (<6m) %</option>
-              <option value="hw_age_6m_lth_supply_axis">BTC LTH (>6m) Supply</option>
-              <option value="hw_age_6m_sth_supply_axis">BTC STH (<6m) Supply</option>
-              <option value="address_10k_1k_axis">Coins Addr. BTC &gt;1000 &lt;10000</option>
-              <option value="sp500_yf_axis">SP&500</option>
-              <option value="gold_yf_axis">Gold</option>
-              <option value="tsla_yf_axis">Tesla</option>
-              <option value="mstr_yf_axis">MicroStrategy</option>
-              <option value="glm2_axis">M2 Global</option>
-              <option value="m2_yoy_change_axis">M2 Growth Global</option>
-	      <option value="oi_total_axis">Open Interest Futures</option>
-              <option value="fedfunds_axis">Fed Funds</option>
-              <option value="total_btc_etf_btc_axis">ETF Total BTC</option>
-              <option value="flow_btc_etf_axis">ETF Flow</option>
-              <option value="relevant">Relevant dates</option>
-            </select>
-          </div>
-
-          <div class="col">
-              <button class="btn" onclick="deleteSeries()">Remove</button>
-          </div>
-
-          <div class="col">
-            <select class="form-select" id="zoom" style="width:120px;">
-                <option selected>Zoom</option>
-                <option value="600">600px</option>
-                <option value="700">700px</option>
-                <option value="800">800px</option>
-                <option value="900">900px</option>
-                <option value="1000">1000px</option>
-                <option value="1100">1100px</option>
-                <option value="1200">1200px</option>
-                <option value="1300">1300px</option>
-                <option value="1400">1400px</option>
-                <option value="1500">1500px</option>
-                <option value="1600">1600px</option>
-            </select>
-          </div>
-
+            <option selected>Bitcoin Metrics On-Chain</option>
+            <option value="halving">Halvings</option>
+            <option value="realized_price">Realized Price</option>
+            <option value="delta_cap">Delta cap</option>
+            <option value="power_law">Power Law</option>
+            <option value="power_law_floor">Power Law Floor</option>
+            <option value="sopr_axis">SOPR</option>
+            <option value="sth_sopr_axis">SOPR STH</option>
+            <option value="lth_sopr_axis">SOPR LTH</option>
+            <option value="mvrv_zscore_axis">MVRV Z-Score</option>
+            <option value="mvrv_axis">MVRV</option>
+            <option value="sth_mvrv_axis">MVRV STH</option>
+            <option value="lth_mvrv_axis">MVRV LTH</option>
+            <option value="sth_realized_price">Realized Price STH</option>
+            <option value="lth_realized_price">Realized Price LTH</option>
+            <option value="nupl_axis">NUPL</option>
+            <option value="aviv_axis">AVIV</option>
+            <option value="addresses_active_axis">Active Addresses</option>
+            <option value="rhodl_1m_axis">RHodl 1m</option>
+            <option value="10dma">10 day SMA</option>
+            <option value="20dma">20 day SMA</option>
+            <option value="40dma">40 day SMA</option>
+            <option value="50dma">50 day SMA</option>
+            <option value="155dma">155 day SMA</option>
+            <option value="200dma">200 day SMA</option>
+            <option value="market_cap_axis">Market Capitalization</option>
+            <option value="realized_cap_axis">Realized Capitalization</option>
+            <option value="investor_cap_axis">Investor Capitalization</option>
+            <option value="thermo_cap_axis">Thermo Capitalization</option>
+            <option value="fear_greed_axis">Fear and Greed</option>
+            <option value="hw_age_6m__axis">BTC LTH (>6m) %</option>
+            <option value="hw_age_6m_sth_axis">BTC STH (<6m) %</option>
+            <option value="hw_age_6m_lth_supply_axis">BTC LTH (>6m) Supply</option>
+            <option value="hw_age_6m_sth_supply_axis">BTC STH (<6m) Supply</option>
+            <option value="address_10k_1k_axis">Coins Addr. BTC &gt;1000 &lt;10000</option>
+            <option value="sp500_yf_axis">SP&500</option>
+            <option value="gold_yf_axis">Gold</option>
+            <option value="tsla_yf_axis">Tesla</option>
+            <option value="mstr_yf_axis">MicroStrategy</option>
+            <option value="glm2_axis">M2 Global</option>
+            <option value="m2_yoy_change_axis">M2 Growth Global</option>
+            <option value="oi_total_axis">Open Interest Futures</option>
+            <option value="fedfunds_axis">Fed Funds</option>
+            <option value="total_btc_etf_btc_axis">ETF Total BTC</option>
+            <option value="flow_btc_etf_axis">ETF Flow</option>
+            <option value="relevant">Relevant dates</option>
+          </select>
         </div>
 
-        <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+        <div class="col">
+          <button class="btn" onclick="deleteSeries()">Remove</button>
+        </div>
 
-        <script>
+        <div class="col-lg-3">
+          <select class="form-select" id="overlays" style="width:300px;">
+            <option value="pc" selected="selected">BTC Price</option>
+            <option value="bb">Bollinger Bands</option>
+            <option value="dema">DEMA (Double Exponential Moving Average)</option>
+            <option value="ema">EMA (Exponential Moving Average)</option>
+            <option value="linearRegression">Linear Regression</option>
+            <option value="sma">SMA (Simple Moving Average)</option>
+            <option value="tema">TEMA (Triple Exponential Moving Average)</option>
+            <option value="wma">VWAP (Volume Weighted Average Price)</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3">
+          <select class="form-select" id="oscillators" style="width:300px;">
+            <option value="osc" selected="selected">Oscillator</option>
+            <option value="apo">Absolute price indicator</option>
+            <option value="aroon">Aroon</option>
+            <option value="aroonoscillator">Aroon oscillator</option>
+            <option value="disparityindex">Disparity Index</option>
+            <option value="cmo">CMO (Chande Momentum Oscillator)</option>
+            <option value="dpo">Detrended price</option>
+            <option value="linearRegressionAngle">Linear Regression Angle</option>
+            <option value="linearRegressionIntercept">Linear Regression Intercept</option>
+            <option value="linearRegressionSlope">Linear Regression Slope</option>
+            <option value="macd">MACD (Moving Average Convergence Divergence)</option>
+            <option value="ppo">Percentage Price oscillator</option>
+            <option value="roc">RoC (Rate of Change)</option>
+            <option value="rsi">RSI (Relative Strength Index)</option>
+            <option value="trix">TRIX</option>
+          </select>
+        </div>
+
+        <div class="col">
+          <select class="form-select" id="zoom" style="width:120px;">
+            <option selected>Zoom</option>
+            <option value="600">600px</option>
+            <option value="700">700px</option>
+            <option value="800">800px</option>
+            <option value="900">900px</option>
+            <option value="1000">1000px</option>
+            <option value="1100">1100px</option>
+            <option value="1200">1200px</option>
+            <option value="1300">1300px</option>
+            <option value="1400">1400px</option>
+            <option value="1500">1500px</option>
+            <option value="1600">1600px</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+      <script>
             var zoomChart = 600;
             var metricsId = "";
             const COOKIE_NAME = "bg";
@@ -161,13 +194,13 @@
                     }
                 },
 
-		plotOptions:{
+		        plotOptions:{
                     series:{
                         showInLegend:true
                     }
                 },
 
-                yAxis: [{
+            	yAxis: [{
                     labels: {
                         align: 'left',
                     },
@@ -177,6 +210,9 @@
                     type: 'logarithmic',
                 }, {
                     opposite: false
+                }, {
+                    top: '70%',
+                    height: '30%'
                 }],
 
                 series: [{
@@ -188,6 +224,17 @@
                         valueDecimals: 2
                     },
                     yAxis: 0
+                }, {
+                    type: 'pc',
+                    id: 'overlay',
+                    name: 'BTC Channel',
+                    linkedTo: 'BTC price',
+                    yAxis: 0
+                }, {
+                    id: 'oscillator',
+                    name: 'Oscillator',
+                    linkedTo: 'BTC price',
+                    yAxis: 2
                 }],
 
                 legend:{
@@ -263,7 +310,38 @@
             zoomChart = value;
         }
 
-        </script>
+        document.getElementById('overlays').addEventListener("change", overlays_change);
+            
+        function overlays_change(e) {
+            series = chart.get('overlay');
+
+            if (series) {
+                series.remove(false);
+            }
+            chart.addSeries({
+                type: e.target.value,
+                linkedTo: 'BTC price',
+                id: 'overlay'
+            });
+        }
+
+        document.getElementById('oscillators').addEventListener("change", oscillators_change); 
+            
+        function oscillators_change(e) {
+            series = chart.get('oscillator');
+
+            if (series) {
+                series.remove(false);
+            }
+            chart.addSeries({
+                type: e.target.value,
+                linkedTo: 'BTC price',
+                id: 'oscillator',
+                yAxis: 2
+            });
+        }
+
+      </script>
 
     </section>
 
