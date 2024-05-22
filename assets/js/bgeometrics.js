@@ -37,7 +37,7 @@ var names = [
 { name: "Bitcoin distribution Whale 1000-10K", link: "reports/bitcoin_distribution_coin_g_whale.html" },
 { name: "Whale (1K-10K) Net Position BTC in 30d", link: "reports/bitcoin_whale_30d_sum_g.html" },
 { name: "Shark (100-1000) Net Position BTC 30d", link: "reports/bitcoin_shark_30d_sum_g.html" },
-{ name: "Bitcoin realized price distribution (URPD)", link: "reports/bitcoin_price_histogram_g.html" },
+{ name: "Bitcoin realized price distribution (URPD)", link: "graphics/distribution_realized_price.html" },
 { name: "History bitcoin price on a day like today", link: "reports/bitcoin_price_usd_day_g.html" },
 { name: "Bitcoin Volatility", link: "reports/bitcoin_volatility_g.html" },
 { name: "Bitcoin Dominance", link: "reports/bitcoin_dominance_g.html" },
