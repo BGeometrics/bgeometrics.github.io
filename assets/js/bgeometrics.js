@@ -289,78 +289,78 @@ function changeMetrics() {
         chart.xAxis[0].addPlotBand({
             from: 1307318400000,
             to: 1321574400000,
-            color: 'rgba(255, 0, 0, 0.2)',
+            color: 'rgba(255, 0, 0, 0.15)',
         });
         // 2011-11-18 2013-04-09 
         chart.xAxis[0].addPlotBand({
             from: 1321574400000,
             to: 1365465600000,
-            color: 'rgb(144, 237, 125, 0.3)',
+            color: 'rgb(144, 237, 125, 0.2)',
         });
         // 2013-04-09 2013-07-06 
         chart.xAxis[0].addPlotBand({
             from: 1365465600000,
             to: 1373068800000,
-            color: 'rgba(255, 0, 0, 0.2)',
+            color: 'rgba(255, 0, 0, 0.15)',
         });
         // 2013-07-06 2013-11-29 
         chart.xAxis[0].addPlotBand({
             from: 1373068800000,
             to: 1385683200000,
-            color: 'rgb(144, 237, 125, 0.3)',
+            color: 'rgb(144, 237, 125, 0.2)',
         });
         // 2013-11-29 2015-01-14 
         chart.xAxis[0].addPlotBand({
             from: 1385683200000,
             to: 1420329600000,
-            color: 'rgba(255, 0, 0, 0.2)',
+            color: 'rgba(255, 0, 0, 0.15)',
         });
         // 2015-01-14 2017-12-17 
         chart.xAxis[0].addPlotBand({
             from: 1420329600000,
             to: 1513468800000, 
-            color: 'rgb(144, 237, 125, 0.3)',
+            color: 'rgb(144, 237, 125, 0.2)',
                 //zIndex: 3
         });
         //2017-12-17 2018-12-15
         chart.xAxis[0].addPlotBand({
             from: 1513468800000, 
             to: 1544832000000, 
-            color: 'rgba(255, 0, 0, 0.2)',
+            color: 'rgba(255, 0, 0, 0.15)',
         });
         //2018-12-15 2021-04-12
         chart.xAxis[0].addPlotBand({
             from: 1544832000000,
             to: 1618185600000,  
-            color: 'rgb(144, 237, 125, 0.3)',
+            color: 'rgb(144, 237, 125, 0.2)',
         });
 
         //2021-04-12 2021-07-20
         chart.xAxis[0].addPlotBand({
             from: 1618185600000,
             to: 1626739200000,  
-            color: 'rgba(255, 0, 0, 0.2)',
+            color: 'rgba(255, 0, 0, 0.15)',
         });
 
         //2021-07-20 2021-11-08
         chart.xAxis[0].addPlotBand({
             from: 1626739200000,  
             to: 1636329600000,  
-            color: 'rgb(144, 237, 125, 0.3)',
+            color: 'rgb(144, 237, 125, 0.2)',
         });
 
         //2021-11-08 2022-12-26
         chart.xAxis[0].addPlotBand({
             from: 1636329600000,  
             to: 1672012800000,  
-            color: 'rgba(255, 0, 0, 0.2)',
+            color: 'rgba(255, 0, 0, 0.15)',
         });
 
         //2022-12-26 ...
         chart.xAxis[0].addPlotBand({
             from: 1672012800000,
             to: 1767225600000,  
-            color: 'rgb(144, 237, 125, 0.3)',
+            color: 'rgb(144, 237, 125, 0.2)',
         });
     }
     else {
