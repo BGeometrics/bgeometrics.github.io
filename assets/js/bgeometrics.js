@@ -285,6 +285,12 @@ function changeMetrics() {
         });
     }
     else if(value == "bull_bear") {
+        // 2010-10-04 2011-06-06 
+        chart.xAxis[0].addPlotBand({
+            from: 1286150400000,
+            to: 1307318400000,
+            color: 'rgb(144, 237, 125, 0.2)',
+        });
         // 2011-06-06 2011-11-18  
         chart.xAxis[0].addPlotBand({
             from: 1307318400000,
