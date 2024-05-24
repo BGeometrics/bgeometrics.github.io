@@ -369,6 +369,26 @@ function changeMetrics() {
             color: 'rgb(144, 237, 125, 0.2)',
         });
     }
+    else if(value == "max_pain") {
+        // 2015-01-03 2015-10-12 
+        chart.xAxis[0].addPlotBand({
+            from: 1420243200000,
+            to: 1444608000000,
+            color: 'rgb(0, 255, 0, 0.3)',
+        });
+        // 2018-11-22 2019-03-28  
+        chart.xAxis[0].addPlotBand({
+            from: 1542844800000,
+            to: 1553731200000,
+            color: 'rgb(0, 255, 0, 0.3)',
+        });
+        // 2022-08-22 2023-01-09  
+        chart.xAxis[0].addPlotBand({
+            from: 1661126400000,
+            to: 1673222400000,
+            color: 'rgb(0, 255, 0, 0.3)',
+        });
+    }
     else {
         // set cookie
         if(!metricsId.includes(value)){
