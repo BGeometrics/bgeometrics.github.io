@@ -112,6 +112,18 @@ function addCharts(_metricId, _text){
         _metricId = _metricId.substring(0, _metricId.indexOf('_axis'));
         yAxis = 1;
     }
+    else if (_metricId.indexOf('_2axis') > 0) {
+        _metricId = _metricId.substring(0, _metricId.indexOf('_2axis'));
+        yAxis = 2;
+    }
+    else if (_metricId.indexOf('_3axis') > 0) {
+        _metricId = _metricId.substring(0, _metricId.indexOf('_3axis'));
+        yAxis = 3;
+    }
+    else if (_metricId.indexOf('_4axis') > 0) {
+        _metricId = _metricId.substring(0, _metricId.indexOf('_4axis'));
+        yAxis = 4;
+    }
     data = fetch('https://charts.bgeometrics.com/files/' + _metricId + '.json')
         .then(response => response.json());
 
