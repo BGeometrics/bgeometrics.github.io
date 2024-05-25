@@ -402,8 +402,8 @@ function changeMetrics() {
         });
     }
     else if(value == "zone_0") {
+	console.log('zone 0');
         chart.addSeries({
-            data: data,
             zones: [{
                 value: 0,
             	color: 'rgb(0, 0, 255, 1)',
@@ -412,8 +412,8 @@ function changeMetrics() {
         });
     }
     else if(value == "zone_1") {
+	console.log('zone 1');
         chart.addSeries({
-            data: data,
             zones: [{
                 value: 1,
             	color: 'rgb(0, 0, 255, 0.7)',
