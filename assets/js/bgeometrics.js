@@ -401,6 +401,16 @@ function changeMetrics() {
             color: 'rgb(0, 0, 255, 0.3)',
         });
     }
+    else if(value == "zone_0") {
+        chart.addSeries({
+            data: data,
+            zones: [{
+                value: 0,
+                color: 'blue'
+            }]
+        
+        });
+    }
     else {
         // set cookie
         if(!metricsId.includes(value)){
