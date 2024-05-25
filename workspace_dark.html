@@ -578,6 +578,12 @@
     <section class="section dashboard">
       <div id="searchResults"></div>
 
+      <!-- No axis -> price BTC
+	      axis -> others
+	      2axis -> chart bottom
+	      3axis -> -100 to 100
+	      4axis -> 100 to 10000
+      -->
       <div class="row">
         <div class="col">
           <select class="form-select" id="metrics" style="width:300px;">
@@ -587,22 +593,22 @@
             <option value="delta_cap">Delta cap</option>
             <option value="power_law">Power Law</option>
             <option value="power_law_floor">Power Law Floor</option>
-            <option value="sopr_axis">SOPR</option>
-            <option value="sth_sopr_axis">SOPR STH</option>
-            <option value="lth_sopr_axis">SOPR LTH</option>
-            <option value="mvrv_zscore_axis">MVRV Z-Score</option>
-            <option value="mvrv_axis">MVRV</option>
-            <option value="sth_mvrv_axis">MVRV STH</option>
-            <option value="lth_mvrv_axis">MVRV LTH</option>
+            <option value="sopr_3axis">SOPR</option>
+            <option value="sth_sopr_3axis">SOPR STH</option>
+            <option value="lth_sopr_3axis">SOPR LTH</option>
+            <option value="mvrv_zscore_a3xis">MVRV Z-Score</option>
+            <option value="mvrv_3axis">MVRV</option>
+            <option value="sth_mvrv_3axis">MVRV STH</option>
+            <option value="lth_mvrv_3axis">MVRV LTH</option>
             <option value="sth_realized_price">Realized Price STH</option>
             <option value="lth_realized_price">Realized Price LTH</option>
-            <option value="nupl_axis">NUPL</option>
-            <option value="lth_nupl_axis">NUPL LTH</option>
-            <option value="sth_nupl_axis">NUPL STH</option>
-            <option value="aviv_axis">AVIV</option>
-            <option value="addresses_active_axis">Active Addresses</option>
-            <option value="realized_profit_loss_ratio_axis">Net Realized Profit Loss</option>
-            <option value="rhodl_1m_axis">RHodl 1m</option>
+            <option value="nupl_3axis">NUPL</option>
+            <option value="lth_nupl_3axis">NUPL LTH</option>
+            <option value="sth_nupl_3axis">NUPL STH</option>
+            <option value="aviv_3axis">AVIV</option>
+            <option value="addresses_active_4axis">Active Addresses</option>
+            <option value="realized_profit_loss_ratio_3axis">Net Realized Profit Loss</option>
+            <option value="rhodl_1m_3axis">RHodl 1m</option>
             <option value="10dma">10 day SMA</option>
             <option value="20dma">20 day SMA</option>
             <option value="40dma">40 day SMA</option>
@@ -613,17 +619,17 @@
             <option value="realized_cap_axis">Realized Capitalization</option>
             <option value="investor_cap_axis">Investor Capitalization</option>
             <option value="thermo_cap_axis">Thermo Capitalization</option>
-            <option value="fear_greed_axis">Fear and Greed</option>
-            <option value="hw_age_6m__axis">BTC LTH (>6m) %</option>
-            <option value="hw_age_6m_sth_axis">BTC STH (<6m) %</option>
+            <option value="fear_greed_3axis">Fear and Greed</option>
+            <option value="hw_age_6m__3axis">BTC LTH (>6m) %</option>
+            <option value="hw_age_6m_sth_3axis">BTC STH (<6m) %</option>
             <option value="hw_age_6m_lth_supply_axis">BTC LTH (>6m) Supply</option>
             <option value="hw_age_6m_sth_supply_axis">BTC STH (<6m) Supply</option>
             <option value="address_10k_1k_axis">Coins Addr. BTC &gt;1000 &lt;10000</option>
-            <option value="profit_loss_axis">Ratio Profit Loss</option>
-            <option value="profit_lth_axis">LTH Supply Profit</option>
-            <option value="profit_sth_axis">STH Supply Profit</option>
-            <option value="loss_lth_axis">LTH Supply Loss</option>
-            <option value="loss_sth_axis">STH Supply Loss</option>
+            <option value="profit_loss_3axis">Ratio Profit Loss</option>
+            <option value="profit_lth_3axis">LTH Supply Profit</option>
+            <option value="profit_sth_3axis">STH Supply Profit</option>
+            <option value="loss_lth_3axis">LTH Supply Loss</option>
+            <option value="loss_sth_3axis">STH Supply Loss</option>
             <option value="sp500_yf_axis">SP&500</option>
             <option value="gold_yf_axis">Gold</option>
             <option value="tsla_yf_axis">Tesla</option>
@@ -796,6 +802,9 @@
                 }, {
                     top: '70%',
                     height: '30%'
+                }, {
+                    opposite: false
+                }, {
                 }],
 
                 series: [{
