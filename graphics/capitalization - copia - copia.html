@@ -249,7 +249,12 @@
         //console.log(data);
         //console.log(data_1);
         chart.addSeries({
-            data: data
+            data: data,
+            zones: [{
+                value: 10000000000000000000,
+                color: 'green'
+            }]
+        
         });
     }
 
