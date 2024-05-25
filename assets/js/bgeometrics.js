@@ -406,7 +406,17 @@ function changeMetrics() {
             data: data,
             zones: [{
                 value: 0,
-                color: 'blue'
+            	color: 'rgb(0, 0, 255, 1)',
+            }]
+        
+        });
+    }
+    else if(value == "zone_1") {
+        chart.addSeries({
+            data: data,
+            zones: [{
+                value: 1,
+            	color: 'rgb(0, 0, 255, 0.7)',
             }]
         
         });
