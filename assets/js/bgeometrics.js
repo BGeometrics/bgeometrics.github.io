@@ -403,7 +403,7 @@ function changeMetrics() {
     }
     else if(value == "zone_0") {
 	    console.log('zone 0');
-        chart.yAxis[0].addPlotBand({
+        chart.yAxis[1].addPlotBand({
             from: -100, 
             to: 0,
             color: 'rgb(255, 0, 0, 0.1)',
@@ -412,7 +412,7 @@ function changeMetrics() {
     else if(value == "zone_1") {
 	    console.log('zone 1');
         //var extremes = chart.yAxis[0].getExtremes();
-        chart.yAxis[0].addPlotBand({
+        chart.yAxis[1].addPlotBand({
             from: -100, 
             to: 1,
             color: 'rgb(255, 0, 0, 0.2)',
