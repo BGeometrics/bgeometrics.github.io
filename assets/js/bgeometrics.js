@@ -408,11 +408,21 @@ function changeMetrics() {
             to: 0,
             color: 'rgb(255, 0, 0, 0.1)',
         });
+        chart.yAxis[2].addPlotBand({
+            from: -100, 
+            to: 0,
+            color: 'rgb(255, 0, 0, 0.1)',
+        });
     }
     else if(value == "zone_1") {
 	    console.log('zone 1');
         //var extremes = chart.yAxis[0].getExtremes();
         chart.yAxis[1].addPlotBand({
+            from: -100, 
+            to: 1,
+            color: 'rgb(255, 0, 0, 0.2)',
+        });
+        chart.yAxis[2].addPlotBand({
             from: -100, 
             to: 1,
             color: 'rgb(255, 0, 0, 0.2)',
