@@ -406,17 +406,17 @@ function changeMetrics() {
         chart.yAxis[1].addPlotBand({
             from: -100, 
             to: 0,
-            color: 'rgb(255, 0, 0, 0.1)',
+            color: 'rgb(0, 255, 0, 0.1)',
         });
         chart.yAxis[2].addPlotBand({
             from: -100, 
             to: 0,
-            color: 'rgb(255, 0, 0, 0.1)',
+            color: 'rgb(0, 255, 0, 0.1)',
         });
         chart.yAxis[3].addPlotBand({
             from: -100, 
             to: 0,
-            color: 'rgb(255, 0, 0, 0.1)',
+            color: 'rgb(0, 255, 0, 0.1)',
         });
     }
     else if(value == "zone_1") {
@@ -425,17 +425,17 @@ function changeMetrics() {
         chart.yAxis[1].addPlotBand({
             from: -100, 
             to: 1,
-            color: 'rgb(255, 0, 0, 0.2)',
+            color: 'rgb(0, 255, 0, 0.2)',
         });
         chart.yAxis[2].addPlotBand({
             from: -100, 
             to: 1,
-            color: 'rgb(255, 0, 0, 0.2)',
+            color: 'rgb(0, 255, 0, 0.2)',
         });
         chart.yAxis[3].addPlotBand({
             from: -100, 
             to: 1,
-            color: 'rgb(255, 0, 0, 0.2)',
+            color: 'rgb(0, 255, 0, 0.2)',
         });
     }
     else {
