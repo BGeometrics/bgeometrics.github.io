@@ -426,6 +426,12 @@ function changeMetrics() {
             to: 1513386001000,
             color: 'rgb(255, 0, 0, 0.3)',
         });
+        // 2019-02-07 2019-06-26
+        chart.xAxis[0].addPlotBand({
+            from: 1549501200000,
+            to: 1561510800000,
+            color: 'rgb(255, 0, 0, 0.3)',
+        });
         // 2021-01-27 2021-05-07
         chart.xAxis[0].addPlotBand({
             from: 1611709201000,
@@ -436,6 +442,12 @@ function changeMetrics() {
         chart.xAxis[0].addPlotBand({
 	    from: 1632877201000,
             to: 1636333201000,
+            color: 'rgb(255, 0, 0, 0.3)',
+        });
+        // 2024-06-22 2024-03-13
+        chart.xAxis[0].addPlotBand({
+	    from: 1705885200000,
+            to: 1710291600000,
             color: 'rgb(255, 0, 0, 0.3)',
         });
     }
