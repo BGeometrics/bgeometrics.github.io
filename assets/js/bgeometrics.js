@@ -402,6 +402,18 @@ function changeMetrics() {
         });
     }
     else if(value == "min_pain") {
+        // 2011-11-17 2012-01-15
+        chart.xAxis[0].addPlotBand({
+	    from: 1321491601000,
+            to: 1326589201000,
+            color: 'rgb(255, 0, 0, 0.3)',
+        });
+        // 2013-01-06 2013-04-09
+        chart.xAxis[0].addPlotBand({
+            from: 1357434001000,
+            to: 1365469201000,
+            color: 'rgb(255, 0, 0, 0.3)',
+        });
         // 2013-10-02 2013-12-04
         chart.xAxis[0].addPlotBand({
             from: 1380675601000,
