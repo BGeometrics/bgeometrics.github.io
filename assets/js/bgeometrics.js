@@ -401,6 +401,20 @@ function changeMetrics() {
             color: 'rgb(0, 0, 255, 0.3)',
         });
     }
+    else if(value == "min_pain") {
+        // 2021-01-27 2021-05-07
+        chart.xAxis[0].addPlotBand({
+            from: 1611709201000,
+            to: 1620349201000,
+            color: 'rgb(255, 0, 0, 0.3)',
+        });
+        // 2021-09-29 2021-11-08
+        chart.xAxis[0].addPlotBand({
+	    from: 1632877201000,
+            to: 1636333201000,
+            color: 'rgb(255, 0, 0, 0.3)',
+        });
+    }
     else if(value == "zone_0") {
 	    console.log('zone 0');
         chart.yAxis[1].addPlotBand({
