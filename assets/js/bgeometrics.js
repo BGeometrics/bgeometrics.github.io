@@ -261,6 +261,14 @@ function changeMetrics() {
                     dashStyle: 'Dash',
                     value: 1645660800000
               }, {
+                    name: 'FTX liquidity crisis',
+                    label: {
+			    text:'FTX liquidity crisis',
+                    },
+                    color: 'red',
+                    dashStyle: 'Dash',
+                    value: 1667782800000
+              }, {
                     name: 'ETFs debut',
                     label: {
 			text:'ETFs debut',
