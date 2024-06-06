@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Power Law</title>
+    <title>SOPR (Spent Output Profit Ratio)</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -18,27 +18,26 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <style>:root {--highcharts-neutral-color-3: orange;}</style>
 
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:700px;"></div>
 
     <script>
         (async () => {
-            const data_power_law = await fetch(
-                'https://charts.bgeometrics.com/files/power_law.json'
-            ).then(response => response.json());
-            const data_power_law_floor = await fetch(
-                'https://charts.bgeometrics.com/files/power_law_floor.json'
-            ).then(response => response.json());
-            const data_power_law_top = await fetch(
-                'https://charts.bgeometrics.com/files/power_law_top.json'
-            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
             ).then(response => response.json());
- 
-        var chart = Highcharts.stockChart('container-iframe', {
+            const data_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/sopr.json'
+            ).then(response => response.json());
+            const data_lth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/lth_sopr.json'
+            ).then(response => response.json());
+            const data_sth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/sth_sopr.json'
+            ).then(response => response.json());
+        
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -80,21 +79,17 @@
                     }
                 }
             },
-            title: {
-                text: 'Bitcoin Power Law',
-                align: 'left',
-            },
 
             chart: {
-                renderTo: 'container-iframe',
+                renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
                         image.src = adresse_image;
 
-                        var height_image = 128;
-                        var width_image = 128;
+                        var height_image = 250;
+                        var width_image = 320;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
@@ -104,6 +99,9 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
+
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
                     }
                 }
             },
@@ -115,14 +113,19 @@
             },
 
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false
+                title: {
+                    text: 'SOPR'
+                },
+                plotBands: [{ 
+                    from: 1,
+                    to: 0.8,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
                     text: 'BTC price'
                 },
-                type: 'logarithmic',
+                opposite: false
             }],
 
             series: [{
@@ -132,34 +135,33 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 1
             }, {
-                id:'btc_power_law',
-                name: 'BTC Power Law',
-                data: data_power_law,
+                id:'sopr',
+                name: 'SOPR',
+                data: data_sopr,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'btc_power_law_floor',
-                name: 'BTC Power Law Floor',
-                data: data_power_law_floor,
+                id:'lth_sopr',
+                name: 'LTH SOPR',
+                data: data_lth_sopr,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
-            /*
             }, {
-                id:'btc_power_law_top',
-                name: 'BTC Power Law Top',
-                data: data_power_law_top,
-                visible: false, 
+                id:'sth_sopr',
+                name: 'STH SOPR',
+                data: data_sth_sopr,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
-            */
             }],
 
             legend:{
@@ -170,7 +172,7 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 2
             },
 
             credits: {
@@ -186,21 +188,52 @@
                 }                
             },
             responsive: {
-                rules: [{
+                rules: [
+                {
                     condition: {
-                        maxWidth: 800
+                        maxWidth: 1000
                     },
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {
+                            enabled: false,
+                        },
                     }
+                }, {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {
+                            enabled: false,
+                        },
+                        yAxis: [{
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: ''
+                            }
+                        }, {
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: ''
+                            }
+
+                        }]
+                    },
                 }]
             }
         });
     })();
 
     </script>
-
 </body>
 </html>
