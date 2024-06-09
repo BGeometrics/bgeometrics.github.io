@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Address Coins Crab 1 to 10 BTC" name="keywords">
+  <meta content="Bitcoin OHLC Week" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -118,7 +118,7 @@
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="bitcoin_price_usd_g_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Price</span>
@@ -135,7 +135,7 @@
             </a>
           </li>
           <li>
-            <a href="ohlc_4h_dark.html">
+            <a href="ohlc_4h_dark.html" class="active">
               <i class="bi bi-circle"></i><span>OHLC 4 Hours</span>
             </a>
           </li>
@@ -279,7 +279,7 @@
         <a class="nav-link collapsed" data-bs-target="#address-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Address</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="address-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="address_active_dark.html">
               <i class="bi bi-circle"></i><span>Active Addresses</span>
@@ -577,7 +577,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="reports/bitcoin_distribution_coin_g_crab.html" allow="fullscreen" title="Address Coins Crab 1 to 10 BTC" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/ohlc_4h_dark.html" allow="fullscreen" title="Bitcoin OHLC" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -585,6 +585,48 @@
         </div><!-- End Left side columns -->
 
       </div>
+    </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/ohlc.html">
+          <h5>Bitcoin OHLC (Open, High, Low, Close) 4 Hours</h5>
+        </a>
+        <p> 
+          The concept of prices in OHLC (Open, High, Low, and Close) is used for the technical analysis of bitcoin. These four elements represent different aspects of price behavior over a specific period, usually in the context of candlestick charts. Each of these terms is explained below in the context of Bitcoin.
+        </p>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <ul>
+              <li>
+                  <strong>Open:</strong>
+                  <p>
+                    The opening price is the value at which an asset, in this case Bitcoin, is trading at the beginning of a given time period. On a candlestick chart, it is often represented as the price at the far left of the candle.
+                    </p>
+                </li>
+                <li>
+                    <strong>High:</strong>
+                    <p>
+                      The highest price reached during the time period in question. In the context of Bitcoin, this could represent the highest value the cryptocurrency reached on a specific exchange during that period.
+                    </p>
+                </li>
+                <li> 
+                    <strong>Low:</strong>
+                    <p>
+                      The lowest price reached during the same period. This value shows the lowest point that Bitcoin has reached in that time interval.
+                    </p>
+                </li>
+                <li> 
+                    <strong>Close:</strong>
+                    <p>
+                      The price at which the asset is trading at the end of the period. On a candlestick chart, this value is displayed at the far right of the candle. The closing price is crucial as it can indicate the direction the market has taken during that time frame.
+                    </p>
+                </li>
+            </ul>
+          </div>
+        </div>
+
     </section>
 
   </main><!-- End #main -->
