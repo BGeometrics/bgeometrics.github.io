@@ -3,6 +3,8 @@
 <head>
     <title>Bitcoin DCA Calculator</title>
 
+    <link href="https://charts.bgeometrics.com/assets/css/bgeometrics.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
@@ -41,10 +43,10 @@
                 <select class="form-select" id="repeatPurchase">
                     <option selected>Select</option>
                     <option value="1">Daily</option>
-                    <option value="7">Weekly</option>
+                    <option value="7" selected>Weekly</option>
                     <option value="14">Biweekly</option>
                     <option value="30">Monthly</option>
-                    <option value="60">BiMonthy</option>
+                    <option value="60">Bimonthly</option>
                 </select>
                 <label class="" style="padding: 15px; margin: 15px, 15px, 15px, 15px; display:inline-block">Starting</label>
                 <select id="startDateAgo" name="startDateAgo" class="form-select" style="margin: 10px, 10px, 10px, 10px;">
@@ -80,11 +82,6 @@
             ).then(response => response.json());
 
         chart = Highcharts.stockChart('container-iframe', {
-            title: {
-                text: 'Bitcoin DCA Calculator',
-                align: 'left',
-            },
-
             chart: {
                 renderTo: 'container-iframe',
                 events: {
@@ -92,7 +89,6 @@
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
                         image.src = adresse_image;
-
                         var height_image = 250;
                         var width_image = 320;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -158,11 +154,14 @@
                 }]
             }
         });
+        
+        calculate();
     })();
 
     document.getElementById('startDateAgo').addEventListener("change", startDate);
     document.getElementById('startDateTemp').addEventListener("change", startDate);
     document.getElementById('repeatPurchase').addEventListener("change", calculate);
+    document.getElementById('amountSubunits').addEventListener("change", calculate);
 
     /*
         DCA periodic purchases with the same amount of dollars/euros of BTC
@@ -293,6 +292,7 @@
 
         return Number(duration);
     }
+
 
     </script>
 

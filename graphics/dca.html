@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BGeometrics Workspace</title>
+    <title>Bitcoin DCA Calculator</title>
 
     <link href="../assets/css/bgeometrics.css" rel="stylesheet">
 
@@ -9,14 +9,14 @@
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
     <!-- Vendor CSS Files -->
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
-    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/css/style.css" rel="stylesheet">
 
     <link href="https://charts.bgeometrics.com/assets/css/bgeometrics.css" rel="stylesheet">
 
@@ -43,7 +43,7 @@
                 <select class="form-select" id="repeatPurchase">
                     <option selected>Select</option>
                     <option value="1">Daily</option>
-                    <option value="7">Weekly</option>
+                    <option value="7" selected>Weekly</option>
                     <option value="14">Biweekly</option>
                     <option value="30">Monthly</option>
                     <option value="60">BiMonthy</option>
@@ -160,11 +160,14 @@
                 }]
             }
         });
+        
+        calculate();
     })();
 
     document.getElementById('startDateAgo').addEventListener("change", startDate);
     document.getElementById('startDateTemp').addEventListener("change", startDate);
     document.getElementById('repeatPurchase').addEventListener("change", calculate);
+    document.getElementById('amountSubunits').addEventListener("change", calculate);
 
     /*
         DCA periodic purchases with the same amount of dollars/euros of BTC
@@ -295,6 +298,7 @@
 
         return Number(duration);
     }
+
 
     </script>
 
