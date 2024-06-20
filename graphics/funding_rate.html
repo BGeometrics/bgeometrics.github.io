@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin and M2 Growth Global of YoY (Fed, ECB, GBM, CNM, JPM...)</title>
+    <title>Bitcoin Funding Rate</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -25,16 +25,13 @@
 
     <script>
         (async () => {
-            const data = await fetch(
-                'https://charts.bgeometrics.com/files/glm2.json'
-            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/glm2_btc_price.json'
+                'https://charts.bgeometrics.com/files/funding_rate_btc_price.json'
             ).then(response => response.json());
-            const data_change = await fetch(
-                'https://charts.bgeometrics.com/files/m2_yoy_change.json'
+            const data_funding_rate = await fetch(
+                'https://charts.bgeometrics.com/files/funding_rate.json'
             ).then(response => response.json());
-
+ 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -57,6 +54,10 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -74,7 +75,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin and M2 Growth Global of YoY (Fed, ECB, GBM, CNM, JPM...)',
+                text: 'Bitcoin Funding Rate',
                 align: 'left',
             },
 
@@ -85,7 +86,6 @@
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
-
                         var height_image = 128;
                         var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -101,9 +101,18 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
-                    text: 'M2 Growth Global of YoY (%)'
+                    text: 'Funding Rate'
+                },
+                labels: {
+                    align: 'left',
                 },
             }, {
                 title: {
@@ -111,44 +120,31 @@
                 },
                 type: 'logarithmic',
                 opposite: false
-            }, {
-                title: {
-                    text: 'M2 Growth Global (USD)'
-                },
             }],
 
             series: [{
                 name: 'BTC price',
                 color: 'black',
-                zIndex: 2,
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 1
-            },{
-                name: 'M2 Growth YoY (%)',
-                type: 'area',
-                data: data_change,
-                color: 'green',
+            }, {
+                id:'Funding Rate',
+                name: 'Funding Rate',
+                color: '#90ed7d',
+                data: data_funding_rate,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 6
                 },
                 yAxis: 0,
                 zones: [{
                     value: 0,
-                    color: '#f7a35c'
+                    color: '#ff2222'
                 }, {
                     color: '#90ed7d'
                 }]
-            },{
-                name: 'M2 Global Supply (USD)',
-                type: 'line',
-                data: data,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 2
             }],
 
             legend:{
@@ -157,22 +153,37 @@
                 verticalAlign: 'top',
                 align:'center'
             },
+
+            rangeSelector: {
+                selected: 2
+            },
+
             credits: {
-                text: 'Power by BGeometrics.com',
+                text: 'Source: binance.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
-                    x: -70,
+                    x: -85,
                     y: -124
                 }                
             },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        }
+                    }
+                }]
+            }
         });
-
     })();
-
     </script>
 
 </body>
