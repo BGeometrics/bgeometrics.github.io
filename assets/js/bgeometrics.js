@@ -588,7 +588,7 @@ function getMetricsShortTerm() {
 
             itemElement.innerHTML = `
                 <div class="col-lg-3">
-                    <table class="table table-success table-striped">
+                    <table class="table table-success">
                     <tr ${clasMiner}>
                         <td>Venta mineros</td>
                         <td>${termMiner}</td>

@@ -12,6 +12,7 @@
   <link href="https://charts.bgeometrics.com/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="https://charts.bgeometrics.com/assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <link href="https://charts.bgeometrics.com/assets/css/style.css" rel="stylesheet">
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 </head>
 <body>
 
@@ -132,61 +133,6 @@
       alertDiv.role = 'alert';
       alertDiv.textContent = JSON.stringify(data, null, 2);
       responseContainer.appendChild(alertDiv);
-    }
-
-    function getMetricsShortTerm(idG) {
-      fetch('https://bitcoin-data.com/v1/alfabitcoin/' + idG)  
-        .then(response => response.json())
-        .then(shortTerm => {
-          const dataContainer = document.getElementById('data-container');
-          dataContainer.innerHTML = ''; 
-          const itemElement = document.createElement('div'); 
-          
-          itemElement.innerHTML = `
-            <div class="col-lg-3">
-                <table class="table table-success table-striped">
-                <tr>
-                    <td>Venta mineros</td>
-                    <td>${shortTerm.miners_sale}</td>
-                </tr>
-                <tr>
-                    <td>Funding Rate</td>
-                    <td>${shortTerm.funding_rate}</td>
-                </tr>
-                <tr>
-                    <td>Dynamic Range NVT</td>
-                    <td>${shortTerm.nvts}</td>
-                </tr>
-                <tr>
-                    <td>STH Realized Price</td>
-                    <td>${shortTerm.sth_realized_price}</td>
-                </tr>
-                <tr>
-                    <td>Tendencia corto plazo</td>
-                    <td>${shortTerm.short_term_trend}</td>
-                </tr>
-                <tr>
-                    <td>Liquidez Global</td>
-                    <td>${shortTerm.global_liquidity}</td>
-                </tr>
-                <tr>
-                    <td>Value Days Destroyed</td>
-                    <td>${shortTerm.vdd}</td>
-                </tr>
-                <tr>
-                    <td>Riesgo Geopolítico</td>
-                    <td>${shortTerm.geopolitical_risk}</td>
-                </tr>
-                <tr>
-                    <td>Estado de la industria</td>
-                    <td>${shortTerm.state_industry}</td>
-                </tr>
-            </table>
-        </div>
-        `;
-        dataContainer.appendChild(itemElement);
-      })
-      .catch(error => console.error('Error fetching data:', error));
     }
   });
         
