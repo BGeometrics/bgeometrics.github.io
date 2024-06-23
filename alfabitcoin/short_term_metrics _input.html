@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada métricas corto plazo</title>
+  <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="https://charts.bgeometrics.com/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h1 class="text-left">Entrada métricas corto plazo</h1>
+  <form id="data-form" class="mt-4">
+    <div class="col-lg-3">
+      <div class="card" style="padding: 5px; margin-bottom: 5px;">
+        <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Riesgo geopolítico</label>
+        <select class="form-select" id="geopolitical_risk">
+          <option selected>Selecciona</option>
+          <option value="0">0</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card" style="padding: 5px; margin-bottom: 5px;">
+        <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Estado de la industria</label>
+        <select class="form-select" id="state_industry">
+          <option selected>Selecciona</option>
+          <option value="0">0</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Ok</button>
+  </form>
+  <div id="response-container" class="mt-4">
+  </div>
+
+  <div id="data-container" class="mt-4">
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    idG = 0;
+    theDate = '';
+    minersSale = null;
+    fundingRate = null;
+    nvts = null;
+    sthRealizedPrice = null;
+    shortTermTrend = null;
+    globalLiquidity = null;
+    vdd = null;
+
+    const form = document.getElementById('data-form');
+    const responseContainer = document.getElementById('response-container');
+      
+    try {
+      fetch('https://bitcoin-data.com/v1/alfabitcoin/last')  
+        .then(response => response.json())
+        .then(shortTerm => {
+          idG = shortTerm.id;
+          theDate = shortTerm.theDate;
+          minersSale = shortTerm.miners_sale;
+          fundingRate = shortTerm.funding_rate;
+          nvts = shortTerm.nvts;
+          sthRealizedPrice = shortTerm.sth_realized_price;
+          shortTermTrend = shortTerm.short_term_trend;
+          globalLiquidity = shortTerm.global_liquidity;
+          vdd = shortTerm.vdd;
+      });
+
+    } catch (error) {
+      console.error('Error:', error);
+      displayResponse({info: 'Selecciona los valores de las métricas' });
+    }
+
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const geopoliticalRisk = document.getElementById('geopolitical_risk').value;
+      const stateIndustry = document.getElementById('state_industry').value;
+
+      const payload = {
+        id: idG,
+        theDate: theDate,
+        geopolitical_risk: geopoliticalRisk,
+        state_industry: stateIndustry,
+        miners_sale: minersSale,
+        funding_rate: fundingRate,
+        nvts: nvts, 
+        sth_realized_price: sthRealizedPrice,
+        short_term_trend: shortTermTrend,
+        global_liquidity: globalLiquidity,
+        vdd: vdd
+      };
+
+      try {
+        const response = await fetch('https://bitcoin-data.com/v1/alfabitcoin/' + idG, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        getMetricsShortTerm(idG);
+      } catch (error) {
+        console.error('Error:', error);
+        displayResponse({info: 'Selecciona los valores de las métricas' });
+      }
+    });
+
+    function displayResponse(data) {
+      responseContainer.innerHTML = '';
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-info';
+      alertDiv.role = 'alert';
+      alertDiv.textContent = JSON.stringify(data, null, 2);
+      responseContainer.appendChild(alertDiv);
+    }
+
+    function getMetricsShortTerm(idG) {
+      fetch('https://bitcoin-data.com/v1/alfabitcoin/' + idG)  
+        .then(response => response.json())
+        .then(shortTerm => {
+          const dataContainer = document.getElementById('data-container');
+          dataContainer.innerHTML = ''; 
+          const itemElement = document.createElement('div'); 
+          
+          itemElement.innerHTML = `
+            <div class="col-lg-3">
+                <table class="table table-success table-striped">
+                <tr>
+                    <td>Venta mineros</td>
+                    <td>${shortTerm.miners_sale}</td>
+                </tr>
+                <tr>
+                    <td>Funding Rate</td>
+                    <td>${shortTerm.funding_rate}</td>
+                </tr>
+                <tr>
+                    <td>Dynamic Range NVT</td>
+                    <td>${shortTerm.nvts}</td>
+                </tr>
+                <tr>
+                    <td>STH Realized Price</td>
+                    <td>${shortTerm.sth_realized_price}</td>
+                </tr>
+                <tr>
+                    <td>Tendencia corto plazo</td>
+                    <td>${shortTerm.short_term_trend}</td>
+                </tr>
+                <tr>
+                    <td>Liquidez Global</td>
+                    <td>${shortTerm.global_liquidity}</td>
+                </tr>
+                <tr>
+                    <td>Value Days Destroyed</td>
+                    <td>${shortTerm.vdd}</td>
+                </tr>
+                <tr>
+                    <td>Riesgo Geopolítico</td>
+                    <td>${shortTerm.geopolitical_risk}</td>
+                </tr>
+                <tr>
+                    <td>Estado de la industria</td>
+                    <td>${shortTerm.state_industry}</td>
+                </tr>
+            </table>
+        </div>
+        `;
+        dataContainer.appendChild(itemElement);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+    }
+  });
+        
+</script>
+
+</body>
+</html>

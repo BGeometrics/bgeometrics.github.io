@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada métricas</title>
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Semáforo de corto plazo</h2>
+        <div id="data-container" class="mt-4">
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', getMetricsShortTerm());
+        
+        function getMetricsShortTerm() {
+            fetch('https://bitcoin-data.com/v1/alfabitcoin/5')  
+                .then(response => response.json())
+                .then(shortTerm => {
+                    const dataContainer = document.getElementById('data-container');
+                    dataContainer.innerHTML = ''; 
+                    const itemElement = document.createElement('div'); 
+                    cla="";
+
+                    if (shortTerm.miners_sale == 100) {
+                        cla = "class='table-danger'";
+                    }
+                    else if (shortTerm.miners_sale == 50) {
+                        cla = "class='table-warning'";
+                    }
+                    else {
+                        cla = "class='table-success'"
+                    }
+
+                    itemElement.innerHTML = `
+                        <div class="col-lg-3">
+                            <table class="table table-success table-striped">
+                            <tr ${cla}>
+                                <td>Venta mineros</td>
+                                <td>${shortTerm.miners_sale}</td>
+                            </tr>
+                            <tr>
+                                <td>Funding Rate</td>
+                                <td>${shortTerm.funding_rate}</td>
+                            </tr>
+                            <tr>
+                                <td>Dynamic Range NVT</td>
+                                <td>${shortTerm.nvts}</td>
+                            </tr>
+                            <tr>
+                                <td>STH Realized Price</td>
+                                <td>${shortTerm.sth_realized_price}</td>
+                            </tr>
+                            <tr>
+                                <td>Tendencia corto plazo</td>
+                                <td>${shortTerm.short_term_trend}</td>
+                            </tr>
+                            <tr>
+                                <td>Liquidez Global</td>
+                                <td>${shortTerm.global_liquidity}</td>
+                            </tr>
+                            <tr>
+                                <td>Value Days Destroyed</td>
+                                <td>${shortTerm.vdd}</td>
+                            </tr>
+                            <tr>
+                                <td>Riesgo Geopolítico</td>
+                                <td>${shortTerm.geopolitical_risk}</td>
+                            </tr>
+                            <tr>
+                                <td>Estado de la industria</td>
+                                <td>${shortTerm.state_industry}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    `;
+                    dataContainer.appendChild(itemElement);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+    </script>
+</body>
+</html>
