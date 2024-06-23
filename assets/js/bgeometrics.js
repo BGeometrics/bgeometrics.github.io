@@ -547,3 +547,105 @@ function timeConverter(UNIX_timestamp){
 
     return time;
 }
+
+function getMetricsShortTerm() {
+    fetch('https://bitcoin-data.com/v1/alfabitcoin/last')  
+        .then(response => response.json())
+        .then(shortTerm => {
+            const dataContainer = document.getElementById('data-container');
+            dataContainer.innerHTML = ''; 
+            const itemElement = document.createElement('div'); 
+            clas="";
+            term="";
+
+            let [_clas, _term] = tableTraffic(shortTerm.miners_sale, clas, term);
+            clasMiner = _clas;
+            termMiner = _term;
+            [_clas, _term] = tableTraffic(shortTerm.funding_rate, clas, term);
+            clasFunding = _clas;
+            termFunding = _term;
+            [_clas, _term] = tableTraffic(shortTerm.nvts, clas, term);
+            clasNvts = _clas;
+            termNvts = _term;
+            [_clas, _term] = tableTraffic(shortTerm.sth_realized_price, clas, term);
+            clasSTH = _clas;
+            termSTH = _term;
+            [_clas, _term] = tableTraffic(shortTerm.short_term_trend, clas, term);
+            clasShort = _clas;
+            termShort = _term;
+            [_clas, _term] = tableTraffic(shortTerm.global_liquidity, clas, term);
+            clasGlobal = _clas;
+            termGlobal = _term;
+            [_clas, _term] = tableTraffic(shortTerm.vdd, clas, term);
+            clasVdd = _clas;
+            termVdd = _term;
+            [_clas, _term] = tableTraffic(shortTerm.geopolitical_risk, clas, term);
+            clasGeo = _clas;
+            termGeo = _term;
+            [_clas, _term] = tableTraffic(shortTerm.state_industry, clas, term);
+            clasState = _clas;
+            termState = _term;
+
+            itemElement.innerHTML = `
+                <div class="col-lg-3">
+                    <table class="table table-success table-striped">
+                    <tr ${clasMiner}>
+                        <td>Venta mineros</td>
+                        <td>${termMiner}</td>
+                    </tr>
+                    <tr ${clasFunding}>
+                        <td>Funding Rate</td>
+                        <td>${termFunding}</td>
+                    </tr>
+                    <tr ${clasNvts}>
+                        <td>Dynamic Range NVT</td>
+                        <td>${termNvts}</td>
+                    </tr>
+                    <tr ${clasSTH}>
+                        <td>STH Realized Price</td>
+                        <td>${termSTH}</td>
+                    </tr>
+                    <tr ${clasShort}>
+                        <td>Tendencia corto plazo</td>
+                        <td>${termShort}</td>
+                    </tr>
+                    <tr ${clasGlobal}>
+                        <td>Liquidez Global</td>
+                        <td>${termGlobal}</td>
+                    </tr>
+                    <tr ${clasVdd}>
+                        <td>Value Days Destroyed</td>
+                        <td>${termVdd}</td>
+                    </tr>
+                    <tr ${clasGeo}>
+                        <td>Riesgo Geopolítico</td>
+                        <td>${termGeo}</td>
+                    </tr>
+                    <tr ${clasState}>
+                        <td>Estado de la industria</td>
+                        <td>${termState}</td>
+                    </tr>
+                </table>
+            </div>
+            `;
+            dataContainer.appendChild(itemElement);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+function tableTraffic(value, clas, term){
+    if (value == 100) {
+        clas = "class='table-danger'";
+        term = "Alto";
+    }
+    else if (value == 50) {
+        clas = "class='table-warning'";
+        term = "Medio";
+    }
+    else {
+        cla = "class='table-success'"
+        term = "Bajo";
+    }
+    
+    return [clas, term]
+}
