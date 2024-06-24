@@ -585,6 +585,9 @@ function getMetricsShortTerm() {
             [_clas, _term] = tableTraffic(shortTerm.state_industry, clas, term);
             clasState = _clas;
             termState = _term;
+            //[_clas, _term] = tableTraffic(shortTerm.average, clas, term);
+            clasAverage = "";
+            termAverage = shortTerm.average;
 
             itemElement.innerHTML = `
                 <div class="col-lg-3">
@@ -624,6 +627,10 @@ function getMetricsShortTerm() {
                     <tr ${clasState}>
                         <td>Estado de la industria</td>
                         <td>${termState}</td>
+                    </tr>
+                    <tr ${clasAverage}>
+                        <td>Total</td>
+                        <td>${termAverage}</td>
                     </tr>
                 </table>
             </div>
