@@ -18,37 +18,39 @@
 
 <!--<div class="container mt-5">-->
 <main id="main" class="main">
-  <h2 class="text-left">Entrada semáforo de corto plazo</h2>
+  <h2 class="text-left">Semáforo de corto plazo</h2>
   <div class="row">
-    <form id="data-form" class="mt-4">
-      <div class="col-lg-3">
-        <div class="card" style="padding: 5px; margin-bottom: 5px;">
-          <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Riesgo geopolítico</label>
-          <select class="form-select" id="geopolitical_risk">
-            <option selected>Selecciona</option>
-            <option value="0">0</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
+    <div class="col-lg-12">
+      <!--<form id="data-form" class="mt-4">-->
+      <form id="data-form">
+        <div class="col-lg-3">
+          <div class="card" style="padding: 5px; margin-bottom: 5px;">
+            <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Riesgo geopolítico</label>
+            <select class="form-select" id="geopolitical_risk">
+              <option selected>Selecciona</option>
+              <option value="0">Bajo</option>
+              <option value="50">Medio</option>
+              <option value="100">Alto</option>
+            </select>
+          </div>
+          <div class="card" style="padding: 5px; margin-bottom: 5px;">
+            <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Estado de la industria</label>
+            <select class="form-select" id="state_industry">
+              <option selected>Selecciona</option>
+              <option value="0">Bajo</option>
+              <option value="50">Medio</option>
+              <option value="100">Alto</option>
+            </select>
+          </div>
         </div>
-        <div class="card" style="padding: 5px; margin-bottom: 5px;">
-          <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Estado de la industria</label>
-          <select class="form-select" id="state_industry">
-            <option selected>Selecciona</option>
-            <option value="0">0</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Actualizar</button>
-      <div id="data-container" class="col-lg-12" style="padding: 5px; margin-bottom: 5px;">
-      </div>
-    </form>
-    <div id="response-container" class="col-lg-3">
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+      </form>
     </div>
-
+    <div id="data-container" class="col-lg-12" style="padding: 10px;">
+    </div>
+    <div id="response-container" class="col-lg-3">
   </div>
+
 </main>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
