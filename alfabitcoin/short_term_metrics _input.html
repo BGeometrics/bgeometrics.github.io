@@ -16,39 +16,40 @@
 </head>
 <body>
 
-<div class="container mt-5">
-  <h1 class="text-left">Entrada semáforo de corto plazo</h1>
-  <form id="data-form" class="mt-4">
-    <div class="col-lg-3">
-      <div class="card" style="padding: 5px; margin-bottom: 5px;">
-        <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Riesgo geopolítico</label>
-        <select class="form-select" id="geopolitical_risk">
-          <option selected>Selecciona</option>
-          <option value="0">0</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+<!--<div class="container mt-5">-->
+<main id="main" class="main">
+  <h2 class="text-left">Entrada semáforo de corto plazo</h2>
+  <div class="row">
+    <form id="data-form" class="mt-4">
+      <div class="col-lg-3">
+        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+          <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Riesgo geopolítico</label>
+          <select class="form-select" id="geopolitical_risk">
+            <option selected>Selecciona</option>
+            <option value="0">0</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+          <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Estado de la industria</label>
+          <select class="form-select" id="state_industry">
+            <option selected>Selecciona</option>
+            <option value="0">0</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card" style="padding: 5px; margin-bottom: 5px;">
-        <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Estado de la industria</label>
-        <select class="form-select" id="state_industry">
-          <option selected>Selecciona</option>
-          <option value="0">0</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+      <button type="submit" class="btn btn-primary">Ok</button>
+      <div id="data-container" class="col-lg-12" style="padding: 5px; margin-bottom: 5px;">
       </div>
+    </form>
+    <div id="response-container" class="col-lg-3">
     </div>
-    <button type="submit" class="btn btn-primary">Ok</button>
-  </form>
-  <div id="response-container" class="mt-4">
-  </div>
 
-  <div id="data-container" class="mt-4">
   </div>
-</div>
+</main>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -87,7 +88,7 @@
 
     } catch (error) {
       console.error('Error:', error);
-      displayResponse({info: 'Selecciona los valores de las métricas' });
+      displayResponse('Selecciona los valores de las métricas');
     }
 
     form.addEventListener('submit', async function(event) {
@@ -120,9 +121,10 @@
 
         const data = await response.json();
         getMetricsShortTerm(idG);
+        responseContainer.innerHTML = '';
       } catch (error) {
         console.error('Error:', error);
-        displayResponse({info: 'Selecciona los valores de las métricas' });
+        displayResponse('Selecciona los valores de las métricas');
       }
     });
 
@@ -131,7 +133,7 @@
       const alertDiv = document.createElement('div');
       alertDiv.className = 'alert alert-info';
       alertDiv.role = 'alert';
-      alertDiv.textContent = JSON.stringify(data, null, 2);
+      alertDiv.textContent = data;
       responseContainer.appendChild(alertDiv);
     }
   });
