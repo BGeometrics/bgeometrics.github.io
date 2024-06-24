@@ -16,34 +16,29 @@
 </head>
 <body>
 
-<!--<div class="container mt-5">-->
-<main id="main" class="main">
+<div class="container mt-4">
   <h3 class="text-left">Semáforo de corto plazo</h3>
   <div class="row">
     <div class="col-lg-12">
-      <!--<form id="data-form" class="mt-4">-->
       <form id="data-form">
         <div class="col-lg-3">
-          <div class="card" style="padding: 5px; margin-bottom: 5px;">
-            <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Riesgo geopolítico</label>
+            <label class="" style="padding: 5px;">Riesgo geopolítico</label>
             <select class="form-select" id="geopolitical_risk">
               <option selected>Selecciona</option>
               <option value="0">Bajo</option>
               <option value="50">Medio</option>
               <option value="100">Alto</option>
             </select>
-          </div>
-          <div class="card" style="padding: 5px; margin-bottom: 5px;">
-            <label class="" style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Estado de la industria</label>
+            <label class="" style="padding: 5px;">Estado de la industria</label>
             <select class="form-select" id="state_industry">
               <option selected>Selecciona</option>
               <option value="0">Bajo</option>
               <option value="50">Medio</option>
               <option value="100">Alto</option>
             </select>
+            <br>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
           </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Actualizar</button>
       </form>
     </div>
     <div id="data-container" class="col-lg-12" style="padding: 10px;">
@@ -51,7 +46,7 @@
     <div id="response-container" class="col-lg-3">
   </div>
 
-</main>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
