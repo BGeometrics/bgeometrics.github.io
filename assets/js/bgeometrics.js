@@ -586,7 +586,7 @@ function getMetricsShortTerm() {
             clasState = _clas;
             termState = _term;
             //[_clas, _term] = tableTraffic(shortTerm.average, clas, term);
-            clasAverage = "";
+            clasAverage = 'class="table-dark"';
             termAverage = shortTerm.average;
 
             itemElement.innerHTML = `
