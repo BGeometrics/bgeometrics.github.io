@@ -96,8 +96,9 @@ def search_replace_index_dark(_file):
     return _file_out
 """
 
-# Generate charts pages
+# Generate charts pages spanish
 def generate_pages(_mode):
+    lang = 'es'
     file_name = 'web-generation-pages-all.txt'
     file_model = output_file_path 
     checkWords = ("__title__","__description__","__keywords__", "__iframe__")
@@ -115,7 +116,7 @@ def generate_pages(_mode):
             file_out = fields[0]    # Nombre del fichero final
             file_end = fields[1]    # Nombre del fichero que se va a concatenar al final
             title = fields[2]       # Título
-            iframe = fields[3]      # URL del gráfico que se añade al iframe 
+            iframe = lang + '/' + fields[3]      # URL del gráfico que se añade al iframe 
             keywords = fields[4]    # Palabras claves de la página, es para los buscadores
             description = fields[5] # Descripción de la página. No lo estoy utilizando
             menu = fields[6]        # Grupo de menú en el que se encuentra
