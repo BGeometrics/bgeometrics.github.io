@@ -15,14 +15,14 @@ cd $DIR/tools
 cd $DIR_TEMP
 find . -type f -name "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
 
-cp $DIR_TEMP/* $DIR
+#cp $DIR_TEMP/* $DIR
 
-cd $DIR
+#cd $DIR
 
-git pull
-git add *
-git commit -a -m"daily"
-git push
+#git pull
+#git add *
+#git commit -a -m"daily"
+#git push
 
-echo $(date)
-echo
+#echo $(date)
+#echo
