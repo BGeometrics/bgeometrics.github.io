@@ -127,8 +127,7 @@ def generate_pages(_mode):
             
             # Reprocesamos los campos que hay que cambiar por el modo oscuro
             if _mode == 'dark':
-                file_out = fields[0].replace(".html", "_dark.html")
-                print(file_out)
+                file_out = file_out.replace(".html", "_dark.html")
 
                 if fields[3].find('reports') == -1 and fields[3].find('montecarlo') == -1:
                     iframe = fields[3].replace(".html", "_dark.html")
@@ -138,6 +137,7 @@ def generate_pages(_mode):
                 #    print("A estas páginas no se le añade el dark")
                 #    print(iframe)
 
+            print(file_out)
             repWords = (title,description,keywords,iframe)
 
             f_model = open(file_model, 'r')
@@ -173,7 +173,7 @@ def generate_pages(_mode):
 
 # Asegurarse que existe el directorio
 directory_path = '/tmp/web'
-directory_path_es = '/tmp/web/es'
+directory_path_es = '/tmp/web/' + lang
 
 if not os.path.exists(directory_path):
     os.makedirs(directory_path)
@@ -185,6 +185,7 @@ if not os.path.exists(directory_path_es):
 
 # Remove files directory
 remove_files_in_directory(directory_path)
+remove_files_in_directory(directory_path_es)
 
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-charts-end.html'
