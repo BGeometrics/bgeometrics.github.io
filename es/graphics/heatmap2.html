@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Heatmap</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <div id="container"></div>
+
+    <script>
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'heatmap',
+                inverted: true
+            },
+
+            accessibility: {
+                description: 'We see how temperatures are warmer during the day, especially from around 9am to 9pm. May 8th through 11th are also overall colder days compared to the rest. Overall the temperatures range from around -1 degrees C to around 23 degrees C.'
+            },
+
+            data: {
+                csvURL: 'https://charts.bgeometrics.com/graphics/temp3.csv'
+            },
+
+            title: {
+                text: 'Highcharts heat map',
+                align: 'left'
+            },
+
+            subtitle: {
+                text: 'Temperature variation by day and hour through May 2017',
+                align: 'left'
+            },
+
+            xAxis: {
+                categories: ['One','MVRV','Other'],
+                tickPixelInterval: 5,
+                //min: Date.UTC(2017, 4, 1),
+                //max: Date.UTC(2017, 4, 30)
+                //min: 0,
+                //max: 2
+            },
+
+            yAxis: {
+                title: {
+                    text: null
+                },
+
+                //labels: {
+                //    format: '{value}:00'
+                //},
+                lineWidth: 1,
+                minPadding: 0,
+                maxPadding: 0,
+                startOnTick: false,
+                endOnTick: false,
+                //tickPositions: [0, 6, 12, 18, 24],
+                //tickWidth: 1,
+                //min: 0,
+                //max: 23
+                //min: Date.UTC(2017, 4, 1),
+                //max: Date.UTC(2017, 4, 30)
+            },
+
+            colorAxis: {
+                id: 'color-axs',
+                stops: [
+                    [0, '#FF0000'],
+                    [0.5, '#FDDD08'],
+                    [0.9, '#00FF00']
+                ],
+                startOnTick: false,
+                endOnTick: false
+            },
+
+            series: [{
+                borderWidth: 0,
+                colsize: 365, // one year
+                //colsize: 24 * 36e5, // one day
+                /*
+                tooltip: {
+                    headerFormat: 'Temperature<br/>',
+                    pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} ℃</b>'
+                },
+                */
+                accessibility: {
+                    enabled: false
+                }
+            }]
+        });
+
+    </script>
+</body>
+</html>
