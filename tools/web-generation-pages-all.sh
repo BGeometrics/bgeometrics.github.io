@@ -12,6 +12,12 @@ cd $DIR/tools
 
 ./web-generation-pages-all.py
 
+cd $DIR/tools/es
+./web-generation-pages-all.py
+
+cd $DIR_TEMP/es
+find . -type f -name "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
+
 cp $DIR_TEMP/* $DIR
 
 cd $DIR

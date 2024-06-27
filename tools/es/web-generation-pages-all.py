@@ -168,15 +168,10 @@ def generate_pages(_mode):
 
 # Asegurarse que existe el directorio
 directory_path = '/tmp/web'
-directory_path_es = '/tmp/web/es'
 
 if not os.path.exists(directory_path):
     os.makedirs(directory_path)
     print("Directory created successfully!")
-
-if not os.path.exists(directory_path_es):
-    os.makedirs(directory_path_es)
-    print("Directory es created successfully!")
 
 # Remove files directory
 remove_files_in_directory(directory_path)

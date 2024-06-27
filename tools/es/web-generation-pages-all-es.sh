@@ -1,16 +1,16 @@
 #!/bin/bash                                                                                                      
 
 DIR=$HOME/bgeometrics.github.io/es
-DIR_TEMP=/tmp/web
+DIR_TEMP=/tmp/web/es
 
 echo 
 echo "#### "$(basename "$0")" ####"
 echo
 echo $(date)
 
-cd $DIR/tools
+cd $DIR/tools/es
 
-./web-generation-pages-all-es.py
+./web-generation-pages-all.py
 
 cd $DIR_TEMP
 find . -type f -name "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
