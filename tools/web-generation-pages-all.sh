@@ -15,8 +15,8 @@ cd $DIR/tools
 ./web-generation-pages-all.py
 
 cd $DIR_TEMP/es
-find . -type f -name "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
-find . -type f -name "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
+find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
+find . -type f -wholaname "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
 
 cp -r $DIR_TEMP/* $DIR
 
