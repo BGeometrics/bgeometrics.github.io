@@ -120,7 +120,7 @@ def generate_pages(_mode):
             file_out = fields[0].replace(replace_ini, replace_end) # Nombre con el directorio del idioma
             file_end = fields[1]    # Nombre del fichero que se va a concatenar al final
             title = fields[2]       # Título
-            iframe = fields[3]      # URL del gráfico que se añade al iframe 
+            iframe = lang + '/' + fields[3]      # URL del gráfico que se añade al iframe 
             keywords = fields[4]    # Palabras claves de la página, es para los buscadores
             description = fields[5] # Descripción de la página. No lo estoy utilizando
             menu = fields[6]        # Grupo de menú en el que se encuentra
