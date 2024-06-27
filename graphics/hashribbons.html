@@ -24,13 +24,13 @@
     <script>
         (async () => {
             const data_sma30 = await fetch(
-                'https://charts.bgeometrics.com/files/sma_30.json'
+                'https://charts.bgeometrics.com/files/hashribbons_sma_30.json'
             ).then(response => response.json());
             const data_sma60 = await fetch(
-                'https://charts.bgeometrics.com/files/sma_60.json'
+                'https://charts.bgeometrics.com/files/hashribbons_sma_60.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/sma_30_btc_price.json'
+                'https://charts.bgeometrics.com/files/hashribbons_btc_price.json.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
