@@ -1,0 +1,92 @@
+  <br>
+  
+    <section>
+      <div class="container">
+        <a href="graphics/cdd.html">
+          <h5>Días de monedas de Bitcoin destruidos</h5>
+        </a>
+        <p> 
+          También conocida como Bitcoin Days Destroyed (BDD), es una métrica que ofrece información que puede ser fundamental para pronosticar períodos alcistas del mercado.
+          <br>Esta métrica tiene como objetivo cuantificar la actividad de Bitcoin fusionando la cantidad de monedas movidas y el tiempo que han permanecido inactivas.
+          <br>En esencia, CDD mide el agotamiento de los "días de moneda" con cada transacción, operando bajo la premisa de que cuanto más tiempo permanezcan inactivas las monedas, mayor será su valor en términos de "días de moneda" acumulados.
+        </p>
+        <p>
+          El cálculo de Coin Days Destroyed implica multiplicar dos componentes clave: la cantidad de bitcoins que se transfieren (monedas movidas) y la cantidad de días que estas monedas han estado inactivas antes de la transacción.
+          <br>Este proceso proporciona una comprensión matizada del ecosistema de las criptomonedas, reflejando la dinámica entre el volumen de transacciones y el aspecto temporal del tiempo de inactividad de la moneda.
+        </p>
+        <span class="katex-mathml">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics><mrow><mtext>Coin Days Destroyed</mtext><mo>=</mo>
+                    <mo>Monedas movidas</mo><mo>x</mo><mtext>Días inactivos</mtext></mrow>
+                </semantics>
+            </math>
+        </span>
+	      <br><br><br>
+        <h4>Terminal CDD ajustado</h4>
+        <p>
+          Una mejora a esta métrica implica introducir un factor de ponderación basado en la relación entre la oferta actual de bitcoin en circulación (CurrentSupply) y la oferta máxima potencial de BTC (TotalSupply).
+          <br>Este ajuste se refina aún más aplicando un promedio móvil de 90 días (MA de 90 días) tanto a CurrentSupply como a TotalSupply.
+          <br>La adición del promedio móvil de 90 días tiene un doble propósito: suaviza las fluctuaciones diarias y acentúa las tendencias a largo plazo, culminando en el indicador MA de 90 días ajustado por terminal BDD.
+        </p>
+        <p>
+          Al incorporar este enfoque ponderado, la métrica Coin Days Destroyed se vuelve más sólida y refleja tendencias sostenidas en la actividad de Bitcoin.
+          <br>El indicador MA de 90 días ajustado por terminal BDD es valioso para discernir la dinámica general del mercado, lo que permite a los analistas e inversores obtener una visión más profunda del comportamiento de las criptomonedas.
+          <br>Esta sofisticada métrica se convierte así en una valiosa herramienta para anticipar el pico de los períodos alcistas, contribuyendo a un proceso de toma de decisiones más informado dentro del ámbito dinámico de la inversión en Bitcoin.
+        </p>
+
+        <span class="katex-mathml">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics>
+                    <mrow><mtext>CDD ajustado</mtext><mo>=</mo>
+                        <mo>Suministro de corriente                        </mo>
+                        <mo>x</mo>
+                        <mtext>Suma (CoinAge x CoinValue)</mtext>
+                        <mo>/</mo>
+                        <mtext>Oferta total</mtext>
+                    </mrow>
+                </semantics>
+            </math>
+        </span>
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>El rendimiento pasado no es garantía de resultados futuros.</strong></br>
+        <strong>No es un consejo de inversión. Descúbrelo tú mismo y actúa bajo tu propio criterio.</strong>
+      </div>
+      <div class="credits">
+        Power by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
