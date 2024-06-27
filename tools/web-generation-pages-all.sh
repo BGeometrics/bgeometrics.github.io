@@ -9,14 +9,14 @@ echo
 echo $(date)
 
 cd $DIR/tools/es
-./web-generation-pages-all.py
-
-cd $DIR/tools
-./web-generation-pages-all.py
+./web-generation-pages-all-es.py
 
 cd $DIR_TEMP/es
 find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
 find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
+
+cd $DIR/tools
+./web-generation-pages-all.py
 
 cp -r $DIR_TEMP/* $DIR
 
