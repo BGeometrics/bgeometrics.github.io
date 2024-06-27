@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BGeometrics Workspace Charts</title>
+  <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin Price" name="keywords">
+  <meta content="__keywords__" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -34,22 +34,7 @@
 
 </head>
 
-<body onload="init()">
-  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
-
-  <script src="https://code.highcharts.com/stock/highstock.js"></script>
-  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
-
-  <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+<body>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -92,7 +77,7 @@
             <ul class="dropdown-menu" aria-labelledby="modeDropdown">
               <li>
 		<a class="dropdown-item" href="index_dark.html">
-                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Oscuro
+                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Osucro
 	        </a>
 	      </li>
               <li>
@@ -133,7 +118,7 @@
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Precio</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="bitcoin_price_usd_g_dark.html">
               <i class="bi bi-circle"></i><span>Precio del Bitcoin</span>
@@ -445,7 +430,7 @@
           </li>
           <li>
             <a href="bitcoin_hashprice_g_dark.html">
-              <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
+              <i class="bi bi-circle"></i><span>Precio del Hash de Bitcoin</span>
             </a>
           </li>
           <li>
@@ -455,7 +440,7 @@
           </li>
           <li>
             <a href="open_interest_futures_dark.html">
-              <i class="bi bi-circle"></i><span>Futuros de Interés Abiertos</span>
+              <i class="bi bi-circle"></i><span>Futuros de Interés Abierto</span>
             </a>
           </li>
           <li>
@@ -493,7 +478,7 @@
           </li>
           <li>
             <a href="bitcoin_halving_radar_g_dark.html">
-              <i class="bi bi-circle"></i><span>Bitcoin Halving Radar </span>
+              <i class="bi bi-circle"></i><span>Bitcoin Halving Radar</span>
             </a>
           </li>
           <li>
@@ -547,7 +532,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="workspace_dark.html">
 	  <i class="bi bi-person-workspace"></i>
-          <span>Espacio de Trabajo</span>
+          <span>Espacio de trabajo</span>
         </a>
       </li>
 
@@ -587,7 +572,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="reports/bitcoin_price_usd_g.html" allow="fullscreen" title="Bitcoin Price" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="__iframe__" allow="fullscreen" title="__title__" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -596,64 +581,3 @@
 
       </div>
     </section>
-    <br>
-    <section>
-      <div class="container">
-        <a href="reports/bitcoin_price_usd_g.html">
-          <h5>Precio de bitcoin</h5>
-        </a>
-        <p> 
-          Desde su creación en 2009 por un individuo o grupo bajo el seudónimo de Satoshi Nakamoto, Bitcoin ha sido objeto de un interés creciente, tanto por su tecnología subyacente como por su potencial como activo financiero. Sin embargo, uno de los aspectos más fascinantes y a menudo discutidos de Bitcoin es su precio extremadamente volátil.
-          <br><br>En los primeros años, Bitcoin experimentó una serie de períodos alcistas y bajistas. En 2011, vimos cómo el precio subía rápidamente de unos pocos centavos a más de 30 dólares antes de volver a caer. Luego, en 2013, vimos un crecimiento aún más espectacular: Bitcoin superó los 1.000 dólares por primera vez, para volver a caer por debajo de los 200 dólares en cuestión de meses.
-          <br><br>Sin embargo, a pesar de estas fluctuaciones salvajes, la tendencia general a largo plazo de Bitcoin ha sido alcista. Después de cada corrección, el precio ha tendido a recuperarse y superar su máximo anterior. Esto se debe en parte a la creciente adopción de Bitcoin como depósito de valor digital y como activo de inversión alternativo.
-          <br><br>En los últimos años, hemos visto una nueva ola de interés institucional en Bitcoin. Grandes empresas, fondos de inversión e incluso algunos gobiernos han comenzado a adquirir y almacenar Bitcoin como parte de sus estrategias de inversión. Esto ha provocado un aumento significativo de la demanda de Bitcoin, llevando su precio a niveles nunca antes vistos.
-          <br><br>Sin embargo, a pesar de su impresionante desempeño a lo largo del tiempo, Bitcoin sigue siendo muy volátil y especulativo. Su precio está sujeto a una serie de factores, incluida la adopción, la regulación, la competencia de otras criptomonedas y eventos macroeconómicos globales.
-          <br><br>En conclusión, el precio de Bitcoin ha experimentado una evolución fascinante a lo largo del tiempo, desde sus humildes comienzos hasta convertirse en un activo de inversión de clase mundial. Si bien su volatilidad puede resultar desconcertante para algunos, para otros es precisamente esta volatilidad la que ofrece oportunidades interesantes y potencialmente lucrativas en el mundo de las criptomonedas.
-        </p>
-        <p>
-          <br>El gráfico de barras del lado derecho muestra el precio promedio de BTC durante los últimos 180, 90, 30, 7 días y hoy a las 00:00 UTC.
-        </p>
-
-      </div>
-
-    </section>
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <strong>El rendimiento pasado no es garantía de resultados futuros.</strong></br>
-        <strong>No es un consejo de inversión. Descúbrelo tú mismo y actúa bajo tu propio criterio.</strong>
-      </div>
-      <div class="credits">
-        Power by <a href="https://bgeometrics.com/">BGeometrics</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <div id="preloader">
-    <div class="line"></div>
-  </div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/bgeometrics.js"></script>
-
-</body>
-
-</html>
