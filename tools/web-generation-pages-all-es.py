@@ -118,7 +118,7 @@ def generate_pages(_mode):
             fields = line.split(',')
             #file_out = fields[0]    # Nombre del fichero final
             file_out = fields[0].replace(replace_ini, replace_end) # Nombre con el directorio del idioma
-            file_end = fields[1]    # Nombre del fichero que se va a concatenar al final
+            file_end = lang + '/' + fields[1]    # Nombre del fichero que se va a concatenar al final
             title = fields[2]       # Título
             #iframe = lang + '/' + fields[3]      # URL del gráfico que se añade al iframe 
             iframe = fields[3]      # URL del gráfico que se añade al iframe 
@@ -188,36 +188,36 @@ if not os.path.exists(directory_path_es):
 remove_files_in_directory(directory_path)
 remove_files_in_directory(directory_path_es)
 
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-charts-end.html'
-output_file_path = 'web-generation-model-out.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-charts-end.html'
+output_file_path = lang + '/web-generation-model-out.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 generate_pages('light')
 
 # Generate index.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-index-end.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-index-end.html'
 output_file_path = '/tmp/web/' + lang + '/index.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_6m.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-end-index-6m.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-end-index-6m.html'
 output_file_path = '/tmp/web/' + lang + '/index_6m.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_3m.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-end-index-3m.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-end-index-3m.html'
 output_file_path = '/tmp/web/' + lang + '/index_3m.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu
-with open('web-generation-model.html', 'r') as file:
+with open(lang + '/web-generation-model.html', 'r') as file:
   filedata = file.read()
 
 filedata = filedata.replace("""<body>""", """<body onload="init()">
@@ -236,50 +236,50 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
-with open('web-generation-model-workspace.html', 'w') as file:
+with open(lang + '/web-generation-model-workspace.html', 'w') as file:
   file.write(filedata)
 
-file1_path = 'web-generation-model-workspace.html'
-file2_path = 'web-generation-workspace-2.html'
+file1_path = lang + '/web-generation-model-workspace.html'
+file2_path = lang + '/web-generation-workspace-2.html'
 output_file_path = '/tmp/web/' + lang + '/workspace.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page services.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-services-end.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-services-end.html'
 output_file_path = '/tmp/web/' + lang + '/services.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-contact-end.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/' + lang + '/pages-contact.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-donation-end.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/' + lang + '/donation.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page api.html with menu
-file1_path = 'web-generation-model.html'
-file2_path = 'web-generation-model-bitcoin-api-end.html'
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-bitcoin-api-end.html'
 output_file_path = '/tmp/web/' + lang + '/bitcoin_api.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 ### Mode dark 
 
-_file_out = 'web-generation-model-dark.html' 
+_file_out = lang + '/web-generation-model-dark.html' 
 file_out_dark = search_replace_dark(file1_path, _file_out)
 #file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
-file2_path = 'web-generation-model-charts-end.html'
-output_file_path = 'web-generation-model-out-dark.html'
+file2_path = lang + '/web-generation-model-charts-end.html'
+output_file_path = lang + '/web-generation-model-out-dark.html'
 print(output_file_path)
 
 concatenate_files(file_out_dark, file2_path, output_file_path)
@@ -287,28 +287,28 @@ generate_pages('dark')
 
 
 # Generate index.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-index-end-dark.html'
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-index-end-dark.html'
 output_file_path = '/tmp/web/' + lang + '/index_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_6m.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-end-index-6m-dark.html'
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-end-index-6m-dark.html'
 output_file_path = '/tmp/web/' + lang + '/index_6m_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_3m.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-end-index-3m-dark.html'
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-end-index-3m-dark.html'
 output_file_path = '/tmp/web/' + lang + '/index_3m_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu dark
-with open('web-generation-model-dark.html', 'r') as file:
+with open(lang + '/web-generation-model-dark.html', 'r') as file:
   filedata = file.read()
 
 filedata = filedata.replace("""<body>""", """<body onload="init()">
@@ -329,33 +329,33 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
-with open('web-generation-model-workspace-dark.html', 'w') as file:
+with open(lang + '/web-generation-model-workspace-dark.html', 'w') as file:
   file.write(filedata)
 
-file1_path = 'web-generation-model-workspace-dark.html'
-file2_path = 'web-generation-workspace-2-dark.html'
+file1_path = lang + '/web-generation-model-workspace-dark.html'
+file2_path = lang + '/web-generation-workspace-2-dark.html'
 output_file_path = '/tmp/web/' + lang + '/workspace_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 
 # Generate page services.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-services-end.html'
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-services-end.html'
 output_file_path = '/tmp/web/' + lang + '/services_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-contact-end.html'
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/' + lang + '/pages-contact_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu dark
-file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-donation-end.html'
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/' + lang + '/donation_dark.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)

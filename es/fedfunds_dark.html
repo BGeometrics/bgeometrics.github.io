@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BGeometrics</title>
+  <title>BGeometrics Workspace Charts</title>
   <meta content="Bitcoin Price" name="description">
   <meta content="Bitcoin and Fed Funds" name="keywords">
 
@@ -34,13 +34,28 @@
 
 </head>
 
-<body>
+<body onload="init()">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
+  <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index_dark.html" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="BGeometrics">
         <span class="d-none d-lg-block">BGeometrics</span>
       </a>
@@ -64,7 +79,7 @@
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
-          <a class="nav-link nav-icon" href="workspace_dark.html" alt="BGeometrics Workspace">
+          <a class="nav-link nav-icon" href="workspace_dark_dark.html" alt="BGeometrics Workspace">
 	    <i class="bi bi-person-workspace"></i>
           </a>
         </li>
@@ -72,17 +87,17 @@
 	<li>
           <div class="dropdown d-inline language-switcher">
             <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <span id="currentMode">Dark</span>
+              <span id="currentMode">Oscuro</span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="modeDropdown">
               <li>
-		<a class="dropdown-item" href="index_dark.html">
-                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Dark
+		<a class="dropdown-item" href="index.html">
+                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Oscuro
 	        </a>
 	      </li>
               <li>
-		<a class="dropdown-item" href="index.html">
-                  <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Light
+		<a class="dropdown-item" href="index_dark.html">
+                  <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Claro
                 </a>
 	      </li>
             </ul>
@@ -116,51 +131,51 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>Precio</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="bitcoin_price_usd_g_dark.html">
-              <i class="bi bi-circle"></i><span>Bitcoin Price</span>
+            <a href="bitcoin_price_usd_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Precio del Bitcoin</span>
             </a>
           </li>
           <li>
-            <a href="ohlc_dark.html">
+            <a href="ohlc_dark_dark.html">
               <i class="bi bi-circle"></i><span>OHLC</span>
             </a>
           </li>
           <li>
-            <a href="ohlc_7d_dark.html">
-              <i class="bi bi-circle"></i><span>OHLC Week</span>
+            <a href="ohlc_7d_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Semana OHLC</span>
             </a>
           </li>
           <li>
-            <a href="ohlc_4h_dark.html">
-              <i class="bi bi-circle"></i><span>OHLC 4 Hours</span>
+            <a href="ohlc_4h_dark_dark.html">
+              <i class="bi bi-circle"></i><span>OHLC 4 horas</span>
             </a>
           </li>
           <li>
-            <a href="ohlc_1m_dark.html">
-              <i class="bi bi-circle"></i><span>Price Live</span>
+            <a href="ohlc_1m_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Precio Actual</span>
             </a>
           </li>
           <li>
-            <a href="moving_average_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Moving Average</span>
+            <a href="moving_average_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Promedio de Transacciones de BTC</span>
             </a>
           </li>
           <li>
-            <a href="capitalization_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Capitalization</span>
+            <a href="capitalization_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Capitalización del BTC</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_price_usd_day_g_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Price a day like</span>
+            <a href="bitcoin_price_usd_day_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Precio del BTC el día de hoy</span>
             </a>
           </li>
           <li>
-            <a href="pi_cycle_dark.html">
+            <a href="pi_cycle_dark_dark.html">
               <i class="bi bi-circle"></i><span>Pi Cycle</span>
             </a>
           </li>
@@ -169,107 +184,107 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#market-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Mercado</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="realized_price_g_dark.html">
-              <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
+            <a href="realized_price_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Precio Realizado y Delta</span>
             </a>
           </li>
           <li>
-            <a href="hodl_waves_dark.html">
+            <a href="hodl_waves_dark_dark.html">
               <i class="bi bi-circle"></i><span>Hodl Waves</span>
             </a>
           </li>
           <li>
-            <a href="hodl_waves_realized_cap_dark.html">
+            <a href="hodl_waves_realized_cap_dark_dark.html">
               <i class="bi bi-circle"></i><span>Hodl Waves Realized Cap</span>
             </a>
           </li>
           <li>
-            <a href="nupl_dark.html">
+            <a href="nupl_dark_dark.html">
               <i class="bi bi-circle"></i><span>NUPL</span>
             </a>
           </li>
           <li>
-            <a href="sth_realized_price_dark.html">
-              <i class="bi bi-circle"></i><span>Realized Price STH</span>
+            <a href="sth_realized_price_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Precio Realizado STH</span>
             </a>
           </li>
           <li>
-            <a href="lth_realized_price_dark.html">
-              <i class="bi bi-circle"></i><span>Realized Price LTH</span>
+            <a href="lth_realized_price_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Precio Realizado LTH</span>
             </a>
           </li>
           <li>
-            <a href="sopr_dark.html">
+            <a href="sopr_dark_dark.html">
               <i class="bi bi-circle"></i><span>SOPR</span>
             </a>
           </li>
           <li>
-            <a href="sth_sopr_dark.html">
+            <a href="sth_sopr_dark_dark.html">
               <i class="bi bi-circle"></i><span>SOPR STH</span>
             </a>
           </li>
           <li>
-            <a href="lth_sopr_dark.html">
+            <a href="lth_sopr_dark_dark.html">
               <i class="bi bi-circle"></i><span>SOPR LTH</span>
             </a>
           </li>
           <li>
-            <a href="mvrv_dark.html">
+            <a href="mvrv_dark_dark.html">
               <i class="bi bi-circle"></i><span>MVRV Z-Score</span>
             </a>
           </li>
           <li>
-            <a href="mvrv_ratio_dark.html">
+            <a href="mvrv_ratio_dark_dark.html">
               <i class="bi bi-circle"></i><span>MVRV Ratio</span>
             </a>
           </li>
           <li>
-            <a href="sth_mvrv_dark.html">
+            <a href="sth_mvrv_dark_dark.html">
               <i class="bi bi-circle"></i><span>MVRV STH</span>
             </a>
           </li>
           <li>
-            <a href="lth_mvrv_dark.html">
+            <a href="lth_mvrv_dark_dark.html">
               <i class="bi bi-circle"></i><span>MVRV LTH</span>
             </a>
           </li>
           <li>
-            <a href="distribution_realized_price_dark.html">
-              <i class="bi bi-circle"></i><span>Realized Price Distribution</span>
+            <a href="distribution_realized_price_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Distribución de Precios Realizados</span>
             </a>
           </li>
           <li>
-            <a href="aviv_dark.html">
+            <a href="aviv_dark_dark.html">
               <i class="bi bi-circle"></i><span>AVIV Ratio</span>
             </a>
           </li>
           <li>
-            <a href="cdd_dark.html">
+            <a href="cdd_dark_dark.html">
               <i class="bi bi-circle"></i><span>Coins Days Destroyed</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_cdd_ajusted_90dma_g_dark.html">
-              <i class="bi bi-circle"></i><span>CDD Ajusted 90dma</span>
+            <a href="bitcoin_cdd_ajusted_90dma_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>CDD Ajustado 90dma</span>
             </a>
           </li>
           <li>
-            <a href="realized_profit_loss_ratio_dark.html">
-              <i class="bi bi-circle"></i><span>Net Realized Profit and Loss</span>
+            <a href="realized_profit_loss_ratio_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Ganancia y Pérdida Neta Realizada</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_liveliness_g_dark.html">
-              <i class="bi bi-circle"></i><span>Bitcoin Liveliness</span>
+            <a href="bitcoin_liveliness_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Animación de Bitcoin</span>
             </a>
           </li>
           <li>
-            <a href="supply_in_profit_dark.html">
-              <i class="bi bi-circle"></i><span>Supply in Profit</span>
+            <a href="supply_in_profit_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Oferta en Beneficio</span>
             </a>
           </li>
         </ul>
@@ -277,112 +292,112 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#address-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Address</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Dirección</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="address_active_dark.html">
-              <i class="bi bi-circle"></i><span>Active Addresses</span>
+            <a href="address_active_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Dirección Activa</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_coins_tables_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Coins Distribution</span>
+            <a href="bitcoin_distribution_coins_tables_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Distribución de Monedas BTC</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_addr_tables_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Addresses Distribution</span>
+            <a href="bitcoin_distribution_addr_tables_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Distribución de Direcciones BTC</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_coin_g_dark.html">
-              <i class="bi bi-circle"></i><span>Coins</span>
+            <a href="bitcoin_distribution_coin_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_distribution_coin_g_humpback_dark.html">
-              <i class="bi bi-circle"></i><span>Coins Humpback > 10K BTC</span>
+            <a href="bitcoin_distribution_coin_g_humpback_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas Humpback > 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="distribution_coin_whale_dark.html">
-              <i class="bi bi-circle"></i><span>Coins Whale 1K - 10K BTC</span>
+            <a href="distribution_coin_whale_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas Whale 1K - 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_shark_dark.html">
-              <i class="bi bi-circle"></i><span>Coins Shark 100 - 1K BTC</span>
+            <a href="reports/bitcoin_distribution_coin_g_shark_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas Shark 100 - 1K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_fish_dark.html">
-              <i class="bi bi-circle"></i><span>Coins Fish 10 - 100 BTC</span>
+            <a href="reports/bitcoin_distribution_coin_g_fish_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas Fish 10 - 100 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_crab_dark.html">
-              <i class="bi bi-circle"></i><span>Coins Crab 1 - 10 BTC</span>
+            <a href="reports/bitcoin_distribution_coin_g_crab_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas Crab 1 - 10 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_g_shrimp_dark.html">
-              <i class="bi bi-circle"></i><span>Coins Shrimp < 1 BTC</span>
+            <a href="reports/bitcoin_distribution_coin_g_shrimp_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Monedas Shrimp < 1 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_humpback_dark.html">
+            <a href="reports/bitcoin_distribution_addr_g_humpback_dark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Humpback > 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="distribution_addr_whale_dark.html">
+            <a href="distribution_addr_whale_dark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Whale 1K - 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_shark_dark.html">
+            <a href="reports/bitcoin_distribution_addr_g_shark_dark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Shark 100 - 1K BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_fish_dark.html">
+            <a href="reports/bitcoin_distribution_addr_g_fish_dark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Fish 10 - 100 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_crab_dark.html">
+            <a href="reports/bitcoin_distribution_addr_g_crab_dark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Crab 1 - 10 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_addr_g_shrimp_dark.html">
+            <a href="reports/bitcoin_distribution_addr_g_shrimp_dark_dark.html">
               <i class="bi bi-circle"></i><span>Addr Shrimp < 1 BTC</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_whale_accumulation_heatmap_g_dark.html">
+            <a href="reports/bitcoin_whale_accumulation_heatmap_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Whale Accumulation Heat Map</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_whale_30d_sum_g_dark.html">
+            <a href="reports/bitcoin_whale_30d_sum_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Whale Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_shark_30d_sum_g_dark.html">
+            <a href="reports/bitcoin_shark_30d_sum_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Shark Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_shrimp_30d_sum_g_dark.html">
+            <a href="reports/bitcoin_shrimp_30d_sum_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Shrimp Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="reports/bitcoin_distribution_coin_pie_g_dark.html">
-              <i class="bi bi-circle"></i><span>Distribution two years</span>
+            <a href="reports/bitcoin_distribution_coin_pie_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Distribución de dos años</span>
             </a>
           </li>
         </ul>
@@ -390,77 +405,77 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Others charts</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-bar-chart"></i><span>Otros Gráficos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="etf_dark.html">
-	      <i class="bi bi-circle"></i><span>ETF Total Balance</span>
+            <a href="etf_dark_dark.html">
+	      <i class="bi bi-circle"></i><span>Saldo Total del ETF</span>
             </a>
           </li>
           <li>
-            <a href="etf_btc_dark.html">
-	      <i class="bi bi-circle"></i><span>ETF BTC Held</span>
+            <a href="etf_btc_dark_dark.html">
+	      <i class="bi bi-circle"></i><span>ETF BTC Retenido</span>
             </a>
           </li>
           <li>
-            <a href="stablecoin_supply_dark.html">
-              <i class="bi bi-circle"></i><span>Stablecoin supply</span>
+            <a href="stablecoin_supply_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Suministro de Monedas Estables</span>
             </a>
           </li>
           <li>
-            <a href="fear_greed_dark.html">
+            <a href="fear_greed_dark_dark.html">
               <i class="bi bi-circle"></i><span>Fear and Greed</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_fear_greed_img_dark.html">
-              <i class="bi bi-circle"></i><span>Fear and Greed index color</span>
+            <a href="bitcoin_fear_greed_img_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Color del Indice de Fear and Greed</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_volatility_g_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Volatility</span>
+            <a href="bitcoin_volatility_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Volatilidad del BTC</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_dominance_g_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Dominance</span>
+            <a href="bitcoin_dominance_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Dominancia BTC</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_hashprice_g_dark.html">
+            <a href="bitcoin_hashprice_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_hashribbons_g_dark.html">
+            <a href="bitcoin_hashribbons_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashribbons</span>
             </a>
           </li>
           <li>
-            <a href="open_interest_futures_dark.html">
-              <i class="bi bi-circle"></i><span>Open Interest Futures</span>
+            <a href="open_interest_futures_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Futuros de Interés Abiertos</span>
             </a>
           </li>
           <li>
-            <a href="power_law_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Power Law</span>
+            <a href="power_law_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Ley de uso del BTC</span>
             </a>
           </li>
           <li>
-            <a href="choppiness_dark.html">
-              <i class="bi bi-circle"></i><span>Choppiness Index</span>
+            <a href="choppiness_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Índice de Agitación</span>
             </a>
           </li>
           <li>
-            <a href="montecarlo_100_dark.html">
-              <i class="bi bi-circle"></i><span>Montecarlo next 100 days</span>
+            <a href="montecarlo_100_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Montecarlo próximos 100 días</span>
             </a>
           </li>
           <li>
-            <a href="montecarlo_365_dark.html">
-              <i class="bi bi-circle"></i><span>Montecarlo last 365 days</span>
+            <a href="montecarlo_365_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Montecarlo últimos 365 días</span>
             </a>
           </li>
         </ul>
@@ -472,27 +487,27 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="bitcoin_price_g_log_dark.html">
-              <i class="bi bi-circle"></i><span>BTC Price Log</span>
+            <a href="bitcoin_price_g_log_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Registro de Precios BTC</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_halving_radar_g_dark.html">
+            <a href="bitcoin_halving_radar_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Halving Radar </span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_year_candle_g_dark.html">
-              <i class="bi bi-circle"></i><span>Candles Yearly</span>
+            <a href="bitcoin_year_candle_g_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Candles Anuales</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_halving_month_g_dark.html">
+            <a href="bitcoin_halving_month_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Halving Month</span>
             </a>
           </li>
           <li>
-            <a href="bitcoin_halving_cycle_g_dark.html">
+            <a href="bitcoin_halving_cycle_g_dark_dark.html">
               <i class="bi bi-circle"></i><span>Halving Cycle</span>
             </a>
           </li>
@@ -505,55 +520,55 @@
         </a>
         <ul id="macro-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="sp500_gold_dark.html">
-              <i class="bi bi-circle"></i><span>SP500, Gold, Tesla, MSTR</span>
+            <a href="sp500_gold_dark_dark.html">
+              <i class="bi bi-circle"></i><span>SP500, Oro, Tesla, MSTR</span>
             </a>
           </li>
           <li>
-            <a href="m2_global_dark.html">
-              <i class="bi bi-circle"></i><span>M2 Growth Global YoY</span>
+            <a href="m2_global_dark_dark.html">
+              <i class="bi bi-circle"></i><span>M2 Crecimiento Global Interanual</span>
             </a>
           </li>
           <li>
-            <a href="m2_dark.html">
-              <i class="bi bi-circle"></i><span>M2 Money Stock</span>
+            <a href="m2_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Stock de Dinero M2</span>
             </a>
           </li>
           <li>
-            <a href="fedfunds_dark.html" class="active">
-              <i class="bi bi-circle"></i><span>Fed Funds</span>
+            <a href="fedfunds_dark_dark.html">
+              <i class="bi bi-circle"></i><span>Fondos federales</span>
             </a>
           </li>
 	</ul>  
       </li>
 
-      <li class="nav-heading">Pages</li>
+      <li class="nav-heading">Páginas</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="workspace_dark.html">
+        <a class="nav-link collapsed" href="workspace_dark_dark.html">
 	  <i class="bi bi-person-workspace"></i>
-          <span>Workspace</span>
+          <span>Espacio de Trabajo</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="services_dark.html">
+        <a class="nav-link collapsed" href="services_dark_dark.html">
           <i class="bi bi-person"></i>
-          <span>Services</span>
+          <span>Servicios</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="bitcoin_api_dark.html">
+        <a class="nav-link collapsed" href="bitcoin_api_dark_dark.html">
           <i class="bi bi-arrow-right"></i>
-          <span>Bitcoin API Free</span>
+          <span>API de Bitcoin gratis</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact_dark.html">
+        <a class="nav-link collapsed" href="pages-contact_dark_dark.html">
           <i class="bi bi-envelope"></i>
-          <span>Contact</span>
+          <span>Contacto</span>
         </a>
       </li>
         
@@ -587,23 +602,23 @@
     <section>
       <div class="container">
         <a href="graphics/fedfunds.html">
-          <h5>Bitcoin and Fed Funds</h5>
+          <h5>Bitcoin y la tasa de interés</h5>
         </a>
         <p> 
-	  The federal funds (Fed Funds) rate is the interest rate at which depository institutions exchange federal funds (balances held at Federal Reserve Banks) with each other overnight.
+	  La tasa de fondos federales es la tasa de interés a la que las instituciones depositarias intercambian fondos federales (saldos mantenidos en los Bancos de la Reserva Federal) entre sí durante la noche.
 	  <br><br>
-	  When a depository institution has excess balances in its reserve account, it lends to other banks that need larger balances. In simpler terms, a bank with excess cash, often called liquidity, will lend to another bank that needs to quickly increase its liquidity.
+	  Cuando una institución depositaria tiene saldos excedentes en su cuenta de reserva, presta a otros bancos que necesitan saldos mayores. En términos más simples, un banco con exceso de efectivo, a menudo llamado liquidez, prestará a otro banco que necesite aumentar rápidamente su liquidez.
 	  <br><br>
-	  The rate that the borrowing institution pays to the lending institution is determined between the two banks; The weighted average rate for all of these types of deals is called the effective federal funds rate.
-The effective federal funds rate is essentially determined by the market, but is influenced by the Federal Reserve through open market operations to achieve the federal funds rate. aim.
+	  La tasa que la institución prestataria paga a la institución prestamista se determina entre los dos bancos; La tasa promedio ponderada para todos estos tipos de acuerdos se denomina tasa efectiva de fondos federales.
+    La tasa efectiva de los fondos federales está determinada esencialmente por el mercado, pero está influenciada por la Reserva Federal a través de operaciones de mercado abierto para lograr la tasa de los fondos federales. apuntar.
 	  <br><br>
-	  The Federal Open Market Committee (FOMC) meets eight times a year to determine the target federal funds rate. As noted above, this rate influences the effective federal funds rate through open market operations or through the purchase and sale of government bonds (government debt). More specifically, the Federal Reserve decreases liquidity by selling government bonds, thereby increasing federal funds. because banks have less liquidity to trade with other banks.
+	  El Comité Federal de Mercado Abierto (FOMC) se reúne ocho veces al año para determinar la tasa objetivo de los fondos federales. Como se señaló anteriormente, esta tasa influye en la tasa efectiva de los fondos federales a través de operaciones de mercado abierto o mediante la compra y venta de bonos gubernamentales (deuda pública). Más específicamente, la Reserva Federal reduce la liquidez vendiendo bonos gubernamentales, aumentando así los fondos federales. porque los bancos tienen menos liquidez para comerciar con otros bancos.
 	  <br><br>
-	  Similarly, the Federal Reserve can increase liquidity by purchasing government bonds, lowering the federal funds rate because banks have excess liquidity to trade. Whether the Federal Reserve wants to buy or sell bonds depends on the state of the economy. If the FOMC believes the economy is growing too quickly and inflationary pressures are inconsistent with the Fed's dual mandate, the Committee can set a higher federal funds rate target to moderate economic activity. In the opposite scenario, the FOMC could set a lower federal funds rate target to stimulate greater economic activity. Therefore, the FOMC must look at the current state of the economy to determine the best course of monetary policy that maximizes economic growth while fulfilling the dual mandate established by Congress. In making its monetary policy decisions, the FOMC considers a wealth of economic data, such as: price and wage trends, employment, consumer spending and income, business investments, and currency markets.
+	  De manera similar, la Reserva Federal puede aumentar la liquidez comprando bonos gubernamentales, reduciendo la tasa de los fondos federales porque los bancos tienen un exceso de liquidez para negociar. Que la Reserva Federal quiera comprar o vender bonos depende del estado de la economía. Si el FOMC cree que la economía está creciendo demasiado rápido y las presiones inflacionarias son inconsistentes con el doble mandato de la Reserva Federal, el Comité puede fijar una meta de tasa de fondos federales más alta para moderar la actividad económica. En el escenario opuesto, el FOMC podría fijar un objetivo de tasa de fondos federales más baja para estimular una mayor actividad económica. Por lo tanto, el FOMC debe analizar el estado actual de la economía para determinar el mejor curso de política monetaria que maximice el crecimiento económico y al mismo tiempo cumpla con el doble mandato establecido por el Congreso. Al tomar sus decisiones de política monetaria, el FOMC considera una gran cantidad de datos económicos, tales como: tendencias de precios y salarios, empleo, gasto e ingresos de los consumidores, inversiones comerciales y mercados de divisas.
 	  <br><br>
-The federal funds rate is the central interest rate in the US financial market. It influences other interest rates, such as the prime rate, which is the rate banks charge their customers with higher credit ratings. Additionally, the federal funds rate indirectly influences long-term interest rates such as mortgages, loans, and savings, all of which are very important to consumer wealth and confidence.
+La tasa de fondos federales es la tasa de interés central en el mercado financiero estadounidense. Influye en otras tasas de interés, como la tasa preferencial, que es la tasa que los bancos cobran a sus clientes con calificaciones crediticias más altas. Además, la tasa de los fondos federales influye indirectamente en las tasas de interés a largo plazo, como las hipotecas, los préstamos y los ahorros, todos los cuales son muy importantes para la riqueza y la confianza de los consumidores.
 	  <br><br>
-	  <a href='https://fred.stlouisfed.org/series/FEDFUNDS'>Take from FRED</a>
+	  <a href='https://fred.stlouisfed.org/series/FEDFUNDS'>información sacada de FRED</a>
 	</p>
 
       </div>
@@ -618,8 +633,8 @@ The federal funds rate is the central interest rate in the US financial market. 
         &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <strong>Past performance is no guarantee of future results.</strong></br>
-        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+        <strong>El rendimiento pasado no es garantía de resultados futuros.</strong></br>
+        <strong>No es un consejo de inversión. Descúbrelo tú mismo y actúa bajo tu propio criterio.</strong>
       </div>
       <div class="credits">
         Power by <a href="https://bgeometrics.com/">BGeometrics</a>
