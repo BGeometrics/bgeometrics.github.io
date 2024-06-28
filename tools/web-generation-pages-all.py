@@ -138,6 +138,8 @@ def generate_pages(_mode):
             f_model = open(file_model, 'r')
             f_out = open(file_out, 'w')
             
+            print("#### Name file: " + file_out)
+
             # Textos a buscar para remplazar y que se muestren los menús desplegados y activos
             menu_file = '<ul id="' + menu + '" class="nav-content collapse"'
             pos = file_out.rfind('/')
@@ -180,6 +182,7 @@ if not os.path.exists(directory_path_es):
 
 # Remove files directory
 remove_files_in_directory(directory_path)
+remove_files_in_directory(directory_path_es)
 
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-charts-end.html'
