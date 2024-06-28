@@ -46,3 +46,17 @@
   padding: 10px;
   margin: auto;
 }
+
+.flag {
+    width: 24px;
+    height: 16px;
+    display: inline-block;
+    background-size: cover;
+    margin-right: 8px;
+}
+.flag-united-kingdom { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg'); }
+.flag-spain { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/es.svg'); }
+.flag-france { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fr.svg'); }
+.flag-germany { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/de.svg'); }
+.flag-china { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cn.svg'); }
+.flag-japan { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jp.svg'); }
