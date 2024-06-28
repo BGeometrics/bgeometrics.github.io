@@ -138,8 +138,6 @@ def generate_pages(_mode):
             f_model = open(file_model, 'r')
             f_out = open(file_out, 'w')
             
-            print("#### Name file: " + file_out)
-
             # Textos a buscar para remplazar y que se muestren los menús desplegados y activos
             menu_file = '<ul id="' + menu + '" class="nav-content collapse"'
             pos = file_out.rfind('/')
