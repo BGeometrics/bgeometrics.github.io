@@ -317,17 +317,33 @@
             let totalInvestor = 0;
             dca = [];
 
-            for (let i = 0; i < priceHistory.length; i += frequency) {
-                if (day[i] >= daysAgo) {
-                    const currentPrice = priceHistory[i];
-                    const amountBought = investment / currentPrice;
+            const millisecondsInDay = 24 * 60 * 60 * 1000;
 
-                    totalInvestor += investment;
-                    totalBitcoin += amountBought;
-                    totalDollar = totalBitcoin * currentPrice;
-                    date = new Date(day[i]);
-                    theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-                    dca.push([day[i], totalDollar]);
+            console.log(daysAgo);
+            let timestampInSeconds = daysAgo;
+            let timestampInMilliseconds = timestampInSeconds;
+            let date = new Date(timestampInMilliseconds);
+            console.log(date);
+            console.log("");
+
+            j = frequency;
+
+            for (let i = 0; i < priceHistory.length; i++) {
+                if (day[i] >= daysAgo) {
+                    if (j % frequency === 0) {
+
+                        const currentPrice = priceHistory[i];
+                        const amountBought = investment / currentPrice;
+
+                        totalInvestor += investment;
+                        totalBitcoin += amountBought;
+                        totalDollar = totalBitcoin * currentPrice;
+                        date = new Date(day[i]);
+                        theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+                        dca.push([day[i], totalDollar]);
+                        //console.log([day[i], totalDollar]);
+                    }
+                    j++;
                 }
             }
 
@@ -342,7 +358,7 @@
             document.getElementById("investor").textContent = formatter0.format(totalInvestor) + " $";
             document.getElementById("value-now").textContent = formatter2.format(totalDollar) + " $";
             document.getElementById("satoshis").textContent = formatter0.format(totalBitcoin * 100000000);
-            document.getElementById("performance").textContent = formatter2.format(totalDollar * 100 / totalInvestment) + "%";
+            document.getElementById("performance").textContent = formatter2.format((totalDollar - totalInvestment) * 100 / totalInvestment) + "%";
 
             return dca;
         }
@@ -379,9 +395,11 @@
             frequency = document.getElementById("repeatPurchase");
             investment = document.getElementById("amountSubunits");
 
-
             const duration = getDaysAgo();
             const timestampDaysAgo = currentTimestamp - (duration * millisecondsInDay);
+
+            console.log('timestampDayAgo: ' + timestampDaysAgo); 
+            console.log('duration: ' + duration); 
 
             result = calculateDCA(Number(investment.value), Number(frequency.value), duration, priceBTC, dayColumn, timestampDaysAgo);
 
