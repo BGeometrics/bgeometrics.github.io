@@ -316,22 +316,16 @@
             let averagePrice = 0;
             let totalInvestor = 0;
             dca = [];
-
             const millisecondsInDay = 24 * 60 * 60 * 1000;
 
-            console.log(daysAgo);
-            let timestampInSeconds = daysAgo;
-            let timestampInMilliseconds = timestampInSeconds;
-            let date = new Date(timestampInMilliseconds);
-            console.log(date);
-            console.log("");
+            //let date = new Date(daysAgo);
+            //console.log("daysago: " + date);
 
             j = frequency;
 
             for (let i = 0; i < priceHistory.length; i++) {
                 if (day[i] >= daysAgo) {
                     if (j % frequency === 0) {
-
                         const currentPrice = priceHistory[i];
                         const amountBought = investment / currentPrice;
 
@@ -341,7 +335,6 @@
                         date = new Date(day[i]);
                         theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
                         dca.push([day[i], totalDollar]);
-                        //console.log([day[i], totalDollar]);
                     }
                     j++;
                 }
@@ -444,11 +437,13 @@
                 const dateObject = convertStringToDate_es(dateString);
                 dateObjectMilis = convertStringToDate_es(dateString).getTime();
                 dateNow = new Date().getTime();
-                const millisecondsDiff = dateNow - dateObjectMilis;
+                // Add one day
+                const millisecondsDiff = dateNow + 1000 * 60 * 60 * 24 - dateObjectMilis;
                 duration = Math.floor(millisecondsDiff / (1000 * 60 * 60 * 24));
             }
             else {
-                duration = Number(e.value);
+                // Add one day
+                duration = Number(e.value) + 1;
             }
 
             return Number(duration);
