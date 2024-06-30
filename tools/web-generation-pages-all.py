@@ -180,7 +180,6 @@ if not os.path.exists(directory_path_es):
 
 # Remove files directory
 remove_files_in_directory(directory_path)
-remove_files_in_directory(directory_path_es)
 
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-charts-end.html'

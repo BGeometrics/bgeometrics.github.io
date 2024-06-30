@@ -185,7 +185,6 @@ if not os.path.exists(directory_path_es):
     print("Directory es created successfully!")
 
 # Remove files directory
-remove_files_in_directory(directory_path)
 remove_files_in_directory(directory_path_es)
 
 file1_path = lang + '/web-generation-model.html'
