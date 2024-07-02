@@ -12,11 +12,13 @@ cd $DIR/tools
 ./web-generation-pages-all-es.py
 ./web-generation-pages-all.py
 
-cd $DIR_TEMP/es
-find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
+#cd $DIR_TEMP/es
+#find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
+
+cp -r $DIR/graphics/* $DIR/es/graphics
+cp -r $DIR/reports/* $DIR/es/reports
 
 cd $DIR/tools
-
 cp -r $DIR_TEMP/* $DIR
 
 cd $DIR
