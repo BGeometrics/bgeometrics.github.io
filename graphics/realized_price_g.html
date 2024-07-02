@@ -34,6 +34,9 @@
             const data_delta_cap = await fetch(
                 'https://charts.bgeometrics.com/files/delta_cap.json'
             ).then(response => response.json());
+            const data_true_market_mean = await fetch(
+                'https://charts.bgeometrics.com/files/true_market_mean.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -112,10 +115,9 @@
             },
 
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false
-            }, {
+                labels: {
+                    align: 'left',
+                },
                 title: {
                     text: 'BTC price'
                 },
@@ -143,6 +145,14 @@
                 id:'delta_price',
                 name: 'Delta price',
                 data: data_delta_cap,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'True Market Mean',
+                name: 'True Market Mean',
+                data: data_true_market_mean,
                 tooltip: {
                     valueDecimals: 2
                 },
