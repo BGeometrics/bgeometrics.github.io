@@ -30,19 +30,19 @@
 
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_btc_price.json'
+                'https://charts.bgeometrics.com/files/nvts_btc_price.json'
             ).then(response => response.json());
             const data_nvt = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90.json'
+                'https://charts.bgeometrics.com/files/nvts.json'
             ).then(response => response.json());
             const data_nvt_200dma = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_200dma.json'
+                'https://charts.bgeometrics.com/files/nvts_730dma.json'
             ).then(response => response.json());
             const data_nvt_high = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_200dma_high.json'
+                'https://charts.bgeometrics.com/files/nvts_730dma_high.json'
             ).then(response => response.json());
             const data_nvt_low = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_200dma_low.json'
+                'https://charts.bgeometrics.com/files/nvts_730dma_low.json'
             ).then(response => response.json());
 
             var chart = Highcharts.stockChart('container', {
@@ -143,8 +143,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'nvt 200dma',
-                    name: 'NVT 200dma',
+                    id:'nvts mean',
+                    name: 'NVTS mean',
                     data: data_nvt_200dma,
                     color: 'rgba(125, 125, 125, 0.2)',
                     tooltip: {
@@ -152,8 +152,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'nvt high',
-                    name: 'NVT high',
+                    id:'nvts high',
+                    name: 'NVTS high',
                     data: data_nvt_high,
                     color: 'rgba(255, 0, 0, 0.3)',
                     tooltip: {
@@ -161,8 +161,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'nvt low',
-                    name: 'NVT low',
+                    id:'nvts low',
+                    name: 'NVTS low',
                     data: data_nvt_low,
                     color: 'rgba(0, 255, 0, 0.5)',
                     tooltip: {
