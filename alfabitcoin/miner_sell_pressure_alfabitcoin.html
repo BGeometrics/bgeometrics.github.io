@@ -26,7 +26,7 @@
     <div id="container" style="width:100%; height:700px;"></div>
 
     <script>
-        var chart;
+        //var chart1;
 
         (async () => {
             const data_price = await fetch(
@@ -99,8 +99,12 @@
                                 .attr({zIndex: 1})
                                 .add();
                         
-                            let chart1 = this;
-                            chart1.stockTools.showhideBtn.click();
+                            try {
+                                var chart1 = this;
+                                chart.stockTools.showhideBtn.click();
+                            } catch (error) {
+                                console.error('An error occurred:', error.message);
+                            }
                         }
                     }
                 },
