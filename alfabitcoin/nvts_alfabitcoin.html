@@ -221,7 +221,7 @@
         for (var row = 1; row < data_nvt.length-1; row++) {
 
             // Si estamos en el último registro y se ha iniciado una zona hay que setear el valor máximo para que se coloree
-            if(row >= data_miner_sell_presure.length-2) {
+            if(row >= data_nvt.length-2) {
                 max_time_low = data_nvt[row-1][0];
                 max_time_high = data_nvt[row-1][0];
             }
