@@ -137,7 +137,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h3 class="mb-1"><span id="satoshis">0</span></h3>
-                                        <div class="mb-0">Satoshis acumulados</div>
+                                        <div class="mb-0">Bitcoin acumulado</div>
                                     </div>
                                 </div>
                             </div>
@@ -188,6 +188,13 @@
                             </select>
                             <input id="startDateTemp" name="startDateTemp" placeholder="DD-MM-YYYY" type="text"
                                 class="form-control" value="01-01-2015" style="margin-top: 5px; display: none">
+                        </div>
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block"><strong>¿Qué es el DCA de Bitcoin?</strong></label>
+                                <p>
+                                    La estrategia de inversión Dollar Cost Averaging (DCA) en Bitcoin consiste en invertir de forma periódica y constante, independientemente del precio de mercado en ese momento. Este método de inversión en criptomonedas se basa en un principio simple: al repartir la inversión en varias compras, se equilibran las adquisiciones realizadas a precios altos y bajos. De esta manera, se minimiza el riesgo de invertir todo el capital en un pico del mercado. El DCA es una técnica popular entre los inversores de Bitcoin y otras criptomonedas debido a su capacidad para reducir la volatilidad del mercado y promover un crecimiento sostenido del portafolio a largo plazo.
+                                </p>
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -345,12 +352,16 @@
                 maximumFractionDigits: 0
             });
             let formatter2 = new Intl.NumberFormat('es-ES', {
-                minimumFractionDigits: 2,
+                minimumFractionDigits: 0,
                 maximumFractionDigits: 2
+            });
+            let formatter8 = new Intl.NumberFormat('es-ES', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 8
             });
             document.getElementById("investor").textContent = formatter0.format(totalInvestor) + " $";
             document.getElementById("value-now").textContent = formatter2.format(totalDollar) + " $";
-            document.getElementById("satoshis").textContent = formatter0.format(totalBitcoin * 100000000);
+            document.getElementById("satoshis").textContent = formatter8.format(totalBitcoin);
             document.getElementById("performance").textContent = formatter2.format((totalDollar - totalInvestment) * 100 / totalInvestment) + "%";
 
             return dca;
