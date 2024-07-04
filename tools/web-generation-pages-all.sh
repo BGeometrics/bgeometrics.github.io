@@ -18,6 +18,8 @@ cd $DIR/tools
 cp -r $DIR/graphics/* $DIR/es/graphics
 cp -r $DIR/reports/* $DIR/es/reports
 
+./translate_graphics.py
+
 cd $DIR/tools
 cp -r $DIR_TEMP/* $DIR
 

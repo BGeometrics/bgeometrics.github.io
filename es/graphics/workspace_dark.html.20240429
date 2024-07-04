@@ -45,7 +45,7 @@
             <option value="lth_realized_price">Realized Price LTH</option>
             <option value="nupl_axis">NUPL</option>
             <option value="aviv_axis">AVIV</option>
-            <option value="addresses_active_axis">Active Addresses</option>
+            <option value="addresses_active_axis">Direcciones Activas</option>
             <option value="rhodl_1m_axis">RHodl 1m</option>
             <option value="market_cap_axis">Market Capitalization</option>
             <option value="realized_cap_axis">Realized Capitalization</option>
@@ -145,7 +145,7 @@
 
             yAxis: [{
                 title: {
-                    text: 'BTC price'
+                    text: 'Precio BTC'
                 },
                 type: 'logarithmic',
             }, {
@@ -153,8 +153,8 @@
             }],
 
             series: [{
-                id:'BTC price',
-                name: 'BTC price',
+                id:'Precio BTC',
+                name: 'Precio BTC',
                 color: 'white',
                 data: data_price,
                 tooltip: {
