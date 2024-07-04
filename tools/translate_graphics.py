@@ -26,10 +26,16 @@ lang = 'es'
 directory_path = direc + project + '/' + lang + '/graphics/'
 #file_path = direc + project + '/' + lang + '/graphics/address_active.html'
 
+
 replacements = {
-    "Active Addresses": "Direcciones Activas",
     "BTC price": "Precio BTC",
+    "Active Addresses": "Direcciones Activas",
+    "Capitalization": "Capitalización",
+    "Coin Days Destroyed": "Días Monedas Destruídas",
+    "Bitcoin and Choppiness Index (14 day)": "Bitcoin y el índice Choppines (14 días)",
+    "Choppiness Index (14 day)": "Índice Choppiness (14 días)",
 }
+
 
 replace_in_all_files_in_directory(directory_path, replacements)
 print(f"Replacements done in all files in directory {directory_path}")
