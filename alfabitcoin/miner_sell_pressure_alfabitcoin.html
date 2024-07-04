@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Miner Sell Presure</title>
+    <title>Miner Sell Pressure</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -15,7 +15,8 @@
     <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
     <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
     <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <!-- Version 11.4.3 for hidden menu toolbar stocks-->
+    <script src="https://code.highcharts.com/11.4.3/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -96,10 +97,10 @@
                                 .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                                 .attr({zIndex: 1})
                                 .add();
-                        
+
                             try {
-                                var chart1 = this;
-                                chart.stockTools.showhideBtn.click();
+                                let chart1 = this;
+                                chart1.stockTools.showhideBtn.click();
                             } catch (error) {
                                 console.error('An error occurred:', error.message);
                             }
@@ -112,7 +113,7 @@
                         align: 'left',
                     },
                     title: {
-                        text: 'Miner Sell Presure'
+                        text: 'Miner Sell Pressure'
                     },
                     gridLineWidth: 0,
                 }, {
@@ -133,8 +134,8 @@
                     },
                     yAxis: 1
                 }, {
-                    id:'Miner Sell',
-                    name: 'Miner Sell',
+                    id:'Miner Sell Pressure',
+                    name: 'Miner Sell Pressure',
                     data: data_miner_sell_presure,
                     color: 'rgba(0, 0, 255, 1)',
                     tooltip: {
@@ -142,8 +143,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'Miner Sell High',
-                    name: 'Miner Sell High',
+                    id:'Miner Sell Pressure High',
+                    name: 'High',
                     data: data_miner_sell_presure_high,
                     color: 'rgba(255, 0, 0, 0.3)',
                     tooltip: {
@@ -151,8 +152,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'Miner Sell Low',
-                    name: 'Miner Sell Low',
+                    id:'Miner Sell Pressure Low',
+                    name: 'Low',
                     data: data_miner_sell_presure_low,
                     color: 'rgba(0, 255, 0, 0.5)',
                     tooltip: {
