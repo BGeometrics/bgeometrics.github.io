@@ -109,6 +109,9 @@
             },
 
             yAxis: [{
+                labels: {
+                    align: 'left',
+                },
                 title: {
                     text: 'BTC price'
                 },
@@ -116,8 +119,6 @@
                 opposite: false
             }, {
                 type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false,
                 plotBands: [{ 
                     from: 9,
                     to: 9,
@@ -136,6 +137,7 @@
             series: [{
                 name: 'BTC price',
                 data: data_price,
+                color: 'black', 
                 tooltip: {
                     valueDecimals: 2
                 },
