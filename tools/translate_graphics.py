@@ -34,6 +34,7 @@ replacements = {
     "Coin Days Destroyed": "Días Monedas Destruídas",
     "Bitcoin and Choppiness Index (14 day)": "Bitcoin y el índice Choppines (14 días)",
     "Choppiness Index (14 day)": "Índice Choppiness (14 días)",
+    "Realized Profit Loss Ratio": "Ratio Ganancia Pérdida Realizada",
 }
 
 
