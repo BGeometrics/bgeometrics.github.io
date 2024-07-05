@@ -195,29 +195,30 @@
         max_time_low = 0;
 
         // The datasets must start at the same time origin and have the same length
-        for (var row = 1; row < data_sma30.length-1; row++) {
+        for (var row = 1; row < data_sma60.length-1; row++) {
+            //let date = new Date(data_sma30[row-1][0]);
+            //console.log("date: " + date);
+
             // Si estamos en el último registro y se ha iniciado una zona hay que setear el valor máximo para que se coloree
-            if(row >= data_sma30.length-2) {
-                max_time_low = data_sma30[row-1][0];
-                max_time_high = data_sma30[row-1][0];
+            if(row >= data_sma60.length-2) {
+                max_time_low = data_sma60[row][0];
+                max_time_high = data_sma60[row][0] + 86400000; //Add las day
             }
 
             // High
-            if ((data_sma60[row-1][1] < data_sma30[row-1][1]) && (data_sma60[row][1] > data_sma30[row][1]) && (max_time_high == 0)) {
-                min_time_high = data_sma60[row-1][0];
-                //let date = new Date(data_sm30[row-1][0]);
-                //console.log("daysago: " + date);
+            if ((data_sma60[row-1][1] <= data_sma30[row-1][1]) && (data_sma60[row][1] >= data_sma30[row][1]) && (max_time_high == 0)) {
+                min_time_high = data_sma60[row][0];
             }
             
-            if ((data_sma60[row-1][1] > data_sma30[row-1][1]) && (data_sma60[row][1] < data_sma30[row][1]) && (min_time_high != 0)) {
-                max_time_high = data_sma30[row-1][0];
+            if ((data_sma60[row-1][1] >= data_sma30[row-1][1]) && (data_sma60[row][1] <= data_sma30[row][1]) && (min_time_high != 0)) {
+                max_time_high = data_sma60[row][0];
             }
 
             if (min_time_high != 0 && max_time_high !=0) {
                 chart.xAxis[0].addPlotBand({
                     from: min_time_high,
                     to: max_time_high,
-                    color: 'rgba(255, 0, 0, 0.1)',
+                    color: 'rgba(255, 0, 0, 0.4)',
                     zIndex: 3
                 });
                 min_time_high = 0;
