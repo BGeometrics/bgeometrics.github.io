@@ -25,7 +25,7 @@ var names = [
 { name: "Hodl Waves", link: "hodl_waves.html" },
 { name: "Change BTC on exchanges", link: "reports/bitcoin_ex_change_held_g.html" },
 { name: "Bitcoin Fear and Greed", link: "reports/bitcoin_fear_greed_g.html" },
-{ name: "AVIV (Asset Value to Investor Value) Ratio", link: "reports/bitcoin_aviv_g.html" },
+{ name: "AVIV (Asset Value to Investor Value) Ratio", link: "graphics/aviv.html" },
 { name: "Bitcoin Halving Cycle", link: "reports/bitcoin_halving_cycle_g.html" },
 { name: "BTC price history and halving timeline", link: "reports/bitcoin_price_g_log.html" },
 { name: "Bitcoin Halving Radar", link: "reports/bitcoin_halving_radar_g.html" },
