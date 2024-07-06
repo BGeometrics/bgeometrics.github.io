@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bitcoin Calculadora DCA</title>
+
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/css/style.css" rel="stylesheet">
+    <link href="https://charts.bgeometrics.com/assets/css/bgeometrics.css" rel="stylesheet">
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script>
+
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+
+    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+
+    <style>
+        .media {
+            align-items: flex-start;
+            display: flex;
+        }
+
+        .statistics-row .card.with-bg:before {
+            background-image: url(../assets/img/bitcoin.png);
+            background-color: #fff;
+            background-position: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            content: "";
+            display: block;
+            height: 40%;
+            opacity: .4;
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            width: 40%;
+            z-index: 2;
+        }
+    </style>
+
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <main id="main-dca" class="main">
+        <div class="content">
+            <div class="p-0 container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Inversión ($)</label>
+                            <div class="input-group">
+                                <input id="amountSubunits" name="amountSubunits" placeholder="" min="1" max="10000"
+                                    step="1" type="number" class="form-control-lg form-control" value="10"
+                                    style="font-size:1rem;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Frecuencia</label>
+                            <select class="form-select" id="repeatPurchase">
+                                <option selected>Selecciona</option>
+                                <option value="1">Diario</option>
+                                <option value="7" selected>Semanal</option>
+                                <option value="14">Bisemanal</option>
+                                <option value="30">Mesual</option>
+                                <option value="60">Bimensual</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Inicio</label>
+                            <select id="startDateAgo" name="startDateAgo" class="form-select"
+                                style="margin: 5px, 5px, 5px, 5px;">
+                                <option value="183">Hace 6 meses</option>
+                                <option value="365" selected>Hace 1 año</option>
+                                <option value="730">Hace 2 años</option>
+                                <option value="1095">Hace 3 años</option>
+                                <option value="1461">Hace 4 años</option>
+                                <option value="1826">Hace 5 años</option>
+                                <option value="2191">Hace 6 años</option>
+                                <option value="2556">Hace 7 años</option>
+                                <option value="2922">Hace 8 años</option>
+                                <option value="3287">Hace 9 años</option>
+                                <option value="1000000">Desde el inicio</option>
+                                <option value="custom">Especifica una fecha</option>
+                            </select>
+                            <input id="startDateTemp" name="startDateTemp" placeholder="DD-MM-YYYY" type="text"
+                                class="form-control" value="01-01-2015" style="margin-top: 5px; display: none">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: -30px;">
+                    <div class="col-lg-3">
+                        <div class="flex-fill with-bg card">
+                            <div class="py-4 card-body">
+                                <div class="media">
+                                    <div class="d-inline-block mt-2 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather-lg text-success">
+                                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="mb-1"><span id="investor">0$</span></h3>
+                                        <div class="mb-0">Total Invertido</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="flex-fill with-bg card">
+                            <div class="py-4 card-body">
+                                <div class="media">
+                                    <div class="d-inline-block mt-2 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather-lg text-warning">
+                                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="mb-1"><span id="value-now">0$</span></h3>
+                                        <div class="mb-0">Valor total</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="flex-fill with-bg card">
+                            <div class="py-4 card-body">
+                                <div class="media">
+                                    <div class="d-inline-block mt-2 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather-lg text-success">
+                                            <line x1="12" y1="19" x2="12" y2="5"></line>
+                                            <polyline points="5 12 12 5 19 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="mb-1"><span id="performance">0%</span></h3>
+                                        <div class="mb-0">Rendimiento</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="flex-fill with-bg card">
+                            <div class="py-4 card-body">
+                                <div class="media">
+                                    <div class="d-inline-block mt-2 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather-lg text-success">
+                                            <line x1="12" y1="19" x2="12" y2="5"></line>
+                                            <polyline points="5 12 12 5 19 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="mb-1"><span id="satoshis">0</span></h3>
+                                        <div class="mb-0">Bitcoin acumulados</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div id="container-iframe" style="width:100%; height:400px; margin: 0 auto;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (async () => {
+            data_price = await fetch(
+                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+            ).then(response => response.json());
+
+            chart = Highcharts.stockChart('container-iframe', {
+                chart: {
+                    renderTo: 'container-iframe',
+                    events: {
+                        load: function () {
+                            var image = new Image();
+                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                            image.src = adresse_image;
+                            var height_image = 128;
+                            var width_image = 128;
+                            var textX = this.plotLeft + (this.plotWidth * 0.5);
+                            var textY = this.plotTop + (this.plotHeight * 0.5);
+                            var position_x = textX - width_image / 2;
+                            var position_y = textY - height_image / 2;
+                            this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                                .css({ position: 'relative', "margin-left": "-90px", opacity: 0.1 })
+                                .attr({ zIndex: 1 })
+                                .add();
+                        }
+                    }
+                },
+
+                title: {
+                    text: 'Valor de la cartera'
+                },
+
+                yAxis: [{
+                    title: {
+                        text: ''
+                    },
+                    labels: {
+                        formatter: function () {
+                            return '$' + this.value;
+                        }
+                    },
+                    opposite: false
+                }],
+
+                legend: {
+                    enabled: false,
+                },
+
+                /*
+                tooltip: {
+                    formatter: function() {
+                        return '<b>$' + Highcharts.numberFormat(this.point.y, 2) + '</b>'
+                    }
+                },
+                */
+
+                rangeSelector: {
+                    enabled: false,
+                },
+                navigator: {
+                    enabled: false,
+                },
+
+                credits: {
+                    text: 'Power by BGeometrics.com',
+                    href: 'https://charts.bgeometrics.com',
+                    style: {
+                        font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                    },
+                    position: {
+                        align: 'right',
+                        x: -70,
+                        y: -90
+                    }
+                },
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 800
+                        },
+                    }]
+                }
+            });
+
+            calculate();
+        })();
+
+        document.getElementById('startDateAgo').addEventListener("change", startDate);
+        document.getElementById('startDateTemp').addEventListener("change", startDate);
+        document.getElementById('repeatPurchase').addEventListener("change", calculate);
+        document.getElementById('amountSubunits').addEventListener("change", calculate);
+
+        /*
+            DCA periodic purchases with the same amount of dollars/euros of BTC
+             Calculation, every time you buy you add the BTC you have and multiply it by the price of BTC in dollars
+        */
+        function calculateDCA(investment, frequency, duration, priceHistory, day, daysAgo) {
+            if (typeof investment !== 'number' || investment <= 0) {
+                throw new Error('Investment amount must be a positive number');
+            }
+            if (typeof frequency !== 'number' || frequency <= 0) {
+                throw new Error('Frequency must be a positive number (e.g., number of days)');
+            }
+            if (typeof duration !== 'number' || duration <= 0) {
+                throw new Error('Duration must be a positive number (e.g., number of days)');
+            }
+            if (!Array.isArray(priceHistory) || priceHistory.length === 0) {
+                throw new Error('Price history must be an array with at least one price');
+            }
+
+            const totalInvestment = investment * (duration / frequency);
+            let totalBitcoin = 0;
+            let totalDollar = 0;
+            let averagePrice = 0;
+            let totalInvestor = 0;
+            dca = [];
+            const millisecondsInDay = 24 * 60 * 60 * 1000;
+
+            //let date = new Date(daysAgo);
+            //console.log("daysago: " + date);
+
+            j = frequency;
+
+            for (let i = 0; i < priceHistory.length; i++) {
+                if (day[i] >= daysAgo) {
+                    if (j % frequency === 0) {
+                        const currentPrice = priceHistory[i];
+                        const amountBought = investment / currentPrice;
+
+                        totalInvestor += investment;
+                        totalBitcoin += amountBought;
+                        totalDollar = totalBitcoin * currentPrice;
+                        date = new Date(day[i]);
+                        theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+                        dca.push([day[i], totalDollar]);
+                    }
+                    j++;
+                }
+            }
+
+            let formatter0 = new Intl.NumberFormat('es-ES', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            let formatter2 = new Intl.NumberFormat('es-ES', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+            });
+            let formatter8 = new Intl.NumberFormat('es-ES', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 8
+            });
+            document.getElementById("investor").textContent = formatter0.format(totalInvestor) + " $";
+            document.getElementById("value-now").textContent = formatter2.format(totalDollar) + " $";
+            document.getElementById("satoshis").textContent = formatter8.format(totalBitcoin);
+            document.getElementById("performance").textContent = formatter2.format((totalDollar - totalInvestment) * 100 / totalInvestment) + "%";
+
+            return dca;
+        }
+
+        function startDate() {
+            var e = document.getElementById("startDateAgo");
+
+            if (e.value === 'custom') {
+                document.getElementById("startDateTemp");
+                showInputElement(document.getElementById("startDateTemp"));
+            }
+            else {
+                hideInputElement(document.getElementById("startDateTemp"));
+            }
+
+            calculate();
+        }
+
+        function calculate() {
+            const priceBTC = [];
+            const dayColumn = [];
+
+            for (let i = 0; i < data_price.length; i++) {
+                const subArray = data_price[i];
+                if (subArray.length > 0) {
+                    priceBTC.push(subArray[1]);
+                    dayColumn.push(subArray[0]);
+                }
+            }
+
+            const millisecondsInDay = 24 * 60 * 60 * 1000;
+            const currentTimestamp = (new Date()).getTime(); // This gives you the current timestamp in milliseconds
+
+            frequency = document.getElementById("repeatPurchase");
+            investment = document.getElementById("amountSubunits");
+
+            const duration = getDaysAgo();
+            const timestampDaysAgo = currentTimestamp - (duration * millisecondsInDay);
+
+            console.log('timestampDayAgo: ' + timestampDaysAgo); 
+            console.log('duration: ' + duration); 
+
+            result = calculateDCA(Number(investment.value), Number(frequency.value), duration, priceBTC, dayColumn, timestampDaysAgo);
+
+            if (chart.series[0] !== undefined) {
+                chart.series[0].remove(false);
+            }
+
+            chart.addSeries({
+                id: '',
+                name: '',
+                color: 'orange',
+                type: 'area',
+                data: result,
+                tooltip: {
+                    valueDecimals: 2,
+                    valuePrefix: "$",
+                },
+
+                fillColor: {
+                    linearGradient: {
+                        x1: 0,
+                        y1: 0,
+                        x2: 0,
+                        y2: 1
+                    },
+                    stops: [
+                        [0, '#ffa500'],
+                        [1, '#ffffff'],
+                    ]
+                },
+                yAxis: 0
+            });
+
+        }
+
+        function getDaysAgo() {
+            var duration;
+            var e = document.getElementById("startDateAgo");
+
+            if (e.value === 'custom') {
+                const dateString = document.getElementById('startDateTemp').value;
+                const dateObject = convertStringToDate_es(dateString);
+                dateObjectMilis = convertStringToDate_es(dateString).getTime();
+                dateNow = new Date().getTime();
+                // Add one day
+                const millisecondsDiff = dateNow + 1000 * 60 * 60 * 24 - dateObjectMilis;
+                duration = Math.floor(millisecondsDiff / (1000 * 60 * 60 * 24));
+            }
+            else {
+                // Add one day
+                duration = Number(e.value) + 1;
+            }
+
+            return Number(duration);
+        }
+
+        function convertStringToDate_es(dateString) {
+            const [day, month, year] = dateString.split('-').map(Number);
+
+            return new Date(year, month - 1, day);
+        }
+
+    </script>
+
+</body>
+
+</html>
