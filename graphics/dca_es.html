@@ -57,6 +57,57 @@
     <main id="main-dca" class="main">
         <div class="content">
             <div class="p-0 container-fluid">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Inversión
+                                ($)</label>
+                            <div class="input-group">
+                                <input id="amountSubunits" name="amountSubunits" placeholder="" min="1" max="10000"
+                                    step="1" type="number" class="form-control-lg form-control" value="10"
+                                    style="font-size:1rem;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Frecuencia</label>
+                            <select class="form-select" id="repeatPurchase">
+                                <option selected>Selecciona</option>
+                                <option value="1">Diario</option>
+                                <option value="7" selected>Semanal</option>
+                                <option value="14">Bisemanal</option>
+                                <option value="30">Mesual</option>
+                                <option value="60">Bimensual</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
+                            <label class=""
+                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Inicio</label>
+                            <select id="startDateAgo" name="startDateAgo" class="form-select"
+                                style="margin: 5px, 5px, 5px, 5px;">
+                                <option value="183">Hace 6 meses</option>
+                                <option value="365" selected>Hace 1 año</option>
+                                <option value="730">Hace 2 años</option>
+                                <option value="1095">Hace 3 años</option>
+                                <option value="1461">Hace 4 años</option>
+                                <option value="1826">Hace 5 años</option>
+                                <option value="2191">Hace 6 años</option>
+                                <option value="2556">Hace 7 años</option>
+                                <option value="2922">Hace 8 años</option>
+                                <option value="3287">Hace 9 años</option>
+                                <option value="1000000">Desde el inicio</option>
+                                <option value="custom">Especifica una fecha</option>
+                            </select>
+                            <input id="startDateTemp" name="startDateTemp" placeholder="DD-MM-YYYY" type="text"
+                                class="form-control" value="01-01-2015" style="margin-top: 5px; display: none">
+                        </div>
+                    </div>
+                </div>
                 <!--<h2 class="h2 mb-3 text-center">Calculadora DCA de bitcoin</h2>-->
                 <div class="row" style="margin-bottom: -30px;">
                    <!-- <div class="mb-4 col-md-6 col-xl"> -->
@@ -122,57 +173,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
-                            <label class=""
-                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Inversión
-                                ($)</label>
-                            <div class="input-group">
-                                <input id="amountSubunits" name="amountSubunits" placeholder="" min="1" max="10000"
-                                    step="1" type="number" class="form-control-lg form-control" value="10"
-                                    style="font-size:1rem;">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
-                            <label class=""
-                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Frecuencia</label>
-                            <select class="form-select" id="repeatPurchase">
-                                <option selected>Selecciona</option>
-                                <option value="1">Diario</option>
-                                <option value="7" selected>Semanal</option>
-                                <option value="14">Bisemanal</option>
-                                <option value="30">Mesual</option>
-                                <option value="60">Bimensual</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card" style="padding: 5px; margin-bottom: 5px;">
-                            <label class=""
-                                style="padding: 5px; margin: 5px, 5px, 5px, 5px; display:inline-block">Inicio</label>
-                            <select id="startDateAgo" name="startDateAgo" class="form-select"
-                                style="margin: 5px, 5px, 5px, 5px;">
-                                <option value="183">Hace 6 meses</option>
-                                <option value="365" selected>Hace 1 año</option>
-                                <option value="730">Hace 2 años</option>
-                                <option value="1095">Hace 3 años</option>
-                                <option value="1461">Hace 4 años</option>
-                                <option value="1826">Hace 5 años</option>
-                                <option value="2191">Hace 6 años</option>
-                                <option value="2556">Hace 7 años</option>
-                                <option value="2922">Hace 8 años</option>
-                                <option value="3287">Hace 9 años</option>
-                                <option value="1000000">Desde el inicio</option>
-                                <option value="custom">Especifica una fecha</option>
-                            </select>
-                            <input id="startDateTemp" name="startDateTemp" placeholder="DD-MM-YYYY" type="text"
-                                class="form-control" value="01-01-2015" style="margin-top: 5px; display: none">
                         </div>
                     </div>
                 </div>
