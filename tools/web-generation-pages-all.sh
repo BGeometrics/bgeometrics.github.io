@@ -1,6 +1,7 @@
 #!/bin/bash                                                                                                      
 
-DIR=$HOME/bgeometrics.github.io
+DIR_PROYECT=$HOME/bgeometrics.github.io
+DIR_ES=$DIR_PROYECT/es
 DIR_TEMP=/tmp/web
 
 echo 
@@ -8,22 +9,25 @@ echo "#### "$(basename "$0")" ####"
 echo
 echo $(date)
 
-cd $DIR/tools
+cd $DIR_PROYECT/tools
 ./web-generation-pages-all-es.py
 ./web-generation-pages-all.py
 
 #cd $DIR_TEMP/es
 #find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
 
-cp -r $DIR/graphics/* $DIR/es/graphics
-cp -r $DIR/reports/* $DIR/es/reports
+cp -r $DIR/graphics/* $DIR_ES/graphics
+cp -r $DIR/reports/* $DIR_ES/reports
+
+# Sobreescribo los gráficos que ya están traducidos
+cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/
 
 ./translate_graphics.py
 
-cd $DIR/tools
-cp -r $DIR_TEMP/* $DIR
+cd $DIR_PROYECT/tools
+cp -r $DIR_TEMP/* $DIR_PROYECT
 
-cd $DIR
+cd $DIR_PROYECT
 
 git pull
 git add *
