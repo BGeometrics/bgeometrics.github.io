@@ -68,3 +68,4 @@
 /tmp/web/m2_global.html,web-generation-end-m2-global.html,Bitcoin and M2 Growth Global of YoY,graphics/m2_global.html,Bitcoin and M2 Growth Global of YoY,,macro-nav
 /tmp/web/choppiness.html,web-generation-end-choppiness-global.html,Bitcoin Choppiness Index (14 day),graphics/choppiness.html,Bitcoin Choppiness Index (14 day),,charts-nav
 /tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,charts-nav
+/tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,charts-nav
