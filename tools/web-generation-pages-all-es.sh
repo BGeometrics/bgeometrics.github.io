@@ -12,6 +12,9 @@ cd $DIR/tools
 
 ./web-generation-pages-all-es.py
 
+# Sobreescribo los gráficos que ya están traducidos
+cp $DIR/tools/graphics/* $DIR/graphics/ 
+
 cd $DIR_TEMP
 find . -type f -name "$DIR_TEMP/*.html" -exec sed -i 's/<html lang="en">/<html lang="es">/g' {} +
 
