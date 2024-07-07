@@ -10,6 +10,9 @@ file_name,file_end,title,iframe_html,description,keywords
 - Si tiene texto explicativo se añade en el fichero web-generation-*-end-* están la parte html del final de cada páginas/s 
 - Se ejecuta este script web-generation-pages-all.py en ~/bgeometrics.github.io/tools/
 
+- Añadir las páginas en español
+...
+
 Esto lo hace el script web-generation-pages-all.sh
 Para copiar al proyecto las páginas generadas
 cp /tmp/web/* /home/pi/bgeometrics.github.io/
