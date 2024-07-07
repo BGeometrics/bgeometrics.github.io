@@ -69,7 +69,7 @@ def search_replace_dark(_file, _file_out):
     with open(_file, 'r') as file:
         filedata = file.read()
 
-    filedata = filedata.replace('>Light<', '>Dark<')
+    filedata = filedata.replace('>Claro<', '>Oscuro<')
     filedata = filedata.replace('fa-flag-usa" aria-hidden="true"></i> Light', 'fa-flag-usa" aria-hidden="true"></i> Dark')
     filedata = filedata.replace('fa-flag-es" aria-hidden="true"></i> Dark', 'fa-flag-es" aria-hidden="true"></i> Light')
     filedata = filedata.replace('.html', '_dark.html')
