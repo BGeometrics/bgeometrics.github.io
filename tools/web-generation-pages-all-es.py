@@ -326,6 +326,22 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
   <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>""")
+filedata = filedata.replace("""<body onload="init()">""", """<body onload="init()">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
+  <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
 with open(lang + '/web-generation-model-workspace-dark.html', 'w') as file:
