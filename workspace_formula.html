@@ -746,43 +746,46 @@
             <option value="1600">1600px</option>
           </select>
         </div>
-      <div class="row">
-        <div class="col-lg-1">
-          <button class="btn" onclick="">Formula:</button>
-        </div>
-        <div class="col-lg-2">
-          <input type="text" class="form-control" id="number" placeholder="Number">
-        </div>
-        <div class="col-lg-1">
-          <select class="form-select" id="operator1" >
-            <option selected value=""></option>
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-          </select>
-        </div>
-        <div class="col-lg-2">
-          <select class="form-select" id="metric1" >
-            <option selected>Metric1</option>
-            <option>BTC Price</option>
-          </select>
-        </div>
-        <div class="col-lg-1">
-          <select class="form-select" id="operator1" >
-            <option selected value=""></option>
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-          </select>
-        </div>
-        <div class="col-lg-2">
-          <select class="form-select" id="metric2" >
-            <option selected>Metric2</option>
-            <option>BTC Price</option>
-          </select>
-        </div>
+        <div class="row">
+          <div class="col-lg-1">
+            <button class="btn" onclick="">Formula:</button>
+          </div>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="number" placeholder="Number">
+          </div>
+          <div class="col-lg-1">
+            <select class="form-select" id="operator1">
+              <option selected value=""></option>
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">*</option>
+              <option value="/">/</option>
+            </select>
+          </div>
+          <div class="col-lg-2">
+            <select class="form-select" id="metric1">
+              <option selected>Metric1</option>
+              <option>BTC Price</option>
+            </select>
+          </div>
+          <div class="col-lg-1">
+            <select class="form-select" id="operator1">
+              <option selected value=""></option>
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">*</option>
+              <option value="/">/</option>
+            </select>
+          </div>
+          <div class="col-lg-2">
+            <select class="form-select" id="metric2">
+              <option selected>Metric2</option>
+              <option>BTC Price</option>
+            </select>
+          </div>
+          <div class="col-lg-1">
+            <button class="btn" onclick="">Draw</button>
+          </div>
         </div>
       </div>
 
@@ -972,21 +975,21 @@
           }
         }
 
-        document.getElementById('metrics').addEventListener("change", function() {
-            var e = document.getElementById("metrics");
-            var value = e.value;
-            var text = e.options[e.selectedIndex].text;
-            var selectElement = document.getElementById('metric1');
-            var newOption = document.createElement('option');
-            newOption.value = value;
-            newOption.text = text;
-            selectElement.appendChild(newOption);
-            var selectElement2 = document.getElementById('metric2');
-            var newOption2 = document.createElement('option');
-            newOption2.value = value;
-            newOption2.text = text;
-            selectElement2.appendChild(newOption2);
-            changeMetrics();
+        document.getElementById('metrics').addEventListener("change", function () {
+          var e = document.getElementById("metrics");
+          var value = e.value;
+          var text = e.options[e.selectedIndex].text;
+          var selectElement = document.getElementById('metric1');
+          var newOption = document.createElement('option');
+          newOption.value = value;
+          newOption.text = text;
+          selectElement.appendChild(newOption);
+          var selectElement2 = document.getElementById('metric2');
+          var newOption2 = document.createElement('option');
+          newOption2.value = value;
+          newOption2.text = text;
+          selectElement2.appendChild(newOption2);
+          changeMetrics();
         });
 
         document.getElementById('zoom').addEventListener("change", zoom);
@@ -1032,17 +1035,17 @@
         function deleteTheSeries() {
           const selectElement = document.getElementById('metric1');
           for (let i = selectElement.options.length - 1; i >= 0; i--) {
-              if (selectElement.options[i].text != "Metric1" && 
-                selectElement.options[i].text != "BTC Price") {
-                selectElement.remove(i);
-              }
+            if (selectElement.options[i].text != "Metric1" &&
+              selectElement.options[i].text != "BTC Price") {
+              selectElement.remove(i);
+            }
           }
           const selectElement2 = document.getElementById('metric2');
           for (let i = selectElement2.options.length - 1; i >= 0; i--) {
-              if (selectElement2.options[i].text != "Metric2" && 
-                selectElement2.options[i].text != "BTC Price") {
-                selectElement2.remove(i);
-              }
+            if (selectElement2.options[i].text != "Metric2" &&
+              selectElement2.options[i].text != "BTC Price") {
+              selectElement2.remove(i);
+            }
           }
           deleteSeries();
         }
