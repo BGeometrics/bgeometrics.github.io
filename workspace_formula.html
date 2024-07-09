@@ -750,8 +750,8 @@
           <div class="col-lg-1">
             <button class="btn" onclick="">Formula:</button>
           </div>
-          <div class="col-lg-2">
-            <input type="text" class="form-control" id="number" placeholder="Number">
+          <div class="col-lg-1">
+            <input type="text" class="form-control" id="number" value="0">
           </div>
           <div class="col-lg-1">
             <select class="form-select" id="operator1">
@@ -765,11 +765,11 @@
           <div class="col-lg-2">
             <select class="form-select" id="metric1">
               <option selected>Metric1</option>
-              <option>BTC Price</option>
+              <option value="BTC Price">BTC Price</option>
             </select>
           </div>
           <div class="col-lg-1">
-            <select class="form-select" id="operator1">
+            <select class="form-select" id="operator2">
               <option selected value=""></option>
               <option value="+">+</option>
               <option value="-">-</option>
@@ -780,11 +780,11 @@
           <div class="col-lg-2">
             <select class="form-select" id="metric2">
               <option selected>Metric2</option>
-              <option>BTC Price</option>
+              <option value="BTC Price">BTC Price</option>
             </select>
           </div>
           <div class="col-lg-1">
-            <button class="btn" onclick="">Draw</button>
+            <button class="btn" onclick="draw()">Draw</button>
           </div>
         </div>
       </div>
@@ -1049,6 +1049,74 @@
           }
           deleteSeries();
         }
+
+        function draw() {
+          var numberValue = document.getElementById("number").value;
+          //console.log(numberValue);
+          var metric1Value = document.getElementById("metric1").value;
+          var metric2Value = document.getElementById("metric2").value;
+          //console.log(metric1Value);
+          //console.log(metric2Value);
+
+          var operador1Value = document.getElementById("operator1").value;
+          //console.log(operador1Value);
+          var operador2Value = document.getElementById("operator2").value;
+          //console.log(operador2Value);
+
+          metric1Serie = chart.series[0];
+          //metric2Serie = chart.series[0];
+
+          for (var i = 0; i < chart.series.length; i++) {
+            var series = chart.series[i];
+            if (chart.series[i].name == metric1Value){
+              metric1Serie = chart.series[i];
+            }
+            if (chart.series[i].name == metric2Value){
+              metric2Serie = chart.series[i];
+            }
+          }
+
+          var data = [];
+          for(var i = 0; i < metric1Serie.xData.length; i++) {
+            dataIn = [];
+            dataIn.push(metric1Serie.xData[i], metric1Serie.yData[i]);
+            data.push(dataIn);
+          }
+          console.log(data);
+          chart.addSeries({
+            data: data
+          });
+          /*
+          expression = numberValue + operator1 + metric1Value;
+          var result = eval(expression);
+
+
+          //for(var i = 0; i < metric1Serie.length; i++) {
+
+          metric1Serie.data.forEach(function(point) {
+            console.log(point.x);
+            console.log(point.y);
+            dataIn = [];
+            dataIn.push(point.x, point.y);
+            data.push(dataIn);
+          });
+          console.log(data);
+            */
+          /*
+              //result = metric1Serie
+              console.log(metric1Serie[i][0]);
+              console.log(metric1Serie[i][1]);
+              dataIn.push(metric1Serie[i][0], metric1Serie[i][1]);
+
+              //expression = numberValue + operator1 + metric1Value;
+
+              //data_in.push(data_1[i][0], Math.pow(data_1[i][1], 2));
+              data.push(dataIn);
+          }
+              */
+          
+        }
+
 
       </script>
 
