@@ -1071,7 +1071,7 @@
           }
 
           var data = [];
-          if (metric1Value !== "Metric1")  { // Must select a metric 1
+          if (metric1Value !== "Metric1")  { // Must select a Metric 1
             for(var i = 0; i < metric1Serie.xData.length; i++) {
               dataIn = [];
               if (operator1Value === null || operator1Value === "") { // Operator 1 -> null
@@ -1086,7 +1086,7 @@
               }
               else { // Operator 1 -> not null
                 if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { // Operator 2 or Metric 2 -> null  
+                    || (metric2Value === "Metric2"))  { //Operator 1 -> not null and Operator 2 or Metric 2 -> null  
                   formula = numberValue + operator1Value + metric1Serie.yData[i];
                   expression = eval(formula);
                 }
@@ -1103,9 +1103,7 @@
               data: data
             });
           }
-          
         }
-
 
       </script>
 
