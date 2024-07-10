@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Realized Price</title>
+    <title>Bitcoin Puell Multiple</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -22,21 +22,18 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
-
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    
+    <div id="container-iframe" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_realized_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price.json'
-            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+                'https://charts.bgeometrics.com/files/puell_multiple_btc_price.json'
             ).then(response => response.json());
-            const data_delta_cap = await fetch(
-                'https://charts.bgeometrics.com/files/delta_cap.json'
+            const data_puell_multiple = await fetch(
+                'https://charts.bgeometrics.com/files/puell_multiple.json'
             ).then(response => response.json());
- 
+        
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -80,7 +77,7 @@
                 }
             },
             title: {
-                text: ' Bitcoin: Realized Price',
+                text: 'Bitcoin Puell Multiple',
                 align: 'left',
             },
 
@@ -97,7 +94,7 @@
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
                         var position_y = textY - height_image / 2;
-                        console.log(position_x + " " + position_y);
+                        //console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
@@ -113,35 +110,38 @@
             },
 
             yAxis: [{
-                type: 'logarithmic',
+                title: {
+                    text: 'Puell Multiple'
+                },
+                plotBands: [{ 
+                    from: 3,
+                    to: 15,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0.4,
+                    to: 0,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
                     text: 'BTC price'
                 },
+                opposite: false,
                 type: 'logarithmic',
             }],
 
             series: [{
-                id: 'BTC price',
                 name: 'BTC price',
                 color: 'white',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 1
             }, {
-                id:'realized_price',
-                name: 'Realized Price',
-                data: data_realized_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'delta_price',
-                name: 'Delta price',
-                data: data_delta_cap,
+                id:'Puell Multiple',
+                name: 'Puell Multiple',
+                data: data_puell_multiple,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -160,7 +160,7 @@
             },
 
             credits: {
-                text: 'Power by BGeometrics.com',
+		text: 'Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
@@ -172,21 +172,52 @@
                 }                
             },
             responsive: {
-                rules: [{
+                rules: [
+                {
                     condition: {
-                        maxWidth: 800
+                        maxWidth: 1000
                     },
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {
+                            enabled: false,
+                        },
                     }
+                }, {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {
+                            enabled: false,
+                        },
+                        yAxis: [{
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: ''
+                            }
+                        }, {
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: ''
+                            }
+
+                        }]
+                    },
                 }]
             }
         });
     })();
 
     </script>
-
 </body>
 </html>

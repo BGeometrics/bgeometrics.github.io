@@ -110,8 +110,20 @@
 
             yAxis: [{
                 title: {
-                    text: 'Puell Multiple'
+                    text: 'Puell Multiple',
+                    labels: {
+                        align: 'left',
+                    },
                 },
+                plotBands: [{ 
+                    from: 3,
+                    to: 15,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0.4,
+                    to: 0,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
                     text: 'BTC price'
@@ -150,7 +162,7 @@
             },
 
             credits: {
-		text: 'Source: alternative.me &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
+		text: 'Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
