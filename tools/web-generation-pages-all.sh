@@ -22,7 +22,7 @@ cp -r $DIR/reports/* $DIR_ES/reports
 # Sobreescribo los gráficos que ya están traducidos
 cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/
 
-./translate_graphics.py
+./web-generation-translate-graphics.py
 
 cd $DIR_PROYECT/tools
 cp -r $DIR_TEMP/* $DIR_PROYECT
