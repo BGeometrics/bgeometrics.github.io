@@ -966,7 +966,7 @@
                 forEach(function (option) {
                   if (option.value == metric[i]) {
                     text = option.text;
-                    console.log(option.text);
+                    //console.log(option.text);
                   }
                 });
 
@@ -1052,19 +1052,13 @@
 
         function draw() {
           var numberValue = document.getElementById("number").value;
-          //console.log(numberValue);
           var metric1Value = document.getElementById("metric1").value;
           var metric2Value = document.getElementById("metric2").value;
-          //console.log(metric1Value);
-          //console.log(metric2Value);
-
-          var operador1Value = document.getElementById("operator1").value;
-          //console.log(operador1Value);
-          var operador2Value = document.getElementById("operator2").value;
-          //console.log(operador2Value);
+          var operator1Value = document.getElementById("operator1").value;
+          var operator2Value = document.getElementById("operator2").value;
 
           metric1Serie = chart.series[0];
-          //metric2Serie = chart.series[0];
+          metric2Serie = chart.series[0];
 
           for (var i = 0; i < chart.series.length; i++) {
             var series = chart.series[i];
@@ -1076,44 +1070,33 @@
             }
           }
 
+          var formula = "";
           var data = [];
-          for(var i = 0; i < metric1Serie.xData.length; i++) {
-            dataIn = [];
-            dataIn.push(metric1Serie.xData[i], metric1Serie.yData[i]);
-            data.push(dataIn);
-          }
-          console.log(data);
-          chart.addSeries({
-            data: data
-          });
-          /*
-          expression = numberValue + operator1 + metric1Value;
-          var result = eval(expression);
-
-
-          //for(var i = 0; i < metric1Serie.length; i++) {
-
-          metric1Serie.data.forEach(function(point) {
-            console.log(point.x);
-            console.log(point.y);
-            dataIn = [];
-            dataIn.push(point.x, point.y);
-            data.push(dataIn);
-          });
-          console.log(data);
-            */
-          /*
-              //result = metric1Serie
-              console.log(metric1Serie[i][0]);
-              console.log(metric1Serie[i][1]);
-              dataIn.push(metric1Serie[i][0], metric1Serie[i][1]);
-
-              //expression = numberValue + operator1 + metric1Value;
-
-              //data_in.push(data_1[i][0], Math.pow(data_1[i][1], 2));
+          if (metric1Value !== "Metric1")  { // Must select a metric 1
+            for(var i = 0; i < metric1Serie.xData.length; i++) {
+              dataIn = [];
+                if (operator1Value === null || operator1Value === "") {
+                  if ((operator2Value === null || operator2Value === "") 
+                      && (metric2Value !== "Metric2"))  {
+                    expression = metric1Serie.yData[i];
+                  }
+                  else{
+                    formula = metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
+                    expression = eval(formula);
+                  }
+                }
+                else {
+                  formula = numberValue + operator1Value + metric1Serie.yData[i];
+                  expression = eval(formula);
+                }
+              dataIn.push(metric1Serie.xData[i], expression);
               data.push(dataIn);
+            }
+
+            chart.addSeries({
+              data: data
+            });
           }
-              */
           
         }
 
