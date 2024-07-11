@@ -16,8 +16,8 @@ cd $DIR_PROYECT/tools
 #cd $DIR_TEMP/es
 #find . -type f -wholename "$DIR_TEMP/*.html" -exec sed -i 's/flag-united-kingdom/flag-spain/g' {} +
 
-cp -r $DIR/graphics/* $DIR_ES/graphics
-cp -r $DIR/reports/* $DIR_ES/reports
+cp -r $DIR_PROYECT/graphics/* $DIR_ES/graphics
+cp -r $DIR_PROYECT/reports/* $DIR_ES/reports
 
 # Sobreescribo los gráficos que ya están traducidos
 cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/

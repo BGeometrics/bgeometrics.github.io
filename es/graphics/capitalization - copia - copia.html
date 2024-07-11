@@ -154,6 +154,9 @@
                 title: {
                     text: 'Capitalización (USD)'
                 },
+                labels: {
+                    align: 'left',
+                },
                 type: 'logarithmic',
             }],
 
@@ -234,8 +237,13 @@
     document.getElementById('plain').addEventListener("click", myFunction);
 
     function myFunction() {
+        console.log(chart.series);
         //console.log(chart.series.length);
         //console.log(data_1.length);
+
+        for(var i = 0; i < chart.series.length; i++) {
+            console.log(chart.series[i].name);
+        }
 
         chart.series[0].update({color: 'orange'});
         
