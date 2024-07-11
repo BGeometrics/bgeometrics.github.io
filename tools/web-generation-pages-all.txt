@@ -70,3 +70,4 @@
 /tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,charts-nav
 /tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,charts-nav
 /tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,charts-nav
+/tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,charts-nav
