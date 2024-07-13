@@ -34,7 +34,7 @@
                 'https://charts.bgeometrics.com/files/sth_dma.json'
             ).then(response => response.json());
             const data_sth_dma_std = await fetch(
-                'https://charts.bgeometrics.com/files/sth_dma_+std.json'
+                'https://charts.bgeometrics.com/files/sth_dma_-std.json'
             ).then(response => response.json());
             const data_sth_dma__std = await fetch(
                 'https://charts.bgeometrics.com/files/sth_dma_+std.json'
@@ -121,7 +121,7 @@
             series: [{
                 id:'sth_realized_price',
                 name: 'STH Realized Price',
-                color: 'red',
+                //color: 'red',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
@@ -137,28 +137,31 @@
                 },
                 yAxis: 0
             }, {
-                id:'STH SMA',
-                name: 'STH SMA',
+                id:'STH 20 SMA',
+                name: 'STH 20 SMA',
                 color: 'orange',
+                visible: false, 
                 data: data_sth_dma,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'STH SMA - STD',
-                name: 'STH SMA - STD',
-                color: 'orange',
+                id:'STH -2SD',
+                name: 'STH -2SD',
+                color: '#2ECC71',
                 data: data_sth_dma_std,
+                dashStyle: 'Dash',
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'STH SMA + STD',
-                name: 'STH SMA + STD',
-                color: 'orange',
+                id:'STH +2SD',
+                name: 'STH +2SD',
+                color: '#CB4335',
                 data: data_sth_dma__std,
+                dashStyle: 'Dash',
                 tooltip: {
                     valueDecimals: 2
                 },
