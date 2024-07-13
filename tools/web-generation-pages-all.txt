@@ -49,7 +49,7 @@
 /tmp/web/sp500_gold.html,web-generation-end-btc-sp500.html,BTC S&P 500 Gold Tesla MicroStrategy,graphics/sp500_gold.html,BTC S&P 500 Gold Tesla MicroStrategy,,macro-nav
 /tmp/web/bitcoin_volatility_g.html,web-generation-end.html,Bitcoin Volatility,reports/bitcoin_volatility_g.html,Bitcoin Volatility,,charts-nav
 /tmp/web/bitcoin_dominance_g.html,web-generation-end.html,Bitcoin Dominace,reports/bitcoin_dominance_g.html,BTC Dominance,,charts-nav
-/tmp/web/bitcoin_hashprice_g.html,web-generation-end.html,Bitcoin Hashprice,reports/bitcoin_hashprice_g.html,BTC Hashprice,,charts-nav
+/tmp/web/bitcoin_hashprice_g.html,web-generation-end.html,Bitcoin Hashprice,reports/bitcoin_hashprice_g.html,BTC Hashprice,,miners-nav
 /tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR (Spend Out Profit Ratio),,market-nav
 /tmp/web/sth_sopr.html,web-generation-end.html,Bitcoin STH SOPR,graphics/sth_sopr.html,Bitcoin STH SOPR (Short Term Hodler Spend Out Profit Ratio),,market-nav
 /tmp/web/lth_sopr.html,web-generation-end.html,Bitcoin LTH SOPR,graphics/lth_sopr.html,Bitcoin LTH SOPR (Long Term Hodler Spend Out Profit Ratio),,market-nav
@@ -67,7 +67,7 @@
 /tmp/web/power_law.html,web-generation-end-power-law.html,Bitcoin Power Law,graphics/power_law.html,Bitcoin Power Law,,charts-nav
 /tmp/web/m2_global.html,web-generation-end-m2-global.html,Bitcoin and M2 Growth Global of YoY,graphics/m2_global.html,Bitcoin and M2 Growth Global of YoY,,macro-nav
 /tmp/web/choppiness.html,web-generation-end-choppiness-global.html,Bitcoin Choppiness Index (14 day),graphics/choppiness.html,Bitcoin Choppiness Index (14 day),,charts-nav
-/tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,charts-nav
+/tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,miners-nav
 /tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,charts-nav
-/tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,charts-nav
-/tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,charts-nav
+/tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,miners-nav
+/tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,miners-nav
