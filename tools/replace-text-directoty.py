@@ -17,14 +17,17 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
             print(f"Processed file: {file_path}")
 
 # Usage
-directory_path = '/home/pi/bgeometrics.github.io/graphics'
 #old_text = """<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">"""
-old_text = """<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>"""
-new_text = """"""
+#old_text = """<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>"""
+
+directory_path = '/home/pi/bgeometrics.github.io/tools'
+old_text = """<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">"""
+new_text = """<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">"""
+
 file_extension = '.html'  
 
 replace_text_in_directory(directory_path, old_text, new_text, file_extension)
