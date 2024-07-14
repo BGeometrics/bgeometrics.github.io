@@ -24,9 +24,21 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
 #old_text = """<link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">"""
 #old_text = """<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>"""
 
-directory_path = '/home/pi/bgeometrics.github.io/tools/es'
-old_text = """<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">"""
-new_text = """<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">"""
+#old_text = """<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">"""
+#new_text = """<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">"""
+
+#old_text = """ <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>"""
+#old_text = """<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>"""
+#old_text = """<script src="assets/vendor/chart.js/chart.umd.js"></script>"""
+#old_text = """<script src="assets/vendor/echarts/echarts.min.js"></script>"""
+#old_text = """<script src="assets/vendor/quill/quill.min.js"></script>"""
+#old_text = """<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>"""
+#old_text = """<script src="assets/vendor/tinymce/tinymce.min.js"></script>"""
+
+directory_path = '/home/pi/bgeometrics.github.io/tools'
+old_text = """<script src="assets/vendor/php-email-form/validate.js"></script>"""
+new_text = """"""
+
 
 file_extension = '.html'  
 
