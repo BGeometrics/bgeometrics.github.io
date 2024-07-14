@@ -17,13 +17,13 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
             print(f"Processed file: {file_path}")
 
 # Usage
-directory_path = '/home/pi/bgeometrics.github.io/tools/es'
+directory_path = '/home/pi/bgeometrics.github.io/graphics'
 #old_text = """<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">"""
 #old_text = """<link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">"""
-#old_text = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script>"""
+old_text = """<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>"""
 new_text = """"""
 file_extension = '.html'  
 
