@@ -38,8 +38,8 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
 
 file_extension = '.html'  
 directory_path = '/home/pi/bgeometrics.github.io/tools'
-old_text = """"""
-new_text = """"""
+old_text = """\n\n\n"""
+new_text = """\n"""
 
 replace_text_in_directory(directory_path, old_text, new_text, file_extension)
 
