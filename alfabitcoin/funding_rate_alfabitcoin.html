@@ -32,6 +32,9 @@
             const data_funding_rate = await fetch(
                 'https://charts.bgeometrics.com/files/funding_rate.json'
             ).then(response => response.json());
+            const data_funding_rate_10sma = await fetch(
+                'https://charts.bgeometrics.com/files/funding_rate_10sma.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -136,7 +139,23 @@
                 id:'Funding Rate',
                 name: 'Funding Rate',
                 color: '#2ECC71',
+                visible: false,
                 data: data_funding_rate,
+                tooltip: {
+                    valueDecimals: 6
+                },
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#CB4335'
+                }, {
+                    color: '#2ECC71'
+                }]
+            }, {
+                id:'Funding Rate 10-SMA',
+                name: 'Funding Rate 10-SMA',
+                color: '#2ECC71',
+                data: data_funding_rate_10sma,
                 tooltip: {
                     valueDecimals: 6
                 },
