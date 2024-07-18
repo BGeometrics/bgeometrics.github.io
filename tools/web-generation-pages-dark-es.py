@@ -115,6 +115,11 @@ word_to_exclude = 'dark'
 
 create_directory_if_not_exists(dest_directory)
 
+# Lang ES
+src_directory = '/home/pi/bgeometrics.github.io/es/graphics'
+dest_directory = '/tmp/graphics'
+word_to_exclude = 'dark'
+
 remove_all_files(dest_directory)
 copy_files_excluding_word(src_directory, dest_directory, word_to_exclude)
 remove_extension_from_files(dest_directory)
@@ -142,4 +147,5 @@ new_text = """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
 copy_files(dest_directory, src_directory)
+
 

@@ -28,6 +28,7 @@ cp -r $DIR_PROYECT/reports/* $DIR_ES/reports
 # Sobreescribo los gráficos que ya están traducidos
 cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/
 
+python2 web-generation-pages-dark-es.py
 python3 web-generation-translate-graphics.py
 
 if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
