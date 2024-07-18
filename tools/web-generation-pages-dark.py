@@ -8,6 +8,9 @@ import os
 import shutil
 import re
 
+def create_directory_if_not_exists(directory):
+    os.makedirs(directory, exist_ok=True)
+    print(f"Directory created or already exists: {directory}")
 
 def remove_all_files(directory):
     # Iterate over all files in the directory
@@ -115,6 +118,8 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
 src_directory = '/home/pi/bgeometrics.github.io/graphics'
 dest_directory = '/tmp/graphics'
 word_to_exclude = 'dark'
+
+create_directory_if_not_exists(dest_directory)
 
 remove_all_files(dest_directory)
 copy_files_excluding_word(src_directory, dest_directory, word_to_exclude)
