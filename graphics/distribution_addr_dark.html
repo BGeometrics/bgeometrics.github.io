@@ -20,7 +20,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
@@ -92,7 +91,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Distribution Address',
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Distribution Address</a>',
                 align: 'left',
             },
 
@@ -117,12 +116,6 @@
                             .attr({zIndex: 1})
                             .add();
                     }
-                }
-            },
-
-            plotOptions:{
-                series:{
-                    showInLegend:true
                 }
             },
 

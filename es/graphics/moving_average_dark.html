@@ -20,7 +20,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
@@ -35,6 +34,9 @@
             ).then(response => response.json());
             const data_20dma = await fetch(
                 'https://charts.bgeometrics.com/files/20dma.json'
+            ).then(response => response.json());
+            const data_40dma = await fetch(
+                'https://charts.bgeometrics.com/files/40dma.json'
             ).then(response => response.json());
             const data_50dma = await fetch(
                 'https://charts.bgeometrics.com/files/50dma.json'
@@ -98,7 +100,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Moving Average Price',
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Moving Average Price</a>',
                 align: 'left',
             },
 
@@ -146,7 +148,7 @@
             series: [{
                 id: 'Precio BTC',
                 name: 'Precio BTC',
-                color: 'white',
+		color: 'white', 
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
@@ -165,6 +167,15 @@
                 id:'20 SMA',
                 name: '20 SMA',
                 data: data_20dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'40 SMA',
+                name: '40 SMA',
+                data: data_40dma,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2

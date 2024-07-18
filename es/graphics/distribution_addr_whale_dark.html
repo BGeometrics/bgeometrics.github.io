@@ -19,8 +19,6 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
-
     <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
@@ -108,7 +106,7 @@
 
             yAxis: [{
                 title: {
-                    text: 'Bitcoin Addresses'
+                    text: 'Bitcoin Address'
                 },
             }, {
                 title: {
@@ -119,7 +117,7 @@
 
             series: [{
                 id:'address_10K_1K',
-                name: 'Address',
+                name: 'Addresses',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2

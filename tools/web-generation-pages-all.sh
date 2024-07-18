@@ -10,6 +10,7 @@ echo
 echo $(date)
 
 cd $DIR_PROYECT/tools
+./web-generation-pages-dark.py
 ./web-generation-pages-all-es.py
 ./web-generation-pages-all.py
 

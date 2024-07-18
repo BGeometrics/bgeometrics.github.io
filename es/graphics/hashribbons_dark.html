@@ -19,9 +19,8 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
-    
     <div id="container" style="width:100%; height:600px;"></div>
+
 
     <script>
         (async () => {
@@ -119,7 +118,7 @@
                 },
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'Precio BTC',
                 },
                 type: 'logarithmic',
                 opposite: false
@@ -218,7 +217,7 @@
                 chart.xAxis[0].addPlotBand({
                     from: min_time_high,
                     to: max_time_high,
-                    color: 'rgba(255, 0, 0, 0.4)',
+                    color: 'rgba(255, 0, 0, 0.1)',
                     zIndex: 3
                 });
                 min_time_high = 0;
@@ -227,7 +226,6 @@
         }
 
     })();
-
 
     </script>
 

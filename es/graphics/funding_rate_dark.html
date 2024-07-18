@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Capitalización</title>
-
-     
-    
+    <title>Bitcoin Funding Rate</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -20,44 +17,20 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
-    <figure class="highcharts-figure">
-        <p class="highcharts-description">
-            Chart with buttons to modify options, showing how options can be changed
-            on the fly. This flexibility allows for more dynamic charts.
-        </p>
-    
-        <button id="plain">Plain</button>
-        <input type='text' id='equation6' placeholder='6'>
-
-    <div id="container-iframe" style="width:100%; height:600px;"></div>
-    </figure>
+    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
     <script>
-        var data_market_cap;
-
         (async () => {
-            data_1 = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/funding_rate_btc_price.json'
             ).then(response => response.json());
-            data_market_cap = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
-            ).then(response => response.json());
-            const data_investor_cap = await fetch(
-                'https://charts.bgeometrics.com/files/investor_cap.json'
-            ).then(response => response.json());
-            const data_thermo_cap = await fetch(
-                'https://charts.bgeometrics.com/files/thermo_cap.json'
-            ).then(response => response.json());
-            const data_realized_cap = await fetch(
-                'https://charts.bgeometrics.com/files/realized_cap_capitalization.json'
-            ).then(response => response.json());
-            const thermocap_realizedcap_ratio = await fetch(
-                'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
+            const data_funding_rate = await fetch(
+                'https://charts.bgeometrics.com/files/funding_rate.json'
             ).then(response => response.json());
  
-
-        chart = Highcharts.stockChart('container-iframe', {
+        var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -100,18 +73,17 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Capitalización</a>',
+                text: 'Bitcoin Funding Rate',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                events: {
+                events:{
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                         image.src = adresse_image;
-
                         var height_image = 128;
                         var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -123,75 +95,54 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
-                        
-                        this.renderer.text('<input type="number" id="test">',100,100,true).add()
-                    },
+                    }
+                }
+            },
 
-
-
-                    /*
-        const input = document.querySelector('#test');
-        test.addEventListener('input', function(e) {
-            if (e.target.value < 10) {
-                chart.series[0].update({
-                    color: 'blue'
-                })
-            } else {
-                chart.series[0].update({
-                    color: 'red'
-                })
-            }
-        });
-        */
+            plotOptions:{
+                series:{
+                    showInLegend:true
                 }
             },
 
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false
-            }, {
                 title: {
-                    text: 'Capitalización (USD)'
+                    text: 'Funding Rate'
                 },
                 labels: {
                     align: 'left',
                 },
+            }, {
+                title: {
+                    text: 'Precio BTC'
+                },
                 type: 'logarithmic',
+                opposite: false
             }],
 
             series: [{
-                id:'market_cap',
-                name: 'Market Cap',
-                data: data_market_cap,
+                name: 'Precio BTC',
+                color: 'white',
+                data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 1
             }, {
-                id:'realized_cap',
-                name: 'Realized Cap',
-                data: data_realized_cap,
+                id:'Funding Rate',
+                name: 'Funding Rate',
+                color: '#90ed7d',
+                data: data_funding_rate,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 6
                 },
-                yAxis: 0
-            }, {
-                id:'investor_cap',
-                name: 'Investor Cap',
-                data: data_investor_cap,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'thermo_cap',
-                name: 'Thermo Cap',
-                data: data_thermo_cap,
-                tooltip: {
-                    valueDecimals: 2
-                },
-
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
@@ -202,18 +153,18 @@
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 2
             },
 
             credits: {
-                text: 'Power by BGeometrics.com',
+                text: 'Source: binance.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
-                    x: -70,
+                    x: -85,
                     y: -124
                 }                
             },
@@ -230,45 +181,8 @@
                 }]
             }
         });
-
-
     })();
-
-    document.getElementById('plain').addEventListener("click", myFunction);
-
-    function myFunction() {
-        console.log(chart.series);
-        //console.log(chart.series.length);
-        //console.log(data_1.length);
-
-        for(var i = 0; i < chart.series.length; i++) {
-            console.log(chart.series[i].name);
-        }
-
-        chart.series[0].update({color: 'orange'});
-        
-        var data = [];
-
-        for(var i = 0; i < data_market_cap.length; i++) {
-            data_in = [];
-            data_in.push(data_1[i][0], Math.pow(data_1[i][1], 2));
-            data.push(data_in);
-        }
-        //console.log(data);
-        //console.log(data_1);
-        chart.addSeries({
-            data: data,
-            zones: [{
-                value: 10000000000000000000,
-                color: 'green'
-            }]
-        
-        });
-    }
-
     </script>
-    <div>
-    <input type="number" id="input">
-    </div>
+
 </body>
 </html>

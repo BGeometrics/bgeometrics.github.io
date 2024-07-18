@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Capitalization</title>
+    <title>ETF BTC Held</title>
 
      
     
@@ -18,46 +18,46 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <figure class="highcharts-figure">
-        <p class="highcharts-description">
-            Chart with buttons to modify options, showing how options can be changed
-            on the fly. This flexibility allows for more dynamic charts.
-        </p>
-    
-        <button id="plain">Plain</button>
-        <input type='text' id='equation6' placeholder='6'>
-
-    <div id="container-iframe" style="width:100%; height:600px;"></div>
-    </figure>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
-        var data_market_cap;
-
         (async () => {
-            data_1 = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
+            const data_gbtc = await fetch(
+                'https://charts.bgeometrics.com/files/gbtc_btc_sum.json'
             ).then(response => response.json());
-            data_market_cap = await fetch(
-                'https://charts.bgeometrics.com/files/market_cap.json'
+            const data_ibit = await fetch(
+                'https://charts.bgeometrics.com/files/ibit_btc_sum.json'
             ).then(response => response.json());
-            const data_investor_cap = await fetch(
-                'https://charts.bgeometrics.com/files/investor_cap.json'
+            const data_fbtc = await fetch(
+                'https://charts.bgeometrics.com/files/fbtc_btc_sum.json'
             ).then(response => response.json());
-            const data_thermo_cap = await fetch(
-                'https://charts.bgeometrics.com/files/thermo_cap.json'
+            const data_arkb = await fetch(
+                'https://charts.bgeometrics.com/files/arkb_btc_sum.json'
             ).then(response => response.json());
-            const data_realized_cap = await fetch(
-                'https://charts.bgeometrics.com/files/realized_cap_capitalization.json'
+            const data_ezbc = await fetch(
+                'https://charts.bgeometrics.com/files/ezbc_btc_sum.json'
             ).then(response => response.json());
-            const thermocap_realizedcap_ratio = await fetch(
-                'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
+            const data_bitb = await fetch(
+                'https://charts.bgeometrics.com/files/bitb_btc_sum.json'
             ).then(response => response.json());
- 
+            const data_brrr = await fetch(
+                'https://charts.bgeometrics.com/files/brrr_btc_sum.json'
+            ).then(response => response.json());
+            const data_btco = await fetch(
+                'https://charts.bgeometrics.com/files/btco_btc_sum.json'
+            ).then(response => response.json());
+            const data_btcw = await fetch(
+                'https://charts.bgeometrics.com/files/btcw_btc_sum.json'
+            ).then(response => response.json());
+            const data_hodl = await fetch(
+                'https://charts.bgeometrics.com/files/hodl_btc_sum.json'
+            ).then(response => response.json());
+            const data_etf_btc_porcentage = await fetch(
+                'https://charts.bgeometrics.com/files/etf_btc_porcentage.json'
+            ).then(response => response.json());
 
-        chart = Highcharts.stockChart('container-iframe', {
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -79,10 +79,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -100,16 +96,17 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Capitalization</a>',
+                text: 'BTC held by ETFs and % of supply they represent',
                 align: 'left',
             },
 
             chart: {
-                renderTo: 'container-iframe',
+                type: 'column',
+                renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                         image.src = adresse_image;
 
                         var height_image = 128;
@@ -123,79 +120,133 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
-                        
-                        this.renderer.text('<input type="number" id="test">',100,100,true).add()
-                    },
 
+                        let chart1 = this;
+                        chart1.stockTools.showhideBtn.click();
+                    }
+                }
+            },
 
-
-                    /*
-        const input = document.querySelector('#test');
-        test.addEventListener('input', function(e) {
-            if (e.target.value < 10) {
-                chart.series[0].update({
-                    color: 'blue'
-                })
-            } else {
-                chart.series[0].update({
-                    color: 'red'
-                })
-            }
-        });
-        */
+            plotOptions:{
+                series:{
+                    showInLegend:true
                 }
             },
 
             yAxis: [{
-                type: 'logarithmic',
-                startOnTick: false,
-                endOnTick: false
-            }, {
-                title: {
-                    text: 'Capitalization (USD)'
+                labels: {
+                    align: 'left',
                 },
-                type: 'logarithmic',
+                title: {
+                    text: 'BTC held by ETFs',
+                    startOnTick: false,
+                    endOnTick: false
+                },
+            }, {
+                labels: {
+                    format: '{value}%',
+                },
+                title: {
+                    text: 'BTC Supply %'
+                },
+                opposite: false,
             }],
+
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            }, 
 
             series: [{
-                id:'market_cap',
-                name: 'Market Cap',
-                data: data_market_cap,
+                name: 'BTC Supply %',
+                color: 'white',
+                data: data_etf_btc_porcentage,
+                type: 'line',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                zIndex: 3,
+                yAxis: 1
+            }, {
+                name: 'HODL',
+                data: data_hodl,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'realized_cap',
-                name: 'Realized Cap',
-                data: data_realized_cap,
+                name: 'BTCW',
+                data: data_btcw,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'investor_cap',
-                name: 'Investor Cap',
-                data: data_investor_cap,
+                name: 'BTCO',
+                data: data_btco,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'thermo_cap',
-                name: 'Thermo Cap',
-                data: data_thermo_cap,
+                name: 'BRRR',
+                data: data_brrr,
                 tooltip: {
                     valueDecimals: 2
                 },
-
-            }],
+                yAxis: 0
+            }, {
+                name: 'EZBC',
+                data: data_ezbc,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'BITB',
+                data: data_bitb,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'ARKB',
+                data: data_arkb,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'FBTC',
+                data: data_fbtc,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'IBIT',
+                data: data_ibit,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'GBTC',
+                data: data_gbtc,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }
+            ],
 
             legend:{
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
-                align:'center'
+                align:'center',
+                y: 25
             },
 
             rangeSelector: {
@@ -210,10 +261,11 @@
                 },
                 position: {
                     align: 'right',
-                    x: -70,
+                    x: -100,
                     y: -124
                 }                
             },
+
             responsive: {
                 rules: [{
                     condition: {
@@ -222,40 +274,15 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {enabled:false}
                     }
                 }]
             }
         });
-
-
     })();
 
-    document.getElementById('plain').addEventListener("click", myFunction);
-
-    function myFunction() {
-        //console.log(chart.series.length);
-        //console.log(data_1.length);
-
-        chart.series[0].update({color: 'orange'});
-        
-        var data = [];
-
-        for(var i = 0; i < data_market_cap.length; i++) {
-            data_in = [];
-            data_in.push(data_1[i][0], Math.pow(data_1[i][1], 2));
-            data.push(data_in);
-        }
-        //console.log(data);
-        //console.log(data_1);
-        chart.addSeries({
-            data: data
-        });
-    }
-
     </script>
-    <div>
-    <input type="number" id="input">
-    </div>
+
 </body>
 </html>

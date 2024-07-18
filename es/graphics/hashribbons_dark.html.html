@@ -1,67 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ETF BTC Held</title>
+    <title>Bitcoin Hash Ribbons</title>
 
-     
-    
-    <style>
-        .chart-outer {
-    max-width: 800px;
-    margin: 2em auto;
-}
-
-#container {
-    height: 300px;
-    margin-top: 2em;
-    min-width: 380px;
-}
-
-.highcharts-data-table table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    background: white;
-    min-width: 100%;
-    margin-top: 10px;
-    font-family: sans-serif;
-    font-size: 0.9em;
-}
-
-.highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
-    border: 1px solid silver;
-    padding: 0.5em;
-}
-
-.highcharts-data-table tr:nth-child(even),
-.highcharts-data-table thead tr {
-    background: #f8f8f8;
-}
-
-.highcharts-data-table tr {
-    cursor: pointer;
-}
-
-.highcharts-data-table tr:hover {
-    background: #eff;
-}
-
-.highcharts-data-table caption {
-    border-bottom: none;
-    font-size: 1.1em;
-    font-weight: bold;
-}
-
-.highcharts-sort-ascending::after {
-    content: " ↓";
-}
-
-.highcharts-sort-descending::after {
-    content: " ↑";
-}
-
-    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -75,46 +18,19 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
 
     <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_gbtc = await fetch(
-                'https://charts.bgeometrics.com/files/gbtc_btc_sum.json'
+            const data_sma30 = await fetch(
+                'https://charts.bgeometrics.com/files/hashribbons_sma_30.json'
             ).then(response => response.json());
-            const data_ibit = await fetch(
-                'https://charts.bgeometrics.com/files/ibit_btc_sum.json'
+            const data_sma60 = await fetch(
+                'https://charts.bgeometrics.com/files/hashribbons_sma_60.json'
             ).then(response => response.json());
-            const data_fbtc = await fetch(
-                'https://charts.bgeometrics.com/files/fbtc_btc_sum.json'
-            ).then(response => response.json());
-            const data_arkb = await fetch(
-                'https://charts.bgeometrics.com/files/arkb_btc_sum.json'
-            ).then(response => response.json());
-            const data_ezbc = await fetch(
-                'https://charts.bgeometrics.com/files/ezbc_btc_sum.json'
-            ).then(response => response.json());
-            const data_bitb = await fetch(
-                'https://charts.bgeometrics.com/files/bitb_btc_sum.json'
-            ).then(response => response.json());
-            const data_brrr = await fetch(
-                'https://charts.bgeometrics.com/files/brrr_btc_sum.json'
-            ).then(response => response.json());
-            const data_btco = await fetch(
-                'https://charts.bgeometrics.com/files/btco_btc_sum.json'
-            ).then(response => response.json());
-            const data_btcw = await fetch(
-                'https://charts.bgeometrics.com/files/btcw_btc_sum.json'
-            ).then(response => response.json());
-            const data_hodl = await fetch(
-                'https://charts.bgeometrics.com/files/hodl_btc_sum.json'
-            ).then(response => response.json());
-            const data_etf_btc_porcentage = await fetch(
-                'https://charts.bgeometrics.com/files/etf_btc_porcentage.json'
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/hashribbons_btc_price.json.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
@@ -156,17 +72,16 @@
                 }
             },
             title: {
-                text: 'BTC held by ETFs and % of supply they represent',
+                text: 'Bitcoin Hash Ribbons',
                 align: 'left',
             },
 
             chart: {
-                type: 'column',
                 renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                         image.src = adresse_image;
 
                         var height_image = 128;
@@ -180,11 +95,17 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
-
-                        let chart1 = this;
-                        chart1.stockTools.showhideBtn.click();
                     }
                 }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            xAxis: {
             },
 
             yAxis: [{
@@ -192,123 +113,50 @@
                     align: 'left',
                 },
                 title: {
-                    text: 'BTC held by ETFs',
-                    startOnTick: false,
-                    endOnTick: false
+                    text: 'Hash Ribbons'
                 },
             }, {
-                labels: {
-                    format: '{value}%',
-                },
                 title: {
-                    text: 'BTC Supply %'
+                    text: 'Precio BTC'
                 },
-                opposite: false,
+                opposite: false
             }],
 
-            plotOptions: {
-                column: {
-                    stacking: 'normal'
-                }
-            }, 
-
             series: [{
-                name: 'BTC Supply %',
-                color: 'black',
-                data: data_etf_btc_porcentage,
-                type: 'line',
+                name: 'Precio BTC',
+                color: 'white',
+                data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
-                zIndex: 3,
                 yAxis: 1
             }, {
-                name: 'HODL',
-                data: data_hodl,
+                id:'30 sma',
+                name: '30 SMA',
+                data: data_sma30,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'BTCW',
-                data: data_btcw,
+                id:'60 sma',
+                name: '60 SMA',
+                data: data_sma60,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
-            }, {
-                name: 'BTCO',
-                data: data_btco,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'BRRR',
-                data: data_brrr,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'EZBC',
-                data: data_ezbc,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'BITB',
-                data: data_bitb,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'ARKB',
-                data: data_arkb,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'FBTC',
-                data: data_fbtc,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'IBIT',
-                data: data_ibit,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'GBTC',
-                data: data_gbtc,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }
-            ],
-            exporting: {
-        showTable: true
-    },
-
+            }],
 
             legend:{
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
-                align:'center',
-                y: 25
+                align:'center'
             },
 
             rangeSelector: {
-                selected: 5
+                selected: 4
             },
 
             credits: {
@@ -319,11 +167,10 @@
                 },
                 position: {
                     align: 'right',
-                    x: -100,
+                    x: -70,
                     y: -124
                 }                
             },
-
             responsive: {
                 rules: [{
                     condition: {
@@ -339,6 +186,7 @@
             }
         });
     })();
+
 
     </script>
 

@@ -19,8 +19,6 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
-
     <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
@@ -59,8 +57,10 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -69,10 +69,6 @@
                         }
                     }
                 }
-            },
-            title: {
-                text: 'Bitcoin: Direcciones Activas',
-                align: 'left',
             },
 
             chart: {
