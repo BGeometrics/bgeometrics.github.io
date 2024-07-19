@@ -642,15 +642,15 @@ function getMetricsShortTerm() {
 
 function tableTraffic(value, clas, term){
     if (value == 100) {
-        clas = "class='table-danger'";
+        clas = "class='bg-danger'";
         term = "Alto";
     }
     else if (value == 50) {
-        clas = "class='table-warning'";
+        clas = "class='bg-warning'";
         term = "Medio";
     }
     else {
-        cla = "class='table-success'"
+        cla = "class='bg-success'"
         term = "Bajo";
     }
     
