@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Script para generar las páginas dark
+Script gor generation the dark pages
 """
 
 import os
