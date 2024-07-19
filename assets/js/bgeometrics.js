@@ -642,15 +642,18 @@ function getMetricsShortTerm() {
 
 function tableTraffic(value, clas, term){
     if (value == 100) {
-        clas = "class='bg-danger'";
+        //clas = "class='bg-danger'";
+        clas = "style='background-color:#cc3300'";
         term = "Alto";
     }
     else if (value == 50) {
-        clas = "class='bg-warning'";
+        //clas = "class='bg-warning'";
+        clas = "style='background-color:#ffcc00'";
         term = "Medio";
     }
     else {
-        cla = "class='bg-success'"
+        //cla = "class='bg-success'"
+        clas = "style='background-color:#99cc33'";
         term = "Bajo";
     }
     
