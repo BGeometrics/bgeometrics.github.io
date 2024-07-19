@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Address Coins Shark 100 to 1K BTC" name="keywords">
+  <meta content="Bitcoin Hash Price" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -297,7 +297,7 @@
         <a class="nav-link collapsed" data-bs-target="#address-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Address</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="address-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="address_active_dark.html">
               <i class="bi bi-circle"></i><span>Active Addresses</span>
@@ -410,7 +410,7 @@
         <a class="nav-link collapsed" data-bs-target="#miners-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Miners</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="miners-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="miners-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="puell_multiple_dark.html">
               <i class="bi bi-circle"></i><span>Puell Multiple</span>
@@ -422,7 +422,7 @@
             </a>
           </li>
           <li>
-            <a href="hashprice_dark.html">
+            <a href="hashprice_dark.html" class="active">
               <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
             </a>
           </li>
@@ -608,13 +608,87 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="reports/bitcoin_distribution_coin_g_shark.html" allow="fullscreen" title="Address Coins Shark 100 to 1K BTC" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/hashprice_dark.html" allow="fullscreen" title="Bitcoin Hash Price" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
           </div>
         </div><!-- End Left side columns -->
 
+      </div>
+    </section>
+  <br>
+  
+    <section>
+      <div class="container">
+        <a href="graphics/hashprice.html">
+          <h5>Bitcoin Hash Price</h5>
+        </a>
+        <p> 
+          The Bitcoin hash price is an indicator that expresses the relationship between the income that a Bitcoin miner can earn and the hash power (hash rate) used to mine blocks from the Bitcoin blockchain.
+	  <br><br>
+          Specifically, hash price is defined as the revenue earned in dollars per terahash (TH) of hash power per day.
+        </p>
+	<br><br>
+	<strong>The factors that influence the Hash Price:</strong>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul>
+              <li>
+	        <strong>Bitcoin price</strong>
+                <p>
+                  As the price of Bitcoin rises, the income in dollar terms for the same amount of Bitcoin mined also rises.
+		</p>
+              </li>
+              <li>
+	        <strong>Mining Difficulty</strong>
+                <p>
+                  The mining difficulty is adjusted approximately every two weeks to ensure that blocks are found approximately every 10 minutes. The higher the difficulty, the more hash power is needed to find blocks, which can reduce the hash price.
+		</p>
+              </li>
+              <li>
+	        <strong>Block Rewards</strong>
+                <p>
+                  These include the fixed reward per mined block (which is halved approximately every four years in an event known as "halving") and the transaction fees included in the block.
+		</p>
+              </li>
+              <li>
+	        <strong>Mining Costs</strong>
+                <p>
+                  Electricity costs, hardware maintenance and other operating costs can affect profitability, although not directly the hash price, they do affect the context in which it is evaluated.
+		</p>
+              </li>
+              <li>
+	        <strong>Network Hash Rate</strong>
+                  The total amount of hash power that is dedicated to Bitcoin mining across the network affects the difficulty and therefore the revenue per hash unit.
+                <p>
+              </li>
+	   </ul>
+	</div>   
+	<strong>Importance of Hash Price</strong>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul>
+              <li>
+	        <strong>Profitability Evaluation</strong>
+                <p>
+          	  Helps miners evaluate the profitability of their operations. If the hash price is high, miners can earn more income for the same hash power.
+		</p>
+              </li>
+              <li>
+	        <strong>Investment Decisions</strong>
+                <p>
+                  Influences investment decisions in mining hardware and the expansion of mining operations.
+		</p>
+              </li>
+              <li>
+	        <strong>Impact on the Network</strong>
+                <p>
+                  A low hash price may cause some miners to turn off their equipment, reducing the network hash rate and eventually decreasing the mining difficulty in the next adjustments. 
+		</p>
+              </li>
+	   </ul>
+	</div>   
       </div>
     </section>
 
