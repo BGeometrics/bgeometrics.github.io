@@ -71,3 +71,4 @@
 /tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,miners-nav
 /tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,miners-nav
 /tmp/web/hashprice.html,web-generation-end-hashprice.html,Bitcoin Hash Price,graphics/hashprice.html,Bitcoin Hash Price,,miners-nav
+/tmp/web/nvts_bg.html,web-generation-end-nvts-bg.html,Bitcoin NVT Signal,graphics/nvts_bg.html,Bitcoin NVT Signal,,market-nav

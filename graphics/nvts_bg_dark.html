@@ -2,6 +2,9 @@
 <html>
 <head>
     <title>NVT Signal</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -17,31 +20,30 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
     <script>
-        var chart;
-
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_btc_price.json'
+                'https://charts.bgeometrics.com/files/nvts_bg_btc_price.json'
             ).then(response => response.json());
             const data_nvt = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90.json'
+                'https://charts.bgeometrics.com/files/nvts_bg.json'
             ).then(response => response.json());
             const data_nvt_200dma = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_200dma.json'
+                'https://charts.bgeometrics.com/files/nvts_730dma_bg.json'
             ).then(response => response.json());
             const data_nvt_high = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_200dma_high.json'
+                'https://charts.bgeometrics.com/files/nvts_730dma_high_bg.json'
             ).then(response => response.json());
             const data_nvt_low = await fetch(
-                'https://charts.bgeometrics.com/files/nvtadj90_200dma_low.json'
+                'https://charts.bgeometrics.com/files/nvts_730dma_low_bg.json'
             ).then(response => response.json());
 
-            chart = Highcharts.stockChart('container-iframe', {
+            var chart = Highcharts.stockChart('container-iframe', {
                 stockTools: {
                     gui: {
                         buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -79,17 +81,13 @@
                         }
                     }
                 },
-                title: {
-                    text: 'Bitcoin: NVT Signal',
-                    align: 'left',
-                },
 
                 chart: {
                     renderTo: 'container-iframe',
                     events: {
                         load: function() {
                             var image = new Image();
-                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                             image.src = adresse_image;
                             var height_image = 128;
                             var width_image = 128;
@@ -97,11 +95,17 @@
                             var textY = this.plotTop + (this.plotHeight * 0.5);
                             var position_x = textX - width_image / 2;
                             var position_y = textY - height_image / 2;
-                            console.log(position_x + " " + position_y);
                             this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
                                 .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                                 .attr({zIndex: 1})
                                 .add();
+                        
+                            try {
+                                let chart1 = this;
+                                chart1.stockTools.showhideBtn.click();
+                            } catch (error) {
+                                console.error('An error occurred:', error.message);
+                            }
                         }
                     }
                 },
@@ -116,7 +120,7 @@
                     gridLineWidth: 0,
                 }, {
                     title: {
-                        text: 'Precio BTC'
+                        text: 'BTC price'
                     },
                     gridLineWidth: 0,
                     type: 'logarithmic',
@@ -124,7 +128,7 @@
                 }],
 
                 series: [{
-                    name: 'Precio BTC',
+                    name: 'BTC price',
                     color: 'rgba(0, 0, 0, 1)',
                     data: data_price,
                     tooltip: {
@@ -141,8 +145,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'nvt 200dma',
-                    name: 'NVT 200dma',
+                    id:'nvts mean',
+                    name: 'NVTS mean',
                     data: data_nvt_200dma,
                     color: 'rgba(125, 125, 125, 0.2)',
                     tooltip: {
@@ -150,8 +154,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'nvt high',
-                    name: 'NVT high',
+                    id:'nvts high',
+                    name: 'NVTS high',
                     data: data_nvt_high,
                     color: 'rgba(255, 0, 0, 0.3)',
                     tooltip: {
@@ -159,8 +163,8 @@
                     },
                     yAxis: 0, 
                 }, {
-                    id:'nvt low',
-                    name: 'NVT low',
+                    id:'nvts low',
+                    name: 'NVTS low',
                     data: data_nvt_low,
                     color: 'rgba(0, 255, 0, 0.5)',
                     tooltip: {
@@ -178,7 +182,7 @@
             },
 
             rangeSelector: {
-                selected: 4
+                selected: 5
             },
 
             credits: {
@@ -214,22 +218,27 @@
         max_time_low = 0;
 
         // The datasets must start at the same time origin and have the same length
-        for (var row = 1; row < data_nvt.length-1; row++) {
+        for (var row = 1; row < data_nvt.length; row++) {
+            /*
+            let date = new Date(data_nvt[row][0]);
+            console.log("date: " + date);
+            console.log("#### nvt " + data_nvt[row-1][1]);
+            console.log("#### nvt high " + data_nvt_high[row-1][1]);
+            console.log("#### nvt low " + data_nvt_low[row-1][1]);
+            */
+            // Si estamos en el último registro y se ha iniciado una zona hay que setear el valor máximo para que se coloree
+            if(row >= data_nvt.length-1) {
+                max_time_low = data_nvt[row][0];
+                max_time_high = data_nvt[row][0] + 86400000;
+            }
 
             // High
             if ((data_nvt[row-1][1] < data_nvt_high[row-1][1]) && (data_nvt[row][1] > data_nvt_high[row][1]) && (max_time_high == 0)) {
-                min_time_high = data_nvt[row-1][0];
-                /*
-                console.log("### min_time_high " + timeConverter(min_time_high));
-                console.log("data_nvt[row][0] " + data_nvt[row-1][1]); 
-                console.log("data_nvt_high[row][0] " + data_nvt_high[row-1][1]);
-                console.log("data_nvt[row][1] " + data_nvt[row][1]); 
-                console.log("data_nvt_high[row][1] " + data_nvt_high[row][1]);
-                */
+                min_time_high = data_nvt[row][0];
             }
 
             if ((data_nvt[row-1][1] > data_nvt_high[row-1][1]) && (data_nvt[row][1] < data_nvt_high[row][1]) && (min_time_high != 0)) {
-                max_time_high = data_nvt[row-1][0];
+                max_time_high = data_nvt[row][0];
             }
 
             if (min_time_high != 0 && max_time_high !=0) {
@@ -245,17 +254,14 @@
 
             // Low
             if ((data_nvt[row-1][1] > data_nvt_low[row-1][1]) && (data_nvt[row][1] < data_nvt_low[row][1]) && (max_time_low == 0)) {
-                min_time_low = data_nvt[row-1][0];
+                min_time_low = data_nvt[row][0];
             }
 
             if ((data_nvt[row-1][1] < data_nvt_low[row-1][1]) && (data_nvt[row][1] > data_nvt_low[row][1]) && (min_time_low != 0)) {
-                max_time_low = data_nvt[row-1][0];
+                max_time_low = data_nvt[row][0];
             }
 
             if (min_time_low != 0 && max_time_low !=0) {
-                //console.log("min_time_low " + timeConverter(min_time_low));
-                //console.log("max_time_low " + timeConverter(max_time_low));
-
                 chart.xAxis[0].addPlotBand({
                     from: min_time_low,
                     to: max_time_low,
