@@ -18,8 +18,6 @@
     <script src="https://code.highcharts.com/11.4.3/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <style>:root {--highcharts-neutral-color-3: orange;}</style>
 
@@ -31,10 +29,13 @@
                 'https://charts.bgeometrics.com/files/glm2.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/glm2_btc_price.json'
+                'https://charts.bgeometrics.com/files/glm_daily_btc_price.json'
             ).then(response => response.json());
             const data_change = await fetch(
                 'https://charts.bgeometrics.com/files/m2_yoy_change.json'
+            ).then(response => response.json());
+            const data_weeks7_change = await fetch(
+                'https://charts.bgeometrics.com/files/m2_weeks7_change.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
@@ -134,9 +135,25 @@
                 },
                 yAxis: 1
             },{
-                name: 'Variacion liquidez (%)',
+                name: 'Variacion liquidez interanual (%)',
                 type: 'area',
                 data: data_change,
+                visible: false, 
+                color: 'green',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#CB4335'
+                }, {
+                    color: '#2ECC71'
+                }]
+            },{
+                name: 'Variacion liquidez 7 semanas (%)',
+                type: 'area',
+                data: data_weeks7_change,
                 color: 'green',
                 tooltip: {
                     valueDecimals: 2
@@ -161,6 +178,11 @@
                 verticalAlign: 'top',
                 align:'center'
             },
+
+            rangeSelector: {
+                selected: 4
+            },
+
             credits: {
                 text: 'Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
