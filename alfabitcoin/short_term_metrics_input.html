@@ -71,7 +71,8 @@ tbody, td, tfoot, th, thead, tr {
 }
   </style>
 </head>
-<body>
+
+<body onload="init()">
 
 <div class="container mt-4">
   <h3 class="text-left">Semáforo de corto plazo</h3>
@@ -139,6 +140,8 @@ tbody, td, tfoot, th, thead, tr {
           vdd = shortTerm.vdd;
       });
 
+      getMetricsShortTerm(idG);
+
     } catch (error) {
       console.error('Error:', error);
       displayResponse('Selecciona los valores de las métricas');
@@ -190,7 +193,7 @@ tbody, td, tfoot, th, thead, tr {
       responseContainer.appendChild(alertDiv);
     }
   });
-        
+  
 </script>
 
 </body>
