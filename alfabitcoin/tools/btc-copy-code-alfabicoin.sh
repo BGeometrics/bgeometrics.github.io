@@ -74,6 +74,8 @@ echo "Copy lib and files"
 cd $DIR
 cp bitcoin_utils.py $DIR_SCRIPTS_TARGET
 cp config_alfabitcoin.py $DIR_SCRIPTS_TARGET
+cp btc-lib-*tar.gz $DIR_SCRIPTS_TARGET
+#pip install btc-lib-*tar.gz
 
 
 echo "Copy scripts generate files json"
