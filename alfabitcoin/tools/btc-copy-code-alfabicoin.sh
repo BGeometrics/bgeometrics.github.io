@@ -140,4 +140,4 @@ done
 
 # pg_restore -U [username] -d [database] -t [table_name] [dump_file]
 
-cp $DIR/$(basename "$0") $DIR_HTML/tools 
+#cp $DIR/$(basename "$0") $DIR_HTML/tools 
