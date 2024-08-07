@@ -647,7 +647,7 @@ function tableTraffic(value, clas, term){
     }
     else if (value == 50) {
         clas = "class='table-warning'";
-        term = "Medio";
+        term = "Neutral";
     }
     else {
         clas = "class='table-success'";
