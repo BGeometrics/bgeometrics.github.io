@@ -164,7 +164,7 @@
                                 <option value="1">Diario</option>
                                 <option value="7" selected>Semanal</option>
                                 <option value="14">Bisemanal</option>
-                                <option value="30">Mesual</option>
+                                <option value="31">Mensual</option>
                                 <option value="60">Bimensual</option>
                             </select>
                         </div>
@@ -310,6 +310,10 @@
             }
 
             const totalInvestment = investment * (duration / frequency);
+            //console.log("Investment: " + investment);
+            //console.log("Duration: " + duration);
+            //console.log("Frecuency: " + frequency);
+            //console.log("totalInvestment: " + totalInvestment);
             let totalBitcoin = 0;
             let totalDollar = 0;
             let averagePrice = 0;
@@ -329,6 +333,7 @@
                         const amountBought = investment / currentPrice;
 
                         totalInvestor += investment;
+                        console.log("totalInvestor: " + totalInvestor);
                         totalBitcoin += amountBought;
                         totalDollar = totalBitcoin * currentPrice;
                         date = new Date(day[i]);
@@ -394,8 +399,8 @@
             const duration = getDaysAgo();
             const timestampDaysAgo = currentTimestamp - (duration * millisecondsInDay);
 
-            console.log('timestampDayAgo: ' + timestampDaysAgo); 
-            console.log('duration: ' + duration); 
+            //console.log('timestampDayAgo: ' + timestampDaysAgo); 
+            //console.log('duration: ' + duration); 
 
             result = calculateDCA(Number(investment.value), Number(frequency.value), duration, priceBTC, dayColumn, timestampDaysAgo);
 
@@ -448,6 +453,8 @@
                 // Add one day
                 duration = Number(e.value) + 1;
             }
+
+            //console.log("duration: " + duration);
 
             return Number(duration);
         }
