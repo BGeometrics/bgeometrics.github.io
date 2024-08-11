@@ -165,7 +165,7 @@
                                 <option value="7" selected>Semanal</option>
                                 <option value="14">Bisemanal</option>
                                 <option value="31">Mensual</option>
-                                <option value="60">Bimensual</option>
+                                <option value="61">Bimensual</option>
                             </select>
                         </div>
                         <div class="card" style="padding: 5px; margin-bottom: 5px;">
@@ -328,22 +328,38 @@
 
             for (let i = 0; i < priceHistory.length; i++) {
                 if (day[i] >= daysAgo) {
-                    if (j % frequency === 0) {
-                        const currentPrice = priceHistory[i];
-                        const amountBought = investment / currentPrice;
+                    if (frequency !== 31) {
+                        if (j % frequency === 0) {
+                            const currentPrice = priceHistory[i];
+                            const amountBought = investment / currentPrice;
 
-                        totalInvestor += investment;
-                        console.log("totalInvestor: " + totalInvestor);
-                        totalBitcoin += amountBought;
-                        totalDollar = totalBitcoin * currentPrice;
-                        date = new Date(day[i]);
-                        theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-                        dca.push([day[i], totalDollar]);
+                            totalInvestor += investment;
+                            totalBitcoin += amountBought;
+                            totalDollar = totalBitcoin * currentPrice;
+                            date = new Date(day[i]);
+                            theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+                            dca.push([day[i], totalDollar]);
+                        }
+                    }
+                    // Frecuency mounth only day 01
+                    else {
+                        let dayOfMonth = (new Date(day[i])).getDate();
+                        if (dayOfMonth == 1) {
+                            const currentPrice = priceHistory[i];
+                            const amountBought = investment / currentPrice;
+
+                            totalInvestor += investment;
+                            totalBitcoin += amountBought;
+                            totalDollar = totalBitcoin * currentPrice;
+                            date = new Date(day[i]);
+                            theDate = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+                            dca.push([day[i], totalDollar]);
+                        }
                     }
                     j++;
                 }
             }
-
+            
             let formatter0 = new Intl.NumberFormat('es-ES', {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
