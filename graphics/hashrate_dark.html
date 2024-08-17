@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin Hash Rate</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -31,6 +28,9 @@
             ).then(response => response.json());
             const data_hashrate = await fetch(
                 'https://charts.bgeometrics.com/files/hashrate.json'
+            ).then(response => response.json());
+            const data_hashrate_30sma = await fetch(
+                'https://charts.bgeometrics.com/files/hashrate_30sma.json'
             ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
@@ -134,6 +134,14 @@
                 id:'Hash Rate',
                 name: 'Hash Rate',
                 data: data_hashrate,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'Hash Rate 30 SMA',
+                name: 'Hash Rate 30 SMA',
+                data: data_hashrate_30sma,
                 tooltip: {
                     valueDecimals: 2
                 },

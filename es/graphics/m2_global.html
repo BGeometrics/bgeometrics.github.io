@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin and M2 Growth Global of YoY (Fed, ECB, GBM, CNM, JPM...)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -33,6 +30,9 @@
             ).then(response => response.json());
             const data_change = await fetch(
                 'https://charts.bgeometrics.com/files/m2_yoy_change.json'
+            ).then(response => response.json());
+            const data_weeks7_change = await fetch(
+                'https://charts.bgeometrics.com/files/m2_weeks7_change.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -103,7 +103,10 @@
 
             yAxis: [{
                 title: {
-                    text: 'M2 Growth Global of YoY (%)'
+                    text: 'M2 Growth Global of YoY (%)',
+                    labels: {
+                        align: 'left',
+                    },
                 },
             }, {
                 title: {
@@ -118,6 +121,7 @@
             }],
 
             series: [{
+                id:'Precio BTC',
                 name: 'Precio BTC',
                 color: 'black',
                 zIndex: 2,
@@ -127,6 +131,7 @@
                 },
                 yAxis: 1
             },{
+                id: 'M2 Growth YoY (%)',
                 name: 'M2 Growth YoY (%)',
                 type: 'area',
                 data: data_change,
@@ -142,6 +147,24 @@
                     color: '#90ed7d'
                 }]
             },{
+                id: 'M2 Growth 7 weeks (%)',
+                name: 'M2 Growth 7 weeks (%)',
+                type: 'area',
+                data: data_weeks7_change,
+                visible: false, 
+                color: 'green',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#f7a35c'
+                }, {
+                    color: '#90ed7d'
+                }]
+            },{
+                id: 'M2 Global Supply (USD)',
                 name: 'M2 Global Supply (USD)',
                 type: 'line',
                 data: data,
@@ -155,6 +178,7 @@
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
+                y: 25,
                 align:'center'
             },
             credits: {
