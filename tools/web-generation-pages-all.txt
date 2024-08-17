@@ -72,3 +72,4 @@
 /tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,miners-nav
 /tmp/web/hashprice.html,web-generation-end-hashprice.html,Bitcoin Hash Price,graphics/hashprice.html,Bitcoin Hash Price,,miners-nav
 /tmp/web/nvts_bg.html,web-generation-end-nvts-bg.html,Bitcoin NVT Signal,graphics/nvts_bg.html,Bitcoin NVT Signal,,market-nav
+/tmp/web/miner_reserves.html,web-generation-end-minerreserves.html,Bitcoin Miner Reserves,graphics/miner_reserves.html,Bitcoin Miner Reserves,,miners-nav
