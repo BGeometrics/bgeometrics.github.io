@@ -28,6 +28,12 @@
             const data_miner_sell_presure = await fetch(
                 'https://charts.bgeometrics.com/files/miner_sell_presure.json'
             ).then(response => response.json());
+            const data_miner_sell_presure_low = await fetch(
+                'https://charts.bgeometrics.com/files/miner_sell_presure_200dma_-stdev.json'
+            ).then(response => response.json());
+            const data_miner_sell_presure_high = await fetch(
+                'https://charts.bgeometrics.com/files/miner_sell_presure_200dma_+stdev.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -120,22 +126,41 @@
 
             series: [{
                 name: 'Precio BTC',
-                color: 'black',
+                color: 'rgba(0, 0, 0, 1)',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 1
             }, {
-                id:'Miner Sell Presure',
-                name: 'Miner Sell Presure',
+                id:'Miner Sell Pressure',
+                name: 'Miner Sell Pressure',
                 data: data_miner_sell_presure,
+                color: 'rgba(0, 0, 255, 1)',
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
-            }],
-
+                yAxis: 0, 
+            }, {
+                id:'Miner Sell Pressure High',
+                name: 'High',
+                data: data_miner_sell_presure_high,
+                color: 'rgba(255, 0, 0, 0.3)',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0, 
+            }, {
+                id:'Miner Sell Pressure Low',
+                name: 'Low',
+                data: data_miner_sell_presure_low,
+                color: 'rgba(0, 255, 0, 0.5)',
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0, 
+            },
+            ],
             legend:{
                 enabled:true,
                 floating: true,
@@ -144,7 +169,7 @@
             },
 
             rangeSelector: {
-                selected: 4
+                selected: 5
             },
 
             credits: {
@@ -185,6 +210,68 @@
                 }]
             }
         });
+
+        min_time_high = 0;
+        max_time_high = 0;
+        min_time_low = 0;
+        max_time_low = 0;
+
+        // The datasets must start at the same time origin and have the same length
+        for (var row = 1; row < data_miner_sell_presure.length-1; row++) {
+
+            // Si estamos en el último registro y se ha iniciado una zona hay que setear el valor máximo para que se coloree
+            if(row >= data_miner_sell_presure.length-2) {
+                max_time_low = data_miner_sell_presure[row-1][0];
+                max_time_high = data_miner_sell_presure[row-1][0];
+            }
+
+            // High
+            if ((data_miner_sell_presure[row-1][1] < data_miner_sell_presure_high[row-1][1]) && (data_miner_sell_presure[row][1] > data_miner_sell_presure_high[row][1]) && (max_time_high == 0)) {
+                min_time_high = data_miner_sell_presure[row-1][0];
+                //let date = new Date(data_miner_sell_presure[row-1][0]);
+                //console.log("daysago: " + date);
+            }
+            
+            if ((data_miner_sell_presure[row-1][1] > data_miner_sell_presure_high[row-1][1]) && (data_miner_sell_presure[row][1] < data_miner_sell_presure_high[row][1]) && (min_time_high != 0)) {
+                max_time_high = data_miner_sell_presure[row-1][0];
+            }
+
+            if (min_time_high != 0 && max_time_high !=0) {
+                chart.xAxis[0].addPlotBand({
+                    from: min_time_high,
+                    to: max_time_high,
+                    color: 'rgba(255, 0, 0, 0.1)',
+                    zIndex: 3
+                });
+                min_time_high = 0;
+                max_time_high = 0;
+            }
+
+            /*
+            // Low
+            if ((data_miner_sell_presure[row-1][1] > data_miner_sell_presure_low[row-1][1]) && (data_miner_sell_presure[row][1] < data_miner_sell_presure_low[row][1]) && (max_time_low == 0)) {
+                min_time_low = data_miner_sell_presure[row-1][0];
+            }
+
+            if ((data_miner_sell_presure[row-1][1] < data_miner_sell_presure_low[row-1][1]) 
+                    && (data_miner_sell_presure[row][1] > data_miner_sell_presure_low[row][1]) 
+                    && (min_time_low != 0)) {
+                max_time_low = data_miner_sell_presure[row-1][0];
+            }
+
+            if (min_time_low != 0 && max_time_low !=0) {
+                chart.xAxis[0].addPlotBand({
+                    from: min_time_low,
+                    to: max_time_low,
+                    color: 'rgba(0, 255, 0, 0.1)',
+                    zIndex: 3
+                });
+                min_time_low = 0;
+                max_time_low = 0;
+            }
+            */
+        }
+
     })();
 
     </script>
