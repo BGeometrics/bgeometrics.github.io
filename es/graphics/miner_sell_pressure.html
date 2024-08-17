@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Miner Reserves</title>
+    <title>Bitcoin Miner Sell Pressure</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -25,8 +25,8 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/miner_reserves_btc_price.json'
             ).then(response => response.json());
-            const data_miner_reserves = await fetch(
-                'https://charts.bgeometrics.com/files/miner_reserves.json'
+            const data_miner_sell_presure = await fetch(
+                'https://charts.bgeometrics.com/files/miner_sell_presure.json'
             ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
@@ -72,7 +72,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Miner Reserves',
+                text: 'Bitcoin Miner Sell Presure',
                 align: 'left',
             },
 
@@ -105,7 +105,7 @@
 
             yAxis: [{
                 title: {
-                    text: 'Bitcoin: Miner Reserves',
+                    text: 'Bitcoin: Miner Sell Presure',
                     labels: {
                         align: 'left',
                     },
@@ -127,9 +127,9 @@
                 },
                 yAxis: 1
             }, {
-                id:'Miner Reserve',
-                name: 'Miner Reserve',
-                data: data_miner_reserves,
+                id:'Miner Sell Presure',
+                name: 'Miner Sell Presure',
+                data: data_miner_sell_presure,
                 tooltip: {
                     valueDecimals: 2
                 },
