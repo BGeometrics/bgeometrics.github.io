@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>MVRV Z-Score (Market Value Realized Value)</title>
-
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -114,7 +113,10 @@
 
             yAxis: [{
                 title: {
-                    text: 'MVRV'
+                    text: 'MVRV',
+                    labels: {
+                        align: 'left',
+                    },
                 },
                 plotBands: [{ 
                     from: 6,

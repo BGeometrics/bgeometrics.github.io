@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin Fear and Greed Index</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -135,7 +132,23 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 0,
+		        zones: [{
+                    value: 25,
+                    color: 'red'
+                }, {
+		            value: 45,
+                    color: 'orange'
+                }, {
+		            value: 55,
+                    color: 'yellow'
+                }, {
+		            value: 75,
+                    color: 'green'
+                }, {
+		            value: 100,
+                    color: 'blue'
+                }]
             }],
 
             legend:{
@@ -146,7 +159,7 @@
             },
 
             rangeSelector: {
-                selected: 2
+                selected: 4
             },
 
             credits: {

@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>MVRV Ratio (Market Value Realized Value)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -34,6 +31,9 @@
             ).then(response => response.json());
             const data_mvrv_zscore = await fetch(
                 'https://charts.bgeometrics.com/files/mvrv_zscore.json'
+            ).then(response => response.json());
+            const data_mvrv_365sma = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv_365dma.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -110,7 +110,10 @@
 
             yAxis: [{
                 title: {
-                    text: 'MVRV Ratio'
+                    text: 'MVRV Ratio',
+                    labels: {
+                        align: 'left',
+                    },
                 },
             }, {
                 title: {
@@ -140,6 +143,14 @@
                 id:'mvrv_zscore',
                 name: 'MVRV Z-Score',
                 data: data_mvrv_zscore,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: 'MVRV 365 SMA',
+                data: data_mvrv_365sma,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2

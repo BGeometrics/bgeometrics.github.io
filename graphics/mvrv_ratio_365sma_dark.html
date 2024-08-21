@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MVRV Z-Score (Market Value Realized Value)</title>
+    <title>MVRV Ratio (Market Value Realized Value)</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -32,11 +32,8 @@
             const data_mvrv_zscore = await fetch(
                 'https://charts.bgeometrics.com/files/mvrv_zscore.json'
             ).then(response => response.json());
-            const data_lth_mvrv = await fetch(
-                'https://charts.bgeometrics.com/files/lth_mvrv.json'
-            ).then(response => response.json());
-            const data_sth_mvrv = await fetch(
-                'https://charts.bgeometrics.com/files/sth_mvrv.json'
+            const data_mvrv_365sma = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv_365dma.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -78,7 +75,7 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: MVRV Z-Score (Market Value Realized Value)</a>',
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin MVRV Ratio (Market Value Realized Value)</a>',
                 align: 'left',
             },
 
@@ -113,31 +110,21 @@
 
             yAxis: [{
                 title: {
-                    text: 'MVRV',
+                    text: 'MVRV Ratio',
                     labels: {
                         align: 'left',
                     },
                 },
-                plotBands: [{ 
-                    from: 6,
-                    to: 10,
-                    color: 'rgba(255, 0, 0, 0.1)'
-                }, {
-                    from: 0.1,
-                    to: -0.7,
-                    color: 'rgba(0, 255, 0, 0.1)'
-                }]
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
                 type: 'logarithmic',
                 opposite: false
             }],
 
             series: [{
-                id: 'Precio BTC',
-                name: 'Precio BTC',
+                name: 'BTC price',
                 color: 'white',
                 data: data_price,
                 tooltip: {
@@ -145,25 +132,25 @@
                 },
                 yAxis: 1
             }, {
+                id:'mvrv_ratio',
+                name: 'MVRV Ratio',
+                data: data_mvrv,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
                 id:'mvrv_zscore',
                 name: 'MVRV Z-Score',
                 data: data_mvrv_zscore,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'LTH-MVRV',
-                data: data_lth_mvrv,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'STH-MVRV',
-                data: data_sth_mvrv,
-                visible: false,
+                name: 'MVRV 365 SMA',
+                data: data_mvrv_365sma,
                 tooltip: {
                     valueDecimals: 2
                 },
