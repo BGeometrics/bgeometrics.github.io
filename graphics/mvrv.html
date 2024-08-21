@@ -37,9 +37,6 @@
             const data_sth_mvrv = await fetch(
                 'https://charts.bgeometrics.com/files/sth_mvrv.json'
             ).then(response => response.json());
-            const data_mvrv_365sma = await fetch(
-                'https://charts.bgeometrics.com/files/mvrv_365dma.json'
-            ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -115,7 +112,10 @@
 
             yAxis: [{
                 title: {
-                    text: 'MVRV'
+                    text: 'MVRV',
+                    labels: {
+                        align: 'left',
+                    },
                 },
                 plotBands: [{ 
                     from: 6,
@@ -162,14 +162,6 @@
             }, {
                 name: 'STH-MVRV',
                 data: data_sth_mvrv,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: 'MVRV 365 SMA',
-                data: data_mvrv_365sma,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
