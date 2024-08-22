@@ -12,7 +12,7 @@
 	      4axis -> 100 to 10000
       -->
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col">
           <select class="form-select" id="metrics" style="width:300px;">
             <option selected>Bitcoin Metrics On-Chain</option>
             <option value="10dma">10 day SMA</option>
@@ -23,7 +23,7 @@
             <option value="200dma">200 day SMA</option>
             <option value="addresses_active_4axis">Active Addresses</option>
             <option value="aviv_3axis">AVIV</option>
-            <option value="hw_age_6m__3axis">BTC HODL (>6m) %</option>
+	    <option value="hw_age_6m__3axis">BTC HODL (>6m) %</option>
             <option value="hw_age_6m_lth_supply_axis">BTC LTH (>6m) Supply</option>
             <option value="hw_age_6m_sth_supply_axis">BTC STH (<6m) Supply</option>
             <option value="bull_bear">Bull and Bear Cycles</option>
@@ -65,8 +65,8 @@
             <option value="oi_total_axis">Open Interest Futures</option>
             <option value="power_law">Power Law</option>
             <option value="power_law_floor">Power Law Floor</option>
-            <option value="puell_multiple_3axis">Puell Multiple</option>
             <option value="profit_loss_3axis">Ratio Profit Loss</option>
+	    <option value="puell_multiple_3axis">Puell Multiple</option>
             <option value="realized_price">Realized Price</option>
             <option value="sth_realized_price">Realized Price STH</option>
             <option value="lth_realized_price">Realized Price LTH</option>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="col-lg-1">
-          <button class="btn" onclick="deleteSeries()">Remove</button>
+          <button class="btn btn-light" onclick="deleteSeries()">Remove</button>
         </div>
 
         <div class="col-lg-3">
@@ -130,8 +130,8 @@
 
         <div class="col-lg-1">
           <select class="form-select" id="zoom" style="width:120px;">
-	    <option selected>Zoom</option>
-	    <option value="600">600px</option>
+            <option selected>Zoom</option>
+            <option value="600">600px</option>
             <option value="700">700px</option>
             <option value="800">800px</option>
             <option value="900">900px</option>
@@ -145,47 +145,6 @@
           </select>
         </div>
 
-        <div class="row">
-          <div class="col-lg-1">
-            <button class="btn" onclick="">Formula:</button>
-          </div>
-          <div class="col-lg-1">
-            <input type="text" class="form-control" id="number" value="0">
-          </div>
-          <div class="col-lg-1">
-            <select class="form-select" id="operator1">
-              <option selected value=""></option>
-              <option value="+">+</option>
-              <option value="-">-</option>
-              <option value="*">*</option>
-              <option value="/">/</option>
-            </select>
-          </div>
-          <div class="col-lg-2">
-            <select class="form-select" id="metric1">
-              <option selected>Metric1</option>
-              <option value="BTC Price">BTC Price</option>
-            </select>
-          </div>
-          <div class="col-lg-1">
-            <select class="form-select" id="operator2">
-              <option selected value=""></option>
-              <option value="+">+</option>
-              <option value="-">-</option>
-              <option value="*">*</option>
-              <option value="/">/</option>
-            </select>
-          </div>
-          <div class="col-lg-2">
-            <select class="form-select" id="metric2">
-              <option selected>Metric2</option>
-              <option value="BTC Price">BTC Price</option>
-            </select>
-          </div>
-          <div class="col-lg-1">
-            <button class="btn" onclick="draw()">Draw</button>
-          </div>
-        </div>
       </div>
 
       <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
@@ -251,7 +210,7 @@
                     events: {
                         load: function() {
                             var image = new Image();
-			    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+			    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                             image.src = adresse_image;
 
                             var height_image = 128;
@@ -295,7 +254,7 @@
                 series: [{
                     id:'BTC price',
                     name: 'BTC price',
-                    color: 'black',
+                    color: 'white',
                     data: data_price,
                     tooltip: {
                         valueDecimals: 2
@@ -365,7 +324,7 @@
                         forEach(function (option) {
                             if(option.value == metric[i]){
                                 text = option.text;
-                                //console.log(option.text);
+                                console.log(option.text);
                             }
                         });
 
@@ -374,24 +333,7 @@
             }
         }
 
-        //document.getElementById('metrics').addEventListener("change", changeMetrics);
-        document.getElementById('metrics').addEventListener("change", function () {
-          var e = document.getElementById("metrics");
-          var value = e.value;
-          var text = e.options[e.selectedIndex].text;
-          var selectElement = document.getElementById('metric1');
-          var newOption = document.createElement('option');
-          newOption.value = value;
-          newOption.text = text;
-          selectElement.appendChild(newOption);
-          var selectElement2 = document.getElementById('metric2');
-          var newOption2 = document.createElement('option');
-          newOption2.value = value;
-          newOption2.text = text;
-          selectElement2.appendChild(newOption2);
-          changeMetrics();
-        });
-
+        document.getElementById('metrics').addEventListener("change", changeMetrics);
         document.getElementById('zoom').addEventListener("change", zoom);
 
         function zoom() {
@@ -433,79 +375,6 @@
                 id: 'oscillator',
                 yAxis: 2
             });
-        }
-
-        function deleteTheSeries() {
-          const selectElement = document.getElementById('metric1');
-          for (let i = selectElement.options.length - 1; i >= 0; i--) {
-            if (selectElement.options[i].text != "Metric1" &&
-              selectElement.options[i].text != "BTC Price") {
-              selectElement.remove(i);
-            }
-          }
-          const selectElement2 = document.getElementById('metric2');
-          for (let i = selectElement2.options.length - 1; i >= 0; i--) {
-            if (selectElement2.options[i].text != "Metric2" &&
-              selectElement2.options[i].text != "BTC Price") {
-              selectElement2.remove(i);
-            }
-          }
-          deleteSeries();
-        }
-
-        function draw() {
-          var numberValue = document.getElementById("number").value;
-          var metric1Value = document.getElementById("metric1").value;
-          var metric2Value = document.getElementById("metric2").value;
-          var operator1Value = document.getElementById("operator1").value;
-          var operator2Value = document.getElementById("operator2").value;
-
-          metric1Serie = chart.series[0];
-          metric2Serie = chart.series[0];
-
-          for (var i = 0; i < chart.series.length; i++) {
-            var series = chart.series[i];
-            if (chart.series[i].name == metric1Value){
-              metric1Serie = chart.series[i];
-            }
-            if (chart.series[i].name == metric2Value){
-              metric2Serie = chart.series[i];
-            }
-          }
-
-          var data = [];
-          if (metric1Value !== "Metric1")  { // Must select a Metric 1
-            for(var i = 0; i < metric1Serie.xData.length; i++) {
-              dataIn = [];
-              if (operator1Value === null || operator1Value === "") { // Operator 1 -> null
-                if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { // Operator 1 -> null and Operator 2 or Metric 2 -> null 
-                  expression = metric1Serie.yData[i];
-                }
-                else { // Operatoe 1 -> null and Metric 2 and Operator 2 -> not null 
-                  formula = metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
-                  expression = eval(formula);
-                }
-              }
-              else { // Operator 1 -> not null
-                if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { //Operator 1 -> not null and Operator 2 or Metric 2 -> null  
-                  formula = numberValue + operator1Value + metric1Serie.yData[i];
-                  expression = eval(formula);
-                }
-                else { // Operator 1 -> not null and Operator 2 and Metric 2 -> not null
-                  formula = numberValue + operator1Value + metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
-                  expression = eval(formula);
-                }
-              }
-              dataIn.push(metric1Serie.xData[i], expression);
-              data.push(dataIn);
-            }
-
-            chart.addSeries({
-              data: data
-            });
-          }
         }
 
       </script>
