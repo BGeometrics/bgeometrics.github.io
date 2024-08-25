@@ -126,7 +126,7 @@ tbody, td, tfoot, th, thead, tr {
     const responseContainer = document.getElementById('response-container');
       
     try {
-      fetch('https://bgeometrics.mooo.com/v1/alfabitcoin/last')  
+      fetch('https://bitcoin-data.com/v1/alfabitcoin/last')  
         .then(response => response.json())
         .then(shortTerm => {
           idG = shortTerm.id;
@@ -167,7 +167,7 @@ tbody, td, tfoot, th, thead, tr {
       };
 
       try {
-        const response = await fetch('https://bgeometrics.mooo.com/v1/alfabitcoin/' + idG, {
+        const response = await fetch('https://bitcoin-data.com/v1/alfabitcoin/' + idG, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
