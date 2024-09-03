@@ -43,7 +43,7 @@
 /tmp/web/bitcoin_distribution_addr_g_fish.html,web-generation-end.html,Address Fish 10 to 100 BTC,reports/bitcoin_distribution_addr_g_fish.html,Address Fish 10 to 100 BTC,,address-nav
 /tmp/web/bitcoin_distribution_addr_g_crab.html,web-generation-end.html,Address Crab 1 to 10 BTC,reports/bitcoin_distribution_addr_g_crab.html,Address Crab 1 to 10 BTC,,address-nav
 /tmp/web/bitcoin_distribution_addr_g_shimp.html,web-generation-end.html,Address Shimp < 1 BTC,reports/bitcoin_distribution_addr_g_shimp.html,Address Shimp < 1 BTC,,address-nav
-/tmp/web/stablecoin_supply.html,web-generation-end.html,Stablecoin supply,graphics/stablecoin_supply.html,Stablecoin supply,,charts-nav
+/tmp/web/stablecoin_supply.html,web-generation-end-supply.html,Stablecoin supply,graphics/stablecoin_supply.html,Stablecoin supply,,charts-nav
 /tmp/web/fear_greed.html,web-generation-end.html,Fear and Greed index,graphics/fear_greed.html,Fear and Greed index,,charts-nav
 /tmp/web/bitcoin_fear_greed_img.html,web-generation-end.html,Fear and Greed index color,reports/bitcoin_fear_greed_img.html,Fear and Greed index color,,charts-nav
 /tmp/web/sp500_gold.html,web-generation-end-btc-sp500.html,BTC S&P 500 Gold Tesla MicroStrategy,graphics/sp500_gold.html,BTC S&P 500 Gold Tesla MicroStrategy,,macro-nav
