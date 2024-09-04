@@ -30,15 +30,6 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/sth_realized_price_btc_price.json'
             ).then(response => response.json());
-            const data_sth_dma = await fetch(
-                'https://charts.bgeometrics.com/files/sth_dma.json'
-            ).then(response => response.json());
-            const data_sth_dma_std = await fetch(
-                'https://charts.bgeometrics.com/files/sth_dma_-std.json'
-            ).then(response => response.json());
-            const data_sth_dma__std = await fetch(
-                'https://charts.bgeometrics.com/files/sth_dma_+std.json'
-            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -71,8 +62,10 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -90,12 +83,14 @@
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/alfabitcoin/alfabitcoin_logo.png";
                         image.src = adresse_image;
+
                         var height_image = 250;
                         var width_image = 320;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
                         var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
@@ -121,50 +116,16 @@
             series: [{
                 id:'sth_realized_price',
                 name: 'STH Realized Price',
-                //color: 'red',
+                color: 'red',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'STH 20 SMA',
-                name: 'STH 20 SMA',
-                color: 'orange',
-                lineWidth: 1,
-                visible: false, 
-                data: data_sth_dma,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'STH -2sd',
-                name: 'STH -2sd',
-                color: '#2ECC71',
-                lineWidth: 1,
-                data: data_sth_dma_std,
-                dashStyle: 'Dash',
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'STH +2sd',
-                name: 'STH +2sd',
-                color: '#CB4335',
-                lineWidth: 1,
-                data: data_sth_dma__std,
-                dashStyle: 'Dash',
                 tooltip: {
                     valueDecimals: 2
                 },
