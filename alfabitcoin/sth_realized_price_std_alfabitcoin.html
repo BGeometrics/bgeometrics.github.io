@@ -121,7 +121,7 @@
             series: [{
                 id:'sth_realized_price',
                 name: 'STH Realized Price',
-                //color: 'red',
+                color: 'red',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
@@ -140,6 +140,7 @@
                 id:'STH 20 SMA',
                 name: 'STH 20 SMA',
                 color: 'orange',
+                lineWidth: 1,
                 visible: false, 
                 data: data_sth_dma,
                 tooltip: {
@@ -150,6 +151,7 @@
                 id:'STH -2sd',
                 name: 'STH -2sd',
                 color: '#2ECC71',
+                lineWidth: 1,
                 data: data_sth_dma_std,
                 dashStyle: 'Dash',
                 tooltip: {
@@ -160,6 +162,7 @@
                 id:'STH +2sd',
                 name: 'STH +2sd',
                 color: '#CB4335',
+                lineWidth: 1,
                 data: data_sth_dma__std,
                 dashStyle: 'Dash',
                 tooltip: {
