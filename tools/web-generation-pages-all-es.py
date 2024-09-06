@@ -275,6 +275,30 @@ output_file_path = '/tmp/web/' + lang + '/bitcoin_api.html'
 
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page ohlc_dashboard.html with menu
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-ohlc-dashboards-end.html'
+output_file_path = '/tmp/web/' + lang + 'ohlc_dashboard.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page miner_dsahboard.html with menu
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-miner-end.html'
+output_file_path = '/tmp/web/' + lang + 'miner_dashboard.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_trend.html with menu
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-dashboard-trend-end.html'
+output_file_path = '/tmp/web/' + lang + 'dashboard_trend.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_market_peaks.html with menu
+file1_path = lang + '/web-generation-model.html'
+file2_path = lang + '/web-generation-model-dashboard-market-peaks-end.html'
+output_file_path = '/tmp/web/' + lang + 'dashboard_market_peaks.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 ### Mode dark 
 
 _file_out = lang + '/web-generation-model-dark.html' 
@@ -378,7 +402,31 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/' + lang + '/donation_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page ohlc_dashboard.html with menu
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-ohlc-dashboards-end.html'
+output_file_path = '/tmp/web/' + lang + 'ohlc_dashboard_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page miner_dsahboard.html with menu
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-miner-end.html'
+output_file_path = '/tmp/web/' + lang + 'miner_dashboard_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_trend.html with menu
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-dashboard-trend-end.html'
+output_file_path = '/tmp/web/' + lang + 'dashboard_trend_dark.html'
+
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_market_peaks.html with menu
+file1_path = lang + '/web-generation-model-dark.html'
+file2_path = lang + '/web-generation-model-dashboard-market-peaks-end.html'
+output_file_path = '/tmp/web/' + lang + 'dashboard_market_peaks_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
