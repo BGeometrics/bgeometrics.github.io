@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BGeometrics Bitcoin OHLC dashboard</title>
+  <title>Espacio de trabajo de Gráficos de BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin OHLC dashboard" name="keywords">
+  <meta content="__keywords__" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -20,16 +20,33 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  
+  
+  
+  
+  
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/bgeometrics.css" rel="stylesheet">
-
   <!-- Google tag (gtag.js) --> 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script>   
   <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
 
 </head>
 
-<body>
+<body onload="init()">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -136,14 +153,14 @@
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Precio</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="bitcoin_price_usd_g.html">
               <i class="bi bi-circle"></i><span>Precio Bitcoin</span>
             </a>
           </li>
           <li>
-            <a href="ohlc.html" class="active">
+            <a href="ohlc.html">
               <i class="bi bi-circle"></i><span>OHLC</span>
             </a>
           </li>
@@ -485,6 +502,11 @@
             </a>
           </li>
           <li>
+            <a href="funding_rate.html">
+              <i class="bi bi-circle"></i><span>Tasa de financiación</span>
+            </a>
+          </li>
+          <li>
             <a href="power_law.html">
               <i class="bi bi-circle"></i><span>Ley de potencia</span>
             </a>
@@ -552,7 +574,7 @@
           </li>
           <li>
             <a href="m2_global.html">
-              <i class="bi bi-circle"></i><span>Crecimiento M2 interanual</span>
+              <i class="bi bi-circle"></i><span>Variación M2 interanual</span>
             </a>
           </li>
           <li>
@@ -566,6 +588,40 @@
             </a>
           </li>
 	</ul>  
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#dashboard-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Cuadro de mando</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="ohlc_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC OHLC</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="miner_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC Mineros</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_trend.html">
+              <i class="bi bi-circle"></i><span>BTC Tendencias</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_market_peaks.html">
+              <i class="bi bi-circle"></i><span>Techos de mercado</span>
+	    </a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-heading">Páginas</li>
@@ -664,44 +720,33 @@
     <section>
       <div class="container">
         <a href="graphics/ohlc_1m.html">
-          <h5>Bitcoin OHLC (Open High Low Close) cuadros de mando</h5>
+          <h5>Bitcoin OHLC (Open High Low Close)</h5>
         </a>
         <p> 
           <br>
-          <strong>Cuadro de mandos OHLC de BTC con los diferentes gráficos de velas</strong>
-          <br><br>
-          El gráfico con el precio de Bitcoin en tiempo real, actualizado cada minuto y las velas tienen una duración de 10 minutos.
-          <br><br>
-          El gráfico con los OHLC diarios, de 4 horas y semanales.
-          <br><br>
-          El gráfico con el precio histórico de BTC.
-          <br><br>
-        </p>
-        <p>  
-          Los gráficos OHLC son una herramienta esencial para analizar las tendencias del mercado y el comportamiento del precio de Bitcoin. Estos gráficos muestran información detallada sobre los movimientos de precios durante un período de tiempo específico, lo que permite a los inversores y analistas tomar decisiones informadas.
-          <br><br>
-          <strong>Un gráfico OHLC muestra cuatro puntos de datos para cada período de tiempo</strong>
-          <br><br>
-          Apertura: el precio al que Bitcoin comenzó a cotizar al principio del período.
-          <br><br>
-          Máximo: el precio más alto alcanzado por Bitcoin durante el período.
-          <br><br>
-          Mínimo: el precio más bajo alcanzado por Bitcoin durante el período.
-          <br><br>
-          Cierre: el precio al que Bitcoin cotizaba al final del período.
-        </p>
-        <p>  
-          Estos cuatro datos están representados por una barra vertical para cada período, donde la línea vertical indica el rango de precios (de menor a mayor) y las líneas horizontales en cada extremo de la barra muestran los precios de apertura y cierre.
-          <br><br>
-          <strong>Cómo leer los gráficos OHLC</strong>
-          <br><br>
-          Para interpretar los gráficos OHLC de Bitcoin se tienen en cuenta los siguientes puntos:
-          <br><br>
-          Tendencias de precios: observe si la barra tiene una pendiente ascendente (lo que indica un cierre por encima de la apertura) o descendente (lo que indica un cierre por debajo de la apertura). Esto puede sugerir tendencias alcistas o bajistas.
-          <br><br>
-          Volatilidad: la longitud de la barra vertical refleja la volatilidad de los precios durante el período. Las barras más largas indican una mayor volatilidad.
-          <br><br>
-          Comparación de períodos: al comparar varias barras de diferentes períodos, se pueden identificar patrones y tendencias en la evolución del precio de Bitcoin.
+          <strong>Panel de control OHLC de BTC con los diferentes gráficos de velas</strong>
+	  <br><br> El gráfico con el precio de Bitcoin en tiempo real, actualizado cada minuto y las velas tienen una duración de 10 minutos. 
+	  <br><br> El gráfico con los OHLC diarios, de 4 horas y semanales. 
+	  <br><br> El gráfico con el precio histórico de BTC 
+	  <br><br>
+	</p> 
+	<p> Los gráficos OHLC son una herramienta esencial para analizar las tendencias del mercado y el comportamiento del precio de Bitcoin. Estos gráficos muestran información detallada sobre los movimientos de precios durante un período de tiempo específico, lo que permite a los inversores y analistas tomar decisiones informadas. 
+	<br><br> 
+	<strong>Un gráfico OHLC muestra cuatro puntos de datos para cada período de tiempo</strong> 
+	<br><br> 
+	Apertura: El precio al que Bitcoin comenzó a cotizar al comienzo del período. 
+	<br><br> 
+	Máximo: El precio más alto alcanzado por Bitcoin durante el período. 
+	<br><br> Mínimo: El precio más bajo alcanzado por Bitcoin durante el período. 
+	<br><br> Cierre: El precio al que Bitcoin cotizaba al final del período. 
+	</p> 
+	<p>Estos cuatro datos están representados por una barra vertical para cada período, donde la línea vertical indica el rango de precios (de menor a mayor) y las líneas horizontales en cada extremo de la barra muestran los precios de apertura y cierre.
+        <br><br>
+        <strong>Cómo leer gráficos OHLC</strong>
+        <br><br>
+        Para interpretar los gráficos OHLC de Bitcoin, tenga en cuenta los siguientes puntos:
+        <br><br>
+        Tendencias de precios: observe si la barra tiene una pendiente ascendente (lo que indica un cierre por encima de la apertura) o descendente (lo que indica un cierre por debajo de la apertura). Esto puede sugerir tendencias alcistas o bajistas. <br><br>
         </p>
       </div>
 
@@ -724,6 +769,7 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

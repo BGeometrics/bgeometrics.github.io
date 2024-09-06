@@ -668,7 +668,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/ohlc_1m.html" allow="fullscreen" title="Bitcoin OHLC candle 10 minutes Binance" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/vdd.html" allow="fullscreen" title="Bitcoin VDD Multiple" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -678,7 +678,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/ohlc.html" allow="fullscreen" title="Bitcoin OHLC Daily" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/nupl.html" allow="fullscreen" title="Bitcoin NUPL (Net Unrealized Profit Loss)" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -688,7 +688,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/ohlc_4h.html" allow="fullscreen" title="Bitcoin OHLC 4 hours" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/nrpl.html" allow="fullscreen" title="Bitcoin NRPL (Net Realised Profit Loss)" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -698,7 +698,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/ohlc_7d.html" allow="fullscreen" title="Bitcoin OHLC Weekly" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/mvrv.html" allow="fullscreen" title="Bitcoin MVRV Z-Score" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -708,7 +708,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="reports/bitcoin_price_usd_g.html" allow="fullscreen" title="Bitcoin Price" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/pi_cycle.html" allow="fullscreen" title="Bitcoin Pi Cycle" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -719,34 +719,32 @@
     <br>
     <section>
       <div class="container">
-        <a href="graphics/ohlc_1m.html">
-          <h5>Bitcoin OHLC (Open High Low Close)</h5>
-        </a>
+        <a href="dashboard_market_peaks.html">
+          <h5>Bitcoin Gráficas para identificar techos de mercado</h5>
+	</a>
         <p> 
-          <br>
-          <strong>Panel de control OHLC de BTC con los diferentes gráficos de velas</strong>
-	  <br><br> El gráfico con el precio de Bitcoin en tiempo real, actualizado cada minuto y las velas tienen una duración de 10 minutos. 
-	  <br><br> El gráfico con los OHLC diarios, de 4 horas y semanales. 
-	  <br><br> El gráfico con el precio histórico de BTC 
-	  <br><br>
-	</p> 
-	<p> Los gráficos OHLC son una herramienta esencial para analizar las tendencias del mercado y el comportamiento del precio de Bitcoin. Estos gráficos muestran información detallada sobre los movimientos de precios durante un período de tiempo específico, lo que permite a los inversores y analistas tomar decisiones informadas. 
-	<br><br> 
-	<strong>Un gráfico OHLC muestra cuatro puntos de datos para cada período de tiempo</strong> 
-	<br><br> 
-	Apertura: El precio al que Bitcoin comenzó a cotizar al comienzo del período. 
-	<br><br> 
-	Máximo: El precio más alto alcanzado por Bitcoin durante el período. 
-	<br><br> Mínimo: El precio más bajo alcanzado por Bitcoin durante el período. 
-	<br><br> Cierre: El precio al que Bitcoin cotizaba al final del período. 
-	</p> 
-	<p>Estos cuatro datos están representados por una barra vertical para cada período, donde la línea vertical indica el rango de precios (de menor a mayor) y las líneas horizontales en cada extremo de la barra muestran los precios de apertura y cierre.
-        <br><br>
-        <strong>Cómo leer gráficos OHLC</strong>
-        <br><br>
-        Para interpretar los gráficos OHLC de Bitcoin, tenga en cuenta los siguientes puntos:
-        <br><br>
-        Tendencias de precios: observe si la barra tiene una pendiente ascendente (lo que indica un cierre por encima de la apertura) o descendente (lo que indica un cierre por debajo de la apertura). Esto puede sugerir tendencias alcistas o bajistas. <br><br>
+	Métricas en cadena para identificar posibles picos de mercado y el final del ciclo alcista en BTC.
+	<br><br>
+	El valor múltiple de los días de valor destruido (VDD) se calcula multiplicando los días de moneda destruida por el precio de BTC.
+	<br>
+	Los valores altos se producen cuando se venden monedas más antiguas, lo que indica que los tenedores a largo plazo quieren obtener ganancias y esto generalmente indica que la tendencia alcista está llegando a su fin.
+	<br><br>
+	NUPL (pérdida de ganancias netas no realizadas) es un indicador utilizado para evaluar la rentabilidad agregada de todos los tenedores de Bitcoin en el mercado.
+	<br>
+	Mide la diferencia entre la ganancia o pérdida neta no realizada de las monedas en circulación y ayuda a identificar el sentimiento predominante del mercado (como optimismo, euforia, ansiedad o capitulación).
+	<br><br>
+	NRPL (pérdida/ganancia neta realizada) mide la ganancia o pérdida neta realizada de todas las transacciones de Bitcoin que ocurren en la red. <br>
+	- Cuando el NRPL es positivo, los inversores obtienen ganancias con las transacciones que realizan. Esto puede indicar que el mercado se encuentra en una fase optimista.
+	<br>
+	- Cuando el NRPL es negativo, indica que los inversores están vendiendo con pérdidas. Esto podría suceder en períodos de corrección de precios o mercados bajistas, donde los inversores venden sus activos en pánico o para minimizar sus pérdidas.
+	<br><br>
+	El puntaje Z de MVRV mide la desviación entre la capitalización de mercado de Bitcoin (valor de mercado) y la capitalización realizada (valor realizado).
+	<br>
+	Se utiliza para identificar cuándo el precio de Bitcoin está significativamente por encima o por debajo de su valor justo, según lo define su capitalización realizada.
+	<br><br>
+	El indicador de ciclo Pi es un indicador técnico diseñado para identificar picos de mercado en el ciclo de precios de Bitcoin.
+	<br>
+	Fue creado por Philip Swift y utiliza dos promedios móviles de períodos específicos que históricamente han señalado con precisión los picos de los ciclos de mercado de Bitcoin.
         </p>
       </div>
 
@@ -770,7 +768,6 @@
     </div>
   </footer><!-- End Footer -->
 
-
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader">
@@ -778,6 +775,7 @@
   </div>
 
   <!-- Vendor JS Files -->
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
