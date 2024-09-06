@@ -590,6 +590,40 @@
 	</ul>  
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#dashboard-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Cuadro de mando</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="ohlc_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC OHLC</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="miner_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC Mineros</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_trend.html">
+              <i class="bi bi-circle"></i><span>BTC Tendencias</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_market_peaks.html">
+              <i class="bi bi-circle"></i><span>Techos de mercado</span>
+	    </a>
+          </li>
+        </ul>
+      </li>
+
       <li class="nav-heading">Páginas</li>
 
       <li class="nav-item">
@@ -644,3 +678,69 @@
 
       </div>
     </section>
+  <br>
+  
+    <section>
+      <div class="container">
+        <a href="graphics/supply_in_profit.html">
+          <h5>Bitcoin Supply in Profit and Loss</h5>
+        </a>
+        <p> 
+          It is a bitcoin metric that helps measure market sentiment and investor behavior.
+	  <br><br>
+          This metric measures the amount of BTC that is currently in profit or loss based on the price at which each bitcoin last moved.
+	  <br><br>
+          Bid in Profit represents the amount of bitcoin whose last moved price (also known as the "realized price") is lower than the current market price. If the current market price is higher than the price at which the bitcoin was last transacted, it is considered to be in profit.
+	  <br><br>
+          Bid in Loss is the amount of bitcoin whose last moved price is higher than the current market price. If the current market price is lower than the price at which the bitcoin was last transacted, it is considered to be in loss.
+	  <br><br>
+          The metric is an indicator of market sentiment. A high bid in profit can indicate that many holders are in profit, which could lead to selling pressure as investors look to take their profits. Conversely, a high supply at a loss could suggest a capitulation phase where many holders are underwater and might sell to cut losses.
+	  <br><br>
+          Investors and traders use this metric to assess potential market moves:
+	  <br>
+          - High supply at a profit: This could mean that there is potential selling pressure in the future, as investors may decide to take profits.
+	  <br>
+          - High supply at a loss: This could suggest a potential bottom or consolidation phase, where selling pressure has run dry.
+        </p>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Power by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>

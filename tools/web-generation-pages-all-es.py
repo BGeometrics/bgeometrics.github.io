@@ -244,35 +244,30 @@ with open(lang + '/web-generation-model-workspace.html', 'w') as file:
 file1_path = lang + '/web-generation-model-workspace.html'
 file2_path = lang + '/web-generation-workspace-2.html'
 output_file_path = '/tmp/web/' + lang + '/workspace.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page services.html with menu
 file1_path = lang + '/web-generation-model.html'
 file2_path = lang + '/web-generation-model-services-end.html'
 output_file_path = '/tmp/web/' + lang + '/services.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu
 file1_path = lang + '/web-generation-model.html'
 file2_path = lang + '/web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/' + lang + '/pages-contact.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu
 file1_path = lang + '/web-generation-model.html'
 file2_path = lang + '/web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/' + lang + '/donation.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page api.html with menu
 file1_path = lang + '/web-generation-model.html'
 file2_path = lang + '/web-generation-model-bitcoin-api-end.html'
 output_file_path = '/tmp/web/' + lang + '/bitcoin_api.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page ohlc_dashboard.html with menu
@@ -316,21 +311,18 @@ generate_pages('dark')
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-index-end-dark.html'
 output_file_path = '/tmp/web/' + lang + '/index_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_6m.html with menu dark
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-end-index-6m-dark.html'
 output_file_path = '/tmp/web/' + lang + '/index_6m_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate index_3m.html with menu dark
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-end-index-3m-dark.html'
 output_file_path = '/tmp/web/' + lang + '/index_3m_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page workspace.html with menu dark
@@ -380,7 +372,6 @@ with open(lang + '/web-generation-model-workspace-dark.html', 'w') as file:
 file1_path = lang + '/web-generation-model-workspace-dark.html'
 file2_path = lang + '/web-generation-workspace-2-dark.html'
 output_file_path = '/tmp/web/' + lang + '/workspace_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 
@@ -388,14 +379,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-services-end.html'
 output_file_path = '/tmp/web/' + lang + '/services_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu dark
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/' + lang + '/pages-contact_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu dark
@@ -420,7 +409,6 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-dashboard-trend-end.html'
 output_file_path = '/tmp/web/' + lang + 'dashboard_trend_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_market_peaks.html with menu
