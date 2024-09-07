@@ -70,7 +70,7 @@ var names = [
 { name: "DCA Calculator", link: "dca.html" },
 { name: "Dynamic Range NVT NVTS", link: "nvts_bg.html" },
 { name: "Net Realized Profit Loss", link: "nrpl.html" },
-{ name: "Value Days Destroyed Multiple", link: "vdd.html" },
+{ name: "Value Days Destroyed Multiple VDD", link: "vdd.html" },
 { name: "Miner Puell Multiple", link: "puell_multiple.html" },
 { name: "Miner Reserves", link: "miner_reserves.html" },
 { name: "Miner Sell Pressure", link: "miner_sell_pressure.html" },
