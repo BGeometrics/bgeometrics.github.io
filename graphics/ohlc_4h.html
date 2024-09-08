@@ -27,6 +27,12 @@
             const data = await fetch(
                 'https://charts.bgeometrics.com/files/btc_ohlc_4h.json'
             ).then(response => response.json());    
+            const data_10sma = await fetch(
+                'https://charts.bgeometrics.com/files/btc_ohlc_4h_10dma.json'
+            ).then(response => response.json());    
+            const data_20sma = await fetch(
+                'https://charts.bgeometrics.com/files/btc_ohlc_4h_20dma.json'
+            ).then(response => response.json());    
 
         const ohlc = [],
         volume = [],
@@ -146,6 +152,24 @@
                 name: 'Volume BTC',
                 data: volume,
                 yAxis: 1
+            }, {
+                id:'OHLC 4 hours 10 sma',
+                name: '10 SMA',
+                data: data_10sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'OHLC 4 hours 20 sma',
+                name: '20 SMA',
+                data: data_20sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
             }],
 
             legend:{
