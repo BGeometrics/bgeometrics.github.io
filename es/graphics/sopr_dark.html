@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>SOPR (Spent Output Profit Ratio)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -116,8 +113,11 @@
             },
 
             yAxis: [{
+                labels: {
+                    align: 'left',
+                },
                 title: {
-                    text: 'SOPR'
+                    text: 'SOPR',
                 },
                 plotBands: [{ 
                     from: 1,
@@ -128,6 +128,7 @@
                 title: {
                     text: 'Precio BTC'
                 },
+                type: 'logarithmic',
                 opposite: false
             }],
 
@@ -140,7 +141,7 @@
                 },
                 yAxis: 1
             }, {
-                id:'sopr',
+                id:'SOPR',
                 name: 'SOPR',
                 data: data_sopr,
                 tooltip: {

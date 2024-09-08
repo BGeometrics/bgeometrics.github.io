@@ -104,18 +104,24 @@
             },
 
             yAxis: [{
+                labels: {
+                    align: 'left',
+                },
                 title: {
                     text: 'LTH SOPR'
                 },
+                /*
                 plotBands: [{ 
                     from: 1,
                     to: 0.8,
                     color: 'rgba(0, 255, 0, 0.1)'
                 }]
+                */
             }, {
                 title: {
                     text: 'BTC price'
                 },
+                type: 'logarithmic',
                 opposite: false
             }],
 
@@ -128,13 +134,20 @@
                 },
                 yAxis: 1
             }, {
-                id:'lth_sopr',
+                id:'LTH SOPR',
                 name: 'LTH SOPR',
+                color: '#90ed7d',
                 data: data_lth_sopr,
                 tooltip: {
                     valueDecimals: 4
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{

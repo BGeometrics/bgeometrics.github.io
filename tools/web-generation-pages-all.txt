@@ -77,4 +77,4 @@
 /tmp/web/miner_reserves.html,web-generation-end-minerreserves.html,Bitcoin Miner Reserves,graphics/miner_reserves.html,Bitcoin Miner Reserves,,miners-nav
 /tmp/web/miner_sell_pressure.html,web-generation-end-minersellpressure.html,Bitcoin Miner Sell Pressure,graphics/miner_sell_pressure.html,Bitcoin Miner Sell Pressure,,miners-nav
 /tmp/web/miner_outflow.html,web-generation-end-mineroutflow.html,Bitcoin Miner Outflow,graphics/miner_outflow.html,Bitcoin Miner Outflow,,miners-nav
-/tmp/web/nrpl.html,web-generation-end-nrpl.html,NRPL (Net Realised Profit Loss),graphics/nrpl.html,NRPL(Net Realised Profit Loss),,market-nav
+/tmp/web/nrpl.html,web-generation-end-nrpl.html,NRPL (Net Realized Profit Loss),graphics/nrpl.html,NRPL(Net Realized Profit Loss),,market-nav

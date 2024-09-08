@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>STH SOPR (Short Term Hodler Spent Output Profit Ratio)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -110,18 +107,24 @@
             },
 
             yAxis: [{
+                labels: {
+                    align: 'left',
+                },
                 title: {
                     text: 'STH SOPR'
                 },
+                /*
                 plotBands: [{ 
                     from: 1,
                     to: 0.8,
                     color: 'rgba(0, 255, 0, 0.1)'
                 }]
+                */
             }, {
                 title: {
                     text: 'Precio BTC'
                 },
+                type: 'logarithmic',
                 opposite: false
             }],
 
@@ -134,13 +137,20 @@
                 },
                 yAxis: 1
             }, {
-                id:'sth_sopr',
+                id:'STH SOPR',
                 name: 'STH SOPR',
+                color: '#90ed7d',
                 data: data_sth_sopr,
                 tooltip: {
                     valueDecimals: 4
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{

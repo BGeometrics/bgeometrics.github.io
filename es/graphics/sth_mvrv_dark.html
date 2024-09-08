@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>STH (Short Term Hodler) MVRV (Market Value Realized Value)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -106,8 +103,8 @@
             },
 
             yAxis: [{
-                title: {
-                    text: 'STH MVRV'
+                labels: {
+                    align: 'left',
                 },
             }, {
                 title: {
@@ -127,11 +124,19 @@
                 yAxis: 1
             }, {
                 name: 'STH-MVRV',
+                id: 'STH-MVRV',
+                color: '#90ed7d',
                 data: data_sth_mvrv,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
