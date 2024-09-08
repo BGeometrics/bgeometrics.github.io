@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>LTH (Long Term Hodler) MVRV (Market Value Realized Value)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -105,6 +102,9 @@
             },
 
             yAxis: [{
+                labels: {
+                    align: 'left',
+                },
                 title: {
                     text: 'LTH MVRV'
                 },
@@ -125,12 +125,20 @@
                 },
                 yAxis: 1
             }, {
+                id: 'LTH-MVRV',
                 name: 'LTH-MVRV',
+                color: '#90ed7d',
                 data: data_lth_mvrv,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
