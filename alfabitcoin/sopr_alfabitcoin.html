@@ -36,6 +36,9 @@
             const data_sth_sopr = await fetch(
                 'https://charts.bgeometrics.com/files/sth_sopr.json'
             ).then(response => response.json());
+            const data_sopr_7sma = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_7sma.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -143,6 +146,7 @@
                 id:'sopr',
                 name: 'SOPR',
                 data: data_sopr,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -161,6 +165,14 @@
                 name: 'STH SOPR',
                 data: data_sth_sopr,
                 visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'SOPR 7 SMA',
+                name: 'SOPR 7 SMA',
+                data: data_sopr_7sma,
                 tooltip: {
                     valueDecimals: 2
                 },
