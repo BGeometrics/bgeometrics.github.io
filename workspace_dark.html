@@ -694,7 +694,6 @@
   </aside><!-- End Sidebar-->
 
 
-  <!-- No edit file workstation.html. It's generate -->
   <main id="main" class="main">
 
     <section class="section dashboard">
@@ -1152,10 +1151,15 @@
 
         function draw() {
           var numberValue = document.getElementById("number").value;
-          var metric1Value = document.getElementById("metric1").value;
-          var metric2Value = document.getElementById("metric2").value;
+          //var metric1Value = document.getElementById("metric1").value;
+          //var metric2Value = document.getElementById("metric2").value;
           var operator1Value = document.getElementById("operator1").value;
           var operator2Value = document.getElementById("operator2").value;
+
+          var e = document.getElementById("metric1");
+          var metric1Value = e.options[e.selectedIndex].text;
+          e = document.getElementById("metric2");
+          var metric2Value = e.options[e.selectedIndex].text;
 
           metric1Serie = chart.series[0];
           metric2Serie = chart.series[0];
@@ -1200,7 +1204,8 @@
             }
 
             chart.addSeries({
-              data: data
+              data: data,
+              yAxis: 1
             });
           }
         }
