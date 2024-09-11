@@ -28,6 +28,12 @@
             const data_sth_sopr = await fetch(
                 'https://charts.bgeometrics.com/files/sth_sopr.json'
             ).then(response => response.json());
+            const data_sth_sopr_30sma = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_sth_30sma.json'
+            ).then(response => response.json());
+            const data_sth_sopr_365sma = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_sth_365sma.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -150,6 +156,24 @@
                 }, {
                     color: '#90ed7d'
                 }]
+            }, {
+                id:'STH SOPR 30D MA',
+                name: 'STH SOPR 30D MA',
+                data: data_sth_sopr_30sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0,
+            }, {
+                id:'STH SOPR 365D MA',
+                name: 'STH SOPR 365D MA',
+                data: data_sth_sopr_365sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0,
             }],
 
             legend:{

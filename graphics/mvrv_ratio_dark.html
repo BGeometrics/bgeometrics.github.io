@@ -104,7 +104,7 @@
             
             plotOptions:{
                 series:{
-                    showInLegend:true
+                    showInLegend:true,
                 }
             },
 
@@ -149,7 +149,8 @@
                 },
                 yAxis: 0
             }, {
-                name: 'MVRV 365 SMA',
+                id: 'MVRV 365D MA',
+                name: 'MVRV 365D MA',
                 data: data_mvrv_365sma,
                 visible: false,
                 tooltip: {
@@ -162,7 +163,8 @@
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
-                align:'center'
+                align:'center',
+                y: 25,
             },
 
             rangeSelector: {
