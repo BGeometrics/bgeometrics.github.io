@@ -34,6 +34,9 @@
             const data_mvrv_365sma = await fetch(
                 'https://charts.bgeometrics.com/files/mvrv_365dma.json'
             ).then(response => response.json());
+            const data_mvrv_diff = await fetch(
+                'https://charts.bgeometrics.com/files/mvrv_diff.json'
+            ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -108,6 +111,11 @@
             },
 
             yAxis: [{
+                type: 'logarithmic',
+                height: '80%',
+                resize: {
+                    enabled: true
+                },
                 title: {
                     text: 'MVRV Ratio',
                     labels: {
@@ -119,7 +127,14 @@
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-                opposite: false
+                opposite: false, 
+            }, {
+                title: {
+                    text: 'BTC price'
+                },
+                top: '65%',
+                height: '35%',
+                offset: 0,
             }],
 
             series: [{
@@ -155,6 +170,21 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id: 'MVRV Momentum',
+                name: 'MVRV Momentum',
+                type: 'area',
+                data: data_mvrv_diff,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
