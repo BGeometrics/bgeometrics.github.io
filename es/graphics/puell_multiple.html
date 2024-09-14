@@ -90,7 +90,6 @@
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
                         var position_y = textY - height_image / 2;
-                        //console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
@@ -117,7 +116,7 @@
                     to: 15,
                     color: 'rgba(255, 0, 0, 0.1)'
                 }, {
-                    from: 0.3,
+                    from: 0.6,
                     to: 0,
                     color: 'rgba(0, 255, 0, 0.1)'
                 }]

@@ -285,6 +285,12 @@ file2_path = 'web-generation-model-dashboard-market-peaks-end.html'
 output_file_path = '/tmp/web/dashboard_market_peaks.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page dashboard_market_floors.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-dashboard-market-floors-end.html'
+output_file_path = '/tmp/web/dashboard_market_floors.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 ### Mode dark 
 
 _file_out = 'web-generation-model-dark.html' 
@@ -347,7 +353,6 @@ with open('web-generation-model-workspace-dark.html', 'w') as file:
 file1_path = 'web-generation-model-workspace-dark.html'
 file2_path = 'web-generation-workspace-2-dark.html'
 output_file_path = '/tmp/web/workspace_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 
@@ -355,48 +360,48 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-services-end.html'
 output_file_path = '/tmp/web/services_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page contact.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-contact-end.html'
 output_file_path = '/tmp/web/pages-contact_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page donation.html with menu dark
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/donation_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page ohlc_dashboard.html with menu
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-ohlc-dashboards-end.html'
 output_file_path = '/tmp/web/ohlc_dashboard_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page miner_dsahboard.html with menu
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-miner-end.html'
 output_file_path = '/tmp/web/miner_dashboard_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_trend.html with menu
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-dashboard-trend-end.html'
 output_file_path = '/tmp/web/dashboard_trend_dark.html'
-
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_market_peaks.html with menu
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-dashboard-market-peaks-end.html'
 output_file_path = '/tmp/web/dashboard_market_peaks_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_market_floors.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-dashboard-market-floors-end.html'
+output_file_path = '/tmp/web/dashboard_market_floors_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")

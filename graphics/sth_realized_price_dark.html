@@ -35,6 +35,9 @@
             const data_sth_3m = await fetch(
                 'https://charts.bgeometrics.com/files/sth_realized_price_3m.json'
             ).then(response => response.json());
+            const data_sth_diff = await fetch(
+                'https://charts.bgeometrics.com/files/sth_realized_price_diff.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -67,10 +70,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -115,20 +116,34 @@
             },
 
             yAxis: [{
+                height: '80%',
+                type: 'logarithmic',
+                resize: {
+                    enabled: true
+                },
                 labels: {
                     align: 'left',
                 },
-                type: 'logarithmic',
             }, {
+                height: '80%',
+                type: 'logarithmic',
+                resize: {
+                    enabled: true
+                },
                 title: {
                     text: 'BTC price'
                 },
-                type: 'logarithmic',
+            }, {
+                top: '65%',
+                height: '35%',
+                offset: 0,
+
             }],
 
             series: [{
                 id:'sth_realized_price',
                 name: 'STH Realized Price',
+                color: 'red', 
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
@@ -161,6 +176,21 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id: 'STH Momentum',
+                name: 'STH Momentum',
+                type: 'area',
+                data: data_sth_diff,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
