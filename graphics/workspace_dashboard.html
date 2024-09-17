@@ -1,7 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
 
-  <main id="main" class="main">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <section class="section dashboard">
+  <title>BGeometrics Workspace Charts</title>
+  <meta content="Bitcoin Price" name="description">
+  <meta content="__keywords__" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/bgeometrics.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+
+<body>
+
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
       <div id="searchResults"></div>
 
       <!-- No axis -> price BTC
@@ -357,24 +399,6 @@
         })();
 
         function init(){
-            cook = getCookieValue(COOKIE_NAME);
-
-            if(!(cook === undefined || cook == null || (typeof value === "string" && value.trim().length === 0))) {
-                var metric = cook.split('!$');
-                
-                for (i = 0; i < metric.length; i++) {
-                    // Get text drop-down
-                    Object.values(document.getElementById('metrics').options).
-                        forEach(function (option) {
-                            if(option.value == metric[i]){
-                                text = option.text;
-                                //console.log(option.text);
-                            }
-                        });
-
-                    addCharts(metric[i], text);
-                }
-            }
         }
 
         document.getElementById('metrics').addEventListener("change", function () {
@@ -457,8 +481,6 @@
 
         function draw() {
           var numberValue = document.getElementById("number").value;
-          //var metric1Value = document.getElementById("metric1").value;
-          //var metric2Value = document.getElementById("metric2").value;
           var operator1Value = document.getElementById("operator1").value;
           var operator2Value = document.getElementById("operator2").value;
 
@@ -518,104 +540,8 @@
 
       </script>
 
-    </section>
 
-    <br>
-    <section>
-      <div class="container">
-        <a href="graphics/workspace.html">
-          <h5>BGeometrics Workspace Bitcoin Charts</h5>
-        </a>
-        <p> 
-	        In this workbench screen we increase the operation of the BGeometrics graphs by allowing the inclusion of on-chain bitcoin metrics on demand.
-          <br><br>
-          Only the price of BTC appears on the graph initially, but different metrics can be selected and incorporated.
-          <br><br>
-          In the dropdown menu at the top left you will find the available metrics and once selected they will be added to the chart.
-          <br><br>
-          All the graphs you add will be saved so that the next time you access the workspace they will already appear loaded.
-          <br><br>
-          If you do not want to display a metric, you can press the remove button or click the legend to prevent it from being displayed on the chart.
-	        <br><br><br>
-	        <b>Price Indicators</b>
-          <br><br>
-          Bollinger Bands: Use these bands to identify overbought and oversold levels, as well as to anticipate possible trend changes.
-          <br><br>
-          DEMA (Double Exponential Moving Average): An indicator that responds faster to price changes than the EMA and SMA.
-          <br><br>
-          EMA (Exponential Moving Average): Ideal for identifying the main market trend, giving more weight to the most recent data.
-          <br><br>
-          SMA (Simple Moving Average): A classic indicator to identify long-term trends.
-          <br><br>
-          TEMA (Triple Exponential Moving Average): Combines the advantages of the DEMA and the EMA to offer an even more sensitive indicator.
-          <br><br>
-          VWAP (Volume Weighted Average Price): Measures the volume-weighted average price, providing an accurate view of the real value of BTC in a specific time period.
-	        <br><br><br>
-          <b>Price Oscillators</b>
-          <br><br>
-          Aroon: Helps identify when a market is trending and the strength of that trend.
-          <br><br>
-          Disparity Index: Measures the deviation of the current price with respect to a moving average, useful for identifying overbought or oversold.
-          <br><br>
-          CMO (Chande Momentum Oscillator): An oscillator that measures momentum and can indicate possible reversal points.
-          <br><br>
-          Detrended Price: Eliminate long-term trends to focus on shorter price cycles.
-          <br><br>
-          Linear Regression: Provides a trend line based on linear regression, useful for identifying the direction and strength of the trend.
-          <br><br>
-          MACD (Moving Average Convergence Divergence): A popular oscillator that shows the relationship between two moving averages, ideal for identifying buy and sell signals.
-          <br><br>
-          RoC (Rate of Change): Measures the speed at which the price changes, helping to identify the strength of the momentum.
-          <br><br>
-          RSI (Relative Strength Index): An oscillator that measures the speed and change of price movements, useful for identifying overbought or oversold conditions.
-          <br><br><br>
-          <b>Formula Toolbar</b>
-          Allows you to perform calculations on bitcoin metrics data.
-          <br><br>                                                                                                                                                                  First you have to select the metrics you are interested in, then in the first text box you indicate the factor, in the second the operation, in the third the metric on which to apply the formula, and if you want to perform operations on two metrics, in the next box you indicate the operation, in the last box you select the second metric and finally you click on the Draw button to display it on the graph.
-        </p>
-      </div>
-    </section>
 
-  </main>
-
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <strong>Past performance is no guarantee of future results.</strong></br>
-        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
-      </div>
-      <div class="credits">
-        Power by <a href="https://bgeometrics.com/">BGeometrics</a>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <div id="preloader">
-    <div class="line"></div>
-  </div>
-
-  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
-
-  <script src="https://code.highcharts.com/stock/highstock.js"></script>
-  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/bgeometrics.js"></script>
 
 </body>
 
