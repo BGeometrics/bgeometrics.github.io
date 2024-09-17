@@ -659,6 +659,13 @@
 	    </a>
           </li>
         </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_workspace.html">
+              <i class="bi bi-circle"></i><span>Workspaces</span>
+	    </a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-heading">Pages</li>
@@ -956,7 +963,7 @@
                     events: {
                         load: function() {
                             var image = new Image();
-			    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                             image.src = adresse_image;
 
                             var height_image = 128;
@@ -1081,7 +1088,6 @@
             }
         }
 
-        //document.getElementById('metrics').addEventListener("change", changeMetrics);
         document.getElementById('metrics').addEventListener("change", function () {
           var e = document.getElementById("metrics");
           var value = e.value;
@@ -1232,7 +1238,7 @@
           <h5>BGeometrics Workspace Bitcoin Charts</h5>
         </a>
         <p> 
-	  In this workbench screen we increase the operation of the BGeometrics graphs by allowing the inclusion of on-chain bitcoin metrics on demand.
+	        In this workbench screen we increase the operation of the BGeometrics graphs by allowing the inclusion of on-chain bitcoin metrics on demand.
           <br><br>
           Only the price of BTC appears on the graph initially, but different metrics can be selected and incorporated.
           <br><br>
@@ -1241,8 +1247,8 @@
           All the graphs you add will be saved so that the next time you access the workspace they will already appear loaded.
           <br><br>
           If you do not want to display a metric, you can press the remove button or click the legend to prevent it from being displayed on the chart.
-	  <br><br><br>
-	  <b>Price Indicators</b>
+	        <br><br><br>
+	        <b>Price Indicators</b>
           <br><br>
           Bollinger Bands: Use these bands to identify overbought and oversold levels, as well as to anticipate possible trend changes.
           <br><br>
@@ -1255,7 +1261,7 @@
           TEMA (Triple Exponential Moving Average): Combines the advantages of the DEMA and the EMA to offer an even more sensitive indicator.
           <br><br>
           VWAP (Volume Weighted Average Price): Measures the volume-weighted average price, providing an accurate view of the real value of BTC in a specific time period.
-	  <br><br><br>
+	        <br><br><br>
           <b>Price Oscillators</b>
           <br><br>
           Aroon: Helps identify when a market is trending and the strength of that trend.
@@ -1281,9 +1287,8 @@
       </div>
     </section>
 
-  </main><!-- End #main -->
+  </main>
 
-  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
@@ -1297,28 +1302,28 @@
         Power by <a href="https://bgeometrics.com/">BGeometrics</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader">
     <div class="line"></div>
   </div>
-     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
-     <script src="https://code.highcharts.com/stock/highstock.js"></script>
-     <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-     <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-     <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-     <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-     <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
-  <!-- Vendor JS Files -->
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
