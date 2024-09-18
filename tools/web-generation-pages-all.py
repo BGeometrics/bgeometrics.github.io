@@ -243,7 +243,14 @@ output_file_path = '/tmp/web/workspace.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate grafic workspace_dashboard.html with menu data json
-file1_path = 'web-generation-workspace-menu.html'
+#filedata = filedata.replace("""<body>""", """<body onload="init()">
+with open('web-generation-workspace-menu.html', 'r') as file:
+  filedata = file.read()
+filedata = filedata.replace("""<main id="main" class="main">""", """""")
+with open('/tmp/web-generation-workspace-menu.html', 'w') as file:
+  file.write(filedata)
+
+file1_path = '/tmp/web-generation-workspace-menu.html'
 file2_path = 'workspace_dashboard.html'
 output_file_path = 'web-generation-model-workspace-2-dashboard.html'
 concatenate_files(file1_path, file2_path, output_file_path)
