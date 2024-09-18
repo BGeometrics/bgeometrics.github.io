@@ -396,6 +396,8 @@ filedata = filedata.replace("""<main id="main" class="main">""", """""")
 with open('/tmp/web-generation-workspace-menu.html', 'w') as file:
   file.write(filedata)
 
+#<script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+
 file1_path = '/tmp/web-generation-workspace-menu.html'
 file2_path = 'workspace_dashboard-dark.html'
 output_file_path = 'web-generation-model-workspace-2-dashboard-dark.html'
