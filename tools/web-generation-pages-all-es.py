@@ -244,7 +244,7 @@ with open(lang + '/web-generation-model-workspace.html', 'w') as file:
 #TODO: Traducir y copiar en lang + '/...'
 file1_path = 'web-generation-workspace-menu.html'
 file2_path = 'web-generation-workspace-3.html'
-output_file_path = lang + 'web-generation-workspace-2.html'
+output_file_path = lang + '/web-generation-workspace-2.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 file1_path = lang + '/web-generation-model-workspace.html'
@@ -379,7 +379,7 @@ with open(lang + '/web-generation-model-workspace-dark.html', 'w') as file:
 #TODO: Traducir y copiar en lang + '/...'
 file1_path = 'web-generation-workspace-menu.html'
 file2_path = 'web-generation-workspace-3-dark.html'
-output_file_path = lang + 'web-generation-workspace-2-dark.html'
+output_file_path = lang + '/web-generation-workspace-2-dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 file1_path = lang + '/web-generation-model-workspace-dark.html'

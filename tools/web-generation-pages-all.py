@@ -251,7 +251,6 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'workspace_dashboard_init.html'
 file2_path = 'web-generation-model-workspace-2-dashboard.html'
 output_file_path = '../grafics/workspace_dashboard.html'
-#output_file_path = '/tmp/web/workspace_dashboard.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 
@@ -380,17 +379,21 @@ file2_path = 'web-generation-workspace-2-dark.html'
 output_file_path = '/tmp/web/workspace_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
-# Generate page workspace_dashboard.html with menu
-#file1_path = 'web-generation-workspace-menu.html'
-#file2_path = 'workspace_dashboard-dark.html'
-#output_file_path = 'web-generation-model-workspace-2-dashboard-dark.html'
-#concatenate_files(file1_path, file2_path, output_file_path)
+# Generate page workspace_dashboard_dark.html with menu
+file1_path = 'web-generation-workspace-menu.html'
+file2_path = 'workspace_dashboard-dark.html'
+output_file_path = 'web-generation-model-workspace-2-dashboard-dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
 
-#file1_path = 'web-generation-model-workspace-dark.html'
-#file2_path = 'web-generation-model-workspace-2-dashboard-dark.html'
-#output_file_path = '/tmp/web/workspace_dashboard_dark.html'
-#concatenate_files(file1_path, file2_path, output_file_path)
+file1_path = 'workspace_dashboard_init_dark.html'
+file2_path = 'web-generation-model-workspace-2-dashboard-dark.html'
+output_file_path = '/tmp/web/workspace_dashboard_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
 
+file1_path = 'workspace_dashboard_init.html'
+file2_path = 'web-generation-model-workspace-2-dashboard-dark.html'
+output_file_path = '../grafics/workspace_dashboard_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
 
 
 # Generate page services.html with menu dark

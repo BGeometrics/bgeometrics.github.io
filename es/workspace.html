@@ -659,7 +659,6 @@
   </aside><!-- End Sidebar-->
 
 
-  <!-- No edit file workstation.html. It's generate -->
   <main id="main" class="main">
 
     <section class="section dashboard">
@@ -721,11 +720,11 @@
             <option value="nupl_3axis">NUPL</option>
             <option value="lth_nupl_3axis">NUPL LTH</option>
             <option value="sth_nupl_3axis">NUPL STH</option>
-	    <option value="nvts_bg_4axis">Dynamic Range NVTS</option>
+            <option value="nvts_bg_4axis">Dynamic Range NVTS</option>
             <option value="oi_total_axis">Open Interest Futures</option>
             <option value="power_law">Power Law</option>
             <option value="power_law_floor">Power Law Floor</option>
-	    <option value="puell_multiple_3axis">Puell Multiple</option>
+            <option value="puell_multiple_3axis">Puell Multiple</option>
             <option value="profit_loss_3axis">Ratio Profit Loss</option>
             <option value="realized_price">Realized Price</option>
             <option value="sth_realized_price">Realized Price STH</option>
@@ -806,6 +805,50 @@
             <option value="1600">1600px</option>
           </select>
         </div>
+
+
+
+        <div class="row">
+          <div class="col-lg-1">
+            <button class="btn" onclick="">Formula:</button>
+          </div>
+          <div class="col-lg-1">
+            <input type="text" class="form-control" id="number" value="0">
+          </div>
+          <div class="col-lg-1">
+            <select class="form-select" id="operator1">
+              <option selected value=""></option>
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">*</option>
+              <option value="/">/</option>
+            </select>
+          </div>
+          <div class="col-lg-2">
+            <select class="form-select" id="metric1">
+              <option selected>Metric1</option>
+              <option value="BTC Price">BTC Price</option>
+            </select>
+          </div>
+          <div class="col-lg-1">
+            <select class="form-select" id="operator2">
+              <option selected value=""></option>
+              <option value="+">+</option>
+              <option value="-">-</option>
+              <option value="*">*</option>
+              <option value="/">/</option>
+            </select>
+          </div>
+          <div class="col-lg-2">
+            <select class="form-select" id="metric2">
+              <option selected>Metric2</option>
+              <option value="BTC Price">BTC Price</option>
+            </select>
+          </div>
+          <div class="col-lg-1">
+            <button class="btn" onclick="draw()">Draw</button>
+          </div>
+        </div>
       </div>
 
       <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
@@ -871,7 +914,7 @@
                     events: {
                         load: function() {
                             var image = new Image();
-			    var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                             image.src = adresse_image;
 
                             var height_image = 128;
@@ -910,6 +953,8 @@
                 }, {
                     opposite: false
                 }, {
+                    opposite: false
+                }, {
                 }],
 
                 series: [{
@@ -938,7 +983,7 @@
                     enabled:true,
                     floating: true,
                     verticalAlign: 'top',
-                    y: 25,
+                    y: 5,
                     align:'center'
                 },
 
@@ -985,7 +1030,7 @@
                         forEach(function (option) {
                             if(option.value == metric[i]){
                                 text = option.text;
-                                console.log(option.text);
+                                //console.log(option.text);
                             }
                         });
 
@@ -994,7 +1039,23 @@
             }
         }
 
-        document.getElementById('metrics').addEventListener("change", changeMetrics);
+        document.getElementById('metrics').addEventListener("change", function () {
+          var e = document.getElementById("metrics");
+          var value = e.value;
+          var text = e.options[e.selectedIndex].text;
+          var selectElement = document.getElementById('metric1');
+          var newOption = document.createElement('option');
+          newOption.value = value;
+          newOption.text = text;
+          selectElement.appendChild(newOption);
+          var selectElement2 = document.getElementById('metric2');
+          var newOption2 = document.createElement('option');
+          newOption2.value = value;
+          newOption2.text = text;
+          selectElement2.appendChild(newOption2);
+          changeMetrics();
+        });
+
         document.getElementById('zoom').addEventListener("change", zoom);
 
         function zoom() {
@@ -1038,6 +1099,85 @@
             });
         }
 
+        function deleteTheSeries() {
+          const selectElement = document.getElementById('metric1');
+          for (let i = selectElement.options.length - 1; i >= 0; i--) {
+            if (selectElement.options[i].text != "Metric1" &&
+              selectElement.options[i].text != "BTC Price") {
+              selectElement.remove(i);
+            }
+          }
+          const selectElement2 = document.getElementById('metric2');
+          for (let i = selectElement2.options.length - 1; i >= 0; i--) {
+            if (selectElement2.options[i].text != "Metric2" &&
+              selectElement2.options[i].text != "BTC Price") {
+              selectElement2.remove(i);
+            }
+          }
+          deleteSeries();
+        }
+
+        function draw() {
+          var numberValue = document.getElementById("number").value;
+          //var metric1Value = document.getElementById("metric1").value;
+          //var metric2Value = document.getElementById("metric2").value;
+          var operator1Value = document.getElementById("operator1").value;
+          var operator2Value = document.getElementById("operator2").value;
+
+          var e = document.getElementById("metric1");
+          var metric1Value = e.options[e.selectedIndex].text;
+          e = document.getElementById("metric2");
+          var metric2Value = e.options[e.selectedIndex].text;
+
+          metric1Serie = chart.series[0];
+          metric2Serie = chart.series[0];
+
+          for (var i = 0; i < chart.series.length; i++) {
+            var series = chart.series[i];
+            if (chart.series[i].name == metric1Value){
+              metric1Serie = chart.series[i];
+            }
+            if (chart.series[i].name == metric2Value){
+              metric2Serie = chart.series[i];
+            }
+          }
+
+          var data = [];
+          if (metric1Value !== "Metric1")  { // Must select a Metric 1
+            for(var i = 0; i < metric1Serie.xData.length; i++) {
+              dataIn = [];
+              if (operator1Value === null || operator1Value === "") { // Operator 1 -> null
+                if ((operator2Value === null || operator2Value === "") 
+                    || (metric2Value === "Metric2"))  { // Operator 1 -> null and Operator 2 or Metric 2 -> null 
+                  expression = metric1Serie.yData[i];
+                }
+                else { // Operatoe 1 -> null and Metric 2 and Operator 2 -> not null 
+                  formula = metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
+                  expression = eval(formula);
+                }
+              }
+              else { // Operator 1 -> not null
+                if ((operator2Value === null || operator2Value === "") 
+                    || (metric2Value === "Metric2"))  { //Operator 1 -> not null and Operator 2 or Metric 2 -> null  
+                  formula = numberValue + operator1Value + metric1Serie.yData[i];
+                  expression = eval(formula);
+                }
+                else { // Operator 1 -> not null and Operator 2 and Metric 2 -> not null
+                  formula = numberValue + operator1Value + metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
+                  expression = eval(formula);
+                }
+              }
+              dataIn.push(metric1Serie.xData[i], expression);
+              data.push(dataIn);
+            }
+
+            chart.addSeries({
+              data: data,
+              yAxis: 2
+            });
+          }
+        }
+
       </script>
 
     </section>
@@ -1045,76 +1185,96 @@
     <br>
     <section>
       <div class="container">
-        <a href="es/graphics/workspace.html">
-          <h5>Espacio de trabajo para gráficas bitcoin en BGeometrics</h5>
+        <a href="graphics/workspace.html">
+          <h5>BGeometrics Workspace Bitcoin Charts</h5>
         </a>
         <p> 
-          En esta pantalla del banco de trabajo aumentamos el funcionamiento de los gráficos de BGeometrics al permitir la inclusión de métricas de bitcoin en cadena bajo demanda.
+	        In this workbench screen we increase the operation of the BGeometrics graphs by allowing the inclusion of on-chain bitcoin metrics on demand.
           <br><br>
-          Inicialmente solo aparece el precio de BTC en el gráfico, pero se pueden seleccionar e incorporar diferentes métricas.
+          Only the price of BTC appears on the graph initially, but different metrics can be selected and incorporated.
           <br><br>
-          En el menú desplegable en la parte superior izquierda encontrará las métricas disponibles y una vez seleccionadas se agregarán al gráfico.
+          In the dropdown menu at the top left you will find the available metrics and once selected they will be added to the chart.
           <br><br>
-          Todos los gráficos que añadas se guardarán para que la próxima vez que accedas al espacio de trabajo aparezcan ya cargados.
+          All the graphs you add will be saved so that the next time you access the workspace they will already appear loaded.
           <br><br>
-          Si no desea mostrar una métrica, puede presionar el botón Eliminar o hacer clic en la leyenda para evitar que se muestre en el gráfico.
-	  <br><br><br>
-	  <b>Indicadores de precio</b>
+          If you do not want to display a metric, you can press the remove button or click the legend to prevent it from being displayed on the chart.
+	        <br><br><br>
+	        <b>Price Indicators</b>
           <br><br>
-           Bandas de Bollinger: Utilice estas bandas para identificar niveles de sobrecompra y sobreventa, así como para anticipar posibles cambios de tendencia.
+          Bollinger Bands: Use these bands to identify overbought and oversold levels, as well as to anticipate possible trend changes.
           <br><br>
-          DEMA (Promedio Móvil Exponencial Doble): Un indicador que responde más rápido a los cambios de precios que la EMA y la SMA.
+          DEMA (Double Exponential Moving Average): An indicator that responds faster to price changes than the EMA and SMA.
           <br><br>
-          EMA (Promedio Móvil Exponencial): Ideal para identificar la principal tendencia del mercado, dando más peso a los datos más recientes.
+          EMA (Exponential Moving Average): Ideal for identifying the main market trend, giving more weight to the most recent data.
           <br><br>
-          SMA (Promedio Móvil Simple): Un indicador clásico para identificar tendencias a largo plazo.
+          SMA (Simple Moving Average): A classic indicator to identify long-term trends.
           <br><br>
-          TEMA (Triple Media Móvil Exponencial): Combina las ventajas de la DEMA y la EMA para ofrecer un indicador aún más sensible.
+          TEMA (Triple Exponential Moving Average): Combines the advantages of the DEMA and the EMA to offer an even more sensitive indicator.
           <br><br>
-VWAP (Precio promedio ponderado por volumen): Mide el precio promedio ponderado por volumen, proporcionando una vista precisa del valor real de BTC en un período de tiempo específico.
+          VWAP (Volume Weighted Average Price): Measures the volume-weighted average price, providing an accurate view of the real value of BTC in a specific time period.
+	        <br><br><br>
+          <b>Price Oscillators</b>
+          <br><br>
+          Aroon: Helps identify when a market is trending and the strength of that trend.
+          <br><br>
+          Disparity Index: Measures the deviation of the current price with respect to a moving average, useful for identifying overbought or oversold.
+          <br><br>
+          CMO (Chande Momentum Oscillator): An oscillator that measures momentum and can indicate possible reversal points.
+          <br><br>
+          Detrended Price: Eliminate long-term trends to focus on shorter price cycles.
+          <br><br>
+          Linear Regression: Provides a trend line based on linear regression, useful for identifying the direction and strength of the trend.
+          <br><br>
+          MACD (Moving Average Convergence Divergence): A popular oscillator that shows the relationship between two moving averages, ideal for identifying buy and sell signals.
+          <br><br>
+          RoC (Rate of Change): Measures the speed at which the price changes, helping to identify the strength of the momentum.
+          <br><br>
+          RSI (Relative Strength Index): An oscillator that measures the speed and change of price movements, useful for identifying overbought or oversold conditions.
+          <br><br><br>
+          <b>Formula Toolbar</b>
+          Allows you to perform calculations on bitcoin metrics data.
+          <br><br>                                                                                                                                                                  First you have to select the metrics you are interested in, then in the first text box you indicate the factor, in the second the operation, in the third the metric on which to apply the formula, and if you want to perform operations on two metrics, in the next box you indicate the operation, in the last box you select the second metric and finally you click on the Draw button to display it on the graph.
         </p>
       </div>
     </section>
 
-  </main><!-- End #main -->
+  </main>
 
-  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <strong>Rendimientos pasados no garantizan resultados futuros.</strong></br>
-        <strong>No es un consejo de inversión. Descúbrelo por tí mismo y actúa bajo tu propio criterio.</strong>
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
       </div>
       <div class="credits">
         Power by <a href="https://bgeometrics.com/">BGeometrics</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader">
     <div class="line"></div>
   </div>
-     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
-     <script src="https://code.highcharts.com/stock/highstock.js"></script>
-     <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-     <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-     <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-     <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-     <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
 
-  <!-- Vendor JS Files -->
-  
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
