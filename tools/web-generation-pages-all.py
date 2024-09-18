@@ -458,7 +458,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_workspace.html with menu
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-dashboard-workspace-end.html'
+file2_path = 'web-generation-model-dashboard-workspace-end-dark.html'
 output_file_path = '/tmp/web/dashboard_workspace_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
