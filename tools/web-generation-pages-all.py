@@ -232,10 +232,16 @@ filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Wo
 with open('web-generation-model-workspace.html', 'w') as file:
   file.write(filedata)
 
+file1_path = 'web-generation-workspace-menu.html'
+file2_path = 'web-generation-workspace-3.html'
+output_file_path = 'web-generation-workspace-2.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 file1_path = 'web-generation-model-workspace.html'
 file2_path = 'web-generation-workspace-2.html'
 output_file_path = '/tmp/web/workspace.html'
 concatenate_files(file1_path, file2_path, output_file_path)
+
 
 # Generate page services.html with menu
 file1_path = 'web-generation-model.html'
