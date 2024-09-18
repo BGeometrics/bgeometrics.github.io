@@ -250,7 +250,8 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 file1_path = 'web-generation-model-workspace.html'
 file2_path = 'web-generation-model-workspace-2-dashboard.html'
-output_file_path = '/tmp/web/workspace_dashboard.html'
+output_file_path = '../graphics/workspace_dashboard.html'
+#output_file_path = '/tmp/web/workspace_dashboard.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 
