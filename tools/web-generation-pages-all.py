@@ -356,6 +356,11 @@ filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Wo
 with open('web-generation-model-workspace-dark.html', 'w') as file:
   file.write(filedata)
 
+file1_path = 'web-generation-workspace-menu.html'
+file2_path = 'web-generation-workspace-3-dark.html'
+output_file_path = 'web-generation-workspace-2-dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 file1_path = 'web-generation-model-workspace-dark.html'
 file2_path = 'web-generation-workspace-2-dark.html'
 output_file_path = '/tmp/web/workspace_dark.html'
