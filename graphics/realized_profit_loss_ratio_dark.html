@@ -112,11 +112,14 @@
             },
 
             yAxis: [{
-                labels: {
-                    align: 'left',
-                },
                 title: {
                     text: 'BTC price'
+                    labels: {
+                        align: 'left',
+                    },
+                },
+                labels: {
+                    align: 'left',
                 },
                 type: 'logarithmic',
                 opposite: false
@@ -138,6 +141,7 @@
             }],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 data: data_price,
                 color: 'white', 
