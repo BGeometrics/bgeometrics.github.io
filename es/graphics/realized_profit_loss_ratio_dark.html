@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin Ratio Ganancia Pérdida Realizada</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -112,18 +109,9 @@
             },
 
             yAxis: [{
-                title: {
-                    text: 'Precio BTC'
-                    labels: {
-                        align: 'left',
-                    },
-                },
                 labels: {
                     align: 'left',
                 },
-                type: 'logarithmic',
-                opposite: false
-            }, {
                 type: 'logarithmic',
                 plotBands: [{ 
                     from: 9,
@@ -138,6 +126,12 @@
                     to: 1,
                     color: 'rgba(0, 255, 0, 0.9)'
                 }],
+            }, {
+                title: {
+                    text: 'Precio BTC',
+                },
+                type: 'logarithmic',
+                opposite: false
             }],
 
             series: [{
@@ -148,7 +142,7 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 1
             }, {
                 id:'realized_profit_loss_ratio',
                 name: 'Ratio Ganancia Pérdida Realizada',
@@ -156,7 +150,19 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 1
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: 'rgba(255, 0, 0, 0.9)'
+                }, {
+                    value: 3,
+                    color: 'orange'
+                }, {
+                    value: 9,
+                    color: 'rgba(255, 255, 0, 0.9)'
+                }, {
+                    color: 'rgba(0, 255, 0, 0.9)'
+                }]
             }],
 
             legend:{
