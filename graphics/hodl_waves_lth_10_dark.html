@@ -140,6 +140,7 @@
                 },
                 labels: {
                     align: 'left',
+                    format: '{value:.2f}'
                 },
             }, {
                 title: {
@@ -183,6 +184,7 @@
             }, {
                 name: '10y to ...',
                 color: 'rgba(94, 79, 162,0.8)',
+                visible: false,
                 data: data_hw_age_10y,
                 tooltip: {
                     valueDecimals: 2
@@ -191,6 +193,7 @@
             }, {
                 name: '5y to 10y',
                 color: 'rgba(54, 130, 186, 0.8)',
+                visible: false,
                 data: data_hw_age_5y_10y,
                 tooltip: {
                     valueDecimals: 2
@@ -199,6 +202,7 @@
             }, {
                 name: '4y to 5y',
                 color: 'rgba(70, 150, 170, 0.8)',
+                visible: false,
                 data: data_hw_age_4y_5y,
                 tooltip: {
                     valueDecimals: 2
@@ -207,6 +211,7 @@
             }, {
                 name: '3y to 4y',
                 color: 'rgba(91, 182, 169, 0.8)',
+                visible: false,
                 data: data_hw_age_3y_4y,
                 tooltip: {
                     valueDecimals: 2
@@ -215,6 +220,7 @@
             }, {
                 name: '2y to 3y',
                 color: 'rgba(150, 213, 164, 0.8)',
+                visible: false,
                 data: data_hw_age_2y_3y,
                 tooltip: {
                     valueDecimals: 2
@@ -223,6 +229,7 @@
             }, {
                 name: '1y to 2y',
                 color: 'rgba(209, 236, 156, 0.8)',
+                visible: false,
                 data: data_hw_age_1y_2y,
                 tooltip: {
                     valueDecimals: 2
@@ -231,6 +238,7 @@
             }, {
                 name: '6m to 1y',
                 color: 'rgba(243, 250, 173, 0.8)',
+                visible: false,
                 data: data_hw_age_6m_1y,
                 tooltip: {
                     valueDecimals: 2
@@ -239,6 +247,7 @@
             }, {
                 name: '3m to 6m',
                 color: 'rgba(253, 206, 124, 0.8)',
+                visible: false,
                 data: data_hw_age_3m_6m,
                 tooltip: {
                     valueDecimals: 2
@@ -247,6 +256,7 @@
             }, {
                 name: '1m to 3m',
                 color: 'rgba(250, 154, 88, 0.8)',
+                visible: false,
                 data: data_hw_age_1m_3m,
                 tooltip: {
                     valueDecimals: 2
@@ -255,6 +265,7 @@
             }, {
                 name: '1w to 1m',
                 color: 'rgba(237, 99, 69, 0.8)',
+                visible: false,
                 data: data_hw_age_1w_1m,
                 tooltip: {
                     valueDecimals: 2
@@ -263,6 +274,7 @@
             }, {
                 name: '1d to 1w',
                 color: 'rgba(207, 56, 77, 0.8)',
+                visible: false,
                 data: data_hw_age_1d_1w,
                 tooltip: {
                     valueDecimals: 2
@@ -271,13 +283,13 @@
             }, {
                 name: '0d to 1d',
                 color: 'rgb(158, 1, 66, 0.8)',
+                visible: false,
                 data: data_hw_age_0d_1d,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
-            }
-            ],
+            }],
 
             legend:{
                 enabled:true,
