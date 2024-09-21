@@ -25,46 +25,43 @@
     <script>
         (async () => {
             const data_hw_age_1y_ = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_1y_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_1y_.json'
             ).then(response => response.json());
-            const data_hw_age_10y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_10y_10.json'
+            const data_hw_age_8y_ = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_8y_.json'
             ).then(response => response.json());
-            const data_hw_age_5y_10y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_5y_10y_10.json'
-            ).then(response => response.json());
-            const data_hw_age_4y_5y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_4y_5y_10.json'
+            const data_hw_age_4y_8y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_4y_8y.json'
             ).then(response => response.json());
             const data_hw_age_3y_4y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_3y_4y_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_3y_4y.json'
             ).then(response => response.json());
             const data_hw_age_2y_3y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_2y_3y_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_2y_3y.json'
             ).then(response => response.json());
             const data_hw_age_1y_2y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_1y_2y_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_1y_2y.json'
             ).then(response => response.json());
             const data_hw_age_6m_1y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_6m_1y_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_6m_1y.json'
             ).then(response => response.json());
             const data_hw_age_3m_6m = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_3m_6m_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_3m_6m.json'
             ).then(response => response.json());
             const data_hw_age_1m_3m = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_1m_3m_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_1m_3m.json'
             ).then(response => response.json());
             const data_hw_age_1w_1m = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_1w_1m_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_1w_1m.json'
             ).then(response => response.json());
             const data_hw_age_1d_1w = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_1d_1w_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_1d_1w.json'
             ).then(response => response.json());
             const data_hw_age_0d_1d = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_0d_1d_10.json'
+                'https://charts.bgeometrics.com/files/hw_age_0d_1d.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/hodl_waves_10_btc_price.json'
+                'https://charts.bgeometrics.com/files/hodl_waves_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
@@ -138,6 +135,8 @@
             yAxis: [{
                 title: {
                     text: 'Bitcoin: Hodl Waves',
+                    startOnTick: false,
+                    endOnTick: false
                 },
             }, {
                 title: {
@@ -155,7 +154,6 @@
             }, 
 
             series: [{
-                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
@@ -167,7 +165,7 @@
                 yAxis: 1
             }, {
                 name: '1y to ...',
-                color: 'rgba(128, 128, 129, 0.7)',
+                color: 'rgba(44, 175, 255, 0.7)',
                 data: data_hw_age_1y_,
                 shared: false,
                 type: 'line',
@@ -178,27 +176,21 @@
                 },
                 yAxis: 0
             }, {
-                name: '10y to ...',
+                name: '8y to ...',
                 color: 'rgba(94, 79, 162,0.8)',
-                data: data_hw_age_10y,
+                data: data_hw_age_8y_,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
-                name: '5y to 10y',
+                name: '4y to 8y',
                 color: 'rgba(54, 130, 186, 0.8)',
-                data: data_hw_age_5y_10y,
+                data: data_hw_age_4y_8y,
                 tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                name: '4y to 5y',
-                color: 'rgba(70, 150, 170, 0.8)',
-                data: data_hw_age_4y_5y,
-                tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
@@ -206,7 +198,8 @@
                 color: 'rgba(91, 182, 169, 0.8)',
                 data: data_hw_age_3y_4y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
@@ -214,7 +207,8 @@
                 color: 'rgba(150, 213, 164, 0.8)',
                 data: data_hw_age_2y_3y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
@@ -222,61 +216,68 @@
                 color: 'rgba(209, 236, 156, 0.8)',
                 data: data_hw_age_1y_2y,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
                 name: '6m to 1y',
                 color: 'rgba(243, 250, 173, 0.8)',
-                visible: false,
                 data: data_hw_age_6m_1y,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
                 name: '3m to 6m',
                 color: 'rgba(253, 206, 124, 0.8)',
-                visible: false,
                 data: data_hw_age_3m_6m,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
                 name: '1m to 3m',
                 color: 'rgba(250, 154, 88, 0.8)',
-                visible: false,
                 data: data_hw_age_1m_3m,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
                 name: '1w to 1m',
                 color: 'rgba(237, 99, 69, 0.8)',
-                visible: false,
                 data: data_hw_age_1w_1m,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
                 name: '1d to 1w',
                 color: 'rgba(207, 56, 77, 0.8)',
-                visible: false,
                 data: data_hw_age_1d_1w,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }, {
                 name: '0d to 1d',
                 color: 'rgb(158, 1, 66, 0.8)',
-                visible: false,
                 data: data_hw_age_0d_1d,
+                visible: false,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }
