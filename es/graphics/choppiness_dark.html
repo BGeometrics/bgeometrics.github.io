@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin y el índice Choppines (14 días)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -37,6 +34,12 @@
             ).then(response => response.json());
             const data_choppiness_30 = await fetch(
                 'https://charts.bgeometrics.com/files/choppiness_30.json'
+            ).then(response => response.json());
+            const data_choppiness_5w = await fetch(
+                'https://charts.bgeometrics.com/files/choppiness_5w.json'
+            ).then(response => response.json());
+            const data_choppiness_10w = await fetch(
+                'https://charts.bgeometrics.com/files/choppiness_10w.json'
             ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
@@ -144,8 +147,26 @@
                 },
                 yAxis: 0
             }, {
-                id:'Choppiness Weekly',
-                name: 'Choppiness Weekly',
+                id:'Choppiness 5 weeks',
+                name: 'Choppiness 5 weeks',
+                visible: false,
+                data: data_choppiness_5w,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'Choppiness 10 weeks',
+                name: 'Choppiness 10 weeks',
+                visible: false,
+                data: data_choppiness_10w,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'Choppiness Weekly SMA',
+                name: 'Choppiness Weekly SMA',
                 visible: false,
                 data: data_choppiness_7,
                 tooltip: {
@@ -153,8 +174,8 @@
                 },
                 yAxis: 0
             }, {
-                id:'Choppiness Monthly',
-                name: 'Choppiness Monthly',
+                id:'Choppiness Monthly SMA',
+                name: 'Choppiness Monthly SMA',
                 visible: false,
                 data: data_choppiness_30,
                 tooltip: {
