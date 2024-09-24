@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Net Realised Profit Loss (NRPL)</title>
+    <title>Net Realized Profit Loss (NRPL)</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -75,7 +75,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Net Realised Profit Loss',
+                text: 'Bitcoin Net Realized Profit Loss',
                 align: 'left',
             },
 
@@ -138,8 +138,8 @@
                 },
                 yAxis: 1
             }, {
-                id:'NRPL',
-                name: 'NRPL',
+                id:'NRPL BTC',
+                name: 'NRPL BTC',
                 color: '#90ed7d',
                 data: data_nrpl,
                 tooltip: {
@@ -162,6 +162,12 @@
                     valueDecimals: 2
                 },
                 yAxis: 2,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: 'green'
+                }]
             }],
 
             legend:{
