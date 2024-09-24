@@ -41,6 +41,9 @@
             const data_choppiness_10w = await fetch(
                 'https://charts.bgeometrics.com/files/choppiness_10w.json'
             ).then(response => response.json());
+            const data_choppiness_10M = await fetch(
+                'https://charts.bgeometrics.com/files/choppiness_10M.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -139,16 +142,16 @@
                 },
                 yAxis: 1
             }, {
-                id:'Choppiness (14 days)',
-                name: 'Choppiness (14 days)',
+                id:'Chop (14 days)',
+                name: 'Chop (14 days)',
                 data: data_choppiness,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'Choppiness 5 weeks',
-                name: 'Choppiness 5 weeks',
+                id:'Chop 5 weeks',
+                name: 'Chop 5 weeks',
                 visible: false,
                 data: data_choppiness_5w,
                 tooltip: {
@@ -156,8 +159,8 @@
                 },
                 yAxis: 0
             }, {
-                id:'Choppiness 10 weeks',
-                name: 'Choppiness 10 weeks',
+                id:'Chop 10 weeks',
+                name: 'Chop 10 weeks',
                 visible: false,
                 data: data_choppiness_10w,
                 tooltip: {
@@ -165,8 +168,17 @@
                 },
                 yAxis: 0
             }, {
-                id:'Choppiness Weekly SMA',
-                name: 'Choppiness Weekly SMA',
+                id:'Chop 10 months',
+                name: 'Chop 10 months',
+                visible: false,
+                data: data_choppiness_10M,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'Chop Weekly SMA',
+                name: 'Chop Weekly SMA',
                 visible: false,
                 data: data_choppiness_7,
                 tooltip: {
@@ -174,8 +186,8 @@
                 },
                 yAxis: 0
             }, {
-                id:'Choppiness Monthly SMA',
-                name: 'Choppiness Monthly SMA',
+                id:'Chop Monthly SMA',
+                name: 'Chop Monthly SMA',
                 visible: false,
                 data: data_choppiness_30,
                 tooltip: {
