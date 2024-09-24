@@ -116,6 +116,10 @@
                     labels: {
                         align: 'left',
                     },
+                    
+                },
+                labels: {
+                    align: 'left',
                 },
                 plotBands: [{ 
                     from: 6,
@@ -152,21 +156,36 @@
                 },
                 yAxis: 0
             }, {
+                id: 'LTH-MVRV',
                 name: 'LTH-MVRV',
                 data: data_lth_mvrv,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }, {
                 name: 'STH-MVRV',
+                id: 'STH-MVRV',
+                color: '#90ed7d',
                 data: data_sth_mvrv,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
