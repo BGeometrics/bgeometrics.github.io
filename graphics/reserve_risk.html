@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Realized Price</title>
+    <title>Bitcoin Reserve Risk</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -17,25 +17,30 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_realized_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price.json'
-            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
             ).then(response => response.json());
-            const data_delta_cap = await fetch(
-                'https://charts.bgeometrics.com/files/delta_cap.json'
+            const data_reserve_risk = await fetch(
+                'https://charts.bgeometrics.com/files/reserve_risk.json'
             ).then(response => response.json());
-            const data_true_market_mean = await fetch(
-                'https://charts.bgeometrics.com/files/true_market_mean.json'
+            const data_reserve_risk_adjusted = await fetch(
+                'https://charts.bgeometrics.com/files/reserve_risk_adjusted.json'
             ).then(response => response.json());
- 
-        var chart = Highcharts.stockChart('container-iframe', {
+            const data_vocdd = await fetch(
+                'https://charts.bgeometrics.com/files/vocdd.json'
+            ).then(response => response.json());
+            const data_mvocdd = await fetch(
+                'https://charts.bgeometrics.com/files/mvocdd.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -57,10 +62,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -78,12 +79,12 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Realized Price</a>',
+                text: 'Bitcoin Reserve Risk',
                 align: 'left',
             },
 
             chart: {
-                renderTo: 'container-iframe',
+                renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -112,48 +113,81 @@
             },
 
             yAxis: [{
+                title: {
+                    text: 'Reserve Risk',
+                },
                 labels: {
                     align: 'left',
                 },
+                plotBands: [{ 
+                    from: 0.02,
+                    to: 1,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0.003,
+                    to: 0,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
+            }, {
                 title: {
                     text: 'BTC price'
+                },
+                type: 'logarithmic',
+                opposite: false,
+            }, {
+                title: {
+                    text: 'VOCDD'
+                },
+                type: 'logarithmic',
+            }, {
+                title: {
+                    text: 'MVOCDD'
                 },
                 type: 'logarithmic',
             }],
 
             series: [{
-                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 1
             }, {
-                id:'realized_price',
-                name: 'Realized Price',
-                data: data_realized_price,
+                id:'Reserve Risk',
+                name: 'Reserve Risk',
+                data: data_reserve_risk,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 6
                 },
                 yAxis: 0
             }, {
-                id:'delta_price',
-                name: 'Delta price',
-                data: data_delta_cap,
+                id:'Reserve Risk Adjusted',
+                name: 'Reserve Risk Adjusted',
+                visible: false,
+                data: data_reserve_risk_adjusted,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 6
                 },
                 yAxis: 0
             }, {
-                id:'True Market Mean',
-                name: 'True Market Mean',
-                data: data_true_market_mean,
+                id:'VOCDD',
+                name: 'VOCDD',
+                visible: false,
+                data: data_vocdd,
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 2
+            }, {
+                id:'MVOCDD',
+                name: 'MVOCDD',
+                data: data_mvocdd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 3
             }],
 
             legend:{
@@ -187,7 +221,8 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {enabled:false}
                     }
                 }]
             }
