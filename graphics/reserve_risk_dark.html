@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Supply LTH and STH</STH:w></title>
+    <title>Bitcoin Reserve Risk</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -18,28 +18,31 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
 
-    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/profit_loss_btc_price.json'
+                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
             ).then(response => response.json());
-            const data_lth_supply = await fetch(
-                'https://charts.bgeometrics.com/files/lth_supply.json'
+            const data_reserve_risk = await fetch(
+                'https://charts.bgeometrics.com/files/reserve_risk.json'
             ).then(response => response.json());
-            const data_sth_supply = await fetch(
-                'https://charts.bgeometrics.com/files/sth_supply.json'
+            const data_reserve_risk_adjusted = await fetch(
+                'https://charts.bgeometrics.com/files/reserve_risk_adjusted.json'
             ).then(response => response.json());
-            const data_supply = await fetch(
-                'https://charts.bgeometrics.com/files/supply.json'
+            const data_vocdd = await fetch(
+                'https://charts.bgeometrics.com/files/vocdd.json'
             ).then(response => response.json());
-            //const data_reserve_risk = await fetch(
-            //    'https://charts.bgeometrics.com/files/reserve_risk.json'
-            //).then(response => response.json());
+            const data_mvocdd = await fetch(
+                'https://charts.bgeometrics.com/files/mvocdd.json'
+            ).then(response => response.json());
 
-        var chart = Highcharts.stockChart('container-iframe', {
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -78,12 +81,12 @@
                 }
             },
             title: {
-                text: 'Bitcoin Supply LTH STH and Reserve Risk', 
+                text: 'Bitcoin Reserve Risk',
                 align: 'left',
             },
 
             chart: {
-                renderTo: 'container-iframe',
+                renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -104,7 +107,7 @@
                     }
                 }
             },
-            
+
             plotOptions:{
                 series:{
                     showInLegend:true
@@ -112,33 +115,41 @@
             },
 
             yAxis: [{
-                height: '100%',
-                resize: {
-                    enabled: true
-                },
                 title: {
-                    text: '',
-                    labels: {
-                        align: 'left',
-                    },
+                    text: 'Reserve Risk',
                 },
                 labels: {
                     align: 'left',
                 },
+                plotBands: [{ 
+                    from: 0.02,
+                    to: 1,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0.003,
+                    to: 0,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
                 type: 'logarithmic',
-                opposite: false, 
-           // }, {
-           //     top: '65%',
-           //     height: '35%',
-           //     offset: 0,
+                opposite: false,
+            }, {
+                title: {
+                    text: 'VOCDD'
+                },
+                type: 'logarithmic',
+            }, {
+                title: {
+                    text: 'MVOCDD'
+                },
+                type: 'logarithmic',
             }],
 
             series: [{
-                name: 'Precio BTC',
+                name: 'BTC price',
                 color: 'white',
                 data: data_price,
                 tooltip: {
@@ -146,62 +157,46 @@
                 },
                 yAxis: 1
             }, {
-                id:'LTH suppply',
-                name: 'LTH Supply',
-                data: data_lth_supply,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'STH supply',
-                name: 'STH supply',
-                data: data_sth_supply,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
-                id:'BTC Supply',
-                name: 'BTC supply',
-                color: 'orange',
-                visible: false,
-                data: data_supply,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            /*
-            }, {
-                id: 'Reserve Risk',
+                id:'Reserve Risk',
                 name: 'Reserve Risk',
-                //type: 'area',
                 data: data_reserve_risk,
                 tooltip: {
-                    valueDecimals: 4
+                    valueDecimals: 6
                 },
-                yAxis: 2,
-                zones: [{
-                    value: 0.0002,
-                    color: '#90ed7d'
-                }, {
-                    value: 0.002,
-                    color: '#f7a35c'
-                }, {
-                    value: 0.004,
-                    color: '#ffff00'
-                }, {
-                    color: '#ff0000'
-                }]
-            */
+                yAxis: 0
+            }, {
+                id:'Reserve Risk Adjusted',
+                name: 'Reserve Risk Adjusted',
+                visible: false,
+                data: data_reserve_risk_adjusted,
+                tooltip: {
+                    valueDecimals: 6
+                },
+                yAxis: 0
+            }, {
+                id:'VOCDD',
+                name: 'VOCDD',
+                visible: false,
+                data: data_vocdd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
+            }, {
+                id:'MVOCDD',
+                name: 'MVOCDD',
+                data: data_mvocdd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 3
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
-                align:'center',
-                y: 25,
+                align:'center'
             },
 
             rangeSelector: {
@@ -228,12 +223,14 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        legend: {enabled:false}
                     }
                 }]
             }
         });
     })();
+
     </script>
 
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Supply LTH STH and Reserve Risk</title>
+    <title>Bitcoin Supply LTH and STH</STH:w></title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -30,6 +30,9 @@
             ).then(response => response.json());
             const data_sth_supply = await fetch(
                 'https://charts.bgeometrics.com/files/sth_supply.json'
+            ).then(response => response.json());
+            const data_supply = await fetch(
+                'https://charts.bgeometrics.com/files/supply.json'
             ).then(response => response.json());
             //const data_reserve_risk = await fetch(
             //    'https://charts.bgeometrics.com/files/reserve_risk.json'
@@ -153,6 +156,16 @@
                 id:'STH supply',
                 name: 'STH supply',
                 data: data_sth_supply,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'BTC Supply',
+                name: 'BTC supply',
+                color: 'orange',
+                visible: false,
+                data: data_supply,
                 tooltip: {
                     valueDecimals: 2
                 },
