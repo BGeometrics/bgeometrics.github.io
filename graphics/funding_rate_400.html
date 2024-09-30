@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NUPL (Net Unrealized Profit Loss)</title>
+    <title>Bitcoin Funding Rate</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -17,27 +17,22 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <div id="container" style="width:100%; height:600px;"></div>
+    <div id="container-iframe" style="width:100%; height:400px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
-            const data_metrics = await fetch(
-                'https://charts.bgeometrics.com/files/nupl.json'
-            ).then(response => response.json());
-            const data_lth_nupl = await fetch(
-                'https://charts.bgeometrics.com/files/lth_nupl.json'
-            ).then(response => response.json());
-            const data_sth_nupl = await fetch(
-                'https://charts.bgeometrics.com/files/sth_nupl.json'
-            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/nupl_btc_price.json'
+                'https://charts.bgeometrics.com/files/funding_rate_btc_price.json'
             ).then(response => response.json());
-
-        var chart = Highcharts.stockChart('container', {
+            const data_funding_rate = await fetch(
+                'https://charts.bgeometrics.com/files/funding_rate.json'
+            ).then(response => response.json());
+            const data_funding_rate_7sma = await fetch(
+                'https://charts.bgeometrics.com/files/funding_rate_7sma.json'
+            ).then(response => response.json());
+ 
+        var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -59,6 +54,10 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -75,19 +74,14 @@
                     }
                 }
             },
-            title: {
-                text: 'Bitcoin: NUPL (Net Unrealized Profit / Loss)',
-                align: 'left',
-            },
 
             chart: {
-                renderTo: 'container',
-                events: {
+                renderTo: 'container-iframe',
+                events:{
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
-
                         var height_image = 128;
                         var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -111,23 +105,17 @@
 
             yAxis: [{
                 title: {
-                    text: 'NUPL',
+                    text: 'Funding Rate'
                 },
-                plotBands: [{ 
-                    from: 0.6,
-                    to: 1,
-                    color: 'rgba(255, 0, 0, 0.1)'
-                }, {
-                    from: 0,
-                    to: -1,
-                    color: 'rgba(0, 255, 0, 0.1)'
-                }]
+                labels: {
+                    align: 'left',
+                },
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-                opposite: false,
+                opposite: false
             }],
 
             series: [{
@@ -139,53 +127,91 @@
                 },
                 yAxis: 1
             }, {
-                id:'nupl',
-                name: 'NUPL',
-                data: data_metrics,
+                id:'Funding Rate',
+                name: 'Funding Rate',
+                color: '#90ed7d',
+                data: data_funding_rate,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 6
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }, {
-                id:'NUPL LTH',
-                name: 'NUPL LTH',
+                id:'Funding Rate 7-SMA',
+                name: 'Funding Rate 7-SMA',
+                color: '#90ed7d',
                 visible: false,
-                data: data_lth_nupl,
+                data: data_funding_rate_7sma,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 6
                 },
-                yAxis: 0
-            }, {
-                id:'NUPL STH',
-                name: 'NUPL STH',
-                visible: false,
-                data: data_sth_nupl,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
+                }]
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
+                y: -6,
                 verticalAlign: 'top',
                 align:'center'
             },
 
+            navigator : {
+		        enabled : false
+	        },
+         
             rangeSelector: {
-                selected: 5
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
             },
 
             credits: {
-                text: 'Power by BGeometrics.com',
+                text: 'Source: binance.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
-                    x: -70,
+                    x: -85,
                     y: -124
                 }                
             },
@@ -197,14 +223,12 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        },
-                        legend: {enabled:false}
+                        }
                     }
                 }]
             }
         });
     })();
-
     </script>
 
 </body>

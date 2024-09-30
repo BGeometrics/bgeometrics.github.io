@@ -20,7 +20,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <div id="container" style="width:100%; height:600px;"></div>
+    <div id="container" style="width:100%; height:400px;"></div>
 
     <script>
         (async () => {
@@ -75,10 +75,6 @@
                     }
                 }
             },
-            title: {
-                text: 'Bitcoin: NUPL (Net Unrealized Profit / Loss)',
-                align: 'left',
-            },
 
             chart: {
                 renderTo: 'container',
@@ -131,6 +127,7 @@
             }],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
@@ -139,7 +136,7 @@
                 },
                 yAxis: 1
             }, {
-                id:'nupl',
+                id:'NUPL',
                 name: 'NUPL',
                 data: data_metrics,
                 tooltip: {
@@ -169,12 +166,45 @@
             legend:{
                 enabled:true,
                 floating: true,
+                y: -6,
                 verticalAlign: 'top',
                 align:'center'
             },
 
+            navigator : {
+		        enabled : false
+	        },
+         
             rangeSelector: {
-                selected: 5
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
             },
 
             credits: {
