@@ -319,6 +319,12 @@ file2_path = 'web-generation-model-dashboard-workspace-end.html'
 output_file_path = '/tmp/web/dashboard_workspace.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page dashboard_short_term_trend.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-dashboard-short-term-trend-end.html'
+output_file_path = '/tmp/web/dashboard_short_term_trend.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 
 ### Mode dark 
 
@@ -460,6 +466,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-dashboard-workspace-end-dark.html'
 output_file_path = '/tmp/web/dashboard_workspace_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_short_term_trend.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-dashboard-short-term-trend-end-dark.html'
+output_file_path = '/tmp/web/dashboard_short_term_trend_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
