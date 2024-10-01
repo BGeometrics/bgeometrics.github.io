@@ -29,6 +29,9 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/vdd_btc_price.json'
             ).then(response => response.json());
+            const data_cdd_terminal_ajusted_90dma = await fetch(
+                'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -102,9 +105,6 @@
             },
 
             yAxis: [{
-                title: {
-                    text: 'VDD'
-                },
                 labels: {
                     align: 'left',
                 },
@@ -114,6 +114,8 @@
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
+
             }],
 
             series: [{
@@ -144,6 +146,15 @@
                 }, {
                     color: '#ff0000'
                 }]
+            }, {
+                id:'CDD 90D MA',
+                name: 'CDD 90D MA',
+                visible: false,
+                data: data_cdd_terminal_ajusted_90dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
             }],
 
             legend:{
