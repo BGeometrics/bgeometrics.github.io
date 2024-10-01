@@ -33,6 +33,9 @@
             const data_sth_nupl = await fetch(
                 'https://charts.bgeometrics.com/files/sth_nupl.json'
             ).then(response => response.json());
+            const data_nupl_7dma = await fetch(
+                'https://charts.bgeometrics.com/files/nupl_7dma.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/nupl_btc_price.json'
             ).then(response => response.json());
@@ -157,6 +160,15 @@
                 name: 'NUPL STH',
                 visible: false,
                 data: data_sth_nupl,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL 7D MA',
+                name: 'NUPL 7D MA',
+                visible: false,
+                data: data_nupl_7dma,
                 tooltip: {
                     valueDecimals: 2
                 },
