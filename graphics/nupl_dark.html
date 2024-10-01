@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>NUPL (Net Unrealized Profit Loss)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -31,6 +28,15 @@
         (async () => {
             const data_metrics = await fetch(
                 'https://charts.bgeometrics.com/files/nupl.json'
+            ).then(response => response.json());
+            const data_lth_nupl = await fetch(
+                'https://charts.bgeometrics.com/files/lth_nupl.json'
+            ).then(response => response.json());
+            const data_sth_nupl = await fetch(
+                'https://charts.bgeometrics.com/files/sth_nupl.json'
+            ).then(response => response.json());
+            const data_nupl_7dma = await fetch(
+                'https://charts.bgeometrics.com/files/nupl_7dma.json'
             ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/nupl_btc_price.json'
@@ -141,6 +147,33 @@
                 id:'nupl',
                 name: 'NUPL',
                 data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL LTH',
+                name: 'NUPL LTH',
+                visible: false,
+                data: data_lth_nupl,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL STH',
+                name: 'NUPL STH',
+                visible: false,
+                data: data_sth_nupl,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL 7D MA',
+                name: 'NUPL 7D MA',
+                visible: false,
+                data: data_nupl_7dma,
                 tooltip: {
                     valueDecimals: 2
                 },

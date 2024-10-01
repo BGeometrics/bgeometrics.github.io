@@ -31,6 +31,9 @@
             const data_nrpl_usd = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_usd.json'
             ).then(response => response.json());
+            const data_nrpl_7dma = await fetch(
+                'https://charts.bgeometrics.com/files/nrpl_7dma.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -167,6 +170,22 @@
                     color: '#ff2222'
                 }, {
                     color: 'green'
+                }]
+            }, {
+                id:'NRPL 7D MA BTC',
+                name: 'NRPL 7D MA BTC',
+                color: '#90ed7d',
+                visible: false,
+                data: data_nrpl_7dma,
+                tooltip: {
+                    valueDecimals: 6
+                },
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#ff2222'
+                }, {
+                    color: '#90ed7d'
                 }]
             }],
 

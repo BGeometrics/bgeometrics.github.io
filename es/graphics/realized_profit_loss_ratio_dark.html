@@ -29,6 +29,15 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/realized_profit_loss_ratio_btc_price.json'
             ).then(response => response.json());
+            const data_realized_profit = await fetch(
+                'https://charts.bgeometrics.com/files/realized_profit.json'
+            ).then(response => response.json());
+            const data_realized_loss = await fetch(
+                'https://charts.bgeometrics.com/files/realized_loss.json'
+            ).then(response => response.json());
+            const data_realized_total_usd = await fetch(
+                'https://charts.bgeometrics.com/files/realized_total_usd.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -61,10 +70,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -86,7 +93,6 @@
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                         image.src = adresse_image;
-
                         var height_image = 128;
                         var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -109,6 +115,9 @@
             },
 
             yAxis: [{
+                title: {
+                    text: 'Profit and Loss Ratio',
+                },
                 labels: {
                     align: 'left',
                 },
@@ -132,6 +141,10 @@
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
+                title: {
+                    text: 'Profit and Loss (USD)',
+                },
             }],
 
             series: [{
@@ -163,12 +176,44 @@
                 }, {
                     color: 'rgba(0, 255, 0, 0.9)'
                 }]
+            }, {
+                id:'Realized profit',
+                name: 'Realized profit',
+                color: 'green',
+                data: data_realized_profit,
+                type: 'area',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
+            }, {
+                id:'Realized loss',
+                name: 'Realized loss',
+                color: 'red',
+                data: data_realized_loss,
+                type: 'area',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
+            }, {
+                id:'Realized total USD',
+                name: 'Realized total USD',
+                data: data_realized_total_usd,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
+                y: 25,
                 align:'center'
             },
 

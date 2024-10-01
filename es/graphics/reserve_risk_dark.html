@@ -87,6 +87,13 @@
 
             chart: {
                 renderTo: 'container',
+                backgroundColor: {
+                    linearGradient: [0, 400, 0, 0],
+                        stops: [
+                            [0, '#FFFFFF'], 
+                            [1, '#FFD896']  
+                    ]
+                },
                 events: {
                     load: function() {
                         var image = new Image();
