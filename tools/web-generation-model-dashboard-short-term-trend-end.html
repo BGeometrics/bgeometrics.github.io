@@ -93,8 +93,25 @@
           <h5>Bitcoin Short Term Trend</h5>
 	</a>
         <p> 
+          These on-chain metrics allow for the analysis of short-term investor behavior and thus detect trends in the price of bitcoin. They are especially useful for anticipating trend changes and validating market movements based on activity within the blockchain.
           <br><br>
+          STH Realized Price
           <br>
+          This is the average price of bitcoin that has been moved/spent/bought in the last 155 days.
+          <br>
+          If the current market price is higher than the realized price, short-term investors are in profit. 
+          <br>
+	  If the price is below the realized price, they are in loss, which could generate selling pressure in the short term.
+          <br><br>
+          SOPR (Spent Output Profit Ratio)
+          <br>
+          This is the ratio between the current selling price and the buying price of the bitcoin spent.
+          <br>
+          A SOPR value above 1 indicates that holders are selling at a profit.
+          <br>
+          A value below 1 indicates that they are selling at a loss.
+          <br>
+          A SOPR below 1 in downtrends can signal a possible bottom, while values above 1 in uptrends can suggest overbought.
           <br><br>
           NUPL (Net Unrealized Profit Loss) is an indicator used to assess the aggregate profitability of all Bitcoin holders in the market. 
           <br>
@@ -102,18 +119,33 @@
           <br><br>
           NRPL (Net Realized Profit/Loss) measures the net realized profit or loss of all Bitcoin transactions occurring on the network.
           <br>
-          - When NRPL is positive investors are making profits on the transactions they make. This may indicate that the market is in an optimistic phase.
+          When NRPL is positive investors are making profits on the transactions they make. This may indicate that the market is in an optimistic phase.
           <br>
-          - When NRPL is negative, it indicates that investors are selling at a loss. This could happen in periods of price correction or bear markets, where investors sell their assets in panic or to minimize their losses.
+          When NRPL is negative, it indicates that investors are selling at a loss. This could happen in periods of price correction or bear markets, where investors sell their assets in panic or to minimize their losses.
+          <br><br>
+          VDD (Value Days Destroyed)
+          <br>
+          These are the days of coins destroyed, a velocity of spending indicator where extra weighting is given to coins that have not moved on-chain for longer periods of time by the price of BTC.
+          <br><br>
+          How many days on average have passed since the bitcoins being spent were idle in an address.
+          <br>
+          If there is a significant increase in VDD, it means that long-term holders are selling their bitcoin, which could indicate a correction. If VDD is low, it suggests that long-term holders are holding their coins.
+          <br><br>
+          Funding Rate
+          <br>
+          The rates paid between traders in perpetual futures markets.
+          <br>
+          A positive funding rate means that traders who are long are paying those who are short, indicating optimism in the market.
+          <br>
+	  If it is negative, it suggests the opposite.
           <br><br>
         </p>
       </div>
 
     </section>
 
-  </main><!-- End #main -->
+  </main>
 
-  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
@@ -127,7 +159,7 @@
         Power by <a href="https://bgeometrics.com/">BGeometrics</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
