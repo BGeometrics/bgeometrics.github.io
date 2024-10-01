@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin moving average</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <div id="container-iframe" style="width:100%; height:400px; margin: 0 auto;"></div>
+
+    <script>
+        (async () => {
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/moving_average_price.json'
+            ).then(response => response.json());
+            const data_10dma = await fetch(
+                'https://charts.bgeometrics.com/files/10dma.json'
+            ).then(response => response.json());
+            const data_20dma = await fetch(
+                'https://charts.bgeometrics.com/files/20dma.json'
+            ).then(response => response.json());
+            const data_40dma = await fetch(
+                'https://charts.bgeometrics.com/files/40dma.json'
+            ).then(response => response.json());
+            const data_50dma = await fetch(
+                'https://charts.bgeometrics.com/files/50dma.json'
+            ).then(response => response.json());
+            const data_155dma = await fetch(
+                'https://charts.bgeometrics.com/files/155dma.json'
+            ).then(response => response.json());
+            const data_200dma = await fetch(
+                'https://charts.bgeometrics.com/files/200dma.json'
+            ).then(response => response.json());
+            const data_200wma = await fetch(
+                'https://charts.bgeometrics.com/files/200wma.json'
+            ).then(response => response.json());
+            const data_111dma = await fetch(
+                'https://charts.bgeometrics.com/files/111dma.json'
+            ).then(response => response.json());
+            const data_350dma_x2 = await fetch(
+                'https://charts.bgeometrics.com/files/350dma_x2.json'
+            ).then(response => response.json());
+ 
+        var chart = Highcharts.stockChart('container-iframe', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            }, false)    
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Moving Average Price</a>',
+                align: 'left',
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            yAxis: [{
+                labels: {
+                    align: 'left',
+                },
+                type: 'logarithmic',
+            }, {
+                title: {
+                    text: 'BTC price'
+                },
+                type: 'logarithmic',
+            }],
+
+            series: [{
+                id: 'BTC price',
+                name: 'BTC price',
+		color: 'black', 
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'10 SMA',
+                name: '10 SMA',
+                data: data_10dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'20 SMA',
+                name: '20 SMA',
+                data: data_20dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'40 SMA',
+                name: '40 SMA',
+                data: data_40dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'50 SMA',
+                name: '50 SMA',
+                visible: false,
+                data: data_50dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'155 SMA',
+                name: '155 SMA',
+                data: data_155dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'200 SMA',
+                name: '200 SMA',
+                visible: false,
+                data: data_200dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'200 WMA',
+                name: '200 WMA',
+                data: data_200wma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'111 SMA',
+                name: '111 SMA',
+                data: data_111dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'350 SMA x2',
+                name: '350 SMA x2',
+                data: data_350dma_x2,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                align:'center',
+                y: 12,
+            },
+
+            navigator : {
+		        enabled : false
+	        },
+         
+            rangeSelector: {
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
+            },
+
+            credits: {
+                text: 'Power by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        }
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+</body>
+</html>
