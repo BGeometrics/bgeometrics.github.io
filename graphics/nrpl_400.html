@@ -37,6 +37,9 @@
             const data_realized_lth = await fetch(
                 'https://charts.bgeometrics.com/files/realized_lth.json'
             ).then(response => response.json());
+            const data_nrpl_usd = await fetch(
+                'https://charts.bgeometrics.com/files/nrpl_usd.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -122,6 +125,7 @@
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
             }],
 
             series: [{
@@ -195,6 +199,16 @@
                 }, {
                     color: '#8AAD34',
                 }]
+            }, {
+                id:'NRPL USD',
+                name: 'NRPL USD',
+                //color: '#8AAD34',
+                visible: false,
+                data: data_nrpl_usd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
             }],
 
             legend:{
