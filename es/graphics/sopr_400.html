@@ -37,6 +37,9 @@
             const data_sopr_7sma = await fetch(
                 'https://charts.bgeometrics.com/files/sopr_7sma.json'
             ).then(response => response.json());
+            const data_sopr_7ema = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_7ema.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -141,6 +144,7 @@
             }, {
                 id:'SOPR',
                 name: 'SOPR',
+                visible: false,
                 data: data_sopr,
                 tooltip: {
                     valueDecimals: 4
@@ -173,6 +177,14 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id:'SOPR 7D EMA',
+                name: 'SOPR 7D EMA',
+                data: data_sopr_7ema,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
             }],
 
             legend:{
@@ -188,7 +200,7 @@
 	        },
          
             rangeSelector: {
-                selected: 2,
+                selected: 3,
                 buttons: [{
                     type: 'month',
                     count: 1,

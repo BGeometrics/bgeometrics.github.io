@@ -38,6 +38,9 @@
             const data_realized_lth = await fetch(
                 'https://charts.bgeometrics.com/files/realized_lth.json'
             ).then(response => response.json());
+            const data_nrpl_usd = await fetch(
+                'https://charts.bgeometrics.com/files/nrpl_usd.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -123,6 +126,7 @@
                 },
                 type: 'logarithmic',
                 opposite: false
+            }, {
             }],
 
             series: [{
@@ -147,22 +151,6 @@
                     color: '#ff2222'
                 }, {
                     color: '#90ed7d'
-                }]
-            }, {
-                id:'NRPL 7D MA',
-                name: 'NRPL 7D MA',
-                color: '#329542',
-                visible: false,
-                data: data_nrpl_7dma,
-                tooltip: {
-                    valueDecimals: 6
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#BB0E22'
-                }, {
-                    color: '#329542',
                 }]
             }, {
                 id:'NRPL LTH',
@@ -196,6 +184,31 @@
                 }, {
                     color: '#8AAD34',
                 }]
+            }, {
+                id:'NRPL 7D MA',
+                name: 'NRPL 7D MA',
+                color: '#329542',
+                visible: false,
+                data: data_nrpl_7dma,
+                tooltip: {
+                    valueDecimals: 6
+                },
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#BB0E22'
+                }, {
+                    color: '#329542',
+                }]
+            }, {
+                id:'NRPL USD',
+                name: 'NRPL USD',
+                visible: false,
+                data: data_nrpl_usd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
             }],
 
             legend:{
@@ -211,7 +224,7 @@
 	        },
          
             rangeSelector: {
-                selected: 2,
+                selected: 3,
                 buttons: [{
                     type: 'month',
                     count: 1,
