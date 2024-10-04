@@ -28,6 +28,9 @@
             const data_puell_multiple = await fetch(
                 'https://charts.bgeometrics.com/files/puell_multiple.json'
             ).then(response => response.json());
+            const data_puell_multiple_7dma = await fetch(
+                'https://charts.bgeometrics.com/files/puell_multiple_7dma.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -163,7 +166,16 @@
             }, {
                 id:'Puell Multiple',
                 name: 'Puell Multiple',
+                visible: false,
                 data: data_puell_multiple,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'Puell Multiple 7D MA',
+                name: 'Puell Multiple 7D MA',
+                data: data_puell_multiple_7dma,
                 tooltip: {
                     valueDecimals: 2
                 },
