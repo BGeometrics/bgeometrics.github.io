@@ -32,6 +32,7 @@
                 'https://charts.bgeometrics.com/files/cdd_terminal_ajusted_90dma.json'
             ).then(response => response.json());
  
+
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -40,6 +41,19 @@
                         linLogSwitch: {
                             className: 'highcharts-lin-log-switch',
                             symbol: 'logarithmic.svg'
+                        }
+                    },
+                    shapes: {
+                        items: {
+                            rectangle: {
+                                // Set the default fill and stroke color for rectangles
+                                symbol: 'rectangle',
+                                shapeOptions: {
+                                    fill: 'rgba(0, 255, 0, 0.5)',  // Default fill color: green with transparency
+                                    stroke: '#008000',             // Default border color: green
+                                    strokeWidth: 2                 // Border width
+                                }
+                            }
                         }
                     }
                 }
@@ -70,8 +84,26 @@
                                 'deselectButton',
                                 { button: button }
                             );
+                        },
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                stroke: '#FF8000',             
+                                strokeWidth: 2                 
+                            }
                         }
-                    }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                stroke: '#FF8000',             
+                                strokeWidth: 2                 
+                            }
+                        }
+                    },
                 }
             },
 
