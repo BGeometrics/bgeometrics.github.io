@@ -31,6 +31,9 @@
             const data_nrpl_usd = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_usd.json'
             ).then(response => response.json());
+            const data_nrpl_usd_7dma = await fetch(
+                'https://charts.bgeometrics.com/files/nrpl_usd_7dma.json'
+            ).then(response => response.json());
             const data_nrpl_7dma = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_7dma.json'
             ).then(response => response.json());
@@ -185,6 +188,22 @@
                 data: data_nrpl_7dma,
                 tooltip: {
                     valueDecimals: 6
+                },
+                yAxis: 0,
+                zones: [{
+                    value: 0,
+                    color: '#BB0E22'
+                }, {
+                    color: '#329542',
+                }]
+            }, {
+                id:'NRPL 7D MA USD',
+                name: 'NRPL 7D MA BTC',
+                color: '#329542',
+                visible: false,
+                data: data_nrpl_usd_7dma,
+                tooltip: {
+                    valueDecimals: 2
                 },
                 yAxis: 0,
                 zones: [{
