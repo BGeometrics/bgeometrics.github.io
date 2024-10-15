@@ -81,7 +81,22 @@
                                 { button: button }
                             );
                         }
-                    }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
                 }
             },
 
@@ -164,7 +179,6 @@
                 id:'sth_sopr',
                 name: 'STH SOPR',
                 data: data_sth_sopr,
-                visible: false,
                 tooltip: {
                     valueDecimals: 4
                 },

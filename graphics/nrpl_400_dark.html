@@ -81,7 +81,23 @@
                                 { button: button }
                             );
                         }
-                    }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
                 }
             },
 
@@ -172,7 +188,6 @@
                 id:'NRPL STH',
                 name: 'NRPL STH',
                 color: '#8AAD34',
-                visible: false,
                 data: data_realized_sth,
                 tooltip: {
                     valueDecimals: 6

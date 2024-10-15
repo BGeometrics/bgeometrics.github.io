@@ -74,7 +74,23 @@
                                 { button: button }
                             );
                         }
-                    }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
                 }
             },
 
@@ -160,7 +176,13 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0
+                yAxis: 0,
+                zones: [{
+                    value: 1,
+                    color: '#D72009'
+                }, {
+                    color: '#008F39'
+                }]
             }, {
                 id: 'LTH-MVRV',
                 name: 'LTH-MVRV',
@@ -181,14 +203,13 @@
                 id: 'STH-MVRV',
                 color: '#90ed7d',
                 data: data_sth_mvrv,
-                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0,
                 zones: [{
                     value: 1,
-                    color: '#ff2222'
+                    color: '#BE2414'
                 }, {
                     color: '#90ed7d'
                 }]

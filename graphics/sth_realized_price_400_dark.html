@@ -78,7 +78,23 @@
                                 { button: button }
                             );
                         }
-                    }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
                 }
             },
 
@@ -112,27 +128,26 @@
             },
 
             yAxis: [{
-                height: '80%',
                 type: 'logarithmic',
-                resize: {
-                    enabled: true
-                },
+                opposite: false,
                 labels: {
                     align: 'left',
                 },
             }, {
-                height: '80%',
-                type: 'logarithmic',
-                resize: {
-                    enabled: true
-                },
                 title: {
                     text: 'BTC price'
                 },
+                labels: {
+                    align: 'left',
+                },
+                type: 'logarithmic',
+                opposite: false,
             }, {
+                labels: {
+                    align: 'left',
+                },
                 top: '65%',
                 height: '35%',
-                offset: 0,
 
             }],
 
