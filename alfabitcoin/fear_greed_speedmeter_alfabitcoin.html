@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indicador de Miedo y Avaricia de Cripto</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!--<script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>-->
+
+    <link rel="shortcut icon" href="isotipo-alfaBitcoin.png" />
+
+    <figure class="highcharts-figure" style="background-color: #0D0D0D;">
+        <div id="container" style="background-color: #0D0D0D;"></div>
+        <p class="highcharts-description" style="background-color: #0D0D0D;">
+        </p>
+    </figure>
+</head>
+<body style="background-color: #0D0D0D;">
+    <script>
+        (async () => {
+            average = 0;
+
+            await fetch('https://bitcoin-data.com/v1/alfabitcoin/last')  
+                .then(response => response.json())
+                .then(shortTerm => {
+                    /*
+                    total = (shortTerm.miners_sale + 
+                        + shortTerm.funding_rate
+                        + shortTerm.nvts
+                        + shortTerm.sth_realized_price
+                        + shortTerm.short_term_trend
+                        + shortTerm.global_liquidity
+                        + shortTerm.vdd
+                        + shortTerm.geopolitical_risk
+                        + shortTerm.state_industry)/9;
+                    */
+                    average = parseFloat(shortTerm.average.toFixed(1));
+                    console.log(average);
+            });
+        
+        Highcharts.chart('container', {
+            chart: {
+                type: 'gauge',
+                plotBackgroundColor: '#0D0D0D',
+                plotBackgroundImage: '#0D0D0D',
+                //plotBorderWidth: 0,
+                plotShadow: false,
+                //height: '70%'
+                backgroundColor: '#0D0D0D' 
+            },
+
+            title: {
+                text: 'Indicador de Miedo y Avaricia de Cripto',
+                style: {
+                    color: '#FFFFFF', 
+                }
+            },
+            subtitle: {
+                text: 'Última actualización: XXX',
+                style: {
+                    color: '#999999', 
+                }
+            },
+
+            pane: {
+                startAngle: -90,
+                endAngle: 89.9,
+                background: null,
+                //center: ['50%', '75%'],
+                //size: '90%'
+            },
+
+            yAxis: {
+                min: 0,
+                max: 100,
+                tickPixelInterval: 0,
+                //tickPosition: 'inside',
+                tickColor: Highcharts.defaultOptions.chart.backgroundColor || '#FFFFFF',
+                //tickLength: 20,
+                //tickWidth: 2,
+                minorTickInterval: null,
+                labels: {
+                    distance: 20,
+                    style: {
+                        fontSize: '14px'
+                    }
+                },
+                lineWidth: 0,
+                plotBands: [{
+                    from: 0,
+                    to: 25,
+                    color: '#F02935', 
+                    thickness: 50,
+                    //borderRadius: '50%'
+                }, {
+                    from: 26,
+                    to: 50,
+                    color: '#F07D29', 
+                    thickness: 50,
+                }, {
+                    from: 51,
+                    to: 75,
+                    color: '#9ACB82', 
+                    thickness: 50
+                }, {
+                    from: 76,
+                    to: 100,
+                    color: '#34B349', 
+                    thickness: 50
+                }]
+            },
+
+            series: [{
+                name: 'Miedo y Avaricia',
+                data: [average],
+                tooltip: {
+                    valueSuffix: ''
+                },
+                dataLabels: {
+                    format: '{y}',
+                    borderWidth: 0,
+                    color: (
+                        Highcharts.defaultOptions.title &&
+                        Highcharts.defaultOptions.title.style &&
+                        Highcharts.defaultOptions.title.style.color
+                    ) || '#333333',
+                    style: {
+                        fontSize: '16px'
+                    }
+                },
+                dial: {
+                    radius: '50%',
+                    backgroundColor: 'gray',
+                    baseWidth: 12,
+                    baseLength: '0%',
+                    rearLength: '0%'
+                },
+                pivot: {
+                    backgroundColor: '#262626',
+                    radius: 6
+                }
+
+            }],
+            credits: {
+                text: 'Power by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    y: -100
+                }                
+            },
+
+        });
+
+    })();
+
+    </script>
+
+</body>
+</html>
