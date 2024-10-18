@@ -9,7 +9,6 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <!--<script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>-->
 
     <link rel="shortcut icon" href="isotipo-alfaBitcoin.png" />
 
@@ -22,24 +21,16 @@
 <body style="background-color: #0D0D0D;">
     <script>
         (async () => {
-            average = 0;
+            fear_greed_today = 0;
+            fear_greed_yesterday = 0;
+            fear_greed_week = 0;
 
-            await fetch('https://bitcoin-data.com/v1/alfabitcoin/last')  
+            await fetch('https://charts.bgeometrics.com/files/fear_greed_data.json')  
                 .then(response => response.json())
-                .then(shortTerm => {
-                    /*
-                    total = (shortTerm.miners_sale + 
-                        + shortTerm.funding_rate
-                        + shortTerm.nvts
-                        + shortTerm.sth_realized_price
-                        + shortTerm.short_term_trend
-                        + shortTerm.global_liquidity
-                        + shortTerm.vdd
-                        + shortTerm.geopolitical_risk
-                        + shortTerm.state_industry)/9;
-                    */
-                    average = parseFloat(shortTerm.average.toFixed(1));
-                    console.log(average);
+                .then(fear_greed_data => {
+                    fear_greed_today = fear_greed_data.today;
+                    fear_greed_yesterday = fear_greed_data.yesterday;
+                    fear_greed_week = fear_greed_data.week;
             });
         
         Highcharts.chart('container', {
@@ -55,12 +46,14 @@
 
             title: {
                 text: 'Indicador de Miedo y Avaricia de Cripto',
+                align: 'left',
                 style: {
                     color: '#FFFFFF', 
                 }
             },
             subtitle: {
                 text: 'Última actualización: XXX',
+                align: 'left',
                 style: {
                     color: '#999999', 
                 }
@@ -77,14 +70,23 @@
             yAxis: {
                 min: 0,
                 max: 100,
+                //tickPixelInterval: 0,
+                //tickPosition: 'inside',
+                //minorTickInterval: null,
+                //minorTickInterval: 'auto',
+                //minorTickWidth: 1,
+                //minorTickLength: 10,
+
+                tickColor: '#FFFFFF',
                 tickPixelInterval: 0,
-                tickPosition: 'inside',
-                tickColor: Highcharts.defaultOptions.chart.backgroundColor || '#FFFFFF',
-                tickLength: 0,
                 tickWidth: 0,
-                minorTickInterval: null,
+                tickLength: 0,
+                tickPosition: 'side',
+                minorTickPosition: 'inside',
+                minorTickColor: '#999999',
+
                 labels: {
-                    distance: 20,
+                    distance: -65,
                     style: {
                         fontSize: '14px'
                     }
@@ -116,22 +118,22 @@
 
             series: [{
                 name: 'Miedo y Avaricia',
-                data: [average],
+                data: [fear_greed_today],
                 tooltip: {
                     valueSuffix: ''
                 },
+
                 dataLabels: {
-                    format: '{y}',
+                    format: '{y}',  
                     borderWidth: 0,
-                    color: (
-                        Highcharts.defaultOptions.title &&
-                        Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color
-                    ) || '#333333',
                     style: {
-                        fontSize: '16px'
-                    }
+                        //color: '#777',
+                        color: 'white',
+                        fontSize: '16px',
+                        fontWeight: 'bold'
+                    },
                 },
+
                 dial: {
                     radius: '50%',
                     backgroundColor: 'gray',
@@ -142,7 +144,7 @@
                 pivot: {
                     backgroundColor: '#262626',
                     radius: 6
-                }
+                }, 
 
             }],
             credits: {
