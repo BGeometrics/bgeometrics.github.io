@@ -31,6 +31,9 @@
             const data_total_etf = await fetch(
                 'https://charts.bgeometrics.com/files/total_btc_etf_btc.json'
             ).then(response => response.json());
+            const data_etf_usd = await fetch(
+                'https://charts.bgeometrics.com/files/flow_btc_etf.json'
+            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -155,6 +158,19 @@
                 color: 'green',
 		        negativeColor: 'red',
                 data: data_etf,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2,
+                groupPadding: 0,
+            }, {
+                id:'BTC ETF USD',
+                type: 'column',
+                name: 'ETF flow USD',
+                visible: false,
+                color: '#0B6623',
+		        negativeColor: '#ED2939',
+                data: data_etf_usd,
                 tooltip: {
                     valueDecimals: 2
                 },
