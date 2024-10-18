@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin ETF: Total balance and daily flow</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -29,7 +26,7 @@
                 'https://charts.bgeometrics.com/files/etf_btc_btc_price.json'
             ).then(response => response.json());
             const data_etf = await fetch(
-                'https://charts.bgeometrics.com/files/flow_btc_etf.json'
+                'https://charts.bgeometrics.com/files/flow_btc_etf_btc.json'
             ).then(response => response.json());
             const data_total_etf = await fetch(
                 'https://charts.bgeometrics.com/files/total_btc_etf_btc.json'
