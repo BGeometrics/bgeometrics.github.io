@@ -10,20 +10,31 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <link href="https://charts.bgeometrics.com/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="isotipo-alfaBitcoin.png" />
 
-    <figure class="highcharts-figure" style="background-color: #0D0D0D;">
-        <div id="container" style="background-color: #0D0D0D;"></div>
-        <p class="highcharts-description" style="background-color: #0D0D0D;">
-        </p>
-    </figure>
 </head>
 <body style="background-color: #0D0D0D;">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-3">
+                <div id="container">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-3">
+                <div>
+                    <p class="highcharts-description" style="background-color: #FFFFFF;">Texto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         (async () => {
             fear_greed_today = 0;
             fear_greed_yesterday = 0;
             fear_greed_week = 0;
+            fear_greed_date = "";
 
             await fetch('https://charts.bgeometrics.com/files/fear_greed_data.json')  
                 .then(response => response.json())
@@ -31,6 +42,7 @@
                     fear_greed_today = fear_greed_data.today;
                     fear_greed_yesterday = fear_greed_data.yesterday;
                     fear_greed_week = fear_greed_data.week;
+                    fear_greed_date = fear_greed_data.date;
             });
         
         Highcharts.chart('container', {
@@ -52,7 +64,7 @@
                 }
             },
             subtitle: {
-                text: 'Última actualización: XXX',
+                text: 'Última actualización: ' + fear_greed_date,
                 align: 'left',
                 style: {
                     color: '#999999', 
@@ -124,7 +136,12 @@
                 },
 
                 dataLabels: {
-                    format: '{y}',  
+                    //format: '{y}',  
+                    //format: '<img src="https://static.coinstats.app/coins/1650455588819.png" alt="Coin Logo" class="jsx-239148687">',  
+                    //format: '<div class="jsx-239148687 chart-coin-logo"><img src="https://static.coinstats.app/coins/1650455588819.png" alt="Coin Logo" class="jsx-239148687"></div>'
+                    format: '<div style="text-align:center"><img src="https://static.coinstats.app/coins/1650455588819.png"><br/><span style="font-size:12px;opacity:0.4">km/h</span></div>',
+            y: -40
+        ,
                     borderWidth: 0,
                     style: {
                         //color: '#777',

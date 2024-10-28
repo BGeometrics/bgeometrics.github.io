@@ -26,16 +26,16 @@
     <script>
         (async () => {
             const data = await fetch(
-                'https://charts.bgeometrics.com/files/glm2.json'
+                'https://charts.bgeometrics.com/files/glm2_data.json'
             ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/glm_daily_btc_price.json'
             ).then(response => response.json());
             const data_change = await fetch(
-                'https://charts.bgeometrics.com/files/m2_yoy_change.json'
+                'https://charts.bgeometrics.com/files/m2_yoy_change_data.json'
             ).then(response => response.json());
             const data_weeks7_change = await fetch(
-                'https://charts.bgeometrics.com/files/m2_weeks7_change.json'
+                'https://charts.bgeometrics.com/files/m2_weeks7_change_data.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
