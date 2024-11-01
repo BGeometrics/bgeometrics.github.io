@@ -301,6 +301,14 @@ file2_path = lang + '/web-generation-model-dashboard-market-peaks-end.html'
 output_file_path = '/tmp/web/' + lang + '/dashboard_market_peaks.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page dashboard_demand.html with menu
+file1_path = lang + 'web-generation-model.html'
+file2_path = lang + 'web-generation-model-dashboard-demand-end.html'
+output_file_path = '/tmp/web/' + lang + 'dashboard_demand.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+
+
 ### Mode dark 
 
 _file_out = lang + '/web-generation-model-dark.html' 
@@ -428,6 +436,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-dashboard-market-peaks-end.html'
 output_file_path = '/tmp/web/' + lang + '/dashboard_market_peaks_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page dashboard_demand.html with menu
+file1_path = lang + 'web-generation-model-dark.html'
+file2_path = lang + 'web-generation-model-dashboard-demand-end.html'
+output_file_path = '/tmp/web/' + lang + 'dashboard_demand_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
