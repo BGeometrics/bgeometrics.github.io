@@ -8,7 +8,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="400px" src="graphics/sth_realized_price_400.html" allow="fullscreen" title="Bitcoin STH Realized Price" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="400px" src="graphics/etf_400.html" allow="fullscreen" title="Bitcoin ETF BTC Flow" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -18,7 +18,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="400px" src="graphics/sopr_400.html" allow="fullscreen" title="Bitcoin SOPR (Spent Output Profit Loss)" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="400px" src="graphics/nvts_bg_400.html" allow="fullscreen" title="Bitcoin Dynamic NTVS" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -28,7 +28,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="400px" src="graphics/nrpl_400.html" allow="fullscreen" title="Bitcoin NRPL (Net Realized Profit Loss)" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="400px" src="graphics/address_active_400.html" allow="fullscreen" title="Bitcoin Active Addresses" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="400px" src="graphics/nupl_400.html" allow="fullscreen" title="Bitcoin NUPL (Net Unrealized Profit Loss)" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="400px" src="graphics/open_interest_futures_400.html" allow="fullscreen" title="Bitcoin Open Interest Futures" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="400px" src="graphics/mvrv_400.html" allow="fullscreen" title="Bitcoin MVRV (Market Value to Realized Value)" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="400px" src="graphics/fear_greed_400.html" allow="fullscreen" title="Bitcoin Fear and Greed" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -109,88 +109,38 @@
     <br>
     <section>
       <div class="container">
-        <a href="dashboard_short_term_trend.html">
-          <h5>Dashboard Bitcoin Short Term Trend</h5>
+        <a href="dashboard_demand.html">
+          <h5>Dashboard Bitcoin Demand</h5>
 	</a>
         <p> 
-          These on-chain metrics allow for the analysis of short-term investor behavior and thus detect trends in the price of bitcoin. They are especially useful for anticipating trend changes and validating market movements based on activity within the blockchain.
+	  <b>ETF BTC Flow</b>
+          <br>
+	  The daily flows and aggregates of Bitcoin of the ETF, Blackrock (IBIT), The Grayscale Bitcoin Trust (GBTC), Fidelity (FBTC), Ark Invest /21Shares (ARKB), Bitwise (BITB), Franklin (EZBC), Investco / Galaxy (BTCO), Vaneck (HODL), Valkyrie (BRR) and Wisdomtree (BTCW).
           <br><br>
-	  <b>STH Realized Price</b>
+          <b>NVTS (Dynamic Range NVT Signal)</b>
           <br>
-          This is the average price of bitcoin that has been moved/spent/bought in the last 155 days.
+	  It is the PE (Price Earning Ratio) ratio of Bitcoin, which arises from dividing the dollar value of on-chain transactions by the market capitalization.
           <br>
-          If the current market price is higher than the realized price, short-term investors are in profit. 
-          <br>
-	  If the price is below the realized price, they are in loss, which could generate selling pressure in the short term.
-          <br>
-	  Historically when the STH value has been well below the BTC line they have been good buying times.
+          The number of unique Bitcoin addresses that sent or received transactions.
           <br><br>
-          <b>SOPR (Spent Output Profit Ratio)</b>
+	  <b>Active Addresses</b> 
           <br>
-          This is the ratio between the current selling price and the buying price of the bitcoin spent.
+          The number of unique Bitcoin addresses that sent or received transactions. Only how you activate addresses that made successful transactions are taken into account.
           <br>
-          A SOPR value above 1 indicates that holders are selling at a profit.
-          <br>
-          A value below 1 indicates that they are selling at a loss.
-          <br>
-          A SOPR below 1 in downtrends can signal a possible bottom, while values above 1 in uptrends can suggest overbought.
+          This is a metric that shows the activity in the Bitcoin network.
           <br><br>
-	  <b>NRPL (Net Realized Profit/Loss)</b> 
+          <b>Open Interest Futures</b> 
           <br>
-	  It is measures the net realized profit or loss of all Bitcoin transactions occurring on the network.
+	  Bitcoin open interest is the total number of Bitcoin futures or options contracts outstanding in the market.
           <br>
-          When NRPL is positive investors are making profits on the transactions they make. This may indicate that the market is in an optimistic phase.
-          <br>
-	  When the NRPL is very high, it indicates that there are many sales taking place with high profits, and it is not usually a good time to buy.
-          <br>
-          When NRPL is negative, it indicates that investors are selling at a loss. This could happen in periods of price correction or bear markets, where investors sell their assets in panic or to minimize their losses.
-          <br>
-          When the NRPL is very low, it indicates that there are many purchases taking place with high losses, and it is usually a good time to buy.
+          It is a measure of the amount of money invested in Bitcoin derivatives at any given time.
           <br><br>
-          <b>NUPL (Net Unrealized Profit Loss)</b> 
+	  <b>Fear and Greed</b>
           <br>
-	  It is an indicator used to assess the aggregate profitability of all Bitcoin holders in the market. 
+          The Bitcoin Fear and Greed Index is a metric used to gauge the overall market sentiment surrounding Bitcoin and, by extension, often the broader cryptocurrency market. 
           <br>
-          It measures the difference between the net unrealized profit or loss of the coins in circulation and helps to identify the prevailing market sentiment (such as optimism, euphoria, anxiety, or capitulation).
-          <br><br>
-	  <b>MVRV</b>
-          <br>
-          Represents the current market value of bitcoin divided by its purchase value.
-          <br>
-          It reflects the potential profitability of investors today.
-          <br><br>
-	  <b>VDD (Value Days Destroyed)</b>
-          <br>
-          These are the days of coins destroyed, a velocity of spending indicator where extra weighting is given to coins that have not moved on-chain for longer periods of time by the price of BTC.
-          <br>
-          How many days on average have passed since the bitcoins being spent were idle in an address.
-          <br>
-          If there is a significant increase in VDD, it means that long-term holders are selling their bitcoin, which could indicate a correction. If VDD is low, it suggests that long-term holders are holding their coins.
-          <br><br>
-	  <b>Funding Rate</b>
-          <br>
-          The rates paid between traders in perpetual futures markets.
-          <br>
-          A positive funding rate means that traders who are long are paying those who are short, indicating optimism in the market.
-          <br>
-	  If it is negative, it suggests the opposite.
-          <br><br>
-	  <b>Miner sell pressure</b>
-          <br>
-          Indicates the amount of Bitcoin that miners are selling on the market.
-          <br>
-          Since miners generate revenue in Bitcoin by securing the network, they eventually need to sell some of their Bitcoin to cover operational costs, such as electricity and equipment.
-          <br>
-          An increase or decrease in this selling pressure can influence the price of Bitcoin, especially in the short term.
-          <br>
-	  When it is high, it indicates more sales than usual in relation to the reservations they have.
-          <br>
-          When it is low, it indicates fewer sales than usual in relation to their reservations.
-          <br><br>
-	  <b>Puell Multiple</b> 
-          <br>
-	  It is calculated by dividing the daily issuance value of bitcoins (in USD) by the 365-day moving average of the daily issuance value.
-          <br>
+          Created by <a href='https://alternative.me/crypto/fear-and-greed-index/'>Alternative.me</a>, the index gives a daily score on a scale from 0 to 100, where lower scores indicate "Fear" and higher scores indicate "Greed.
+
         </p>
       </div>
 
