@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Range NVT Signal</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
+    <div id="container-iframe" style="width:100%; height:400px; margin: 0 auto;"></div>
+
+    <script>
+        (async () => {
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/nvts_bg_btc_price.json'
+            ).then(response => response.json());
+            const data_nvt = await fetch(
+                'https://charts.bgeometrics.com/files/nvts_bg.json'
+            ).then(response => response.json());
+            const data_nvt_200dma = await fetch(
+                'https://charts.bgeometrics.com/files/nvts_730dma_bg.json'
+            ).then(response => response.json());
+            const data_nvt_high = await fetch(
+                'https://charts.bgeometrics.com/files/nvts_730dma_high_bg.json'
+            ).then(response => response.json());
+            const data_nvt_low = await fetch(
+                'https://charts.bgeometrics.com/files/nvts_730dma_low_bg.json'
+            ).then(response => response.json());
+
+            var chart = Highcharts.stockChart('container-iframe', {
+                stockTools: {
+                    gui: {
+                        buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                        definitions: {
+                            linLogSwitch: {
+                                className: 'highcharts-lin-log-switch',
+                                symbol: 'logarithmic.svg'
+                            }
+                        }
+                    }
+                },
+                navigation: {
+                    bindings: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            init: function (button) {
+                                const chart = this.chart,
+                                    isLogarithmic = chart.yAxis[1].logarithmic,
+                                    axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                    iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                                chart.yAxis[1].update({
+                                    type: isLogarithmic ? 'linear' : 'logarithmic',
+                                    minorTickInterval: isLogarithmic ? null : 'auto'
+                                });
+
+                                button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                                Highcharts.fireEvent(
+                                    this,
+                                    'deselectButton',
+                                    { button: button }
+                                );
+                            }
+                        }
+                    }
+                },
+
+                chart: {
+                    renderTo: 'container-iframe',
+                    events: {
+                        load: function() {
+                            var image = new Image();
+                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                            image.src = adresse_image;
+                            var height_image = 128;
+                            var width_image = 128;
+                            var textX = this.plotLeft + (this.plotWidth * 0.5);
+                            var textY = this.plotTop + (this.plotHeight * 0.5);
+                            var position_x = textX - width_image / 2;
+                            var position_y = textY - height_image / 2;
+                            this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                                .attr({zIndex: 1})
+                                .add();
+                        
+                            try {
+                                let chart1 = this;
+                                chart1.stockTools.showhideBtn.click();
+                            } catch (error) {
+                                console.error('An error occurred:', error.message);
+                            }
+                        }
+                    }
+                },
+
+                yAxis: [{
+                    labels: {
+                        align: 'left',
+                    },
+                    title: {
+                        text: 'Dynamic Range NVTS'
+                    },
+                    gridLineWidth: 0,
+                }, {
+                    title: {
+                        text: 'BTC price'
+                    },
+                    gridLineWidth: 0,
+                    type: 'logarithmic',
+                    opposite: false
+                }],
+
+                series: [{
+                    id: 'BTC price',
+                    name: 'BTC price',
+                    color: 'rgba(0, 0, 0, 1)',
+                    data: data_price,
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 1
+                }, {
+                    id:'Dinamic NVTS',
+                    name: 'Dynamic NVTS',
+                    data: data_nvt,
+                    color: 'rgba(0, 0, 255, 1)',
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0, 
+                }, {
+                    id:'nvts mean',
+                    name: 'NVTS mean',
+                    visible: false, 
+                    data: data_nvt_200dma,
+                    color: 'rgba(125, 125, 125, 0.2)',
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0, 
+                }, {
+                    id:'nvts high',
+                    name: 'NVTS high',
+                    data: data_nvt_high,
+                    color: 'rgba(255, 0, 0, 0.3)',
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0, 
+                }, {
+                    id:'nvts low',
+                    name: 'NVTS low',
+                    data: data_nvt_low,
+                    color: 'rgba(0, 255, 0, 0.5)',
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0, 
+                },
+            ],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                y: -6,
+                verticalAlign: 'top',
+                align:'center'
+            },
+
+            rangeSelector: {
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
+            },
+
+            credits: {
+                text: 'Power by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
+            },
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        }
+                    }
+                }]
+            }
+        });
+
+        min_time_high = 0;
+        max_time_high = 0;
+        min_time_low = 0;
+        max_time_low = 0;
+
+        // The datasets must start at the same time origin and have the same length
+        for (var row = 1; row < data_nvt.length; row++) {
+            /*
+            let date = new Date(data_nvt[row][0]);
+            console.log("date: " + date);
+            console.log("#### nvt " + data_nvt[row-1][1]);
+            console.log("#### nvt high " + data_nvt_high[row-1][1]);
+            console.log("#### nvt low " + data_nvt_low[row-1][1]);
+            */
+            // Si estamos en el último registro y se ha iniciado una zona hay que setear el valor máximo para que se coloree
+            if(row >= data_nvt.length-1) {
+                max_time_low = data_nvt[row][0];
+                max_time_high = data_nvt[row][0] + 86400000;
+            }
+
+            // High
+            if ((data_nvt[row-1][1] < data_nvt_high[row-1][1]) && (data_nvt[row][1] > data_nvt_high[row][1]) && (max_time_high == 0)) {
+                min_time_high = data_nvt[row][0];
+            }
+
+            if ((data_nvt[row-1][1] > data_nvt_high[row-1][1]) && (data_nvt[row][1] < data_nvt_high[row][1]) && (min_time_high != 0)) {
+                max_time_high = data_nvt[row][0];
+            }
+
+            if (min_time_high != 0 && max_time_high !=0) {
+                chart.xAxis[0].addPlotBand({
+                    from: min_time_high,
+                    to: max_time_high,
+                    color: 'rgba(255, 0, 0, 0.1)',
+                    zIndex: 3
+                });
+                min_time_high = 0;
+                max_time_high = 0;
+            }
+
+            // Low
+            if ((data_nvt[row-1][1] > data_nvt_low[row-1][1]) && (data_nvt[row][1] < data_nvt_low[row][1]) && (max_time_low == 0)) {
+                min_time_low = data_nvt[row][0];
+            }
+
+            if ((data_nvt[row-1][1] < data_nvt_low[row-1][1]) && (data_nvt[row][1] > data_nvt_low[row][1]) && (min_time_low != 0)) {
+                max_time_low = data_nvt[row][0];
+            }
+
+            if (min_time_low != 0 && max_time_low !=0) {
+                chart.xAxis[0].addPlotBand({
+                    from: min_time_low,
+                    to: max_time_low,
+                    color: 'rgba(0, 255, 0, 0.1)',
+                    zIndex: 3
+                });
+                min_time_low = 0;
+                max_time_low = 0;
+            }
+        }
+
+    })();
+
+    </script>
+
+</body>
+</html>
