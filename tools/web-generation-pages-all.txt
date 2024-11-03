@@ -73,6 +73,7 @@
 /tmp/web/m2_global.html,web-generation-end-m2-global.html,Bitcoin and M2 Growth Global of YoY,graphics/m2_global.html,Bitcoin and M2 Growth Global of YoY,,macro-nav
 /tmp/web/m2_btc.html,web-generation-end-m2-btc.html,Bitcoin and Money Supply (M2),graphics/m2_btc.html,Bitcoin and Money Supply (m2),,macro-nav
 /tmp/web/choppiness.html,web-generation-end-choppiness-global.html,Bitcoin Choppiness Index (14 day),graphics/choppiness.html,Bitcoin Choppiness Index (14 day),,charts-nav
+/tmp/web/google_trends.html,web-generation-end-google-trends.html,Bitcoin Google Trends,graphics/google_trends.html,Bitcoin Google Trends,,charts-nav
 /tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,miners-nav
 /tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,charts-nav
 /tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,miners-nav
