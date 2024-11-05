@@ -79,6 +79,7 @@ var names = [
 { name: "Power Law", link: "power_law.html" },
 { name: "Choppiness Index", link: "choppiness.html" },
 { name: "M2 Growth Global YoY", link: "m2_global.html" },
+{ name: "Google Trends", link: "google_trends.html" },
 ];
 
 function search() {
