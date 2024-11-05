@@ -34,6 +34,12 @@
             const data_supply = await fetch(
                 'https://charts.bgeometrics.com/files/supply.json'
             ).then(response => response.json());
+            const data_lth_supply_perc = await fetch(
+                'https://charts.bgeometrics.com/files/lth_supply_perc.json'
+            ).then(response => response.json());
+            const data_sth_supply_perc = await fetch(
+                'https://charts.bgeometrics.com/files/sth_supply_perc.json'
+            ).then(response => response.json());
             //const data_reserve_risk = await fetch(
             //    'https://charts.bgeometrics.com/files/reserve_risk.json'
             //).then(response => response.json());
@@ -130,6 +136,10 @@
                 },
                 type: 'logarithmic',
                 opposite: false, 
+            }, {
+                title: {
+                    text: 'LTH STH %'
+                },
            // }, {
            //     top: '65%',
            //     height: '35%',
@@ -170,6 +180,24 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id:'LTH Supply Perc',
+                name: 'LTH Supply %',
+                visible: false,
+                data: data_lth_supply_perc,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
+            }, {
+                id:'STH Supply Perc',
+                name: 'STH Supply %',
+                visible: false,
+                data: data_sth_supply_perc,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
             /*
             }, {
                 id: 'Reserve Risk',
