@@ -109,6 +109,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'Variación interanual de la liquidez ​​global (%)'
@@ -126,6 +132,7 @@
             }],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 zIndex: 2,
@@ -135,6 +142,7 @@
                 },
                 yAxis: 1
             },{
+                id: 'Variacion liquidez interanual (%)',
                 name: 'Variacion liquidez interanual (%)',
                 type: 'area',
                 data: data_change,
@@ -151,6 +159,7 @@
                     color: '#2ECC71'
                 }]
             },{
+                id: 'Variacion liquidez 7 semanas (%)',
                 name: 'Variacion liquidez 7 semanas (%)',
                 type: 'area',
                 data: data_weeks7_change,
@@ -166,6 +175,7 @@
                     color: '#2ECC71'
                 }]
             },{
+                id: 'Liquidez global (USD)',
                 name: 'Liquidez global (USD)',
                 type: 'line',
                 visible: false, 

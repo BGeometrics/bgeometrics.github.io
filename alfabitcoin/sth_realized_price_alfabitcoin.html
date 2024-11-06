@@ -107,6 +107,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 type: 'logarithmic',
                 startOnTick: false,
@@ -119,7 +125,7 @@
             }],
 
             series: [{
-                id:'sth_realized_price',
+                id:'STH Realized Price',
                 name: 'STH Realized Price',
                 color: 'red',
                 data: data_metrics,

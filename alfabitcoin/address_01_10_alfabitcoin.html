@@ -100,6 +100,9 @@
                 title: {
                     text: 'Address'
                 },
+                labels: {
+                    align: 'left',
+                },
             }, {
                 title: {
                     text: 'BTC price'
@@ -108,7 +111,7 @@
             }],
 
             series: [{
-                id:'address_01_10',
+                id:'Address 01_10',
                 name: 'Address',
                 data: data_metrics,
                 tooltip: {
@@ -116,6 +119,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

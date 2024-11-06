@@ -112,6 +112,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'Address',
@@ -127,6 +133,7 @@
             }],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

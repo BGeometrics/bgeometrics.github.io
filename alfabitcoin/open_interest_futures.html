@@ -161,10 +161,14 @@
                     stacking: 'normal',
                     lineWidth: 1,
                     lineColor: '#FFFFFF',
+                },
+                series:{
+                    showInLegend:true
                 }
             }, 
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
@@ -175,6 +179,7 @@
                 },
                 yAxis: 1
             }, {
+                id: 'Total',
                 name: 'Total',
                 color: 'rgba(44, 175, 255, 0.7)',
                 data: data_total,

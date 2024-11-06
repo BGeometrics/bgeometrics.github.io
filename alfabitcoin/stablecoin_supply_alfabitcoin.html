@@ -136,10 +136,14 @@
                         lineWidth: 1,
                         lineColor: '#666666'
                     }
+                },
+                series:{
+                    showInLegend:true
                 }
             }, 
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
@@ -149,6 +153,7 @@
                 },
                 yAxis: 1
             }, {
+                id: 'USDT',
                 name: 'USDT',
                 data: data_usdt,
                 tooltip: {
@@ -156,6 +161,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'USDC',
                 name: 'USDC',
                 data: data_usdc,
                 tooltip: {
@@ -163,6 +169,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'DAI',
                 name: 'DAI',
                 data: data_dai,
                 tooltip: {

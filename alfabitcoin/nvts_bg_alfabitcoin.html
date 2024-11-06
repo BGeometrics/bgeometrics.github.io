@@ -110,6 +110,12 @@
                     }
                 },
 
+                plotOptions:{
+                    series:{
+                        showInLegend:true
+                    }
+                },
+
                 yAxis: [{
                     labels: {
                         align: 'left',
@@ -128,6 +134,7 @@
                 }],
 
                 series: [{
+                    id: 'BTC price',
                     name: 'BTC price',
                     color: 'rgba(0, 0, 0, 1)',
                     data: data_price,

@@ -99,6 +99,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'RHodl 1m'
@@ -120,6 +126,7 @@
             }],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

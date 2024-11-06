@@ -98,6 +98,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'Supply in Profit / Loss',
@@ -115,7 +121,7 @@
             }],
 
             series: [{
-                id:'supply_profit_loss',
+                id:'Supply Profit Loss',
                 name: 'Supply Profit / Loss (%)',
                 data: data_metrics,
                 tooltip: {
@@ -123,6 +129,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

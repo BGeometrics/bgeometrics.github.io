@@ -58,10 +58,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -98,6 +96,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'Active Addresses'
@@ -111,7 +115,7 @@
             }],
 
             series: [{
-                id:'address_active',
+                id:'Address Active',
                 name: 'Active Addresses',
                 data: data_metrics,
                 tooltip: {
@@ -119,6 +123,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

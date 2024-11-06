@@ -102,6 +102,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 type: 'logarithmic',
                 startOnTick: false,
@@ -114,7 +120,7 @@
             }],
 
             series: [{
-                id:'terminal_price',
+                id:'Terminal Price',
                 name: 'Terminal Price',
                 data: data_metrics,
                 tooltip: {
@@ -122,6 +128,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

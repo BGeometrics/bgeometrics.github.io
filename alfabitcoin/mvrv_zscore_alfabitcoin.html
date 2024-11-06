@@ -96,6 +96,12 @@
                 }
             },
             
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'MVRV Z-Score'
@@ -126,6 +132,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 data: data_price,
                 color: 'black',

@@ -123,6 +123,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             xAxis: {
                 plotLines: plotlines
             },
@@ -141,6 +147,7 @@
         ],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,

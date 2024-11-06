@@ -102,6 +102,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 type: 'logarithmic',
                 startOnTick: false,
@@ -123,6 +129,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
