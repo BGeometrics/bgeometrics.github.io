@@ -156,6 +156,7 @@
             }],
 
             series: [{
+                id: 'BTC price',
                 name: 'BTC price',
                 color: 'white',
                 data: data_price,
@@ -164,7 +165,7 @@
                 },
                 yAxis: 1
             }, {
-                id:'sp500',
+                id:'S&P 500',
                 name: 'S&P 500',
                 data: data_sp500,
                 tooltip: {
@@ -172,7 +173,7 @@
                 },
                 yAxis: 2
             }, {
-                id:'gold',
+                id:'Gold',
                 name: 'Gold',
                 data: data_gold,
                 tooltip: {
@@ -180,16 +181,18 @@
                 },
                 yAxis: 3
             }, {
-                id:'tesla',
+                id:'Tesla',
                 name: 'Tesla',
+                visible: false,
                 data: data_tesla,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'microstrategy',
+                id:'Microstrategy',
                 name: 'MicroStrategy',
+                visible: false,
                 data: data_microstrategy,
                 tooltip: {
                     valueDecimals: 2
@@ -200,6 +203,7 @@
             legend:{
                 enabled:true,
                 floating: true,
+		        y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -243,8 +247,5 @@
             </p>
         </div>
     </section>
-    <div class="credits">
-        Power by <a href="https://charts.bgeometrics.com/">BGeometrics</a>
-    </div>
 </body>
 </html>
