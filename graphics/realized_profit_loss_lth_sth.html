@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Realized Supply LTH and STH</STH:w></title>
+    <title>Bitcoin Realized Profit Loss LTH STH (BTC)</STH:w></title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -25,17 +25,17 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/profit_loss_btc_price.json'
             ).then(response => response.json());
-            const data_lth_supply_profit = await fetch(
-                'https://charts.bgeometrics.com/files/lth_supply_profit.json'
+            const data_realized_profit_lth = await fetch(
+                'https://charts.bgeometrics.com/files/realized_profit_lth.json'
             ).then(response => response.json());
-            const data_lth_supply_loss = await fetch(
-                'https://charts.bgeometrics.com/files/lth_supply_loss.json'
+            const data_realized_loss_lth = await fetch(
+                'https://charts.bgeometrics.com/files/realized_loss_lth.json'
             ).then(response => response.json());
-            const data_sth_supply_profit = await fetch(
-                'https://charts.bgeometrics.com/files/sth_supply_profit.json'
+            const data_realized_profit_sth = await fetch(
+                'https://charts.bgeometrics.com/files/realized_profit_sth.json'
             ).then(response => response.json());
-            const data_sth_supply_loss = await fetch(
-                'https://charts.bgeometrics.com/files/sth_supply_loss.json'
+            const data_realized_loss_sth = await fetch(
+                'https://charts.bgeometrics.com/files/realized_loss_sth.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -77,7 +77,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Realized Supply LTH STH', 
+                text: 'Bitcoin Realized Profit Loss LTH STH', 
                 align: 'left',
             },
 
@@ -115,7 +115,7 @@
                     align: 'left',
                 },
                 title: {
-                    text: 'BTC Realized Supply ',
+                    text: 'BTC Realized',
                 },
             }, {
                 title: {
@@ -126,7 +126,7 @@
             }],
 
             series: [{
-                name: 'Precio BTC',
+                name: 'BTC Price',
                 color: 'black',
                 data: data_price,
                 tooltip: {
@@ -134,25 +134,25 @@
                 },
                 yAxis: 1
             }, {
-                id:'LTH Supply Profit',
-                name: 'LTH Supply Profit',
-                data: data_lth_supply_profit,
+                id:'LTH Profit',
+                name: 'LTH Profit',
+                data: data_realized_profit_lth,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'LTH Supply Loss',
-                name: 'LTH Supply Loss',
-                data: data_lth_supply_loss,
+                id:'LTH Loss',
+                name: 'LTH Loss',
+                data: data_realized_loss_lth,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'STH Supply Profit',
-                name: 'STH Supply Profit',
-                data: data_sth_supply_profit,
+                id:'STH Profit',
+                name: 'STH Profit',
+                data: data_realized_profit_sth,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -160,7 +160,7 @@
             }, {
                 id:'STH Supply Loss',
                 name: 'STH Supply Loss',
-                data: data_sth_supply_loss,
+                data: data_realized_loss_lth,
                 tooltip: {
                     valueDecimals: 2
                 },
