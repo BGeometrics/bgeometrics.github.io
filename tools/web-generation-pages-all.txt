@@ -19,6 +19,7 @@
 /tmp/web/nupl.html,web-generation-end-nupl.html,NUPL (Net Unrealized Profit Loss),graphics/nupl.html,NUPL (Net Unrealized Profit Loss),,market-nav
 /tmp/web/sth_realized_price.html,web-generation-end-sth-realized-price.html,STH Realized Price,graphics/sth_realized_price.html,STH Realized Price,,market-nav
 /tmp/web/lth_realized_price.html,web-generation-end-lth-realized-price.html,LTH Realized Price,graphics/lth_realized_price.html,LTH Realized Price,,market-nav
+/tmp/web/supply_realized_lth_sth.html,web-generation-end-supply-realized-lth-sth.html,Realized Supply LTH STH,graphics/supply_realized_lth_sth.html,Realized Supply LTH STH,,market-nav
 /tmp/web/mvrv.html,web-generation-end-mvrv.html,MVRV,graphics/mvrv.html,MVRV,,market-nav
 /tmp/web/mvrv_ratio.html,web-generation-end-mvrv.html,MVRV Ratio,graphics/mvrv_ratio.html,MVRV Ratio,,market-nav
 /tmp/web/sth_mvrv.html,web-generation-end.html,STH MVRV,graphics/sth_mvrv.html,STH MVRV,,market-nav
