@@ -216,47 +216,15 @@
                 }                
             },
             responsive: {
-                rules: [
-                {
+                rules: [{
                     condition: {
-                        maxWidth: 1000
+                        maxWidth: 800
                     },
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        },
-                        legend: {
-                            enabled: false,
-                        },
+                        }
                     }
-                }, {
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        },
-                        legend: {
-                            enabled: false,
-                        },
-                        yAxis: [{
-                            labels: {
-                                enabled: false
-                            },
-                            title: {
-                                text: ''
-                            }
-                        }, {
-                            labels: {
-                                enabled: false
-                            },
-                            title: {
-                                text: ''
-                            }
-
-                        }]
-                    },
                 }]
             }
         });
