@@ -28,6 +28,9 @@
             const data_short_term_trends = await fetch(
                 'https://charts.bgeometrics.com/files/short_term_trends_average.json'
             ).then(response => response.json());
+            const data_short_term_trends_7sma = await fetch(
+                'https://charts.bgeometrics.com/files/short_term_trends_7sma.json'
+            ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -128,6 +131,28 @@
                 id:'BG Short Term Trends Index',
                 name: 'BGeometrics Short Term Trends Index',
                 data: data_short_term_trends,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0,
+		        zones: [{
+		            value: 25,
+                    color: '#3CB043'
+                }, {
+		            value: 50,
+                    color: '#F9D71C'
+                }, {
+		            value: 75,
+                    color: '#FC6600'
+                }, {
+		            value: 100,
+                    color: '#D30000'
+                }]
+            }, {
+                id:'BG Short Term Trends Index 7D MA',
+                name: 'BGeometrics Short Term Trends Index 7D MA',
+                data: data_short_term_trends_7sma,
                 tooltip: {
                     valueDecimals: 2
                 },
