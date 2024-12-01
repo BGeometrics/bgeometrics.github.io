@@ -337,6 +337,12 @@ file2_path = 'web-generation-model-dashboard-demand-end.html'
 output_file_path = '/tmp/web/dashboard_demand.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page suggestion.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-bg-suggestion-end.html'
+output_file_path = '/tmp/web/bg_suggestion.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 
 ### Mode dark 
 
@@ -498,6 +504,11 @@ file2_path = 'web-generation-model-dashboard-demand-end.html'
 output_file_path = '/tmp/web/dashboard_demand_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page suggestion.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-bg-suggestion-end.html'
+output_file_path = '/tmp/web/bg_suggestion_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
 print("For copy generate pages to project") 
@@ -506,4 +517,3 @@ print("cd ..")
 print("git commit -a -m... ")
 print("git push")
 print("")
-
