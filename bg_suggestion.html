@@ -750,39 +750,37 @@
       <div id="searchResults"></div>
     </div>
 
-    <section>
-      <div class="pagetitle">
-	      <h1><a href='https://bitcoin-data.com/api/swagger-ui/index.html' target='_blank'>Suggetions</a></h1>
-      </div>
-    </section>
-
     <section class="section">
 
-<div class="container mt-5">
-    <h1>Suggestions</h1>
-    <p class="text-center">
-        If you have any suggestions, ideas or proposals to improve our website, please do not hesitate to share them.
-    </p>
-    <p class="text-center fw-bold">All your proposals are welcome!</p>
+	<div class="container mt-5">
+	    <h1 class="text-center">Suggestions</h1>
+	    <p class="text-center">
+		If you have any suggestions, ideas or proposals to improve our website, please do not hesitate to share them.
+	    </p>
+	    <p class="text-center fw-bold">All your proposals are welcome!</p>
 
-    <div class="card mt-4">
-        <div class="card-body">
-            <form id="suggestionForm">
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Name or Nick (optional)">
-                </div>
-                <div class="mb-3">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email (optional)">
-                </div>
-                <div class="mb-3">
-                    <label for="suggestionText" class="form-label">Suggestion</label>
-                    <textarea class="form-control" id="suggestionText" name="suggestionText" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </div>
-    </div>
-</div>
+	    <div class="card mt-4">
+		<div class="card-body">
+		    <form id="suggestionForm">
+			<div class="mb-3">
+			    <input type="text" class="form-control" id="username" name="username" placeholder="Name or Nick (optional)">
+			</div>
+			<div class="mb-3">
+			    <input type="email" class="form-control" id="email" name="email" placeholder="Email (optional)">
+			</div>
+			<div class="mb-3">
+			    <label for="suggestionText" class="form-label">Suggestion</label>
+			    <textarea class="form-control" id="suggestionText" name="suggestionText" rows="4" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Send</button>
+		    </form>
+		</div>
+	    </div>
+	</div>
+
+    </section>
+
+  </main>
 
 <script>
     document.getElementById('suggestionForm').addEventListener('submit', async function(event) {
@@ -828,10 +826,6 @@
         }
     });
 </script>
-
-    </section>
-
-  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
