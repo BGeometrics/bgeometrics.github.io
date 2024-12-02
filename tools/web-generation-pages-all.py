@@ -397,7 +397,7 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
-  <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>""")
+  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
 with open('web-generation-model-workspace-dark.html', 'w') as file:
@@ -420,7 +420,7 @@ filedata = filedata.replace("""<main id="main" class="main">""", """""")
 with open('/tmp/web-generation-workspace-menu.html', 'w') as file:
   file.write(filedata)
 
-#<script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+#<script src="https://code.highcharts.com/themes/brand-dark.js"></script>
 
 file1_path = '/tmp/web-generation-workspace-menu.html'
 file2_path = 'workspace_dashboard-dark.html'

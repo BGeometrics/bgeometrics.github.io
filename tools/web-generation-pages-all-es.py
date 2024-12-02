@@ -365,7 +365,7 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
-  <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>""")
+  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>""")
 
 # If necesary for some cases
 filedata = filedata.replace("""<body onload="init()">""", """<body onload="init()">
@@ -383,7 +383,7 @@ filedata = filedata.replace("""<body onload="init()">""", """<body onload="init(
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
-  <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>""")
+  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>""")
 
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 

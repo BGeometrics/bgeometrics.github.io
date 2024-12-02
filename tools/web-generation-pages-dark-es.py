@@ -142,7 +142,7 @@ old_text="""
 """
 new_text = """
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"></script>
+    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
