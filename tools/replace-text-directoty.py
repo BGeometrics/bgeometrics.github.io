@@ -36,10 +36,24 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
 #old_text = """<script src="assets/vendor/tinymce/tinymce.min.js"></script>"""
 #old_text = """<script src="assets/vendor/php-email-form/validate.js"></script>"""
 
-file_extension = '.html'  
-directory_path = '/home/pi/bgeometrics.github.io/tools'
-old_text = """\n\n\n"""
-new_text = """\n"""
+def search_text_in_directory(directory, search_text, file_extension=None):
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        
+        if os.path.isfile(file_path) and (file_extension is None or filename.endswith(file_extension)):
+            with open(file_path, 'r', encoding='utf-8') as file:
 
+                for line_number, line in enumerate(file, start=1):
+                    if search_text in line:
+                        print(f"{file_path}")
+                        #results.append((file_path, line_number, line.strip()))
+
+
+file_extension = '.html'  
+directory_path = '/home/pi/bgeometrics.github.io/graphics'
+old_text = """https://charts.bgeometrics.com/assets/js/themes/brand-dark.js"""
+new_text = """https://code.highcharts.com/themes/brand-dark.js"""
+
+#search_text_in_directory(directory_path, old_text, file_extension)
 replace_text_in_directory(directory_path, old_text, new_text, file_extension)
 
