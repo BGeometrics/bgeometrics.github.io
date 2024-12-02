@@ -452,7 +452,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page ohlc_dashboard.html with menu
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-ohlc-dashboards-end.html'
+file2_path = 'web-generation-model-ohlc-dashboards-end-dark.html'
 output_file_path = '/tmp/web/ohlc_dashboard_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
@@ -470,13 +470,13 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_market_peaks.html with menu
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-dashboard-market-peaks-end.html'
+file2_path = 'web-generation-model-dashboard-market-peaks-end-dark.html'
 output_file_path = '/tmp/web/dashboard_market_peaks_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_market_floors.html with menu
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-dashboard-market-floors-end.html'
+file2_path = 'web-generation-model-dashboard-market-floors-end-dark.html'
 output_file_path = '/tmp/web/dashboard_market_floors_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
@@ -494,13 +494,13 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_short_term_trend.html with menu
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-dashboard-short-term-trend-end.html'
+file2_path = 'web-generation-model-dashboard-short-term-trend-end-dark.html'
 output_file_path = '/tmp/web/dashboard_short_term_trend_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page dashboard_demand.html with menu
 file1_path = 'web-generation-model-dark.html'
-file2_path = 'web-generation-model-dashboard-demand-end.html'
+file2_path = 'web-generation-model-dashboard-demand-end-dark.html'
 output_file_path = '/tmp/web/dashboard_demand_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
