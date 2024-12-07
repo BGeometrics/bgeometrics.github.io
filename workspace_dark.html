@@ -25,17 +25,6 @@
 
   <!-- Google tag (gtag.js) --> 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
-  <script>
-    // Get the link and modal elements
-    var openModalLink = document.getElementById('openModalLink');
-    var modal = new bootstrap.Modal(document.getElementById('myModal'));
-
-    // When the link is clicked, open the modal
-    openModalLink.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent the link's default behavior
-      modal.show(); // Show the modal
-    });
-  </script>
 </head>
 
 <body onload="init()">
@@ -82,7 +71,7 @@
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
-          <a href="#" id="alertModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
+          <a href="#" id="openModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
 	    <i class="bi bi-bell"></i>
           </a>
         </li>
