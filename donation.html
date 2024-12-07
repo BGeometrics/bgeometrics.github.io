@@ -26,6 +26,18 @@
   <!-- Google tag (gtag.js) --> 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
   <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form from reloading the page
+            const email = document.getElementById('email').value.trim();
+            if (email) {
+                window.location.href = `/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
+                //window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    </script>
 
 </head>
 
@@ -56,6 +68,12 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="https://bitcoin-data.com/suggestion/alert-find-email.html" alt="BGeometrics Alerts">
+            <i class="bi bi-bell"></i>
+          </a>
+        </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link nav-icon" href="workspace.html" alt="BGeometrics Workspace">
@@ -751,6 +769,29 @@
 
   </aside><!-- End Sidebar-->
 
+      <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailModalLabel">Email where notifications will be received</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="emailForm">
+                        <div class="mb-3">
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        The sender of the emails will be alert@mail.bgeometrics.com, if they do not arrive, check your spam folder.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
   <main id="main" class="main">
 
     <section class="section contact">
