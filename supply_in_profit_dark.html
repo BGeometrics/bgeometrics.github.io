@@ -25,6 +25,17 @@
 
   <!-- Google tag (gtag.js) --> 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+<script>
+    // Get the link and modal elements
+    var openModalLink = document.getElementById('alertModalLink');
+    var modal = new bootstrap.Modal(document.getElementById('alertModal'));
+
+    // When the link is clicked, open the modal
+    openModalLink.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the link's default behavior
+      modal.show(); // Show the modal
+    });
+  </script>
 
 </head>
 
@@ -55,6 +66,12 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+          <a href="#" id="alertModalLink" class="nav-link nav-icon" href="workspace_dark.html" alt="BGeometrics Alerts">
+	    <i class="bi bi-person-workspace"></i>
+          </a>
+        </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link nav-icon" href="workspace_dark.html" alt="BGeometrics Workspace">
@@ -750,7 +767,7 @@
 
   </aside><!-- End Sidebar-->
 
-      <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+      <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
