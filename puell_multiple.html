@@ -25,19 +25,6 @@
 
   <!-- Google tag (gtag.js) --> 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
-  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
-    <script>
-        document.getElementById('emailForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent form from reloading the page
-            const email = document.getElementById('email').value.trim();
-            if (email) {
-                window.location.href = `/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
-                //window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-    </script>
 
 </head>
 
@@ -68,12 +55,6 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-	    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#emailModal">
-            	<i class="bi bi-bell"></i>
-	    </button>
-        </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link nav-icon" href="workspace.html" alt="BGeometrics Workspace">
