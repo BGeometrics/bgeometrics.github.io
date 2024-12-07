@@ -31,7 +31,7 @@
     var modal = new bootstrap.Modal(document.getElementById('alertModal'));
 
     // When the link is clicked, open the modal
-    openModalLink.addEventListener('click', function(event) {
+    alertModalLink.addEventListener('click', function(event) {
       event.preventDefault(); // Prevent the link's default behavior
       modal.show(); // Show the modal
     });
@@ -81,8 +81,8 @@
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown">
-          <a href="#" id="alertModalLink" class="nav-link nav-icon" href="workspace.html" alt="BGeometrics Alerts">
-	    <i class="bi bi-person-workspace"></i>
+          <a href="#" id="alertModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
+	    <i class="bi bi-bell"></i>
           </a>
         </li>
 
