@@ -663,6 +663,17 @@ var modal = new bootstrap.Modal(document.getElementById('myModal'));
 
 // When the link is clicked, open the modal
 openModalLink.addEventListener('click', function(event) {
-  event.preventDefault(); // Prevent the link's default behavior
-  modal.show(); // Show the modal
-})
+    event.preventDefault(); // Prevent the link's default behavior
+    modal.show(); // Show the modal
+});
+
+document.getElementById('emailForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form from reloading the page
+    const email = document.getElementById('email').value.trim();
+    if (email) {
+        window.location.href = `/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
+        //window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
+    } else {
+        alert('Please enter a valid email address.');
+    }
+});
