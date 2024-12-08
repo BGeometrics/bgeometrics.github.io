@@ -688,8 +688,8 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
     event.preventDefault(); // Prevent form from reloading the page
     const email = document.getElementById('email').value.trim();
     if (email) {
-        window.location.href = `/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
-        //window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
+        //window.location.href = `/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
+        window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
     } else {
         alert('Please enter a valid email address.');
     }
