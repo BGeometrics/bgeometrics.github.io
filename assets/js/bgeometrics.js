@@ -683,4 +683,3 @@ openModalLink.addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the link's default behavior
     modal.show(); // Show the modal
 });
-
