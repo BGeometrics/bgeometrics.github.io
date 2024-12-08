@@ -672,3 +672,15 @@ function tableTraffic(value, clas, term){
     
     return [clas, term]
 }
+
+// Modal alerts
+// Get the link and modal elements
+var openModalLink = document.getElementById('openModalLink');
+var modal = new bootstrap.Modal(document.getElementById('myModal'));
+
+// When the link is clicked, open the modal
+openModalLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the link's default behavior
+    modal.show(); // Show the modal
+});
+
