@@ -694,3 +694,38 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
         alert('Please enter a valid email address.');
     }
 });
+
+async function sendEmail() {
+	const email = document.getElementById('email').value.trim();
+
+	if (!email) {
+	    alert('Please enter a valid email address.');
+	    return;
+	}
+
+	const payload = {
+	    to: email
+	};
+
+	try {
+	    const response = await fetch('https://bitcoin-data.com/suggestion/api/email/send', {
+		method: 'POST',
+		headers: {
+		    'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(payload)
+	    });
+
+	    const result = await response.text(); 
+	    if (response.ok) {
+		document.getElementById('responseMessage').style.color = 'green';
+	    } else {
+		document.getElementById('responseMessage').style.color = 'red';
+	    }
+	    document.getElementById('responseMessage').textContent = result;
+	} catch (error) {
+	    console.error('Error:', error);
+	    document.getElementById('responseMessage').style.color = 'red';
+	    document.getElementById('responseMessage').textContent = 'Failed to send email. Please try again.';
+	}
+}
