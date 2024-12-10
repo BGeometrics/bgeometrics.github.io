@@ -708,13 +708,7 @@ async function sendEmail() {
 	};
 
 	try {
-	    const response = await fetch('https://bitcoin-data.com/suggestion/api/email/send', {
-		method: 'POST',
-		headers: {
-		    'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(payload)
-	    });
+	    const response = await fetch('https://bitcoin-data.com/suggestion/api/email/send?to=' + email);
 
 	    const result = await response.text(); 
 	    if (response.ok) {
