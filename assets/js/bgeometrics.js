@@ -672,7 +672,7 @@ function tableTraffic(value, clas, term){
     
     return [clas, term]
 }
-/*
+
 // Modal alerts
 // Get the link and modal elements
 var openModalLink = document.getElementById('openModalLink');
@@ -694,7 +694,6 @@ document.getElementById('emailForm').addEventListener('submit', function (event)
         alert('Please enter a valid email address.');
     }
 });
-*/
 
 async function sendEmail() {
 	const email = document.getElementById('email').value.trim();
