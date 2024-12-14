@@ -837,8 +837,8 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const theEmail = urlParams.get('email');
-        const apiUrl = '/suggestion/api/alerts'; // Replace with your API URL
-        const metricsApiUrl = '/suggestion/api/metrics'; // Replace with your API URL
+        const apiUrl = 'https://bitcoin-data.com/suggestion/api/alerts'; // Replace with your API URL
+        const metricsApiUrl = 'https://bitcoin-data.com/suggestion/api/metrics'; // Replace with your API URL
 
         async function fetchMetrics() {
             try {
@@ -859,7 +859,7 @@
         async function fetchAlerts() {
             try {
 
-                const response = await fetch(`/suggestion/api/alerts/filter?email=${encodeURIComponent(theEmail)}`)
+                const response = await fetch(`https://bitcoin-data.com/suggestion/api/alerts/filter?email=${encodeURIComponent(theEmail)}`)
                 const alerts = await response.json();
                 //console.log(alerts);
                 const tableBody = document.getElementById('alertsTable');
