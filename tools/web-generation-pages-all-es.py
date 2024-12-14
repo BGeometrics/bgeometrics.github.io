@@ -252,6 +252,10 @@ file2_path = lang + '/web-generation-workspace-2.html'
 output_file_path = '/tmp/web/' + lang + '/workspace.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+#TODO: Temporal copiamos el de Inglés
+with open('../workspace.html', 'w') as file:
+  file.write(lang + 'workspace.html')
+
 
 # Generate page services.html with menu
 file1_path = lang + '/web-generation-model.html'
