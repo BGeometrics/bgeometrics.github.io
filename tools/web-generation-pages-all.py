@@ -349,6 +349,12 @@ file2_path = 'web-generation-model-bg-alert-end.html'
 output_file_path = '/tmp/web/bg_alert.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page alert.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-bg-alert-end2.html'
+output_file_path = '/tmp/web/bg_alert2.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 
 ### Mode dark 
 
