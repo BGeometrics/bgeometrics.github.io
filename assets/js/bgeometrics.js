@@ -673,6 +673,7 @@ function tableTraffic(value, clas, term){
     return [clas, term]
 }
 
+/*
 // Modal alerts
 // Get the link and modal elements
 var openModalLink = document.getElementById('openModalLink');
@@ -723,3 +724,4 @@ async function sendEmail() {
 	    document.getElementById('responseMessage').textContent = 'Failed to send email. Please try again.';
 	}
 }
+*/
