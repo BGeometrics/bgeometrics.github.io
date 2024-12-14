@@ -540,6 +540,12 @@ file2_path = 'web-generation-model-bg-alert-modal-end.html'
 output_file_path = '/tmp/web/bg_alert_modal_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page alert-email.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-bg-alert-email-end.html'
+output_file_path = '/tmp/web/bg_alert_email_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 print("")
 print("For copy generate pages to project") 
 print("cp /tmp/web/* /home/pi/bgeometrics.github.io/")
