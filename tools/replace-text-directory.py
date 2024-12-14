@@ -36,8 +36,8 @@ def search_text_in_directory(directory, search_text, file_extension=None):
 
 
 file_extension = '.html'  
-directory_path = '/home/pi/bgeometrics.github.io/alfabitcoin'
-old_text = """                        chart1.stockTools.showhideBtn.click();"""
+directory_path = '/home/pi/bgeometrics.github.io/tools'
+old_text = """<main id="main" class="main">"""
 new_text = """"""
 
 #search_text_in_directory(directory_path, old_text, file_extension)
