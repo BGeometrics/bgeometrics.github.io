@@ -285,7 +285,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 file1_path = 'web-generation-model-workspace-stocks.html'
 file2_path = 'web-generation-workspace-stocks-2.html'
-output_file_path = '/tmp/web/workspace-stocks.html'
+output_file_path = '/tmp/web/workspace_stocks.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 

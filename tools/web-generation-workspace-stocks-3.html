@@ -10,6 +10,9 @@
                 const data_price = await fetch(
                     'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
                 ).then(response => response.json());
+                const data_stock = await fetch(
+                    'https://bitcoin-data.com/v1/stocks/array-GOLD'
+                ).then(response => response.json());
 
             chart = Highcharts.stockChart('container-iframe', {
                 stockTools: {
@@ -115,16 +118,10 @@
                     },
                     yAxis: 0
                 }, {
-                    type: 'pc',
-                    id: 'overlay',
-                    name: 'BTC Channel',
-                    linkedTo: 'BTC price',
+                    id: 'stock',
+                    name: 'stock',
+                    data: data_stock,
                     yAxis: 0
-                }, {
-                    id: 'oscillator',
-                    name: 'Oscillator',
-                    linkedTo: 'BTC price',
-                    yAxis: 2
                 }],
 
                 legend:{
