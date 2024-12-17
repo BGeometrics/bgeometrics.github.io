@@ -1515,7 +1515,7 @@
         }
 
 	function changeStocks() {
-    	    var e = document.getElementById("stocks);
+    	    var e = document.getElementById("stocks");
     	    var value = e.value;
             var text = e.options[e.selectedIndex].text;
 	    addChartsStocks(value, text);
@@ -1527,7 +1527,7 @@
 	    var yAxis = 0;
 	    yAxis = 1;
 
-            data = await fetch('https://bitcoin-data.com/v1/stocks/array-' + _metricId)
+            data = fetch('https://bitcoin-data.com/v1/stocks/array-' + _metricId)
                  .then(response => response.json());
 
 	    Promise.all([data]).then(values => {
@@ -1542,6 +1542,7 @@
 		    
 		});
 	    });
+	}
 
       </script>
 
