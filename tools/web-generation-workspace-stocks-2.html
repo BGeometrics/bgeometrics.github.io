@@ -222,9 +222,6 @@
                     type: 'logarithmic',
                 }, {
                     opposite: false
-                }, {
-                    opposite: false
-                }, {
                 }],
 
                 series: [{
@@ -251,9 +248,37 @@
                     align:'center'
                 },
 
-                rangeSelector: {
-                    selected: 5
-                },
+		    rangeSelector: {
+			selected: 4,
+			buttons: [{
+			    type: 'month',
+			    count: 1,
+			    text: '1m'
+			}, {
+			    type: 'month',
+			    count: 3,
+			    text: '3m'
+			}, {
+			    type: 'month',
+			    count: 6,
+			    text: '6m'
+			}, {
+			    type: 'year',
+			    count: 1,
+			    text: '1y'
+			}, {
+			    type: 'year',
+			    count: 2,
+			    text: '2y'
+			}, {
+			    type: 'year',
+			    count: 4,
+			    text: '4y'
+			}, {
+			    type: 'all',
+			    text: 'All'
+			}]
+		    },
 
                 credits: {
                     text: 'Power by BGeometrics.com',
