@@ -543,9 +543,6 @@
                 const data_price = await fetch(
                     'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
                 ).then(response => response.json());
-                const data_stock = await fetch(
-                    'https://bitcoin-data.com/v1/stocks/array-GOLD'
-                ).then(response => response.json());
 
             chart = Highcharts.stockChart('container-iframe', {
                 stockTools: {
@@ -642,11 +639,6 @@
                         valueDecimals: 2
                     },
                     yAxis: 0
-                }, {
-                    id: 'stock',
-                    name: 'stock',
-                    data: data_stock,
-                    yAxis: 1
                 }],
 
                 legend:{
@@ -774,9 +766,10 @@
     <section>
       <div class="container">
         <a href="graphics/workspace_stocks.html">
-          <h5>BGeometrics Stocks</h5>
+          <h5>BGeometrics Bitcoin and Stocks</h5>
         </a>
         <p> 
+
         </p>
       </div>
     </section>
