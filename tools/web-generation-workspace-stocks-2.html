@@ -740,7 +740,30 @@
     	    var e = document.getElementById("stocks);
     	    var value = e.value;
             var text = e.options[e.selectedIndex].text;
+	    addChartsStocks(value, text);
 	}
+
+	function addChartsStocks(_metricId, _text){
+	    var e = document.getElementById("stocks");
+	    var text;
+	    var yAxis = 0;
+	    yAxis = 1;
+
+            data = await fetch('https://bitcoin-data.com/v1/stocks/array-' + _metricId)
+                 .then(response => response.json());
+
+	    Promise.all([data]).then(values => {
+		chart.addSeries({
+		    id: _metricId,
+		    name: _text,
+		    data: values[0],
+		    tooltip: {
+			valueDecimals: 2
+		    },
+		    yAxis: yAxis
+		    
+		});
+	    });
 
       </script>
 
