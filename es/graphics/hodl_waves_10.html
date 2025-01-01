@@ -28,8 +28,11 @@
             const data_hw_age_10y = await fetch(
                 'https://charts.bgeometrics.com/files/hw_age_10y_10.json'
             ).then(response => response.json());
-            const data_hw_age_5y_10y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_5y_10y_10.json'
+            const data_hw_age_7y_10y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_7y_10y_10.json'
+            ).then(response => response.json());
+            const data_hw_age_5y_7y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_5y_7y_10.json'
             ).then(response => response.json());
             const data_hw_age_4y_5y = await fetch(
                 'https://charts.bgeometrics.com/files/hw_age_4y_5y_10.json'
@@ -177,16 +180,24 @@
                 yAxis: 0
             }, {
                 name: '10y to ...',
-                color: 'rgba(94, 79, 162,0.8)',
+                color: 'rgba(94, 79, 162, 0.8)',
                 data: data_hw_age_10y,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: '5y to 10y',
+                name: '7y to 10y',
+                color: 'rgba(44, 115, 195, 0.8)',
+                data: data_hw_age_7y_10y,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '5y to 7y',
                 color: 'rgba(54, 130, 186, 0.8)',
-                data: data_hw_age_5y_10y,
+                data: data_hw_age_5y_7y,
                 tooltip: {
                     valueDecimals: 2
                 },
