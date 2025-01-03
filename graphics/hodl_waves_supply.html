@@ -64,6 +64,9 @@
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/hodl_waves_supply_btc_price.json'
             ).then(response => response.json());
+            const data_supply = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_supply_10.json'
+            ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -162,6 +165,15 @@
                     valueDecimals: 2
                 },
                 yAxis: 1
+            }, {
+                name: 'BTC supply',
+                type: 'line',
+                color: 'orange',
+                data: data_supply,
+                tooltip: {
+                    valueDecimals: 0
+                },
+                yAxis: 0
             }, {
                 name: '10y to ...',
                 color: 'rgba(94, 79, 162,0.8)',
