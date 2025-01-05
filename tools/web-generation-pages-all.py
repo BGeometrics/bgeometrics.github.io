@@ -409,6 +409,12 @@ file2_path = 'web-generation-model-bg-alert-email-end.html'
 output_file_path = '/tmp/web/bg_alert_email.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page links.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-links-end.html'
+output_file_path = '/tmp/web/pages-links.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 
 ### Mode dark 
 
@@ -592,6 +598,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-bg-alert-email-end.html'
 output_file_path = '/tmp/web/bg_alert_email_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page links.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-links-end.html'
+output_file_path = '/tmp/web/pages-links_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 print("")
