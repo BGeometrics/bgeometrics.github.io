@@ -27,11 +27,17 @@
             const data_hw_age_1y_ = await fetch(
                 'https://charts.bgeometrics.com/files/hw_age_1y_10.json'
             ).then(response => response.json());
+            const data_hw_age_lth = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_6m_10.json'
+            ).then(response => response.json());
             const data_hw_age_10y = await fetch(
                 'https://charts.bgeometrics.com/files/hw_age_10y_10.json'
             ).then(response => response.json());
-            const data_hw_age_5y_10y = await fetch(
-                'https://charts.bgeometrics.com/files/hw_age_5y_10y_10.json'
+            const data_hw_age_7y_10y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_7y_10y_10.json'
+            ).then(response => response.json());
+            const data_hw_age_5y_7y = await fetch(
+                'https://charts.bgeometrics.com/files/hw_age_5y_7y_10.json'
             ).then(response => response.json());
             const data_hw_age_4y_5y = await fetch(
                 'https://charts.bgeometrics.com/files/hw_age_4y_5y_10.json'
@@ -181,17 +187,40 @@
                 },
                 yAxis: 0
             }, {
+                name: 'LTH',
+                color: 'rgba(255, 165, 0, 0.7)',
+                data: data_hw_age_lth,
+                shared: false,
+                type: 'line',
+                zIndex: 2,
+                tooltip: {
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
+                },
+                yAxis: 0
+            }, {
                 name: '10y to ...',
                 color: 'rgba(94, 79, 162,0.8)',
                 data: data_hw_age_10y,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: '5y to 10y',
+                name: '7y to 10y',
+                color: 'rgba(44, 115, 195, 0.8)',
+                data: data_hw_age_7y_10y,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                name: '5y to 7y',
                 color: 'rgba(54, 130, 186, 0.8)',
-                data: data_hw_age_5y_10y,
+                data: data_hw_age_5y_7y,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -200,6 +229,7 @@
                 name: '4y to 5y',
                 color: 'rgba(70, 150, 170, 0.8)',
                 data: data_hw_age_4y_5y,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -208,6 +238,7 @@
                 name: '3y to 4y',
                 color: 'rgba(91, 182, 169, 0.8)',
                 data: data_hw_age_3y_4y,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -216,6 +247,7 @@
                 name: '2y to 3y',
                 color: 'rgba(150, 213, 164, 0.8)',
                 data: data_hw_age_2y_3y,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
@@ -224,6 +256,7 @@
                 name: '1y to 2y',
                 color: 'rgba(209, 236, 156, 0.8)',
                 data: data_hw_age_1y_2y,
+                visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
