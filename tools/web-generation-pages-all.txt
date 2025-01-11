@@ -77,7 +77,7 @@
 /tmp/web/choppiness.html,web-generation-end-choppiness-global.html,Bitcoin Choppiness Index (14 day),graphics/choppiness.html,Bitcoin Choppiness Index (14 day),,charts-nav
 /tmp/web/google_trends.html,web-generation-end-google-trends.html,Bitcoin Google Trends,graphics/google_trends.html,Bitcoin Google Trends,,charts-nav
 /tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,miners-nav
-/tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,charts-nav
+/tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,tools-nav
 /tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,miners-nav
 /tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,miners-nav
 /tmp/web/hashprice.html,web-generation-end-hashprice.html,Bitcoin Hash Price,graphics/hashprice.html,Bitcoin Hash Price,,miners-nav
