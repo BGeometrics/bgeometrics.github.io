@@ -80,6 +80,7 @@ var names = [
 { name: "Choppiness Index", link: "choppiness.html" },
 { name: "M2 Growth Global YoY", link: "m2_global.html" },
 { name: "Google Trends", link: "google_trends.html" },
+{ name: "Terminal Price", link: "terminal_price.html" },
 ];
 
 function search() {
