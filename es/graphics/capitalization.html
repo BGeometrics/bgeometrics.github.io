@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Capitalización</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -39,6 +36,9 @@
             ).then(response => response.json());
             const thermocap_realizedcap_ratio = await fetch(
                 'https://charts.bgeometrics.com/files/thermocap_realizedcap_ratio.json'
+            ).then(response => response.json());
+            const data_realized_cap_pct= await fetch(
+                'https://charts.bgeometrics.com/files/realized_cap_capitalization_pct.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
@@ -126,10 +126,12 @@
                     text: 'Capitalización (USD)'
                 },
                 type: 'logarithmic',
+            }, {
+            
             }],
 
             series: [{
-                id:'market_cap',
+                id:'Market Cap',
                 name: 'Market Cap',
                 data: data_market_cap,
                 tooltip: {
@@ -137,7 +139,7 @@
                 },
                 yAxis: 0
             }, {
-                id:'realized_cap',
+                id:'Realized Cap',
                 name: 'Realized Cap',
                 data: data_realized_cap,
                 tooltip: {
@@ -145,7 +147,7 @@
                 },
                 yAxis: 0
             }, {
-                id:'investor_cap',
+                id:'Investor Cap',
                 name: 'Investor Cap',
                 data: data_investor_cap,
                 tooltip: {
@@ -153,19 +155,30 @@
                 },
                 yAxis: 0
             }, {
-                id:'thermo_cap',
+                id:'Thermo Cap',
                 name: 'Thermo Cap',
                 data: data_thermo_cap,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id:'Realized Cap Change %',
+                name: 'Realized Cap Change %',
+                type: 'column',
+                data: data_realized_cap_pct,
+                zIndex: -1,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
+		        y: 25,
                 align:'center'
             },
 
