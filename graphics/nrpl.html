@@ -37,12 +37,6 @@
             const data_nrpl_7dma = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_7dma.json'
             ).then(response => response.json());
-            const data_realized_sth = await fetch(
-                'https://charts.bgeometrics.com/files/realized_sth.json'
-            ).then(response => response.json());
-            const data_realized_lth = await fetch(
-                'https://charts.bgeometrics.com/files/realized_lth.json'
-            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -211,38 +205,6 @@
                     color: '#BB0E22'
                 }, {
                     color: '#329542',
-                }]
-            }, {
-                id:'NRPL LTH',
-                name: 'NRPL LTH',
-                color: '#77942E',
-                visible: false,
-                data: data_realized_lth,
-                tooltip: {
-                    valueDecimals: 6
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#A50F34'
-                }, {
-                    color: '#77942E',
-                }]
-            }, {
-                id:'NRPL STH',
-                name: 'NRPL STH',
-                color: '#8AAD34',
-                visible: false,
-                data: data_realized_sth,
-                tooltip: {
-                    valueDecimals: 6
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#D1003B'
-                }, {
-                    color: '#8AAD34',
                 }]
             }],
 
