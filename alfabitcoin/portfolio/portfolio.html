@@ -557,20 +557,21 @@
                     maxSortinoRatioCell.style.backgroundColor = "#ff9800"; // Orange background
                     maxSortinoRatioCell.style.color = "#fff"; // White text for contrast
                 }
+
+                const optimizationSelect = document.getElementById("optimizationSelect");
+                const portfolioOptimization = document.getElementById("portfolioOptimization");
+
+                // Mostrar el div solo si el valor seleccionado es "Si"
+                if (optimizationSelect.value === "Si") {
+                    loadPortfolioOptimizationData();
+                    portfolioOptimization.style.display = "block";
+                } else {
+                    portfolioOptimization.style.display = "none";
+                }
             } else {
                 showAlert("Para analizar el portafolio el total de los pesos debe ser del 100%.");
             }
 
-            const optimizationSelect = document.getElementById("optimizationSelect");
-            const portfolioOptimization = document.getElementById("portfolioOptimization");
-
-            // Mostrar el div solo si el valor seleccionado es "Si"
-            if (optimizationSelect.value === "Si") {
-                loadPortfolioOptimizationData();
-                portfolioOptimization.style.display = "block";
-            } else {
-                portfolioOptimization.style.display = "none";
-            }
         }
 
         function loadPortfolio(portfolioName) {
