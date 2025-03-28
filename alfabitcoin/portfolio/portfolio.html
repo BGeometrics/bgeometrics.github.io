@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Table</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Bootstrap Icons -->
     <link href="./css/19.css" rel="stylesheet" />
     <link href="./css/template.css" rel="stylesheet" />
     <link href="./css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="./images/isotipo-alfaBitcoin.png" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         #period {
-            display: none; 
-            margin-top: 20px;
+            display: none;
+            margin-top: 0; 
+            padding-top: 0; 
+        }
+        #period label {
+            margin-bottom: 5px; 
+            display: block; 
+        }
+        #period select {
+            margin-top: 5px; 
         }
         #option {
             display: none; 
@@ -165,7 +173,7 @@
                     <tr>
                         <td>
                             <button class="btn btn-info btn-sm" onclick="loadRandomAssetDetails()" title="Cargar detalles del activo">
-                                <i class="bi bi-info-circle"></i> <!-- Ícono de información -->
+                                <i class="bi bi-info-circle"></i> 
                             </button>
                         </td>
                         <td><input type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
@@ -198,7 +206,7 @@
 
         <div class="row mt-4">
             <div id="detail" class="col-md-4">
-                <h5 class="bg-dark text-light">Detalles del Activo</h5>
+                <h5 class="bg-dark text-light"></h5>
                 <div class="row">
                     <div class="col-md-12">
                         <p><strong>Activo:</strong> <span id="assetName">-</span></p>
@@ -207,7 +215,7 @@
                         <p><strong>Último precio:</strong> <span id="latestPrice">-</span></p>
                     </div>
                     <div class="col-md-12">
-                        <p><strong>Intercambio:</strong> <span id="exchange">-</span></p>
+                        <p><strong>Mercado:</strong> <span id="exchange">-</span></p>
                     </div>
                 </div>
             </div>
@@ -224,7 +232,8 @@
                     <label for="otherSelect">Opciones:</label>
                     <select class="form-select bg-dark text-light" id="otherSelect" onchange="handleOtherChange()">
                         <option value="opt">Optimización</option>
-                        <option value="1">1%</                        <option value="2">2%</option>
+                        <option value="1">1%</option>                        
+                        <option value="2">2%</option>
                         <option value="5">5%</option>
                         <option value="10">10%</option>
                         <option value="25">25%</option>
