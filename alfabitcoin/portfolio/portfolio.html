@@ -26,7 +26,9 @@
             margin-top: 5px; 
         }
         #option {
-            display: none; 
+            margin-top: 20px;
+        }
+        #optimization {
             margin-top: 20px;
         }
         #options {
@@ -50,24 +52,23 @@
         #portfolioStatistics {
             display: none; 
         } 
+        #portfolioOptimization {
+            display: none; 
+        } 
         #assets {
             border-collapse: collapse; /* Elimina las líneas internas de la cuadrícula */
             width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
         }
-
         #assets thead {
             border-bottom: 2px solid #ffffff; /* Línea blanca debajo del encabezado */
         }
-
         #assets tfoot {
             border-top: 2px solid #ffffff; /* Línea blanca encima del pie de tabla */
         }
-
         #assets td, #assets th {
             border: none; 
             padding: 8px; 
         }
-
         #assets tbody tr {
             border: none; 
         }
@@ -230,8 +231,7 @@
                 </div>
                 <div id="option" class="col-md-9 eb-form-control">
                     <label for="otherSelect">Opciones:</label>
-                    <select class="form-select bg-dark text-light" id="otherSelect" onchange="handleOtherChange()">
-                        <option value="opt">Optimización</option>
+                    <select class="form-select bg-dark text-light" id="otherSelect" multiple onchange="handleOtherChange()">
                         <option value="1">1%</option>                        
                         <option value="2">2%</option>
                         <option value="5">5%</option>
@@ -241,13 +241,48 @@
                     </select>
                     <input type="number" class="form-control bg-dark text-light mt-2" id="customOther" placeholder="Ingrese valor personalizado" style="display: none;">
                 </div>
+                <div id="optimization" class="col-md-9 eb-form-control">
+                    <label for="optimizationSelect">Optimización:</label>
+                    <select class="form-select bg-dark text-light" id="optimizationSelect" onchange="togglePortfolioOptimization()">
+                        <option value="No">No</option>
+                        <option value="Si">Si</option>
+                    </select>
+                </div>
             </div>
         </div>
 
         <div class="row mt-4">
             <div id="portfolioStatistics" class="col-md-12">
-                <h5>Estadísticas del Portafolio</h5>
+                <h5>Estadísticas del portafolio</h5>
                 <table id="portfolioStatisticsTable" class="table table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Rentabilidad absoluta</th>
+                            <th scope="col">Volatilidad</th>
+                            <th scope="col">Min Drawdown</th>
+                            <th scope="col">Sharpe Ratio</th>
+                            <th scope="col">Sortino Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Portfolio original</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div id="portfolioOptimization" class="col-md-12">
+                <h5>Optimización del portafolio</h5>
+                <table id="portfolioOptimizarionTable" class="table table-bordered table-dark">
                     <thead>
                         <tr>
                             <th scope="col"></th>
@@ -395,11 +430,14 @@
         function analyzePortfolio() {
             // Check if the total weight is 100% or 99.99% before analyzing
             const totalWeight = parseFloat(document.getElementById("totalWeight").textContent);
-            if (totalWeight <= 100.1 && totalWeight >= 99.90) {
+            if (totalWeight <= 100.1 && totalWeight >= 99.99) {
                 document.getElementById("portfolioStatistics").style.display = "block";
 
                 // Test data for the table
                 const testData = [
+                    { name: "SPY", absoluteReturn: "8.5%", volatility: "7.3%", maxDrawdown: "-15.2%", sharpeRatio: "1.25", sortinoRatio: "1.55" },
+                    { name: "BND", absoluteReturn: "12.5%", volatility: "10.3%", maxDrawdown: "-20.2%", sharpeRatio: "1.35", sortinoRatio: "1.60" },
+                    { name: "BTC", absoluteReturn: "50.5%", volatility: "18.3%", maxDrawdown: "-12.2%", sharpeRatio: "2.25", sortinoRatio: "1.70" },
                     { name: "Portfolio original", absoluteReturn: "12.5%", volatility: "8.3%", maxDrawdown: "-15.2%", sharpeRatio: "1.25", sortinoRatio: "1.50" },
                     { name: "Portfolio original +1% de BTC", absoluteReturn: "13.0%", volatility: "9.0%", maxDrawdown: "-16.0%", sharpeRatio: "1.20", sortinoRatio: "1.45" },
                     { name: "Portfolio original +10% de BTC", absoluteReturn: "15.0%", volatility: "12.0%", maxDrawdown: "-18.0%", sharpeRatio: "1.10", sortinoRatio: "1.30" },
@@ -522,6 +560,17 @@
             } else {
                 showAlert("Para analizar el portafolio el total de los pesos debe ser del 100%.");
             }
+
+            const optimizationSelect = document.getElementById("optimizationSelect");
+            const portfolioOptimization = document.getElementById("portfolioOptimization");
+
+            // Mostrar el div solo si el valor seleccionado es "Si"
+            if (optimizationSelect.value === "Si") {
+                loadPortfolioOptimizationData();
+                portfolioOptimization.style.display = "block";
+            } else {
+                portfolioOptimization.style.display = "none";
+            }
         }
 
         function loadPortfolio(portfolioName) {
@@ -629,6 +678,39 @@
 
             const alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
             alertModal.show();
+        }
+
+        function loadPortfolioOptimizationData() {
+            document.getElementById("portfolioOptimization").style.display = "block";
+            // Datos de prueba
+            const testData = [
+                { name: "Portfolio original", absoluteReturn: "8.5%", volatility: "7.3%", minDrawdown: "-15.2%", sharpeRatio: "1.25", sortinoRatio: "1.55" },
+                { name: "GLD", absoluteReturn: "10.2%", volatility: "6.8%", minDrawdown: "-12.5%", sharpeRatio: "1.45", sortinoRatio: "1.75" },
+                { name: "AAPL", absoluteReturn: "15.0%", volatility: "12.0%", minDrawdown: "-20.0%", sharpeRatio: "1.10", sortinoRatio: "1.30" },
+                { name: "TSLA", absoluteReturn: "5.0%", volatility: "4.5%", minDrawdown: "-8.0%", sharpeRatio: "1.50", sortinoRatio: "1.80" },
+                { name: "BTC", absoluteReturn: "15.0%", volatility: "15.5%", minDrawdown: "-19.0%", sharpeRatio: "1.30", sortinoRatio: "1.60" }
+            ];
+
+            // Seleccionar el cuerpo de la tabla
+            const tableBody = document.querySelector("#portfolioOptimization tbody");
+
+            // Limpiar el contenido actual de la tabla
+            tableBody.innerHTML = "";
+
+            // Insertar los datos de prueba en la tabla
+            testData.forEach(row => {
+                const tableRow = `
+                    <tr>
+                        <td>${row.name}</td>
+                        <td>${row.absoluteReturn}</td>
+                        <td>${row.volatility}</td>
+                        <td>${row.minDrawdown}</td>
+                        <td>${row.sharpeRatio}</td>
+                        <td>${row.sortinoRatio}</td>
+                    </tr>
+                `;
+                tableBody.insertAdjacentHTML("beforeend", tableRow);
+            });
         }
 
     </script>
