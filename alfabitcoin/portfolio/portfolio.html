@@ -76,6 +76,12 @@
             border: 1px solid #ced4da; 
         }
 
+        @media (max-width: 576px) {
+            .modal-dialog {
+                max-width: 90%; /* Ajusta el ancho del modal al 90% del ancho de la pantalla */
+                margin: 10px auto; /* Añade un margen para evitar que el modal toque los bordes */
+            }
+        }
     </style>
 </head>
 <body class="bg-bgeometrics bg-dark text-light">
@@ -95,7 +101,7 @@
 
          <!-- Modal to select default portfolios -->
         <div class="modal fade" id="defaultPortfolioModal" tabindex="-1" aria-labelledby="defaultPortfolioModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content bg-dark text-light">
                     <div class="modal-header">
                         <h5 class="modal-title" id="defaultPortfolioModalLabel">Seleccionar Portafolio Predeterminado</h5>
