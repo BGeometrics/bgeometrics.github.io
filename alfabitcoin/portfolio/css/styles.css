@@ -1,0 +1,13 @@
+
+button::before,
+button::after,
+a::before,
+a::after {
+    content: none !important; 
+}
+
+.bg-bgeometrics {
+    background: url('../images/bg-cabecera.jpg') no-repeat center center fixed !important;
+    background-size: cover;
+    color: #000; 
+}

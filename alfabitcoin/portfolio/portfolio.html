@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Bootstrap Icons -->
+    <link href="./css/19.css" rel="stylesheet" />
+    <link href="./css/template.css" rel="stylesheet" />
+    <link href="./css/styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="./images/isotipo-alfaBitcoin.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #period {
+            display: none; 
+            margin-top: 20px;
+        }
+        #option {
+            display: none; 
+            margin-top: 20px;
+        }
+        #options {
+            display: none; 
+            justify-content: center;
+            margin: 0 auto;
+            border: 1px solid #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #detail {
+            display: none; 
+            margin-right: 20px;
+            border: 1px solid #ffffff; 
+            padding: 10px; 
+            border-radius: 5px;
+        }
+        #analytic {
+            display: none; 
+        }
+        #portfolioStatistics {
+            display: none; 
+        } 
+        #assets {
+            border-collapse: collapse; /* Elimina las líneas internas de la cuadrícula */
+            width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+        }
+
+        #assets thead {
+            border-bottom: 2px solid #ffffff; /* Línea blanca debajo del encabezado */
+        }
+
+        #assets tfoot {
+            border-top: 2px solid #ffffff; /* Línea blanca encima del pie de tabla */
+        }
+
+        #assets td, #assets th {
+            border: none; 
+            padding: 8px; 
+        }
+
+        #assets tbody tr {
+            border: none; 
+        }
+        select.form-select {
+            border: 1px solid #ced4da; 
+        }
+
+    </style>
+</head>
+<body class="bg-bgeometrics bg-dark text-light">
+    <div class="container mt-4">
+        <div class="row mt-4">
+            <div class="col" style="background-color: transparent;"> 
+                <h2 style="color: #ffffff;">
+                    Análisis del portafolio
+                </h2>
+            </div>
+            <div class="col text-end"> 
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#defaultPortfolioModal">
+                    Portafolio predeterminado
+                </button>
+            </div>
+        </div>
+
+         <!-- Modal to select default portfolios -->
+        <div class="modal fade" id="defaultPortfolioModal" tabindex="-1" aria-labelledby="defaultPortfolioModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="defaultPortfolioModalLabel">Seleccionar Portafolio Predeterminado</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered table-dark">
+                            <thead>
+                                <tr>
+                                    <th>Portafolio</th>
+                                    <th>Riesgo</th>
+                                    <th>Perfil</th>
+                                    <th>Seleccionar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-bs-toggle="tooltip" data-bs-placement="top" title="El Portafolio Permanente, desarrollado por Harry Browne, es una estrategia de inversión diseñada para prosperar en los cuatro principales estados económicos: prosperidad, recesión, inflación y deflación. Está compuesto por cuatro activos con igual peso: acciones para la prosperidad, efectivo para la recesión, oro para la inflación y bonos a largo plazo para la deflación.">
+                                        Portfolio permanente
+                                    </td>
+                                    <td>Moderado / Agresivo</td>
+                                    <td>Inversores moderados</td>
+                                    <td><button class="btn btn-primary" onclick="loadPortfolio('Permanent Portfolio')">Seleccionar</button></td>
+                                </tr>
+                                <tr>
+                                    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Un portafolio de clases de activos múltiples que incluye bonos, acciones estadounidenses e internacionales, y materias primas. Frecuencia de rebalanceo: semestral.">
+                                        Multi-activo
+                                    </td>
+                                    <td>Moderado a agresivo</td>
+                                    <td>Instituciones y personas de alto nivel económico</td>
+                                    <td><button class="btn btn-primary" onclick="loadPortfolio('Multi-asset')">Seleccionar</button></td>
+                                </tr>
+                                <tr>
+                                    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Un portafolio construido con bonos del Tesoro de EE. UU. y bonos corporativos, incluyendo de alto rendimiento. Frecuencia de rebalanceo: trimestral.">
+                                        Bono diversificado
+                                    </td>
+                                    <td>Conservador</td>
+                                    <td>Grandes corporaciones y conservadores</td>
+                                    <td><button class="btn btn-primary" onclick="loadPortfolio('Diversified Bond')">Seleccionar</button></td>
+                                </tr>
+                                <tr>
+                                    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Este es un portafolio proxy basado en el famoso fondo All Weather de Ray Dalio. Frecuencia de rebalanceo: trimestral.">
+                                        Todas las estaciones
+                                    </td>
+                                    <td>Moderado</td>
+                                    <td>Individuales y inversores de riesgo moderados</td>
+                                    <td><button class="btn btn-primary" onclick="loadPortfolio('All Seasons')">Seleccionar</button></td>
+                                </tr>
+                                <tr>
+                                    <td data-bs-toggle="tooltip" data-bs-placement="top" title="Un portafolio clásico 60/40 construido con el S&P 500 y bonos del Tesoro de EE. UU. Frecuencia de rebalanceo: trimestral.">
+                                        Clásico 60/40
+                                    </td>
+                                    <td>Moderado</td>
+                                    <td>Inversores moderados</td>
+                                    <td><button class="btn btn-primary" onclick="loadPortfolio('Clasic 60/40')">Seleccionar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <table id="assets" class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">Símbolo</th>
+                        <th scope="col">Activo</th>
+                        <th scope="col">Peso (%)</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="portfolio-body">
+                    <tr>
+                        <td>
+                            <button class="btn btn-info btn-sm" onclick="loadRandomAssetDetails()" title="Cargar detalles del activo">
+                                <i class="bi bi-info-circle"></i> <!-- Ícono de información -->
+                            </button>
+                        </td>
+                        <td><input type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
+                        <td class="asset-column">Nuevo activo</td>
+                        <td><input type="number" class="form-control weight-input bg-dark text-light" placeholder="%" onchange="updateTotalWeight()"></td>
+                        <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-primary" onclick="addRow()">+ Añadir activo</button>
+                        </td>
+                        <td><strong>Total cartera</strong></td>
+                        <td id="totalWeight">0%</td>
+                        <td>
+                            <button class="btn btn-primary" onclick="rebalanceWeights()">Re-balancear</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div id="analytic" class="row mt-4">
+            <div class="col text-center">
+                <button class="btn btn-primary" onclick="analyzePortfolio()">Analizar este portafolio</button>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div id="detail" class="col-md-4">
+                <h5 class="bg-dark text-light">Detalles del Activo</h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><strong>Activo:</strong> <span id="assetName">-</span></p>
+                    </div>
+                    <div class="col-md-12">
+                        <p><strong>Último precio:</strong> <span id="latestPrice">-</span></p>
+                    </div>
+                    <div class="col-md-12">
+                        <p><strong>Intercambio:</strong> <span id="exchange">-</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="options" class="col-md-4">
+                <div id="period" class="col-md-9 eb-form-control">
+                    <label for="timePeriodSelect">Periodo de tiempo:</label>
+                    <select class="form-select bg-dark text-light" id="timePeriodSelect" >
+                        <option value="5">Últimos 5 años</option>
+                        <option value="10">Últimos 10 años</option>
+                    </select>
+                </div>
+                <div id="option" class="col-md-9 eb-form-control">
+                    <label for="otherSelect">Opciones:</label>
+                    <select class="form-select bg-dark text-light" id="otherSelect" onchange="handleOtherChange()">
+                        <option value="opt">Optimización</option>
+                        <option value="1">1%</                        <option value="2">2%</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                        <option value="25">25%</option>
+                        <option value="other">Otro</option>
+                    </select>
+                    <input type="number" class="form-control bg-dark text-light mt-2" id="customOther" placeholder="Ingrese valor personalizado" style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div id="portfolioStatistics" class="col-md-12">
+                <h5>Estadísticas del Portafolio</h5>
+                <table id="portfolioStatisticsTable" class="table table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Rentabilidad absoluta</th>
+                            <th scope="col">Volatilidad</th>
+                            <th scope="col">Min Drawdown</th>
+                            <th scope="col">Sharpe Ratio</th>
+                            <th scope="col">Sortino Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Portfolio original</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Modal de aviso -->
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">Aviso</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="alertMessage">El mensaje del aviso irá aquí.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addRow() {
+            // Añadir una nueva fila a la tabla de portafolio
+            const row = `
+                <tr>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="loadRandomAssetDetails()" title="Cargar detalles del activo">
+                            <i class="bi bi-info-circle"></i> <!-- Ícono de información -->
+                        </button>
+                    </td>
+                    <td><input type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
+                    <td class="asset-column">Nuevo activo</td>
+                    <td><input type="number" class="form-control weight-input bg-dark text-light" placeholder="%" onchange="updateTotalWeight()"></td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
+                </tr>`;
+            document.getElementById("portfolio-body").insertAdjacentHTML('beforeend', row);
+            updateTotalWeight();
+            toggleReweightButton();
+        }
+
+        function removeRow(button) {
+            // Remove the selected row from the portfolio table
+            button.closest('tr').remove();
+            updateTotalWeight();
+            toggleReweightButton();
+        }
+
+        function updateTotalWeight() {
+            // Calculate and update the total weight of the portfolio
+            const weights = document.querySelectorAll('.weight-input');
+            let total = 0;
+            weights.forEach(input => {
+                total += parseFloat(input.value) || 0;
+            });
+            document.getElementById("totalWeight").textContent = total + "%";
+        }
+
+        function copyToAsset(input) {
+            // Copy the value from the "Symbol" input to the "Asset" column
+            const row = input.closest('tr');
+            const assetCell = row.querySelector('.asset-column');
+            assetCell.textContent = input.value || "New Asset";
+
+            showPanels();
+            loadRandomAssetDetails();
+        }
+
+        function showPanels() {
+            // Show the additional panels when a symbol is entered
+            document.getElementById("period").style.display = "block";
+            document.getElementById("option").style.display = "block";
+            document.getElementById("options").style.display = "block";
+            document.getElementById("detail").style.display = "block";
+            document.getElementById("analytic").style.display = "block";
+        }
+
+        function toggleReweightButton() {
+            // Show or hide the "Rebalance" button based on the number of rows
+            const rows = document.querySelectorAll("#portfolio-body tr");
+            const reweightButton = document.getElementById("reweight");
+            if (rows.length >= 2) {
+                reweightButton.style.display = "inline-block";
+            } else {
+                reweightButton.style.display = "none";
+            }
+        }
+
+        function rebalanceWeights() {
+            // Recalculate weights to ensure they sum up to 100% while maintaining proportions
+            const weightInputs = document.querySelectorAll('.weight-input');
+            let totalWeight = 0;
+
+            // Sum all current weights
+            weightInputs.forEach(input => {
+                totalWeight += parseFloat(input.value) || 0;
+            });
+
+            // Recalculate weights to sum up to 100%
+            weightInputs.forEach(input => {
+                const currentWeight = parseFloat(input.value) || 0;
+                const newWeight = (currentWeight / totalWeight) * 100;
+                input.value = newWeight.toFixed(2); // Round to 2 decimals
+            });
+
+            updateTotalWeight();
+        }
+
+        function handleOtherChange() {
+            // Show or hide the custom input field based on the selected option
+            const otherSelect = document.getElementById("otherSelect");
+            const customOther = document.getElementById("customOther");
+            if (otherSelect.value === "other") {
+                customOther.style.display = "block";
+            } else {
+                customOther.style.display = "none";
+            }
+        }
+
+        function analyzePortfolio() {
+            // Check if the total weight is 100% or 99.99% before analyzing
+            const totalWeight = parseFloat(document.getElementById("totalWeight").textContent);
+            if (totalWeight <= 100.1 && totalWeight >= 99.90) {
+                document.getElementById("portfolioStatistics").style.display = "block";
+
+                // Test data for the table
+                const testData = [
+                    { name: "Portfolio original", absoluteReturn: "12.5%", volatility: "8.3%", maxDrawdown: "-15.2%", sharpeRatio: "1.25", sortinoRatio: "1.50" },
+                    { name: "Portfolio original +1% de BTC", absoluteReturn: "13.0%", volatility: "9.0%", maxDrawdown: "-16.0%", sharpeRatio: "1.20", sortinoRatio: "1.45" },
+                    { name: "Portfolio original +10% de BTC", absoluteReturn: "15.0%", volatility: "12.0%", maxDrawdown: "-18.0%", sharpeRatio: "1.10", sortinoRatio: "1.30" },
+                    { name: "Portfolio original +25% de BTC", absoluteReturn: "18.0%", volatility: "15.0%", maxDrawdown: "-20.0%", sharpeRatio: "1.05", sortinoRatio: "1.20" }
+                ];
+
+                // Select the table body
+                const tableBody = document.querySelector("#portfolioStatisticsTable tbody");
+                tableBody.innerHTML = ""; 
+
+                let maxAbsoluteReturn = -Infinity; 
+                let maxAbsoluteReturnCell = null; 
+
+                let minVolatility = Infinity; 
+                let minVolatilityCell = null; 
+
+                let minMaxDrawdown = Infinity; 
+                let minMaxDrawdownCell = null; 
+
+                let maxSharpeRatio = -Infinity; 
+                let maxSharpeRatioCell = null; 
+
+                let maxSortinoRatio = -Infinity; 
+                let maxSortinoRatioCell = null; 
+
+                // Insert the test data into the table
+                testData.forEach(row => {
+                    const tableRow = `
+                        <tr>
+                            <td>${row.name}</td>
+                            <td class="absolute-return">${row.absoluteReturn}</td>
+                            <td class="volatility">${row.volatility}</td>
+                            <td class="max-drawdown">${row.maxDrawdown}</td>
+                            <td class="sharpe-ratio">${row.sharpeRatio}</td>
+                            <td class="sortino-ratio">${row.sortinoRatio}</td>
+                        </tr>
+                    `;
+                    tableBody.insertAdjacentHTML("beforeend", tableRow);
+                });
+
+                // Find the cell with the highest Absolute Return value
+                const absoluteReturnCells = document.querySelectorAll(".absolute-return");
+                absoluteReturnCells.forEach(cell => {
+                    const value = parseFloat(cell.textContent.replace("%", "")); // Convert text to number
+                    if (value > maxAbsoluteReturn) {
+                        maxAbsoluteReturn = value;
+                        maxAbsoluteReturnCell = cell;
+                    }
+                });
+
+                // Highlight the cell with the highest Absolute Return value
+                if (maxAbsoluteReturnCell) {
+                    maxAbsoluteReturnCell.style.backgroundColor = "#ff9800"; // Orange background
+                    maxAbsoluteReturnCell.style.color = "#fff"; // White text for contrast
+                }
+
+                // Find the cell with the lowest Volatility value
+                const volatilityCells = document.querySelectorAll(".volatility");
+                volatilityCells.forEach(cell => {
+                    const value = parseFloat(cell.textContent.replace("%", "")); // Convert text to number
+                    if (value < minVolatility) {
+                        minVolatility = value;
+                        minVolatilityCell = cell;
+                    }
+                });
+
+                // Highlight the cell with the lowest Volatility value
+                if (minVolatilityCell) {
+                    minVolatilityCell.style.backgroundColor = "#ff9800"; // Orange background
+                    minVolatilityCell.style.color = "#fff"; // White text for contrast
+                }
+
+                // Find the cell with the lowest Max Drawdown value
+                const maxDrawdownCells = document.querySelectorAll(".max-drawdown");
+                maxDrawdownCells.forEach(cell => {
+                    const value = parseFloat(cell.textContent.replace("%", "").replace("-", "")); // Convert text to positive number
+                    if (value < minMaxDrawdown) {
+                        minMaxDrawdown = value;
+                        minMaxDrawdownCell = cell;
+                    }
+                });
+
+                // Highlight the cell with the lowest Max Drawdown value
+                if (minMaxDrawdownCell) {
+                    minMaxDrawdownCell.style.backgroundColor = "#ff9800"; // Orange background
+                    minMaxDrawdownCell.style.color = "#fff"; // White text for contrast
+                }
+
+                // Find the cell with the highest Sharpe Ratio value
+                const sharpeRatioCells = document.querySelectorAll(".sharpe-ratio");
+                sharpeRatioCells.forEach(cell => {
+                    const value = parseFloat(cell.textContent); // Convert text to number
+                    if (value > maxSharpeRatio) {
+                        maxSharpeRatio = value;
+                        maxSharpeRatioCell = cell;
+                    }
+                });
+
+                // Highlight the cell with the highest Sharpe Ratio value
+                if (maxSharpeRatioCell) {
+                    maxSharpeRatioCell.style.backgroundColor = "#ff9800"; // Orange background
+                    maxSharpeRatioCell.style.color = "#fff"; // White text for contrast
+                }
+
+                // Find the cell with the highest Sortino Ratio value
+                const sortinoRatioCells = document.querySelectorAll(".sortino-ratio");
+                sortinoRatioCells.forEach(cell => {
+                    const value = parseFloat(cell.textContent); // Convert text to number
+                    if (value > maxSortinoRatio) {
+                        maxSortinoRatio = value;
+                        maxSortinoRatioCell = cell;
+                    }
+                });
+
+                // Highlight the cell with the highest Sortino Ratio value
+                if (maxSortinoRatioCell) {
+                    maxSortinoRatioCell.style.backgroundColor = "#ff9800"; // Orange background
+                    maxSortinoRatioCell.style.color = "#fff"; // White text for contrast
+                }
+            } else {
+                showAlert("Para analizar el portafolio el total de los pesos debe ser del 100%.");
+            }
+        }
+
+        function loadPortfolio(portfolioName) {
+            // Cerrar el modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('defaultPortfolioModal'));
+            modal.hide();
+
+            showPanels();
+
+            // Limpiar la tabla actual
+            document.getElementById("portfolio-body").innerHTML = "";
+
+            // Datos de ejemplo para cada portafolio
+            const portfolios = {
+                "Permanent Portfolio": [
+                    { symbol: "GLD", asset: "SPDR Gold Trust", weight: 25 },
+                    { symbol: "ITOT", asset: "iShares Core S&P Total U.S. Sto", weight: 25 },
+                    { symbol: "BIL", asset: "SPDR Bloomberg 1-3 Month T-Bill", weight: 25 },
+                    { symbol: "VGLT", asset: "Vanguard Long-Treasury ETF", weight: 25 }
+                ],
+                "Multi-asset": [
+                    { symbol: "IEV", asset: "iShares Europe ETF", weight: 6.67 },
+                    { symbol: "VO", asset: "Vanguard Mid-Cap ETF", weight: 6.67 },
+                    { symbol: "VEA", asset: "Vanguard FTSE Developed Markets", weight: 6.67 },
+                    { symbol: "SPY", asset: "SPDR S&P 500", weight: 6.67 },
+                    { symbol: "VEU", asset: "Vanguard FTSE All World Ex US E", weight: 6.67 },
+                    { symbol: "VTI", asset: "Vanguard Total Stock Market ETF", weight: 6.67 },
+                    { symbol: "GSG", asset: "iShares GSCI Commodity-Indexed", weight: 6.67 },
+                    { symbol: "KBE", asset: "SPDR S&P Bank ETF", weight: 6.67 },
+                    { symbol: "VNQ", asset: "Vanguard Real Estate ETF", weight: 6.67 },
+                    { symbol: "SLV", asset: "iShares Silver Trust", weight: 6.67 },
+                    { symbol: "ACWI", asset: "iShares MSCI ACWI ETF", weight: 6.66 },
+                    { symbol: "GLD", asset: "SPDR Gold Trust", weight: 6.66 },
+                    { symbol: "HYG", asset: "iShares iBoxx High Yield Corp", weight: 6.66 },
+                    { symbol: "TLT", asset: "iShares 20+ Year Treasury Bond", weight: 6.66 },
+                    { symbol: "QQQ", asset: "Invesco QQQ Trust", weight: 6.66 },
+                ],
+                "Diversified Bond": [
+                    { symbol: "IEF", asset: "iShares 7-10 Year Treasury Bond ETF", weight: 20 },
+                    { symbol: "JNK", asset: "SPDR Bloomberg High Yield Bond ETF", weight: 20 },
+                    { symbol: "VIG", asset: "Vanguard Dividend A...reciation Index Fund", weight: 20 },
+                    { symbol: "TLT", asset: "iShares 20+ Year Treasury Bond ETF", weight: 20 },
+                    { symbol: "HYG", asset: "iShares iBoxx $ Hig...d Corporate Bond ETF", weight: 20 },
+                ],
+                "All Seasons": [
+                    { symbol: "VGLT", asset: "Long Term Bonds", weight: 40 },
+                    { symbol: "ITOT", asset: "Total Stock Market", weight: 30 },
+                    { symbol: "VGIT", asset: "Intermediate Bonds", weight: 15 },
+                    { symbol: "GSP", asset: "Commodities", weight: 7.5 },
+                    { symbol: "GLD", asset: "Gold", weight: 7.5 },
+                ],
+                "Clasic 60/40": [
+                    { symbol: "SPY", asset: "SPDR S&P 500", weight: 60 },
+                    { symbol: "BND", asset: "Vanguard Total Bond Market ETF", weight: 40 },
+                ]
+            };
+
+            // Cargar el portafolio seleccionado
+            const selectedPortfolio = portfolios[portfolioName];
+            selectedPortfolio.forEach(item => {
+                const row = `
+                    <tr>
+                        <td>
+                            <button class="btn btn-info btn-sm" onclick="loadRandomAssetDetails()" title="Cargar detalles del activo">
+                                <i class="bi bi-info-circle"></i> <!-- Ícono de información -->
+                            </button>
+                        </td>
+                        <td><input type="text" class="form-control bg-dark text-light" value="${item.symbol}" onblur="copyToAsset(this)"></td>
+                        <td class="asset-column">${item.asset}</td>
+                        <td><input type="number" class="form-control bg-dark text-light weight-input" value="${item.weight}" onchange="updateTotalWeight()"></td>
+                        <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
+                    </tr>`;
+                document.getElementById("portfolio-body").insertAdjacentHTML('beforeend', row);
+            });
+
+            // Actualizar el peso total y mostrar el botón de rebalanceo si es necesario
+            updateTotalWeight();
+            toggleReweightButton();
+        }
+
+        // Initialize Bootstrap tooltips
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+
+        function loadRandomAssetDetails() {
+            // Generate random values for the fields
+            const assets = ["Bitcoin (BTC)", "Ethereum (ETH)", "Apple (AAPL)", "Google (GOOG)", "Amazon (AMZN)", "Tesla (TLSA)"];
+            const exchanges = ["Binance", "Coinbase", "NASDAQ", "NYSE", "Kraken", "Bitfinex"];
+            const randomAsset = assets[Math.floor(Math.random() * assets.length)];
+            const randomPrice = `$${(Math.random() * 1000 + 100).toFixed(2)}`; // Random price between $100 and $1100
+            const randomExchange = exchanges[Math.floor(Math.random() * exchanges.length)];
+
+            // Update the fields in the HTML
+            document.getElementById("assetName").textContent = randomAsset;
+            document.getElementById("latestPrice").textContent = randomPrice;
+            document.getElementById("exchange").textContent = randomExchange;
+        }
+
+        function showAlert(message) {
+            document.getElementById("alertMessage").textContent = message;
+
+            const alertModal = new bootstrap.Modal(document.getElementById("alertModal"));
+            alertModal.show();
+        }
+
+    </script>
+
+    <footer class="bg-dark text-light text-center py-3 mt-4">
+        <div class="container">
+            <p class="mb-0">Copyright &copy; 2025 Alfa Bitcoin. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
