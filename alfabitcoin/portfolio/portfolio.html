@@ -320,13 +320,15 @@
         }
 
         function updateTotalWeight() {
-            // Calculate and update the total weight of the portfolio
+            // Calcular y actualizar el peso total del portafolio
             const weights = document.querySelectorAll('.weight-input');
             let total = 0;
             weights.forEach(input => {
                 total += parseFloat(input.value) || 0;
             });
-            document.getElementById("totalWeight").textContent = total + "%";
+
+            // Formatear el total a dos decimales
+            document.getElementById("totalWeight").textContent = total.toFixed(2) + "%";
         }
 
         function copyToAsset(input) {
