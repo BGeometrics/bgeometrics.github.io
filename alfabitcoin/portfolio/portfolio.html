@@ -426,10 +426,14 @@
             // Show or hide the custom input field based on the selected option
             const otherSelect = document.getElementById("otherSelect");
             const customOther = document.getElementById("customOther");
-            if (otherSelect.value === "other") {
-                customOther.style.display = "block";
+
+            // Verificar si la opción "Otro" está seleccionada
+            const selectedOptions = Array.from(otherSelect.selectedOptions).map(option => option.value);
+            if (selectedOptions.includes("other")) {
+                customOther.style.display = "block"; // Mostrar el campo de entrada
             } else {
-                customOther.style.display = "none";
+                customOther.style.display = "none"; // Ocultar el campo de entrada
+                customOther.value = ""; // Vaciar el valor del campo de entrada
             }
         }
 
@@ -574,6 +578,63 @@
                 } else {
                     portfolioOptimization.style.display = "none";
                 }
+
+                const symbols = [];
+                const weights = [];
+
+                // Obtener los valores de las columnas "symbol" y "weight" de la tabla assets
+                document.querySelectorAll("#portfolio-body tr").forEach(row => {
+                    const symbol = row.querySelector('input[type="text"]').value;
+                    const weight = row.querySelector('input[type="number"]').value;
+                    if (symbol && weight) {
+                        symbols.push(symbol);
+                        weights.push(weight);
+                    }
+                });
+
+                // Obtener los valores seleccionados del desplegable otherSelect
+                const otherSelect = Array.from(document.getElementById("otherSelect").selectedOptions).map(option => option.value);
+
+                // Obtener el valor de customOther
+                const customOther = document.getElementById("customOther").value;
+
+                // Obtener el valor de optimizationSelect
+                const optimizationSelectValue = document.getElementById("optimizationSelect").value;
+
+                // Obtener el valor de timePeriodSelect
+                const timePeriodSelect = document.getElementById("timePeriodSelect").value;
+
+                // Crear un objeto con los parámetros
+                const params = {
+                    symbols: symbols,
+                    weights: weights,
+                    otherSelect: otherSelect,
+                    customOther: customOther,
+                    optimizationSelect: optimizationSelectValue,
+                    timePeriodSelect: timePeriodSelect
+                };
+
+                console.log(params);
+
+                /*
+                // Enviar los datos a prueba.php usando fetch
+                fetch('prueba.php', {
+                    method: 'POST', // Cambiar a 'GET' si prefieres enviar los datos como parámetros en la URL
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params) // Convertir los datos a JSON
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Respuesta de prueba.php:', data);
+                    showAlert('Datos enviados correctamente a prueba.php');
+                })
+                .catch(error => {
+                    console.error('Error al enviar los datos a prueba.php:', error);
+                    showAlert('Error al enviar los datos a prueba.php');
+                });
+                */
             } else {
                 showAlert("Para analizar el portafolio el total de los pesos debe ser del 100%.");
             }
