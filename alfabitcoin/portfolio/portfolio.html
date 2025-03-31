@@ -249,7 +249,7 @@
                 </div>
                 <div id="optimization" class="col-md-9 eb-form-control">
                     <label for="optimizationSelect">Optimización:</label>
-                    <select class="form-select bg-dark text-light" id="optimizationSelect" onchange="togglePortfolioOptimization()">
+                    <select class="form-select bg-dark text-light" id="optimizationSelect">
                         <option value="No">No</option>
                         <option value="Si">Si</option>
                     </select>
@@ -753,10 +753,10 @@
             // Datos de prueba
             const testData = [
                 { name: "Portfolio original", absoluteReturn: "8.5%", volatility: "7.3%", minDrawdown: "-15.2%", sharpeRatio: "1.25", sortinoRatio: "1.55" },
-                { name: "GLD", absoluteReturn: "10.2%", volatility: "6.8%", minDrawdown: "-12.5%", sharpeRatio: "1.45", sortinoRatio: "1.75" },
-                { name: "AAPL", absoluteReturn: "15.0%", volatility: "12.0%", minDrawdown: "-20.0%", sharpeRatio: "1.10", sortinoRatio: "1.30" },
-                { name: "TSLA", absoluteReturn: "5.0%", volatility: "4.5%", minDrawdown: "-8.0%", sharpeRatio: "1.50", sortinoRatio: "1.80" },
-                { name: "BTC", absoluteReturn: "15.0%", volatility: "15.5%", minDrawdown: "-19.0%", sharpeRatio: "1.30", sortinoRatio: "1.60" }
+                { name: "GLD", absoluteReturn: "20.2%", volatility: "8.0%", minDrawdown: "-12.0%", sharpeRatio: "10.0%", sortinoRatio: "17.0%" },
+                { name: "AAPL", absoluteReturn: "34.8%", volatility: "12.0%", minDrawdown: "-20.0%", sharpeRatio: "20.0%", sortinoRatio: "3.0%" },
+                { name: "TSLA", absoluteReturn: "5.0%", volatility: "39.5%", minDrawdown: "-8.0%", sharpeRatio: "50.0%", sortinoRatio: "30.80%" },
+                { name: "BTC", absoluteReturn: "20.0%", volatility: "40.5%", minDrawdown: "-60.0%", sharpeRatio: "20.0%", sortinoRatio: "49.20%" }
             ];
 
             // Seleccionar el cuerpo de la tabla
