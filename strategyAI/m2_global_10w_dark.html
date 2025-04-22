@@ -30,10 +30,10 @@
     <script>
         (async () => {
             const data = await fetch(
-                'https://charts.bgeometrics.com/files/glm2_data.json'
+                'https://charts.bgeometrics.com/files/m2_data_strategyAI.json'
             ).then(response => response.json());
             const data_m2_10w = await fetch(
-                'https://charts.bgeometrics.com/files/m2_weeks10_posterior.json'
+                'https://charts.bgeometrics.com/files/m2_weeks10_stragegyAI.json'
             ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/glm2_btc_price.json'
@@ -94,8 +94,8 @@
                         var address_image = "logo_bitcoin_strategy_ai.png";
                         image.src = address_image;
 
-                        var height_image = 160;
-                        var width_image = 160;
+                        var height_image = 180;
+                        var width_image = 180;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
