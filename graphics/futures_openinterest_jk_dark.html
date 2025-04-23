@@ -2,12 +2,8 @@
 <html>
 <head>
     <title>Bitcoin Open Interest Short/Long Ratio</title>
-    <style>
-        body {
-            background-color: black;
-            color: white; /* Optional: Set default text color to white */
-        }
-    </style>
+</head>
+<body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
@@ -79,14 +75,10 @@
             title: {
                 text: 'Open Interest Short/Long',
                 align: 'left',
-                style: {
-                    color: '#FFFFFF' // Set title color to white
-                }
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                backgroundColor: 'black', // Set chart background color to black
                 events:{
                     load: function() {
                         var image = new Image();
@@ -116,29 +108,15 @@
             yAxis: [{
                 title: {
                     text: 'Open Interest Sort/Long',
-                    style: {
-                        color: '#FFFFFF' // Set yAxis title color to white
-                    }
                 },
                 labels: {
                     align: 'left',
-                    style: {
-                        color: '#FFFFFF' // Set yAxis labels color to white
-                    }
                 },
             }, {
                 title: {
-                    text: 'BTC price',
-                    style: {
-                        color: '#FFFFFF' // Set yAxis title color to white
-                    }
+                    text: 'BTC price'
                 },
-                opposite: false,
-                labels: {
-                    style: {
-                        color: '#FFFFFF' // Set yAxis labels color to white
-                    }
-                }
+                opposite: false
             }],
 
             series: [{
@@ -171,10 +149,7 @@
                 floating: true,
                 y: 25, 
                 verticalAlign: 'top',
-                align:'center',
-                itemStyle: {
-                    color: '#FFFFFF' // Set legend item color to white
-                }
+                align:'center'
             },
 
             rangeSelector: {
@@ -185,7 +160,7 @@
                 text: 'Source: binance.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Powered by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
-                    font: '11px sans-serif, Verdana, "Trebuchet MS", #FFFFFF' // Set credits color to white
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
