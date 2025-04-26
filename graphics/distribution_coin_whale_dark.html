@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin Distribution Coins Address 1K to 1OK bitcoin</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -18,19 +15,25 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
 
-    <div id="container" style="width:100%; height:600px;"></div>
+    <div id="container-iframe" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
             const data_metrics = await fetch(
                 'https://charts.bgeometrics.com/files/coin_10k_1k.json'
             ).then(response => response.json());
+            const data_metrics_pct = await fetch(
+                'https://charts.bgeometrics.com/files/coin_10k_1k_pct.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/coin_10k_1k_btc_price.json'
             ).then(response => response.json());
 
-        var chart = Highcharts.stockChart('container', {
+        var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -57,10 +60,8 @@
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
-                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
-                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
@@ -76,7 +77,7 @@
             },
 
             chart: {
-                renderTo: 'container',
+                renderTo: 'container-iframe',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -102,11 +103,22 @@
                 title: {
                     text: 'Bitcoin Coins Address'
                 },
+                height: '80%',
+                labels: {
+                    align: 'left',
+                },
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 opposite: false,
+                height: '80%',
+            }, {
+                title: {
+                    text: ''
+                },
+                top: '75%',
+                height: '30%',
             }],
 
             series: [{
@@ -125,6 +137,16 @@
                     valueDecimals: 2
                 },
                 yAxis: 1
+            }, {
+                id:'Flow %',
+                name: 'Flow %',
+                type: 'column',
+                data: data_metrics_pct,
+                zIndex: -1,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
             }],
 
             legend:{
@@ -135,7 +157,35 @@
             },
 
             rangeSelector: {
-                selected: 4
+                selected: 2,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
             },
 
             credits: {

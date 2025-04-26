@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Distribution Coins Address 1K to 1OK bitcoin</title>
+    <title>Bitcoin Distribution Coins Address > 1OK bitcoin</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -17,19 +17,20 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
 
     <div id="container-iframe" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
             const data_metrics = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k.json'
+                'https://charts.bgeometrics.com/files/coin_10k.json'
             ).then(response => response.json());
             const data_metrics_pct = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k_pct.json'
+                'https://charts.bgeometrics.com/files/coin_10k_pct.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k_btc_price.json'
+                'https://charts.bgeometrics.com/files/coin_10k_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -71,7 +72,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Distribution Coins Address 1K to 10K BTC',
+                text: 'Bitcoin Distribution Coins Address > 10K BTC',
                 align: 'left',
             },
 
@@ -80,7 +81,7 @@
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                         image.src = adresse_image;
 
                         var height_image = 128;
@@ -108,7 +109,7 @@
                 },
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
                 opposite: false,
                 height: '80%',
@@ -129,9 +130,9 @@
                 },
                 yAxis: 0
             }, {
-                name: 'Precio BTC',
+                name: 'BTC price',
                 data: data_price,
-                color: 'black',
+                color: 'white',
                 tooltip: {
                     valueDecimals: 2
                 },
