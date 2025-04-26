@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Distribution Coins Address 1K to 1OK bitcoin</title>
+    <title>Bitcoin Distribution Coins Address > 1OK bitcoin</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -23,13 +23,13 @@
     <script>
         (async () => {
             const data_metrics = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k.json'
+                'https://charts.bgeometrics.com/files/coin_10k.json'
             ).then(response => response.json());
             const data_metrics_pct = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k_pct.json'
+                'https://charts.bgeometrics.com/files/coin_10k_pct.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k_btc_price.json'
+                'https://charts.bgeometrics.com/files/coin_10k_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -71,7 +71,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Distribution Coins Address 1K to 10K BTC',
+                text: 'Bitcoin Distribution Coins Address > 10K BTC',
                 align: 'left',
             },
 
