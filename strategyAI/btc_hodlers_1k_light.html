@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin hodlers with +1K BTC</title>
+    <title>Bitcoin Whale Activity and Holdings</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -71,7 +71,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: Total balance and change hodlers +1k BTC',
+                text: 'Bitcoin Whale Activity and Holdings',
                 align: 'left',
             },
 
@@ -105,28 +105,29 @@
                     text: ''
                 },
                 labels: {
-                    align: 'left',
+                    align: 'right',
                 },
+                opposite: false,
             }, {
                 title: {
                     text: 'BTC price'
                 },
-                opposite: false,
                 labels: {
-                    align: 'right',
+                    align: 'left',
                 },
             }, {
                 title: {
                     text: 'Bitcoin'
                 },
                 labels: {
-                    align: 'left',
+                    align: 'right',
                 },
+                opposite: false,
             }],
 
             series: [{
-                id: 'Total balance +1k',
-                name: 'Total balance +1k',
+                id: 'Total balance whales',
+                name: 'Total balance whales',
                 data: data_metrics,
                 color: '#87CEEB', // Light Blue
                 tooltip: {
@@ -144,7 +145,7 @@
             }, {
                 id:'30-day change',
                 name:'30-day change',
-                type: 'line',
+                type: 'area',
                 color: 'green',
                 data: data_metrics_30d,
                 zIndex: -1,
@@ -154,9 +155,9 @@
                 yAxis: 2,
                 zones: [{
                     value: 0,
-                    color: 'red'
+                    color: 'rgba(255, 0, 0, 0.2)' 
                 }, {
-                    color: 'green'
+                    color: 'rgba(0, 128, 0, 0.2)' 
                 }]
             }],
 
