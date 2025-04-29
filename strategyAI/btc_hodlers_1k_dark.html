@@ -32,11 +32,11 @@
             const data_metrics = await fetch(
                 'https://charts.bgeometrics.com/files/coin_1k_strategyAI.json'
             ).then(response => response.json());
-            const data_metrics_pct = await fetch(
-                'https://charts.bgeometrics.com/files/coin_1k_pct_strategyAI.json'
+            const data_metrics_30d = await fetch(
+                'https://charts.bgeometrics.com/files/coin_1k_change_30d_strategyAI.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/coin_10k_1k_btc_price.json'
+                'https://charts.bgeometrics.com/files/coin_1_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
@@ -78,7 +78,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin hodlers with +1k BTC',
+                text: 'Bitcoin: Total balance and change hodlers +1k BTC',
                 align: 'left',
             },
 
@@ -110,7 +110,7 @@
 
             yAxis: [{
                 title: {
-                    text: 'Bitcoin'
+                    text: ''
                 },
                 labels: {
                     align: 'left',
@@ -125,16 +125,18 @@
                 },
             }, {
                 title: {
-                    text: ''
+                    text: 'Bitcoin'
                 },
-                labels: { enabled: false }
+                labels: {
+                    align: 'left',
+                },
             }],
 
             series: [{
-                id: 'BTC hodlers +1k',
-                name: 'BTC hodlers +1k',
+                id: 'Total balance +1k',
+                name: 'Total balance +1k',
                 data: data_metrics,
-                color: 'yellow',
+                color: '#87CEEB', // Light Blue
                 tooltip: {
                     valueDecimals: 0
                 },
@@ -148,17 +150,22 @@
                 },
                 yAxis: 1
             }, {
-                id:'Flow',
-                name: 'Flow',
+                id:'30-day change',
+                name:'30-day change',
                 type: 'line',
-                data: data_metrics_pct,
-                color: 'blue',
+                color: 'green',
+                data: data_metrics_30d,
                 zIndex: -1,
                 tooltip: {
-                    valueDecimals: 2,
-                    valueSuffix: '%' 
+                    valueDecimals: 0,
                 },
-                yAxis: 2
+                yAxis: 2,
+                zones: [{
+                    value: 0,
+                    color: 'red'
+                }, {
+                    color: 'green'
+                }]
             }],
 
             legend:{
@@ -208,7 +215,7 @@
                 },
                 position: {
                     align: 'right',
-                    x: -80,
+                    x: -120,
                     y: -124
                 }                
             },
