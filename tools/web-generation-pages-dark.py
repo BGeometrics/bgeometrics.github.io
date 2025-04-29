@@ -141,10 +141,10 @@ new_text = """
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
-old_text="""events:{
+old_text="""events: {
 """
 new_text = """backgroundColor: 'black',
-                events:{
+                events: {
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
