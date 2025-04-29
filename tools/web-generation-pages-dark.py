@@ -128,6 +128,11 @@ old_text = """color: 'black'"""
 new_text = """color: 'white'"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
+file_extension = '.html'
+old_text = """color: 'rgba(0, 0, 0, 1)'"""
+new_text = """color: 'white'"""
+replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
+
 old_text = """BGeometrics_logo.png"""
 new_text = """BGeometrics_logo_write.png"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
