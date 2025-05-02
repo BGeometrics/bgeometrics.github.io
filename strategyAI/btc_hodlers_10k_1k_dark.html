@@ -4,6 +4,12 @@
     <title>Bitcoin Whale Activity and Holdings</title>
 </head>
 <body>
+    <style>
+        body {
+            background-color: black;
+            color: white; 
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
@@ -17,16 +23,17 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
 
     <div id="container-iframe" style="width:100%; height:700px;"></div>
 
     <script>
         (async () => {
             const data_metrics = await fetch(
-                'https://charts.bgeometrics.com/files/coin_1k_strategyAI.json'
+                'https://charts.bgeometrics.com/files/coin_10k_1k_strategyAI.json'
             ).then(response => response.json());
             const data_metrics_30d = await fetch(
-                'https://charts.bgeometrics.com/files/coin_1k_change_30d_strategyAI.json'
+                'https://charts.bgeometrics.com/files/coin_10k_1k_change_30d_strategyAI.json'
             ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/coin_1_btc_price.json'
@@ -77,6 +84,7 @@
 
             chart: {
                 renderTo: 'container-iframe',
+                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -92,7 +100,7 @@
 
                         image.onload = () => {
                             this.renderer.image(address_image, position_x, position_y, width_image, height_image)
-                                .css({position: 'absolute', opacity: 0.1})
+                                .css({position: 'absolute', opacity: 0.8})
                                 .attr({zIndex: 1})
                                 .add();
                         };
@@ -138,6 +146,7 @@
                 },
                 yAxis: 0
             }, {
+                id: 'BTC price',
                 name: 'BTC price',
                 data: data_price,
                 color: 'orange',
@@ -158,9 +167,9 @@
                 yAxis: 2,
                 zones: [{
                     value: 0,
-                    color: 'rgba(255, 0, 0, 0.2)' 
+                    color: 'rgba(255, 0, 0, 0.5)' 
                 }, {
-                    color: 'rgba(0, 128, 0, 0.2)' 
+                    color: 'rgba(0, 128, 0, 0.5)' 
                 }]
             }],
 
