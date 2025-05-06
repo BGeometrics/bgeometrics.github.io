@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin and Global M2 10-Week Lead</title>
+    <title>Bitcoin Whale Activity and Holdings</title>
 </head>
 <body>
     <style>
@@ -18,38 +18,87 @@
     <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
     <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
     <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <div id="container-iframe" style="width:100%; height:700px; margin: 0 auto;"></div>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>
+
+    <div id="container-iframe" style="width:100%; height:700px;"></div>
 
     <script>
         (async () => {
-            const data = await fetch(
-                'https://charts.bgeometrics.com/files/m2_data_strategyAI.json'
+            const data_metrics = await fetch(
+                'https://charts.bgeometrics.com/files/coin_10k_1k_strategyAI.json'
             ).then(response => response.json());
-            const data_m2_10w = await fetch(
-                'https://charts.bgeometrics.com/files/m2_weeks10_stragegyAI.json'
+            const data_metrics_30d = await fetch(
+                'https://charts.bgeometrics.com/files/coin_10k_1k_change_30d_strategyAI.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/glm2_btc_price.json'
+                'https://charts.bgeometrics.com/files/coin_1_btc_price.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
-            title: {
-                text: 'Bitcoin and Global M2 10-Week Lead',
-                align: 'left',
-                style: {
-                    color: '#FFFFFF'
+            stockTools: {
+                enabled: false // Add this line to disable stock tools
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
                 }
+            },
+            title: {
+                text: 'Bitcoin Whale Activity and Holdings',
+                align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
                 backgroundColor: 'black',
-                events:{
+                events: {
                     load: function() {
                         var image = new Image();
                         var address_image = "logo_bitcoin_strategy_ai.png";
@@ -73,70 +122,79 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 title: {
-                    text: 'Global M2 Supply (USD)',
-                    labels: {
-                        align: 'right',
-                    },
+                    text: ''
+                },
+                labels: {
+                    align: 'right',
                 },
                 opposite: false,
-            }, {
                 gridLineWidth: 0,
+            }, {
                 title: {
-                    text: 'BTC price',
-                    labels: {
-                        align: 'left',
-                    },
+                    text: 'BTC price'
                 },
+                labels: {
+                    align: 'left',
+                },
+                gridLineWidth: 0,
+            }, {
+                title: {
+                    text: 'Bitcoin'
+                },
+                labels: {
+                    align: 'right',
+                },
+                opposite: false,
+                gridLineWidth: 0,
             }],
 
             series: [{
-                id:'BTC price',
+                id: 'Total balance whales',
+                name: 'Total balance whales',
+                data: data_metrics,
+                color: '#87CEEB', // Light Blue
+                tooltip: {
+                    valueDecimals: 0
+                },
+                yAxis: 0
+            }, {
+                id: 'BTC price',
                 name: 'BTC price',
-                color: 'orange',
-                zIndex: 2,
                 data: data_price,
+                color: 'orange',
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 1,
-            },{
-                id: 'Global M2 10 weeks lead',
-                name: 'Global M2 10 weeks lead',
-                type: 'line',
-                color: 'yellow',
-                data: data_m2_10w,
+                yAxis: 1
+            }, {
+                id:'30-day change',
+                name:'30-day change',
+                type: 'area',
+                color: 'green',
+                data: data_metrics_30d,
+                zIndex: -1,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 0,
                 },
-                yAxis: 0
-            },{
-                id: 'Global M2 Global Supply (USD)',
-                name: 'Global M2 Supply (USD)',
-                type: 'line',
-                color: 'white',
-                visible: false,
-                data: data,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
+                yAxis: 2,
+                zones: [{
+                    value: 0,
+                    color: 'rgba(255, 0, 0, 0.5)' 
+                }, {
+                    color: 'rgba(0, 128, 0, 0.5)' 
+                }]
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
-                y: 25,
-                align:'center',
-                itemStyle: {
-                    color: '#FFFFFF'
-                }
+                align:'center'
             },
 
             rangeSelector: {
-                selected: 4,
+                selected: 2,
                 buttons: [{
                     type: 'month',
                     count: 1,
@@ -171,16 +229,28 @@
                 text: 'Powered by BGeometrics.com',
                 href: 'javascript:window.open("http://charts.bgeometrics.com/", "_blank")',
                 style: {
-                    font: '11px sans-serif, Verdana, "Trebuchet MS", #FFFFFF'
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
-                    x: -70,
+                    x: -120,
                     y: -124
                 }                
             },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {enabled:false}
+                    }
+                }]
+            }
         });
-
     })();
 
     </script>
