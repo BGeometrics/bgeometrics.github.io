@@ -174,5 +174,10 @@ new_text = """backgroundColor: 'black',
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
+
+old_text=""", opacity: 0.1}"""
+new_text=""", opacity: 0.3}"""
+replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
+
 copy_files(dest_directory, src_directory)
 
