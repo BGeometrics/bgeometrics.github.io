@@ -143,6 +143,27 @@ old_text="""
 new_text = """
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
