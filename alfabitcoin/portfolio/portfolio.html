@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Table</title>
+    <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Bootstrap Icons -->
     <link href="./css/19.css" rel="stylesheet" />
     <link href="./css/template.css" rel="stylesheet" />
@@ -201,8 +201,8 @@
                 <thead>
                     <tr>
                         <th scope="col"> </th>
-                        <th scope="col">Símbolo</th>
                         <th scope="col">Activo</th>
+                        <th scope="col">Símbolo</th>
                         <th scope="col">Peso (%)</th>
                         <th scope="col"></th>
                     </tr>
@@ -214,8 +214,8 @@
                                 <i class="bi bi-info-circle"></i> 
                             </button>
                         </td>
-                        <td><input type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
-                        <td class="asset-column">Nuevo activo</td>
+                        <td class="asset-column"><input id='asset-name' type="text" class="form-control bg-dark text-light" placeholder="Nuevo activo" onblur="copyToName(this)"></td>
+                        <td><input id="asset-symbol" type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
                         <td><input type="number" class="form-control weight-input bg-dark text-light" placeholder="%" onchange="updateTotalWeight()"></td>
                         <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
                     </tr>
@@ -261,16 +261,15 @@
 
         <div class="row mt-4">
             <div id="portfolioStatistics" class="col-md-12">
-                <h5>Optimización de portafolios con BTC</h5>
                 <table id="portfolioStatisticsTable" class="table table-bordered table-dark">
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Rentabilidad absoluta</th>
-                            <th scope="col">Volatilidad</th>
-                            <th scope="col">Min Drawdown</th>
-                            <th scope="col">Sharpe Ratio</th>
-                            <th scope="col">Sortino Ratio</th>
+                            <th scope="col" style="vertical-align: top;">Rentabilidad absoluta</th>
+                            <th scope="col">Volatilidad<br><small>(anualizada)</small></th>
+                            <th scope="col" style="vertical-align: top;">Min Drawdown</th>
+                            <th scope="col">Sharpe Ratio<br><small>(rf=2%)</small></th>
+                            <th scope="col">Sortino Ratio<br><small>(rf=2%)</small></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -294,11 +293,10 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Composición</th>
-                            <th scope="col">Volatilidad</th>
-                            <th scope="col">Min Drawdown</th>
-                            <th scope="col">Sharpe Ratio</th>
-                            <th scope="col">Sortino Ratio</th>
+                            <th scope="col" style="vertical-align: top;">Volatilidad</th>
+                            <th scope="col" style="vertical-align: top;">Min Drawdown</th>
+                            <th scope="col">Sharpe Ratio<br><small>(rf=2%)</small></th>
+                            <th scope="col">Sortino Ratio<br><small>(rf=2%)</small></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -344,8 +342,8 @@
                             <i class="bi bi-info-circle"></i> <!-- Ícono de información -->
                         </button>
                     </td>
-                    <td><input type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
-                    <td class="asset-column">Nuevo activo</td>
+                    <td class="asset-column"><input id='asset-name' type="text" class="form-control bg-dark text-light" placeholder="Nuevo activo" onblur="copyToName(this)"></td>
+                    <td><input id="asset-symbol" type="text" class="form-control bg-dark text-light" placeholder="Símbolo" onblur="copyToAsset(this)"></td>
                     <td><input type="number" class="form-control weight-input bg-dark text-light" placeholder="%" onchange="updateTotalWeight()"></td>
                     <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
                 </tr>`;
@@ -369,17 +367,92 @@
                 total += parseFloat(input.value) || 0;
             });
 
-            // Formatear el total a dos decimales
-            document.getElementById("totalWeight").textContent = total.toFixed(2) + "%";
+            // Formatear sin decimales
+            document.getElementById("totalWeight").textContent = total.toFixed(0) + "%";
         }
 
         function copyToAsset(input) {
-            // Copy the value from the "Symbol" input to the "Asset" column
-            const row = input.closest('tr');
-            const assetCell = row.querySelector('.asset-column');
-            assetCell.textContent = input.value || "New Asset";
+            input.value = input.value.toUpperCase().trim(); // Convertir a mayúsculas y eliminar espacios en blanco
+            const symbol = input.value;
 
-            showPanels();
+            // Realizar una solicitud GET al endpoint /asset con el símbolo
+            fetch(`/public/asset?symbol=${symbol}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error al recuperar el activo.");
+                    }
+                    let ret = response.text();
+                    
+                    return ret; 
+                })
+                .then(asset => {
+                    // Eliminar las comillas del principio y del final de la respuesta
+                    asset = asset.replace(/^"|"$/g, '');
+                    asset = asset.slice(0, -2);
+
+                    // Actualizar la columna "Activo" con el nombre del activo recuperado
+                    const row = input.closest('tr');
+                    const assetCell = row.querySelector('.asset-column');
+
+                    if (asset) {
+                        assetCell.textContent = asset; // Asignar el texto recibido
+                    } else {
+                        assetCell.textContent = "Activo no encontrado";
+                    }
+
+                    // Poner el foco en el campo input type="number"
+                    const weightInput = row.querySelector('input[type="number"]');
+                    weightInput.focus();
+
+                    // Mostrar los paneles
+                    showPanels();
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    showAlert("No se pudo recuperar el activo. Intente nuevamente.");
+                });
+        }
+
+        function copyToName(input) {
+            const name = input.value;
+            const row = input.closest('tr');
+
+            // Realizar una solicitud GET al endpoint /asset con el símbolo
+            fetch(`/public/assetname?name=${name}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error al recuperar el activo.");
+                    }
+
+                    return response.json(); // Cambiar a .json() para manejar la respuesta como JSON
+                })
+                .then(data => {
+                    console.log("Datos recibidos:", data);
+
+                    const shortName = data[0]; 
+                    const symbol = data[1]; 
+
+
+                    if (symbol !== null) {
+                        console.log("Nombre corto:", symbol);
+                        // Actualizar la columna "Activo" con el nombre del activo recuperado
+                        const assetCell = row.querySelector('.asset-column');
+                        assetCell.textContent = shortName; // Asignar el nombre corto recibido
+
+                        // Actualizar la columna "Símbolo" con el símbolo recuperado
+                        const symbolInput = row.querySelector('input[type="text"]');
+                        symbolInput.value = symbol; // Asignar el símbolo recibido
+
+                        // Poner el foco en el campo input type="number"
+                        const weightInput = row.querySelector('input[type="number"]');
+                        weightInput.focus();
+                        
+                        showPanels();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
         }
 
         function showPanels() {
@@ -435,141 +508,21 @@
         }
 
         function analyzePortfolio() {
-            // Check if the total weight is 100% or 99.99% before analyzing
+            const analyzeButton = document.querySelector('button[onclick="analyzePortfolio()"]');
+            analyzeButton.disabled = true;
+
+            document.getElementById("portfolioStatistics").style.display = "none";
+
+            // Check if the total weight is 100% o cercano antes de analizar
             const totalWeight = parseFloat(document.getElementById("totalWeight").textContent);
-            if (totalWeight <= 100.1 && totalWeight >= 99.99) {
-                document.getElementById("portfolioStatistics").style.display = "block";
 
-                // Test data for the table
-                const testData = [
-                    { name: "Portfolio original", absoluteReturn: "12.5%", volatility: "8.3%", maxDrawdown: "-15.2%", sharpeRatio: "1.25", sortinoRatio: "1.50" },
-                    { name: "Portfolio original +1% de BTC", absoluteReturn: "13.0%", volatility: "9.0%", maxDrawdown: "-16.0%", sharpeRatio: "1.20", sortinoRatio: "1.45" },
-                    { name: "Portfolio original +5% de BTC", absoluteReturn: "11.0%", volatility: "8.0%", maxDrawdown: "-28.0%", sharpeRatio: "2.10", sortinoRatio: "1.50" },
-                    { name: "Portfolio original +10% de BTC", absoluteReturn: "15.0%", volatility: "12.0%", maxDrawdown: "-18.0%", sharpeRatio: "1.10", sortinoRatio: "1.30" },
-                    { name: "Portfolio original +25% de BTC", absoluteReturn: "18.0%", volatility: "15.0%", maxDrawdown: "-20.0%", sharpeRatio: "1.05", sortinoRatio: "1.20" }
-                ];
-
-                // Select the table body
-                const tableBody = document.querySelector("#portfolioStatisticsTable tbody");
-                tableBody.innerHTML = ""; 
-
-                let maxAbsoluteReturn = -Infinity; 
-                let maxAbsoluteReturnCell = null; 
-
-                let minVolatility = Infinity; 
-                let minVolatilityCell = null; 
-
-                let minMaxDrawdown = Infinity; 
-                let minMaxDrawdownCell = null; 
-
-                let maxSharpeRatio = -Infinity; 
-                let maxSharpeRatioCell = null; 
-
-                let maxSortinoRatio = -Infinity; 
-                let maxSortinoRatioCell = null; 
-
-                // Insert the test data into the table
-                testData.forEach(row => {
-                    const tableRow = `
-                        <tr>
-                            <td>${row.name}</td>
-                            <td class="absolute-return">${row.absoluteReturn}</td>
-                            <td class="volatility">${row.volatility}</td>
-                            <td class="max-drawdown">${row.maxDrawdown}</td>
-                            <td class="sharpe-ratio">${row.sharpeRatio}</td>
-                            <td class="sortino-ratio">${row.sortinoRatio}</td>
-                        </tr>
-                    `;
-                    tableBody.insertAdjacentHTML("beforeend", tableRow);
-                });
-
-                // Find the cell with the highest Absolute Return value
-                const absoluteReturnCells = document.querySelectorAll(".absolute-return");
-                absoluteReturnCells.forEach(cell => {
-                    const value = parseFloat(cell.textContent.replace("%", "")); // Convert text to number
-                    if (value > maxAbsoluteReturn) {
-                        maxAbsoluteReturn = value;
-                        maxAbsoluteReturnCell = cell;
-                    }
-                });
-
-                // Highlight the cell with the highest Absolute Return value
-                if (maxAbsoluteReturnCell) {
-                    maxAbsoluteReturnCell.style.backgroundColor = "#ff9800"; // Orange background
-                    maxAbsoluteReturnCell.style.color = "#fff"; // White text for contrast
-                }
-
-                // Find the cell with the lowest Volatility value
-                const volatilityCells = document.querySelectorAll(".volatility");
-                volatilityCells.forEach(cell => {
-                    const value = parseFloat(cell.textContent.replace("%", "")); // Convert text to number
-                    if (value < minVolatility) {
-                        minVolatility = value;
-                        minVolatilityCell = cell;
-                    }
-                });
-
-                // Highlight the cell with the lowest Volatility value
-                if (minVolatilityCell) {
-                    minVolatilityCell.style.backgroundColor = "#ff9800"; // Orange background
-                    minVolatilityCell.style.color = "#fff"; // White text for contrast
-                }
-
-                // Find the cell with the lowest Max Drawdown value
-                const maxDrawdownCells = document.querySelectorAll(".max-drawdown");
-                maxDrawdownCells.forEach(cell => {
-                    const value = parseFloat(cell.textContent.replace("%", "").replace("-", "")); // Convert text to positive number
-                    if (value < minMaxDrawdown) {
-                        minMaxDrawdown = value;
-                        minMaxDrawdownCell = cell;
-                    }
-                });
-
-                // Highlight the cell with the lowest Max Drawdown value
-                if (minMaxDrawdownCell) {
-                    minMaxDrawdownCell.style.backgroundColor = "#ff9800"; // Orange background
-                    minMaxDrawdownCell.style.color = "#fff"; // White text for contrast
-                }
-
-                // Find the cell with the highest Sharpe Ratio value
-                const sharpeRatioCells = document.querySelectorAll(".sharpe-ratio");
-                sharpeRatioCells.forEach(cell => {
-                    const value = parseFloat(cell.textContent); // Convert text to number
-                    if (value > maxSharpeRatio) {
-                        maxSharpeRatio = value;
-                        maxSharpeRatioCell = cell;
-                    }
-                });
-
-                // Highlight the cell with the highest Sharpe Ratio value
-                if (maxSharpeRatioCell) {
-                    maxSharpeRatioCell.style.backgroundColor = "#ff9800"; // Orange background
-                    maxSharpeRatioCell.style.color = "#fff"; // White text for contrast
-                }
-
-                // Find the cell with the highest Sortino Ratio value
-                const sortinoRatioCells = document.querySelectorAll(".sortino-ratio");
-                sortinoRatioCells.forEach(cell => {
-                    const value = parseFloat(cell.textContent); // Convert text to number
-                    if (value > maxSortinoRatio) {
-                        maxSortinoRatio = value;
-                        maxSortinoRatioCell = cell;
-                    }
-                });
-
-                // Highlight the cell with the highest Sortino Ratio value
-                if (maxSortinoRatioCell) {
-                    maxSortinoRatioCell.style.backgroundColor = "#ff9800"; // Orange background
-                    maxSortinoRatioCell.style.color = "#fff"; // White text for contrast
-                }
-
+            if (totalWeight <= 100.1 && totalWeight >= 99.9) {
+                // Obtener los valores de las columnas "symbol" y "weight" de la tabla assets
                 const symbols = [];
                 const weights = [];
-
-                // Obtener los valores de las columnas "symbol" y "weight" de la tabla assets
                 document.querySelectorAll("#portfolio-body tr").forEach(row => {
                     const symbol = row.querySelector('input[type="text"]').value;
-                    const weight = row.querySelector('input[type="number"]').value;
+                    const weight = row.querySelector('input[type="number"]').value / 100;
                     if (symbol && weight) {
                         symbols.push(symbol);
                         weights.push(weight);
@@ -583,73 +536,253 @@
                 const params = {
                     symbols: symbols,
                     weights: weights,
-                    //otherSelect: otherSelect,
-                    //customOther: customOther,
+                    percentageBTC: [0, 1, 5, 10, 25],
                     timePeriodSelect: timePeriodSelect
                 };
 
-                console.log(params);
+                console.log("Enviando parámetros al servidor:", params);
 
-                /*
-                // Enviar los datos a prueba.php usando fetch
-                fetch('analyze', {
-                    method: 'POST', // Cambiar a 'GET' si prefieres enviar los datos como parámetros en la URL
+                // Cambiar el cursor a "wait"
+                document.body.style.cursor = "wait";
+
+                // Realizar la solicitud al servidor
+                fetch('/public/analyze', {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(params) // Convertir los datos a JSON
+                    body: JSON.stringify(params)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Respuesta de prueba.php:', data);
-                    showAlert('Datos enviados correctamente a prueba.php');
-                })
-                .catch(error => {
-                    console.error('Error al enviar los datos a prueba.php:', error);
-                    showAlert('Error al enviar los datos a prueba.php');
-                });
-                */
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Error al obtener los datos del servidor.");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Datos recibidos del servidor:", data);
+
+                        // Acceder al array de datos dentro de "data"
+                        const portfolioData = data.data[0]; // Primer elemento del array "data"
+
+                        // Seleccionar el cuerpo de la tabla
+                        const tableBody = document.querySelector("#portfolioStatisticsTable tbody");
+                        tableBody.innerHTML = ""; // Limpiar la tabla antes de insertar nuevos datos
+
+                        // Insertar los datos recibidos en la tabla
+                        portfolioData.forEach(row => {
+                            const tableRow = `
+                                <tr>
+                                    <td>${row.name}</td>
+                                    <td class="absolute-return">${row.absoluteReturn}</td>
+                                    <td class="volatility">${row.volatility}</td>
+                                    <td class="max-drawdown">${row.maxDrawdown}</td>
+                                    <td class="sharpe-ratio">${row.sharpeRatio}</td>
+                                    <td class="sortino-ratio">${row.sortinoRatio}</td>
+                                </tr>
+                            `;
+                            tableBody.insertAdjacentHTML("beforeend", tableRow);
+                        });
+
+                        // Resaltar las métricas más importantes
+                        highlightBestMetrics();
+
+                        document.getElementById("portfolioStatistics").style.display = "block";
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        showAlert("Hubo un problema al analizar el portafolio. Por favor, inténtelo nuevamente.");
+                    })
+                    .finally(() => {
+                        document.body.style.cursor = "default";
+                        analyzeButton.disabled = false;
+                    });
+
             } else {
                 showAlert("Para analizar el portafolio el total de los pesos debe ser del 100%.");
+                analyzeButton.disabled = false;
+            }
+        }
+
+        function highlightBestMetrics() {
+            // Resaltar las mejores métricas en la tabla
+            let maxAbsoluteReturn = -Infinity;
+            let maxAbsoluteReturnCell = null;
+
+            let minVolatility = Infinity;
+            let minVolatilityCell = null;
+
+            let minMaxDrawdown = Infinity;
+            let minMaxDrawdownCell = null;
+
+            let maxSharpeRatio = -Infinity;
+            let maxSharpeRatioCell = null;
+
+            let maxSortinoRatio = -Infinity;
+            let maxSortinoRatioCell = null;
+
+            // Buscar las celdas con los mejores valores
+            document.querySelectorAll(".absolute-return").forEach(cell => {
+                const value = parseFloat(cell.textContent.replace("%", ""));
+                if (value > maxAbsoluteReturn) {
+                    maxAbsoluteReturn = value;
+                    maxAbsoluteReturnCell = cell;
+                }
+            });
+
+            document.querySelectorAll(".volatility").forEach(cell => {
+                const value = parseFloat(cell.textContent.replace("%", ""));
+                if (value < minVolatility) {
+                    minVolatility = value;
+                    minVolatilityCell = cell;
+                }
+            });
+
+            document.querySelectorAll(".max-drawdown").forEach(cell => {
+                const value = parseFloat(cell.textContent.replace("%", "").replace("-", ""));
+                if (value < minMaxDrawdown) {
+                    minMaxDrawdown = value;
+                    minMaxDrawdownCell = cell;
+                }
+            });
+
+            document.querySelectorAll(".sharpe-ratio").forEach(cell => {
+                const value = parseFloat(cell.textContent);
+                if (value > maxSharpeRatio) {
+                    maxSharpeRatio = value;
+                    maxSharpeRatioCell = cell;
+                }
+            });
+
+            document.querySelectorAll(".sortino-ratio").forEach(cell => {
+                const value = parseFloat(cell.textContent);
+                if (value > maxSortinoRatio) {
+                    maxSortinoRatio = value;
+                    maxSortinoRatioCell = cell;
+                }
+            });
+
+            // Aplicar estilos a las mejores métricas
+            if (maxAbsoluteReturnCell) {
+                maxAbsoluteReturnCell.style.backgroundColor = "#ff9800";
+                maxAbsoluteReturnCell.style.color = "#fff";
+            }
+            if (minVolatilityCell) {
+                minVolatilityCell.style.backgroundColor = "#ff9800";
+                minVolatilityCell.style.color = "#fff";
+            }
+            if (minMaxDrawdownCell) {
+                minMaxDrawdownCell.style.backgroundColor = "#ff9800";
+                minMaxDrawdownCell.style.color = "#fff";
+            }
+            if (maxSharpeRatioCell) {
+                maxSharpeRatioCell.style.backgroundColor = "#ff9800";
+                maxSharpeRatioCell.style.color = "#fff";
+            }
+            if (maxSortinoRatioCell) {
+                maxSortinoRatioCell.style.backgroundColor = "#ff9800";
+                maxSortinoRatioCell.style.color = "#fff";
             }
         }
 
         function optimizePortfolio() {
-            const optimizationSelect = document.getElementById("optimizationSelect");
-            const portfolioOptimization = document.getElementById("portfolioOptimization");
+            const optimizeButton = document.querySelector('button[onclick="optimizePortfolio()"]');
+            optimizeButton.disabled = true;
 
-            portfolioOptimization.style.display = "block";
+            document.getElementById("portfolioOptimization").style.display = "none";
 
-            const symbols = [];
-            const weights = [];
+            // Check if the total weight is 100% o cercano antes de analizar
+            const totalWeight = parseFloat(document.getElementById("totalWeight").textContent);
 
-            // Obtener los valores de las columnas "symbol" y "weight" de la tabla assets
-            document.querySelectorAll("#portfolio-body tr").forEach(row => {
-                const symbol = row.querySelector('input[type="text"]').value;
-                const weight = row.querySelector('input[type="number"]').value;
-                if (symbol && weight) {
-                    symbols.push(symbol);
-                    weights.push(weight);
-                }
-            });
+            if (totalWeight <= 100.1 && totalWeight >= 99.9) {
+                // Obtener los valores de las columnas "symbol" y "weight" de la tabla assets
+                const assets = [];
+                const symbols = [];
+                const weights = [];
+                document.querySelectorAll("#portfolio-body tr").forEach(row => {
+                    const symbol = row.querySelector('input[type="text"]').value;
+                    const weight = row.querySelector('input[type="number"]').value / 100;
+                    const asset = row.querySelector('.asset-column').textContent; 
 
-            // Obtener el valor de timePeriodSelect
-            const timePeriodSelect = document.getElementById("timePeriodSelect").value;
+                    if (symbol && weight && asset) {
+                        symbols.push(symbol);
+                        weights.push(weight);
+                        assets.push(asset); 
+                    }
+                });
 
-            // Crear un objeto con los parámetros
-            const params = {
-                symbols: symbols,
-                weights: weights,
-                //otherSelect: otherSelect,
-                //customOther: customOther,
-                timePeriodSelect: timePeriodSelect
-            };
+                // Obtener el valor de timePeriodSelect
+                const timePeriodSelect = document.getElementById("timePeriodSelect").value;
 
-            console.log(params);
+                // Crear un objeto con los parámetros
+                const params = {
+                    assets: assets,
+                    symbols: symbols,
+                    weights: weights,
+                    percentageBTC: [0, 1, 5, 10, 25],
+                    timePeriodSelect: timePeriodSelect
+                };
 
-            loadPortfolioOptimizationData();
+                console.log("Enviando parámetros al servidor:", params);
 
-        }            
+                // Cambiar el cursor a "wait"
+                document.body.style.cursor = "wait";
+
+                // Realizar la solicitud al servidor
+                fetch('/public/optimize', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Error al obtener los datos del servidor.");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Datos recibidos del servidor:", data);
+
+                        // Acceder al array de datos dentro de "data"
+                        const portfolioData = data.data[0]; // Primer elemento del array "data"
+                        console.log("Datos del portafolio optimizado:", portfolioData);
+
+                        // Seleccionar el cuerpo de la tabla
+                        const tableBody = document.querySelector("#portfolioOptimization tbody");
+
+                        tableBody.innerHTML = "";
+
+                        portfolioData.forEach(row => {
+                            const tableRow = `
+                                <tr>
+                                    <td>${row.name}</td>
+                                    <td>${row.volatility}</td>
+                                    <td>${row.minDrawdown}</td>
+                                    <td>${row.sharpeRatio}</td>
+                                    <td>${row.sortinoRatio}</td>
+                                </tr>
+                            `;
+                            tableBody.insertAdjacentHTML("beforeend", tableRow);
+                        });
+
+                        document.getElementById("portfolioOptimization").style.display = "block";
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        showAlert("Hubo un problema al optimizar el portafolio. Por favor, inténtelo nuevamente.");
+                    })
+                    .finally(() => {
+                        document.body.style.cursor = "default";
+                        optimizeButton.disabled = false;
+                    });
+
+            } else {
+                showAlert("Para optimizar el portafolio el total de los pesos debe ser del 100%.");
+                optimizeButton.disabled = false;
+            }
+        }
 
         function loadPortfolio(portfolioName) {
             // Cerrar el modal
@@ -694,11 +827,11 @@
                     { symbol: "HYG", asset: "iShares iBoxx $ Hig...d Corporate Bond ETF", weight: 20 },
                 ],
                 "All Seasons": [
-                    { symbol: "VGLT", asset: "Long Term Bonds", weight: 40 },
-                    { symbol: "ITOT", asset: "Total Stock Market", weight: 30 },
-                    { symbol: "VGIT", asset: "Intermediate Bonds", weight: 15 },
-                    { symbol: "GSP", asset: "Commodities", weight: 7.5 },
-                    { symbol: "GLD", asset: "Gold", weight: 7.5 },
+                    { symbol: "VGLT", asset: "Long Term Bonds", weight: 41 },
+                    { symbol: "ITOT", asset: "Total Stock Market", weight: 31 },
+                    { symbol: "VGIT", asset: "Intermediate Bonds", weight: 11 },
+                    { symbol: "GSP", asset: "Commodities", weight: 7.5 }, // No está incluida en la API
+                    { symbol: "GLD", asset: "Gold", weight: 9.5 },
                 ],
                 "Clasic 60/40": [
                     { symbol: "SPY", asset: "SPDR S&P 500", weight: 60 },
@@ -716,8 +849,8 @@
                                 <i class="bi bi-info-circle"></i> <!-- Ícono de información -->
                             </button>
                         </td>
-                        <td><input type="text" class="form-control bg-dark text-light" value="${item.symbol}" onblur="copyToAsset(this)"></td>
                         <td class="asset-column">${item.asset}</td>
+                        <td><input id="asset-symbol" type="text" class="form-control bg-dark text-light" value="${item.symbol}" onblur="copyToAsset(this)"></td>
                         <td><input type="number" class="form-control bg-dark text-light weight-input" value="${item.weight}" onchange="updateTotalWeight()"></td>
                         <td><button class="btn btn-danger btn-sm" onclick="removeRow(this)">X</button></td>
                     </tr>`;
