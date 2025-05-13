@@ -21,7 +21,6 @@ cd $DIR_PROYECT/tools
 python3 web-generation-pages-dark.py
 python3 web-generation-pages-all-es.py
 python3 web-generation-pages-all.py
-python3 web-generation-pages-dark-index.py
 
 cp -r $DIR_PROYECT/graphics/* $DIR_ES/graphics
 cp -r $DIR_PROYECT/reports/* $DIR_ES/reports
@@ -31,6 +30,9 @@ cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/
 
 python3 web-generation-pages-dark-es.py
 python3 web-generation-translate-graphics.py
+
+cd $DIR_PROYECT/tools
+python3 web-generation-pages-dark-index.py
 
 if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
         deactivate
