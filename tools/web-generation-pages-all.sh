@@ -21,6 +21,7 @@ cd $DIR_PROYECT/tools
 python3 web-generation-pages-dark.py
 python3 web-generation-pages-all-es.py
 python3 web-generation-pages-all.py
+python3 web-generation-pages-dark-index.py
 
 cp -r $DIR_PROYECT/graphics/* $DIR_ES/graphics
 cp -r $DIR_PROYECT/reports/* $DIR_ES/reports
