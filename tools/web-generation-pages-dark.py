@@ -189,7 +189,11 @@ replace_text_in_directory(dest_directory, old_text, new_text, file_extension=Non
 
 copy_files(dest_directory, src_directory)
 
+
 # 
+
+src = '/home/pi/bgeometrics.github.io/index_dark.html'
+dest = '/tmp/index_dark.html'
 old_text = """  <link href="assets/css/bgeometrics.css" rel="stylesheet">"""
 new_text = """  <link href="assets/css/bgeometrics.css" rel="stylesheet">
   <style>
@@ -203,11 +207,4 @@ new_text = """  <link href="assets/css/bgeometrics.css" rel="stylesheet">
   </style>
 
 """
-replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
-
-src_directory = '/home/pi/bgeometrics.github.io/index_dark.html'
-dest_directory = '/tmp/index_dark.html'
-
-copy_files(dest_directory, src_directory)
-
 
