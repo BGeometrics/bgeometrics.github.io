@@ -79,6 +79,21 @@ def search_replace_dark(_file, _file_out):
 
     return _file_out
 
+def search_replace_text(_file, _file_out, _search, _replace):
+
+    with open(_file, 'r') as file:
+        filedata = file.read()
+
+    filedata = filedata.replace(_search, _replace)
+
+    with open(_file_out, 'w') as file:
+        file.write(filedata)
+
+    file.close()
+
+    return _file_out
+
+
 """
 def search_replace_index_dark(_file):
     _file_out = 'web-generation-model-index-end-dark.html'
@@ -423,6 +438,22 @@ concatenate_files(file1_path, file2_path, output_file_path)
 _file_out = 'web-generation-model-dark.html' 
 file_out_dark = search_replace_dark(file1_path, _file_out)
 #file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
+
+old_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">"""
+new_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">
+  <style>
+    #searchInput {
+        color: #000000 !important;
+    }
+
+    #searchInput::placeholder {
+        color: #666666;
+    }
+  </style>
+"""
+
+search_replace_dark(file_out_dark, file_out_dark, old_text, new_text)
+
 file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
 print(output_file_path)
