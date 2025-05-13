@@ -108,6 +108,20 @@ def replace_text_in_directory(directory, old_text, new_text, file_extension=None
 
             print(f"Processed file: {file_path}")
 
+def search_replace_dark(_file, _file_out, _search, _replace):
+
+    with open(_file, 'r') as file:
+        filedata = file.read()
+
+    filedata = filedata.replace(_search, _replace)
+
+    with open(_file_out, 'w') as file:
+        file.write(filedata)
+
+    file.close()
+
+    return _file_out
+
 
 src_directory = '/home/pi/bgeometrics.github.io/graphics'
 dest_directory = '/tmp/graphics'
@@ -190,10 +204,10 @@ replace_text_in_directory(dest_directory, old_text, new_text, file_extension=Non
 copy_files(dest_directory, src_directory)
 
 
-# 
+# Replace index_dark.html 
 
 src = '/home/pi/bgeometrics.github.io/index_dark.html'
-dest = '/tmp/index_dark.html'
+#dest = '/tmp/index_dark.html'
 old_text = """  <link href="assets/css/bgeometrics.css" rel="stylesheet">"""
 new_text = """  <link href="assets/css/bgeometrics.css" rel="stylesheet">
   <style>
@@ -208,3 +222,4 @@ new_text = """  <link href="assets/css/bgeometrics.css" rel="stylesheet">
 
 """
 
+search_replace_dark(src, src, old_text, new_text)
