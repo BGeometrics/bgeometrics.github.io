@@ -452,7 +452,7 @@ new_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">
   </style>
 """
 
-search_replace_dark(file_out_dark, file_out_dark, old_text, new_text)
+search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 
 file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
