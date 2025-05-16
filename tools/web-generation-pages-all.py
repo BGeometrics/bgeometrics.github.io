@@ -437,7 +437,6 @@ concatenate_files(file1_path, file2_path, output_file_path)
 
 _file_out = 'web-generation-model-dark.html' 
 file_out_dark = search_replace_dark(file1_path, _file_out)
-#file_model_index_dark = search_replace_index_dark('web-generation-model-index-end.html')
 
 old_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">"""
 new_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">
@@ -451,6 +450,11 @@ new_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">
     }
   </style>
 """
+
+search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
+
+old_text = """handleKeyPress(event)"""
+new_text = """handleKeyPressDark(event)"""
 
 search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 
