@@ -84,16 +84,34 @@ var names = [
 ];
 
 function search() {
-var searchQuery = document.getElementById('searchInput').value.toLowerCase();
-var results = [];
+    var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    var results = [];
 
-for (var i = 0; i < names.length; i++) {
-    if (names[i].name.toLowerCase().includes(searchQuery)) {
-    results.push(names[i]);
+    for (var i = 0; i < names.length; i++) {
+        if (names[i].name.toLowerCase().includes(searchQuery)) {
+            results.push(names[i]);
+        }
     }
+
+    displayResults(results);
 }
 
-displayResults(results);
+function searchDark() {
+    var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    var results = [];
+
+    for (var i = 0; i < names.length; i++) {
+        if (names[i].name.toLowerCase().includes(searchQuery)) {
+            // Create a copy of the matching item
+            let darkItem = {
+                name: names[i].name,
+                link: names[i].link.replace('.html', '_dark.html')
+            };
+            results.push(darkItem);
+        }
+    }
+
+    displayResults(results);
 }
 
 function displayResults(results) {
@@ -116,6 +134,13 @@ function displayResults(results) {
 function handleKeyPress(event) {
     if (event.keyCode === 13) {
         search(); 
+        event.preventDefault();
+    }
+}
+
+function handleKeyPressDark(event) {
+    if (event.keyCode === 13) {
+        searchDark(); 
         event.preventDefault();
     }
 }
