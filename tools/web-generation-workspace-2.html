@@ -464,65 +464,74 @@
           }
           deleteSeries();
         }
+
         function draw() {
-          var numberValue = document.getElementById("number").value;
-          //var metric1Value = document.getElementById("metric1").value;
-          //var metric2Value = document.getElementById("metric2").value;
-          var operator1Value = document.getElementById("operator1").value;
-          var operator2Value = document.getElementById("operator2").value;
+            const numberValue = parseFloat(document.getElementById("number").value) || 0;
+            const operator1Value = document.getElementById("operator1").value;
+            const operator2Value = document.getElementById("operator2").value;
 
-          var e = document.getElementById("metric1");
-          var metric1Value = e.options[e.selectedIndex].text;
-          e = document.getElementById("metric2");
-          var metric2Value = e.options[e.selectedIndex].text;
+            // Get selected metrics
+            const metric1Element = document.getElementById("metric1");
+            const metric2Element = document.getElementById("metric2");
+            const metric1Value = metric1Element.options[metric1Element.selectedIndex].text;
+            const metric2Value = metric2Element.options[metric2Element.selectedIndex].text;
 
-          metric1Serie = chart.series[0];
-          metric2Serie = chart.series[0];
+            let metric1Serie = chart.series[0];
+            let metric2Serie = chart.series[0];
 
-          for (var i = 0; i < chart.series.length; i++) {
-            var series = chart.series[i];
-            if (chart.series[i].name == metric1Value){
-              metric1Serie = chart.series[i];
-            }
-            if (chart.series[i].name == metric2Value){
-              metric2Serie = chart.series[i];
-            }
-          }
-
-          var data = [];
-          if (metric1Value !== "Metric1")  { // Must select a Metric 1
-            for(var i = 0; i < metric1Serie.xData.length; i++) {
-              dataIn = [];
-              if (operator1Value === null || operator1Value === "") { // Operator 1 -> null
-                if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { // Operator 1 -> null and Operator 2 or Metric 2 -> null 
-                  expression = metric1Serie.yData[i];
+            // Find the selected series
+            for(let i = 0; i < chart.series.length; i++) {
+                if(chart.series[i].name === metric1Value) {
+                    metric1Serie = chart.series[i];
                 }
-                else { // Operatoe 1 -> null and Metric 2 and Operator 2 -> not null 
-                  formula = metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
-                  expression = eval(formula);
+                if(chart.series[i].name === metric2Value) {
+                    metric2Serie = chart.series[i];
                 }
-              }
-              else { // Operator 1 -> not null
-                if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { //Operator 1 -> not null and Operator 2 or Metric 2 -> null  
-                  formula = numberValue + operator1Value + metric1Serie.yData[i];
-                  expression = eval(formula);
-                }
-                else { // Operator 1 -> not null and Operator 2 and Metric 2 -> not null
-                  formula = numberValue + operator1Value + metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
-                  expression = eval(formula);
-                }
-              }
-              dataIn.push(metric1Serie.xData[i], expression);
-              data.push(dataIn);
             }
 
+            if(!metric1Serie || metric1Value === "Metric1") {
+                console.error("Please select at least one metric");
+                return;
+            }
+
+            const newData = [];
+            
+            // Process data points
+            for(let i = 0; i < metric1Serie.xData.length; i++) {
+                let result = 0;
+                
+                if(operator1Value && operator2Value && metric2Serie) {
+                    // Operation with both metrics
+                    const formula = `${numberValue} ${operator1Value} ${metric1Serie.yData[i]} ${operator2Value} ${metric2Serie.yData[i]}`;
+                    result = eval(formula);
+                } else if(operator1Value) {
+                    // Operation with only first metric
+                    const formula = `${numberValue} ${operator1Value} ${metric1Serie.yData[i]}`;
+                    result = eval(formula);
+                } else if(operator2Value && metric2Serie) {
+                    // Operation between metrics without number
+                    const formula = `${metric1Serie.yData[i]} ${operator2Value} ${metric2Serie.yData[i]}`;
+                    result = eval(formula);
+                } else {
+                    // Just the first metric
+                    result = metric1Serie.yData[i];
+                }
+
+                newData.push([metric1Serie.xData[i], result]);
+            }
+
+            // Create series name
+            const seriesName = `${numberValue} ${operator1Value} ${metric1Value} ${operator2Value} ${metric2Value}`.trim();
+            
+            // Add the new series
             chart.addSeries({
-              data: data,
-              yAxis: 2
+                name: seriesName,
+                data: newData,
+                yAxis: 2,
+                tooltip: {
+                    valueDecimals: 2
+                }
             });
-          }
         }
 
       </script>
