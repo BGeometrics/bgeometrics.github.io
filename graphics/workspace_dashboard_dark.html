@@ -20,7 +20,7 @@
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style-dark.css" rel="stylesheet">
   <link href="../assets/css/bgeometrics.css" rel="stylesheet">
 
   <!-- Google tag (gtag.js) --> 
@@ -44,6 +44,7 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
+    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
     <section class="section dashboard">
       <div id="searchResults"></div>
 
@@ -304,11 +305,10 @@
 
                 chart: {
                     renderTo: 'container-iframe',
-                    backgroundColor: 'black',
-                events: {
+                    events: {
                         load: function() {
                             var image = new Image();
-			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                             image.src = adresse_image;
 
                             var height_image = 128;
@@ -318,7 +318,7 @@
                             var position_x = textX - width_image / 2;
                             var position_y = textY - height_image / 2;
                             this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                                 .attr({zIndex: 1})
                                 .add();
                         }
