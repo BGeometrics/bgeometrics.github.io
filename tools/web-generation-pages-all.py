@@ -533,11 +533,6 @@ filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Wo
 with open('web-generation-model-workspace-dark.html', 'w') as file:
   file.write(filedata)
 
-file_w_dark = 'web-generation-model-workspace-dark.html'
-old_text = """renderTo: 'container-iframe'"""
-new_text = """renderTo: 'container-iframe', backgroundColor: 'black',"""
-search_replace_text(file_w_dark, file_w_dark, old_text, new_text)
-
 file1_path = 'web-generation-workspace-menu.html'
 file2_path = 'web-generation-workspace-3-dark.html'
 output_file_path = 'web-generation-workspace-2-dark.html'
@@ -555,7 +550,9 @@ filedata = filedata.replace("""<main id="main" class="main">""", """""")
 with open('/tmp/web-generation-workspace-menu.html', 'w') as file:
   file.write(filedata)
 
-#<script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+old_text = """renderTo: 'container-iframe'"""
+new_text = """renderTo: 'container-iframe', backgroundColor: 'black',"""
+search_replace_text(filedata, file1data, old_text, new_text)
 
 file1_path = '/tmp/web-generation-workspace-menu.html'
 file2_path = 'workspace_dashboard-dark.html'
