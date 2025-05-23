@@ -544,7 +544,7 @@ output_file_path = '/tmp/web/workspace_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Style dark by background
-old_text = """renderTo: 'container-iframe'"""
+old_text = """renderTo: 'container-iframe',"""
 new_text = """renderTo: 'container-iframe', backgroundColor: 'black',"""
 search_replace_text(output_file_path, output_file_path, old_text, new_text)
 
