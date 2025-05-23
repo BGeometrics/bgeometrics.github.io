@@ -450,7 +450,13 @@ new_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">
     }
   </style>
 """
+
+old_text = """handleKeyPress(event)"""
+new_text = """handleKeyPressDark(event)"""
 search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
+
+file_w_dark = 'web-generation-model-workspace-dark.html'
+search_replace_text(file_w_dark, file_w_dark, old_text, new_text)
 
 old_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>"""
 new_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
@@ -476,10 +482,6 @@ new_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"><
         }
     </style>
 """
-search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
-
-old_text = """handleKeyPress(event)"""
-new_text = """handleKeyPressDark(event)"""
 search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 
 file2_path = 'web-generation-model-charts-end.html'
