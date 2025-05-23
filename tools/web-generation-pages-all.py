@@ -450,12 +450,36 @@ new_text = """<link href="assets/css/bgeometrics.css" rel="stylesheet">
     }
   </style>
 """
+search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 
+old_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>"""
+new_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>
+"""
 search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 
 old_text = """handleKeyPress(event)"""
 new_text = """handleKeyPressDark(event)"""
-
 search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 
 file2_path = 'web-generation-model-charts-end.html'
