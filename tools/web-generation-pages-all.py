@@ -546,7 +546,7 @@ concatenate_files(file1_path, file2_path, output_file_path)
 # Style dark by background
 old_text = """renderTo: 'container-iframe'"""
 new_text = """renderTo: 'container-iframe', backgroundColor: 'black',"""
-search_replace_text(file2_path, file2_path, old_text, new_text)
+search_replace_text(output_file_path, output_file_path, old_text, new_text)
 
 # Generate graphic workspace_dashboard_dark.html with menu data json
 with open('web-generation-workspace-menu.html', 'r') as file:
