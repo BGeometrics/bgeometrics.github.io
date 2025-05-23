@@ -458,32 +458,6 @@ search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
 file_w_dark = 'web-generation-model-workspace-dark.html'
 search_replace_text(file_w_dark, file_w_dark, old_text, new_text)
 
-old_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>"""
-new_text = """  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-    </style>
-"""
-search_replace_text(file_out_dark, file_out_dark, old_text, new_text)
-
 file2_path = 'web-generation-model-charts-end.html'
 output_file_path = 'web-generation-model-out-dark.html'
 print(output_file_path)
@@ -532,7 +506,28 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
-  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>""")
+  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
 with open('web-generation-model-workspace-dark.html', 'w') as file:
