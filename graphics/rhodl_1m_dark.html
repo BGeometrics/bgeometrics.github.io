@@ -79,6 +79,10 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -128,8 +132,9 @@
                     align: 'left',
                 },
                 title: {
-                    text: 'RHodl 1m'
+                    text: ''
                 },
+                type: 'logarithmic',
                 plotLines: [{
                     color: 'green',
                     width: 2,
