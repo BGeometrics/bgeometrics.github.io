@@ -1,4 +1,4 @@
-c/0c0c#!/usr/bin/python3
+c/0c0cc/0c0c#!/usr/bin/python3
 
 """
 Script para generar las páginas web con el menú.
@@ -24,6 +24,7 @@ git add *
 
 import os
 import fileinput
+import shutil
 
 
 def concatenate_files(file1_path, file2_path, output_file_path):
@@ -668,7 +669,9 @@ output_file_path = '/tmp/web/pages-links_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Copy workspace_stocks in dark, but no it has style dark
-cp /home/pi/bgeometrics.github.io/workspace_stocks.html /tmp/web/workspace_stocks_dark.html 
+archivo_origen = '/home/pi/bgeometrics.github.io/workspace_stocks.html'
+archivo_destino = '/tmp/web/workspace_stocks_dark.html' 
+shutil.copy(archivo_origen, archivo_destino)
 
 
 print("")
