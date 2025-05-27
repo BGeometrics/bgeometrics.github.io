@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BGeometrics Workspace Stocks</title>
+  <meta content="Bitcoin Price" name="description">
+  <meta content="__keywords__" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/bgeometrics.css" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZR3ZFTF2FK'); 
+  </script>
+
+</head>
+
+<body>
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+        <img src="assets/img/logo.png" alt="BGeometrics">
+        <span class="d-none d-lg-block">BGeometrics</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search" title="Enter search keyword" onkeydown="handleKeyPress(event)">
+        <button class="btn btn-outline-secondary" type="button" onclick="search()"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+          <a href="bg_alert_modal.html" id="openModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
+	    <i class="bi bi-bell"></i>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="workspace.html" alt="BGeometrics Workspace">
+	    <i class="bi bi-person-workspace"></i>
+          </a>
+        </li>
+
+	<li>
+          <div class="dropdown d-inline language-switcher">
+            <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="flag-united-kingdom flag m-0"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="modeDropdown">
+              <li>
+                <a class="dropdown-item" href="index.html">
+                  English
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="es/index.html">
+                  Spanish
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+
+	<li>
+          <div class="dropdown d-inline language-switcher">
+            <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="currentMode">Light</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="modeDropdown">
+              <li>
+		<a class="dropdown-item" href="index.html">
+                  <i class="fa-solid fa-flag-usa" aria-hidden="true"></i> Light
+	        </a>
+	      </li>
+              <li>
+		<a class="dropdown-item" href="index_dark.html">
+                  <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Dark
+                </a>
+	      </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="https://x.com/BGeometrics">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link nav-icon" href="mailto:bgeometrics@gmail.com" target="_blank">
+            <i class="bi bi-envelope"></i>
+          </a>
+        </li>    
+
+      </ul>
+
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#dashboard-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Dashboards</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="ohlc_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC OHLC</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_short_term_trend.html">
+              <i class="bi bi-circle"></i><span>BTC Short Term Trend</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_demand.html">
+              <i class="bi bi-circle"></i><span>BTC Demand</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="miner_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC Miner</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_trend.html">
+              <i class="bi bi-circle"></i><span>BTC Trend</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_market_peaks.html">
+              <i class="bi bi-circle"></i><span>BTC Market Peaks</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_market_floors.html">
+              <i class="bi bi-circle"></i><span>BTC Market Bottoms</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_workspace.html">
+              <i class="bi bi-circle"></i><span>BTC Workspaces</span>
+	    </a>
+          </li>
+        </ul>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dashboard_workspace_400.html">
+              <i class="bi bi-circle"></i><span>BTC Workspaces 8</span>
+	    </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="bitcoin_price_usd_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Price</span>
+            </a>
+          </li>
+          <li>
+            <a href="ohlc.html">
+              <i class="bi bi-circle"></i><span>OHLC</span>
+            </a>
+          </li>
+          <li>
+            <a href="ohlc_7d.html">
+              <i class="bi bi-circle"></i><span>OHLC Week</span>
+            </a>
+          </li>
+          <li>
+            <a href="ohlc_4h.html">
+              <i class="bi bi-circle"></i><span>OHLC 4 Hours</span>
+            </a>
+          </li>
+          <li>
+            <a href="ohlc_1m.html">
+              <i class="bi bi-circle"></i><span>Price Live</span>
+            </a>
+          </li>
+          <li>
+            <a href="moving_average.html">
+              <i class="bi bi-circle"></i><span>BTC Moving Average</span>
+            </a>
+          </li>
+          <li>
+            <a href="capitalization.html">
+              <i class="bi bi-circle"></i><span>BTC Capitalization</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_price_usd_day_g.html">
+              <i class="bi bi-circle"></i><span>BTC Price a day like</span>
+            </a>
+          </li>
+          <li>
+            <a href="pi_cycle.html">
+              <i class="bi bi-circle"></i><span>Pi Cycle</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#market-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Market</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="realized_price_g.html">
+              <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
+            </a>
+          </li>
+          <li>
+            <a href="hodl_waves_10.html">
+              <i class="bi bi-circle"></i><span>Hodl Waves</span>
+            </a>
+          </li>
+          <li>
+            <a href="hodl_waves_realized_cap.html">
+              <i class="bi bi-circle"></i><span>Hodl Waves Realized Cap</span>
+            </a>
+          </li>
+          <li>
+            <a href="hodl_waves_supply.html">
+              <i class="bi bi-circle"></i><span>Hodl Waves Supply</span>
+            </a>
+          </li>
+          <li>
+            <a href="nupl.html">
+              <i class="bi bi-circle"></i><span>NUPL</span>
+            </a>
+          </li>
+          <li>
+            <a href="nrpl.html">
+              <i class="bi bi-circle"></i><span>NRPL</span>
+            </a>
+          </li>
+          <li>
+            <a href="sth_realized_price.html">
+              <i class="bi bi-circle"></i><span>Realized Price STH</span>
+            </a>
+          </li>
+          <li>
+            <a href="lth_realized_price.html">
+              <i class="bi bi-circle"></i><span>Realized Price LTH</span>
+            </a>
+          </li>
+          <li>
+            <a href="sopr.html">
+              <i class="bi bi-circle"></i><span>SOPR</span>
+            </a>
+          </li>
+          <li>
+            <a href="sth_sopr.html">
+              <i class="bi bi-circle"></i><span>SOPR STH</span>
+            </a>
+          </li>
+          <li>
+            <a href="lth_sopr.html">
+              <i class="bi bi-circle"></i><span>SOPR LTH</span>
+            </a>
+          </li>
+          <li>
+            <a href="mvrv.html">
+              <i class="bi bi-circle"></i><span>MVRV Z-Score</span>
+            </a>
+          </li>
+          <li>
+            <a href="mvrv_ratio.html">
+              <i class="bi bi-circle"></i><span>MVRV Ratio</span>
+            </a>
+          </li>
+          <li>
+            <a href="sth_mvrv.html">
+              <i class="bi bi-circle"></i><span>MVRV STH</span>
+            </a>
+          </li>
+          <li>
+            <a href="lth_mvrv.html">
+              <i class="bi bi-circle"></i><span>MVRV LTH</span>
+            </a>
+          </li>
+          <li>
+            <a href="distribution_realized_price.html">
+              <i class="bi bi-circle"></i><span>Realized Price Distribution</span>
+            </a>
+          </li>
+          <li>
+            <a href="aviv.html">
+              <i class="bi bi-circle"></i><span>AVIV Ratio</span>
+            </a>
+          </li>
+          <li>
+            <a href="nvts_bg.html">
+              <i class="bi bi-circle"></i><span>Dynamic Range NVT</span>
+            </a>
+          </li>
+          <li>
+            <a href="cdd.html">
+              <i class="bi bi-circle"></i><span>Coins Days Destroyed</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_cdd_ajusted_90dma_g.html">
+              <i class="bi bi-circle"></i><span>CDD Ajusted 90dma</span>
+            </a>
+          </li>
+          <li>
+            <a href="vdd.html">
+              <i class="bi bi-circle"></i><span>VDD Multiple</span>
+            </a>
+          </li>
+          <li>
+            <a href="realized_profit_loss_ratio.html">
+              <i class="bi bi-circle"></i><span>Realized Profit Loss Ratio</span>
+            </a>
+          </li>
+          <li>
+            <a href="realized_profit_loss_lth_sth.html">
+              <i class="bi bi-circle"></i><span>Realized Profit Loss LTH STH</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_liveliness_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Liveliness</span>
+            </a>
+          </li>
+          <li>
+            <a href="supply_in_profit.html">
+              <i class="bi bi-circle"></i><span>Supply in Profit Loss</span>
+            </a>
+          </li>
+          <li>
+            <a href="supply_lth_sth.html">
+              <i class="bi bi-circle"></i><span>Supply LTH STH</span>
+            </a>
+          </li>
+          <li>
+            <a href="reserve_risk.html">
+              <i class="bi bi-circle"></i><span>Reserve Risk</span>
+            </a>
+          </li>
+          <li>
+            <a href="rhodl_1m.html">
+              <i class="bi bi-circle"></i><span>RHodl 1m</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#address-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Address</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="address_active.html">
+              <i class="bi bi-circle"></i><span>Active Addresses</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_distribution_coins_tables.html">
+              <i class="bi bi-circle"></i><span>BTC Coins Distribution</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_distribution_addr_tables.html">
+              <i class="bi bi-circle"></i><span>BTC Addresses Distribution</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_distribution_coin_g.html">
+              <i class="bi bi-circle"></i><span>Coins</span>
+            </a>
+          </li>
+          <li>
+            <a href="distribution_coin_humpback.html">
+              <i class="bi bi-circle"></i><span>Coins Humpback > 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="distribution_coin_whale.html">
+              <i class="bi bi-circle"></i><span>Coins Whale 1K - 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_shark.html">
+              <i class="bi bi-circle"></i><span>Coins Shark 100 - 1K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_fish.html">
+              <i class="bi bi-circle"></i><span>Coins Fish 10 - 100 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_crab.html">
+              <i class="bi bi-circle"></i><span>Coins Crab 1 - 10 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_g_shrimp.html">
+              <i class="bi bi-circle"></i><span>Coins Shrimp < 1 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_humpback.html">
+              <i class="bi bi-circle"></i><span>Addr Humpback > 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="distribution_addr_whale.html">
+              <i class="bi bi-circle"></i><span>Addr Whale 1K - 10K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_shark.html">
+              <i class="bi bi-circle"></i><span>Addr Shark 100 - 1K BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_fish.html">
+              <i class="bi bi-circle"></i><span>Addr Fish 10 - 100 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_crab.html">
+              <i class="bi bi-circle"></i><span>Addr Crab 1 - 10 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_addr_g_shrimp.html">
+              <i class="bi bi-circle"></i><span>Addr Shrimp < 1 BTC</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_whale_accumulation_heatmap_g.html">
+              <i class="bi bi-circle"></i><span>Whale Accumulation Heat Map</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_whale_30d_sum_g.html">
+              <i class="bi bi-circle"></i><span>Whale Net Position BTC 30 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_shark_30d_sum_g.html">
+              <i class="bi bi-circle"></i><span>Shark Net Position BTC 30 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_shrimp_30d_sum_g.html">
+              <i class="bi bi-circle"></i><span>Shrimp Net Position BTC 30 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="reports/bitcoin_distribution_coin_pie_g.html">
+              <i class="bi bi-circle"></i><span>Distribution two years</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#miners-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Miners</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="miners-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="puell_multiple.html">
+              <i class="bi bi-circle"></i><span>Puell Multiple</span>
+            </a>
+          </li>
+          <li>
+            <a href="hashrate.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Hashrate</span>
+            </a>
+          </li>
+          <li>
+            <a href="hashprice.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
+            </a>
+          </li>
+          <li>
+            <a href="hashribbons.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Hashribbons</span>
+            </a>
+          </li>
+          <li>
+            <a href="miner_reserves.html">
+              <i class="bi bi-circle"></i><span>Miner Reserves</span>
+            </a>
+          </li>
+          <li>
+            <a href="miner_sell_pressure.html">
+              <i class="bi bi-circle"></i><span>Miner Sell Pressure</span>
+            </a>
+          </li>
+          <li>
+            <a href="miner_outflow.html">
+              <i class="bi bi-circle"></i><span>Miner Outflow</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Others charts</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="etf.html">
+	      <i class="bi bi-circle"></i><span>ETF Total Balance</span>
+            </a>
+          </li>
+          <li>
+            <a href="etf_btc.html">
+	      <i class="bi bi-circle"></i><span>ETF BTC Held</span>
+            </a>
+          </li>
+          <li>
+            <a href="stablecoin_supply.html">
+              <i class="bi bi-circle"></i><span>Stablecoin supply</span>
+            </a>
+          </li>
+          <li>
+            <a href="fear_greed.html">
+              <i class="bi bi-circle"></i><span>Fear and Greed</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_fear_greed_img.html">
+              <i class="bi bi-circle"></i><span>Fear and Greed index color</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_volatility_g.html">
+              <i class="bi bi-circle"></i><span>BTC Volatility</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_dominance_g.html">
+              <i class="bi bi-circle"></i><span>BTC Dominance</span>
+            </a>
+          </li>
+          <li>
+            <a href="open_interest_futures.html">
+              <i class="bi bi-circle"></i><span>Open Interest Futures</span>
+            </a>
+          </li>
+          <li>
+            <a href="funding_rate.html">
+              <i class="bi bi-circle"></i><span>Funding Rate</span>
+            </a>
+          </li>
+          <li>
+            <a href="power_law.html">
+              <i class="bi bi-circle"></i><span>BTC Power Law</span>
+            </a>
+          </li>
+          <li>
+            <a href="terminal_price.html">
+              <i class="bi bi-circle"></i><span>Terminal Price</span>
+            </a>
+          </li>
+          <li>
+            <a href="choppiness.html">
+              <i class="bi bi-circle"></i><span>Choppiness Index</span>
+            </a>
+          </li>
+          <li>
+            <a href="google_trends.html">
+              <i class="bi bi-circle"></i><span>Google Trends</span>
+            </a>
+          </li>
+          <li>
+            <a href="montecarlo_100.html">
+              <i class="bi bi-circle"></i><span>Montecarlo next 100 days</span>
+            </a>
+          </li>
+          <li>
+            <a href="montecarlo_365.html">
+              <i class="bi bi-circle"></i><span>Montecarlo last 365 days</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Halving</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="bitcoin_price_g_log.html">
+              <i class="bi bi-circle"></i><span>BTC Price Log</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_halving_radar_g.html">
+              <i class="bi bi-circle"></i><span>Bitcoin Halving Radar </span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_year_candle_g.html">
+              <i class="bi bi-circle"></i><span>Candles Yearly</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_halving_month_g.html">
+              <i class="bi bi-circle"></i><span>Halving Month</span>
+            </a>
+          </li>
+          <li>
+            <a href="bitcoin_halving_cycle_g.html">
+              <i class="bi bi-circle"></i><span>Halving Cycle</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#macro-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Macro</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="macro-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="workspace_stocks.html">
+              <i class="bi bi-circle"></i><span>BTC vs any companies</span>
+            </a>
+          </li>
+          <li>
+            <a href="sp500_gold.html">
+              <i class="bi bi-circle"></i><span>SP500, Gold, Tesla, MSTR</span>
+            </a>
+          </li>
+          <li>
+            <a href="m2_global.html">
+              <i class="bi bi-circle"></i><span>M2 Growth Global YoY</span>
+            </a>
+          </li>
+          <li>
+            <a href="m2_btc.html">
+              <i class="bi bi-circle"></i><span>M2 money stock central bank</span>
+            </a>
+          </li>
+          <li>
+            <a href="m2_global_10w.html">
+              <i class="bi bi-circle"></i><span>M2 10-weeks lead</span>
+            </a>
+          </li>
+          <li>
+            <a href="m2.html">
+              <i class="bi bi-circle"></i><span>M2 Money Stock (FRED)</span>
+            </a>
+          </li>
+          <li>
+            <a href="fedfunds.html">
+              <i class="bi bi-circle"></i><span>Fed Funds</span>
+            </a>
+          </li>
+	</ul>  
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tools-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-tools"></i><span>Tools</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tools-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="dca.html">
+              <i class="bi bi-circle"></i><span>DCA Calculator</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://mempool.bitcoin-data.com" target="_blank">
+              <i class="bi bi-circle"></i><span>Mempool</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://charts.bgeometrics.com/workspace_stocks.html" target="_blank">
+              <i class="bi bi-circle"></i><span>BTC and Stocks</span>
+            </a>
+          </li>
+	</ul>  
+      </li>
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="workspace.html">
+	  <i class="bi bi-person-workspace"></i>
+          <span>Workspace</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="services.html">
+          <i class="bi bi-person"></i>
+          <span>Services</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="bitcoin_api.html">
+          <i class="bi bi-arrow-right"></i>
+          <span>Bitcoin API Free</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="bg_suggestion.html">
+          <i class="bi bi-envelope"></i>
+          <span>Suggestions</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-links.html">
+          <i class="bi bi-arrow-right-short"></i>
+          <span>Resources</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-chat-quote"></i>
+          <span>Contact</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="donation.html">
+	  <i class="bi bi-currency-bitcoin"></i>
+          <span>Donation</span>
+        </a>
+      </li>
+        
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <section class="section dashboard">
+      <div id="searchResults"></div>
+      <div class="row">
+        <div class="col-lg-3">
+          <select class="form-select" id="stocks">
+            <option selected>Stocks</option>
+            <option value='MMM'>3M</option>
+            <option value='AOS'>A. O. Smith</option>
+            <option value='ABT'>Abbott Laboratories</option>
+            <option value='ABBV'>AbbVie</option>
+            <option value='ACN'>Accenture</option>
+            <option value='ADBE'>Adobe Inc.</option>
+            <option value='AMD'>Advanced Micro Devices</option>
+            <option value='AES'>AES Corporation</option>
+            <option value='AFL'>Aflac</option>
+            <option value='A'>Agilent Technologies</option>
+            <option value='APD'>Air Products</option>
+            <option value='ABNB'>Airbnb</option>
+            <option value='AKAM'>Akamai Technologies</option>
+            <option value='ALB'>Albemarle Corporation</option>
+            <option value='ARE'>Alexandria Real Estate Equities</option>
+            <option value='ALGN'>Align Technology</option>
+            <option value='ALLE'>Allegion</option>
+            <option value='LNT'>Alliant Energy</option>
+            <option value='ALL'>Allstate</option>
+            <option value='GOOGL'>Alphabet Inc. (Class A)</option>
+            <option value='GOOG'>Alphabet Inc. (Class C)</option>
+            <option value='MO'>Altria</option>
+            <option value='AMZN'>Amazon</option>
+            <option value='AMCR'>Amcor</option>
+            <option value='AMTM'>Amentum</option>
+            <option value='AEE'>Ameren</option>
+            <option value='AEP'>American Electric Power</option>
+            <option value='AXP'>American Express</option>
+            <option value='AIG'>American International Group</option>
+            <option value='AMT'>American Tower</option>
+            <option value='AWK'>American Water Works</option>
+            <option value='AMP'>Ameriprise Financial</option>
+            <option value='AME'>Ametek</option>
+            <option value='AMGN'>Amgen</option>
+            <option value='APH'>Amphenol</option>
+            <option value='ADI'>Analog Devices</option>
+            <option value='ANSS'>Ansys</option>
+            <option value='AON'>Aon</option>
+            <option value='APA'>APA Corporation</option>
+            <option value='AAPL'>Apple Inc.</option>
+            <option value='AMAT'>Applied Materials</option>
+            <option value='APTV'>Aptiv</option>
+            <option value='ACGL'>Arch Capital Group</option>
+            <option value='ADM'>Archer Daniels Midland</option>
+            <option value='ANET'>Arista Networks</option>
+            <option value='AJG'>Arthur J. Gallagher & Co.</option>
+            <option value='AIZ'>Assurant</option>
+            <option value='T'>AT&T</option>
+            <option value='ATO'>Atmos Energy</option>
+            <option value='ADSK'>Autodesk</option>
+            <option value='ADP'>Automatic Data Processing</option>
+            <option value='AZO'>AutoZone</option>
+            <option value='AVB'>AvalonBay Communities</option>
+            <option value='AVY'>Avery Dennison</option>
+            <option value='AXON'>Axon Enterprise</option>
+            <option value='BKR'>Baker Hughes</option>
+            <option value='BALL'>Ball Corporation</option>
+            <option value='BAC'>Bank of America</option>
+            <option value='BAX'>Baxter International</option>
+            <option value='BDX'>Becton Dickinson</option>
+            <option value='BRK.B'>Berkshire Hathaway</option>
+            <option value='BBY'>Best Buy</option>
+            <option value='TECH'>Bio-Techne</option>
+            <option value='BIIB'>Biogen</option>
+            <option value='BLK'>BlackRock</option>
+            <option value='BX'>Blackstone Inc.</option>
+            <option value='BK'>BNY Mellon</option>
+            <option value='BA'>Boeing</option>
+            <option value='BKNG'>Booking Holdings</option>
+            <option value='BWA'>BorgWarner</option>
+            <option value='BSX'>Boston Scientific</option>
+            <option value='BMY'>Bristol Myers Squibb</option>
+            <option value='AVGO'>Broadcom</option>
+            <option value='BR'>Broadridge Financial Solutions</option>
+            <option value='BRO'>Brown & Brown</option>
+            <option value='BF.B'>Brown–Forman</option>
+            <option value='BLDR'>Builders FirstSource</option>
+            <option value='BG'>Bunge Global</option>
+            <option value='BXP'>BXP, Inc.</option>
+            <option value='CHRW'>C.H. Robinson</option>
+            <option value='CDNS'>Cadence Design Systems</option>
+            <option value='CZR'>Caesars Entertainment</option>
+            <option value='CPT'>Camden Property Trust</option>
+            <option value='CPB'>Campbell Soup Company</option>
+            <option value='COF'>Capital One</option>
+            <option value='CAH'>Cardinal Health</option>
+            <option value='KMX'>CarMax</option>
+            <option value='CCL'>Carnival</option>
+            <option value='CARR'>Carrier Global</option>
+            <option value='CTLT'>Catalent</option>
+            <option value='CAT'>Caterpillar Inc.</option>
+            <option value='CBOE'>Cboe Global Markets</option>
+            <option value='CBRE'>CBRE Group</option>
+            <option value='CDW'>CDW</option>
+            <option value='CE'>Celanese</option>
+            <option value='COR'>Cencora</option>
+            <option value='CNC'>Centene Corporation</option>
+            <option value='CNP'>CenterPoint Energy</option>
+            <option value='CF'>CF Industries</option>
+            <option value='CRL'>Charles River Laboratories</option>
+            <option value='SCHW'>Charles Schwab Corporation</option>
+            <option value='CHTR'>Charter Communications</option>
+            <option value='CVX'>Chevron Corporation</option>
+            <option value='CMG'>Chipotle Mexican Grill</option>
+            <option value='CB'>Chubb Limited</option>
+            <option value='CHD'>Church & Dwight</option>
+            <option value='CI'>Cigna</option>
+            <option value='CINF'>Cincinnati Financial</option>
+            <option value='CTAS'>Cintas</option>
+            <option value='CSCO'>Cisco</option>
+            <option value='C'>Citigroup</option>
+            <option value='CFG'>Citizens Financial Group</option>
+            <option value='CLX'>Clorox</option>
+            <option value='CME'>CME Group</option>
+            <option value='CMS'>CMS Energy</option>
+            <option value='KO'>Coca-Cola Company (The)</option>
+            <option value='CTSH'>Cognizant</option>
+            <option value='CL'>Colgate-Palmolive</option>
+            <option value='CMCSA'>Comcast</option>
+            <option value='CAG'>Conagra Brands</option>
+            <option value='COP'>ConocoPhillips</option>
+            <option value='ED'>Consolidated Edison</option>
+            <option value='STZ'>Constellation Brands</option>
+            <option value='CEG'>Constellation Energy</option>
+            <option value='COO'>Cooper Companies (The)</option>
+            <option value='CPRT'>Copart</option>
+            <option value='GLW'>Corning Inc.</option>
+            <option value='CPAY'>Corpay</option>
+            <option value='CTVA'>Corteva</option>
+            <option value='CSGP'>CoStar Group</option>
+            <option value='COST'>Costco</option>
+            <option value='CTRA'>Coterra</option>
+            <option value='CRWD'>CrowdStrike</option>
+            <option value='CCI'>Crown Castle</option>
+            <option value='CSX'>CSX Corporation</option>
+            <option value='CMI'>Cummins</option>
+            <option value='CVS'>CVS Health</option>
+            <option value='DHR'>Danaher Corporation</option>
+            <option value='DRI'>Darden Restaurants</option>
+            <option value='DVA'>DaVita</option>
+            <option value='DAY'>Dayforce</option>
+            <option value='DECK'>Deckers Brands</option>
+            <option value='DE'>Deere & Company</option>
+            <option value='DELL'>Dell Technologies</option>
+            <option value='DAL'>Delta Air Lines</option>
+            <option value='DVN'>Devon Energy</option>
+            <option value='DXCM'>Dexcom</option>
+            <option value='FANG'>Diamondback Energy</option>
+            <option value='DLR'>Digital Realty</option>
+            <option value='DFS'>Discover Financial</option>
+            <option value='DG'>Dollar General</option>
+            <option value='DLTR'>Dollar Tree</option>
+            <option value='D'>Dominion Energy</option>
+            <option value='DPZ'>Domino's</option>
+            <option value='DOV'>Dover Corporation</option>
+            <option value='DOW'>Dow Inc.</option>
+            <option value='DHI'>D. R. Horton</option>
+            <option value='DTE'>DTE Energy</option>
+            <option value='DUK'>Duke Energy</option>
+            <option value='DD'>DuPont</option>
+            <option value='EMN'>Eastman Chemical Company</option>
+            <option value='ETN'>Eaton Corporation</option>
+            <option value='EBAY'>eBay</option>
+            <option value='ECL'>Ecolab</option>
+            <option value='EIX'>Edison International</option>
+            <option value='EW'>Edwards Lifesciences</option>
+            <option value='EA'>Electronic Arts</option>
+            <option value='ELV'>Elevance Health</option>
+            <option value='EMR'>Emerson Electric</option>
+            <option value='ENPH'>Enphase Energy</option>
+            <option value='ETR'>Entergy</option>
+            <option value='EOG'>EOG Resources</option>
+            <option value='EPAM'>EPAM Systems</option>
+            <option value='EQT'>EQT Corporation</option>
+            <option value='EFX'>Equifax</option>
+            <option value='EQIX'>Equinix</option>
+            <option value='EQR'>Equity Residential</option>
+            <option value='ERIE'>Erie Indemnity</option>
+            <option value='ESS'>Essex Property Trust</option>
+            <option value='EL'>Estée Lauder Companies (The)</option>
+            <option value='EG'>Everest Group</option>
+            <option value='EVRG'>Evergy</option>
+            <option value='ES'>Eversource Energy</option>
+            <option value='EXC'>Exelon</option>
+            <option value='EXPE'>Expedia Group</option>
+            <option value='EXPD'>Expeditors International</option>
+            <option value='EXR'>Extra Space Storage</option>
+            <option value='XOM'>ExxonMobil</option>
+            <option value='FFIV'>F5, Inc.</option>
+            <option value='FDS'>FactSet</option>
+            <option value='FICO'>Fair Isaac</option>
+            <option value='FAST'>Fastenal</option>
+            <option value='FRT'>Federal Realty Investment Trust</option>
+            <option value='FDX'>FedEx</option>
+            <option value='FIS'>Fidelity National Information Services</option>
+            <option value='FITB'>Fifth Third Bancorp</option>
+            <option value='FSLR'>First Solar</option>
+            <option value='FE'>FirstEnergy</option>
+            <option value='FI'>Fiserv</option>
+            <option value='FMC'>FMC Corporation</option>
+            <option value='F'>Ford Motor Company</option>
+            <option value='FTNT'>Fortinet</option>
+            <option value='FTV'>Fortive</option>
+            <option value='FOXA'>Fox Corporation (Class A)</option>
+            <option value='FOX'>Fox Corporation (Class B)</option>
+            <option value='BEN'>Franklin Resources</option>
+            <option value='FCX'>Freeport-McMoRan</option>
+            <option value='GRMN'>Garmin</option>
+            <option value='IT'>Gartner</option>
+            <option value='GE'>GE Aerospace</option>
+            <option value='GEHC'>GE HealthCare</option>
+            <option value='GEV'>GE Vernova</option>
+            <option value='GEN'>Gen Digital</option>
+            <option value='GNRC'>Generac</option>
+            <option value='GD'>General Dynamics</option>
+            <option value='GIS'>General Mills</option>
+            <option value='GM'>General Motors</option>
+            <option value='GPC'>Genuine Parts Company</option>
+            <option value='GILD'>Gilead Sciences</option>
+            <option value='GPN'>Global Payments</option>
+            <option value='GL'>Globe Life</option>
+            <option value='GDDY'>GoDaddy</option>
+            <option value='GOLD'>Gold</option>
+            <option value='GS'>Goldman Sachs</option>
+            <option value='HAL'>Halliburton</option>
+            <option value='HIG'>Hartford (The)</option>
+            <option value='HAS'>Hasbro</option>
+            <option value='HCA'>HCA Healthcare</option>
+            <option value='DOC'>Healthpeak Properties</option>
+            <option value='HSIC'>Henry Schein</option>
+            <option value='HSY'>Hershey Company (The)</option>
+            <option value='HES'>Hess Corporation</option>
+            <option value='HPE'>Hewlett Packard Enterprise</option>
+            <option value='HLT'>Hilton Worldwide</option>
+            <option value='HOLX'>Hologic</option>
+            <option value='HD'>Home Depot (The)</option>
+            <option value='HON'>Honeywell</option>
+            <option value='HRL'>Hormel Foods</option>
+            <option value='HST'>Host Hotels & Resorts</option>
+            <option value='HWM'>Howmet Aerospace</option>
+            <option value='HPQ'>HP Inc.</option>
+            <option value='HUBB'>Hubbell Incorporated</option>
+            <option value='HUM'>Humana</option>
+            <option value='HBAN'>Huntington Bancshares</option>
+            <option value='HII'>Huntington Ingalls Industries</option>
+            <option value='IBM'>IBM</option>
+            <option value='IEX'>IDEX Corporation</option>
+            <option value='IDXX'>Idexx Laboratories</option>
+            <option value='ITW'>Illinois Tool Works</option>
+            <option value='INCY'>Incyte</option>
+            <option value='IR'>Ingersoll Rand</option>
+            <option value='PODD'>Insulet Corporation</option>
+            <option value='INTC'>Intel</option>
+            <option value='ICE'>Intercontinental Exchange</option>
+            <option value='IFF'>International Flavors & Fragrances</option>
+            <option value='IP'>International Paper</option>
+            <option value='IPG'>Interpublic Group of Companies (The)</option>
+            <option value='INTU'>Intuit</option>
+            <option value='ISRG'>Intuitive Surgical</option>
+            <option value='IVZ'>Invesco</option>
+            <option value='INVH'>Invitation Homes</option>
+            <option value='IQV'>IQVIA</option>
+            <option value='IRM'>Iron Mountain</option>
+            <option value='JBHT'>J.B. Hunt</option>
+            <option value='JBL'>Jabil</option>
+            <option value='JKHY'>Jack Henry & Associates</option>
+            <option value='J'>Jacobs Solutions</option>
+            <option value='JNJ'>Johnson & Johnson</option>
+            <option value='JCI'>Johnson Controls</option>
+            <option value='JPM'>JPMorgan Chase</option>
+            <option value='JNPR'>Juniper Networks</option>
+            <option value='K'>Kellanova</option>
+            <option value='KVUE'>Kenvue</option>
+            <option value='KDP'>Keurig Dr Pepper</option>
+            <option value='KEY'>KeyCorp</option>
+            <option value='KEYS'>Keysight Technologies</option>
+            <option value='KMB'>Kimberly-Clark</option>
+            <option value='KIM'>Kimco Realty</option>
+            <option value='KMI'>Kinder Morgan</option>
+            <option value='KKR'>KKR</option>
+            <option value='KLAC'>KLA Corporation</option>
+            <option value='KHC'>Kraft Heinz</option>
+            <option value='KR'>Kroger</option>
+            <option value='LHX'>L3Harris</option>
+            <option value='LH'>LabCorp</option>
+            <option value='LRCX'>Lam Research</option>
+            <option value='LW'>Lamb Weston</option>
+            <option value='LVS'>Las Vegas Sands</option>
+            <option value='LDOS'>Leidos</option>
+            <option value='LEN'>Lennar</option>
+            <option value='LLY'>Lilly (Eli)</option>
+            <option value='LIN'>Linde plc</option>
+            <option value='LYV'>Live Nation Entertainment</option>
+            <option value='LKQ'>LKQ Corporation</option>
+            <option value='LMT'>Lockheed Martin</option>
+            <option value='L'>Loews Corporation</option>
+            <option value='LOW'>Lowe's</option>
+            <option value='LULU'>Lululemon Athletica</option>
+            <option value='LYB'>LyondellBasell</option>
+            <option value='MTB'>M&T Bank</option>
+            <option value='MPC'>Marathon Petroleum</option>
+            <option value='MKTX'>MarketAxess</option>
+            <option value='MAR'>Marriott International</option>
+            <option value='MMC'>Marsh McLennan</option>
+            <option value='MLM'>Martin Marietta Materials</option>
+            <option value='MAS'>Masco</option>
+            <option value='MA'>Mastercard</option>
+            <option value='MTCH'>Match Group</option>
+            <option value='MKC'>McCormick & Company</option>
+            <option value='MCD'>McDonald's</option>
+            <option value='MCK'>McKesson Corporation</option>
+            <option value='MDT'>Medtronic</option>
+            <option value='MRK'>Merck & Co.</option>
+            <option value='META'>Meta Platforms</option>
+            <option value='MET'>MetLife</option>
+            <option value='MTD'>Mettler Toledo</option>
+            <option value='MGM'>MGM Resorts</option>
+            <option value='MCHP'>Microchip Technology</option>
+            <option value='MU'>Micron Technology</option>
+            <option value='MSFT'>Microsoft</option>
+            <option value='MAA'>Mid-America Apartment Communities</option>
+            <option value='MRNA'>Moderna</option>
+            <option value='MHK'>Mohawk Industries</option>
+            <option value='MOH'>Molina Healthcare</option>
+            <option value='TAP'>Molson Coors Beverage Company</option>
+            <option value='MDLZ'>Mondelez International</option>
+            <option value='MPWR'>Monolithic Power Systems</option>
+            <option value='MNST'>Monster Beverage</option>
+            <option value='MCO'>Moody's Corporation</option>
+            <option value='MS'>Morgan Stanley</option>
+            <option value='MOS'>Mosaic Company (The)</option>
+            <option value='MSI'>Motorola Solutions</option>
+            <option value='MSCI'>MSCI</option>
+            <option value='NDAQ'>Nasdaq, Inc.</option>
+            <option value='NTAP'>NetApp</option>
+            <option value='NFLX'>Netflix</option>
+            <option value='NEM'>Newmont</option>
+            <option value='NWSA'>News Corp (Class A)</option>
+            <option value='NWS'>News Corp (Class B)</option>
+            <option value='NEE'>NextEra Energy</option>
+            <option value='NKE'>Nike, Inc.</option>
+            <option value='NI'>NiSource</option>
+            <option value='NDSN'>Nordson Corporation</option>
+            <option value='NSC'>Norfolk Southern Railway</option>
+            <option value='NTRS'>Northern Trust</option>
+            <option value='NOC'>Northrop Grumman</option>
+            <option value='NCLH'>Norwegian Cruise Line Holdings</option>
+            <option value='NRG'>NRG Energy</option>
+            <option value='NUE'>Nucor</option>
+            <option value='NVDA'>Nvidia</option>
+            <option value='NVR'>NVR, Inc.</option>
+            <option value='NXPI'>NXP Semiconductors</option>
+            <option value='ORLY'>O'Reilly Auto Parts</option>
+            <option value='OXY'>Occidental Petroleum</option>
+            <option value='ODFL'>Old Dominion</option>
+            <option value='OMC'>Omnicom Group</option>
+            <option value='ON'>ON Semiconductor</option>
+            <option value='OKE'>ONEOK</option>
+            <option value='ORCL'>Oracle Corporation</option>
+            <option value='OTIS'>Otis Worldwide</option>
+            <option value='PCAR'>Paccar</option>
+            <option value='PKG'>Packaging Corporation of America</option>
+            <option value='PLTR'>Palantir Technologies</option>
+            <option value='PANW'>Palo Alto Networks</option>
+            <option value='PARA'>Paramount Global</option>
+            <option value='PH'>Parker Hannifin</option>
+            <option value='PAYX'>Paychex</option>
+            <option value='PAYC'>Paycom</option>
+            <option value='PYPL'>PayPal</option>
+            <option value='PNR'>Pentair</option>
+            <option value='PEP'>PepsiCo</option>
+            <option value='PFE'>Pfizer</option>
+            <option value='PCG'>PG&E Corporation</option>
+            <option value='PM'>Philip Morris International</option>
+            <option value='PSX'>Phillips 66</option>
+            <option value='PNW'>Pinnacle West</option>
+            <option value='PNC'>PNC Financial Services</option>
+            <option value='POOL'>Pool Corporation</option>
+            <option value='PPG'>PPG Industries</option>
+            <option value='PPL'>PPL Corporation</option>
+            <option value='PFG'>Principal Financial Group</option>
+            <option value='PG'>Procter & Gamble</option>
+            <option value='PGR'>Progressive Corporation</option>
+            <option value='PLD'>Prologis</option>
+            <option value='PRU'>Prudential Financial</option>
+            <option value='PEG'>Public Service Enterprise Group</option>
+            <option value='PTC'>PTC Inc.</option>
+            <option value='PSA'>Public Storage</option>
+            <option value='PHM'>PulteGroup</option>
+            <option value='QRVO'>Qorvo</option>
+            <option value='PWR'>Quanta Services</option>
+            <option value='QCOM'>Qualcomm</option>
+            <option value='DGX'>Quest Diagnostics</option>
+            <option value='RL'>Ralph Lauren Corporation</option>
+            <option value='RJF'>Raymond James Financial</option>
+            <option value='RTX'>RTX Corporation</option>
+            <option value='O'>Realty Income</option>
+            <option value='REG'>Regency Centers</option>
+            <option value='REGN'>Regeneron Pharmaceuticals</option>
+            <option value='RF'>Regions Financial Corporation</option>
+            <option value='RSG'>Republic Services</option>
+            <option value='RMD'>ResMed</option>
+            <option value='RVTY'>Revvity</option>
+            <option value='ROK'>Rockwell Automation</option>
+            <option value='ROL'>Rollins, Inc.</option>
+            <option value='ROP'>Roper Technologies</option>
+            <option value='ROST'>Ross Stores</option>
+            <option value='RCL'>Royal Caribbean Group</option>
+            <option value='SPGI'>S&P Global</option>
+            <option value='CRM'>Salesforce</option>
+            <option value='SBAC'>SBA Communications</option>
+            <option value='SLB'>Schlumberger</option>
+            <option value='STX'>Seagate Technology</option>
+            <option value='SRE'>Sempra</option>
+            <option value='NOW'>ServiceNow</option>
+            <option value='SHW'>Sherwin-Williams</option>
+            <option value='SPG'>Simon Property Group</option>
+            <option value='SWKS'>Skyworks Solutions</option>
+            <option value='SJM'>J.M. Smucker Company (The)</option>
+            <option value='SW'>Smurfit WestRock</option>
+            <option value='SNA'>Snap-on</option>
+            <option value='SOLV'>Solventum</option>
+            <option value='SO'>Southern Company</option>
+            <option value='LUV'>Southwest Airlines</option>
+            <option value='SWK'>Stanley Black & Decker</option>
+            <option value='SBUX'>Starbucks</option>
+            <option value='STT'>State Street Corporation</option>
+            <option value='STLD'>Steel Dynamics</option>
+            <option value='STE'>Steris</option>
+            <option value='SYK'>Stryker Corporation</option>
+            <option value='SMCI'>Supermicro</option>
+            <option value='SYF'>Synchrony Financial</option>
+            <option value='SNPS'>Synopsys</option>
+            <option value='SYY'>Sysco</option>
+            <option value='TMUS'>T-Mobile US</option>
+            <option value='TROW'>T. Rowe Price</option>
+            <option value='TTWO'>Take-Two Interactive</option>
+            <option value='TPR'>Tapestry, Inc.</option>
+            <option value='TRGP'>Targa Resources</option>
+            <option value='TGT'>Target Corporation</option>
+            <option value='TEL'>TE Connectivity</option>
+            <option value='TDY'>Teledyne Technologies</option>
+            <option value='TFX'>Teleflex</option>
+            <option value='TER'>Teradyne</option>
+            <option value='TSLA'>Tesla, Inc.</option>
+            <option value='TXN'>Texas Instruments</option>
+            <option value='TPL'>Texas Pacific Land Corporation</option>
+            <option value='TXT'>Textron</option>
+            <option value='TMO'>Thermo Fisher Scientific</option>
+            <option value='TJX'>TJX Companies</option>
+            <option value='TSCO'>Tractor Supply</option>
+            <option value='TT'>Trane Technologies</option>
+            <option value='TDG'>TransDigm Group</option>
+            <option value='TRV'>Travelers Companies (The)</option>
+            <option value='TRMB'>Trimble Inc.</option>
+            <option value='TFC'>Truist Financial</option>
+            <option value='TYL'>Tyler Technologies</option>
+            <option value='TSN'>Tyson Foods</option>
+            <option value='USB'>U.S. Bancorp</option>
+            <option value='UBER'>Uber</option>
+            <option value='UDR'>UDR, Inc.</option>
+            <option value='ULTA'>Ulta Beauty</option>
+            <option value='UNP'>Union Pacific Corporation</option>
+            <option value='UAL'>United Airlines Holdings</option>
+            <option value='UPS'>United Parcel Service</option>
+            <option value='URI'>United Rentals</option>
+            <option value='UNH'>UnitedHealth Group</option>
+            <option value='UHS'>Universal Health Services</option>
+            <option value='VLO'>Valero Energy</option>
+            <option value='VTR'>Ventas</option>
+            <option value='VLTO'>Veralto</option>
+            <option value='VRSN'>Verisign</option>
+            <option value='VRSK'>Verisk Analytics</option>
+            <option value='VZ'>Verizon</option>
+            <option value='VRTX'>Vertex Pharmaceuticals</option>
+            <option value='VTRS'>Viatris</option>
+            <option value='VICI'>Vici Properties</option>
+            <option value='V'>Visa Inc.</option>
+            <option value='VST'>Vistra Corp.</option>
+            <option value='VMC'>Vulcan Materials Company</option>
+            <option value='WRB'>W. R. Berkley Corporation</option>
+            <option value='GWW'>W. W. Grainger</option>
+            <option value='WAB'>Wabtec</option>
+            <option value='WBA'>Walgreens Boots Alliance</option>
+            <option value='WMT'>Walmart</option>
+            <option value='DIS'>Walt Disney Company (The)</option>
+            <option value='WBD'>Warner Bros. Discovery</option>
+            <option value='WM'>Waste Management</option>
+            <option value='WAT'>Waters Corporation</option>
+            <option value='WEC'>WEC Energy Group</option>
+            <option value='WFC'>Wells Fargo</option>
+            <option value='WELL'>Welltower</option>
+            <option value='WST'>West Pharmaceutical Services</option>
+            <option value='WDC'>Western Digital</option>
+            <option value='WY'>Weyerhaeuser</option>
+            <option value='WMB'>Williams Companies</option>
+            <option value='WTW'>Willis Towers Watson</option>
+            <option value='WYNN'>Wynn Resorts</option>
+            <option value='XEL'>Xcel Energy</option>
+            <option value='XYL'>Xylem Inc.</option>
+            <option value='YUM'>Yum! Brands</option>
+            <option value='ZBRA'>Zebra Technologies</option>
+            <option value='ZBH'>Zimmer Biomet</option>
+            <option value='ZTS'>Zoetis</option>
+          </select>
+        </div>
+
+        <div class="col-lg-1">
+          <button class="btn" onclick="deleteSeries()">Remove</button>
+        </div>
+
+        <div class="col-lg-1">
+          <select class="form-select" id="zoom" style="width:120px;">
+            <option selected>Zoom</option>
+            <option value="600">600px</option>
+            <option value="700">700px</option>
+            <option value="800">800px</option>
+            <option value="900">900px</option>
+            <option value="1000">1000px</option>
+            <option value="1100">1100px</option>
+            <option value="1200">1200px</option>
+            <option value="1300">1300px</option>
+            <option value="1400">1400px</option>
+            <option value="1500">1500px</option>
+            <option value="1600">1600px</option>
+          </select>
+        </div>
+
+
+      <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+      <script>
+            var zoomChart = 600;
+            var metricsId = "";
+            const COOKIE_NAME = "bg";
+
+            (async () => {
+                const data_price = await fetch(
+                    'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+                ).then(response => response.json());
+
+            chart = Highcharts.stockChart('container-iframe', {
+                stockTools: {
+                    gui: {
+                        buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                        definitions: {
+                            linLogSwitch: {
+                                className: 'highcharts-lin-log-switch',
+                                symbol: 'logarithmic.svg'
+                            }
+                        }
+                    }
+                },
+                navigation: {
+                    bindings: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            init: function (button) {
+                                const chart = this.chart,
+                                    isLogarithmic = chart.yAxis[1].logarithmic,
+                                    axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                    iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                                chart.yAxis[0].update({
+                                    type: isLogarithmic ? 'linear' : 'logarithmic',
+                                    minorTickInterval: isLogarithmic ? null : 'auto'
+                                }, false)    
+                                chart.yAxis[1].update({
+                                    type: isLogarithmic ? 'linear' : 'logarithmic',
+                                    minorTickInterval: isLogarithmic ? null : 'auto'
+                                });
+
+                                button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                                Highcharts.fireEvent(
+                                    this,
+                                    'deselectButton',
+                                    { button: button }
+                                );
+                            }
+                        }
+                    }
+                },
+                title: {
+                    align: 'left',
+                },
+
+                chart: {
+                    renderTo: 'container-iframe',
+                    events: {
+                        load: function() {
+                            var image = new Image();
+			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                            image.src = adresse_image;
+
+                            var height_image = 128;
+                            var width_image = 128;
+                            var textX = this.plotLeft + (this.plotWidth * 0.5);
+                            var textY = this.plotTop + (this.plotHeight * 0.5);
+                            var position_x = textX - width_image / 2;
+                            var position_y = textY - height_image / 2;
+                            this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                                .attr({zIndex: 1})
+                                .add();
+                        }
+                    }
+                },
+
+		        plotOptions:{
+                    series:{
+                        showInLegend:true
+                    }
+                },
+
+            	yAxis: [{
+                    labels: {
+                        align: 'left',
+                    },
+                    title: {
+                        text: 'BTC price'
+                    },
+                    type: 'logarithmic',
+                }, {
+                    opposite: false
+                }],
+
+                series: [{
+                    id:'BTC price',
+                    name: 'BTC price',
+                    color: 'black',
+                    data: data_price,
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0
+                }],
+
+                legend:{
+                    enabled:true,
+                    floating: true,
+                    verticalAlign: 'top',
+                    y: 5,
+                    align:'center'
+                },
+
+		    rangeSelector: {
+			selected: 5,
+			buttons: [{
+			    type: 'month',
+			    count: 1,
+			    text: '1m'
+			}, {
+			    type: 'month',
+			    count: 3,
+			    text: '3m'
+			}, {
+			    type: 'month',
+			    count: 6,
+			    text: '6m'
+			}, {
+			    type: 'year',
+			    count: 1,
+			    text: '1y'
+			}, {
+			    type: 'year',
+			    count: 2,
+			    text: '2y'
+			}, {
+			    type: 'year',
+			    count: 4,
+			    text: '4y'
+			}, {
+			    type: 'all',
+			    text: 'All'
+			}]
+		    },
+
+                credits: {
+                    text: 'Power by BGeometrics.com',
+                    href: 'https://charts.bgeometrics.com',
+                    style: {
+                        font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                    },
+                    position: {
+                        align: 'right',
+                        x: -70,
+                        y: -124
+                    }                
+                },
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 800
+                        },
+                        chartOptions: {
+                            rangeSelector: {
+                                inputEnabled: false
+                            }
+                        }
+                    }]
+                }
+            });
+        })();
+
+        document.getElementById('stocks').addEventListener("change", function () {
+            var e = document.getElementById("stocks");
+            var value = e.value;
+            var text = e.options[e.selectedIndex].text;
+            changeStocks();
+        });
+
+
+        document.getElementById('zoom').addEventListener("change", zoom);
+
+        function zoom() {
+            var e = document.getElementById("zoom");
+            var value = e.value;
+
+            const iframeDiv = document.getElementById('container-iframe');
+            iframeDiv.style.height = value + 'px'; 
+
+            zoomChart = value;
+        }
+
+	function changeStocks() {
+    	    var e = document.getElementById("stocks");
+    	    var value = e.value;
+            var text = e.options[e.selectedIndex].text;
+	    addChartsStocks(value, text);
+	}
+
+	function addChartsStocks(_metricId, _text){
+	    var e = document.getElementById("stocks");
+	    var text;
+	    var yAxis = 0;
+	    yAxis = 1;
+
+            data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
+                 .then(response => response.json());
+
+	    Promise.all([data]).then(values => {
+		chart.addSeries({
+		    id: _metricId,
+		    name: _text,
+		    data: values[0],
+		    tooltip: {
+			valueDecimals: 2
+		    },
+		    yAxis: yAxis
+		    
+		});
+	    });
+	}
+
+      </script>
+
+    </section>
+
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/workspace_stocks.html">
+          <h5>BGeometrics Bitcoin and Stocks</h5>
+        </a>
+        <p> 
+	  The chart shows a comparison between the stock market index of any of the companies that make up the S&P 500 and the price of BTC. 
+	  <br><br>
+	  In it we can see how the different assets behave over the last two years, allowing us to analyze possible correlations or divergences between the traditional market and the bitcoin market.
+	  <br><br>
+	  API available to retrieve data with the stock index of any of the S&P 500 companies in <a href="https://bitcoin-data.com/api/swagger-ui/index.html" target="_blank">BGeometrics API</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Power by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>

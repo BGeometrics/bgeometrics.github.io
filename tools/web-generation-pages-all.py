@@ -1,4 +1,4 @@
-c/0c0cc/0c0c#!/usr/bin/python3
+#!/usr/bin/python3
 
 """
 Script para generar las páginas web con el menú.
