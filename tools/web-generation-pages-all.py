@@ -667,6 +667,9 @@ file2_path = 'web-generation-model-links-end.html'
 output_file_path = '/tmp/web/pages-links_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Copy workspace_stocks in dark, but no it has style dark
+cp /home/pi/bgeometrics.github.io/workspace_stocks.html /home/pi/bgeometrics.github.io/workspace_stocks_dark.html 
+
 
 print("")
 print("For copy generate pages to project") 
