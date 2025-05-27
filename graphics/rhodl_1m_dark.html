@@ -50,6 +50,9 @@
             const data_rhodl_1m = await fetch(
                 'https://charts.bgeometrics.com/files/rhodl_1m.json'
             ).then(response => response.json());
+            const data_rhodl = await fetch(
+                'https://charts.bgeometrics.com/files/rhodl.json'
+            ).then(response => response.json());
             const data_realized_cap = await fetch(
                 'https://charts.bgeometrics.com/files/realized_cap.json'
             ).then(response => response.json());
@@ -127,6 +130,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 labels: {
                     align: 'left',
@@ -166,6 +175,15 @@
                 id:'rhodl_1m',
                 name: 'RHodl 1m',
                 data: data_rhodl_1m,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'rhodl',
+                name: 'RHodl',
+                data: data_rhodl,
                 tooltip: {
                     valueDecimals: 2
                 },
