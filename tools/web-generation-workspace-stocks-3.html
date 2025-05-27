@@ -208,7 +208,7 @@
 	    var yAxis = 0;
 	    yAxis = 1;
 
-            data = fetch('https://bitcoin-data.com/v1/stocks/array-' + _metricId)
+            data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
                  .then(response => response.json());
 
 	    Promise.all([data]).then(values => {
