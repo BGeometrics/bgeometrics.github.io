@@ -496,6 +496,8 @@ new_text = """
   <main id="main" class="main">
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=file_extension)
+dest_directory = '/tmp/web/' + lang + '/'
+replace_text_in_directory(dest_directory, old_text, new_text, file_extension=file_extension)
 
 
 print("")
