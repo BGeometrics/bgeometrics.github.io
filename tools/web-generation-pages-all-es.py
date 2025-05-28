@@ -27,6 +27,7 @@ git add *
 
 import os
 import fileinput
+import re
 
 
 lang = "es"
@@ -83,6 +84,28 @@ def search_replace_dark(_file, _file_out):
     file.close()
 
     return _file_out
+
+def rename_files_in_directory(directory, word_to_add, position='prefix'):
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        if os.path.isfile(file_path):
+            # Split the filename and its extension
+            name, ext = os.path.splitext(filename)
+
+            # Add the word to the filename
+            if position == 'prefix':
+                new_name = f"{word_to_add}_{name}{ext}"
+            elif position == 'suffix':
+                new_name = f"{name}_{word_to_add}{ext}"
+            else:
+                raise ValueError("position argument must be 'prefix' or 'suffix'")
+
+            new_file_path = os.path.join(directory, new_name)
+
+            # Rename the file
+            os.rename(file_path, new_file_path)
+            print(f"Renamed: {file_path} to {new_file_path}")
+
 
 """
 def search_replace_index_dark(_file):
@@ -455,6 +478,19 @@ file1_path = lang + '/web-generation-model-dark.html'
 file2_path = lang + '/web-generation-model-dashboard-demand-end.html'
 output_file_path = '/tmp/web/' + lang + '/dashboard_demand_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
+
+# Replace doble main by main
+dest_directory = '/home/pi/bgeometrics/es/'
+dest_directory = '/tmp/web/' + lang + '/'
+file_extension = '.html'
+
+old_text = """
+  <main id="main" class="main">
+  <main id="main" class="main">
+"""
+new_text = """
+  <main id="main" class="main">
+"""
 
 print("")
 print("For copy generate pages to project") 
