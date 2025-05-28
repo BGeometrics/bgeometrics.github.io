@@ -496,14 +496,7 @@ new_text = """
   <main id="main" class="main">
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=file_extension)
-old_text = """
-  <main id="main" class="main">
-  <main id="main" class="main">
-"""
-new_text = """
-  <main id="main" class="main">
-"""
-replace_text_in_directory(dest_directory, old_text, new_text, file_extension=file_extension)
+
 
 print("")
 print("For copy generate pages to project") 
