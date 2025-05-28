@@ -216,8 +216,11 @@ file1_path = lang + '/web-generation-model.html'
 file2_path = lang + '/web-generation-model-charts-end.html'
 output_file_path = lang + '/web-generation-model-out.html'
 
-concatenate_files(file1_path, file2_path, output_file_path)
-generate_pages('light')
+try:
+    concatenate_files(file1_path, file2_path, output_file_path)
+    generate_pages('light')
+except Exception as e:
+    print(f"Error: {e}")
 
 # Generate index.html with menu
 file1_path = lang + '/web-generation-model.html'
@@ -347,8 +350,11 @@ output_file_path = lang + '/web-generation-model-out-dark.html'
 print(output_file_path)
 
 concatenate_files(file_out_dark, file2_path, output_file_path)
-generate_pages('dark')
 
+try:
+    generate_pages('dark')
+except Exception as e:
+    print(f"Error: {e}")
 
 # Generate index.html with menu dark
 file1_path = lang + '/web-generation-model-dark.html'
