@@ -107,22 +107,21 @@ def rename_files_in_directory(directory, word_to_add, position='prefix'):
             print(f"Renamed: {file_path} to {new_file_path}")
 
 
-"""
-def search_replace_index_dark(_file):
-    _file_out = 'web-generation-model-index-end-dark.html'
+def replace_text_in_directory(directory, old_text, new_text, file_extension=None):
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
 
-    with open(_file, 'r') as file:
-        filedata = file.read()
+        if os.path.isfile(file_path) and (file_extension is None or filename.endswith(file_extension)):
+            with open(file_path, 'r', encoding='utf-8') as file:
+                content = file.read()
 
-    filedata = filedata.replace('.html', '_dark.html')
+            modified_content = re.sub(re.escape(old_text), new_text, content)
 
-    with open(_file_out, 'w') as file:
-        file.write(filedata)
-    
-    file.close()
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(modified_content)
 
-    return _file_out
-"""
+            print(f"Processed file: {file_path}")
+
 
 # Generate charts pages
 def generate_pages(_mode):
@@ -480,7 +479,6 @@ output_file_path = '/tmp/web/' + lang + '/dashboard_demand_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Replace doble main by main
-dest_directory = '/home/pi/bgeometrics/es/'
 dest_directory = '/tmp/web/' + lang + '/'
 file_extension = '.html'
 
@@ -491,6 +489,7 @@ old_text = """
 new_text = """
   <main id="main" class="main">
 """
+replace_text_in_directory(dest_directory, old_text, new_text, file_extension=file_extension):
 
 print("")
 print("For copy generate pages to project") 
