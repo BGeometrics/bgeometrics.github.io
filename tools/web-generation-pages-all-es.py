@@ -479,7 +479,7 @@ output_file_path = '/tmp/web/' + lang + '/dashboard_demand_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Replace doble main by main
-dest_directory = '/tmp/web/' + lang + '/'
+dest_directory = '/home/pi/bgeometrics.github.io/' + lang + '/'
 file_extension = '.html'
 
 old_text = """
