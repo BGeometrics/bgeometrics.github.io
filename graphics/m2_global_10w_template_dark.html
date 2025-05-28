@@ -123,6 +123,12 @@
                 }
             },
 
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
             yAxis: [{
                 title: {
                     text: 'Global M2 Supply (USD)',
@@ -134,6 +140,12 @@
                 title: {
                     text: 'BTC price',
                 },
+                opposite: false,
+            }, {
+                title: {
+                    text: '',
+                },
+                type: 'logarithmic',
                 opposite: false,
             }],
 
@@ -166,6 +178,16 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            },{
+                id:'BTC price logarithmic',
+                name: 'BTC price logarithmic',
+                zIndex: 2,
+                data: data_price,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
             }],
 
             legend:{
