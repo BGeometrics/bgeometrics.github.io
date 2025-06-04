@@ -79,6 +79,12 @@
                     },
                 },
                 gridLineWidth: 0,
+            }, {
+                gridLineWidth: 0,
+                title: {
+                    text: '',
+                },
+                type: 'logarithmic',
             }],
 
             series: [{
@@ -112,6 +118,16 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            },{
+                id:'BTC price logarithmic',
+                name: 'BTC price logarithmic',
+                zIndex: 2,
+                data: data_price,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
             }],
 
             legend:{
