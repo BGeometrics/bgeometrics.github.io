@@ -201,6 +201,24 @@ old_text = """fontSize: '14px'"""
 new_text = """fontSize: '14px', color: '#FFFFFF',"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
+old_text = """title: {
+                    text: 'BTC price'
+                },"""
+new_text = """title: {
+                    text: 'BTC price'
+                },
+                gridLineWidth: 0,
+                """
+replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
+
+old_text = """yAxis: [{"""
+new_text = """yAxis: [{
+                gridLineWidth: 0,"""
+replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
+
+
+
+
 copy_files(dest_directory, src_directory)
 
 
