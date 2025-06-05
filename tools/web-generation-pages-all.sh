@@ -35,6 +35,10 @@ if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
         deactivate
 fi
 
+# Mode dark by default
+cp $DIR_TEMP/index.html $DIR_TEMP/index_light.html
+cp $DIR_TEMP/index_dark.html $DIR_TEMP/index.html
+
 cd $DIR_PROYECT/tools
 cp -r $DIR_TEMP/* $DIR_PROYECT
 

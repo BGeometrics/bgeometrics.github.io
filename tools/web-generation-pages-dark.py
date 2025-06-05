@@ -217,14 +217,5 @@ new_text = """yAxis: [{
                 gridLineWidth: 0,"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
-# Mode dark by default
-src_index = '/tmp/web/index.html'
-dst_index = '/tmp/web/index_light.html'
-shutil.copyfile(src, dst)
-src_index = '/tmp/web/index_dark.html'
-dst_index = '/tmp/web/index.html'
-shutil.copyfile(src, dst)
-
 copy_files(dest_directory, src_directory)
-
 
