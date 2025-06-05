@@ -201,6 +201,7 @@ old_text = """fontSize: '14px'"""
 new_text = """fontSize: '14px', color: '#FFFFFF',"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
+# Remove grid
 old_text = """title: {
                     text: 'BTC price'
                 },"""
@@ -216,8 +217,13 @@ new_text = """yAxis: [{
                 gridLineWidth: 0,"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
-
-
+# Mode dark by default
+src_index = '/home/pibgeometrics.github.io/index.html'
+dst_index = '/home/pibgeometrics.github.io/index_light.html'
+shutil.copyfile(src, dst)
+src_index = '/home/pibgeometrics.github.io/index_dark.html'
+dst_index = '/home/pibgeometrics.github.io/index.html'
+shutil.copyfile(src, dst)
 
 copy_files(dest_directory, src_directory)
 
