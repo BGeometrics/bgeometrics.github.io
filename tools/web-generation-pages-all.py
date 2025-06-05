@@ -73,6 +73,7 @@ def search_replace_dark(_file, _file_out):
     filedata = filedata.replace('swagger-ui/index_dark.html', 'swagger-ui/index.html')
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
 
+    # For default mode dark. Combo light and dark set page index.html to index_light 
     filedata = filedata.replace('<a class="dropdown-item" href="index.html">', '<a class="dropdown-item" href="index_light.html">')
 
     with open(_file_out, 'w') as file:
