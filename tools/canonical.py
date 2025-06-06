@@ -19,7 +19,7 @@ for nombre_archivo in os.listdir(directorio):
 
         # Inserta justo después de la etiqueta <head>
         if '<head>' in contenido:
-            contenido = contenido.replace('<head>', f'<head>\n    {url_canonical}', 1)
+            contenido = contenido.replace('<head>', f'<head>\n  {url_canonical}', 1)
             with open(ruta, 'w', encoding='utf-8') as f:
                 f.write(contenido)
             print(f"Canonical añadido a {nombre_archivo}")
