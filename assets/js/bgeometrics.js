@@ -699,3 +699,30 @@ function tableTraffic(value, clas, term){
     return [clas, term]
 }
 
+function switchMode(mode) {
+    let currentPath = window.location.pathname;
+    let filename = currentPath.split('/').pop();
+    
+    // Manejo especial para index.html
+    if (filename === 'index.html' || filename === 'index_light.html') {
+        if (mode === 'dark') {
+            window.location.href = 'index.html';
+        } else {
+            window.location.href = 'index_light.html';
+        }
+        return;
+    }
+    
+    // Manejo normal para el resto de páginas
+    if (mode === 'dark') {
+        if (!filename.includes('_dark.html')) {
+            let newPath = filename.replace('.html', '_dark.html');
+            window.location.href = newPath;
+        }
+    } else {
+        if (filename.includes('_dark.html')) {
+            let newPath = filename.replace('_dark.html', '.html');
+            window.location.href = newPath;
+        }
+    }
+}
