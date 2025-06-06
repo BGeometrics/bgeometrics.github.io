@@ -1,30 +1,75 @@
-<section class="section">
+  
+
+    <section class="section">
       <div class="row">
         <div id="searchResults"></div>
 
       	<div class="pagetitle">
-	        <h1>Bitcoin On-Chain Analytics</h1>
-      	</div>
+          <div class="row">
+	    <div class="col-lg-8">
+	      <h1>Bitcoin On-Chain Analytics</h1>
+            </div>
+	    <div class="col-lg-4" style="text-align: center;">
+              <a class="nav-link collapsed" href="bg_suggestion.html">
+                <i class="bi bi-envelope"></i>
+                <span>Suggestions</span>
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div class="col-lg-12">
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="200px" src="graphics/price_heatmap_dark.html" allow="fullscreen" title="BTC Price" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="200px" src="graphics/price_heatmap.html" allow="fullscreen" title="BTC Price" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-xs-12 center-block text-center">
-              <p>Historically in Bitcoin, green periods have been good times to buy and red periods have been good times to sell.</p>
+
+
+		<div class="col-lg-4" style="text-align: center;">
+		      <h5 class="card-title">
+		      <a href="dashboard_demand.html">Bitcoin Demand</a></h5>
+		      <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+			<iframe class="iframe" width="100%" height="150px" src="graphics/demand_speedmeter.html" title="Bitcoin Demand" scrolling="no" frameBorder="0"></iframe>
+		      </div>
+		</div>
+
+		<div class="col-lg-4">
+			<h5 class="card-title" style="text-align: center;">
+				<a href="https://x.com/BGeometrics" target="_blank">Alerts in X</a>
+        		</h5>
+			<div id="latest-tweet"></div>
+			<div class="d-flex justify-content-center">
+				<button id="next-tweet" class="btn btn-primary mt-3">Next</button>
+			</div>
+		</div>
+
+		<div class="col-lg-4" style="text-align: center;">
+		      <h5 class="card-title">
+		      <a href="dashboard_market_peaks.html">Bitcoin Market Peaks</a></h5>
+		      <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+			<iframe class="iframe" width="100%" height="150px" src="graphics/market_peaks_speedmeter.html" title="Bitcoin Market Peaks" scrolling="no" frameBorder="0"></iframe>
+		      </div>
+		</div>
+	  </div>
+
+          <div class="row">
+
+            <div id="container-iframe" class="row d-flex justify-content-center">
+              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                <iframe class="iframe" width="100%" height="80px" src="graphics/mvrv_heatmap.html" allow="fullscreen" title="MVRV Z-Score" scrolling="no" frameBorder="0"></iframe>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="80px" src="graphics/mvrv_heatmap_dark.html" allow="fullscreen" title="MVRV Z-Score" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="80px" src="graphics/nupl_heatmap.html" allow="fullscreen" title="NUPL" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -32,7 +77,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="80px" src="graphics/nupl_heatmap_dark.html" allow="fullscreen" title="NUPL" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="80px" src="graphics/lth_heatmap.html" allow="fullscreen" title="LTH diff" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -40,15 +85,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="80px" src="graphics/lth_heatmap_dark.html" allow="fullscreen" title="LTH diff" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="80px" src="graphics/realized_profit_loss_ratio_heatmap_dark.html" allow="fullscreen" title="Realized Profit Loss Ratio" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="80px" src="graphics/realized_profit_loss_ratio_heatmap.html" allow="fullscreen" title="Realized Profit Loss Ratio" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -56,36 +93,37 @@
         </div>
       </div>
 
+          <div class="row">
+            <div class="col-xs-12 center-block text-center">
+		<p>Historically in Bitcoin, green periods have been good times to buy and red periods have been good times to sell.</p>
+              </p>
+            </div>
+          </div>
+
       <div class="row">
-        <div class="col-lg-4">
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bitcoin Price History</h5>
-              <a href="bitcoin_price_usd_g_dark.html">
-                <img src="assets/img/gallery/bitcoin-price-history.png" class="card-img-top" alt="Bitcoin Price USD">
-              </a>
-            </div>
-          </div>
+	<div class="col-lg-4" style="text-aling: center;">
+              <h5 class="card-title">
+              <a href="ohlc_dashboard.html">Bitcoin Dashboard Price</a></h5>
+              <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+                <iframe class="iframe" width="100%" height="150px" src="graphics/ohlc_1m_200.html" title="Bitcoin Price USD" scrolling="no" frameBorder="0"></iframe>
+              </div>
         </div>
 
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bitcoin Price Live</h5>
-              <a href="ohlc_1m.html">
-                <img src="assets/img/gallery/Price-Live.png" class="card-img-top" alt="Price Live BTC">
-              </a>
-            </div>
-          </div>
-        </div>
+	<div class="col-lg-4" style="text-aling: center;">
+		<h5 class="card-title">
+			<a href="dashboard_short_term_trend.html">Bitcoin Short Term Trend</a></h5>
+		<div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+			<iframe class="iframe" width="100%" height="150px" src="graphics/short_term_trends_speedmeter.html" title="Bitcoin Short Term Trends" scrolling="no" frameBorder="0"></iframe>
+		</div>
+	</div>
 
         <div class="col-lg-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Bitcoin OHLC</h5>
-              <a href="ohlc.html">
-                <img src="assets/img/gallery/OHLC.png" class="card-img-top" alt="Bitcoin OHLC">
+              <h5 class="card-title">Bitcoin dashboard market floors</h5>
+              <a href="dashboard_market_floors.html">
+                <img src="assets/img/gallery/mvrv.png" class="card-img-top" alt="Bitcoin OHLC">
               </a>
             </div>
           </div>
@@ -95,7 +133,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Realized Price</h5>
-              <a href="realized_price_g_dark.html">
+              <a href="realized_price_g.html">
                 <img src="assets/img/gallery/realized_price.png" class="card-img-top" alt="Bitcoin Realized Price">
               </a>
             </div>
@@ -105,19 +143,8 @@
         <div class="col-lg-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Bitcoin SOPR</h5>
-              <a href="sopr_dark.html">
-                <img src="assets/img/gallery/sopr.png" class="card-img-top" alt="Bitcoin SOPR">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
               <h5 class="card-title">Bitcoin MVRV</h5>
-              <a href="mvrv_dark.html">
+              <a href="mvrv.html">
                 <img src="assets/img/gallery/mvrv.png" class="card-img-top" alt="Bitcoin MVRV">
               </a>
             </div>
@@ -128,7 +155,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Hodl Waves</h5>
-              <a href="hodl_waves_dark.html">
+              <a href="hodl_waves_10.html">
                 <img src="assets/img/gallery/bitcoin-hodl-waves-relative.png" class="card-img-top" alt="Bitcoin Hodl Waves">
               </a>
             </div>
@@ -139,7 +166,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Moving Average</h5>
-              <a href="moving_average_dark.html">
+              <a href="moving_average.html">
                 <img src="assets/img/gallery/moving_average.png" class="card-img-top" alt="Bitcoin Moving Average">
               </a>
             </div>
@@ -150,7 +177,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin NUPL</h5>
-              <a href="bitcoin_nupl_g_dark.html">
+              <a href="nupl.html">
                 <img src="assets/img/gallery/bitcoin-nupl.png" class="card-img-top" alt="Bitcoin NUPL">
               </a>
             </div>
@@ -161,7 +188,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin STH Realized Price</h5>
-              <a href="bitcoin_realized_short_g_dark.html">
+              <a href="sth_realized_price.html">
                 <img src="assets/img/gallery/bitcoin-realized-short.png" class="card-img-top" alt="Bitcoin STH Realized Price">
               </a>
             </div>
@@ -172,7 +199,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Capitalization</h5>
-              <a href="capitalization_dark.html">
+              <a href="capitalization.html">
                 <img src="assets/img/gallery/capitalization.png" class="card-img-top" alt="Bitcoin Capitalization">
               </a>
             </div>
@@ -183,7 +210,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Coin Days Destroyed</h5>
-              <a href="bitcoin_cdd_ajusted_90dma_g_dark.html">
+              <a href="cdd.html">
                 <img src="assets/img/gallery/cdd.png" class="card-img-top" alt="Bitcoin CDD Ajusted">
               </a>
             </div>
@@ -193,9 +220,9 @@
         <div class="col-lg-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Bitcoin S&P 500, Gold, Tesla</h5>
-              <a href="sp500_gold_dark.html">
-                <img src="assets/img/gallery/sp500_gold.png" class="card-img-top" alt="Bitcoin S&P 500, Gold, Tesla">
+              <h5 class="card-title">Bitcoin and S&P 500</h5>
+              <a href="workspace_stocks.html">
+                <img src="assets/img/gallery/sp500_gold.png" class="card-img-top" alt="Bitcoin and S&P 500">
               </a>
             </div>
           </div>
@@ -205,7 +232,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Fear and Greed</h5>
-              <a href="bitcoin_fear_greed_img_dark.html">
+              <a href="fear_greed.html">
                 <img src="assets/img/gallery/bitcoin-fear-greed.png" class="card-img-top" alt="Bitcoin Fear and Greed">
               </a>
             </div>
@@ -216,7 +243,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin AVIV</h5>
-              <a href="bitcoin_aviv_g_dark.html">
+              <a href="aviv.html">
                 <img src="assets/img/gallery/bitcoin-aviv.png" class="card-img-top" alt="Bitcoin AVIV">
               </a>
             </div>
@@ -227,7 +254,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Price Radar Chart</h5>
-              <a href="bitcoin_halving_radar_g_dark.html">
+              <a href="bitcoin_halving_radar_g.html">
                 <img src="assets/img/gallery/bitcoin-4-year-cycle.png" class="card-img-top" alt="Bitcoin Price Halving Radar Chart">
               </a>
             </div>
@@ -238,7 +265,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Candles Yearly</h5>
-              <a href="bitcoin_year_candle_g_dark.html">
+              <a href="bitcoin_year_candle_g.html">
                 <img src="assets/img/gallery/bitcoin-yearly-candles.png" class="card-img-top" alt="Bitcoin Candles Yearly">
               </a>
             </div>
@@ -249,7 +276,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin on a day like today</h5>
-              <a href="bitcoin_price_usd_day_g_dark.html">
+              <a href="bitcoin_price_usd_day_g.html">
                 <img src="assets/img/gallery/bitcoin-price-usd-day.png" class="card-img-top" alt="Bitcoin on a day like today">
               </a>
             </div>
@@ -282,18 +309,40 @@
     <div class="line"></div>
   </div>
 
-  <!-- Vendor JS Files -->
-  
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-  
-  
-  
-  
-  
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let tweets = [];
+            let currentIndex = 0;
+
+            function displayTweet(index) {
+                const tweetContainer = document.getElementById('latest-tweet');
+                const tweetText = tweets[index].tweet;
+                tweetContainer.innerText = tweetText.length > 200 ? tweetText.substring(0, 200) + '...' : tweetText;
+            }
+
+            fetch('https://bitcoin-data.com/suggestion/api/alerts-x/latest')
+                .then(response => response.json())
+                .then(data => {
+                    tweets = data;
+                    if (tweets.length > 0) {
+                        displayTweet(currentIndex);
+                    }
+                })
+                .catch(error => console.error('Error fetching the tweets:', error));
+
+            document.getElementById('next-tweet').addEventListener('click', function() {
+                if (tweets.length > 0) {
+                    currentIndex = (currentIndex + 1) % tweets.length;
+                    displayTweet(currentIndex);
+                }
+            });
+        });
+  </script>
 
 </body>
+
 </html>
 
