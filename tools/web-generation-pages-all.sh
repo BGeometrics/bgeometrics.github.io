@@ -31,6 +31,9 @@ cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/
 python3 web-generation-pages-dark-es.py
 python3 web-generation-translate-graphics.py
 
+# Set link canonical to dark pages
+python3 canonical.py
+
 if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
         deactivate
 fi
