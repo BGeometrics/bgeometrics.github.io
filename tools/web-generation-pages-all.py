@@ -587,6 +587,12 @@ file2_path = 'web-generation-model-donation-end.html'
 output_file_path = '/tmp/web/donation_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page api.html with menu dark
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-bitcoin-api-end.html'
+output_file_path = '/tmp/web/bitcoin_api_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 # Generate page ohlc_dashboard.html with menu
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-ohlc-dashboards-end-dark.html'
