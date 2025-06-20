@@ -1,0 +1,344 @@
+    <section class="section dashboard">
+      <div id="searchResults"></div>
+      <div class="row">
+        <div class="col-lg-3">
+          <select class="form-select" id="stocks">
+	    <option selected>Crypto</option>
+            <option value='ADA-USD'>ADA</option>
+            <option value='ALGO-USD'>ALGO</option>
+            <option value='APT-USD'>APT</option>
+            <option value='ATOM-USD'>ATOM</option>
+            <option value='AVAX-USD'>AVAX</option>
+            <option value='BCH-USD'>BCH</option>
+            <option value='BNB-USD'>BNB</option>
+            <option value='BTC-USD'>BTC</option>
+            <option value='DASH-USD'>DASH</option>
+            <option value='DOGE-USD'>DOGE</option>
+            <option value='ETH-USD'>ETH</option>
+            <option value='FIRO-USD'>FIRO</option>
+            <option value='KAS-USD'>KAS</option>
+            <option value='LINK-USD'>LINK</option>
+            <option value='LTC-USD'>LTC</option>
+            <option value='SHIB-USD'>SHIB</option>
+            <option value='SOL-USD'>SOL</option>
+            <option value='SUI-USD'>SUI</option>
+            <option value='TRX-USD'>TRX</option>
+            <option value='UNI-USD'>UNI</option>
+            <option value='XLM-USD'>XLM</option>
+            <option value='XRP-USD'>XRP</option>
+            <option value='ZEC-USD'>ZEC</option>
+          </select>
+        </div>
+
+        <div class="col-lg-1">
+          <button class="btn" onclick="deleteSeries()">Remove</button>
+        </div>
+
+        <div class="col-lg-1">
+          <select class="form-select" id="zoom" style="width:120px;">
+            <option selected>Zoom</option>
+            <option value="600">600px</option>
+            <option value="700">700px</option>
+            <option value="800">800px</option>
+            <option value="900">900px</option>
+            <option value="1000">1000px</option>
+            <option value="1100">1100px</option>
+            <option value="1200">1200px</option>
+            <option value="1300">1300px</option>
+            <option value="1400">1400px</option>
+            <option value="1500">1500px</option>
+            <option value="1600">1600px</option>
+          </select>
+        </div>
+
+
+      <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+      <script>
+            var zoomChart = 600;
+            var metricsId = "";
+            const COOKIE_NAME = "bg";
+
+            (async () => {
+                const data_price = await fetch(
+                    'https://charts.bgeometrics.com/files/realized_price_btc_price.json'
+                ).then(response => response.json());
+
+            chart = Highcharts.stockChart('container-iframe', {
+                stockTools: {
+                    gui: {
+                        buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                        definitions: {
+                            linLogSwitch: {
+                                className: 'highcharts-lin-log-switch',
+                                symbol: 'logarithmic.svg'
+                            }
+                        }
+                    }
+                },
+                navigation: {
+                    bindings: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            init: function (button) {
+                                const chart = this.chart,
+                                    isLogarithmic = chart.yAxis[1].logarithmic,
+                                    axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                    iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                                chart.yAxis[0].update({
+                                    type: isLogarithmic ? 'linear' : 'logarithmic',
+                                    minorTickInterval: isLogarithmic ? null : 'auto'
+                                }, false)    
+                                chart.yAxis[1].update({
+                                    type: isLogarithmic ? 'linear' : 'logarithmic',
+                                    minorTickInterval: isLogarithmic ? null : 'auto'
+                                });
+
+                                button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                                Highcharts.fireEvent(
+                                    this,
+                                    'deselectButton',
+                                    { button: button }
+                                );
+                            }
+                        }
+                    }
+                },
+                title: {
+                    align: 'left',
+                },
+
+                chart: {
+                    renderTo: 'container-iframe',
+                    events: {
+                        load: function() {
+                            var image = new Image();
+			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                            image.src = adresse_image;
+
+                            var height_image = 128;
+                            var width_image = 128;
+                            var textX = this.plotLeft + (this.plotWidth * 0.5);
+                            var textY = this.plotTop + (this.plotHeight * 0.5);
+                            var position_x = textX - width_image / 2;
+                            var position_y = textY - height_image / 2;
+                            this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                                .attr({zIndex: 1})
+                                .add();
+                        }
+                    }
+                },
+
+		        plotOptions:{
+                    series:{
+                        showInLegend:true
+                    }
+                },
+
+            	yAxis: [{
+                    labels: {
+                        align: 'left',
+                    },
+                    title: {
+                        text: 'BTC price'
+                    },
+                    type: 'logarithmic',
+                }, {
+                    opposite: false
+                }],
+
+                series: [{
+                    id:'BTC price',
+                    name: 'BTC price',
+                    color: 'black',
+                    data: data_price,
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0
+                }],
+
+                legend:{
+                    enabled:true,
+                    floating: true,
+                    verticalAlign: 'top',
+                    y: 5,
+                    align:'center'
+                },
+
+		    rangeSelector: {
+			selected: 5,
+			buttons: [{
+			    type: 'month',
+			    count: 1,
+			    text: '1m'
+			}, {
+			    type: 'month',
+			    count: 3,
+			    text: '3m'
+			}, {
+			    type: 'month',
+			    count: 6,
+			    text: '6m'
+			}, {
+			    type: 'year',
+			    count: 1,
+			    text: '1y'
+			}, {
+			    type: 'year',
+			    count: 2,
+			    text: '2y'
+			}, {
+			    type: 'year',
+			    count: 4,
+			    text: '4y'
+			}, {
+			    type: 'all',
+			    text: 'All'
+			}]
+		    },
+
+                credits: {
+                    text: 'Power by BGeometrics.com',
+                    href: 'https://charts.bgeometrics.com',
+                    style: {
+                        font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                    },
+                    position: {
+                        align: 'right',
+                        x: -70,
+                        y: -124
+                    }                
+                },
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 800
+                        },
+                        chartOptions: {
+                            rangeSelector: {
+                                inputEnabled: false
+                            }
+                        }
+                    }]
+                }
+            });
+        })();
+
+        document.getElementById('stocks').addEventListener("change", function () {
+            var e = document.getElementById("stocks");
+            var value = e.value;
+            var text = e.options[e.selectedIndex].text;
+            changeStocks();
+        });
+
+
+        document.getElementById('zoom').addEventListener("change", zoom);
+
+        function zoom() {
+            var e = document.getElementById("zoom");
+            var value = e.value;
+
+            const iframeDiv = document.getElementById('container-iframe');
+            iframeDiv.style.height = value + 'px'; 
+
+            zoomChart = value;
+        }
+
+	function changeStocks() {
+    	    var e = document.getElementById("stocks");
+    	    var value = e.value;
+            var text = e.options[e.selectedIndex].text;
+	    addChartsStocks(value, text);
+	}
+
+	function addChartsStocks(_metricId, _text){
+	    var e = document.getElementById("stocks");
+	    var text;
+	    var yAxis = 0;
+	    yAxis = 1;
+
+            data = fetch('https://bitcoin-data.com/v1/crypto/historical/' + _metricId)
+                 .then(response => response.json());
+
+	    Promise.all([data]).then(values => {
+		chart.addSeries({
+		    id: _metricId,
+		    name: _text,
+		    data: values[0],
+		    tooltip: {
+			valueDecimals: 2
+		    },
+		    yAxis: yAxis
+		    
+		});
+	    });
+	}
+
+      </script>
+
+    </section>
+
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/workspace_stocks.html">
+          <h5>BGeometrics Bitcoin and Stocks</h5>
+        </a>
+        <p> 
+	  The chart shows a comparison between the stock market index of any of the companies that make up the S&P 500 and the price of BTC. 
+	  <br><br>
+	  In it we can see how the different assets behave over the last two years, allowing us to analyze possible correlations or divergences between the traditional market and the bitcoin market.
+	  <br><br>
+	  API available to retrieve data with the stock index of any of the S&P 500 companies in <a href="https://bitcoin-data.com/api/swagger-ui/index.html" target="_blank">BGeometrics API</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Power by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+  <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+  <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+  <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+  <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
