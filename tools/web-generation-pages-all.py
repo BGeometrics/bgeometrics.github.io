@@ -326,7 +326,30 @@ filedata = filedata.replace("""<body>""", """<body>
   <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
   <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>""")
+  <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
+  <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+  <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+  </style>""")
+
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Stocks</title>')
 
 with open('web-generation-model-workspace-crypto.html', 'w') as file:
