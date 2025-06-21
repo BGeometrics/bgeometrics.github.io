@@ -14,7 +14,7 @@ var names = [
 { name: "MVRV, LTH (Long Term Hodler) and STH (Short Term Hodler)", link: "mvrv.html" },
 { name: "Bitcoin Coin Days Destroyed (CDD)", link: "cdd.html" },
 { name: "CDD Terminal Adjusted 90-Day", link: "cdd.html" },
-{ name: "Bitcoin, SP500 or S&P 500, Gold, Tesla", link: "graphics/sp500_gold.html" },
+{ name: "Bitcoin, SP500 or S&P 500, Gold, Tesla", link: "workspace_stocks.html" },
 { name: "Bitcoin Coin and Address Distribution Table", link: "reports/bitcoin_distribution_tables.html" },
 { name: "Bitcoin Coin Distribution", link: "graphics/distribution_coin.html" },
 { name: "Bitcoin Address Distribution", link: "graphics/distribution_addr.html" },
@@ -81,6 +81,8 @@ var names = [
 { name: "M2 Growth Global YoY", link: "m2_global.html" },
 { name: "Google Trends", link: "google_trends.html" },
 { name: "Terminal Price", link: "terminal_price.html" },
+{ name: "Crypto, altcoins", link: "workspace_crypto.html" },
+{ name: "SP500", link: "workspace_stocks.html" },
 ];
 
 function search() {
