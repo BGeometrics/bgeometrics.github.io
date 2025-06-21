@@ -536,6 +536,22 @@
 
       <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
+	<div class="container my-4">
+	  <h5>Performance over the last 5 years</h5>
+	  <div class="table-responsive">
+	    <table class="table table-bordered table-striped">
+	      <thead>
+		<tr>
+		  <th>Active</th>
+		  <th>Annualized Return</th>
+		</tr>
+	      </thead>
+	      <tbody>
+	      </tbody>
+	    </table>
+	  </div>
+	</div>
+
       <script>
             var zoomChart = 600;
             var metricsId = "";
@@ -745,6 +761,9 @@
 
             data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
                  .then(response => response.json());
+	
+	    const cagr = fetch('https://bitcoin-data.com/v1/stocks/cagr/' + _metricId)
+		.then(response => response.json());
 
 	    Promise.all([data]).then(values => {
 		chart.addSeries({
@@ -757,8 +776,30 @@
 		    yAxis: yAxis
 		    
 		});
+
+		// Actualizar la tabla
+		const tbody = document.querySelector('.table tbody');
+		let annualized = Number(values[1].annualized_return).toFixed(2) + '%';
+
+		const row = document.createElement('tr');
+		row.innerHTML = `<td>${values[1].active}</td><td>${annualized}</td>`;
+		tbody.appendChild(row);
 	    });
-	}
+	   }
+
+	    document.addEventListener("DOMContentLoaded", function() {
+	      fetch('https://bitcoin-data.com/v1/crypto/cagr/BTC')
+		  .then(response => response.json())
+		  .then(data => {
+		      const tbody = document.querySelector('.table tbody');
+		      // Limpia la tabla antes de añadir
+		      tbody.innerHTML = '';
+		      let annualized = Number(data.annualized_return).toFixed(2) + '%';
+		      const row = document.createElement('tr');
+		      row.innerHTML = `<td>${data.active}</td><td>${annualized}</td>`;
+		      tbody.appendChild(row);
+		  });
+	    });
 
       </script>
 
