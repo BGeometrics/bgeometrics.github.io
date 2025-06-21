@@ -715,6 +715,10 @@ archivo_origen = '/home/pi/bgeometrics.github.io/workspace_stocks.html'
 archivo_destino = '/tmp/web/workspace_stocks_dark.html' 
 shutil.copy(archivo_origen, archivo_destino)
 
+# Copy workspace_crypto in dark, but no it has style dark
+archivo_origen = '/home/pi/bgeometrics.github.io/workspace_crypto.html'
+archivo_destino = '/tmp/web/workspace_crypto_dark.html' 
+shutil.copy(archivo_origen, archivo_destino)
 
 print("")
 print("For copy generate pages to project") 
