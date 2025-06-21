@@ -82,6 +82,8 @@ var names = [
 { name: "Google Trends", link: "google_trends.html" },
 { name: "Terminal Price", link: "terminal_price.html" },
 { name: "Crypto, altcoins", link: "workspace_crypto.html" },
+{ name: "ETH, ADA, SOL, XMR...", link: "workspace_crypto.html" },
+{ name: "Ethereum, Cardano, Solana, Monero", link: "workspace_crypto.html" },
 { name: "SP500", link: "workspace_stocks.html" },
 ];
 
