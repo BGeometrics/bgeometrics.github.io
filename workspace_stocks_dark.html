@@ -1587,13 +1587,13 @@
 	    var yAxis = 0;
 	    yAxis = 1;
 
-            data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
+            const data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
                  .then(response => response.json());
 	
 	    const cagr = fetch('https://bitcoin-data.com/v1/stocks/cagr/' + _metricId)
 		.then(response => response.json());
 
-	    Promise.all([data]).then(values => {
+	    Promise.all([data, cagr]).then(values => {
 		chart.addSeries({
 		    id: _metricId,
 		    name: _text,
