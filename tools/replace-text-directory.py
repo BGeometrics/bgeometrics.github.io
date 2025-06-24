@@ -36,10 +36,11 @@ def search_text_in_directory(directory, search_text, file_extension=None):
 
 
 file_extension = '.html'  
-directory_path = '/home/pi/bgeometrics.github.io/tools'
-old_text = """<main id="main" class="main">"""
+directory_path = '/home/pi/bgeometrics.github.io/graphics'
+old_text = """rangeSelector: {
+                            inputEnabled: false"""
 new_text = """"""
 
-#search_text_in_directory(directory_path, old_text, file_extension)
-replace_text_in_directory(directory_path, old_text, new_text, file_extension)
+search_text_in_directory(directory_path, old_text, file_extension)
+#replace_text_in_directory(directory_path, old_text, new_text, file_extension)
 
