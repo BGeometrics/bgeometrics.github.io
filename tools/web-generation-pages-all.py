@@ -190,6 +190,7 @@ def remove_export_scripts_from_files(file_list):
         '<script src="https://code.highcharts.com/modules/export-data.js"></script>'
     ]
     for file_path in file_list:
+        print(f"Removing export scripts from: {file_path}")
         with open(file_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
         with open(file_path, 'w', encoding='utf-8') as f:
