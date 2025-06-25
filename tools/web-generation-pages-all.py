@@ -740,6 +740,9 @@ remove_export_scripts_from_files([
     '../graphics/m2_global.html',
     '../graphics/m2_btc.html',
     '../graphics/m2_global_10w.html'
+    '../graphics/m2_global_dark.html',
+    '../graphics/m2_btc_dark.html',
+    '../graphics/m2_global_10w_dark.html'
 ])
 
 print("")
