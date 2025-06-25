@@ -738,10 +738,10 @@ shutil.copy(archivo_origen, archivo_destino)
 # Eliminate export data in m2*.html
 remove_export_scripts_from_files([
     '/home/pi/bgeometrics.github.io/graphics/m2_global.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_btc.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w.html'
     '/home/pi/bgeometrics.github.io/graphics/m2_global_dark.html',
+    '/home/pi/bgeometrics.github.io/graphics/m2_btc.html',
     '/home/pi/bgeometrics.github.io/graphics/m2_btc_dark.html',
+    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w.html'
     '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_dark.html'
 ])
 
