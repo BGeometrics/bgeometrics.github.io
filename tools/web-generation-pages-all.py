@@ -184,6 +184,20 @@ def generate_pages(_mode):
             f_out.close()
             f_model.close()
 
+def remove_export_scripts_from_files(file_list):
+    scripts_to_remove = [
+        '<script src="https://code.highcharts.com/modules/exporting.js"></script>',
+        '<script src="https://code.highcharts.com/modules/export-data.js"></script>'
+    ]
+    for file_path in file_list:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+        with open(file_path, 'w', encoding='utf-8') as f:
+            for line in lines:
+                if not any(script in line for script in scripts_to_remove):
+                    f.write(line)
+        print(f"Removed export scripts from: {file_path}")
+
 
 # Asegurarse que existe el directorio
 directory_path = '/tmp/web'
@@ -720,6 +734,13 @@ shutil.copy(archivo_origen, archivo_destino)
 archivo_origen = '/home/pi/bgeometrics.github.io/workspace_crypto.html'
 archivo_destino = '/tmp/web/workspace_crypto_dark.html' 
 shutil.copy(archivo_origen, archivo_destino)
+
+# Eliminate export data in m2*.html
+remove_export_scripts_from_files([
+    '../graphics/m2_global.html',
+    '../graphics/m2_btc.html',
+    '../graphics/m2_global_10w.html'
+])
 
 print("")
 print("For copy generate pages to project") 
