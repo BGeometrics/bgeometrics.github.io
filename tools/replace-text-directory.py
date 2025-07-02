@@ -50,22 +50,14 @@ def search_regex_in_directory(directory, pattern, file_extension=None):
 
 file_extension = '.html'  
 directory_path = '../graphics'
-old_text = """                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        }
-                    }"""
-new_text = """                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        }
-                    },"""
+old_text = """}],,"""
+new_text = """}],"""
 
 #search_text_in_directory(directory_path, old_text, file_extension)
-#replace_text_in_directory(directory_path, old_text, new_text, file_extension)
+replace_text_in_directory(directory_path, old_text, new_text, file_extension)
 
 # Expresión regular flexible para el bloque stockTools
-old_pattern = r"stockTools:\s*\{\s*gui:\s*\{\s*enabled:\s*false\s*\}\s*\}"
+old_pattern = r"stockTools:\s*\{\s*gui:\s*\{\s*enabled:\s*false\s*\}\s*\},,"
 new_text = """stockTools: {
                             gui: {
                                 enabled: false 
@@ -80,6 +72,6 @@ new_text = """stockTools: {
                             title: { text: null }
                         }],"""
 
-replace_text_in_directory_regex(directory_path, old_pattern, new_text, file_extension)
+#replace_text_in_directory_regex(directory_path, old_pattern, new_text, file_extension)
 #search_regex_in_directory(directory_path, old_pattern, file_extension)
 
