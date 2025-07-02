@@ -78,5 +78,24 @@ new_text = """chartOptions: {
                     }"""
 
 replace_text_in_directory_regex(directory_path, old_pattern, new_text, file_extension)
+
+# Expresión regular flexible para el bloque stockTools
+old_pattern = r"stockTools:\s*\{\s*gui:\s*\{\s*enabled:\s*false\s*\}\s*\},"
+new_text = """stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],"""
+
+replace_text_in_directory_regex(directory_path, old_pattern, new_text, file_extension)
+
 #search_regex_in_directory(directory_path, old_pattern, file_extension)
 
