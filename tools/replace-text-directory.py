@@ -64,23 +64,8 @@ new_text = """                    chartOptions: {
 #search_text_in_directory(directory_path, old_text, file_extension)
 #replace_text_in_directory(directory_path, old_text, new_text, file_extension)
 
-# Expresión regular flexible para el bloque chartOptions
-old_pattern = r"chartOptions:\s*\{\s*rangeSelector:\s*\{\s*inputEnabled:\s*false\s*\}\s*\}"
-new_text = """chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        },
-                        stockTools: {
-                            gui: {
-                                enabled: false 
-                            }
-                        }
-                    }"""
-
-replace_text_in_directory_regex(directory_path, old_pattern, new_text, file_extension)
-
 # Expresión regular flexible para el bloque stockTools
-old_pattern = r"stockTools:\s*\{\s*gui:\s*\{\s*enabled:\s*false\s*\}\s*\},"
+old_pattern = r"stockTools:\s*\{\s*gui:\s*\{\s*enabled:\s*false\s*\}\s*\}"
 new_text = """stockTools: {
                             gui: {
                                 enabled: false 
@@ -96,6 +81,5 @@ new_text = """stockTools: {
                         }],"""
 
 replace_text_in_directory_regex(directory_path, old_pattern, new_text, file_extension)
-
 #search_regex_in_directory(directory_path, old_pattern, file_extension)
 
