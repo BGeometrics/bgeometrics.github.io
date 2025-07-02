@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Bitcoin Realized Price Distribution (URPD)</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -119,6 +116,31 @@
                         y: -16
                     }                
                 },
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 800
+                        },
+                        chartOptions: {
+                            rangeSelector: {
+                                inputEnabled: false
+                            },
+                            stockTools: {
+                                gui: {
+                                    enabled: false 
+                                }
+                            },
+                            navigator: {
+                                enabled: false 
+                            },
+                            yAxis: [{
+                                title: { text: null }
+                            }, {
+                                title: { text: null }
+                            }],
+                        }
+                    }]
+                }
             });
 
         })();

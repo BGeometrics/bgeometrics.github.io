@@ -260,7 +260,6 @@
                     y: -124
                 }                
             },
-
             responsive: {
                 rules: [{
                     condition: {
@@ -270,7 +269,19 @@
                         rangeSelector: {
                             inputEnabled: false
                         },
-                        legend: {enabled:false}
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }

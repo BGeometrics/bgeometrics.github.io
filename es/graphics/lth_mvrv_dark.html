@@ -69,7 +69,7 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: LTH MVRV (Market Value Realized Value)</a>',
+                text: 'Bitcoin: LTH MVRV',
                 align: 'left',
             },
 
@@ -146,6 +146,7 @@
                 enabled:true,
                 floating: true,
                 verticalAlign: 'top',
+                y: 25,
                 align:'center'
             },
 
@@ -178,7 +179,15 @@
                             gui: {
                                 enabled: false 
                             }
-                        }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }

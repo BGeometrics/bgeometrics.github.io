@@ -188,7 +188,7 @@
             },
 
             credits: {
-		text: 'Source: alternative.me &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Powered by BGeometrics.com',
+		        text: 'Source: alternative.me &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Powered by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
@@ -200,48 +200,29 @@
                 }                
             },
             responsive: {
-                rules: [
-                {
+                rules: [{
                     condition: {
-                        maxWidth: 1000
+                        maxWidth: 800
                     },
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
                         },
-                        legend: {
-                            enabled: false,
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
                         },
-                    }
-                }, {
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        },
-                        legend: {
-                            enabled: false,
+                        navigator: {
+                            enabled: false 
                         },
                         yAxis: [{
                 gridLineWidth: 0,
-                            labels: {
-                                enabled: false
-                            },
-                            title: {
-                                text: ''
-                            }
+                            title: { text: null }
                         }, {
-                            labels: {
-                                enabled: false
-                            },
-                            title: {
-                                text: ''
-                            }
-
-                        }]
-                    },
+                            title: { text: null }
+                        }],
+                    }
                 }]
             }
         });

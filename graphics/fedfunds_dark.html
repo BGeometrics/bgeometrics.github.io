@@ -155,6 +155,7 @@
             legend:{
                 enabled:true,
                 floating: true,
+                y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -170,6 +171,32 @@
                     y: -124
                 }                
             },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                gridLineWidth: 0,
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
+                    }
+                }]
+            }
         });
 
     })();

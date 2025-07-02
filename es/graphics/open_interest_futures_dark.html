@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Open Interest Futures</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -354,7 +351,19 @@
                         rangeSelector: {
                             inputEnabled: false
                         },
-                        legend: {enabled:false}
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }

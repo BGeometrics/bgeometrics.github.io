@@ -73,7 +73,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Value Days Destroyed (VDD) Multiple', 
+                text: 'Bitcoin Value Days Destroyed', 
                 align: 'left',
             },
 
@@ -150,6 +150,7 @@
             legend:{
                 enabled:true,
                 floating: true,
+                y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -183,7 +184,15 @@
                             gui: {
                                 enabled: false 
                             }
-                        }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }

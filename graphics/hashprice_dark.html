@@ -165,6 +165,7 @@
             legend:{
                 enabled:true,
                 floating: true,
+                y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -186,48 +187,29 @@
                 }                
             },
             responsive: {
-                rules: [
-                {
+                rules: [{
                     condition: {
-                        maxWidth: 1000
+                        maxWidth: 800
                     },
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
                         },
-                        legend: {
-                            enabled: false,
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
                         },
-                    }
-                }, {
-                    condition: {
-                        maxWidth: 500
-                    },
-                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        },
-                        legend: {
-                            enabled: false,
+                        navigator: {
+                            enabled: false 
                         },
                         yAxis: [{
                 gridLineWidth: 0,
-                            labels: {
-                                enabled: false
-                            },
-                            title: {
-                                text: ''
-                            }
+                            title: { text: null }
                         }, {
-                            labels: {
-                                enabled: false
-                            },
-                            title: {
-                                text: ''
-                            }
-
-                        }]
-                    },
+                            title: { text: null }
+                        }],
+                    }
                 }]
             }
         });

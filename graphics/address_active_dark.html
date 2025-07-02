@@ -2,9 +2,6 @@
 <html>
 <head>
     <title>Active Addresses</title>
-
-     
-    
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -137,6 +134,7 @@
             legend:{
                 enabled:true,
                 floating: true,
+                y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -166,7 +164,20 @@
                         rangeSelector: {
                             inputEnabled: false
                         },
-                        legend: {enabled:false}
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                gridLineWidth: 0,
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }

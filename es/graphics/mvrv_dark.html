@@ -78,7 +78,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin: MVRV Z-Score (Market Value Realized Value)',
+                text: 'Bitcoin: MVRV Z-Score',
                 align: 'left',
             },
 
@@ -192,7 +192,7 @@
             legend:{
                 enabled:true,
                 floating: true,
-		y: 25,
+		        y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -226,7 +226,15 @@
                             gui: {
                                 enabled: false 
                             }
-                        }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }

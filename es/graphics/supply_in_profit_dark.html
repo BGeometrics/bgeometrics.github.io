@@ -135,6 +135,7 @@
             legend:{
                 enabled:true,
                 floating: true,
+                y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
@@ -164,7 +165,19 @@
                         rangeSelector: {
                             inputEnabled: false
                         },
-                        legend: {enabled:false}
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }
