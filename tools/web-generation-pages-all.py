@@ -735,6 +735,11 @@ archivo_origen = '/home/pi/bgeometrics.github.io/workspace_crypto.html'
 archivo_destino = '/tmp/web/workspace_crypto_dark.html' 
 shutil.copy(archivo_origen, archivo_destino)
 
+# Copy dashboard_workspace_400 in dark, but no it has style dark
+archivo_origen = '/home/pi/bgeometrics.github.io/dashboard_workspace_400.html'
+archivo_destino = '/tmp/web/dashboard_workspace_400_dark.html' 
+shutil.copy(archivo_origen, archivo_destino)
+
 # Eliminate export data in m2*.html
 remove_export_scripts_from_files([
     '/home/pi/bgeometrics.github.io/graphics/m2_global.html',
