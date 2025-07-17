@@ -68,3 +68,15 @@
     font-size: 0.8rem; /* Tamaño de letra más pequeño */
     padding: 0.25rem 0.5rem; /* Tamaño del botón más pequeño */
 }
+
+/* Hide btc_price by default for larger screens */
+#btc_price {
+  display: none;
+}
+
+/* Show btc_price only on screens smaller than 768px (common breakpoint for mobile) */
+@media (max-width: 767px) {
+  #btc_price {
+    display: block;
+  }
+}
