@@ -31,24 +31,38 @@
             const data_ohlc = await fetch(
                 'https://charts.bgeometrics.com/files/btc_ohlc_4h.json'
             ).then(response => response.json());
+            const data_ohlc_1h = await fetch(
+                'https://charts.bgeometrics.com/files/btc_ohlc_1h.json'
+            ).then(response => response.json());
 
-            const cutoffTimestamp = Date.UTC(2022, 0, 1); // 1 enero 2022
+            const oneYearAgo = new Date();
+            oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+            const cutoffTimestamp = oneYearAgo.getTime();
 
-            // Filtra data_price hasta el final de 2021
-            const data_price_until_2021 = data_price.filter(item => item[0] < cutoffTimestamp);
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7); // ahora sí es hace una semana
+            const cutoffTimestampWeek = oneWeekAgo.getTime();
 
-            // Filtra data_ohlc desde 2022 en adelante (solo cierre)
-            const data_ohlc_from_2022 = data_ohlc.filter(item => item[0] >= cutoffTimestamp).map(item => [item[0], item[4]]);
+            // Parte 1: data_price hasta hace un año
+            const data_price_until_year = data_price.filter(item => item[0] < cutoffTimestamp);
 
-            // Une ambos arrays
-            const data_ohlc_all = data_price_until_2021.concat(data_ohlc_from_2022);
+            // Parte 2: data_ohlc entre hace un año y hace una semana (solo cierre)
+            const data_ohlc_from_year = data_ohlc
+                .filter(item => item[0] >= cutoffTimestamp && item[0] < cutoffTimestampWeek)
+                .map(item => [item[0], item[4]]);
 
-            var close_prices = data_ohlc_all.map(item => {
-                // Si el array tiene solo dos elementos, el segundo es el valor
-                if (item.length === 2) {
-                    return [item[0], item[1]];
-                }
-                // Si tiene más, el quinto es el cierre
+            // Parte 3: data_ohlc_1h desde hace una semana
+            const data_ohlc_from_week = data_ohlc_1h
+                .filter(item => item[0] >= cutoffTimestampWeek)
+                .map(item => [item[0], item[4]]);
+
+            // Unión final
+            const data_ohlc_all_1h = data_price_until_year
+                .concat(data_ohlc_from_year)
+                .concat(data_ohlc_from_week);
+
+            var close_prices = data_ohlc_all_1h.map(item => {
+                if (item.length === 2) return [item[0], item[1]];
                 return [item[0], item[4]];
             });
 
@@ -156,7 +170,7 @@
 
                 rangeSelector: {
                     selected: 1,
-                   buttons: [{
+                    buttons: [{
                         type: 'day',
                         count: 1,
                         text: '1d'
