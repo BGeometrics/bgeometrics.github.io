@@ -80,3 +80,14 @@
     display: block;
   }
 }
+
+/* Show btc_price_300 by default for larger screens */
+#btc_price_300 {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  #btc_price_300 {
+    display: none;
+  }
+}
