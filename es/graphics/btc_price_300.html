@@ -3,11 +3,19 @@
 
 <head>
     <title>Bitcoin Price</title>
-</head>
-
-<body>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <style>
+        [data-bs-theme="dark"] .fw-bold {
+            color: white !important;
+        }
+</style>
+</head> 
+
+<body data-bs-theme="dark">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
     <script src="https://code.highcharts.com/modules/full-screen.js"></script>
@@ -16,6 +24,39 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
     <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
+
+    <div id="returns" class="d-flex justify-content-center my-3">
+        <div class="vr mx-2"></div>
+        <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">1 day</span>
+                <span class="fw-bold"></span>
+            </button>
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">1 week</span>
+                <span class="fw-bold"></span>
+            </button>
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">1 month</span>
+                <span class="fw-bold"></span>
+            </button>
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">6 months</span>
+                <span class="fw-bold"></span>
+            </button>
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">1 year</span>
+                <span class="fw-bold"></span>
+            </button>
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">4 years</span>
+                <span class="fw-bold"></span>
+            </button>
+        </div>
+        <div class="vr mx-2"></div>
+    </div>
+
+    <div id="container" style="width: 50%; height: 100px;"></div>
 
     <script>
         (async () => {
@@ -28,29 +69,52 @@
             const data_ohlc_1h = await fetch(
                 'https://charts.bgeometrics.com/files/btc_ohlc_1h.json'
             ).then(response => response.json());
+            const data_returns = await fetch(
+                'https://charts.bgeometrics.com/files/btc_ohlc_return.json'
+            ).then(response => response.json());
+
+            // Actualizar los valores de retorno con estilos Bootstrap
+            const returnButtons = document.querySelectorAll('#returns button');
+            
+            // Función para determinar el color basado en el valor
+            const getButtonClass = (value) => {
+                return value >= 0 ? 'text-success' : 'text-danger';
+            };
+
+            returnButtons[0].querySelectorAll('span')[1].textContent = data_returns.last_day.toFixed(2) + '%';
+            returnButtons[0].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_day)}`;
+            
+            returnButtons[1].querySelectorAll('span')[1].textContent = data_returns.last_week.toFixed(2) + '%';
+            returnButtons[1].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_week)}`;
+            
+            returnButtons[2].querySelectorAll('span')[1].textContent = data_returns.last_month.toFixed(2) + '%';
+            returnButtons[2].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_month)}`;
+            
+            returnButtons[3].querySelectorAll('span')[1].textContent = data_returns.last_6month.toFixed(2) + '%';
+            returnButtons[3].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_6month)}`;
+            
+            returnButtons[4].querySelectorAll('span')[1].textContent = data_returns.last_year.toFixed(2) + '%';
+            returnButtons[4].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_year)}`;
+            
+            returnButtons[5].querySelectorAll('span')[1].textContent = data_returns.last_4year.toFixed(2) + '%';
+            returnButtons[5].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_4year)}`;
 
             const oneYearAgo = new Date();
             oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
             const cutoffTimestamp = oneYearAgo.getTime();
 
             const oneWeekAgo = new Date();
-            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7); // ahora sí es hace una semana
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
             const cutoffTimestampWeek = oneWeekAgo.getTime();
 
-            // Parte 1: data_price hasta hace un año
+            // Resto del código original...
             const data_price_until_year = data_price.filter(item => item[0] < cutoffTimestamp);
-
-            // Parte 2: data_ohlc entre hace un año y hace una semana (solo cierre)
             const data_ohlc_from_year = data_ohlc
                 .filter(item => item[0] >= cutoffTimestamp && item[0] < cutoffTimestampWeek)
                 .map(item => [item[0], item[4]]);
-
-            // Parte 3: data_ohlc_1h desde hace una semana
             const data_ohlc_from_week = data_ohlc_1h
                 .filter(item => item[0] >= cutoffTimestampWeek)
                 .map(item => [item[0], item[4]]);
-
-            // Unión final
             const data_ohlc_all_1h = data_price_until_year
                 .concat(data_ohlc_from_year)
                 .concat(data_ohlc_from_week);
@@ -61,26 +125,23 @@
             });
 
             var chart = Highcharts.stockChart('container-iframe', {
+                // Configuración del gráfico original...
                 navigator: {
                     enabled: false
                 },
-
                 scrollbar: {
                     enabled: false
                 },
                 title: {
                     text: null
                 },
-
                 chart: {
                     renderTo: 'container-iframe',
                 },
-
                 xAxis: {
                     visible: true,
                     min: cutoffTimestampWeek
                 },
-
                 yAxis: [{
                     labels: {
                         enabled: false
@@ -90,7 +151,6 @@
                     },
                     visible: true,
                 }],
-
                 series: [
                     {
                         id: 'Precio BTC',
@@ -104,11 +164,9 @@
                         yAxis: 0
                     },
                 ],
-
                 legend: {
                     enabled: false,
                 },
-
                 rangeSelector: {
                     enabled: true,
                     inputEnabled: false,
@@ -150,12 +208,10 @@
                         text: 'All'
                     }]
                 },
-
                 credits: {
                     enabled: false,
                     visible: false,
                 },
-
             });
         })();
     </script>
