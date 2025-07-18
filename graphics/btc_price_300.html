@@ -64,13 +64,12 @@
                 navigator: {
                     enabled: false
                 },
+
                 scrollbar: {
                     enabled: false
                 },
                 title: {
-                    text: '<a href="https://charts.bgeometrics.com/btc_price_dark.html" target="_blank">Bitcoin price 1h</a>',
-                    align: 'left',
-                    fontSize: '9px',
+                    text: null
                 },
 
                 chart: {
@@ -99,6 +98,7 @@
                         color: 'black',
                         data: close_prices,
                         tooltip: {
+                            valuePrefix: '$',
                             valueDecimals: 2
                         },
                         yAxis: 0
