@@ -48,14 +48,6 @@
                 <span class="small">6 months</span>
                 <span class="fw-bold"></span>
             </button>
-            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
-                <span class="small">1 year</span>
-                <span class="fw-bold"></span>
-            </button>
-            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
-                <span class="small">4 years</span>
-                <span class="fw-bold"></span>
-            </button>
         </div>
         <div class="vr mx-2"></div>
     </div>
@@ -94,12 +86,6 @@
             returnButtons[3].querySelectorAll('span')[1].textContent = data_returns.last_6month.toFixed(2) + '%';
             returnButtons[3].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_6month)}`;
             
-            returnButtons[4].querySelectorAll('span')[1].textContent = data_returns.last_year.toFixed(2) + '%';
-            returnButtons[4].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_year)}`;
-            
-            returnButtons[5].querySelectorAll('span')[1].textContent = data_returns.last_4year.toFixed(2) + '%';
-            returnButtons[5].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_4year)}`;
-
             const oneYearAgo = new Date();
             oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
             const cutoffTimestamp = oneYearAgo.getTime();
