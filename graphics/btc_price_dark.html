@@ -59,7 +59,7 @@
                 <span class="fw-bold"></span>
             </button>
             <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
-                <span class="small">1 day</span>
+                <span class="small">24 h</span>
                 <span class="fw-bold"></span>
             </button>
             <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
@@ -309,11 +309,12 @@
                 }
             });
 
+            console.log(data_returns)
             returnButtons[0].querySelectorAll('span')[1].textContent = '$' + lastPrice.toFixed(0);
             returnButtons[0].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(lastPrice)}`;
             
-            returnButtons[1].querySelectorAll('span')[1].textContent = data_returns.last_day.toFixed(2) + '%';
-            returnButtons[1].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_day)}`;
+            returnButtons[1].querySelectorAll('span')[1].textContent = data_returns.last_24h.toFixed(2) + '%';
+            returnButtons[1].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_24h)}`;
             
             returnButtons[2].querySelectorAll('span')[1].textContent = data_returns.last_week.toFixed(2) + '%';
             returnButtons[2].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_week)}`;
