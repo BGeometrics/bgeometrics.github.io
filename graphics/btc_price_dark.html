@@ -55,6 +55,10 @@
         <div class="vr mx-2"></div>
         <div class="d-flex flex-wrap gap-2">
             <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
+                <span class="small">Price now</span>
+                <span class="fw-bold"></span>
+            </button>
+            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
                 <span class="small">1 day</span>
                 <span class="fw-bold"></span>
             </button>
@@ -64,10 +68,6 @@
             </button>
             <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
                 <span class="small">1 month</span>
-                <span class="fw-bold"></span>
-            </button>
-            <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3">
-                <span class="small">6 months</span>
                 <span class="fw-bold"></span>
             </button>
         </div>
@@ -96,18 +96,6 @@
                 return value >= 0 ? 'text-success' : 'text-danger';
             };
 
-            returnButtons[0].querySelectorAll('span')[1].textContent = data_returns.last_day.toFixed(2) + '%';
-            returnButtons[0].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_day)}`;
-            
-            returnButtons[1].querySelectorAll('span')[1].textContent = data_returns.last_week.toFixed(2) + '%';
-            returnButtons[1].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_week)}`;
-            
-            returnButtons[2].querySelectorAll('span')[1].textContent = data_returns.last_month.toFixed(2) + '%';
-            returnButtons[2].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_month)}`;
-            
-            returnButtons[3].querySelectorAll('span')[1].textContent = data_returns.last_6month.toFixed(2) + '%';
-            returnButtons[3].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_6month)}`;
-            
             const oneYearAgo = new Date();
             oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
             const cutoffTimestamp = oneYearAgo.getTime();
@@ -138,6 +126,8 @@
                 if (item.length === 2) return [item[0], item[1]];
                 return [item[0], item[4]];
             });
+
+            const lastPrice = close_prices.length > 0 ? close_prices[close_prices.length - 1][1] : null;
 
             var chart = Highcharts.stockChart('container-iframe', {
                 stockTools: {
@@ -318,6 +308,19 @@
                     }]
                 }
             });
+
+            returnButtons[0].querySelectorAll('span')[1].textContent = '$' + lastPrice.toFixed(0);
+            returnButtons[0].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(lastPrice)}`;
+            
+            returnButtons[1].querySelectorAll('span')[1].textContent = data_returns.last_day.toFixed(2) + '%';
+            returnButtons[1].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_day)}`;
+            
+            returnButtons[2].querySelectorAll('span')[1].textContent = data_returns.last_week.toFixed(2) + '%';
+            returnButtons[2].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_week)}`;
+            
+            returnButtons[3].querySelectorAll('span')[1].textContent = data_returns.last_month.toFixed(2) + '%';
+            returnButtons[3].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_month)}`;
+            
         })();
 
     </script>
