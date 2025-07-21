@@ -130,13 +130,14 @@
             },
 
             yAxis: [{
+                gridLineWidth: 0,
                 title: {
                     text: 'M2 Growth Global of YoY (%)',
                     labels: {
                         align: 'left',
                     },
-                },
-                gridLineWidth: 0,
+        	},
+		gridLineWidth: 0,
             }, {
                 title: {
                     text: 'BTC price'
@@ -144,12 +145,13 @@
                 gridLineWidth: 0,
                 
                 type: 'logarithmic',
-                opposite: false
+                opposite: false,
+		gridLineWidth: 0,
             }, {
                 title: {
                     text: 'M2 Growth Global (USD)'
                 },
-                gridLineWidth: 0,
+		gridLineWidth: 0,
             }],
 
             series: [{
