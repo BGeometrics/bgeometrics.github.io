@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin ETF: Total balance and daily flow</title>
+    <title>Bitcoin moving average</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -18,43 +18,22 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-    </style>
 
     <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/etf_btc_btc_price.json'
+                'https://charts.bgeometrics.com/files/moving_average_price.json'
             ).then(response => response.json());
-            const data_etf = await fetch(
-                'https://charts.bgeometrics.com/files/flow_btc_etf_btc.json'
+            const data_20dma = await fetch(
+                'https://charts.bgeometrics.com/files/20dma.json'
             ).then(response => response.json());
-            const data_total_etf = await fetch(
-                'https://charts.bgeometrics.com/files/total_btc_etf_btc.json'
+            const data_50dma = await fetch(
+                'https://charts.bgeometrics.com/files/50dma.json'
             ).then(response => response.json());
-            const data_etf_usd = await fetch(
-                'https://charts.bgeometrics.com/files/flow_btc_etf.json'
+            const data_200dma = await fetch(
+                'https://charts.bgeometrics.com/files/200dma.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
@@ -96,13 +75,27 @@
                                 { button: button }
                             );
                         }
-                    }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
                 }
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -117,7 +110,7 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.08})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.05})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -129,107 +122,84 @@
                     showInLegend:true
                 }
             },
+
             stockTools: {
                 gui: {
                     enabled: false 
                 }
             },
+
             navigator: {
                 enabled: false
             },
+
             scrollbar: {
                 enabled: false
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 labels: {
                     align: 'left',
                 },
-                title: {
-                    text: null,
-                },
-                height: '80%',
-                gridLineWidth: 0,
             }, {
                 title: {
-                    text: null,
+                    text: 'Precio BTC'
                 },
-                opposite: false,
-                gridLineWidth: 0,
-            }, {
-                title: {
-                    text: 'ETF Daily Flow BTC'
-                },
-                labels: {
-                    enabled: true,
-                    align: 'left',
-                },
-                top: '10%',
-                height: '105%',
-                offset: 0,
-                gridLineWidth: 0,
             }],
 
             series: [{
-                name: 'BTC price',
-                color: 'white',
+                id: 'Precio BTC',
+                name: 'Precio BTC',
+		        color: 'white', 
                 data: data_price,
-                zIndex: 3,
                 tooltip: {
                     valuePrefix: '$',
-                    valueDecimals: 2
-                },
-                yAxis: 1
-            }, {
-                id:'btc_etf',
-                type: 'column',
-                name: 'ETF flow BTC',
-                color: 'green',
-		        negativeColor: 'red',
-                data: data_etf,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 2,
-                groupPadding: 0,
-            }, {
-                id:'tota_btc_etf',
-                name: 'ETF Total BTC',
-                data: data_total_etf,
-                visible: false,
-                zIndex: 2,
-                tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                id:'BTC ETF USD',
-                type: 'column',
-                name: 'ETF flow USD',
-                visible: false,
-                color: '#0B6623',
-		        negativeColor: '#ED2939',
-                data: data_etf_usd,
+                id:'20 SMA',
+                name: '20 SMA',
+                data: data_20dma,
                 tooltip: {
                     valuePrefix: '$',
                     valueDecimals: 2
                 },
-                yAxis: 2,
-                groupPadding: 0,
+                yAxis: 0
+            }, {
+                id:'50 SMA',
+                name: '50 SMA',
+                data: data_50dma,
+                tooltip: {
+                    valuePrefix: '$',
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'200 SMA',
+                name: '200 SMA',
+                visible: false,
+                data: data_200dma,
+                tooltip: {
+                    valuePrefix: '$',
+                    valueDecimals: 2
+                },
+                yAxis: 0
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
-                y: -6,
                 verticalAlign: 'top',
-                align:'center'
+                align:'center',
+                y: -10,
             },
 
+            navigator : {
+		        enabled : false
+	        },
+         
             rangeSelector: {
-                enabled: true,
-                inputEnabled: false,
                 selected: 0,
                 buttons: [{
                     type: 'month',
@@ -264,6 +234,7 @@
             credits: {
                 text: '',
             },
+
             responsive: {
                 rules: [{
                     condition: {
@@ -282,15 +253,9 @@
                             enabled: false 
                         },
                         yAxis: [{
-                gridLineWidth: 0,
-                            title: { text: null },
-                            gridLineWidth: 0,
+                            title: { text: null }
                         }, {
-                            title: { text: null },
-                            gridLineWidth: 0,
-                        }, {
-                            title: { text: null },
-                            gridLineWidth: 0,
+                            title: { text: null }
                         }],
                     }
                 }]
@@ -299,6 +264,5 @@
     })();
 
     </script>
-
 </body>
 </html>
