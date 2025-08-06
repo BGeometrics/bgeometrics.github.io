@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Realized Profit Loss Ratio Heatmap last 180 days</title>
+    <title>Bitcoin Ratio Ganancia Pérdida Realizada Heatmap last 180 days</title>
 
      
     
@@ -14,27 +14,6 @@
     <script src="https://code.highcharts.com/modules/heatmap.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-    </style>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <div id="container" style="height: 130px; width: 100%; margin: 0 auto"></div>
@@ -52,14 +31,14 @@
             Highcharts.chart('container', {
 
                 chart: {
-                    type: 'heatmap', backgroundColor: '#000000',
+                    type: 'heatmap',
                 },
 
                 title: {
-                    text: '<a href="https://charts.bgeometrics.com/realized_profit_loss_ratio.html" target="_blank">Realized Profit Loss Ratio in last 180 days</a>',
+                    text: '<a href="https://charts.bgeometrics.com/realized_profit_loss_ratio.html" target="_blank">Ratio Ganancia Pérdida Realizada in last 180 days</a>',
                     align: 'left',
                     style: {
-                        fontSize: '14px', color: '#FFFFFF',
+                        fontSize: '14px'
                     }
                 },
 

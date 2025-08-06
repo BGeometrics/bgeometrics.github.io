@@ -13,27 +13,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-    </style>
 
     <div id="container-iframe" style="width:100%; height:200px; margin: 0 auto;"></div>
 
@@ -65,7 +44,6 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 labels: {
                     enabled: false
                 },
@@ -76,7 +54,7 @@
             }],
 
             series: [{
-                name: 'BTC price',
+                name: 'Precio BTC',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
@@ -117,7 +95,6 @@
                             enabled: false 
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }

@@ -24,8 +24,7 @@
     const  chart = new Highcharts.stockChart('container-iframe',{
 
     chart: {
-        backgroundColor: 'black',
-                events: {
+        events: {
             load() {
                 let chart = this;
                 
@@ -61,7 +60,6 @@
                             enabled: false 
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }

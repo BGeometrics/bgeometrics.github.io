@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin and Choppiness Index (14 day)</title>
+    <title>Bitcoin y el índice Choppines (14 días)</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -18,27 +18,6 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-    </style>
 
     <div id="container-iframe" style="width:100%; height:600px;"></div>
 
@@ -109,13 +88,12 @@
                 }
             },
             title: {
-                text: 'Choppiness Index (14 day)',
+                text: 'Índice Choppiness (14 días)',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -130,7 +108,7 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -144,22 +122,19 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 title: {
                     text: 'Choppiness Index'
                 },
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'Precio BTC'
                 },
-                gridLineWidth: 0,
-                
                 opposite: false
             }],
 
             series: [{
-                id: 'BTC price',
-                name: 'BTC price',
+                id: 'Precio BTC',
+                name: 'Precio BTC',
                 color: 'white',
                 data: data_price,
                 tooltip: {
@@ -263,7 +238,6 @@
                             enabled: false 
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }

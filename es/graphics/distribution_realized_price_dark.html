@@ -38,8 +38,7 @@
                 chart: {
                     type: 'column',
                     renderTo: 'container',
-                    backgroundColor: 'black',
-                events: {
+                    events: {
                         load: function() {
                             var image = new Image();
                             var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
@@ -53,7 +52,7 @@
                             var position_y = textY - height_image / 2;
                             console.log(position_x + " " + position_y);
                             this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                                 .attr({zIndex: 1})
                                 .add();
                         }
@@ -65,12 +64,12 @@
                 },
                 xAxis: {
                     title: {
-                        text: 'BTC price'
+                        text: 'Precio BTC'
                     },
                     categories: data_x,
                     crosshair: true,
                     accessibility: {
-                        description: 'BTC price'
+                        description: 'Precio BTC'
                     },
                     plotLines: [{
                         color: 'white',
@@ -135,7 +134,6 @@
                                 enabled: false 
                             },
                             yAxis: [{
-                gridLineWidth: 0,
                                 title: { text: null }
                             }, {
                                 title: { text: null }

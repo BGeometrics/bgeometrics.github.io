@@ -20,7 +20,7 @@
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../assets/css/style-dark.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
   <link href="../assets/css/bgeometrics.css" rel="stylesheet">
 
   <!-- Google tag (gtag.js) --> 
@@ -44,7 +44,6 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
-    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
     <section class="section dashboard">
       <div id="searchResults"></div>
 
@@ -64,18 +63,18 @@
             <option value="50dma">50 day SMA</option>
             <option value="155dma">155 day SMA</option>
             <option value="200dma">200 day SMA</option>
-            <option value="addresses_active_4axis">Active Addresses</option>
+            <option value="addresses_active_4axis">Direcciones Activas</option>
             <option value="aviv_3axis">AVIV</option>
             <option value="hw_age_6m_10_3axis">BTC HODL (>6m) %</option>
             <option value="hw_age_6m_lth_supply_axis">BTC LTH (>6m) Supply</option>
             <option value="hw_age_6m_sth_supply_axis">BTC STH (<6m) Supply</option>
             <option value="bull_bear">Bull and Bear Cycles</option>
-            <option value="market_cap_axis">Capitalization Market</option>
-            <option value="realized_cap_axis">Capitalization Realized</option>
-            <option value="investor_cap_axis">Capitalization Investor</option>
-            <option value="thermo_cap_axis">Capitalization Thermo</option>
-            <option value="stablecoin_usdt_axis">Capitalization USDT</option>
-            <option value="stablecoin_usdc_axis">Capitalization USDC</option>
+            <option value="market_cap_axis">Capitalización Market</option>
+            <option value="realized_cap_axis">Capitalización Realized</option>
+            <option value="investor_cap_axis">Capitalización Investor</option>
+            <option value="thermo_cap_axis">Capitalización Thermo</option>
+            <option value="stablecoin_usdt_axis">Capitalización USDT</option>
+            <option value="stablecoin_usdc_axis">Capitalización USDC</option>
             <option value="choppiness_3axis">Choppiness 14 day</option>
             <option value="choppiness_5w_3axis">Choppiness 5 weeks</option>
             <option value="choppiness_10w_3axis">Choppiness 10 weeks</option>
@@ -102,7 +101,7 @@
             <option value="mvrv_3axis">MVRV</option>
             <option value="sth_mvrv_3axis">MVRV STH</option>
             <option value="lth_mvrv_3axis">MVRV LTH</option>
-            <option value="realized_profit_loss_ratio_3axis">Realized Profit Loss Ratio</option>
+            <option value="realized_profit_loss_ratio_3axis">Ratio Ganancia Pérdida Realizada</option>
             <option value="nrpl_4axis">NRPL</option>
             <option value="nrpl_usd_4axis">NRPL USD</option>
             <option value="nupl_3axis">NUPL</option>
@@ -308,7 +307,7 @@
                     events: {
                         load: function() {
                             var image = new Image();
-                            var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
                             image.src = adresse_image;
 
                             var height_image = 128;
@@ -336,7 +335,7 @@
                         align: 'left',
                     },
                     title: {
-                        text: 'BTC price'
+                        text: 'Precio BTC'
                     },
                     type: 'logarithmic',
                 }, {
@@ -352,8 +351,8 @@
                 }],
 
                 series: [{
-                    id:'BTC price',
-                    name: 'BTC price',
+                    id:'Precio BTC',
+                    name: 'Precio BTC',
                     color: 'white',
                     data: data_price,
                     tooltip: {
@@ -364,12 +363,12 @@
                     type: 'pc',
                     id: 'overlay',
                     name: 'BTC Channel',
-                    linkedTo: 'BTC price',
+                    linkedTo: 'Precio BTC',
                     yAxis: 0
                 }, {
                     id: 'oscillator',
                     name: 'Oscillator',
-                    linkedTo: 'BTC price',
+                    linkedTo: 'Precio BTC',
                     yAxis: 2
                 }],
 
@@ -454,7 +453,7 @@
             }
             chart.addSeries({
                 type: e.target.value,
-                linkedTo: 'BTC price',
+                linkedTo: 'Precio BTC',
                 id: 'overlay'
             });
         }
@@ -469,7 +468,7 @@
             }
             chart.addSeries({
                 type: e.target.value,
-                linkedTo: 'BTC price',
+                linkedTo: 'Precio BTC',
                 id: 'oscillator',
                 yAxis: 2
             });
@@ -494,63 +493,97 @@
         }
 
         function draw() {
-          var numberValue = document.getElementById("number").value;
-          var operator1Value = document.getElementById("operator1").value;
-          var operator2Value = document.getElementById("operator2").value;
+            const numberValue = parseFloat(document.getElementById("number").value) || 0;
+            const operator1Value = document.getElementById("operator1").value;
+            const operator2Value = document.getElementById("operator2").value;
 
-          var e = document.getElementById("metric1");
-          var metric1Value = e.options[e.selectedIndex].text;
-          e = document.getElementById("metric2");
-          var metric2Value = e.options[e.selectedIndex].text;
+            // Get selected metrics
+            const metric1Element = document.getElementById("metric1");
+            const metric2Element = document.getElementById("metric2");
+            const metric1Value = metric1Element.options[metric1Element.selectedIndex].text;
+            const metric2Value = metric2Element.options[metric2Element.selectedIndex].text;
 
-          metric1Serie = chart.series[0];
-          metric2Serie = chart.series[0];
+            let metric1Serie = chart.series[0];
+            let metric2Serie = chart.series[0];
 
-          for (var i = 0; i < chart.series.length; i++) {
-            var series = chart.series[i];
-            if (chart.series[i].name == metric1Value){
-              metric1Serie = chart.series[i];
-            }
-            if (chart.series[i].name == metric2Value){
-              metric2Serie = chart.series[i];
-            }
-          }
-
-          var data = [];
-          if (metric1Value !== "Metric1")  { // Must select a Metric 1
-            for(var i = 0; i < metric1Serie.xData.length; i++) {
-              dataIn = [];
-              if (operator1Value === null || operator1Value === "") { // Operator 1 -> null
-                if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { // Operator 1 -> null and Operator 2 or Metric 2 -> null 
-                  expression = metric1Serie.yData[i];
-                }
-                else { // Operatoe 1 -> null and Metric 2 and Operator 2 -> not null 
-                  formula = metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
-                  expression = eval(formula);
-                }
-              }
-              else { // Operator 1 -> not null
-                if ((operator2Value === null || operator2Value === "") 
-                    || (metric2Value === "Metric2"))  { //Operator 1 -> not null and Operator 2 or Metric 2 -> null  
-                  formula = numberValue + operator1Value + metric1Serie.yData[i];
-                  expression = eval(formula);
-                }
-                else { // Operator 1 -> not null and Operator 2 and Metric 2 -> not null
-                  formula = numberValue + operator1Value + metric1Serie.yData[i] + operator2Value + metric2Serie.yData[i];
-                  expression = eval(formula);
-                }
-              }
-              dataIn.push(metric1Serie.xData[i], expression);
-              data.push(dataIn);
-            }
-
-            chart.addSeries({
-              data: data,
-              yAxis: 2
+            chart.series.forEach(series => {
+                console.log("before: " + series.name);
+                if (series.name === metric1Value) metric1Serie = series;
+                if (series.name === metric2Value) metric2Serie = series;
             });
-          }
+
+            if (!metric1Serie || metric1Value === "Metric1") {
+                console.error("Please select at least one metric");
+                return;
+            }
+
+            // Create a map of timestamps to make synchronization easier
+            const dataMap = new Map();
+            
+            // Initialize with first metric data
+            metric1Serie.data.forEach(point => {
+                dataMap.set(point.x, {
+                    x: point.x,
+                    metric1: point.y,
+                    metric2: null
+                });
+            });
+
+            // Add second metric data if it exists
+            if (metric2Serie && metric2Value !== "Metric2") {
+                metric2Serie.data.forEach(point => {
+                    if (dataMap.has(point.x)) {
+                        dataMap.get(point.x).metric2 = point.y;
+                    }
+                });
+            }
+
+            // Calculate new values
+            const newData = Array.from(dataMap.values())
+                .filter(point => {
+                    // Only keep points where we have all required data
+                    if (operator2Value && metric2Value !== "Metric2") {
+                        return point.metric1 !== null && point.metric2 !== null;
+                    }
+                    return point.metric1 !== null;
+                })
+                .map(point => {
+                    let result;
+                    
+                    // Build and evaluate expression
+                    if (operator1Value && operator2Value && point.metric2 !== null) {
+                        // Full expression with both operators
+                        const expression = `${numberValue} ${operator1Value} ${point.metric1} ${operator2Value} ${point.metric2}`;
+                        result = eval(expression);
+                    } else if (operator1Value) {
+                        // Only first operator
+                        const expression = `${numberValue} ${operator1Value} ${point.metric1}`;
+                        result = eval(expression);
+                    } else if (operator2Value && point.metric2 !== null) {
+                        // Only second operator
+                        const expression = `${point.metric1} ${operator2Value} ${point.metric2}`;
+                        result = eval(expression);
+                    } else {
+                        // No operators, just return metric1 value
+                        result = point.metric1;
+                    }
+
+                    return [point.x, result];
+                });
+
+            // Add new series with calculated data
+            const seriesName = `${numberValue} ${operator1Value} ${metric1Value} ${operator2Value} ${metric2Value}`.trim();
+            
+            chart.addSeries({
+                name: seriesName,
+                data: newData,
+                yAxis: 2,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            });
         }
+
 
       </script>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Active Addresses</title>
+    <title>Direcciones Activas</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -70,7 +70,6 @@
 
             chart: {
                 renderTo: 'container',
-                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -85,7 +84,7 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -99,30 +98,27 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 title: {
-                    text: 'Active Addresses'
+                    text: 'Direcciones Activas'
                 },
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'Precio BTC'
                 },
-                gridLineWidth: 0,
-                
                 type: 'logarithmic',
                 opposite: false,
             }],
 
             series: [{
                 id:'address_active',
-                name: 'Active Addresses',
+                name: 'Direcciones Activas',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'BTC price',
+                name: 'Precio BTC',
                 color: 'white',
                 data: data_price,
                 tooltip: {
@@ -173,7 +169,6 @@
                             enabled: false 
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
