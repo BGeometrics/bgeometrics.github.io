@@ -18,7 +18,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <div id="container-iframe" style="width:100%; height:400px;"></div>
+    <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
@@ -79,15 +79,16 @@
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
-                        var height_image = 128;
-                        var width_image = 128;
+
+                        var height_image = 80;
+                        var width_image = 80;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.05})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -100,18 +101,31 @@
                 }
             },
 
+            stockTools: {
+                gui: {
+                    enabled: false 
+                }
+            },
+
+            navigator: {
+                enabled: false
+            },
+
+            scrollbar: {
+                enabled: false
+            },
+
             yAxis: [{
                 title: {
-                    text: 'BG Demand Index'
+                    text: null,
                 },
                 labels: {
                     align: 'left',
                 },
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'Demand Index'
                 },
-                opposite: false
             }],
 
             series: [{
@@ -123,7 +137,7 @@
                     valuePrefix: '$',
                     valueDecimals: 2
                 },
-                yAxis: 1
+                yAxis: 0
             }, {
                 id:'BG Demand Index',
                 name: 'BGeometrics Demand Index',
@@ -131,7 +145,7 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0,
+                yAxis: 1,
 		        zones: [{
 		            value: 25,
                     color: 'green'
@@ -150,9 +164,9 @@
             legend:{
                 enabled:true,
                 floating: true,
-                y: -6,
                 verticalAlign: 'top',
-                align:'center'
+                align:'center',
+                y: -10,
             },
 
             navigator : {
@@ -160,7 +174,7 @@
 	        },
 
             rangeSelector: {
-                selected: 3,
+                selected: 1,
                 buttons: [{
                     type: 'month',
                     count: 1,
@@ -179,10 +193,6 @@
                     text: '1y'
                 }, {
                     type: 'year',
-                    count: 2,
-                    text: '2y'
-                }, {
-                    type: 'year',
                     count: 4,
                     text: '4y'
                 }, {
@@ -192,17 +202,9 @@
             },
 
             credits: {
-		text: 'Powered by BGeometrics.com',
-                href: 'https://charts.bgeometrics.com',
-                style: {
-                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
-                },
-                position: {
-                    align: 'right',
-                    x: -75,
-		    y: -85
-                }                
+                text: '',
             },
+
             responsive: {
                 rules: [{
                     condition: {
