@@ -14,6 +14,27 @@
     <script src="https://code.highcharts.com/modules/heatmap.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <div id="container" style="height: 130px; width: 100%; margin: 0 auto"></div>
@@ -31,14 +52,14 @@
             Highcharts.chart('container', {
 
                 chart: {
-                    type: 'heatmap',
+                    type: 'heatmap', backgroundColor: '#000000',
                 },
 
                 title: {
                     text: '<a href="https://charts.bgeometrics.com/sopr.html" target="_blank">SOPR in the last 180 days</a>',
                     align: 'left',
                     style: {
-                        fontSize: '14px'
+                        fontSize: '14px', color: '#FFFFFF',
                     }
                 },
 

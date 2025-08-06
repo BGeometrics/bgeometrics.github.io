@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RHodl 1m and Realized Capitalización</title>
+    <title>RHodl 1m and Realized Capitalization</title>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script> 
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ZR3ZFTF2FK'); </script>
@@ -21,6 +21,27 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>
 
     <div id="container-iframe" style="width:100%; height:600px;"></div>
 
@@ -88,6 +109,7 @@
 
             chart: {
                 renderTo: 'container',
+                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -101,7 +123,7 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -115,6 +137,7 @@
             },
 
             yAxis: [{
+                gridLineWidth: 0,
                 labels: {
                     align: 'left',
                 },
@@ -129,8 +152,10 @@
                 }]
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
+                gridLineWidth: 0,
+                
                 type: 'logarithmic',
                 opposite: false,
             }, {
@@ -141,8 +166,8 @@
             }],
 
             series: [{
-                id: 'Precio BTC',
-                name: 'Precio BTC',
+                id: 'BTC price',
+                name: 'BTC price',
                 color: 'white',
                 data: data_price,
                 tooltip: {

@@ -77,6 +77,7 @@
 
             chart: {
                 renderTo: 'container',
+                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
@@ -91,7 +92,7 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -105,13 +106,16 @@
             },
 
             yAxis: [{
+                gridLineWidth: 0,
                 title: {
                     text: 'Bitcoin Address'
                 },
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
+                gridLineWidth: 0,
+                
                 opposite: false,
             }],
 
@@ -124,7 +128,7 @@
                 },
                 yAxis: 0
             }, {
-                name: 'Precio BTC',
+                name: 'BTC price',
                 data: data_price,
                 color: 'white',
                 tooltip: {

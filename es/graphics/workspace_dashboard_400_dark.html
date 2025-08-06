@@ -66,18 +66,18 @@
             <option value="50dma">50 day SMA</option>
             <option value="155dma">155 day SMA</option>
             <option value="200dma">200 day SMA</option>
-            <option value="addresses_active_4axis">Direcciones Activas</option>
+            <option value="addresses_active_4axis">Active Addresses</option>
             <option value="aviv_3axis">AVIV</option>
             <option value="hw_age_6m_10_3axis">BTC HODL (>6m) %</option>
             <option value="hw_age_6m_lth_supply_axis">BTC LTH (>6m) Supply</option>
             <option value="hw_age_6m_sth_supply_axis">BTC STH (<6m) Supply</option>
             <option value="bull_bear">Bull and Bear Cycles</option>
-            <option value="market_cap_axis">Capitalización Market</option>
-            <option value="realized_cap_axis">Capitalización Realized</option>
-            <option value="investor_cap_axis">Capitalización Investor</option>
-            <option value="thermo_cap_axis">Capitalización Thermo</option>
-            <option value="stablecoin_usdt_axis">Capitalización USDT</option>
-            <option value="stablecoin_usdc_axis">Capitalización USDC</option>
+            <option value="market_cap_axis">Capitalization Market</option>
+            <option value="realized_cap_axis">Capitalization Realized</option>
+            <option value="investor_cap_axis">Capitalization Investor</option>
+            <option value="thermo_cap_axis">Capitalization Thermo</option>
+            <option value="stablecoin_usdt_axis">Capitalization USDT</option>
+            <option value="stablecoin_usdc_axis">Capitalization USDC</option>
             <option value="choppiness_3axis">Choppiness 14 day</option>
             <option value="choppiness_5w_3axis">Choppiness 5 weeks</option>
             <option value="choppiness_10w_3axis">Choppiness 10 weeks</option>
@@ -104,7 +104,7 @@
             <option value="mvrv_3axis">MVRV</option>
             <option value="sth_mvrv_3axis">MVRV STH</option>
             <option value="lth_mvrv_3axis">MVRV LTH</option>
-            <option value="realized_profit_loss_ratio_3axis">Ratio Ganancia Pérdida Realizada</option>
+            <option value="realized_profit_loss_ratio_3axis">Realized Profit Loss Ratio</option>
             <option value="nrpl_4axis">NRPL</option>
             <option value="nrpl_usd_4axis">NRPL USD</option>
             <option value="nupl_3axis">NUPL</option>
@@ -307,7 +307,8 @@
 
                 chart: {
                     renderTo: 'container-iframe',
-                    events: {
+                    backgroundColor: 'black',
+                events: {
                         load: function() {
                             var image = new Image();
 			                      var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
@@ -320,7 +321,7 @@
                             var position_x = textX - width_image / 2;
                             var position_y = textY - height_image / 2;
                             this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                                .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
                                 .attr({zIndex: 1})
                                 .add();
                         }
@@ -334,11 +335,12 @@
               },
 
             	yAxis: [{
+                gridLineWidth: 0,
                     labels: {
                         align: 'left',
                     },
                     title: {
-                        text: 'Precio BTC'
+                        text: 'BTC price'
                     },
                     type: 'logarithmic',
                 }, {
@@ -354,8 +356,8 @@
                 }],
 
                 series: [{
-                    id:'Precio BTC',
-                    name: 'Precio BTC',
+                    id:'BTC price',
+                    name: 'BTC price',
                     color: 'white',
                     data: data_price,
                     tooltip: {
@@ -366,12 +368,12 @@
                     type: 'pc',
                     id: 'overlay',
                     name: 'BTC Channel',
-                    linkedTo: 'Precio BTC',
+                    linkedTo: 'BTC price',
                     yAxis: 0
                 }, {
                     id: 'oscillator',
                     name: 'Oscillator',
-                    linkedTo: 'Precio BTC',
+                    linkedTo: 'BTC price',
                     yAxis: 2
                 }],
 
@@ -449,6 +451,7 @@
                             enabled: false 
                         },
                         yAxis: [{
+                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
@@ -501,7 +504,7 @@
             }
             chart.addSeries({
                 type: e.target.value,
-                linkedTo: 'Precio BTC',
+                linkedTo: 'BTC price',
                 id: 'overlay'
             });
         }
@@ -516,7 +519,7 @@
             }
             chart.addSeries({
                 type: e.target.value,
-                linkedTo: 'Precio BTC',
+                linkedTo: 'BTC price',
                 id: 'oscillator',
                 yAxis: 2
             });

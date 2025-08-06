@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Direcciones Activas</title>
+    <title>Active Addresses</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -102,22 +102,22 @@
 
             yAxis: [{
                 title: {
-                    text: 'Direcciones Activas'
+                    text: 'Active Addresses'
                 },
                 labels: {
                     align: 'left',
                 },
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
                 type: 'logarithmic',
                 opposite: false,
             }],
 
             series: [{
-                id:'Direcciones Activas',
-                name: 'Direcciones Activas',
+                id:'Active Addresses',
+                name: 'Active Addresses',
                 visible: false,
                 data: data_metrics,
                 tooltip: {
@@ -125,15 +125,15 @@
                 },
                 yAxis: 0
             }, {
-                id:'Direcciones Activas 7D MA',
-                name: 'Direcciones Activas 7D MA',
+                id:'Active Addresses 7D MA',
+                name: 'Active Addresses 7D MA',
                 data: data_addresses_active_7dma, 
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0
             }, {
-                name: 'Precio BTC',
+                name: 'BTC price',
                 color: 'black',
                 data: data_price,
                 tooltip: {
