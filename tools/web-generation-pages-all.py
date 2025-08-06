@@ -264,6 +264,36 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
+
+# Generate sytle dark m2_global_10w_300_dark.html
+with open('m2_global_10w_300_dark.html', 'r') as file:
+  filedata = file.read()
+
+filedata = filedata.replace("""<script src="https://code.highcharts.com/modules/accessibility.js"></script>""",
+    """<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+       <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+        <style>
+            :root {
+                --highcharts-neutral-color-3: #000000;
+            }
+
+            .highcharts-contextbutton .highcharts-button-symbol {
+                stroke: #000000 !important; 
+                fill: #000000 !important; 
+            }
+
+            .highcharts-menu-item { 
+                background-color: #000000 !important; 
+                color: #FFFFFF !important; 
+            }   
+
+            .highcharts-menu {
+                background-color: #000000 !important; 
+                border: 1px solid #ccc !important;
+                color: #dddddd !important; 
+            }
+        </style>""")
+
 with open('web-generation-model-workspace.html', 'w') as file:
   file.write(filedata)
 
