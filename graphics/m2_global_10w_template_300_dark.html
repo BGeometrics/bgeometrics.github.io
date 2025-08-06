@@ -95,25 +95,6 @@
 
             chart: {
                 renderTo: 'container-iframe',
-                backgroundColor: 'black',
-                events: {
-                    load: function() {
-                        var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
-                        image.src = adresse_image;
-                        var height_image = 128;
-                        var width_image = 128;
-                        var textX = this.plotLeft + (this.plotWidth * 0.5);
-                        var textY = this.plotTop + (this.plotHeight * 0.5);
-                        var position_x = textX - width_image / 2;
-                        var position_y = textY - height_image / 2;
-                        console.log(position_x + " " + position_y);
-                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
-                            .attr({zIndex: 1})
-                            .add();
-                    }
-                }
             },
 
             plotOptions:{
