@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Dashboard Demand Index</title>
+    <title>Bitcoin and Global M2 10-Week Lead</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -17,19 +17,17 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
 
-    <div id="container-iframe" style="width:100%; height:400px;"></div>
+    <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
+            const data = EEE;
+            const data_m2_10w = DDD;
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/demand_average_btc_price.json'
+                'https://charts.bgeometrics.com/files/glm2_btc_price.json'
             ).then(response => response.json());
-            const data_demand = await fetch(
-                'https://charts.bgeometrics.com/files/demand_average.json'
-            ).then(response => response.json());
-        
+
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -55,7 +53,8 @@
                             chart.yAxis[0].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
+                            });
+
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -78,7 +77,7 @@
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
                         var height_image = 128;
                         var width_image = 128;
@@ -101,59 +100,78 @@
                 }
             },
 
+            stockTools: {
+                gui: {
+                    enabled: false 
+                }
+            },
+
+            navigator: {
+                enabled: false
+            },
+
+            scrollbar: {
+                enabled: false
+            },
+
             yAxis: [{
                 title: {
-                    text: 'BG Demand Index'
+                    text: null,
+                },
+                labels: {
+                    align: 'right',
+                },
+                opposite: false,
+                gridLineWidth: 0,
+            }, {
+                title: {
+                    text: 'Global M2 10 weeks lead',
                 },
                 labels: {
                     align: 'left',
                 },
-            }, {
-                title: {
-                    text: 'Precio BTC'
-                },
-                opposite: false
+                gridLineWidth: 0,
             }],
 
             series: [{
+                id:'Precio BTC',
                 name: 'Precio BTC',
-                color: 'white',
+                color: 'black',
+                zIndex: 2,
                 data: data_price,
-                zIndex: 3,
+                tooltip: {
+                    valuePrefix: '$',
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            },{
+                id: 'Global M2 10 weeks lead',
+                name: 'Global M2 10 weeks lead',
+                type: 'line',
+                data: data_m2_10w,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            },{
+                id: 'Global M2 Global Supply (USD)',
+                name: 'Global M2 Supply (USD)',
+                type: 'line',
+                visible: false,
+                data: data,
                 tooltip: {
                     valuePrefix: '$',
                     valueDecimals: 2
                 },
                 yAxis: 1
-            }, {
-                id:'BG Demand Index',
-                name: 'BGeometrics Demand Index',
-                data: data_demand,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0,
-		        zones: [{
-		            value: 25,
-                    color: 'green'
-                }, {
-		            value: 50,
-                    color: 'yellow'
-                }, {
-		            value: 75,
-                    color: 'orange'
-                }, {
-		            value: 100,
-                    color: 'red'
-                }]
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
-                y: -6,
                 verticalAlign: 'top',
-                align:'center'
+                align:'center',
+                y: -10,
             },
 
             navigator : {
@@ -180,10 +198,6 @@
                     text: '1y'
                 }, {
                     type: 'year',
-                    count: 2,
-                    text: '2y'
-                }, {
-                    type: 'year',
                     count: 4,
                     text: '4y'
                 }, {
@@ -193,17 +207,9 @@
             },
 
             credits: {
-		text: 'Powered by BGeometrics.com',
-                href: 'https://charts.bgeometrics.com',
-                style: {
-                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
-                },
-                position: {
-                    align: 'right',
-                    x: -75,
-		    y: -85
-                }                
+                text: '',
             },
+
             responsive: {
                 rules: [{
                     condition: {
@@ -226,12 +232,15 @@
                         }, {
                             title: { text: null }
                         }],
+                        legend: {enabled:false}
                     }
                 }]
             }
         });
+
     })();
 
     </script>
+
 </body>
 </html>
