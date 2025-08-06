@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin and Global M2 10-Week Lead</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+    </style>
+
+    <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
+
+    <script>
+        (async () => {
+            const data = EEE;
+            const data_m2_10w = DDD;
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/glm2_btc_price.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container-iframe', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        image.src = adresse_image;
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            stockTools: {
+                gui: {
+                    enabled: false 
+                }
+            },
+
+            navigator: {
+                enabled: false
+            },
+
+            scrollbar: {
+                enabled: false
+            },
+
+            yAxis: [{
+                title: {
+                    text: null,
+                },
+                labels: {
+                    align: 'right',
+                },
+                opposite: false,
+                gridLineWidth: 0,
+            }, {
+                title: {
+                    text: 'Global M2 10 weeks lead',
+                },
+                labels: {
+                    align: 'left',
+                },
+                gridLineWidth: 0,
+            }],
+
+            series: [{
+                id:'BTC price',
+                name: 'BTC price',
+                color: 'white',
+                zIndex: 2,
+                data: data_price,
+                tooltip: {
+                    valuePrefix: '$',
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            },{
+                id: 'Global M2 10 weeks lead',
+                name: 'Global M2 10 weeks lead',
+                type: 'line',
+                data: data_m2_10w,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            },{
+                id: 'Global M2 Global Supply (USD)',
+                name: 'Global M2 Supply (USD)',
+                type: 'line',
+                visible: false,
+                data: data,
+                tooltip: {
+                    valuePrefix: '$',
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                align:'center',
+                y: -10,
+            },
+
+            navigator : {
+		        enabled : false
+	        },
+
+            rangeSelector: {
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
+            },
+
+            credits: {
+                text: '',
+            },
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
+                        legend: {enabled:false}
+                    }
+                }]
+            }
+        });
+
+    })();
+
+    </script>
+
+</body>
+</html>
