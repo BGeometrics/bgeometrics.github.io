@@ -16,6 +16,10 @@
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+>>>>>>> 26fd918276e8632550e25a2d1ec0657e6cc7b2e9
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
     <style>
         :root {
@@ -95,6 +99,10 @@
 
             chart: {
                 renderTo: 'container-iframe',
+<<<<<<< HEAD
+=======
+                backgroundColor: 'black',
+>>>>>>> 26fd918276e8632550e25a2d1ec0657e6cc7b2e9
                 events: {
                     load: function() {
                         var image = new Image();
@@ -108,7 +116,11 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+<<<<<<< HEAD
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+=======
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+>>>>>>> 26fd918276e8632550e25a2d1ec0657e6cc7b2e9
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -136,6 +148,10 @@
             },
 
             yAxis: [{
+<<<<<<< HEAD
+=======
+                gridLineWidth: 0,
+>>>>>>> 26fd918276e8632550e25a2d1ec0657e6cc7b2e9
                 title: {
                     text: null,
                 },
@@ -249,6 +265,10 @@
                             enabled: false 
                         },
                         yAxis: [{
+<<<<<<< HEAD
+=======
+                gridLineWidth: 0,
+>>>>>>> 26fd918276e8632550e25a2d1ec0657e6cc7b2e9
                             title: { text: null }
                         }, {
                             title: { text: null }
