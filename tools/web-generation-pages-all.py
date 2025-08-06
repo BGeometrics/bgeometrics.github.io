@@ -745,9 +745,11 @@ remove_export_scripts_from_files([
     '/home/pi/bgeometrics.github.io/graphics/m2_global.html',
     '/home/pi/bgeometrics.github.io/graphics/m2_btc.html',
     '/home/pi/bgeometrics.github.io/graphics/m2_global_10w.html',
+    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_300.html',
     '/home/pi/bgeometrics.github.io/graphics/m2_global_dark.html',
     '/home/pi/bgeometrics.github.io/graphics/m2_btc_dark.html',
     '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_dark.html'
+    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_300_dark.html'
 ])
 
 print("")
