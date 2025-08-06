@@ -2,8 +2,30 @@
 <html>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
     <title>Bitcoin and Global M2 10-Week Lead</title>
 
+    <script>
+
+    function decoder(encoded) {
+        const compressed = atob(encoded);
+        const charData = compressed.split('').map(x => x.charCodeAt(0));
+        const binData = new Uint8Array(charData);
+        const data = pako.inflate(binData);
+        const str = String.fromCharCode.apply(null, new Uint8Array(data));
+        return JSON.parse(str);
+    }
+    
+    (function(){
+        const start = new Date();
+        debugger;
+        const end = new Date();
+        if(end - start > 100) {
+            window.location.href = "about:blank";
+        }
+    })();
+    </script>
+    
     <script>
     (function(){
         const start = new Date();
@@ -27,32 +49,20 @@
     <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
     <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-    </style>
 
     <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
 
     <script>
+
+    function decoder(encoded) {
+        const compressed = atob(encoded);
+        const charData = compressed.split('').map(x => x.charCodeAt(0));
+        const binData = new Uint8Array(charData);
+        const data = pako.inflate(binData);
+        const str = String.fromCharCode.apply(null, new Uint8Array(data));
+        return JSON.parse(str);
+    }
+    
 
     function decoder(encoded) {
         const compressed = atob(encoded);

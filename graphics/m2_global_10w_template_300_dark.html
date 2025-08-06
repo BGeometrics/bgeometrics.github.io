@@ -44,8 +44,7 @@
 
     <script>
         (async () => {
-            const data = EEE;
-            const data_m2_10w = DDD;
+            const data = DDD;
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/glm2_btc_price.json'
             ).then(response => response.json());
@@ -119,7 +118,7 @@
 
             plotOptions:{
                 series:{
-                    showInLegend:true
+                    showInLegend: true
                 }
             },
 
@@ -172,19 +171,8 @@
                 id: 'Global M2 10 weeks lead',
                 name: 'Global M2 10 weeks lead',
                 type: 'line',
-                data: data_m2_10w,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 1
-            },{
-                id: 'Global M2 Global Supply (USD)',
-                name: 'Global M2 Supply (USD)',
-                type: 'line',
-                visible: false,
                 data: data,
                 tooltip: {
-                    valuePrefix: '$',
                     valueDecimals: 2
                 },
                 yAxis: 1
@@ -252,7 +240,7 @@
                             enabled: false 
                         },
                         yAxis: [{
-                            gridLineWidth: 0,
+                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
