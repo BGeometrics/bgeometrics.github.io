@@ -116,11 +116,10 @@
 
             chart: {
                 renderTo: 'container-iframe',
-                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
                         var height_image = 128;
                         var width_image = 128;
@@ -130,7 +129,7 @@
                         var position_y = textY - height_image / 2;
                         console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -158,7 +157,6 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 title: {
                     text: null,
                 },
@@ -180,7 +178,7 @@
             series: [{
                 id:'BTC price',
                 name: 'BTC price',
-                color: 'white',
+                color: 'black',
                 zIndex: 2,
                 data: data_price,
                 tooltip: {
@@ -272,7 +270,6 @@
                             enabled: false 
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
