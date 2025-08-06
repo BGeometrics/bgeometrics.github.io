@@ -265,8 +265,8 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
 
-# Generate sytle dark m2_global_10w_300_dark.html
-with open('m2_global_10w_300_dark.html', 'r') as file:
+# Generate sytle dark graphics/m2_global_10w_300_dark.html
+with open('../graphics/m2_global_10w_300_dark.html', 'r') as file:
   filedata = file.read()
 
 filedata = filedata.replace("""<script src="https://code.highcharts.com/modules/accessibility.js"></script>""",
