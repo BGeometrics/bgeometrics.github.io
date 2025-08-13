@@ -3,6 +3,44 @@
     <head>
         <link href="https://charts.bgeometrics.com/assets/css/template.css" rel="stylesheet">
         <link href="https://charts.bgeometrics.com/assets/css/data-datatables.min.css" rel="stylesheet">
+        <style>
+            #dataTable-table2 td, #dataTable-table2 th {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 70px;
+                width: 70px;
+                height: 30px;
+                line-height: 30px;
+                padding: 0 5px;
+                box-sizing: border-box;
+                text-align: center;
+                border: 1px solid #fff; /* Marco blanco entre celdas */
+            }
+            #dataTable-table2 {
+                border-collapse: separate;
+                border-spacing: 1px; /* Espacio entre celdas para mostrar el marco */
+            }
+            #dataTable-table2 td.dtfc-fixed-start {
+                width: 70px;
+                max-width: 70px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            /* Add styling for the last column */
+            #dataTable-table2 td:last-child, #dataTable-table2 th:last-child {
+                width: 100px;
+                max-width: 100px;
+            }
+            .uniform-cells table {
+                table-layout: fixed;
+                width: 100%;
+            }
+            .uniform-cells table td, .uniform-cells table th {
+                word-break: keep-all;
+                text-overflow: ellipsis;
+            }
+        </style>
     </head>
     <body>
         
@@ -11,7 +49,7 @@
     <div id="table2" data-datatables="false" data-fixed-column="left:1" data-scroll-horizontal="true"
         data-value-column-gradient="1,2,3,4,5,6,7,8,9,10,11,12,13"
         data-responsive-columns="0,1,2,3,4,5,6,7,8,9,10,11,12,13"
-        data-table-class="numbers-no-icon small cell-text-center last-column-bold ab-logo" class="loading">
+        data-table-class="numbers-no-icon small cell-text-center last-column-bold ab-logo uniform-cells" class="loading">
         <div id="dataTable-table2_wrapper" class="dt-container dt-bootstrap5 dt-empty-footer">
             <div class="row mt-2 justify-content-between">
                 <div class="d-md-flex justify-content-between align-items-center dt-layout-start col-md-auto me-auto">
@@ -40,7 +78,7 @@
                                                     class="dt-column-title"></span><span class="dt-column-order"></span>
                                             </th>
                                             <th class="all dt-orderable-none" data-dt-column="1" rowspan="1"
-                                                colspan="1"><span class="dt-column-title">Ene</span><span
+                                                colspan="1"><span class="dt-column-title">Jan</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="2" rowspan="1"
                                                 colspan="1"><span class="dt-column-title">Feb</span><span
@@ -49,7 +87,7 @@
                                                 colspan="1"><span class="dt-column-title">Mar</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="4" rowspan="1"
-                                                colspan="1"><span class="dt-column-title">Abr</span><span
+                                                colspan="1"><span class="dt-column-title">Apr</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="5" rowspan="1"
                                                 colspan="1"><span class="dt-column-title">May</span><span
@@ -61,7 +99,7 @@
                                                 colspan="1"><span class="dt-column-title">Jul</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="8" rowspan="1"
-                                                colspan="1"><span class="dt-column-title">Ago</span><span
+                                                colspan="1"><span class="dt-column-title">Aug</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="9" rowspan="1"
                                                 colspan="1"><span class="dt-column-title">Sep</span><span
@@ -73,7 +111,7 @@
                                                 colspan="1"><span class="dt-column-title">Nov</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="12" rowspan="1"
-                                                colspan="1"><span class="dt-column-title">Dic</span><span
+                                                colspan="1"><span class="dt-column-title">Dec</span><span
                                                     class="dt-column-order"></span></th>
                                             <th class="all dt-orderable-none" data-dt-column="13" rowspan="1"
                                                 colspan="1"><span class="dt-column-title">TOTAL</span><span
@@ -81,84 +119,21 @@
                                         </tr>
                                     </thead>
                                 <colgroup>
-                                    <col data-dt-column="0" style="width: 85.8984px; min-width: 85.8984px;">
-                                    <col data-dt-column="1" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="2" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="3" style="width: 69.9844px; min-width: 69.9844px;">
-                                    <col data-dt-column="4" style="width: 69.9844px; min-width: 69.9844px;">
-                                    <col data-dt-column="5" style="width: 69.9844px; min-width: 69.9844px;">
-                                    <col data-dt-column="6" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="7" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="8" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="9" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="10" style="width: 69.9844px; min-width: 69.9844px;">
-                                    <col data-dt-column="11" style="width: 69.9844px; min-width: 69.9844px;">
-                                    <col data-dt-column="12" style="width: 66.7891px; min-width: 66.7891px;">
-                                    <col data-dt-column="13" style="width: 78.6094px; min-width: 78.6094px;">
+                                    <col data-dt-column="0" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="1" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="2" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="3" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="4" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="5" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="6" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="7" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="8" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="9" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="10" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="11" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="12" style="width: 70px; min-width: 70px;">
+                                    <col data-dt-column="13" style="width: 100px; min-width: 100px;">
                                 </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th class="all dt-orderable-none dtfc-fixed-start dtfc-fixed-left"
-                                            data-dt-column="0" rowspan="1" colspan="1"
-                                            style="position: sticky; left: 0px;">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title"></span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="1" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Enero</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="2" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Febrero</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="3" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Marzo</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="4" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Abril</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="5" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">May</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="6" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Jun</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="7" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Jul</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="8" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Ago</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="9" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Sep</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="10" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Oct</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="11" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Nov</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="12" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span class="dt-column-title">Dic</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                        <th class="all dt-orderable-none" data-dt-column="13" rowspan="1" colspan="1">
-                                            <div class="dt-scroll-sizing"><span
-                                                    class="dt-column-title">TOTAL</span><span
-                                                    class="dt-column-order"></span></div>
-                                        </th>
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     <tr>
                                         <td class="dtfc-fixed-start dtfc-fixed-left dtr-control"
@@ -202,7 +177,7 @@
                                 <table
                                     class="display responsive numbers-no-icon small cell-text-center last-column-bold ab-logo dataTable dtfc-scrolling-end dtfc-scrolling-right"
                                     style="margin-left: 0px;">
-                                    <tfoot style=""></tfoot>
+                                    <tfoot></tfoot>
                                 </table>
                             </div>
                         </div>
@@ -246,7 +221,23 @@
                     cell.style.position = "sticky";
                     cell.style.left = "0px";
                     cell.tabIndex = "0";
+                    // Asegurar que el texto se muestre en una línea
+                    cell.style.whiteSpace = "nowrap";
+                    cell.style.overflow = "hidden";
+                    cell.style.textOverflow = "ellipsis";
                 }
+
+                // Aplicar estilos para una línea uniforme a todas las celdas
+                cell.style.width = index === rowData.length - 1 ? "100px" : "70px";
+                cell.style.maxWidth = index === rowData.length - 1 ? "100px" : "70px";
+                cell.style.height = "30px";
+                cell.style.lineHeight = "30px";
+                cell.style.padding = "0 5px";
+                cell.style.boxSizing = "border-box";
+                cell.style.textAlign = "center";
+                cell.style.whiteSpace = "nowrap";
+                cell.style.overflow = "hidden";
+                cell.style.textOverflow = "ellipsis";
 
                 // Asignar el valor de la celda
                 cell.textContent = cellData;
