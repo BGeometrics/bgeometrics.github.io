@@ -217,5 +217,8 @@ new_text = """yAxis: [{
                 gridLineWidth: 0,"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
+# Copy files mode light to dark because these pages no visual good in dark
+
+
 copy_files(dest_directory, src_directory)
 
