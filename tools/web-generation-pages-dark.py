@@ -218,7 +218,16 @@ new_text = """yAxis: [{
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
 # Copy files mode light to dark because these pages no visual good in dark
+src_file = os.path.join(dest_directory, "bitcoin_monthly_history.html")
+dest_file = os.path.join(dest_directory, "bitcoin_monthly_history_dark.html")
+shutil.copy2(src_file, dest_file)
+print(f"Copied single file: {src_file} to {dest_file}")
 
+src_file = os.path.join(dest_directory, "dca.html")
+dest_file = os.path.join(dest_directory, "dca_dark.html")
+shutil.copy2(src_file, dest_file)
+print(f"Copied single file: {src_file} to {dest_file}")
 
 copy_files(dest_directory, src_directory)
+
 
