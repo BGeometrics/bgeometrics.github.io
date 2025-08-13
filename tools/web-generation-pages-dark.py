@@ -223,10 +223,10 @@ dest_file = os.path.join(dest_directory, "bitcoin_monthly_history_dark.html")
 print(f"Copied single file: {src_file} to {dest_file}")
 shutil.copy2(src_file, dest_file)
 
-src_file = os.path.join(dest_directory, "dca.html")
-dest_file = os.path.join(dest_directory, "dca_dark.html")
-print(f"Copied single file: {src_file} to {dest_file}")
-shutil.copy2(src_file, dest_file)
+#src_file = os.path.join(dest_directory, "dca.html")
+#dest_file = os.path.join(dest_directory, "dca_dark.html")
+#print(f"Copied single file: {src_file} to {dest_file}")
+#shutil.copy2(src_file, dest_file)
 
 copy_files(dest_directory, src_directory)
 
