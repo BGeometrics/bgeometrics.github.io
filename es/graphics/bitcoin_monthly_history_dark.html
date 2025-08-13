@@ -28,12 +28,16 @@
                 border-spacing: 1px;
                 background: #181a1b;
             }
-            #dataTable-table2 td.dtfc-fixed-start {
+            #dataTable-table2 td.dtfc-fixed-start,
+            #dataTable-table2 th.dtfc-fixed-start {
                 width: 70px;
                 max-width: 70px;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                background: #181a1b !important; /* Fondo sólido, no transparente */
+                background: #181a1b !important; /* Fondo sólido */
+                z-index: 2; /* Superponer sobre otras celdas */
+                position: sticky; /* Asegura el sticky en todos los casos */
+                left: 0;
             }
             /* Add styling for the last column */
             #dataTable-table2 td:last-child, #dataTable-table2 th:last-child {
@@ -54,11 +58,6 @@
             }
             .negative {
                 color: #ff7f7f !important;
-            }
-            /* Opcional: resaltar la fila PROMEDIO */
-            tr:last-child td {
-                font-weight: bold;
-                background: #22262a;
             }
         </style>
     </head>
