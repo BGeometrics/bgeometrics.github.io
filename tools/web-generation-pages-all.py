@@ -740,6 +740,12 @@ archivo_origen = '/home/pi/bgeometrics.github.io/dashboard_workspace_400.html'
 archivo_destino = '/tmp/web/dashboard_workspace_400_dark.html' 
 shutil.copy(archivo_origen, archivo_destino)
 
+
+archivo_origen = '/home/pi/bgeometrics.github.io/bitcoin_monthly_history.html'
+archivo_destino = '/home/pi/bgeometrics.github.io/bitcoin_monthly_history_dark.html'
+shutil.copy(src_file, dest_file)
+
+
 # Eliminate export data in m2*.html
 remove_export_scripts_from_files([
     '/home/pi/bgeometrics.github.io/graphics/m2_global.html',
