@@ -4,6 +4,10 @@
         <link href="https://charts.bgeometrics.com/assets/css/template.css" rel="stylesheet">
         <link href="https://charts.bgeometrics.com/assets/css/data-datatables.min.css" rel="stylesheet">
         <style>
+            body {
+                background: #181a1b;
+                color: #e0e0e0;
+            }
             #dataTable-table2 td, #dataTable-table2 th {
                 white-space: nowrap;
                 overflow: hidden;
@@ -15,17 +19,21 @@
                 padding: 0 5px;
                 box-sizing: border-box;
                 text-align: center;
-                border: 1px solid #fff; /* Marco blanco entre celdas */
+                border: 1px solid #444; /* Borde gris oscuro */
+                background: #23272b;    /* Fondo celda oscuro */
+                color: #e0e0e0;         /* Texto claro */
             }
             #dataTable-table2 {
                 border-collapse: separate;
-                border-spacing: 1px; /* Espacio entre celdas para mostrar el marco */
+                border-spacing: 1px;
+                background: #181a1b;
             }
             #dataTable-table2 td.dtfc-fixed-start {
                 width: 70px;
                 max-width: 70px;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                background: #202225;
             }
             /* Add styling for the last column */
             #dataTable-table2 td:last-child, #dataTable-table2 th:last-child {
@@ -39,6 +47,18 @@
             .uniform-cells table td, .uniform-cells table th {
                 word-break: keep-all;
                 text-overflow: ellipsis;
+            }
+            /* Colores para positivos/negativos */
+            .positive {
+                color: #7fff7f !important;
+            }
+            .negative {
+                color: #ff7f7f !important;
+            }
+            /* Opcional: resaltar la fila PROMEDIO */
+            tr:last-child td {
+                font-weight: bold;
+                background: #22262a;
             }
         </style>
     </head>
