@@ -321,15 +321,21 @@
         const btcSeries = chart.get('BTC price');
         if (btcSeries) {
             const btcData = btcSeries.options.data;
-            // Suponiendo que ambas series tienen el mismo número de puntos y fechas alineadas
-            const ratioData = values[0].map((point, i) => {
-                // point: [timestamp, value]
-                // btcData[i]: [timestamp, value]
-                if (btcData[i] && btcData[i][1] && point[1]) {
-                    return [point[0], point[1] / btcData[i][1]];
-                } else {
-                    return [point[0], null];
-                }
+            // Crear un mapa para buscar rápidamente los valores de BTC por timestamp
+            const btcMap = {};
+            btcData.forEach(point => {
+                btcMap[point[0]] = point[1]; // Usar timestamp como clave
+            });
+            
+            // Crear array de ratio solo donde ambas series tienen datos
+            const ratioData = values[0].filter(point => {
+                return btcMap[point[0]] !== undefined && btcMap[point[0]] > 0 && point[1] !== null;
+            }).map(point => {
+                const timestamp = point[0];
+                const metricValue = point[1];
+                const btcValue = btcMap[timestamp];
+                
+                return [timestamp, metricValue / btcValue];
             });
 
             chart.addSeries({
