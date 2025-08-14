@@ -1,4 +1,4 @@
-    <section class="section dashboard">
+<section class="section dashboard">
       <div id="searchResults"></div>
       <div class="row">
         <div class="col-lg-3">
@@ -770,70 +770,73 @@
 
 
 	function addChartsStocks(_metricId, _text){
-	    var e = document.getElementById("stocks");
-	    var text;
-	    var yAxis = 0;
-	    yAxis = 1;
-	    yAxis2 = 2;
+    var e = document.getElementById("stocks");
+    var text;
+    var yAxis = 0;
+    yAxis = 1;
+    yAxis2 = 2;
 
-            const data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
-                 .then(response => response.json());
-	
-	    const cagr = fetch('https://bitcoin-data.com/v1/stocks/cagr/' + _metricId)
-		.then(response => response.json());
+    const data = fetch('https://bitcoin-data.com/v1/stocks/historical/' + _metricId)
+         .then(response => response.json());
 
-	    Promise.all([data, cagr]).then(values => {
-    // Añadir la serie de la métrica seleccionada
-    chart.addSeries({
-        id: _metricId,
-        name: _text,
-        data: values[0],
-        tooltip: {
-            valueDecimals: 2
-        },
-        yAxis: yAxis
-    });
+    const cagr = fetch('https://bitcoin-data.com/v1/stocks/cagr/' + _metricId)
+        .then(response => response.json());
 
-    // Nuevo: Añadir la serie métrica dividida por BTC
-    // Busca la serie de BTC ya cargada en el gráfico
-    const btcSeries = chart.get('BTC price');
-    if (btcSeries) {
-        // Asegura que ambas series tengan la misma longitud y fechas
-        const btcData = btcSeries.options.data;
-        // Suponiendo que ambas series tienen el mismo número de puntos y fechas alineadas
-        const ratioData = values[0].map((point, i) => {
-            // point: [timestamp, value]
-            // btcData[i]: [timestamp, value]
-            if (btcData[i] && btcData[i][1] && point[1]) {
-                return [point[0], point[1] / btcData[i][1]];
-            } else {
-                return [point[0], null];
-            }
-        });
-
+    Promise.all([data, cagr]).then(values => {
+        // Añadir la serie de la métrica seleccionada
         chart.addSeries({
-            id: _metricId + '_btc_ratio',
-            name: _text + ' / BTC',
-            data: ratioData,
-            visible: false,
+            id: _metricId,
+            name: _text,
+            data: values[0],
             tooltip: {
-                valueDecimals: 4
+                valueDecimals: 2
             },
-            yAxis: yAxis2
+            yAxis: yAxis
         });
-    }
 
-    // Actualizar la tabla
-    const tbody = document.querySelector('.table tbody');
-    let annualized = Number(values[1].annualized_return).toFixed(2) + '%';
+        // Nuevo: Añadir la serie métrica dividida por BTC
+        const btcSeries = chart.get('BTC price');
+        if (btcSeries) {
+            const btcData = btcSeries.options.data;
+            
+            // Crear un mapa para buscar rápidamente los valores de BTC por timestamp
+            const btcMap = {};
+            btcData.forEach(point => {
+                btcMap[point[0]] = point[1]; // Usar timestamp como clave
+            });
+            
+            // Crear array de ratio solo donde ambas series tienen datos
+            const ratioData = values[0].filter(point => {
+                return btcMap[point[0]] !== undefined && btcMap[point[0]] > 0 && point[1] !== null;
+            }).map(point => {
+                const timestamp = point[0];
+                const metricValue = point[1];
+                const btcValue = btcMap[timestamp];
+                
+                return [timestamp, metricValue / btcValue];
+            });
 
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${values[1].active}</td><td>${annualized}</td>`;
-    tbody.appendChild(row);
-});
-	   }
+            chart.addSeries({
+                id: _metricId + '_btc_ratio',
+                name: _text + ' / BTC',
+                data: ratioData,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: yAxis2
+            });
+        }
 
+        // Actualizar la tabla
+        const tbody = document.querySelector('.table tbody');
+        let annualized = Number(values[1].annualized_return).toFixed(2) + '%';
 
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${values[1].active}</td><td>${annualized}</td>`;
+        tbody.appendChild(row);
+    });
+}
 	    document.addEventListener("DOMContentLoaded", function() {
 	      fetch('https://bitcoin-data.com/v1/crypto/cagr/BTC')
 		  .then(response => response.json())
