@@ -466,6 +466,12 @@ file2_path = 'web-generation-model-bguser-end.html'
 output_file_path = '/tmp/web/bguser.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page bguser-pricing.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-bguser-pricing-end.html'
+output_file_path = '/tmp/web/bguser_pricing.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 # Generate page alert.html with menu
 file1_path = 'web-generation-model.html'
 file2_path = 'web-generation-model-bg-alert-end.html'
@@ -711,6 +717,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-bguser-end.html'
 output_file_path = '/tmp/web/bguser_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page bguser-pricing.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-bguser-pricing-end.html'
+output_file_path = '/tmp/web/bguser_pricing_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page alert.html with menu

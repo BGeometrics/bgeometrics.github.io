@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <link rel="canonical" href="https://charts.bgeometrics.com/m2_btc.html">
+  <link rel="canonical" href="https://charts.bgeometrics.com/bguser_pricing.html">
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin and Money Supply (m2)" name="keywords">
+  <meta content="__keywords__" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -695,7 +695,7 @@
         <a class="nav-link collapsed" data-bs-target="#macro-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-bar-chart"></i><span>Macro</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="macro-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="macro-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="workspace_stocks_dark.html">
               <i class="bi bi-circle"></i><span>BTC vs any companies</span>
@@ -717,7 +717,7 @@
             </a>
           </li>
           <li>
-            <a href="m2_btc_dark.html" class="active">
+            <a href="m2_btc_dark.html">
               <i class="bi bi-circle"></i><span>M2 money stock central bank</span>
             </a>
           </li>
@@ -830,54 +830,27 @@
   <main id="main" class="main">
   
 
-    <section class="section dashboard">
-      <div class="row">
-        <div id="searchResults"></div>
+    <div class="row">
+      <div id="searchResults"></div>
+    </div>
 
-        <!-- Left side columns -->
+    <section class="section">
+
         <div class="col-lg-12">
-          <div class="row">
+          <div id="btc_price_300" class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/m2_btc_dark.html" allow="fullscreen" title="Bitcoin and Money Supply (M2)" scrolling="no" frameBorder="0"></iframe>
+                    <iframe class="iframe" width="100%" height="700px" src="https://bitcoin-data.com/bguser/pricing" allow="fullscreen" title="BTC Price" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
-
           </div>
-        </div><!-- End Left side columns -->
-
-      </div>
-    </section>
-    <br>
-    <section>
-      <div class="container">
-        <a href="graphics/m2_btc.html">
-          <h5>Bitcoin and Money Supply (M2) by Central Bank </h5>
-        </a>
-        <p> 
-          Bitcoin and the Money Supply (M2) are two concepts that are tied to the global monetary system, but represent completely different approaches to how money is managed and distributed.
-          <br><br>
-          Money Supply (M2): The Traditional Money Supply
-          <br><br>
-          The M2 Money Supply, or the M2 money supply, is a measure used by central banks to assess the amount of money in circulation within an economy.
-          <br>
-          It includes:
-          <br>
-          - M1, which comprises cash and demand deposits (money that is easily accessible for spending).
-          <br>
-          - Short-term deposits and money market funds.
-          <br><br>
-          This chart shows each central bank's M2 against the price of BTC.
-          <br><br>
-          The chart of the <a href="https://charts.bgeometrics.com/m2_global.html">Annual variation of the Money Supply (M2)<a/> shows the correlation with the price of bitcoin.
-        </p>
-        <p>
-           <a href='https://bitcoin-data.com/api/swagger-ui/index.html' target='_blank'>BGeometrics Bitcoin API</a>                                                          </p>
+        </div>
       </div>
 
     </section>
 
-  </main><!-- End #main -->
+  </main>
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -901,18 +874,13 @@
     <div class="line"></div>
   </div>
 
-  <!-- Vendor JS Files -->
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-  
-  
-  
-  
-  
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 
 </body>
 
 </html>
+
