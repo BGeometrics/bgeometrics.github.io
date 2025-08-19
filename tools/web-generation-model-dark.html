@@ -62,11 +62,19 @@
           </a>
         </li><!-- End Search Icon-->
 
-        <li class="nav-item dropdown">
-          <a href="https://bitcoin-data.com/bguser/pricing" id="pricing" class="nav-link nav-icon" alt="Pricing API">
-	    <i class="bi bi-currency-bitcoin"></i>
+        <li class="nav-item dropdown"></li>
+          <a href="https://bitcoin-data.com/bguser/pricing" id="pricing" class="nav-link nav-icon" alt="Pricing API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pricing API BGeometrics">
+            <i class="bi bi-currency-bitcoin"></i>
           </a>
         </li>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+              new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+          });
+        </script>
 
         <li class="nav-item dropdown">
           <a href="bg_alert_modal_dark.html" id="openModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
