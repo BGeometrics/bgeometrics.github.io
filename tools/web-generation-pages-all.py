@@ -764,17 +764,17 @@ archivo_origen = '/home/pi/bgeometrics.github.io/dashboard_workspace_400.html'
 archivo_destino = '/tmp/web/dashboard_workspace_400_dark.html' 
 shutil.copy(archivo_origen, archivo_destino)
 
-# Eliminate export data in m2*.html
-remove_export_scripts_from_files([
-    '/home/pi/bgeometrics.github.io/graphics/m2_global.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_btc.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_300.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_global_dark.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_btc_dark.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_dark.html',
-    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_300_dark.html'
-])
+# Eliminate export data in m2*.html. Not necesary any pages have export options
+#remove_export_scripts_from_files([
+#    '/home/pi/bgeometrics.github.io/graphics/m2_global.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_btc.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_300.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_global_dark.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_btc_dark.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_dark.html',
+#    '/home/pi/bgeometrics.github.io/graphics/m2_global_10w_300_dark.html'
+#])
 
 print("")
 print("For copy generate pages to project") 
