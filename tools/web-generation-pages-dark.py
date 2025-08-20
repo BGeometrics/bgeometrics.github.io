@@ -151,11 +151,12 @@ old_text = """BGeometrics_logo.png"""
 new_text = """BGeometrics_logo_write.png"""
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
 
+# <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 old_text="""
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
 """
 new_text = """
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/themes/brand-dark.js"></script>
     <style>
         :root {
