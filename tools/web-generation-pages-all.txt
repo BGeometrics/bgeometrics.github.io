@@ -82,7 +82,6 @@
 /tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,miners-nav
 /tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,tools-nav
 /tmp/web/bitcoin_monthly_history.html,web-generation-end-monthly-history.html,Bitcoin Monthly Returns,graphics/bitcoin_monthly_history.html,Bitcoin Monthly Returns,,tools-nav
-/tmp/web/mempool.html,web-generation-end-dca.html,Bitcoin Mempool,https://mempool.bitcoin-data.com,Bitcoin Mempool,,tools-nav
 /tmp/web/puell_multiple.html,web-generation-end-puell-multiple.html,Bitcoin Puell Multiple,graphics/puell_multiple.html,Bitcoin Puell Multiple,,miners-nav
 /tmp/web/hashrate.html,web-generation-end-hashrate.html,Bitcoin Hash Rate,graphics/hashrate.html,Bitcoin Hash Rate,,miners-nav
 /tmp/web/hashprice.html,web-generation-end-hashprice.html,Bitcoin Hash Price,graphics/hashprice.html,Bitcoin Hash Price,,miners-nav
