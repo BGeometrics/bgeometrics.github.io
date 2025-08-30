@@ -19,7 +19,7 @@ var names = [
 { name: "Bitcoin Coin Distribution", link: "graphics/distribution_coin.html" },
 { name: "Bitcoin Address Distribution", link: "graphics/distribution_addr.html" },
 { name: "Bitcoin OHLC (Open High Low Close)", link: "ohlc.html" },
-{ name: "NUPL (Net Unrealized Profit / Loss)", link: "reports/bitcoin_nupl_g.html" },
+{ name: "NUPL (Net Unrealized Profit / Loss)", link: "nupl.html" },
 { name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
 { name: "Short Term Hodler (STH) Realized Price", link: "reports/bitcoin_realized_short_g.html" },
 { name: "Hodl Waves", link: "hodl_waves.html" },
