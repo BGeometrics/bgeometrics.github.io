@@ -1,4 +1,4 @@
-#file_name,text file_end,title,iframe_html,description,keywords,file_model,group_menu
+c/0c0c#file_name,text file_end,title,iframe_html,description,keywords,file_model,group_menu
 /tmp/web/bitcoin_price_usd_g.html,web-generation-end-price.html,Bitcoin Price,reports/bitcoin_price_usd_g.html,Bitcoin Price,,components-nav
 /tmp/web/ohlc.html,web-generation-end-ohlc.html,Bitcoin OHLC,graphics/ohlc.html,Bitcoin OHLC,,components-nav
 /tmp/web/ohlc_7d.html,web-generation-end-ohlc-7d.html,Bitcoin OHLC,graphics/ohlc_7d.html,Bitcoin OHLC Week,,components-nav
@@ -89,4 +89,5 @@
 /tmp/web/miner_reserves.html,web-generation-end-minerreserves.html,Bitcoin Miner Reserves,graphics/miner_reserves.html,Bitcoin Miner Reserves,,miners-nav
 /tmp/web/miner_sell_pressure.html,web-generation-end-minersellpressure.html,Bitcoin Miner Sell Pressure,graphics/miner_sell_pressure.html,Bitcoin Miner Sell Pressure,,miners-nav
 /tmp/web/miner_outflow.html,web-generation-end-mineroutflow.html,Bitcoin Miner Outflow,graphics/miner_outflow.html,Bitcoin Miner Outflow,,miners-nav
+/tmp/web/miner_balance.html,web-generation-end-miner-balance.html,Bitcoin Miner Balances,graphics/miner_balance.html,Bitcoin Miner Balance,,miners-nav
 /tmp/web/nrpl.html,web-generation-end-nrpl.html,NRPL (Net Realized Profit Loss),graphics/nrpl.html,NRPL(Net Realized Profit Loss),,market-nav
