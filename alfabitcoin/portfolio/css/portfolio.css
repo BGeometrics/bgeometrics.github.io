@@ -1,0 +1,101 @@
+#period {
+    display: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#period label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+#period select {
+    margin-top: 5px;
+}
+
+#option {
+    margin-top: 20px;
+}
+
+#optimization {
+    margin-top: 20px;
+}
+
+#options {
+    display: none;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#detail {
+    display: none;
+    margin-right: 20px;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#analytic {
+    display: none;
+}
+
+#portfolioStatistics {
+    display: none;
+}
+
+#portfolioOptimizationGraphicsBTC {
+    display: none;
+}
+
+#portfolioOptimizedMetrics {
+    display: none;
+}
+
+#portfolioOptimizationGraphicsHead {
+    display: none;
+}
+
+#assets {
+    border-collapse: collapse;
+    /* Elimina las líneas internas de la cuadrícula */
+    width: 100%;
+    /* Asegura que la tabla ocupe todo el ancho disponible */
+}
+
+#assets thead {
+    border-bottom: 2px solid #ffffff;
+    /* Línea blanca debajo del encabezado */
+}
+
+#assets tfoot {
+    border-top: 2px solid #ffffff;
+    /* Línea blanca encima del pie de tabla */
+}
+
+#assets td,
+#assets th {
+    border: none;
+    padding: 8px;
+}
+
+#assets tbody tr {
+    border: none;
+}
+
+select.form-select {
+    border: 1px solid #ced4da;
+}
+
+#defaultPortfolioModal .table th:first-child,
+#defaultPortfolioModal .table td:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+.modal-dialog {
+    max-width: 90%;
+    margin: 10px auto;
+}
