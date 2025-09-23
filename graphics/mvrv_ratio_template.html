@@ -20,14 +20,10 @@
 
     <script>
         (async () => {
+            const data_mvrv = MVRV_DATA;
+            const data_mvrv_zscore = MVRV_ZSCORE_DATA;
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'
-            ).then(response => response.json());
-            const data_mvrv = await fetch(
-                'https://charts.bgeometrics.com/files/mvrv.json'
-            ).then(response => response.json());
-            const data_mvrv_zscore = await fetch(
-                'https://charts.bgeometrics.com/files/mvrv_zscore.json'
             ).then(response => response.json());
             const data_mvrv_365sma = await fetch(
                 'https://charts.bgeometrics.com/files/mvrv_365dma.json'
