@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin Reserve Risk</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container" style="width:100%; height:600px;"></div>
+
+    <script>
+        (async () => {
+            const data_mvocdd = MVOCDD_DATA;
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
+            ).then(response => response.json());
+            const data_reserve_risk = await fetch(
+                'https://charts.bgeometrics.com/files/reserve_risk.json'
+            ).then(response => response.json());
+            const data_reserve_risk_adjusted = await fetch(
+                'https://charts.bgeometrics.com/files/reserve_risk_adjusted.json'
+            ).then(response => response.json());
+            const data_vocdd = await fetch(
+                'https://charts.bgeometrics.com/files/vocdd.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'Bitcoin Reserve Risk',
+                align: 'left',
+            },
+
+            chart: {
+                renderTo: 'container',
+                backgroundColor: {
+                    linearGradient: [0, 400, 0, 0],
+                        stops: [
+                            [0, '#FFFFFF'], 
+                            [1, '#FFD896']  
+                    ]
+                },
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'Reserve Risk',
+                },
+                labels: {
+                    align: 'left',
+                },
+                plotBands: [{ 
+                    from: 0.02,
+                    to: 1,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0.003,
+                    to: 0,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
+            }, {
+                title: {
+                    text: 'Precio BTC'
+                },
+                type: 'logarithmic',
+                opposite: false,
+            }, {
+                title: {
+                    text: 'VOCDD'
+                },
+                type: 'logarithmic',
+            }, {
+                title: {
+                    text: 'MVOCDD'
+                },
+                type: 'logarithmic',
+            }],
+
+            series: [{
+                name: 'Precio BTC',
+                color: 'white',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                id:'Reserve Risk',
+                name: 'Reserve Risk',
+                data: data_reserve_risk,
+                tooltip: {
+                    valueDecimals: 6
+                },
+                yAxis: 0
+            }, {
+                id:'Reserve Risk Adjusted',
+                name: 'Reserve Risk Adjusted',
+                visible: false,
+                data: data_reserve_risk_adjusted,
+                tooltip: {
+                    valueDecimals: 6
+                },
+                yAxis: 0
+            }, {
+                id:'VOCDD',
+                name: 'VOCDD',
+                visible: false,
+                data: data_vocdd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 2
+            }, {
+                id:'MVOCDD',
+                name: 'MVOCDD',
+                data: data_mvocdd,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 3
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                y: 25,
+                align:'center'
+            },
+
+            rangeSelector: {
+                selected: 5
+            },
+
+            credits: {
+                text: 'Powered by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {enabled:false}
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+
+</body>
+</html>
