@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NUPL (Net Unrealized Profit Loss)</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container" style="width:100%; height:400px;"></div>
+
+    <script>
+        (async () => {
+            const data_metrics = NUPL_DATA;
+            const data_lth_nupl = await fetch(
+                'https://charts.bgeometrics.com/files/lth_nupl.json'
+            ).then(response => response.json());
+            const data_sth_nupl = await fetch(
+                'https://charts.bgeometrics.com/files/sth_nupl.json'
+            ).then(response => response.json());
+            const data_nupl_7dma = await fetch(
+                'https://charts.bgeometrics.com/files/nupl_7dma.json'
+            ).then(response => response.json());
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/nupl_btc_price.json'
+            ).then(response => response.json());
+
+        var chart = Highcharts.stockChart('container', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
+                }
+            },
+
+            chart: {
+                renderTo: 'container',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'NUPL',
+                },
+		labels: {
+                    align: 'left',
+                },
+                plotBands: [{ 
+                    from: 0.6,
+                    to: 1,
+                    color: 'rgba(255, 0, 0, 0.1)'
+                }, {
+                    from: 0,
+                    to: -1,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
+            }, {
+                title: {
+                    text: 'BTC price'
+                },
+                type: 'logarithmic',
+                opposite: false,
+            }],
+
+            series: [{
+                id: 'BTC price',
+                name: 'BTC price',
+                color: 'black',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                id:'NUPL',
+                name: 'NUPL',
+                data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL LTH',
+                name: 'NUPL LTH',
+                visible: false,
+                data: data_lth_nupl,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL STH',
+                name: 'NUPL STH',
+                data: data_sth_nupl,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NUPL 7D MA',
+                name: 'NUPL 7D MA',
+                visible: false,
+                data: data_nupl_7dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                y: -6,
+                verticalAlign: 'top',
+                align:'center'
+            },
+
+            navigator : {
+		        enabled : false
+	        },
+         
+            rangeSelector: {
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
+            },
+
+            credits: {
+                text: 'Powered by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -75,
+                    y: -85
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        legend: {enabled:false}
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+
+</body>
+</html>
