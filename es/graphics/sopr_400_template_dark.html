@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOPR (Spent Output Profit Ratio)</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
+    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <div id="container-iframe" style="width:100%; height:400px;"></div>
+
+    <script>
+        (async () => {
+            const data_sopr = SOPR_DATA;
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
+            ).then(response => response.json());
+            const data_lth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/lth_sopr.json'
+            ).then(response => response.json());
+            const data_sth_sopr = await fetch(
+                'https://charts.bgeometrics.com/files/sth_sopr.json'
+            ).then(response => response.json());
+            const data_sopr_7sma = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_7sma.json'
+            ).then(response => response.json());
+            const data_sopr_7ema = await fetch(
+                'https://charts.bgeometrics.com/files/sopr_7ema.json'
+            ).then(response => response.json());
+        
+        var chart = Highcharts.stockChart('container-iframe', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[0].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            }, false)    
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    },
+                    rectangleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                            }
+                        }
+                    },
+                    circleAnnotation: {
+                        annotationsOptions: {
+                            shapeOptions: {
+                                fill: 'rgba(255, 128, 0, 0.2)',  
+                                strokeWidth: 0                 
+                            }
+                        }
+                    },
+                }
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        console.log(position_x + " " + position_y);
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            yAxis: [{
+                labels: {
+                    align: 'left',
+                },
+                title: {
+                    text: 'SOPR',
+                },
+                plotBands: [{ 
+                    from: 1,
+                    to: 0.8,
+                    color: 'rgba(0, 255, 0, 0.1)'
+                }]
+            }, {
+                title: {
+                    text: 'Precio BTC'
+                },
+                type: 'logarithmic',
+                opposite: false
+            }],
+
+            series: [{
+                name: 'Precio BTC',
+                color: 'white',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                id:'SOPR',
+                name: 'SOPR',
+                visible: false,
+                data: data_sopr,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id:'lth_sopr',
+                name: 'LTH SOPR',
+                data: data_lth_sopr,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id:'sth_sopr',
+                name: 'STH SOPR',
+                data: data_sth_sopr,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id:'SOPR 7D MA',
+                name: 'SOPR 7D MA',
+                data: data_sopr_7sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'SOPR 7D EMA',
+                name: 'SOPR 7D EMA',
+                data: data_sopr_7ema,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                verticalAlign: 'top',
+                y: -6,
+                align:'center'
+            },
+
+            navigator : {
+		        enabled : false
+	        },
+         
+            rangeSelector: {
+                selected: 3,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 2,
+                    text: '2y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
+            },
+
+            credits: {
+                text: 'Powered by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -75,
+                    y: -85
+                }                
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
+                    }
+                }]
+            }
+        });
+    })();
+
+    </script>
+</body>
+</html>
