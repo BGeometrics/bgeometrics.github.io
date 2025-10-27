@@ -68,6 +68,9 @@
             const data_200wma = await fetch(
                 'https://charts.bgeometrics.com/files/200wma.json'
             ).then(response => response.json());
+            const data_365dma = await fetch(
+                'https://charts.bgeometrics.com/files/365dma.json'
+            ).then(response => response.json());
             const data_111dma = await fetch(
                 'https://charts.bgeometrics.com/files/111dma.json'
             ).then(response => response.json());
@@ -212,15 +215,6 @@
                 },
                 yAxis: 0
             }, {
-                id:'155 SMA',
-                name: '155 SMA',
-                data: data_155dma,
-                visible: false,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0
-            }, {
                 id:'200 SMA',
                 name: '200 SMA',
                 data: data_200dma,
@@ -241,6 +235,15 @@
                 id:'111 SMA',
                 name: '111 SMA',
                 data: data_111dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'365 SMA',
+                name: '365 SMA',
+                data: data_365dma,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
