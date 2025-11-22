@@ -3,8 +3,40 @@
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
     <title>Bitcoin and Global M2 10-Week Lead</title>
 
+    <script>
+
+    function decoder(encoded) {
+        const compressed = atob(encoded);
+        const charData = compressed.split('').map(x => x.charCodeAt(0));
+        const binData = new Uint8Array(charData);
+        const data = pako.inflate(binData);
+        const str = String.fromCharCode.apply(null, new Uint8Array(data));
+        return JSON.parse(str);
+    }
+    
+
+    function decoder(encoded) {
+        const compressed = atob(encoded);
+        const charData = compressed.split('').map(x => x.charCodeAt(0));
+        const binData = new Uint8Array(charData);
+        const data = pako.inflate(binData);
+        const str = String.fromCharCode.apply(null, new Uint8Array(data));
+        return JSON.parse(str);
+    }
+    
+    (function(){
+        const start = new Date();
+        debugger;
+        const end = new Date();
+        if(end - start > 100) {
+            window.location.href = "about:blank";
+        }
+    })();
+    </script>
+    
     <script>
 
     function decoder(encoded) {
@@ -55,6 +87,16 @@
     <div id="container-iframe" style="width:100%; height:300px; margin: 0 auto;"></div>
 
     <script>
+
+    function decoder(encoded) {
+        const compressed = atob(encoded);
+        const charData = compressed.split('').map(x => x.charCodeAt(0));
+        const binData = new Uint8Array(charData);
+        const data = pako.inflate(binData);
+        const str = String.fromCharCode.apply(null, new Uint8Array(data));
+        return JSON.parse(str);
+    }
+    
 
     function decoder(encoded) {
         const compressed = atob(encoded);
