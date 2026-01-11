@@ -37,12 +37,6 @@
             const data_nrpl_7dma = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_7dma.json'
             ).then(response => response.json());
-            const data_realized_lth = await fetch(
-                'https://charts.bgeometrics.com/files/realized_lth.json'
-            ).then(response => response.json());
-            const data_realized_sth = await fetch(
-                'https://charts.bgeometrics.com/files/realized_sth.json'
-            ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -204,36 +198,6 @@
                 data: data_nrpl_usd_7dma,
                 tooltip: {
                     valueDecimals: 2
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#BB0E22'
-                }, {
-                    color: '#329542',
-                }]
-            }, {
-                id:'NRPL LTH BTC',
-                name: 'NRPL LTH BTC',
-                visible: false,
-                data: data_realized_lth,
-                tooltip: {
-                    valueDecimals: 6
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#BB0E22'
-                }, {
-                    color: '#329542',
-                }]
-            }, {
-                id:'NRPL STH BTC',
-                name: 'NRPL STH BTC',
-                visible: false,
-                data: data_realized_sth,
-                tooltip: {
-                    valueDecimals: 6
                 },
                 yAxis: 0,
                 zones: [{
