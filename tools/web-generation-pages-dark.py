@@ -177,6 +177,14 @@ new_text = """
             border: 1px solid #ccc !important;
             color: #dddddd !important; 
         }
+
+        .highcharts-popup input[type="text"],
+        .highcharts-popup input[type="number"],
+        .highcharts-popup select,
+        .highcharts-annotation-toolbar input {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
     </style>
 """
 replace_text_in_directory(dest_directory, old_text, new_text, file_extension=None)
