@@ -591,6 +591,15 @@ filedata = filedata.replace("""<body>""", """<body onload="init()">
             border: 1px solid #ccc !important;
             color: #dddddd !important; 
         }
+
+        /* Background white for textbox in popups*/
+        .highcharts-popup input[type="text"],
+        .highcharts-popup input[type="number"],
+        .highcharts-popup select,
+        .highcharts-annotation-toolbar input {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
     </style>""")
 filedata = filedata.replace('<title>BGeometrics</title>', '<title>BGeometrics Workspace Charts</title>')
 
