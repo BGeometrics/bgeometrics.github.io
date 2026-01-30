@@ -1,2 +1,2 @@
-d,price_usd,age_0d_1d,age_1d_1w,age_1w_1m,age_1m_3m,age_3m_6m,age_6m_1y,age_1y_2y,age_2y_3y,age_3y_4y,age_4y_5y,age_5y_7y,age_7y_10y,age_10y,age_1y_,age_6m_,age_6m_sth,age_6m_lth_supply,age_6m_sth_supply,supply_current
-2026-01-29,84520.3973106371,0.012,0.024,0.057,0.126,0.085,0.099,0.117,0.05,0.059,0.058,0.057,0.084,0.172,0.597,0.696,0.304,139073.7493040215,60744.85601784848,19981860.532187
+d,price_usd,age_0d_1d,age_1d_1w,age_1w_1m,age_1m_3m,age_3m_6m,age_6m_1y,age_1y_2y,age_2y_3y,age_3y_4y,age_4y_8y,age_8y_,age_1y_,age_6m_,age_6m_sth,age_6m_lth_supply,age_6m_sth_supply,supply_current
+2026-01-29,84520.3973106371,0.694,0.672,7.867,11.636,9.87,13.684,11.31,4.916,5.705,12.877,20.769,55.577,69.261,30.739,13839636.423198037,6142224.108988962,19981860.532187
