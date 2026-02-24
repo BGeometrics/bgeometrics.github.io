@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Términos y Condiciones - BGeometrics</title>
+  <meta content="Términos y Condiciones de uso de BGeometrics: gráficas On-Chain de Bitcoin gratuitas y API de datos Bitcoin" name="description">
+  <meta content="bitcoin, on-chain, métricas, api, términos, condiciones" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/bgeometrics.css" rel="stylesheet">
+
+  <style>
+    .terms-section h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: #012970;
+      border-left: 3px solid #f6921e;
+      padding-left: 0.75rem;
+    }
+    .terms-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+    .terms-section p, .terms-section li {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.7;
+    }
+    .terms-section ul {
+      padding-left: 1.5rem;
+    }
+    .terms-header {
+      background: linear-gradient(135deg, #012970 0%, #0d6efd 100%);
+      color: #fff;
+      border-radius: 8px;
+      padding: 2rem 2rem 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .terms-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .terms-header .last-updated {
+      font-size: 0.82rem;
+      opacity: 0.8;
+    }
+    .api-limit-table th {
+      background-color: #012970;
+      color: #fff;
+    }
+    .api-limit-table td, .api-limit-table th {
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+    .badge-free {
+      background-color: #198754;
+      color: #fff;
+      padding: 0.3em 0.65em;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+    .badge-pro {
+      background-color: #f6921e;
+      color: #fff;
+      padding: 0.3em 0.65em;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+    .toc-box {
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .toc-box h5 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #012970;
+    }
+    .toc-box ol {
+      font-size: 0.88rem;
+      margin-bottom: 0;
+      color: #555;
+    }
+    .toc-box ol li {
+      margin-bottom: 0.25rem;
+    }
+    .toc-box ol li a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    .toc-box ol li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR3ZFTF2FK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZR3ZFTF2FK');
+  </script>
+
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="https://charts.bgeometrics.com/index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+        <img src="../assets/img/logo.png" alt="BGeometrics">
+        <span class="d-none d-lg-block">BGeometrics</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" class="form-control" id="searchInput" placeholder="Buscar" title="Introduce tu búsqueda" onkeydown="handleKeyPress(event)">
+        <button class="btn btn-outline-secondary" type="button" onclick="search()"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle" href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown"></li>
+          <a href="https://charts.bgeometrics.com/bitcoin_api.html" id="api" class="nav-link nav-icon" alt="Bitcoin API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bitcoin API BGeometrics">
+            <span style="font-size: 0.6em;">API</span>
+          </a>
+          <a href="https://bitcoin-data.com/bguser/pricing" id="pricing" class="nav-link nav-icon" alt="Pricing API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pricing API BGeometrics">
+            <span style="font-size: 0.6em;">Pricing</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="https://bitcoin-data.com/bguser/login" target="_blank">
+            <i class="bi bi-person"></i>
+          </a>
+        </li>
+
+        <li>
+          <div class="dropdown d-inline language-switcher">
+            <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="flag-spain flag m-0"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="modeDropdown">
+              <li>
+                <a class="dropdown-item" href="../terms.html">English</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="terms.html">Español</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+        <li>
+          <div class="dropdown d-inline language-switcher">
+            <button class="btn btn-light dropdown-toggle" type="button" id="themeModeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="currentMode">Light</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="themeModeDropdown">
+              <li>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switchMode('light')">Light</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="switchMode('dark')">Dark</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon" href="https://x.com/BGeometrics">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+        </li>
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#dashboard-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-bar-chart"></i><span>Dashboards</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="https://charts.bgeometrics.com/ohlc.html">
+              <i class="bi bi-circle"></i><span>BTC OHLC</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://charts.bgeometrics.com/dashboard_short_term_trend.html">
+              <i class="bi bi-circle"></i><span>BTC Short Term Trend</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://charts.bgeometrics.com/dashboard_demand.html">
+              <i class="bi bi-circle"></i><span>BTC Demand</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://charts.bgeometrics.com/miner_dashboard.html">
+              <i class="bi bi-circle"></i><span>BTC Miner</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-heading">Páginas</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/workspace.html">
+          <i class="bi bi-person-workspace"></i>
+          <span>Workspace</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/bitcoin_api.html">
+          <i class="bi bi-arrow-right"></i>
+          <span>Bitcoin API Free</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/pages-contact.html">
+          <i class="bi bi-chat-quote"></i>
+          <span>Contacto</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="terms.html">
+          <i class="bi bi-file-text"></i>
+          <span>Términos y Condiciones</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="https://bitcoin-data.com/bguser/pricing">
+          <i class="bi bi-currency-bitcoin"></i>
+          <span>Precios</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <section class="section terms-section">
+
+      <!-- Header banner -->
+      <div class="terms-header">
+        <h1><i class="bi bi-file-text me-2"></i>Términos y Condiciones</h1>
+        <p class="mb-0">Por favor, lee detenidamente estos términos antes de utilizar los servicios de BGeometrics.</p>
+        <p class="last-updated mt-1 mb-0">Última actualización: 24 de febrero de 2026</p>
+      </div>
+
+      <!-- Table of contents -->
+      <div class="toc-box">
+        <h5><i class="bi bi-list-ul me-2"></i>Índice</h5>
+        <ol>
+          <li><a href="#aceptacion">Aceptación de los Términos</a></li>
+          <li><a href="#servicios">Descripción de los Servicios</a></li>
+          <li><a href="#graficas">Gráficas On-Chain Gratuitas</a></li>
+          <li><a href="#api">API de Bitcoin — Tier Gratuito y Límites de Uso</a></li>
+          <li><a href="#suscripcion">Suscripciones de Pago</a></li>
+          <li><a href="#disclaimer">Aviso Legal Financiero</a></li>
+          <li><a href="#propiedad-intelectual">Propiedad Intelectual</a></li>
+          <li><a href="#usos-prohibidos">Usos Prohibidos</a></li>
+          <li><a href="#disponibilidad">Disponibilidad del Servicio</a></li>
+          <li><a href="#privacidad">Privacidad</a></li>
+          <li><a href="#cambios">Cambios en los Términos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ol>
+      </div>
+
+      <!-- 1. Aceptación -->
+      <h2 id="aceptacion">1. Aceptación de los Términos</h2>
+      <p>
+        Al acceder o utilizar el sitio web de BGeometrics (<strong>charts.bgeometrics.com</strong>) y cualquiera de sus
+        servicios, incluidas las gráficas On-Chain gratuitas y la API de datos Bitcoin, aceptas quedar vinculado por
+        estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, te pedimos que dejes de utilizar
+        nuestros servicios de inmediato.
+      </p>
+      <p>
+        Estos Términos son aplicables a todos los visitantes, usuarios registrados y consumidores de la API, tanto en
+        el plan gratuito como en el de pago.
+      </p>
+
+      <!-- 2. Servicios -->
+      <h2 id="servicios">2. Descripción de los Servicios</h2>
+      <p>BGeometrics ofrece dos tipos principales de servicios:</p>
+      <ul>
+        <li>
+          <strong>Gráficas On-Chain Gratuitas:</strong> Visualizaciones interactivas de métricas on-chain de Bitcoin como
+          MVRV Z-Score, NUPL, SOPR, Precio Realizado, Hodl Waves, Hashrate y muchas otras. Todas las gráficas son de
+          acceso libre sin necesidad de registro.
+        </li>
+        <li>
+          <strong>API de Datos Bitcoin:</strong> Una API REST que expone métricas on-chain y de mercado de Bitcoin en
+          formato legible por máquinas. Está disponible de forma gratuita hasta los límites de uso descritos en la
+          Sección 4, y mediante suscripción de pago para volúmenes superiores.
+        </li>
+      </ul>
+
+      <!-- 3. Gráficas -->
+      <h2 id="graficas">3. Gráficas On-Chain Gratuitas</h2>
+      <p>
+        Todas las gráficas y visualizaciones publicadas en BGeometrics se ofrecen <strong>de forma gratuita</strong> para
+        uso personal, educativo y no comercial. No se requiere registro ni cuenta para visualizarlas.
+      </p>
+      <p>Puedes compartir URLs de gráficas individuales o incrustarlas en contextos no comerciales siempre que:</p>
+      <ul>
+        <li>Atribuyas claramente a BGeometrics como fuente.</li>
+        <li>No modifiques, extraigas de forma masiva ni redistribuyas las gráficas.</li>
+        <li>No las uses de manera que pueda inducir a error sobre su origen.</li>
+      </ul>
+      <p>
+        BGeometrics se reserva el derecho de modificar, actualizar o discontinuar cualquier gráfica en cualquier momento
+        sin previo aviso. Los datos mostrados son meramente informativos y pueden contener retrasos o imprecisiones.
+      </p>
+
+      <!-- 4. API -->
+      <h2 id="api">4. API de Bitcoin — Tier Gratuito y Límites de Uso</h2>
+      <p>
+        La API de Datos Bitcoin de BGeometrics está disponible para todos los usuarios con una clave API gratuita.
+        Los siguientes límites de uso aplican al <strong>tier gratuito</strong>:
+      </p>
+
+      <div class="table-responsive mb-3">
+        <table class="table table-bordered api-limit-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Peticiones por Hora</th>
+              <th>Peticiones por Día</th>
+              <th>Acceso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge-free">Gratuito</span></td>
+              <td>8</td>
+              <td>15</td>
+              <td>Sin pago requerido</td>
+            </tr>
+            <tr>
+              <td><span class="badge-pro">Pro / Pago</span></td>
+              <td>Límites superiores</td>
+              <td>Límites superiores</td>
+              <td>Suscripción activa requerida</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4.1 Condiciones del Tier Gratuito</h3>
+      <ul>
+        <li>El acceso gratuito a la API está sujeto a disponibilidad y puede ser limitado o pausado durante periodos de alta demanda.</li>
+        <li>Superar el límite horario o diario resultará en respuestas HTTP 429 (Demasiadas Solicitudes) hasta que el contador se restablezca.</li>
+        <li>El acceso gratuito está pensado para proyectos personales, investigación y evaluación de la API.</li>
+        <li>Está estrictamente prohibido usar scripts automatizados, bots o varias claves API para eludir los límites de uso.</li>
+      </ul>
+
+      <h3>4.2 Clave API</h3>
+      <p>
+        Para utilizar la API debes obtener una clave registrándote en <a href="https://bitcoin-data.com/bguser/login" target="_blank">bitcoin-data.com</a>.
+        Eres responsable de mantener tu clave API confidencial. Cualquier uso bajo tu clave es responsabilidad tuya.
+        Si sospechas que tu clave ha sido comprometida, contáctanos de inmediato en <a href="mailto:info@bgeometrics.com">info@bgeometrics.com</a>.
+      </p>
+
+      <h3>4.3 Uso Aceptable de la API</h3>
+      <p>La API puede utilizarse para:</p>
+      <ul>
+        <li>Crear dashboards o herramientas personales o no comerciales.</li>
+        <li>Realizar investigaciones académicas o personales sobre Bitcoin.</li>
+        <li>Integrar datos en tus propias aplicaciones comerciales, sujeto al plan de suscripción correspondiente.</li>
+      </ul>
+
+      <!-- 5. Suscripción -->
+      <h2 id="suscripcion">5. Suscripciones de Pago</h2>
+      <p>
+        Los usuarios que requieran un mayor volumen de peticiones a la API pueden suscribirse a un plan de pago.
+        Las suscripciones se gestionan en <a href="https://bitcoin-data.com/bguser/pricing" target="_blank">bitcoin-data.com/bguser/pricing</a>.
+      </p>
+      <ul>
+        <li>Las tarifas de suscripción se facturan según lo indicado en la página de precios en el momento de la compra.</li>
+        <li>Las suscripciones se renuevan automáticamente a menos que se cancelen antes de la fecha de renovación.</li>
+        <li>Los reembolsos no están garantizados y se evalúan caso por caso. Contáctanos en un plazo de 7 días desde el cargo si consideras que ha habido un error.</li>
+        <li>BGeometrics se reserva el derecho de modificar precios o características de los planes con previo aviso razonable.</li>
+        <li>El abuso de la API, incluso bajo un plan de pago, puede resultar en la suspensión sin reembolso.</li>
+      </ul>
+
+      <!-- 6. Disclaimer -->
+      <h2 id="disclaimer">6. Aviso Legal Financiero</h2>
+      <p>
+        <strong>El contenido proporcionado por BGeometrics — incluyendo gráficas, métricas, datos de la API y cualquier
+        análisis derivado — no constituye asesoramiento financiero, de inversión ni de trading.</strong>
+      </p>
+      <p>
+        El rendimiento pasado de Bitcoin o cualquier activo mostrado en esta plataforma no garantiza resultados futuros.
+        Las métricas on-chain son herramientas analíticas y no predicen movimientos de precio. Realiza siempre tu propia
+        investigación y consulta a un asesor financiero cualificado antes de tomar decisiones de inversión.
+      </p>
+      <p>
+        BGeometrics no se hace responsable de ninguna pérdida o daño económico resultante del uso de la información
+        proporcionada en esta plataforma.
+      </p>
+
+      <!-- 7. Propiedad Intelectual -->
+      <h2 id="propiedad-intelectual">7. Propiedad Intelectual</h2>
+      <p>
+        Todo el contenido de BGeometrics — incluyendo, entre otros, el diseño de las gráficas, visualizaciones, logotipo,
+        código fuente y contenido escrito — es propiedad de BGeometrics o sus licenciantes y está protegido por las
+        leyes de propiedad intelectual aplicables.
+      </p>
+      <p>
+        Los datos subyacentes de la blockchain de Bitcoin son públicos por naturaleza. Sin embargo, el procesamiento,
+        presentación y metodología específicos aplicados por BGeometrics para derivar métricas son propietarios.
+      </p>
+      <p>
+        No puedes reproducir, distribuir ni crear obras derivadas del contenido de BGeometrics sin autorización previa
+        por escrito, salvo lo expresamente permitido en estos Términos.
+      </p>
+
+      <!-- 8. Usos Prohibidos -->
+      <h2 id="usos-prohibidos">8. Usos Prohibidos</h2>
+      <p>Aceptas no:</p>
+      <ul>
+        <li>Utilizar el servicio para ningún propósito ilegal o en violación de la normativa aplicable.</li>
+        <li>Intentar eludir, sortear o abusar de los límites de peticiones de la API por cualquier medio.</li>
+        <li>Extraer o recopilar datos del sitio web de forma masiva sin autorización escrita.</li>
+        <li>Realizar ingeniería inversa, descompilar o desensamblar ninguna parte de la plataforma.</li>
+        <li>Revender o sublicenciar el acceso a la API a terceros sin un acuerdo comercial explícito con BGeometrics.</li>
+        <li>Presentar datos de BGeometrics como análisis o datos originales propios.</li>
+        <li>Interferir o interrumpir los servidores o redes asociados al servicio.</li>
+      </ul>
+
+      <!-- 9. Disponibilidad -->
+      <h2 id="disponibilidad">9. Disponibilidad del Servicio</h2>
+      <p>
+        BGeometrics procura mantener la disponibilidad continua de sus gráficas y API, pero no garantiza un acceso
+        ininterrumpido. El servicio puede estar temporalmente no disponible por mantenimiento, actualizaciones,
+        incidencias de infraestructura o circunstancias ajenas a nuestro control.
+      </p>
+      <p>
+        BGeometrics no será responsable de ninguna pérdida o daño causado por interrupciones del servicio.
+      </p>
+
+      <!-- 10. Privacidad -->
+      <h2 id="privacidad">10. Privacidad</h2>
+      <p>
+        BGeometrics recopila datos mínimos de usuario, limitados a lo necesario para prestar el servicio (p. ej.,
+        correo electrónico para el registro de la clave API, estadísticas de uso). No vendemos ni compartimos tus
+        datos personales con terceros con fines comerciales.
+      </p>
+      <p>
+        Al utilizar nuestros servicios, reconoces que pueden recopilarse datos de uso anonimizados y agregados con el
+        fin de mejorar la plataforma. El sitio web puede utilizar cookies y herramientas de analítica de terceros como
+        Google Analytics.
+      </p>
+
+      <!-- 11. Cambios -->
+      <h2 id="cambios">11. Cambios en los Términos</h2>
+      <p>
+        BGeometrics se reserva el derecho de actualizar o modificar estos Términos y Condiciones en cualquier momento.
+        Los cambios serán efectivos en el momento de su publicación en esta página. El uso continuado del servicio tras
+        cualquier cambio implica la aceptación de los nuevos términos.
+      </p>
+      <p>
+        Te recomendamos revisar esta página periódicamente. La fecha de "Última actualización" en la parte superior
+        indica cuándo se realizó la revisión más reciente.
+      </p>
+
+      <!-- 12. Contacto -->
+      <h2 id="contacto">12. Contacto</h2>
+      <p>
+        Si tienes alguna pregunta sobre estos Términos y Condiciones, puedes contactarnos a través de:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:info@bgeometrics.com">info@bgeometrics.com</a></li>
+        <li>Twitter / X: <a href="https://x.com/BGeometrics" target="_blank">@BGeometrics</a></li>
+        <li>Formulario de contacto: <a href="../pages-contact.html">Página de contacto</a></li>
+      </ul>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Los resultados pasados no garantizan resultados futuros.</strong><br>
+        <strong>No es asesoramiento de inversión. Infórmate por tu cuenta y actúa bajo tus propios criterios.</strong>
+      </div>
+      <div class="credits">
+        Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
