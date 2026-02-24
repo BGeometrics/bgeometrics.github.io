@@ -460,6 +460,12 @@ file2_path = 'web-generation-model-bg-suggestion-end.html'
 output_file_path = '/tmp/web/bg_suggestion.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page terms.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-terms-end.html'
+output_file_path = '/tmp/web/terms.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 # Generate page bguser.html with menu
 #file1_path = 'web-generation-model.html'
 #file2_path = 'web-generation-model-bguser-end.html'
@@ -720,6 +726,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-bg-suggestion-end.html'
 output_file_path = '/tmp/web/bg_suggestion_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page terms.html with menu
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-terms-end.html'
+output_file_path = '/tmp/web/terms_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page bguser.html with menu
