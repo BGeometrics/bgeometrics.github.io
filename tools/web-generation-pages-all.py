@@ -472,6 +472,12 @@ file2_path = 'web-generation-model-privacy-end.html'
 output_file_path = '/tmp/web/privacy.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
+# Generate page subscription.html with menu
+file1_path = 'web-generation-model.html'
+file2_path = 'web-generation-model-subscription-end.html'
+output_file_path = '/tmp/web/subscription.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
 # Generate page bguser.html with menu
 #file1_path = 'web-generation-model.html'
 #file2_path = 'web-generation-model-bguser-end.html'
@@ -744,6 +750,12 @@ concatenate_files(file1_path, file2_path, output_file_path)
 file1_path = 'web-generation-model-dark.html'
 file2_path = 'web-generation-model-privacy-end.html'
 output_file_path = '/tmp/web/privacy_dark.html'
+concatenate_files(file1_path, file2_path, output_file_path)
+
+# Generate page subscription.html with menu dark
+file1_path = 'web-generation-model-dark.html'
+file2_path = 'web-generation-model-subscription-end.html'
+output_file_path = '/tmp/web/subscription_dark.html'
 concatenate_files(file1_path, file2_path, output_file_path)
 
 # Generate page bguser.html with menu
