@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Metrics Management</h1>
+
+        <!-- Form to Create or Edit Metric -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 id="formTitle">Create Metric</h5>
+            </div>
+            <div class="card-body">
+                <form id="metricForm">
+                    <input type="hidden" id="metricId">
+                    <div class="mb-3">
+                        <label for="metric" class="form-label">Metric</label>
+                        <input type="text" id="metric" class="form-control" placeholder="Enter metric name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" class="form-control" placeholder="Enter metric description" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tableName" class="form-label">Table Name</label>
+                        <input type="text" id="tableName" class="form-control" placeholder="Enter table name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="columnName" class="form-label">Column Name</label>
+                        <input type="text" id="columnName" class="form-control" placeholder="Enter column name" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="saveMetric()">Save Metric</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- List of Metrics -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Metrics List</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Metric</th>
+                            <th>Description</th>
+                            <th>Table Name</th>
+                            <th>Column Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="metricsTable">
+                        <!-- Dynamic content here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- JavaScript to Handle API -->
+    <script>
+        //const apiUrl = 'http://localhost:8080/suggestion/api/metrics'; // Replace with your API URL
+        const apiUrl = 'https://bitcoin-data.com/suggestion/api/metrics'; // Replace with your API URL
+        // Fetch metrics and populate the table
+        async function fetchMetrics() {
+            try {
+                const response = await fetch(apiUrl);
+                const metrics = await response.json();
+                const tableBody = document.getElementById('metricsTable');
+                tableBody.innerHTML = '';
+                metrics.forEach((metric, index) => {
+                    const row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${metric.metric}</td>
+                            <td>${metric.description}</td>
+                            <td>${metric.tableName}</td>
+                            <td>${metric.columnName}</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="editMetric(${metric.id})">Edit</button>
+                                <button class="btn btn-danger btn-sm" onclick="confirmDelete(${metric.id})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.insertAdjacentHTML('beforeend', row);
+                });
+            } catch (error) {
+                Swal.fire('Error', 'Failed to load metrics', 'error');
+            }
+        }
+
+        // Save metric (Create or Update)
+        async function saveMetric() {
+            const metricId = document.getElementById('metricId').value;
+            const metric = document.getElementById('metric').value;
+            const description = document.getElementById('description').value;
+            const tableName = document.getElementById('tableName').value;
+            const columnName = document.getElementById('columnName').value;
+
+            try {
+                const method = metricId ? 'PUT' : 'POST';
+                const url = metricId ? `${apiUrl}/${metricId}` : apiUrl;
+
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ metric, description, tableName, columnName }),
+                });
+
+                if (response.ok) {
+                    Swal.fire('Success', `Metric ${metricId ? 'updated' : 'created'} successfully`, 'success');
+                    resetForm();
+                    fetchMetrics();
+                } else {
+                    Swal.fire('Error', `Failed to ${metricId ? 'update' : 'create'} metric`, 'error');
+                }
+            } catch (error) {
+                Swal.fire('Error', 'Failed to save metric', 'error');
+            }
+        }
+
+        // Edit metric
+        async function editMetric(id) {
+            try {
+                const response = await fetch(`${apiUrl}/${id}`);
+                const metric = await response.json();
+
+                document.getElementById('metricId').value = metric.id;
+                document.getElementById('metric').value = metric.metric;
+                document.getElementById('description').value = metric.description;
+                document.getElementById('tableName').value = metric.tableName;
+                document.getElementById('columnName').value = metric.columnName;
+                document.getElementById('formTitle').textContent = 'Edit Metric';
+            } catch (error) {
+                Swal.fire('Error', 'Failed to fetch metric data', 'error');
+            }
+        }
+
+        // Confirm delete action
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to recover this metric!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    deleteMetric(id);
+                }
+            });
+        }
+
+        // Delete metric
+        async function deleteMetric(id) {
+            try {
+                const response = await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+
+                if (response.ok) {
+                    Swal.fire('Deleted!', 'Metric has been deleted.', 'success');
+                    fetchMetrics();
+                } else {
+                    Swal.fire('Error', 'Failed to delete metric', 'error');
+                }
+            } catch (error) {
+                Swal.fire('Error', 'Failed to delete metric', 'error');
+            }
+        }
+
+        // Reset the form
+        function resetForm() {
+            document.getElementById('metricForm').reset();
+            document.getElementById('metricId').value = '';
+            document.getElementById('formTitle').textContent = 'Create Metric';
+        }
+
+        // Initialize the page by fetching metrics
+        fetchMetrics();
+    </script>
+</body>
+</html>

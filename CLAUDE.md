@@ -60,3 +60,11 @@ Google Analytics **eliminado**. No hay cookies de tracking. No se necesita banne
 Cada página tiene dos variantes:
 - `nombre.html` — tema claro
 - `nombre_dark.html` — tema oscuro (es el predeterminado para el índice)
+
+## Proyectos relacionados
+BGapi es la API donde se exponen los endpoints
+BGUser es el proyecto con el alta del usuario y las opciones de suscripción
+BGsuggestion es el proyecto con las alertas 
+bitcoin-scripts scripts de python donde se cargan algunos datos, se generan ficheros json y con diversas utilidades
+bitcoin_metrics proyecto con la carga de datos bitcoin del full node a la base de datos PostgreSQL por bloque y diaria y con el cáculo de las métricas  
+BGmcp es un proyecto MCP Server para conectarse a la API
