@@ -814,12 +814,13 @@
     </div>
 
     <section class="section">
-      <div class="container mt-5">
+
+    <div class="container mt-5">
         <h1 class="text-center">Alerts Management</h1>
 
         <div class="card mb-4">
             <div class="card-header">
-                <h5 id="formTitle">Create Alert (only 4 alerts Standard user)</h5>
+                <h5 id="formTitle">Create Alert</h5>
             </div>
             <div class="card-body">
                 <form id="alertForm">
@@ -831,8 +832,8 @@
                             <option value=">=">>=</option>
                             <option value="<="><=</option>
                             <option value="=">=</option>
-                            <option value="BTC crosses below">Metric (price) crossing below BTC price</option>
-                            <option value="BTC crosses above">Metric (price) crossing above BTC price</option>
+                            <option value="crosses_below_price">Metric (price) crossing below BTC price</option>
+                            <option value="crosses_above_price">Metric (price) crossing above BTC price</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -844,6 +845,11 @@
                         <select id="metricId" class="form-select" required>
                             <!-- Options dynamically populated -->
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telegramChatId" class="form-label">Telegram Chat ID <span class="text-muted">(optional)</span></label>
+                        <input type="text" id="telegramChatId" class="form-control" placeholder="e.g. 123456789">
+                        <div class="form-text">To receive alerts on Telegram. Get your ID from <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a>.</div>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="saveAlert()">Save Alert</button>
                     <button type="button" class="btn btn-secondary" onclick="resetForm()">Cancel</button>
@@ -863,6 +869,7 @@
                             <th>Condition</th>
                             <th>Value</th>
                             <th>Metric</th>
+                            <th>Telegram</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -881,8 +888,8 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const theEmail = urlParams.get('email');
-        const apiUrl = 'https://bitcoin-data.com/suggestion/api/alerts'; // Replace with your API URL
-        const metricsApiUrl = 'https://bitcoin-data.com/suggestion/api/metrics'; // Replace with your API URL
+        const apiUrl = '/suggestion/api/alerts'; // Replace with your API URL
+        const metricsApiUrl = '/suggestion/api/metrics'; // Replace with your API URL
 
         async function fetchMetrics() {
             try {
@@ -903,7 +910,7 @@
         async function fetchAlerts() {
             try {
 
-                const response = await fetch(`https://bitcoin-data.com/suggestion/api/alerts/filter?email=${encodeURIComponent(theEmail)}`)
+                const response = await fetch(`/suggestion/api/alerts/filter?email=${encodeURIComponent(theEmail)}`)
                 const alerts = await response.json();
                 //console.log(alerts);
                 const tableBody = document.getElementById('alertsTable');
@@ -913,8 +920,9 @@
                         <tr>
                             <td>${index + 1}</td>
                             <td>${alert.condition}</td>
-                            <td>${alert.value}</td>
+                            <td>${alert.value ?? '-'}</td>
                             <td>${alert.metricName}</td>
+                            <td>${alert.telegramChatId ? '✅' : '-'}</td>
                             <td>
                                 <button class="btn btn-warning btn-sm" onclick="editAlert(${alert.id})">Edit</button>
                                 <button class="btn btn-danger btn-sm" onclick="confirmDelete(${alert.id})">Delete</button>
@@ -932,11 +940,10 @@
             const alertId = document.getElementById('alertId').value;
             const condition = document.getElementById('condition').value;
             const value = document.getElementById('value').value;
-            //const email = document.getElementById('email').value;
             const email = theEmail;
-            //const dateEnd = document.getElementById('dateEnd').value;
-            const dateEnd = null; 
+            const dateEnd = null;
             const metricId = document.getElementById('metricId').value;
+            const telegramChatId = document.getElementById('telegramChatId').value.trim() || null;
 
             try {
                 const method = alertId ? 'PUT' : 'POST';
@@ -945,7 +952,7 @@
                 const response = await fetch(url, {
                     method: method,
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ condition, value, email, dateEnd: dateEnd, metricId: metricId }),
+                    body: JSON.stringify({ condition, value, email, dateEnd: dateEnd, metricId: metricId, telegramChatId: telegramChatId }),
                 });
 
                 //console.log(response.text());
@@ -982,6 +989,7 @@
                 document.getElementById('condition').value = alert.condition;
                 document.getElementById('value').value = alert.value;
                 document.getElementById('metricId').value = alert.metricId;
+                document.getElementById('telegramChatId').value = alert.telegramChatId || '';
                 document.getElementById('formTitle').textContent = 'Edit Alert';
             } catch (error) {
                 Swal.fire('Error', 'Failed to fetch alert data', 'error');
@@ -1021,6 +1029,7 @@
         function resetForm() {
             document.getElementById('alertForm').reset();
             document.getElementById('alertId').value = '';
+            document.getElementById('telegramChatId').value = '';
             document.getElementById('formTitle').textContent = 'Create Alert';
         }
 
@@ -1028,10 +1037,10 @@
         const textBox = document.getElementById('value');
 
         dropdown.addEventListener('change', () => {
-        if (dropdown.value === "BTC crosses below" || dropdown.value === "BTC crosses above") {
-            textBox.disabled = true; // Disable the text box
+        if (dropdown.value === "crosses_below_price" || dropdown.value === "crosses_above_price") {
+            textBox.disabled = true;
         } else {
-            textBox.disabled = false; // Enable the text box
+            textBox.disabled = false;
         }
         });
 
