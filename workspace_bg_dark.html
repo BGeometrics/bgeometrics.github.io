@@ -76,8 +76,8 @@
             color: #000000 !important;
         }
 
-        /* New top navbar */
-        .site-header {
+        /* Top navbar */
+        .header {
             background: #000000;
             border-bottom: 1px solid #333333;
             height: 60px;
@@ -91,42 +91,45 @@
             right: 0;
             z-index: 997;
         }
-        .site-header-content {
+        .header-content {
             width: 100%;
             display: flex;
             align-items: center;
         }
-        .site-logo {
+        .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             line-height: 1;
         }
-        .site-logo img {
+        .logo img {
             max-height: 26px;
             margin-right: 6px;
         }
-        .site-logo span {
+        .logo span {
             font-size: 26px;
             font-weight: 700;
             color: #ffffff;
             font-family: "Nunito", sans-serif;
         }
-        .site-logo span:hover { color: #a7f3d0; }
-        .site-header-nav {
+        .logo span:hover { color: #a7f3d0; }
+        @media (max-width: 576px) {
+            .logo span { display: none; }
+        }
+        .header-nav {
             margin-left: auto;
             display: flex;
             align-items: center;
         }
-        .site-header-nav a {
+        .header-nav a {
             color: #ffffff;
             text-decoration: none;
             font-size: 22px;
             margin-right: 25px;
             transition: color 0.2s;
         }
-        .site-header-nav a:hover { color: #a7f3d0; }
-        .site-header-nav .nav-label {
+        .header-nav a:hover { color: #a7f3d0; }
+        .header-nav .nav-label {
             font-size: 0.6em;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -138,17 +141,17 @@
         #main .section .row .form-select { margin-bottom: 6px; }
     </style>
   <!-- ======= Header ======= -->
-  <header class="site-header">
-    <div class="site-header-content">
-        <a href="https://charts.bgeometrics.com/index.html" class="site-logo">
+  <header class="header">
+    <div class="header-content">
+        <a href="https://charts.bgeometrics.com/index.html" class="logo">
             <img src="assets/img/logo.png" alt="BGeometrics">
             <span>BGeometrics</span>
         </a>
-        <nav class="site-header-nav">
+        <nav class="header-nav">
             <a href="https://charts.bgeometrics.com/index.html" title="BGeometrics Charts"><span class="nav-label">Charts</span></a>
             <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html" title="Bitcoin API BGeometrics"><span class="nav-label">API</span></a>
             <a href="https://bitcoin-data.com/bguser/pricing" title="Pricing API BGeometrics"><span class="nav-label">Pricing</span></a>
-            <a href="https://charts.bgeometrics.com/workspace_dark.html" title="BGeometrics Workspace"><i class="bi bi-person-workspace"></i></a>
+            <a href="https://charts.bgeometrics.com/workspace_bg_dark.html" title="BGeometrics Workspace"><i class="bi bi-person-workspace"></i></a>
             <a href="https://bitcoin-data.com/bguser/login" target="_blank" title="Login"><i class="bi bi-person"></i></a>
             <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
         </nav>
