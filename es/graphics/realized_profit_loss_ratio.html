@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Realized Profit Loss Ratio</title>
+    <title>Bitcoin Ratio Ganancia Pérdida Realizada</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
@@ -81,7 +81,7 @@
                 }
             },
             title: {
-                text: 'Bitcoin Realized Profit Loss Ratio',
+                text: 'Bitcoin Ratio Ganancia Pérdida Realizada',
                 align: 'left',
             },
 
@@ -136,7 +136,7 @@
                 }],
             }, {
                 title: {
-                    text: 'BTC price',
+                    text: 'Precio BTC',
                 },
                 type: 'logarithmic',
                 opposite: false
@@ -147,8 +147,8 @@
             }],
 
             series: [{
-                id: 'BTC price',
-                name: 'BTC price',
+                id: 'Precio BTC',
+                name: 'Precio BTC',
                 data: data_price,
                 color: 'black', 
                 tooltip: {
@@ -157,7 +157,7 @@
                 yAxis: 1
             }, {
                 id:'realized_profit_loss_ratio',
-                name: 'Realized Profit Loss Ratio',
+                name: 'Ratio Ganancia Pérdida Realizada',
                 data: data_metrics,
                 tooltip: {
                     valueDecimals: 2
