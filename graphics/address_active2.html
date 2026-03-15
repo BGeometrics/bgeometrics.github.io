@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin Funding Rate</title>
+    <title>Active Addresses</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
@@ -13,26 +13,20 @@
     <script src="../assets/modules/price-indicator.js"></script>
     <script src="../assets/modules/full-screen.js"></script>
     <script src="../assets/modules/stock-tools.js"></script>
-    <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
 
-    
-
-    <div id="container-iframe" style="width:100%; height:400px; margin: 0 auto;"></div>
+    <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
+            const data_metrics = await fetch(
+                'https://charts.bgeometrics.com/files/addresses_active.json'
+            ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/funding_rate_btc_price.json'
+                'https://charts.bgeometrics.com/files/addresses_active_btc_price.json'
             ).then(response => response.json());
-            const data_funding_rate = await fetch(
-                'https://charts.bgeometrics.com/files/funding_rate.json'
-            ).then(response => response.json());
-            const data_funding_rate_7sma = await fetch(
-                'https://charts.bgeometrics.com/files/funding_rate_7sma.json'
-            ).then(response => response.json());
- 
-        var chart = Highcharts.stockChart('container-iframe', {
+
+        var chart = Highcharts.stockChart('container', {
             stockTools: {
                 gui: {
                     buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
@@ -52,52 +46,35 @@
                             const chart = this.chart,
                                 isLogarithmic = chart.yAxis[1].logarithmic,
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
-                                iconURL = '../assets/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+                                iconURL = '../assets/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            }, false)    
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
                             });
 
+                            // Change the button icon.
                             button.firstChild.style['background-image'] = `url(${iconURL})`;
 
+                            // Deselect button after click.
                             Highcharts.fireEvent(
                                 this,
                                 'deselectButton',
                                 { button: button }
                             );
                         }
-                    },
-                    rectangleAnnotation: {
-                        annotationsOptions: {
-                            shapeOptions: {
-                                fill: 'rgba(255, 128, 0, 0.2)',  
-                                strokeWidth: 0                 
-                            }
-                        }
-                    },
-                    circleAnnotation: {
-                        annotationsOptions: {
-                            shapeOptions: {
-                                fill: 'rgba(255, 128, 0, 0.2)',  
-                                strokeWidth: 0                 
-                            }
-                        }
-                    },
+                    }
                 }
             },
 
             chart: {
-                renderTo: 'container-iframe',
+                renderTo: 'container',
                 events: {
                     load: function() {
                         var image = new Image();
                         var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
+
                         var height_image = 128;
                         var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
@@ -121,20 +98,25 @@
 
             yAxis: [{
                 title: {
-                    text: 'Funding Rate'
-                },
-                labels: {
-                    align: 'left',
+                    text: 'Active Addresses'
                 },
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 type: 'logarithmic',
-                opposite: false
+                opposite: false,
             }],
 
             series: [{
+                id:'address_active',
+                name: 'Active Addresses',
+                data: data_metrics,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
                 name: 'BTC price',
                 color: 'black',
                 data: data_price,
@@ -142,93 +124,30 @@
                     valueDecimals: 2
                 },
                 yAxis: 1
-            }, {
-                id:'Funding Rate',
-                name: 'Funding Rate',
-                color: '#90ed7d',
-                visible: false,
-                data: data_funding_rate,
-                tooltip: {
-                    valueDecimals: 6
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#ff2222'
-                }, {
-                    color: '#90ed7d'
-                }]
-            }, {
-                id:'Funding Rate 7-SMA',
-                name: 'Funding Rate 7-SMA',
-                color: '#90ed7d',
-                data: data_funding_rate_7sma,
-                tooltip: {
-                    valueDecimals: 6
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#ff2222'
-                }, {
-                    color: '#90ed7d'
-                }]
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
-                y: -6,
+                y: 25,
                 verticalAlign: 'top',
                 align:'center'
             },
 
-            navigator : {
-		        enabled : false
-	        },
-         
             rangeSelector: {
-                selected: 3,
-                buttons: [{
-                    type: 'month',
-                    count: 1,
-                    text: '1m'
-                }, {
-                    type: 'month',
-                    count: 3,
-                    text: '3m'
-                }, {
-                    type: 'month',
-                    count: 6,
-                    text: '6m'
-                }, {
-                    type: 'year',
-                    count: 1,
-                    text: '1y'
-                }, {
-                    type: 'year',
-                    count: 2,
-                    text: '2y'
-                }, {
-                    type: 'year',
-                    count: 4,
-                    text: '4y'
-                }, {
-                    type: 'all',
-                    text: 'All'
-                }]
+                selected: 5
             },
 
             credits: {
-                text: 'Source: binance.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Powered by BGeometrics.com',
+                text: 'Powered by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
-                    x: -75,
-                    y: -85
+                    x: -70,
+                    y: -124
                 }                
             },
             responsive: {
@@ -258,6 +177,7 @@
             }
         });
     })();
+
     </script>
 
 </body>
