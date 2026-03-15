@@ -1,0 +1,43 @@
+/* Highcharts dark theme overrides – applied to all dark chart iframes */
+
+:root {
+    --highcharts-neutral-color-3: #ffffff;
+}
+
+.highcharts-axis-labels text,
+.highcharts-axis-title,
+.highcharts-legend-item text,
+.highcharts-title a,
+.highcharts-title,
+.highcharts-subtitle,
+.highcharts-range-selector-buttons text,
+.highcharts-range-input text,
+.highcharts-navigator-xaxis text,
+.highcharts-credits {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+}
+
+.highcharts-contextbutton .highcharts-button-symbol {
+    stroke: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+.highcharts-menu-item {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+.highcharts-menu {
+    background-color: #1a1a1a !important;
+    border: 1px solid #444 !important;
+    color: #dddddd !important;
+}
+
+.highcharts-popup input[type="text"],
+.highcharts-popup input[type="number"],
+.highcharts-popup select,
+.highcharts-annotation-toolbar input {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
