@@ -4,17 +4,17 @@
     <title>Bitcoin Distribution Coins Addresses 1 to 10 bitcoin</title>
 </head>
 <body>
-    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css">
-    <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css">
-    <script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
-    <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script>
-    <script src="https://code.highcharts.com/modules/price-indicator.js"></script>
-    <script src="https://code.highcharts.com/modules/full-screen.js"></script>
-    <script src="https://code.highcharts.com/modules/stock-tools.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <script src="../assets/stock/highstock.js"></script>
+    <script src="../assets/stock/indicators/indicators-all.js"></script>
+    <script src="../assets/stock/modules/drag-panes.js"></script>
+    <script src="../assets/modules/annotations-advanced.js"></script>
+    <script src="../assets/modules/price-indicator.js"></script>
+    <script src="../assets/modules/full-screen.js"></script>
+    <script src="../assets/modules/stock-tools.js"></script>
+    <script src="../assets/stock/modules/heikinashi.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
 
     
 
@@ -52,7 +52,7 @@
                             const chart = this.chart,
                                 isLogarithmic = chart.yAxis[1].logarithmic,
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
-                                iconURL = 'https://code.highcharts.com/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+                                iconURL = '../assets/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
