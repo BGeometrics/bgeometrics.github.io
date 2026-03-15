@@ -24,6 +24,39 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/style-dark.css" rel="stylesheet">
   <link href="assets/css/bgeometrics.css" rel="stylesheet">
+  <style>
+    .modal-content {
+      background-color: #1a1d27;
+      border: 1px solid #2a2d3a;
+      color: #e0e0e0;
+    }
+    .modal-header {
+      border-bottom: 1px solid #2a2d3a;
+    }
+    .modal-header .modal-title {
+      color: #ffffff;
+    }
+    .modal-header .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+    .modal-body {
+      color: #e0e0e0;
+    }
+    .modal-body .form-control {
+      background-color: #141722;
+      border: 1px solid #374151;
+      color: #e0e0e0;
+    }
+    .modal-body .form-control::placeholder {
+      color: #9ca3af;
+    }
+    .modal-body .form-control:focus {
+      background-color: #141722;
+      border-color: #10b981;
+      color: #e0e0e0;
+      box-shadow: 0 0 0 0.2rem rgba(16,185,129,0.15);
+    }
+  </style>
 
   <!-- Analytics -->
   <script defer src="https://analytics.bitcoin-data.com/script.js" data-website-id="4da96e58-05c9-4b77-a895-a890d3a68783"></script>
@@ -808,7 +841,7 @@
 
   <main id="main" class="main">
 
-	  <div id="notification" class="alert alert-info p-2 py-1" style="font-size: 0.75em; margin: -10px auto 0 auto;background-color: #f5f5f5; border: 1px solid #ddd; color: #333;">New <a href="https://bitcoin-data.com/api/scalar_dark.html">Bitcoin API</a> endpoints: BTC Exchanges InFlow, OutFlow, Resrerves, Crypto Market Cap and BTC Liquidations. <a href="https://bitcoin-data.com/api/mcp_dark.html">MCP Server API BGeometrics</a></div>
+	  <div id="notification" class="alert alert-info p-2 py-1" style="font-size: 0.75em; margin: -10px auto 0 auto;background-color: #1a1d27; border: 1px solid #2a2d3a; color: #9ca3af;">New <a href="https://bitcoin-data.com/api/scalar_dark.html">Bitcoin API</a> endpoints: BTC Exchanges InFlow, OutFlow, Resrerves, Crypto Market Cap and BTC Liquidations. <a href="https://bitcoin-data.com/api/mcp_dark.html">MCP Server API BGeometrics</a></div>
 
       <div id="myModal" class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
         <div class="modal-dialog">
