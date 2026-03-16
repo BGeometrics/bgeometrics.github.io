@@ -157,7 +157,7 @@ old_text="""
 new_text = """
     <script src="../assets/modules/accessibility.js"></script>
     <script src="../assets/themes/brand-dark.js"></script>
-    <link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
     <style>
         :root {
             --highcharts-neutral-color-3: #000000;
