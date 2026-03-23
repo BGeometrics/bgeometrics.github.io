@@ -1,0 +1,3 @@
+
+# Las librerías que utilizamos de highcharts las descargamos de https://code.highcharts.com/  
+Ejemplo: https://code.highcharts.com/stock/modules/hollowcandlestick.js
