@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
 <script>
     if (localStorage.getItem('profile-theme') === 'light') {
         document.documentElement.classList.add('light');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
     }
 </script>
 <style>
@@ -358,10 +359,12 @@
     function applyTheme(isLight) {
         if (isLight) {
             document.documentElement.classList.add('light');
+            document.documentElement.setAttribute('data-bs-theme', 'light');
             themeIcon.className = 'bi bi-moon-stars';
             themeToggleBtn.title = 'Switch to dark mode';
         } else {
             document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
             themeIcon.className = 'bi bi-sun';
             themeToggleBtn.title = 'Switch to light mode';
         }
