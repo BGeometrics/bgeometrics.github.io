@@ -7,32 +7,5 @@
     "price_pct_7d": -8.821478363451126,
     "nupl_zone": "Fear",
     "mvrv": 1.2636
-  },
-  {
-    "week_end": "2025-03-09",
-    "week_start": "2025-03-03",
-    "filename": "2025-03-09.html",
-    "price": 80358.19,
-    "price_pct_7d": -7.001446625312468,
-    "nupl_zone": "Hope",
-    "mvrv": 1.8183
-  },
-  {
-    "week_end": "2025-03-16",
-    "week_start": "2025-03-10",
-    "filename": "2025-03-16.html",
-    "price": 82367.93,
-    "price_pct_7d": 3.542533392583376,
-    "nupl_zone": "Hope",
-    "mvrv": 1.9296
-  },
-  {
-    "week_end": "2025-03-02",
-    "week_start": "2025-02-24",
-    "filename": "2025-03-02.html",
-    "price": 94130.0,
-    "price_pct_7d": 1.6110857014430342,
-    "nupl_zone": "Optimism",
-    "mvrv": 1.9891
   }
 ]
