@@ -1,0 +1,74 @@
+[
+  {
+    "week_end": "2026-03-22",
+    "week_start": "2026-03-16",
+    "filename": "2026-03-22.html",
+    "price": 68015.53,
+    "price_pct_7d": -8.821478363451126,
+    "nupl_zone": "Fear",
+    "mvrv": 1.2636
+  },
+  {
+    "week_end": "2026-03-15",
+    "week_start": "2026-03-09",
+    "filename": "2026-03-15.html",
+    "price": 72755.53,
+    "price_pct_7d": 6.370890831993988,
+    "nupl_zone": "Hope",
+    "mvrv": 1.3519
+  },
+  {
+    "week_end": "2026-03-08",
+    "week_start": "2026-03-02",
+    "filename": "2026-03-08.html",
+    "price": 66047.52,
+    "price_pct_7d": -4.03024185287144,
+    "nupl_zone": "Fear",
+    "mvrv": 1.2251
+  },
+  {
+    "week_end": "2026-03-01",
+    "week_start": "2026-02-23",
+    "filename": "2026-03-01.html",
+    "price": 65727.43,
+    "price_pct_7d": 1.7176610925334124,
+    "nupl_zone": "Fear",
+    "mvrv": 1.2173
+  },
+  {
+    "week_end": "2026-02-22",
+    "week_start": "2026-02-16",
+    "filename": "2026-02-22.html",
+    "price": 67665.24,
+    "price_pct_7d": -1.850680696803287,
+    "nupl_zone": "Fear",
+    "mvrv": 1.2486
+  },
+  {
+    "week_end": "2026-02-15",
+    "week_start": "2026-02-09",
+    "filename": "2026-02-15.html",
+    "price": 68576.66,
+    "price_pct_7d": -2.4191774295862665,
+    "nupl_zone": "Fear",
+    "mvrv": 1.262
+  },
+  {
+    "week_end": "2026-02-08",
+    "week_start": "2026-02-02",
+    "filename": "2026-02-08.html",
+    "price": 70351.74,
+    "price_pct_7d": -10.843777195302039,
+    "nupl_zone": "Fear",
+    "mvrv": 1.288
+  },
+  {
+    "week_end": "2026-02-01",
+    "week_start": "2026-01-26",
+    "filename": "2026-02-01.html",
+    "price": 77348.98,
+    "price_pct_7d": -12.628307333275723,
+    "nupl_zone": "Hope",
+    "mvrv": 1.4006
+  }
+]
