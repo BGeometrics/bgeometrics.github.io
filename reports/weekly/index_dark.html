@@ -1,30 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bitcoin Weekly Reports — BGeometrics</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Apply saved theme before CSS renders to avoid flash -->
+<script>
+    if (localStorage.getItem('profile-theme') === 'light') {
+        document.documentElement.classList.add('light');
+    }
+</script>
 <style>
-  body { background:#0d0d0d; color:#e0e0e0; font-family:'Nunito',sans-serif; }
-  .header { background:#000; border-bottom:1px solid #333; padding:0 20px; height:60px;
-            display:flex; align-items:center; }
-  .logo { display:flex; align-items:center; text-decoration:none; }
+  :root {
+    --bg-body:    #0f1117;
+    --bg-card:    #1a1d27;
+    --border:     #2a2d3a;
+    --text:       #e0e0e0;
+    --text-muted: #9ca3af;
+    --text-strong:#ffffff;
+  }
+  html.light {
+    --bg-body:    #f3f4f6;
+    --bg-card:    #ffffff;
+    --border:     #e5e7eb;
+    --text:       #374151;
+    --text-muted: #6b7280;
+    --text-strong:#111827;
+  }
+  * { box-sizing: border-box; }
+  body { background:var(--bg-body); color:var(--text); font-family:"Nunito",sans-serif;
+         margin:0; transition:background 0.25s, color 0.25s; }
+  /* ── Header ── */
+  .header { background:#000000; border-bottom:1px solid #333333; height:60px; padding:0 20px;
+            box-shadow:0px 2px 20px rgba(1,41,112,0.1); display:flex; align-items:center; }
+  .header-content { width:100%; display:flex; align-items:center; }
+  .logo { display:flex; align-items:center; text-decoration:none; line-height:1; }
   .logo img { max-height:26px; margin-right:6px; }
-  .logo span { font-size:22px; font-weight:700; color:#fff; }
+  .logo span { font-size:26px; font-weight:700; color:#ffffff; font-family:"Nunito",sans-serif; }
   .logo span:hover { color:#a7f3d0; }
-  .card { background:#1a1a1a; border:1px solid #2a2a2a; }
-  .card-header { background:#111; border-bottom:1px solid #2a2a2a; }
-  .table { color:#ccc; }
-  .table thead th { color:#888; border-color:#2a2a2a; font-size:0.75rem;
+  @media (max-width:576px) { .logo span { display:none; } }
+  .header-nav { margin-left:auto; display:flex; align-items:center; }
+  .header-nav a { color:#ffffff; text-decoration:none; font-size:22px; margin-right:25px; transition:color 0.2s; }
+  .header-nav a:hover { color:#a7f3d0; }
+  .header-nav .nav-label { font-size:0.6em; font-weight:600; letter-spacing:0.5px; }
+  .theme-toggle-btn { background:transparent; border:1px solid #444; color:#ccc;
+                      width:32px; height:32px; border-radius:8px; cursor:pointer;
+                      font-size:16px; display:flex; align-items:center; justify-content:center;
+                      margin-right:20px; transition:border-color 0.2s, color 0.2s; }
+  .theme-toggle-btn:hover { border-color:#10b981; color:#10b981; }
+  /* ── Content ── */
+  .card { background:var(--bg-card); border:1px solid var(--border); }
+  .table { color:var(--text); }
+  .table thead th { color:var(--text-muted); border-color:var(--border); font-size:0.75rem;
                     text-transform:uppercase; letter-spacing:.4px; }
-  .table td { border-color:#222; vertical-align:middle; }
-  .table-hover tbody tr:hover { background:#222 !important; }
+  .table td { border-color:var(--border); vertical-align:middle; }
+  .table-hover tbody tr:hover { background:var(--border) !important; }
   .zone-badge { display:inline-block; padding:2px 10px; border-radius:12px;
                 font-size:0.75rem; font-weight:700; }
-  h2 { color:#f0f0f0; }
+  h2 { color:var(--text-strong); }
   .pct-positive { color:#2ecc71; }
   .pct-negative { color:#e74c3c; }
   a.report-link { color:#a7f3d0; text-decoration:none; font-weight:600; }
@@ -34,10 +72,24 @@
 <body>
 
 <header class="header">
-  <a href="https://charts.bgeometrics.com/index.html" class="logo">
-    <img src="/assets/img/logo.png" alt="BGeometrics">
-    <span>BGeometrics</span>
-  </a>
+  <div class="header-content">
+    <a href="https://charts.bgeometrics.com/index.html" class="logo">
+      <img src="/assets/img/logo.png" alt="BGeometrics">
+      <span>BGeometrics</span>
+    </a>
+    <nav class="header-nav">
+      <a href="https://charts.bgeometrics.com/index.html" title="BGeometrics Charts"><span class="nav-label">Charts</span></a>
+      <a href="https://charts.bgeometrics.com/reports/weekly/index.html" title="Weekly Reports"><span class="nav-label">Reports</span></a>
+      <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html" title="Bitcoin API BGeometrics"><span class="nav-label">API</span></a>
+      <a href="https://bitcoin-data.com/bguser/pricing" title="Pricing API BGeometrics"><span class="nav-label">Pricing</span></a>
+      <a href="https://bitcoin-data.com/bguser/workspace_bg_dark.html" title="BGeometrics Workspace"><i class="bi bi-person-workspace"></i></a>
+      <a href="https://bitcoin-data.com/bguser/login" target="_blank" title="Login"><i class="bi bi-person"></i></a>
+      <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+      <button id="themeToggleBtn" class="theme-toggle-btn" title="Switch to light mode">
+        <i class="bi bi-sun" id="themeIcon"></i>
+      </button>
+    </nav>
+  </div>
 </header>
 
 <div class="container py-4" style="max-width:900px;">
@@ -236,5 +288,27 @@
     </div>
   </div>
 </div>
+
+<script>
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(isLight) {
+        if (isLight) {
+            document.documentElement.classList.add('light');
+            themeIcon.className = 'bi bi-moon-stars';
+            themeToggleBtn.title = 'Switch to dark mode';
+        } else {
+            document.documentElement.classList.remove('light');
+            themeIcon.className = 'bi bi-sun';
+            themeToggleBtn.title = 'Switch to light mode';
+        }
+    }
+    applyTheme(document.documentElement.classList.contains('light'));
+    themeToggleBtn.addEventListener('click', function() {
+        const isNowLight = !document.documentElement.classList.contains('light');
+        applyTheme(isNowLight);
+        localStorage.setItem('profile-theme', isNowLight ? 'light' : 'dark');
+    });
+</script>
 </body>
 </html>
