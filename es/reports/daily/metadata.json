@@ -1,0 +1,18 @@
+[
+  {
+    "report_date": "2025-03-17",
+    "filename": "2025-03-17.html",
+    "price": 84189.0,
+    "price_pct_24h": 2.2108968866887966,
+    "nupl_zone": "Hope",
+    "mvrv": 1.8989
+  },
+  {
+    "report_date": "2025-03-18",
+    "filename": "2025-03-18.html",
+    "price": 82344.66,
+    "price_pct_24h": -2.190713751202647,
+    "nupl_zone": "Hope",
+    "mvrv": 1.9912
+  }
+]
