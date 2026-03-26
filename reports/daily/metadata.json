@@ -8,11 +8,51 @@
     "mvrv": 1.8989
   },
   {
-    "report_date": "2025-03-18",
-    "filename": "2025-03-18.html",
-    "price": 82344.66,
-    "price_pct_24h": -2.190713751202647,
+    "report_date": "2025-03-26",
+    "filename": "2025-03-26.html",
+    "price": 86995.59,
+    "price_pct_24h": -0.708973864249969,
     "nupl_zone": "Hope",
-    "mvrv": 1.9912
+    "mvrv": 1.9967
+  },
+  {
+    "report_date": "2025-03-25",
+    "filename": "2025-03-25.html",
+    "price": 87616.77,
+    "price_pct_24h": 0.255648742152576,
+    "nupl_zone": "Optimism",
+    "mvrv": 1.9885
+  },
+  {
+    "report_date": "2025-03-24",
+    "filename": "2025-03-24.html",
+    "price": 87393.35,
+    "price_pct_24h": 2.407029547144858,
+    "nupl_zone": "Optimism",
+    "mvrv": 2.0027
+  },
+  {
+    "report_date": "2025-03-23",
+    "filename": "2025-03-23.html",
+    "price": 85339.21,
+    "price_pct_24h": 1.6410282918170254,
+    "nupl_zone": "Hope",
+    "mvrv": 2.0009
+  },
+  {
+    "report_date": "2025-03-22",
+    "filename": "2025-03-22.html",
+    "price": 83961.38,
+    "price_pct_24h": -0.2371289772750812,
+    "nupl_zone": "Hope",
+    "mvrv": 1.9664
+  },
+  {
+    "report_date": "2025-03-21",
+    "filename": "2025-03-21.html",
+    "price": 84160.95,
+    "price_pct_24h": 0.017754852547378457,
+    "nupl_zone": "Hope",
+    "mvrv": 1.9224
   }
 ]
