@@ -34,41 +34,5 @@
     "price_pct_7d": 1.7176610925334124,
     "nupl_zone": "Fear",
     "mvrv": 1.2173
-  },
-  {
-    "week_end": "2026-02-22",
-    "week_start": "2026-02-16",
-    "filename": "2026-02-22.html",
-    "price": 67665.24,
-    "price_pct_7d": -1.850680696803287,
-    "nupl_zone": "Fear",
-    "mvrv": 1.2486
-  },
-  {
-    "week_end": "2026-02-15",
-    "week_start": "2026-02-09",
-    "filename": "2026-02-15.html",
-    "price": 68576.66,
-    "price_pct_7d": -2.4191774295862665,
-    "nupl_zone": "Fear",
-    "mvrv": 1.262
-  },
-  {
-    "week_end": "2026-02-08",
-    "week_start": "2026-02-02",
-    "filename": "2026-02-08.html",
-    "price": 70351.74,
-    "price_pct_7d": -10.843777195302039,
-    "nupl_zone": "Fear",
-    "mvrv": 1.288
-  },
-  {
-    "week_end": "2026-02-01",
-    "week_start": "2026-01-26",
-    "filename": "2026-02-01.html",
-    "price": 77348.98,
-    "price_pct_7d": -12.628307333275723,
-    "nupl_zone": "Hope",
-    "mvrv": 1.4006
   }
 ]
