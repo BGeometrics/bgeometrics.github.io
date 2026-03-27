@@ -7,7 +7,7 @@ URL producción: `https://charts.bgeometrics.com`
 
 **Los archivos HTML del directorio raíz son generados automáticamente. No editarlos directamente.**
 
-Para regenerar todas las páginas:
+Para regenerar todas las páginas html, añadiendo el menú y también se generan las páginas dark.
 
 ```bash
 ./tools/web-generation-pages-all.sh
@@ -37,7 +37,7 @@ Para añadir una nueva página:
 1. Crear el archivo `web-generation-end-<nombre>.html` en `tools/`
 2. Añadir la entrada en `web-generation-pages-all.txt`
 3. Añadir la opción en el menú de `web-generation-model.html`
-4. Ejecutar el script de generación
+4. Ejecutar el script de generación ./tools/web-generation-pages-all.sh 
 
 ## Analytics
 
@@ -61,6 +61,8 @@ Cada página tiene dos variantes:
 - `nombre.html` — tema claro
 - `nombre_dark.html` — tema oscuro (es el predeterminado para el índice)
 
+
+
 ## Proyectos relacionados
 BGapi es la API donde se exponen los endpoints
 BGUser es el proyecto con el alta del usuario y las opciones de suscripción
@@ -68,3 +70,4 @@ BGsuggestion es el proyecto con las alertas
 bitcoin-scripts scripts de python donde se cargan algunos datos, se generan ficheros json y con diversas utilidades
 bitcoin_metrics proyecto con la carga de datos bitcoin del full node a la base de datos PostgreSQL por bloque y diaria y con el cáculo de las métricas  
 BGmcp es un proyecto MCP Server para conectarse a la API
+
