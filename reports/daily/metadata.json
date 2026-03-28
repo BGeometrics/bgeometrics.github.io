@@ -46,5 +46,13 @@
     "price_pct_24h": -0.48607904512029865,
     "nupl_zone": "Fear",
     "mvrv": 1.3044
+  },
+  {
+    "report_date": "2026-03-27",
+    "filename": "2026-03-27.html",
+    "price": 66191.61,
+    "price_pct_24h": -3.808838995549804,
+    "nupl_zone": "Fear",
+    "mvrv": 1.233
   }
 ]
