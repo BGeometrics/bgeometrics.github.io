@@ -886,15 +886,19 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.show(); // Show the modal
 });
 
-document.getElementById('emailForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form from reloading the page
+document.getElementById('emailForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
     const email = document.getElementById('email').value.trim();
-    if (email) {
-        //window.location.href = `/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
-        window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
-        //window.location.href = `https://charts.bgeometrics.com/bg_alert_email.html?email=${encodeURIComponent(email)}`;
-    } else {
+    if (!email) {
         alert('Please enter a valid email address.');
+        return;
+    }
+    try {
+        const res = await fetch(`https://bitcoin-data.com/suggestion/api/email/route?email=${encodeURIComponent(email)}`);
+        const data = await res.json();
+        window.location.href = data.redirectUrl;
+    } catch (e) {
+        window.location.href = `https://bitcoin-data.com/suggestion/alert-email.html?email=${encodeURIComponent(email)}`;
     }
 });
 
