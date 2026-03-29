@@ -792,20 +792,20 @@
 
       <div id="myModal" class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="emailModalLabel">Email where notifications will be received</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content" data-bs-theme="dark" style="background-color: #2b2b2b; color: #bbbbbb; border: 1px solid #3a3a3a;">
+                <div class="modal-header" style="border-bottom: 1px solid #3a3a3a;">
+                    <h5 class="modal-title" id="emailModalLabel" style="color: #ffffff;">Email where notifications will be received</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="emailForm">
                         <div class="mb-3">
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required style="background-color: #1e1e1e; color: #bbbbbb; border-color: #3a3a3a;">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="border-top: 1px solid #3a3a3a;">
                     <p>
                         There is a maximum of 3 alarms by email.
                     </p>
