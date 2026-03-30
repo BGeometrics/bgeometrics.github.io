@@ -17,7 +17,6 @@
           </div>
           <div class="ms-auto text-end small text-muted">
             <div id="last-checked"></div>
-            <div id="refresh-countdown"></div>
           </div>
         </div>
 
@@ -118,8 +117,6 @@
     'use strict';
 
     var REFRESH_INTERVAL = 60; // seconds
-    var countdownTimer = null;
-    var secondsLeft = 0;
 
     var STATUS_CONFIG = {
       badge: { operational: 'bg-success', degraded: 'bg-warning text-dark', down: 'bg-danger', unknown: 'bg-secondary' },
@@ -260,17 +257,7 @@
     }
 
     function startCountdown() {
-      if (countdownTimer) clearInterval(countdownTimer);
-      secondsLeft = REFRESH_INTERVAL;
-      countdownTimer = setInterval(function () {
-        secondsLeft--;
-        var el = document.getElementById('refresh-countdown');
-        if (el) el.textContent = 'Next check in ' + secondsLeft + 's';
-        if (secondsLeft <= 0) {
-          clearInterval(countdownTimer);
-          loadStatus();
-        }
-      }, 1000);
+      setTimeout(loadStatus, REFRESH_INTERVAL * 1000);
     }
 
     function loadStatus() {
