@@ -1,6 +1,7 @@
 /**
  */
 var names = [
+{ name: "System Status", link: "status.html" },
 { name: "Bitcoin Price USD", link: "reports/bitcoin_price_usd_g.html" },
 { name: "Bitcoin Capitalization", link: "capitalization.html" },
 { name: "Bitcoin Realized Capitalization", link: "capitalization.html" },
