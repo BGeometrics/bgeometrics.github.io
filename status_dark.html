@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <link rel="canonical" href="https://charts.bgeometrics.com/miner_dashboard.html">
+  <link rel="canonical" href="https://charts.bgeometrics.com/status.html">
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="__keywords__" name="keywords">
+  <meta content="BGeometrics System Status - API health and data freshness" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -201,7 +201,7 @@
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="https://charts.bgeometrics.com/btc_price_dark.html">
               <i class="bi bi-circle"></i><span>Bitcoin Price (1h)</span>
@@ -802,76 +802,97 @@
       <div class="row">
         <div id="searchResults"></div>
 
-	<a href="#puell_multiple"></a>
+        <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/puell_multiple.html" allow="fullscreen" title="Bitcoin Puell Multiple" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="" allow="fullscreen" title="System Status" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/miner_sell_pressure.html" allow="fullscreen" title="Bitcoin Miner Sell Pressure" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
           </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/miner_reserves.html" allow="fullscreen" title="Bitcoin Miner Reserves" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/miner_outflow.html" allow="fullscreen" title="Bitcoin Miner Outflow" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/hashrate.html" allow="fullscreen" title="Bitcoin Hashrate" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div><!-- End Left side columns -->
 
       </div>
     </section>
     <br>
     <section>
       <div class="container">
-        <a href="miner_dashboard.html">
-          <h5>Bitcoin Miner Dashboard</h5>
-	</a>
-        <p> 
-          Bitcoin mining charts display data and trends related to the mining process.
-          <br><br>
-          Mining in Bitcoin is the process by which transactions are validated and recorded on the blockchain, by performing SHA256 on transactions.
-          <br><br>
-          These charts provide insight into the health, security, and sustainability of the network.
-          <br><br>
-          Miners use this data to optimize their operations and make informed decisions about when and how to mine, and investors can use these charts to assess the state of the network and make predictions about the future price of Bitcoin.
-        </p>
-      </div>
 
+        <h4 class="mb-1">System Status</h4>
+        <p class="text-muted mb-3" style="font-size:0.875rem;">
+          Real-time status of <strong>bitcoin-data.com</strong> APIs and data freshness.
+          Auto-refreshes every 60 seconds.
+        </p>
+
+        <!-- Overall banner -->
+        <div id="status-banner" class="alert d-flex align-items-center gap-2 mb-4 p-3" role="alert" style="border-radius:8px;">
+          <span id="status-icon" style="font-size:1.5rem;">⏳</span>
+          <div>
+            <strong id="status-title">Checking status…</strong>
+            <div id="status-subtitle" class="small"></div>
+          </div>
+          <div class="ms-auto text-end small text-muted">
+            <div id="last-checked"></div>
+            <div id="refresh-countdown"></div>
+          </div>
+        </div>
+
+        <!-- Service cards -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="card-title mb-0">Bitcoin Data API</h6>
+                  <span id="api-badge" class="badge bg-secondary">–</span>
+                </div>
+                <div class="small text-muted mb-2">bitcoin-data.com</div>
+                <div class="small" id="api-db-primary"></div>
+                <div class="small" id="api-db-venus"></div>
+                <div class="small mt-1" id="api-summary"></div>
+                <div class="small text-muted mt-1" id="api-refresh-ms"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="card-title mb-0">Block API</h6>
+                  <span id="block-badge" class="badge bg-secondary">–</span>
+                </div>
+                <div class="small text-muted mb-2">bitcoin-data.com/api-block</div>
+                <div class="small" id="block-db"></div>
+                <div class="small mt-1" id="block-summary"></div>
+                <div class="small text-muted mt-1" id="block-refresh-ms"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category accordion: Bitcoin Data API -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Data API — Endpoints by Category</h6>
+        <div class="accordion mb-4" id="accordion-api">
+          <!-- categories rendered by JS -->
+        </div>
+
+        <!-- Category accordion: Block API -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Block API — Endpoints by Category</h6>
+        <div class="accordion mb-4" id="accordion-block">
+          <!-- categories rendered by JS -->
+        </div>
+
+        <!-- Info note -->
+        <div class="alert alert-light border small text-muted">
+          <strong>Data update schedule:</strong>
+          Daily on-chain metrics are updated each day at approximately 03:00 UTC.
+          Block-level metrics update with each new Bitcoin block (~every 10 minutes).
+          Finance and derivatives data updates from external providers on their own schedules.
+        </div>
+
+      </div>
     </section>
 
   </main><!-- End #main -->
@@ -893,7 +914,8 @@
         <a href="terms.html">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
         <a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
         <a href="subscription.html">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
-        <a href="https://bitcoin-data.com/bguser/changelog">What's new</a>
+        <a href="https://bitcoin-data.com/bguser/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="status.html">Status</a>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -908,6 +930,214 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var REFRESH_INTERVAL = 60; // seconds
+    var countdownTimer = null;
+    var secondsLeft = 0;
+
+    var STATUS_CONFIG = {
+      badge: { operational: 'bg-success', degraded: 'bg-warning text-dark', down: 'bg-danger', unknown: 'bg-secondary' },
+      label: { operational: 'Operational', degraded: 'Degraded', down: 'Down', unknown: 'Unknown' },
+      dot:   { operational: '🟢', degraded: '🟡', down: '🔴', unknown: '⚪' },
+      banner: {
+        operational: { cls: 'alert-success', icon: '✅', title: 'All Systems Operational' },
+        degraded:    { cls: 'alert-warning', icon: '⚠️', title: 'Partial Degradation' },
+        down:        { cls: 'alert-danger',  icon: '🔴', title: 'Service Disruption' },
+        unknown:     { cls: 'alert-light',   icon: '⏳', title: 'Checking status…' }
+      }
+    };
+
+    function statusOrUnknown(s) {
+      return (s && STATUS_CONFIG.label[s]) ? s : 'unknown';
+    }
+
+    function dbDot(s) { return s === 'up' ? '🟢' : '🔴'; }
+
+    function relativeDate(dateStr) {
+      if (!dateStr) return '–';
+      try {
+        var d = new Date(dateStr.substring(0, 10) + 'T00:00:00Z');
+        var diffDays = Math.floor((Date.now() - d.getTime()) / 86400000);
+        if (diffDays === 0) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        return diffDays + ' days ago';
+      } catch (e) { return dateStr; }
+    }
+
+    function fetchWithTimeout(url, ms) {
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, ms);
+      return fetch(url, { signal: ctrl.signal })
+        .then(function (r) { clearTimeout(timer); return r; })
+        .catch(function (e) { clearTimeout(timer); throw e; });
+    }
+
+    function renderBanner(overall) {
+      var cfg = STATUS_CONFIG.banner[overall] || STATUS_CONFIG.banner.unknown;
+      var banner = document.getElementById('status-banner');
+      banner.className = 'alert d-flex align-items-center gap-2 mb-4 p-3 ' + cfg.cls;
+      document.getElementById('status-icon').textContent = cfg.icon;
+      document.getElementById('status-title').textContent = cfg.title;
+    }
+
+    function renderApiCard(data) {
+      var s = statusOrUnknown(data ? data.overallStatus : null);
+      document.getElementById('api-badge').className = 'badge ' + STATUS_CONFIG.badge[s];
+      document.getElementById('api-badge').textContent = STATUS_CONFIG.label[s];
+
+      if (data) {
+        var pd = data.primaryDatabase || {}, vd = data.venusDatabase || {};
+        document.getElementById('api-db-primary').innerHTML =
+          dbDot(pd.status) + ' Primary DB &nbsp;<span class="text-muted">' + (pd.latencyMs || '–') + ' ms</span>';
+        document.getElementById('api-db-venus').innerHTML =
+          dbDot(vd.status) + ' Venus DB &nbsp;<span class="text-muted">' + (vd.latencyMs || '–') + ' ms</span>';
+        document.getElementById('api-summary').innerHTML =
+          '<strong>' + (data.endpointsOk || 0) + '</strong> / ' + (data.totalEndpoints || 0) + ' endpoints operational';
+        document.getElementById('api-refresh-ms').textContent =
+          'Last check took ' + (data.refreshMs || '–') + ' ms';
+      } else {
+        document.getElementById('api-db-primary').innerHTML = '⚪ Primary DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('api-db-venus').innerHTML   = '⚪ Venus DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('api-summary').textContent  = 'Unable to reach service';
+        document.getElementById('api-refresh-ms').textContent = '';
+      }
+    }
+
+    function renderBlockCard(data) {
+      var s = statusOrUnknown(data ? data.overallStatus : null);
+      document.getElementById('block-badge').className = 'badge ' + STATUS_CONFIG.badge[s];
+      document.getElementById('block-badge').textContent = STATUS_CONFIG.label[s];
+
+      if (data) {
+        var db = data.database || {};
+        document.getElementById('block-db').innerHTML =
+          dbDot(db.status) + ' Block DB &nbsp;<span class="text-muted">' + (db.latencyMs || '–') + ' ms</span>';
+        document.getElementById('block-summary').innerHTML =
+          '<strong>' + (data.totalEndpoints || 0) + '</strong> endpoints';
+        document.getElementById('block-refresh-ms').textContent =
+          'Last check took ' + (data.refreshMs || '–') + ' ms';
+      } else {
+        document.getElementById('block-db').innerHTML = '⚪ Block DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('block-summary').textContent = 'Unable to reach service';
+        document.getElementById('block-refresh-ms').textContent = '';
+      }
+    }
+
+    function renderAccordion(containerId, categories, prefix) {
+      var container = document.getElementById(containerId);
+      if (!container || !categories || !categories.length) {
+        if (container) container.innerHTML = '<p class="text-muted small">No data available.</p>';
+        return;
+      }
+      var html = '';
+      categories.forEach(function (cat, idx) {
+        var s = statusOrUnknown(cat.status);
+        var endpointsHtml = '';
+        if (cat.endpoints && cat.endpoints.length) {
+          endpointsHtml = '<table class="table table-sm table-borderless mb-0" style="font-size:0.8rem;">' +
+            '<thead><tr><th>Endpoint</th><th>Last Data</th><th>Status</th></tr></thead><tbody>';
+          cat.endpoints.forEach(function (ep) {
+            endpointsHtml += '<tr>' +
+              '<td><code>' + ep + '</code></td>' +
+              '<td>' + relativeDate(cat.lastDataPoint) + '</td>' +
+              '<td>' + STATUS_CONFIG.dot[s] + ' ' + STATUS_CONFIG.label[s] + '</td>' +
+              '</tr>';
+          });
+          endpointsHtml += '</tbody></table>';
+        }
+        var itemId = prefix + '-' + cat.id;
+        html += '<div class="accordion-item">' +
+          '<h2 class="accordion-header" id="h-' + itemId + '">' +
+          '<button class="accordion-button collapsed py-2" type="button" ' +
+          'data-bs-toggle="collapse" data-bs-target="#c-' + itemId + '" ' +
+          'aria-expanded="false" aria-controls="c-' + itemId + '" style="font-size:0.875rem;">' +
+          '<span class="me-2">' + STATUS_CONFIG.dot[s] + '</span>' +
+          '<strong>' + cat.name + '</strong>' +
+          '<span class="ms-2 badge ' + STATUS_CONFIG.badge[s] + ' fw-normal">' + STATUS_CONFIG.label[s] + '</span>' +
+          '<span class="ms-2 text-muted small">' + (cat.endpointCount || (cat.endpoints ? cat.endpoints.length : 0)) + ' endpoints</span>' +
+          (cat.lastDataPoint ? '<span class="ms-2 text-muted small">· Last data: ' + cat.lastDataPoint.substring(0,10) + '</span>' : '') +
+          (cat.queryMs ? '<span class="ms-2 text-muted small">· ' + cat.queryMs + ' ms</span>' : '') +
+          '</button></h2>' +
+          '<div id="c-' + itemId + '" class="accordion-collapse collapse" aria-labelledby="h-' + itemId + '">' +
+          '<div class="accordion-body p-2">' + endpointsHtml + '</div>' +
+          '</div></div>';
+      });
+      container.innerHTML = html;
+    }
+
+    function updateTimestamp() {
+      var now = new Date();
+      var hh = String(now.getUTCHours()).padStart(2, '0');
+      var mm = String(now.getUTCMinutes()).padStart(2, '0');
+      var ss = String(now.getUTCSeconds()).padStart(2, '0');
+      document.getElementById('last-checked').textContent = 'Last checked: ' + hh + ':' + mm + ':' + ss + ' UTC';
+    }
+
+    function startCountdown() {
+      if (countdownTimer) clearInterval(countdownTimer);
+      secondsLeft = REFRESH_INTERVAL;
+      countdownTimer = setInterval(function () {
+        secondsLeft--;
+        var el = document.getElementById('refresh-countdown');
+        if (el) el.textContent = 'Next check in ' + secondsLeft + 's';
+        if (secondsLeft <= 0) {
+          clearInterval(countdownTimer);
+          loadStatus();
+        }
+      }, 1000);
+    }
+
+    function loadStatus() {
+      var apiUrl   = 'https://bitcoin-data.com/v1/status';
+      var blockUrl = 'https://bitcoin-data.com/api-block/v1/status';
+
+      Promise.allSettled([
+        fetchWithTimeout(apiUrl, 12000).then(function (r) { return r.json(); }),
+        fetchWithTimeout(blockUrl, 12000).then(function (r) { return r.json(); })
+      ]).then(function (results) {
+        var apiData   = results[0].status === 'fulfilled' ? results[0].value : null;
+        var blockData = results[1].status === 'fulfilled' ? results[1].value : null;
+
+        // Overall status
+        var overall = 'unknown';
+        if (apiData && blockData) {
+          var statuses = [apiData.overallStatus, blockData.overallStatus];
+          if (statuses.every(function (s) { return s === 'operational'; })) overall = 'operational';
+          else if (statuses.some(function (s) { return s === 'down'; })) overall = 'down';
+          else overall = 'degraded';
+        } else if (apiData) {
+          overall = apiData.overallStatus || 'unknown';
+        } else if (blockData) {
+          overall = blockData.overallStatus || 'unknown';
+        }
+
+        renderBanner(overall);
+        renderApiCard(apiData);
+        renderBlockCard(blockData);
+
+        if (apiData && apiData.categories) {
+          renderAccordion('accordion-api', apiData.categories, 'api');
+        }
+        if (blockData) {
+          var blockCats = [];
+          if (blockData.realizedPrice) blockCats.push(blockData.realizedPrice);
+          if (blockData.techniques)    blockCats.push(blockData.techniques);
+          renderAccordion('accordion-block', blockCats, 'blk');
+        }
+
+        updateTimestamp();
+        startCountdown();
+      });
+    }
+
+    // Initial load
+    loadStatus();
+  })();
+  </script>
 
 </body>
 

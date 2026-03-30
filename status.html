@@ -2,14 +2,12 @@
 <html lang="en">
 
 <head>
-  <link rel="canonical" href="https://charts.bgeometrics.com/miner_dashboard.html">
-
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="__keywords__" name="keywords">
+  <meta content="BGeometrics System Status - API health and data freshness" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -22,7 +20,7 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/style-dark.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/bgeometrics.css" rel="stylesheet">
 
   <!-- Analytics -->
@@ -35,7 +33,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="https://charts.bgeometrics.com/index_dark.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+      <a href="https://charts.bgeometrics.com/index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
         <img src="assets/img/logo.png" alt="BGeometrics">
         <span class="d-none d-lg-block">BGeometrics</span>
       </a>
@@ -44,7 +42,7 @@
 
     <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" class="form-control" id="searchInput" placeholder="Search" title="Enter search keyword" onkeydown="handleKeyPressDark(event)">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search" title="Enter search keyword" onkeydown="handleKeyPress(event)">
         <button class="btn btn-outline-secondary" type="button" onclick="search()"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
@@ -59,10 +57,10 @@
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown"></li>
-          <a href="https://charts.bgeometrics.com/reports/index_dark.html" id="reports" class="nav-link nav-icon" alt="Reports" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reports Bitcoin BGeometrics">
+          <a href="https://charts.bgeometrics.com/reports/index.html" id="reports" class="nav-link nav-icon" alt="Reports" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reports Bitcoin BGeometrics">
             <span style="font-size: 0.6em;">Reports</span>
           </a>
-          <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html" id="api" class="nav-link nav-icon" alt="Bitcoin API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bitcoin API BGeometrics">
+          <a href="https://charts.bgeometrics.com/bitcoin_api.html" id="api" class="nav-link nav-icon" alt="Bitcoin API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Bitcoin API BGeometrics">
             <span style="font-size: 0.6em;">API</span>
           </a>
           <a href="https://bitcoin-data.com/bguser/pricing" id="pricing" class="nav-link nav-icon" alt="Pricing API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pricing API BGeometrics">
@@ -71,7 +69,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a href="bg_alert_modal_dark.html" id="openModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
+          <a href="bg_alert_modal.html" id="openModalLink" class="nav-link nav-icon" alt="BGeometrics Alerts">
 	    <i class="bi bi-bell"></i>
           </a>
         </li>
@@ -83,7 +81,7 @@
         </li>    
 
         <li class="nav-item dropdown">
-          <a class="nav-link nav-icon" href="workspace_dark.html" alt="BGeometrics Workspace">
+          <a class="nav-link nav-icon" href="workspace.html" alt="BGeometrics Workspace">
 	    <i class="bi bi-person-workspace"></i>
           </a>
         </li>
@@ -97,7 +95,7 @@
 	<li>
           <div class="dropdown d-inline language-switcher">
             <button class="btn btn-light dropdown-toggle" type="button" id="modeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <span id="currentMode">Dark</span>
+              <span id="currentMode">Light</span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="modeDropdown">
               <li>
@@ -134,63 +132,63 @@
         </a>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/ohlc_dark.html">
+            <a href="https://charts.bgeometrics.com/ohlc.html">
               <i class="bi bi-circle"></i><span>BTC OHLC</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_short_term_trend_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_short_term_trend.html">
               <i class="bi bi-circle"></i><span>BTC Short Term Trend</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_demand_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_demand.html">
               <i class="bi bi-circle"></i><span>BTC Demand</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/miner_dashboard_dark.html">
+            <a href="https://charts.bgeometrics.com/miner_dashboard.html">
               <i class="bi bi-circle"></i><span>BTC Miner</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_trend_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_trend.html">
               <i class="bi bi-circle"></i><span>BTC Trend</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_market_peaks_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_market_peaks.html">
               <i class="bi bi-circle"></i><span>BTC Market Peaks</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_market_floors_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_market_floors.html">
               <i class="bi bi-circle"></i><span>BTC Market Bottoms</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_workspace_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_workspace.html">
               <i class="bi bi-circle"></i><span>BTC Workspaces</span>
 	    </a>
           </li>
         </ul>
         <ul id="dashboard-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dashboard_workspace_400_dark.html">
+            <a href="https://charts.bgeometrics.com/dashboard_workspace_400.html">
               <i class="bi bi-circle"></i><span>BTC Workspaces 8</span>
 	    </a>
           </li>
@@ -201,54 +199,54 @@
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="components-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/btc_price_dark.html">
+            <a href="https://charts.bgeometrics.com/btc_price.html">
               <i class="bi bi-circle"></i><span>Bitcoin Price (1h)</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_price_usd_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_price_usd_g.html">
               <i class="bi bi-circle"></i><span>Bitcoin Price</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/ohlc_dark.html">
+            <a href="https://charts.bgeometrics.com/ohlc.html">
               <i class="bi bi-circle"></i><span>OHLC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/ohlc_7d_dark.html">
+            <a href="https://charts.bgeometrics.com/ohlc_7d.html">
               <i class="bi bi-circle"></i><span>OHLC Week</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/ohlc_4h_dark.html">
+            <a href="https://charts.bgeometrics.com/ohlc_4h.html">
               <i class="bi bi-circle"></i><span>OHLC 4 Hours</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/ohlc_1m_dark.html">
+            <a href="https://charts.bgeometrics.com/ohlc_1m.html">
               <i class="bi bi-circle"></i><span>Price Live</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/moving_average_dark.html">
+            <a href="https://charts.bgeometrics.com/moving_average.html">
               <i class="bi bi-circle"></i><span>BTC Moving Average</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/capitalization_dark.html">
+            <a href="https://charts.bgeometrics.com/capitalization.html">
               <i class="bi bi-circle"></i><span>BTC Capitalization</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_price_usd_day_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_price_usd_day_g.html">
               <i class="bi bi-circle"></i><span>BTC Price a day like</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/pi_cycle_dark.html">
+            <a href="https://charts.bgeometrics.com/pi_cycle.html">
               <i class="bi bi-circle"></i><span>Pi Cycle</span>
             </a>
           </li>
@@ -261,137 +259,137 @@
         </a>
         <ul id="market-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/realized_price_g_dark.html">
+            <a href="https://charts.bgeometrics.com/realized_price_g.html">
               <i class="bi bi-circle"></i><span>Realized and Delta Price</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/hodl_waves_10_dark.html">
+            <a href="https://charts.bgeometrics.com/hodl_waves_10.html">
               <i class="bi bi-circle"></i><span>Hodl Waves</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/hodl_waves_realized_cap_dark.html">
+            <a href="https://charts.bgeometrics.com/hodl_waves_realized_cap.html">
               <i class="bi bi-circle"></i><span>Hodl Waves Realized Cap</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/hodl_waves_supply_dark.html">
+            <a href="https://charts.bgeometrics.com/hodl_waves_supply.html">
               <i class="bi bi-circle"></i><span>Hodl Waves Supply</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/nupl_dark.html">
+            <a href="https://charts.bgeometrics.com/nupl.html">
               <i class="bi bi-circle"></i><span>NUPL</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/nrpl_dark.html">
+            <a href="https://charts.bgeometrics.com/nrpl.html">
               <i class="bi bi-circle"></i><span>NRPL</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/sth_realized_price_dark.html">
+            <a href="https://charts.bgeometrics.com/sth_realized_price.html">
               <i class="bi bi-circle"></i><span>Realized Price STH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/lth_realized_price_dark.html">
+            <a href="https://charts.bgeometrics.com/lth_realized_price.html">
               <i class="bi bi-circle"></i><span>Realized Price LTH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/sopr_dark.html">
+            <a href="https://charts.bgeometrics.com/sopr.html">
               <i class="bi bi-circle"></i><span>SOPR</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/sth_sopr_dark.html">
+            <a href="https://charts.bgeometrics.com/sth_sopr.html">
               <i class="bi bi-circle"></i><span>SOPR STH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/lth_sopr_dark.html">
+            <a href="https://charts.bgeometrics.com/lth_sopr.html">
               <i class="bi bi-circle"></i><span>SOPR LTH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/mvrv_dark.html">
+            <a href="https://charts.bgeometrics.com/mvrv.html">
               <i class="bi bi-circle"></i><span>MVRV Z-Score</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/mvrv_ratio_dark.html">
+            <a href="https://charts.bgeometrics.com/mvrv_ratio.html">
               <i class="bi bi-circle"></i><span>MVRV Ratio</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/sth_mvrv_dark.html">
+            <a href="https://charts.bgeometrics.com/sth_mvrv.html">
               <i class="bi bi-circle"></i><span>MVRV STH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/lth_mvrv_dark.html">
+            <a href="https://charts.bgeometrics.com/lth_mvrv.html">
               <i class="bi bi-circle"></i><span>MVRV LTH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_realized_price_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_realized_price.html">
               <i class="bi bi-circle"></i><span>Realized Price Distribution</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/aviv_dark.html">
+            <a href="https://charts.bgeometrics.com/aviv.html">
               <i class="bi bi-circle"></i><span>AVIV Ratio</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/nvts_bg_dark.html">
+            <a href="https://charts.bgeometrics.com/nvts_bg.html">
               <i class="bi bi-circle"></i><span>Dynamic Range NVT</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/cdd_dark.html">
+            <a href="https://charts.bgeometrics.com/cdd.html">
               <i class="bi bi-circle"></i><span>Coins Days Destroyed</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_cdd_ajusted_90dma_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_cdd_ajusted_90dma_g.html">
               <i class="bi bi-circle"></i><span>CDD Ajusted 90dma</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/vdd_dark.html">
+            <a href="https://charts.bgeometrics.com/vdd.html">
               <i class="bi bi-circle"></i><span>VDD Multiple</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/realized_profit_loss_ratio_dark.html">
+            <a href="https://charts.bgeometrics.com/realized_profit_loss_ratio.html">
               <i class="bi bi-circle"></i><span>Realized Profit Loss Ratio</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/realized_profit_loss_lth_sth_dark.html">
+            <a href="https://charts.bgeometrics.com/realized_profit_loss_lth_sth.html">
               <i class="bi bi-circle"></i><span>Realized Profit Loss LTH STH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_liveliness_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_liveliness_g.html">
               <i class="bi bi-circle"></i><span>Bitcoin Liveliness</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/supply_in_profit_dark.html">
+            <a href="https://charts.bgeometrics.com/supply_in_profit.html">
               <i class="bi bi-circle"></i><span>Supply in Profit Loss</span>
             </a>
           </li>
 	  <li>
-            <a href="https://charts.bgeometrics.com/supply_lth_sth_dark_dark.html">
+            <a href="https://charts.bgeometrics.com/supply_lth_sth_dark.html">
               <i class="bi bi-circle"></i><span>Supply LTH STH</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/rhodl_1m_dark.html">
+            <a href="https://charts.bgeometrics.com/rhodl_1m.html">
               <i class="bi bi-circle"></i><span>RHodl 1m</span>
             </a>
           </li>
@@ -404,107 +402,107 @@
         </a>
         <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/address_active_dark.html">
+            <a href="https://charts.bgeometrics.com/address_active.html">
               <i class="bi bi-circle"></i><span>Active Addresses</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_distribution_coins_tables_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_distribution_coins_tables.html">
               <i class="bi bi-circle"></i><span>BTC Coins Distribution</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_distribution_addr_tables_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_distribution_addr_tables.html">
               <i class="bi bi-circle"></i><span>BTC Addresses Distribution</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_distribution_coin_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_distribution_coin_g.html">
               <i class="bi bi-circle"></i><span>Coins</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_coin_humpback_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_coin_humpback.html">
               <i class="bi bi-circle"></i><span>Coins Humpback > 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_coin_whale_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_coin_whale.html">
               <i class="bi bi-circle"></i><span>Coins Whale 1K - 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_coin_shark_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_coin_shark.html">
               <i class="bi bi-circle"></i><span>Coins Shark 100 - 1K BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_coin_fish_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_coin_fish.html">
               <i class="bi bi-circle"></i><span>Coins Fish 10 - 100 BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_coin_crab_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_coin_crab.html">
               <i class="bi bi-circle"></i><span>Coins Crab 1 - 10 BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_coin_shrimp_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_coin_shrimp.html">
               <i class="bi bi-circle"></i><span>Coins Shrimp < 1 BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_humpback_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_humpback.html">
               <i class="bi bi-circle"></i><span>Addr Humpback > 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/distribution_addr_whale_dark.html">
+            <a href="https://charts.bgeometrics.com/distribution_addr_whale.html">
               <i class="bi bi-circle"></i><span>Addr Whale 1K - 10K BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_shark_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_shark.html">
               <i class="bi bi-circle"></i><span>Addr Shark 100 - 1K BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_fish_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_fish.html">
               <i class="bi bi-circle"></i><span>Addr Fish 10 - 100 BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_crab_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_crab.html">
               <i class="bi bi-circle"></i><span>Addr Crab 1 - 10 BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_shrimp_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_addr_g_shrimp.html">
               <i class="bi bi-circle"></i><span>Addr Shrimp < 1 BTC</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_whale_accumulation_heatmap_g_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_whale_accumulation_heatmap_g.html">
               <i class="bi bi-circle"></i><span>Whale Accumulation Heat Map</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_whale_30d_sum_g_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_whale_30d_sum_g.html">
               <i class="bi bi-circle"></i><span>Whale Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_shark_30d_sum_g_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_shark_30d_sum_g.html">
               <i class="bi bi-circle"></i><span>Shark Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_shrimp_30d_sum_g_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_shrimp_30d_sum_g.html">
               <i class="bi bi-circle"></i><span>Shrimp Net Position BTC 30 days</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_pie_g_dark.html">
+            <a href="https://charts.bgeometrics.com/reports/bitcoin_distribution_coin_pie_g.html">
               <i class="bi bi-circle"></i><span>Distribution two years</span>
             </a>
           </li>
@@ -517,22 +515,22 @@
         </a>
         <ul id="miners-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/puell_multiple_dark.html">
+            <a href="https://charts.bgeometrics.com/puell_multiple.html">
               <i class="bi bi-circle"></i><span>Puell Multiple</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/hashrate_dark.html">
+            <a href="https://charts.bgeometrics.com/hashrate.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashrate</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/hashprice_dark.html">
+            <a href="https://charts.bgeometrics.com/hashprice.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashprice</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/hashribbons_dark.html">
+            <a href="https://charts.bgeometrics.com/hashribbons.html">
               <i class="bi bi-circle"></i><span>Bitcoin Hashribbons</span>
             </a>
           </li>
@@ -545,77 +543,77 @@
         </a>
         <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/etf_dark.html">
+            <a href="https://charts.bgeometrics.com/etf.html">
 	      <i class="bi bi-circle"></i><span>ETF Total Balance</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/etf_btc_dark.html">
+            <a href="https://charts.bgeometrics.com/etf_btc.html">
 	      <i class="bi bi-circle"></i><span>ETF BTC Held</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/stablecoin_supply_dark.html">
+            <a href="https://charts.bgeometrics.com/stablecoin_supply.html">
               <i class="bi bi-circle"></i><span>Stablecoin supply</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/fear_greed_dark.html">
+            <a href="https://charts.bgeometrics.com/fear_greed.html">
               <i class="bi bi-circle"></i><span>Fear and Greed</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_fear_greed_img_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_fear_greed_img.html">
               <i class="bi bi-circle"></i><span>Fear and Greed index color</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_volatility_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_volatility_g.html">
               <i class="bi bi-circle"></i><span>BTC Volatility</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_dominance_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_dominance_g.html">
               <i class="bi bi-circle"></i><span>BTC Dominance</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/open_interest_futures_dark.html">
+            <a href="https://charts.bgeometrics.com/open_interest_futures.html">
               <i class="bi bi-circle"></i><span>Open Interest Futures</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/funding_rate_dark.html">
+            <a href="https://charts.bgeometrics.com/funding_rate.html">
               <i class="bi bi-circle"></i><span>Funding Rate</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/power_law_dark.html">
+            <a href="https://charts.bgeometrics.com/power_law.html">
               <i class="bi bi-circle"></i><span>BTC Power Law</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/terminal_price_dark.html">
+            <a href="https://charts.bgeometrics.com/terminal_price.html">
               <i class="bi bi-circle"></i><span>Terminal Price</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/choppiness_dark.html">
+            <a href="https://charts.bgeometrics.com/choppiness.html">
               <i class="bi bi-circle"></i><span>Choppiness Index</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/google_trends_dark.html">
+            <a href="https://charts.bgeometrics.com/google_trends.html">
               <i class="bi bi-circle"></i><span>Google Trends</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/montecarlo_100_dark.html">
+            <a href="https://charts.bgeometrics.com/montecarlo_100.html">
               <i class="bi bi-circle"></i><span>Montecarlo next 100 days</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/montecarlo_365_dark.html">
+            <a href="https://charts.bgeometrics.com/montecarlo_365.html">
               <i class="bi bi-circle"></i><span>Montecarlo last 365 days</span>
             </a>
           </li>
@@ -628,27 +626,27 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_price_g_log_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_price_g_log.html">
               <i class="bi bi-circle"></i><span>BTC Price Log</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_halving_radar_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_halving_radar_g.html">
               <i class="bi bi-circle"></i><span>Bitcoin Halving Radar </span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_year_candle_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_year_candle_g.html">
               <i class="bi bi-circle"></i><span>Candles Yearly</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_halving_month_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_halving_month_g.html">
               <i class="bi bi-circle"></i><span>Halving Month</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_halving_cycle_g_dark.html">
+            <a href="https://charts.bgeometrics.com/bitcoin_halving_cycle_g.html">
               <i class="bi bi-circle"></i><span>Halving Cycle</span>
             </a>
           </li>
@@ -661,42 +659,42 @@
         </a>
         <ul id="macro-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/workspace_stocks_dark.html">
+            <a href="https://charts.bgeometrics.com/workspace_stocks.html">
               <i class="bi bi-circle"></i><span>BTC vs any companies</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/workspace_crypto_dark.html">
+            <a href="https://charts.bgeometrics.com/workspace_crypto.html">
               <i class="bi bi-circle"></i><span>BTC vs Crypto</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/sp500_gold_dark.html">
+            <a href="https://charts.bgeometrics.com/sp500_gold.html">
               <i class="bi bi-circle"></i><span>SP500, Gold, Tesla, MSTR</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/m2_global_dark.html">
+            <a href="https://charts.bgeometrics.com/m2_global.html">
               <i class="bi bi-circle"></i><span>M2 Growth Global YoY</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/m2_btc_dark.html">
+            <a href="https://charts.bgeometrics.com/m2_btc.html">
               <i class="bi bi-circle"></i><span>M2 money stock central bank</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/m2_global_10w_dark.html">
+            <a href="https://charts.bgeometrics.com/m2_global_10w.html">
               <i class="bi bi-circle"></i><span>M2 10-weeks lead</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/m2_dark.html">
+            <a href="https://charts.bgeometrics.com/m2.html">
               <i class="bi bi-circle"></i><span>M2 Money Stock (FRED)</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/fedfunds_dark.html">
+            <a href="https://charts.bgeometrics.com/fedfunds.html">
               <i class="bi bi-circle"></i><span>Fed Funds</span>
             </a>
           </li>
@@ -709,22 +707,22 @@
         </a>
         <ul id="tools-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="https://charts.bgeometrics.com/dca_dark.html">
+            <a href="https://charts.bgeometrics.com/dca.html">
               <i class="bi bi-circle"></i><span>DCA Calculator</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/workspace_stocks_dark.html" target="_blank">
+            <a href="https://charts.bgeometrics.com/workspace_stocks.html" target="_blank">
               <i class="bi bi-circle"></i><span>BTC and Stocks</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/workspace_crypto_dark.html" target="_blank">
+            <a href="https://charts.bgeometrics.com/workspace_crypto.html" target="_blank">
               <i class="bi bi-circle"></i><span>BTC and Cryptos</span>
             </a>
           </li>
           <li>
-            <a href="https://charts.bgeometrics.com/bitcoin_monthly_history_dark.html" target="_blank">
+            <a href="https://charts.bgeometrics.com/bitcoin_monthly_history.html" target="_blank">
               <i class="bi bi-circle"></i><span>BTC Monthly Returns</span>
             </a>
           </li>
@@ -734,49 +732,49 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/status_dark.html">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/status.html">
           <i class="bi bi-heart-pulse"></i>
           <span>System Status</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/workspace_dark.html">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/workspace.html">
 	  <i class="bi bi-person-workspace"></i>
           <span>Workspace</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/services_dark.html">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/services.html">
           <i class="bi bi-person"></i>
           <span>Services</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/bitcoin_api_dark.html">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/bitcoin_api.html">
           <i class="bi bi-arrow-right"></i>
           <span>Bitcoin API Free</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://bitcoin-data.com/suggestion/suggestion_dark.html">
+        <a class="nav-link collapsed" href="https://bitcoin-data.com/suggestion/suggestion.html">
           <i class="bi bi-envelope"></i>
           <span>Suggestions</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/pages-links_dark.html">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/pages-links.html">
           <i class="bi bi-arrow-right-short"></i>
           <span>Resources</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/pages-contact_dark.html">
+        <a class="nav-link collapsed" href="https://charts.bgeometrics.com/pages-contact.html">
           <i class="bi bi-chat-quote"></i>
           <span>Contact</span>
         </a>
@@ -795,83 +793,104 @@
 
   <main id="main" class="main">
 
-          <div id="notification" class="alert alert-info p-2 py-1" style="font-size: 0.75em; margin: -10px auto 0 auto;background-color: #f5f5f5; border: 1px solid #ddd; color: #333;">New endpoints in the Bitcoin API at the block level, <a href="https://bitcoin-data.com/bguser/premium-features_dark.html"> Premiun features</a></div>
+          <div id="notification" class="alert alert-info p-2 py-1" style="font-size: 0.75em; margin: -10px auto 0 auto;background-color: #f5f5f5; border: 1px solid #ddd; color: #333;">New endpoints in the Bitcoin API at the block level, <a href="https://bitcoin-data.com/bguser/premium-features.html"> Premiun features</a></div>
   
 
     <section class="section dashboard">
       <div class="row">
         <div id="searchResults"></div>
 
-	<a href="#puell_multiple"></a>
+        <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/puell_multiple.html" allow="fullscreen" title="Bitcoin Puell Multiple" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="" allow="fullscreen" title="System Status" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/miner_sell_pressure.html" allow="fullscreen" title="Bitcoin Miner Sell Pressure" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
           </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/miner_reserves.html" allow="fullscreen" title="Bitcoin Miner Reserves" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/miner_outflow.html" allow="fullscreen" title="Bitcoin Miner Outflow" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/hashrate.html" allow="fullscreen" title="Bitcoin Hashrate" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div><!-- End Left side columns -->
 
       </div>
     </section>
     <br>
     <section>
       <div class="container">
-        <a href="miner_dashboard.html">
-          <h5>Bitcoin Miner Dashboard</h5>
-	</a>
-        <p> 
-          Bitcoin mining charts display data and trends related to the mining process.
-          <br><br>
-          Mining in Bitcoin is the process by which transactions are validated and recorded on the blockchain, by performing SHA256 on transactions.
-          <br><br>
-          These charts provide insight into the health, security, and sustainability of the network.
-          <br><br>
-          Miners use this data to optimize their operations and make informed decisions about when and how to mine, and investors can use these charts to assess the state of the network and make predictions about the future price of Bitcoin.
-        </p>
-      </div>
 
+        <h4 class="mb-1">System Status</h4>
+        <p class="text-muted mb-3" style="font-size:0.875rem;">
+          Real-time status of <strong>bitcoin-data.com</strong> APIs and data freshness.
+          Auto-refreshes every 60 seconds.
+        </p>
+
+        <!-- Overall banner -->
+        <div id="status-banner" class="alert d-flex align-items-center gap-2 mb-4 p-3" role="alert" style="border-radius:8px;">
+          <span id="status-icon" style="font-size:1.5rem;">⏳</span>
+          <div>
+            <strong id="status-title">Checking status…</strong>
+            <div id="status-subtitle" class="small"></div>
+          </div>
+          <div class="ms-auto text-end small text-muted">
+            <div id="last-checked"></div>
+            <div id="refresh-countdown"></div>
+          </div>
+        </div>
+
+        <!-- Service cards -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="card-title mb-0">Bitcoin Data API</h6>
+                  <span id="api-badge" class="badge bg-secondary">–</span>
+                </div>
+                <div class="small text-muted mb-2">bitcoin-data.com</div>
+                <div class="small" id="api-db-primary"></div>
+                <div class="small" id="api-db-venus"></div>
+                <div class="small mt-1" id="api-summary"></div>
+                <div class="small text-muted mt-1" id="api-refresh-ms"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="card-title mb-0">Block API</h6>
+                  <span id="block-badge" class="badge bg-secondary">–</span>
+                </div>
+                <div class="small text-muted mb-2">bitcoin-data.com/api-block</div>
+                <div class="small" id="block-db"></div>
+                <div class="small mt-1" id="block-summary"></div>
+                <div class="small text-muted mt-1" id="block-refresh-ms"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category accordion: Bitcoin Data API -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Data API — Endpoints by Category</h6>
+        <div class="accordion mb-4" id="accordion-api">
+          <!-- categories rendered by JS -->
+        </div>
+
+        <!-- Category accordion: Block API -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Block API — Endpoints by Category</h6>
+        <div class="accordion mb-4" id="accordion-block">
+          <!-- categories rendered by JS -->
+        </div>
+
+        <!-- Info note -->
+        <div class="alert alert-light border small text-muted">
+          <strong>Data update schedule:</strong>
+          Daily on-chain metrics are updated each day at approximately 03:00 UTC.
+          Block-level metrics update with each new Bitcoin block (~every 10 minutes).
+          Finance and derivatives data updates from external providers on their own schedules.
+        </div>
+
+      </div>
     </section>
 
   </main><!-- End #main -->
@@ -893,7 +912,8 @@
         <a href="terms.html">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
         <a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
         <a href="subscription.html">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
-        <a href="https://bitcoin-data.com/bguser/changelog">What's new</a>
+        <a href="https://bitcoin-data.com/bguser/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="status.html">Status</a>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -908,6 +928,214 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var REFRESH_INTERVAL = 60; // seconds
+    var countdownTimer = null;
+    var secondsLeft = 0;
+
+    var STATUS_CONFIG = {
+      badge: { operational: 'bg-success', degraded: 'bg-warning text-dark', down: 'bg-danger', unknown: 'bg-secondary' },
+      label: { operational: 'Operational', degraded: 'Degraded', down: 'Down', unknown: 'Unknown' },
+      dot:   { operational: '🟢', degraded: '🟡', down: '🔴', unknown: '⚪' },
+      banner: {
+        operational: { cls: 'alert-success', icon: '✅', title: 'All Systems Operational' },
+        degraded:    { cls: 'alert-warning', icon: '⚠️', title: 'Partial Degradation' },
+        down:        { cls: 'alert-danger',  icon: '🔴', title: 'Service Disruption' },
+        unknown:     { cls: 'alert-light',   icon: '⏳', title: 'Checking status…' }
+      }
+    };
+
+    function statusOrUnknown(s) {
+      return (s && STATUS_CONFIG.label[s]) ? s : 'unknown';
+    }
+
+    function dbDot(s) { return s === 'up' ? '🟢' : '🔴'; }
+
+    function relativeDate(dateStr) {
+      if (!dateStr) return '–';
+      try {
+        var d = new Date(dateStr.substring(0, 10) + 'T00:00:00Z');
+        var diffDays = Math.floor((Date.now() - d.getTime()) / 86400000);
+        if (diffDays === 0) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        return diffDays + ' days ago';
+      } catch (e) { return dateStr; }
+    }
+
+    function fetchWithTimeout(url, ms) {
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, ms);
+      return fetch(url, { signal: ctrl.signal })
+        .then(function (r) { clearTimeout(timer); return r; })
+        .catch(function (e) { clearTimeout(timer); throw e; });
+    }
+
+    function renderBanner(overall) {
+      var cfg = STATUS_CONFIG.banner[overall] || STATUS_CONFIG.banner.unknown;
+      var banner = document.getElementById('status-banner');
+      banner.className = 'alert d-flex align-items-center gap-2 mb-4 p-3 ' + cfg.cls;
+      document.getElementById('status-icon').textContent = cfg.icon;
+      document.getElementById('status-title').textContent = cfg.title;
+    }
+
+    function renderApiCard(data) {
+      var s = statusOrUnknown(data ? data.overallStatus : null);
+      document.getElementById('api-badge').className = 'badge ' + STATUS_CONFIG.badge[s];
+      document.getElementById('api-badge').textContent = STATUS_CONFIG.label[s];
+
+      if (data) {
+        var pd = data.primaryDatabase || {}, vd = data.venusDatabase || {};
+        document.getElementById('api-db-primary').innerHTML =
+          dbDot(pd.status) + ' Primary DB &nbsp;<span class="text-muted">' + (pd.latencyMs || '–') + ' ms</span>';
+        document.getElementById('api-db-venus').innerHTML =
+          dbDot(vd.status) + ' Venus DB &nbsp;<span class="text-muted">' + (vd.latencyMs || '–') + ' ms</span>';
+        document.getElementById('api-summary').innerHTML =
+          '<strong>' + (data.endpointsOk || 0) + '</strong> / ' + (data.totalEndpoints || 0) + ' endpoints operational';
+        document.getElementById('api-refresh-ms').textContent =
+          'Last check took ' + (data.refreshMs || '–') + ' ms';
+      } else {
+        document.getElementById('api-db-primary').innerHTML = '⚪ Primary DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('api-db-venus').innerHTML   = '⚪ Venus DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('api-summary').textContent  = 'Unable to reach service';
+        document.getElementById('api-refresh-ms').textContent = '';
+      }
+    }
+
+    function renderBlockCard(data) {
+      var s = statusOrUnknown(data ? data.overallStatus : null);
+      document.getElementById('block-badge').className = 'badge ' + STATUS_CONFIG.badge[s];
+      document.getElementById('block-badge').textContent = STATUS_CONFIG.label[s];
+
+      if (data) {
+        var db = data.database || {};
+        document.getElementById('block-db').innerHTML =
+          dbDot(db.status) + ' Block DB &nbsp;<span class="text-muted">' + (db.latencyMs || '–') + ' ms</span>';
+        document.getElementById('block-summary').innerHTML =
+          '<strong>' + (data.totalEndpoints || 0) + '</strong> endpoints';
+        document.getElementById('block-refresh-ms').textContent =
+          'Last check took ' + (data.refreshMs || '–') + ' ms';
+      } else {
+        document.getElementById('block-db').innerHTML = '⚪ Block DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('block-summary').textContent = 'Unable to reach service';
+        document.getElementById('block-refresh-ms').textContent = '';
+      }
+    }
+
+    function renderAccordion(containerId, categories, prefix) {
+      var container = document.getElementById(containerId);
+      if (!container || !categories || !categories.length) {
+        if (container) container.innerHTML = '<p class="text-muted small">No data available.</p>';
+        return;
+      }
+      var html = '';
+      categories.forEach(function (cat, idx) {
+        var s = statusOrUnknown(cat.status);
+        var endpointsHtml = '';
+        if (cat.endpoints && cat.endpoints.length) {
+          endpointsHtml = '<table class="table table-sm table-borderless mb-0" style="font-size:0.8rem;">' +
+            '<thead><tr><th>Endpoint</th><th>Last Data</th><th>Status</th></tr></thead><tbody>';
+          cat.endpoints.forEach(function (ep) {
+            endpointsHtml += '<tr>' +
+              '<td><code>' + ep + '</code></td>' +
+              '<td>' + relativeDate(cat.lastDataPoint) + '</td>' +
+              '<td>' + STATUS_CONFIG.dot[s] + ' ' + STATUS_CONFIG.label[s] + '</td>' +
+              '</tr>';
+          });
+          endpointsHtml += '</tbody></table>';
+        }
+        var itemId = prefix + '-' + cat.id;
+        html += '<div class="accordion-item">' +
+          '<h2 class="accordion-header" id="h-' + itemId + '">' +
+          '<button class="accordion-button collapsed py-2" type="button" ' +
+          'data-bs-toggle="collapse" data-bs-target="#c-' + itemId + '" ' +
+          'aria-expanded="false" aria-controls="c-' + itemId + '" style="font-size:0.875rem;">' +
+          '<span class="me-2">' + STATUS_CONFIG.dot[s] + '</span>' +
+          '<strong>' + cat.name + '</strong>' +
+          '<span class="ms-2 badge ' + STATUS_CONFIG.badge[s] + ' fw-normal">' + STATUS_CONFIG.label[s] + '</span>' +
+          '<span class="ms-2 text-muted small">' + (cat.endpointCount || (cat.endpoints ? cat.endpoints.length : 0)) + ' endpoints</span>' +
+          (cat.lastDataPoint ? '<span class="ms-2 text-muted small">· Last data: ' + cat.lastDataPoint.substring(0,10) + '</span>' : '') +
+          (cat.queryMs ? '<span class="ms-2 text-muted small">· ' + cat.queryMs + ' ms</span>' : '') +
+          '</button></h2>' +
+          '<div id="c-' + itemId + '" class="accordion-collapse collapse" aria-labelledby="h-' + itemId + '">' +
+          '<div class="accordion-body p-2">' + endpointsHtml + '</div>' +
+          '</div></div>';
+      });
+      container.innerHTML = html;
+    }
+
+    function updateTimestamp() {
+      var now = new Date();
+      var hh = String(now.getUTCHours()).padStart(2, '0');
+      var mm = String(now.getUTCMinutes()).padStart(2, '0');
+      var ss = String(now.getUTCSeconds()).padStart(2, '0');
+      document.getElementById('last-checked').textContent = 'Last checked: ' + hh + ':' + mm + ':' + ss + ' UTC';
+    }
+
+    function startCountdown() {
+      if (countdownTimer) clearInterval(countdownTimer);
+      secondsLeft = REFRESH_INTERVAL;
+      countdownTimer = setInterval(function () {
+        secondsLeft--;
+        var el = document.getElementById('refresh-countdown');
+        if (el) el.textContent = 'Next check in ' + secondsLeft + 's';
+        if (secondsLeft <= 0) {
+          clearInterval(countdownTimer);
+          loadStatus();
+        }
+      }, 1000);
+    }
+
+    function loadStatus() {
+      var apiUrl   = 'https://bitcoin-data.com/v1/status';
+      var blockUrl = 'https://bitcoin-data.com/api-block/v1/status';
+
+      Promise.allSettled([
+        fetchWithTimeout(apiUrl, 12000).then(function (r) { return r.json(); }),
+        fetchWithTimeout(blockUrl, 12000).then(function (r) { return r.json(); })
+      ]).then(function (results) {
+        var apiData   = results[0].status === 'fulfilled' ? results[0].value : null;
+        var blockData = results[1].status === 'fulfilled' ? results[1].value : null;
+
+        // Overall status
+        var overall = 'unknown';
+        if (apiData && blockData) {
+          var statuses = [apiData.overallStatus, blockData.overallStatus];
+          if (statuses.every(function (s) { return s === 'operational'; })) overall = 'operational';
+          else if (statuses.some(function (s) { return s === 'down'; })) overall = 'down';
+          else overall = 'degraded';
+        } else if (apiData) {
+          overall = apiData.overallStatus || 'unknown';
+        } else if (blockData) {
+          overall = blockData.overallStatus || 'unknown';
+        }
+
+        renderBanner(overall);
+        renderApiCard(apiData);
+        renderBlockCard(blockData);
+
+        if (apiData && apiData.categories) {
+          renderAccordion('accordion-api', apiData.categories, 'api');
+        }
+        if (blockData) {
+          var blockCats = [];
+          if (blockData.realizedPrice) blockCats.push(blockData.realizedPrice);
+          if (blockData.techniques)    blockCats.push(blockData.techniques);
+          renderAccordion('accordion-block', blockCats, 'blk');
+        }
+
+        updateTimestamp();
+        startCountdown();
+      });
+    }
+
+    // Initial load
+    loadStatus();
+  })();
+  </script>
 
 </body>
 
