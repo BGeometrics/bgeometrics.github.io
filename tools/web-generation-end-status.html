@@ -53,12 +53,6 @@
           </div>
         </div>
 
-        <!-- Category accordion: Bitcoin Data API -->
-        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Data API — Endpoints by Category</h6>
-        <div class="accordion mb-4" id="accordion-api">
-          <!-- categories rendered by JS -->
-        </div>
-
         <!-- Category accordion: Block API -->
         <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Block API — Endpoints by Category</h6>
         <div class="accordion mb-4" id="accordion-block">
@@ -288,9 +282,6 @@
         renderApiCard(apiData);
         renderBlockCard(blockData);
 
-        if (apiData && apiData.categories) {
-          renderAccordion('accordion-api', apiData.categories, 'api');
-        }
         if (blockData) {
           var blockCats = [];
           if (blockData.realizedPrice) blockCats.push(blockData.realizedPrice);
