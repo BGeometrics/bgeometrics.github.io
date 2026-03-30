@@ -34,5 +34,14 @@
     "price_pct_7d": 1.7176610925334124,
     "nupl_zone": "Fear",
     "mvrv": 1.2173
+  },
+  {
+    "week_end": "2026-03-29",
+    "week_start": "2026-03-23",
+    "filename": "2026-03-29.html",
+    "price": 65920.33,
+    "price_pct_7d": -7.050623316076483,
+    "nupl_zone": "Fear",
+    "mvrv": 1.2284
   }
 ]
