@@ -833,7 +833,6 @@
           </div>
           <div class="ms-auto text-end small text-muted">
             <div id="last-checked"></div>
-            <div id="refresh-countdown"></div>
           </div>
         </div>
 
@@ -870,25 +869,12 @@
           </div>
         </div>
 
-        <!-- Category accordion: Bitcoin Data API -->
-        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Data API — Endpoints by Category</h6>
-        <div class="accordion mb-4" id="accordion-api">
-          <!-- categories rendered by JS -->
-        </div>
-
         <!-- Category accordion: Block API -->
         <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Block API — Endpoints by Category</h6>
         <div class="accordion mb-4" id="accordion-block">
           <!-- categories rendered by JS -->
         </div>
 
-        <!-- Info note -->
-        <div class="alert alert-light border small text-muted">
-          <strong>Data update schedule:</strong>
-          Daily on-chain metrics are updated each day at approximately 03:00 UTC.
-          Block-level metrics update with each new Bitcoin block (~every 10 minutes).
-          Finance and derivatives data updates from external providers on their own schedules.
-        </div>
 
       </div>
     </section>
@@ -934,8 +920,6 @@
     'use strict';
 
     var REFRESH_INTERVAL = 60; // seconds
-    var countdownTimer = null;
-    var secondsLeft = 0;
 
     var STATUS_CONFIG = {
       badge: { operational: 'bg-success', degraded: 'bg-warning text-dark', down: 'bg-danger', unknown: 'bg-secondary' },
@@ -1076,17 +1060,7 @@
     }
 
     function startCountdown() {
-      if (countdownTimer) clearInterval(countdownTimer);
-      secondsLeft = REFRESH_INTERVAL;
-      countdownTimer = setInterval(function () {
-        secondsLeft--;
-        var el = document.getElementById('refresh-countdown');
-        if (el) el.textContent = 'Next check in ' + secondsLeft + 's';
-        if (secondsLeft <= 0) {
-          clearInterval(countdownTimer);
-          loadStatus();
-        }
-      }, 1000);
+      setTimeout(loadStatus, REFRESH_INTERVAL * 1000);
     }
 
     function loadStatus() {
@@ -1117,9 +1091,6 @@
         renderApiCard(apiData);
         renderBlockCard(blockData);
 
-        if (apiData && apiData.categories) {
-          renderAccordion('accordion-api', apiData.categories, 'api');
-        }
         if (blockData) {
           var blockCats = [];
           if (blockData.realizedPrice) blockCats.push(blockData.realizedPrice);
