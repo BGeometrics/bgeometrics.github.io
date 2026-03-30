@@ -821,7 +821,6 @@
         <h4 class="mb-1">System Status</h4>
         <p class="text-muted mb-3" style="font-size:0.875rem;">
           Real-time status of <strong>bitcoin-data.com</strong> APIs and data freshness.
-          Auto-refreshes every 60 seconds.
         </p>
 
         <!-- Overall banner -->
@@ -838,21 +837,6 @@
 
         <!-- Service cards -->
         <div class="row g-3 mb-4">
-          <div class="col-md-6">
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                  <h6 class="card-title mb-0">Bitcoin Data API</h6>
-                  <span id="api-badge" class="badge bg-secondary">–</span>
-                </div>
-                <div class="small text-muted mb-2">bitcoin-data.com</div>
-                <div class="small" id="api-db-primary"></div>
-                <div class="small" id="api-db-venus"></div>
-                <div class="small mt-1" id="api-summary"></div>
-                <div class="small text-muted mt-1" id="api-refresh-ms"></div>
-              </div>
-            </div>
-          </div>
           <div class="col-md-6">
             <div class="card h-100">
               <div class="card-body">
@@ -966,29 +950,6 @@
       document.getElementById('status-title').textContent = cfg.title;
     }
 
-    function renderApiCard(data) {
-      var s = statusOrUnknown(data ? data.overallStatus : null);
-      document.getElementById('api-badge').className = 'badge ' + STATUS_CONFIG.badge[s];
-      document.getElementById('api-badge').textContent = STATUS_CONFIG.label[s];
-
-      if (data) {
-        var pd = data.primaryDatabase || {}, vd = data.venusDatabase || {};
-        document.getElementById('api-db-primary').innerHTML =
-          dbDot(pd.status) + ' Primary DB &nbsp;<span class="text-muted">' + (pd.latencyMs || '–') + ' ms</span>';
-        document.getElementById('api-db-venus').innerHTML =
-          dbDot(vd.status) + ' Venus DB &nbsp;<span class="text-muted">' + (vd.latencyMs || '–') + ' ms</span>';
-        document.getElementById('api-summary').innerHTML =
-          '<strong>' + (data.endpointsOk || 0) + '</strong> / ' + (data.totalEndpoints || 0) + ' endpoints operational';
-        document.getElementById('api-refresh-ms').textContent =
-          'Last check took ' + (data.refreshMs || '–') + ' ms';
-      } else {
-        document.getElementById('api-db-primary').innerHTML = '⚪ Primary DB &nbsp;<span class="text-muted">–</span>';
-        document.getElementById('api-db-venus').innerHTML   = '⚪ Venus DB &nbsp;<span class="text-muted">–</span>';
-        document.getElementById('api-summary').textContent  = 'Unable to reach service';
-        document.getElementById('api-refresh-ms').textContent = '';
-      }
-    }
-
     function renderBlockCard(data) {
       var s = statusOrUnknown(data ? data.overallStatus : null);
       document.getElementById('block-badge').className = 'badge ' + STATUS_CONFIG.badge[s];
@@ -1064,43 +1025,31 @@
     }
 
     function loadStatus() {
-      var apiUrl   = 'https://bitcoin-data.com/v1/status';
       var blockUrl = 'https://bitcoin-data.com/api-block/v1/status';
 
-      Promise.allSettled([
-        fetchWithTimeout(apiUrl, 12000).then(function (r) { return r.json(); }),
-        fetchWithTimeout(blockUrl, 12000).then(function (r) { return r.json(); })
-      ]).then(function (results) {
-        var apiData   = results[0].status === 'fulfilled' ? results[0].value : null;
-        var blockData = results[1].status === 'fulfilled' ? results[1].value : null;
+      fetchWithTimeout(blockUrl, 12000).then(function (r) { return r.json(); })
+        .then(function (blockData) {
+          var overall = blockData ? (blockData.overallStatus || 'unknown') : 'unknown';
 
-        // Overall status
-        var overall = 'unknown';
-        if (apiData && blockData) {
-          var statuses = [apiData.overallStatus, blockData.overallStatus];
-          if (statuses.every(function (s) { return s === 'operational'; })) overall = 'operational';
-          else if (statuses.some(function (s) { return s === 'down'; })) overall = 'down';
-          else overall = 'degraded';
-        } else if (apiData) {
-          overall = apiData.overallStatus || 'unknown';
-        } else if (blockData) {
-          overall = blockData.overallStatus || 'unknown';
-        }
+          renderBanner(overall);
+          renderBlockCard(blockData);
 
-        renderBanner(overall);
-        renderApiCard(apiData);
-        renderBlockCard(blockData);
+          if (blockData) {
+            var blockCats = [];
+            if (blockData.realizedPrice) blockCats.push(blockData.realizedPrice);
+            if (blockData.techniques)    blockCats.push(blockData.techniques);
+            renderAccordion('accordion-block', blockCats, 'blk');
+          }
 
-        if (blockData) {
-          var blockCats = [];
-          if (blockData.realizedPrice) blockCats.push(blockData.realizedPrice);
-          if (blockData.techniques)    blockCats.push(blockData.techniques);
-          renderAccordion('accordion-block', blockCats, 'blk');
-        }
-
-        updateTimestamp();
-        startCountdown();
-      });
+          updateTimestamp();
+          startCountdown();
+        })
+        .catch(function () {
+          renderBanner('unknown');
+          renderBlockCard(null);
+          updateTimestamp();
+          startCountdown();
+        });
     }
 
     // Initial load
