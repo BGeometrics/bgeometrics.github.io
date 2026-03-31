@@ -976,7 +976,7 @@
       if (data) {
         var pd = data.primaryDatabase || {}, vd = data.venusDatabase || {};
         document.getElementById('api-db-primary').innerHTML =
-          dbDot(pd.status) + ' Primary DB &nbsp;<span class="text-muted">' + (pd.latencyMs || '–') + ' ms</span>';
+          dbDot(pd.status) + ' Mercury DB &nbsp;<span class="text-muted">' + (pd.latencyMs || '–') + ' ms</span>';
         document.getElementById('api-db-venus').innerHTML =
           dbDot(vd.status) + ' Venus DB &nbsp;<span class="text-muted">' + (vd.latencyMs || '–') + ' ms</span>';
         document.getElementById('api-summary').innerHTML =
@@ -984,7 +984,7 @@
         document.getElementById('api-refresh-ms').textContent =
           'Last check took ' + (data.refreshMs || '–') + ' ms';
       } else {
-        document.getElementById('api-db-primary').innerHTML = '⚪ Primary DB &nbsp;<span class="text-muted">–</span>';
+        document.getElementById('api-db-primary').innerHTML = '⚪ Mercury DB &nbsp;<span class="text-muted">–</span>';
         document.getElementById('api-db-venus').innerHTML   = '⚪ Venus DB &nbsp;<span class="text-muted">–</span>';
         document.getElementById('api-summary').textContent  = 'Unable to reach service';
         document.getElementById('api-refresh-ms').textContent = '';
