@@ -73,13 +73,8 @@
           <!-- categories rendered by JS -->
         </div>
 
-        <!-- Bitcoin Full Nodes -->
-        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Full Nodes</h6>
-        <div class="row g-3 mb-4" id="nodes-cards">
-          <!-- rendered by JS -->
-        </div>
 
-        </div>
+</div>
       </div>
     </section>
 
@@ -235,34 +230,6 @@
       }
     }
 
-    function renderNodesCards(nodes) {
-      var container = document.getElementById('nodes-cards');
-      if (!container) return;
-      if (!nodes || !nodes.length) {
-        container.innerHTML = '<p class="text-muted small">No data available.</p>';
-        return;
-      }
-      var html = '';
-      nodes.forEach(function (n) {
-        var s = statusOrUnknown(n.status);
-        var syncStr = n.syncProgress != null ? n.syncProgress.toFixed(4) + '%' : '–';
-        var ibdBadge = n.initialBlockDownload
-          ? ' <span class="badge bg-warning text-dark fw-normal" style="font-size:0.7rem;">IBD</span>' : '';
-        html += '<div class="col-md-6"><div class="card h-100"><div class="card-body">' +
-          '<div class="d-flex justify-content-between align-items-start mb-2">' +
-          '<h6 class="card-title mb-0">⛓ ' + n.name + ibdBadge + '</h6>' +
-          '<span class="badge ' + STATUS_CONFIG.badge[s] + '">' + STATUS_CONFIG.label[s] + '</span>' +
-          '</div>' +
-          '<div class="small text-muted mb-2">Bitcoin full node</div>' +
-          '<div class="small">' + STATUS_CONFIG.dot[s] +
-          ' Block <strong>' + (n.blocks ? n.blocks.toLocaleString() : '–') + '</strong>' +
-          ' / ' + (n.headers ? n.headers.toLocaleString() : '–') + ' headers</div>' +
-          '<div class="small text-muted mt-1">Sync ' + syncStr +
-          ' &nbsp;·&nbsp; ' + (n.latencyMs || '–') + ' ms</div>' +
-          '</div></div></div>';
-      });
-      container.innerHTML = html;
-    }
 
     function renderAccordion(containerId, categories, prefix) {
       var container = document.getElementById(containerId);
@@ -342,8 +309,6 @@
         renderBlockCard(blockData);
 
         renderApiAccordion('accordion-api', apiData ? apiData.samples : null);
-
-        renderNodesCards(apiData ? apiData.nodes : null);
 
         if (blockData) {
           var blockCats = [];
