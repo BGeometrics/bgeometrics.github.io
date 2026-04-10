@@ -871,6 +871,11 @@
           <!-- categories rendered by JS -->
         </div>
 
+        <!-- Bitcoin Full Nodes -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Full Nodes</h6>
+        <div class="row g-3 mb-4" id="nodes-cards">
+          <!-- rendered by JS -->
+        </div>
 
 </div>
       </div>
@@ -1083,16 +1088,50 @@
       setTimeout(loadStatus, REFRESH_INTERVAL * 1000);
     }
 
+    function renderNodesCards(nodes) {
+      var container = document.getElementById('nodes-cards');
+      if (!nodes || !nodes.length) {
+        container.innerHTML = '<div class="col"><p class="text-muted small">No data available.</p></div>';
+        return;
+      }
+      var html = '';
+      nodes.forEach(function (n) {
+        var st = statusOrUnknown(n.status);
+        var sync = n.syncProgress != null ? n.syncProgress.toFixed(4) + '%' : '–';
+        var ibd  = n.initialBlockDownload
+          ? ' <span class="badge bg-warning text-dark ms-1">IBD</span>' : '';
+        html += '<div class="col-md-6"><div class="card h-100 border-0 shadow-sm">' +
+          '<div class="card-body">' +
+          '<div class="d-flex justify-content-between align-items-start mb-2">' +
+          '<h6 class="card-title mb-0">⛓ ' + n.name + ibd + '</h6>' +
+          '<span class="badge ' + STATUS_CONFIG.badge[st] + '">' + STATUS_CONFIG.label[st] + '</span>' +
+          '</div>' +
+          '<div class="text-muted small mb-1">Bitcoin full node</div>' +
+          '<div class="small">' + STATUS_CONFIG.dot[st] +
+          ' Block <strong>' + (n.blocks ? n.blocks.toLocaleString() : '–') + '</strong>' +
+          ' / ' + (n.headers ? n.headers.toLocaleString() : '–') + ' headers</div>' +
+          '<div class="text-muted small mt-1">Sync ' + sync + ' &nbsp;·&nbsp; ' + (n.latencyMs||'–') + ' ms</div>' +
+          '</div></div></div>';
+      });
+      container.innerHTML = html;
+    }
+
     function loadStatus() {
-      var apiUrl   = 'https://api.bitcoin-data.com/v1/status';
-      var blockUrl = 'https://bitcoin-data.com/api-block/v1/status';
+      var apiUrl     = 'https://api.bitcoin-data.com/v1/status';
+      var blockUrl   = 'https://bitcoin-data.com/api-block/v1/status';
+      var venusUrl   = 'https://bitcoin-data.com/api-block/v1/node/venus';
+      var saturnoUrl = 'https://bitcoin-data.com/api-block/v1/node/saturno';
 
       Promise.allSettled([
-        fetchWithTimeout(apiUrl,   12000).then(function (r) { return r.json(); }),
-        fetchWithTimeout(blockUrl, 12000).then(function (r) { return r.json(); })
+        fetchWithTimeout(apiUrl,     12000).then(function (r) { return r.json(); }),
+        fetchWithTimeout(blockUrl,   12000).then(function (r) { return r.json(); }),
+        fetchWithTimeout(venusUrl,   12000).then(function (r) { return r.json(); }),
+        fetchWithTimeout(saturnoUrl, 12000).then(function (r) { return r.json(); })
       ]).then(function (results) {
-        var apiData   = results[0].status === 'fulfilled' ? results[0].value : null;
-        var blockData = results[1].status === 'fulfilled' ? results[1].value : null;
+        var apiData     = results[0].status === 'fulfilled' ? results[0].value : null;
+        var blockData   = results[1].status === 'fulfilled' ? results[1].value : null;
+        var venusData   = results[2].status === 'fulfilled' ? results[2].value : null;
+        var saturnoData = results[3].status === 'fulfilled' ? results[3].value : null;
 
         var statuses = [];
         if (apiData)   statuses.push(apiData.overallStatus);
@@ -1114,6 +1153,11 @@
           if (blockData.techniques)    blockCats.push(blockData.techniques);
           renderAccordion('accordion-block', blockCats, 'blk');
         }
+
+        var nodes = [];
+        if (venusData)   nodes.push(venusData);
+        if (saturnoData) nodes.push(saturnoData);
+        renderNodesCards(nodes.length ? nodes : null);
 
         updateTimestamp();
         startCountdown();
