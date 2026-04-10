@@ -7,7 +7,7 @@ URL producción: `https://charts.bgeometrics.com`
 
 **Los archivos HTML del directorio raíz son generados automáticamente. No editarlos directamente.**
 
-Para regenerar todas las páginas html, añadiendo el menú y también se generan las páginas dark.
+Para regenerar todas las páginas html, añadiendo el menú y también se generan las páginas darkweb-generation-end-status.html.
 
 ```bash
 ./tools/web-generation-pages-all.sh
