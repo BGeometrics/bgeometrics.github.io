@@ -1,5 +1,13 @@
 [
   {
+    "report_date": "2026-04-11",
+    "filename": "2026-04-11.html",
+    "price": 71789.64,
+    "price_pct_24h": 0.9359008120888523,
+    "nupl_zone": "Hope",
+    "mvrv": 1.3386
+  },
+  {
     "report_date": "2026-04-10",
     "filename": "2026-04-10.html",
     "price": 71789.64,
@@ -46,13 +54,5 @@
     "price_pct_24h": 2.5002009568965535,
     "nupl_zone": "Fear",
     "mvrv": 1.2871
-  },
-  {
-    "report_date": "2026-04-04",
-    "filename": "2026-04-04.html",
-    "price": 67302.99,
-    "price_pct_24h": 0.5254424117865074,
-    "nupl_zone": "Fear",
-    "mvrv": 1.256
   }
 ]
