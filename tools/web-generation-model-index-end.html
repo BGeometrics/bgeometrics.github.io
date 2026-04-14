@@ -368,11 +368,11 @@
 
             function displayTweet(index) {
                 const tweetContainer = document.getElementById('latest-tweet');
-                const tweetText = tweets[index].tweet;
+                const tweetText = tweets[index].tweetText;
                 tweetContainer.innerText = tweetText.length > 200 ? tweetText.substring(0, 200) + '...' : tweetText;
             }
 
-            fetch('https://bitcoin-data.com/suggestion/api/alerts-x/latest')
+            fetch('https://portal.bitcoin-data.com/bguser/api/alerts-x/latest')
                 .then(response => response.json())
                 .then(data => {
                     tweets = data;
