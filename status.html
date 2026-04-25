@@ -877,6 +877,17 @@
           <!-- rendered by JS -->
         </div>
 
+        <!-- API Response Time -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Daily API — Response Time (last 72h)</h6>
+        <div class="card mb-4">
+          <div class="card-body">
+            <div id="rtStatus" class="small text-muted mb-2"></div>
+            <div style="position:relative;height:260px;">
+              <canvas id="rtChart"></canvas>
+            </div>
+          </div>
+        </div>
+
 </div>
       </div>
     </section>
@@ -1166,6 +1177,65 @@
 
     // Initial load
     loadStatus();
+  })();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+  (function() {
+    var JSON_URL = 'https://bitcoin-data.com/bguser/api/status/response-times';
+    var _rtChart = null;
+
+    function loadResponseTimeChart() {
+      fetch(JSON_URL)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (!data || !data.length) {
+            document.getElementById('rtStatus').textContent = 'No data available.';
+            return;
+          }
+          document.getElementById('rtStatus').textContent = data.length + ' hourly records · last: ' + data[data.length-1].hour + ' UTC';
+          var labels = data.map(function(d) { return d.hour.substring(5, 16); });
+          var values = data.map(function(d) { return d.median_ms; });
+
+          if (_rtChart) { _rtChart.destroy(); }
+          _rtChart = new Chart(document.getElementById('rtChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'Median response (ms)',
+                data: values,
+                backgroundColor: 'rgba(65,84,241,0.75)',
+                borderColor: 'rgba(65,84,241,1)',
+                borderWidth: 1,
+                borderRadius: 3,
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label: function(ctx) { return ctx.parsed.y.toFixed(1) + ' ms'; }
+                  }
+                }
+              },
+              scales: {
+                x: { ticks: { maxTicksLimit: 12, maxRotation: 0 } },
+                y: { title: { display: true, text: 'ms' }, beginAtZero: true }
+              }
+            }
+          });
+        })
+        .catch(function(e) {
+          document.getElementById('rtStatus').textContent = 'Error loading data.';
+        });
+    }
+
+    loadResponseTimeChart();
   })();
   </script>
 
