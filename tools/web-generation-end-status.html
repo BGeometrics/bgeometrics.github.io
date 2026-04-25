@@ -61,6 +61,17 @@
           </div>
         </div>
 
+        <!-- API Response Time -->
+        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Daily API — Response Time (last 72h)</h6>
+        <div class="card mb-4">
+          <div class="card-body">
+            <div id="rtStatus" class="small text-muted mb-2"></div>
+            <div style="position:relative;height:260px;">
+              <canvas id="rtChart"></canvas>
+            </div>
+          </div>
+        </div>
+
         <!-- Category accordion: Daily API -->
         <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Daily API — Sample Endpoints</h6>
         <div class="accordion mb-4" id="accordion-api">
@@ -77,17 +88,6 @@
         <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Bitcoin Full Nodes</h6>
         <div class="row g-3 mb-4" id="nodes-cards">
           <!-- rendered by JS -->
-        </div>
-
-        <!-- API Response Time -->
-        <h6 class="text-muted text-uppercase mb-2" style="font-size:0.75rem;letter-spacing:.05em;">Daily API — Response Time (last 72h)</h6>
-        <div class="card mb-4">
-          <div class="card-body">
-            <div id="rtStatus" class="small text-muted mb-2"></div>
-            <div style="position:relative;height:260px;">
-              <canvas id="rtChart"></canvas>
-            </div>
-          </div>
         </div>
 
 </div>
