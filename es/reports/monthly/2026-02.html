@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Monthly Report — February 2026</title>
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Apply saved theme before CSS renders to avoid flash -->
+<script>
+    if (localStorage.getItem('profile-theme') === 'light') {
+        document.documentElement.classList.add('light');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+    }
+</script>
+<style>
+  :root {
+    --bg-body:    #0f1117;
+    --bg-card:    #1a1d27;
+    --bg-card2:   #111318;
+    --border:     #2a2d3a;
+    --text:       #e0e0e0;
+    --text-muted: #9ca3af;
+    --text-dim:   #6b7280;
+    --text-strong:#ffffff;
+  }
+  html.light {
+    --bg-body:    #f3f4f6;
+    --bg-card:    #ffffff;
+    --bg-card2:   #f9fafb;
+    --border:     #e5e7eb;
+    --text:       #374151;
+    --text-muted: #6b7280;
+    --text-dim:   #9ca3af;
+    --text-strong:#111827;
+  }
+  * { box-sizing: border-box; }
+  body { background:var(--bg-body); color:var(--text); font-family:"Nunito",sans-serif;
+         margin:0; transition:background 0.25s, color 0.25s; }
+  /* ── Header ── */
+  .header { background:#000000; border-bottom:1px solid #333333; height:60px; padding:0 20px;
+            box-shadow:0px 2px 20px rgba(1,41,112,0.1); display:flex; align-items:center; }
+  .header-content { width:100%; display:flex; align-items:center; }
+  .logo { display:flex; align-items:center; text-decoration:none; line-height:1; }
+  .logo img { max-height:26px; margin-right:6px; }
+  .logo span { font-size:26px; font-weight:700; color:#ffffff; font-family:"Nunito",sans-serif; }
+  .logo span:hover { color:#a7f3d0; }
+  @media (max-width:576px) { .logo span { display:none; } }
+  .header-nav { margin-left:auto; display:flex; align-items:center; }
+  .header-nav a { color:#ffffff; text-decoration:none; font-size:22px; margin-right:25px; transition:color 0.2s; }
+  .header-nav a:hover { color:#a7f3d0; }
+  .header-nav .nav-label { font-size:0.6em; font-weight:600; letter-spacing:0.5px; }
+  .theme-toggle-btn { background:transparent; border:1px solid #444; color:#ccc;
+                      width:32px; height:32px; border-radius:8px; cursor:pointer;
+                      font-size:16px; display:flex; align-items:center; justify-content:center;
+                      margin-right:20px; transition:border-color 0.2s, color 0.2s; }
+  .theme-toggle-btn:hover { border-color:#10b981; color:#10b981; }
+  /* ── Content ── */
+  .card { background:var(--bg-card); border:1px solid var(--border); }
+  .card-header { background:var(--bg-card2); border-bottom:1px solid var(--border); }
+  .table { color:var(--text); }
+  .table thead th { color:var(--text-muted); border-color:var(--border); font-size:0.75rem;
+                    text-transform:uppercase; letter-spacing:.4px; }
+  .table td { border-color:var(--border); vertical-align:middle; font-size:0.85rem; }
+  .table-hover tbody tr:hover { background:var(--border) !important; }
+  .metric-card { background:var(--bg-card2); border:1px solid var(--border); border-radius:8px;
+                 padding:16px 20px; text-align:center; }
+  .metric-card .label { font-size:0.7rem; font-weight:600; color:var(--text-muted);
+                        text-transform:uppercase; letter-spacing:.5px; }
+  .metric-card .value { font-size:1.5rem; font-weight:700; color:var(--text-strong); margin:4px 0 0; }
+  .metric-card .sub { font-size:0.8rem; color:var(--text-muted); margin-top:2px; }
+  .zone-badge { display:inline-block; padding:2px 10px; border-radius:12px;
+                font-size:0.75rem; font-weight:700; }
+  .change-item { padding:8px 12px; border-left:3px solid; margin-bottom:8px;
+                 background:var(--bg-card2); border-radius:0 6px 6px 0; font-size:0.9rem; }
+  .section-title { font-size:0.75rem; font-weight:700; color:var(--text-muted);
+                   text-transform:uppercase; letter-spacing:.5px; }
+  .back-link { color:#a7f3d0; text-decoration:none; font-size:0.85rem; }
+  .back-link:hover { color:#fff; }
+  h2 { color:var(--text-strong); }
+  .price-hero { font-size:2.5rem; font-weight:800; color:var(--text-strong); }
+  .pct-positive { color:#2ecc71; }
+  .pct-negative { color:#e74c3c; }
+  @media (max-width:576px) { .price-hero { font-size:1.8rem; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <a href="https://charts.bgeometrics.com/index.html" class="logo">
+      <img src="/assets/img/logo.png" alt="BGeometrics">
+      <span>BGeometrics</span>
+    </a>
+    <nav class="header-nav">
+      <a href="https://charts.bgeometrics.com/index.html" title="BGeometrics Charts"><span class="nav-label">Charts</span></a>
+      <a href="https://charts.bgeometrics.com/reports/monthly/index.html" title="Monthly Reports"><span class="nav-label">Reports</span></a>
+      <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html" title="Bitcoin API BGeometrics"><span class="nav-label">API</span></a>
+      <a href="https://bitcoin-data.com/bguser/pricing" title="Pricing API BGeometrics"><span class="nav-label">Pricing</span></a>
+      <a href="https://bitcoin-data.com/bguser/workspace_bg_dark.html" title="BGeometrics Workspace"><i class="bi bi-person-workspace"></i></a>
+      <a href="https://bitcoin-data.com/bguser/login" target="_blank" title="Login"><i class="bi bi-person"></i></a>
+      <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+      <button id="themeToggleBtn" class="theme-toggle-btn" title="Switch to light mode">
+        <i class="bi bi-sun" id="themeIcon"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="container py-4" style="max-width:960px;">
+
+  <!-- Breadcrumb -->
+  <div class="mb-3">
+    <a href="index.html" class="back-link"><i class="bi bi-arrow-left me-1"></i>Monthly Reports</a>
+  </div>
+
+  <!-- Header -->
+  <div class="text-center mb-4">
+    <p class="section-title mb-1">Bitcoin Monthly Report</p>
+    <h2 class="mb-0">February 2026</h2>
+  </div>
+
+  <!-- Price hero -->
+  <div class="text-center mb-4">
+    <div class="price-hero">$66,848</div>
+    
+      
+        <div class="pct-negative mt-1">▼ 13.6% (30d)</div>
+      
+    
+  </div>
+
+  <!-- Notable changes -->
+  
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="bi bi-lightning-charge-fill me-1" style="color:#f1c40f;"></i>Notable changes this month</h5>
+    </div>
+    <div class="card-body">
+      
+      <div class="change-item" style="border-left-color:#e67e22;">NUPL transitioned from <strong>Hope</strong> → <strong>Fear</strong></div>
+      
+      <div class="change-item" style="border-left-color:#e74c3c;">SOPR LTH crossed <strong>below 1.0</strong> (1.230 → 0.896) — sellers at loss</div>
+      
+      <div class="change-item" style="border-left-color:#e74c3c;">BTC price -13.6% during the month ($77,349 → $66,848)</div>
+      
+      <div class="change-item" style="border-left-color:#e74c3c;">MVRV changed -11.6% (1.401 → 1.238)</div>
+      
+    </div>
+  </div>
+  
+
+  <!-- Key metrics (last day) -->
+  <p class="section-title mb-3">Key metrics — 28 Feb 2026</p>
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">NUPL</div>
+        <div class="value">0.1920</div>
+        
+        <div class="sub">
+          <span class="zone-badge" style="background:#e67e2222;color:#e67e22;">
+            Fear
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">SOPR</div>
+        <div class="value">0.9954</div>
+        <div class="sub">LTH 0.8960 / STH 0.9958</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">MVRV</div>
+        <div class="value">1.238</div>
+        <div class="sub">Z-Score 0.402</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">VDD Multiple</div>
+        <div class="value">0.387</div>
+        
+        <div class="sub">
+          <span class="zone-badge" style="background:#2ecc7122;color:#2ecc71;">
+            Green
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">Reserve Risk</div>
+        <div class="value" style="font-size:1.1rem;">0.000578</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">Supply-Adj. CDD</div>
+        <div class="value" style="font-size:1.1rem;">0.108760</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily table -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="bi bi-table me-1"></i>Daily metrics — February 2026</h5>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-sm table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Price</th>
+              <th>NUPL</th>
+              <th>Zone</th>
+              <th>SOPR</th>
+              <th>SOPR LTH</th>
+              <th>SOPR STH</th>
+              <th>MVRV</th>
+              <th>MVRV Z</th>
+              <th>VDD×</th>
+              <th>Res.Risk</th>
+              <th>SA-CDD</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>01-02-2026</td>
+              <td> $77,349</td>
+              <td>0.2860</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>0.9919</td>
+              <td>1.2305</td>
+              <td>0.9895</td>
+              <td>1.401</td>
+              <td>0.798</td>
+              <td><span style="color:#2ecc71;">0.479</span></td>
+              <td>0.000680</td>
+              <td>0.452469</td>
+            </tr>
+            
+            <tr>
+              <td>02-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $78,908</td>
+              <td>0.3002</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>0.9899</td>
+              <td>1.0106</td>
+              <td>0.9895</td>
+              <td>1.429</td>
+              <td>0.751</td>
+              <td><span style="color:#2ecc71;">0.503</span></td>
+              <td>0.000693</td>
+              <td>1.010621</td>
+            </tr>
+            
+            <tr>
+              <td>03-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $75,751</td>
+              <td>0.2724</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>0.9790</td>
+              <td>1.0766</td>
+              <td>0.9783</td>
+              <td>1.374</td>
+              <td>0.805</td>
+              <td><span style="color:#2ecc71;">0.512</span></td>
+              <td>0.000665</td>
+              <td>0.508614</td>
+            </tr>
+            
+            <tr>
+              <td>04-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $73,173</td>
+              <td>0.2485</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9782</td>
+              <td>0.9361</td>
+              <td>0.9788</td>
+              <td>1.331</td>
+              <td>0.701</td>
+              <td><span style="color:#2ecc71;">0.514</span></td>
+              <td>0.000642</td>
+              <td>0.710945</td>
+            </tr>
+            
+            <tr>
+              <td>05-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $64,233</td>
+              <td>0.1476</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9619</td>
+              <td>0.8636</td>
+              <td>0.9646</td>
+              <td>1.173</td>
+              <td>0.617</td>
+              <td><span style="color:#2ecc71;">0.550</span></td>
+              <td>0.000563</td>
+              <td>1.776763</td>
+            </tr>
+            
+            <tr>
+              <td>06-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $70,653</td>
+              <td>0.2263</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9882</td>
+              <td>0.8155</td>
+              <td>0.9914</td>
+              <td>1.292</td>
+              <td>0.322</td>
+              <td><span style="color:#2ecc71;">0.527</span></td>
+              <td>0.000619</td>
+              <td>0.892586</td>
+            </tr>
+            
+            <tr>
+              <td>07-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $69,269</td>
+              <td>0.2116</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>1.0131</td>
+              <td>1.0675</td>
+              <td>0.9929</td>
+              <td>1.268</td>
+              <td>0.542</td>
+              <td><span style="color:#2ecc71;">0.522</span></td>
+              <td>0.000607</td>
+              <td>0.247158</td>
+            </tr>
+            
+            <tr>
+              <td>08-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $70,352</td>
+              <td>0.2236</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>1.0028</td>
+              <td>1.2197</td>
+              <td>1.0012</td>
+              <td>1.288</td>
+              <td>0.498</td>
+              <td><span style="color:#2ecc71;">0.514</span></td>
+              <td>0.000616</td>
+              <td>0.250065</td>
+            </tr>
+            
+            <tr>
+              <td>09-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $70,277</td>
+              <td>0.2236</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9874</td>
+              <td>0.7966</td>
+              <td>0.9901</td>
+              <td>1.288</td>
+              <td>0.534</td>
+              <td><span style="color:#2ecc71;">0.493</span></td>
+              <td>0.000615</td>
+              <td>0.428248</td>
+            </tr>
+            
+            <tr>
+              <td>10-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $68,795</td>
+              <td>0.2077</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9847</td>
+              <td>0.8577</td>
+              <td>0.9869</td>
+              <td>1.262</td>
+              <td>0.533</td>
+              <td><span style="color:#2ecc71;">0.502</span></td>
+              <td>0.000601</td>
+              <td>0.569485</td>
+            </tr>
+            
+            <tr>
+              <td>11-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $67,076</td>
+              <td>0.1882</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9837</td>
+              <td>0.8895</td>
+              <td>0.9843</td>
+              <td>1.232</td>
+              <td>0.484</td>
+              <td><span style="color:#2ecc71;">0.492</span></td>
+              <td>0.000586</td>
+              <td>0.280384</td>
+            </tr>
+            
+            <tr>
+              <td>12-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $66,290</td>
+              <td>0.1794</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9787</td>
+              <td>0.8691</td>
+              <td>0.9799</td>
+              <td>1.219</td>
+              <td>0.428</td>
+              <td><span style="color:#2ecc71;">0.478</span></td>
+              <td>0.000579</td>
+              <td>0.398850</td>
+            </tr>
+            
+            <tr>
+              <td>13-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $68,888</td>
+              <td>0.2119</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9865</td>
+              <td>0.7536</td>
+              <td>0.9964</td>
+              <td>1.269</td>
+              <td>0.404</td>
+              <td><span style="color:#2ecc71;">0.484</span></td>
+              <td>0.000601</td>
+              <td>0.832347</td>
+            </tr>
+            
+            <tr>
+              <td>14-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $69,813</td>
+              <td>0.2213</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>1.0023</td>
+              <td>1.2113</td>
+              <td>1.0017</td>
+              <td>1.284</td>
+              <td>0.493</td>
+              <td><span style="color:#2ecc71;">0.472</span></td>
+              <td>0.000609</td>
+              <td>0.139124</td>
+            </tr>
+            
+            <tr>
+              <td>15-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $68,577</td>
+              <td>0.2076</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9982</td>
+              <td>1.0307</td>
+              <td>0.9981</td>
+              <td>1.262</td>
+              <td>0.524</td>
+              <td><span style="color:#2ecc71;">0.466</span></td>
+              <td>0.000598</td>
+              <td>0.102354</td>
+            </tr>
+            
+            <tr>
+              <td>16-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $68,941</td>
+              <td>0.2140</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9972</td>
+              <td>1.0476</td>
+              <td>0.9962</td>
+              <td>1.272</td>
+              <td>0.482</td>
+              <td><span style="color:#2ecc71;">0.466</span></td>
+              <td>0.000600</td>
+              <td>0.218089</td>
+            </tr>
+            
+            <tr>
+              <td>17-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $67,546</td>
+              <td>0.1963</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9962</td>
+              <td>1.0645</td>
+              <td>0.9942</td>
+              <td>1.244</td>
+              <td>0.496</td>
+              <td><span style="color:#2ecc71;">0.481</span></td>
+              <td>0.000588</td>
+              <td>0.333824</td>
+            </tr>
+            
+            <tr>
+              <td>18-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $66,469</td>
+              <td>0.1853</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9952</td>
+              <td>1.0814</td>
+              <td>0.9923</td>
+              <td>1.227</td>
+              <td>0.414</td>
+              <td><span style="color:#2ecc71;">0.463</span></td>
+              <td>0.000578</td>
+              <td>0.449560</td>
+            </tr>
+            
+            <tr>
+              <td>19-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $66,985</td>
+              <td>0.1901</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9922</td>
+              <td>1.0788</td>
+              <td>0.9915</td>
+              <td>1.235</td>
+              <td>0.414</td>
+              <td><span style="color:#2ecc71;">0.458</span></td>
+              <td>0.000582</td>
+              <td>0.408323</td>
+            </tr>
+            
+            <tr>
+              <td>20-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $68,013</td>
+              <td>0.2031</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9846</td>
+              <td>0.8037</td>
+              <td>0.9867</td>
+              <td>1.255</td>
+              <td>0.432</td>
+              <td><span style="color:#2ecc71;">0.455</span></td>
+              <td>0.000591</td>
+              <td>0.373533</td>
+            </tr>
+            
+            <tr>
+              <td>21-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $68,099</td>
+              <td>0.2044</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>1.0009</td>
+              <td>1.3159</td>
+              <td>0.9995</td>
+              <td>1.257</td>
+              <td>0.469</td>
+              <td><span style="color:#2ecc71;">0.430</span></td>
+              <td>0.000591</td>
+              <td>0.223804</td>
+            </tr>
+            
+            <tr>
+              <td>22-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $67,665</td>
+              <td>0.1991</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9972</td>
+              <td>1.0601</td>
+              <td>0.9970</td>
+              <td>1.249</td>
+              <td>0.471</td>
+              <td><span style="color:#2ecc71;">0.384</span></td>
+              <td>0.000587</td>
+              <td>0.103940</td>
+            </tr>
+            
+            <tr>
+              <td>23-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $64,618</td>
+              <td>0.1621</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9805</td>
+              <td>1.0582</td>
+              <td>0.9799</td>
+              <td>1.194</td>
+              <td>0.457</td>
+              <td><span style="color:#2ecc71;">0.389</span></td>
+              <td>0.000561</td>
+              <td>0.427576</td>
+            </tr>
+            
+            <tr>
+              <td>24-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $64,034</td>
+              <td>0.1555</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9782</td>
+              <td>0.9091</td>
+              <td>0.9790</td>
+              <td>1.184</td>
+              <td>0.355</td>
+              <td><span style="color:#2ecc71;">0.397</span></td>
+              <td>0.000555</td>
+              <td>0.543199</td>
+            </tr>
+            
+            <tr>
+              <td>25-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $67,969</td>
+              <td>0.2049</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9980</td>
+              <td>0.9672</td>
+              <td>0.9981</td>
+              <td>1.258</td>
+              <td>0.338</td>
+              <td><span style="color:#2ecc71;">0.394</span></td>
+              <td>0.000589</td>
+              <td>0.298347</td>
+            </tr>
+            
+            <tr>
+              <td>26-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $67,481</td>
+              <td>0.1989</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9978</td>
+              <td>0.9663</td>
+              <td>0.9980</td>
+              <td>1.248</td>
+              <td>0.471</td>
+              <td><span style="color:#2ecc71;">0.397</span></td>
+              <td>0.000584</td>
+              <td>0.405607</td>
+            </tr>
+            
+            <tr>
+              <td>27-02-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $65,894</td>
+              <td>0.1802</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9877</td>
+              <td>0.7415</td>
+              <td>0.9911</td>
+              <td>1.220</td>
+              <td>0.455</td>
+              <td><span style="color:#2ecc71;">0.394</span></td>
+              <td>0.000570</td>
+              <td>0.294674</td>
+            </tr>
+            
+            <tr>
+              <td>28-02-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $66,848</td>
+              <td>0.1920</td>
+              <td><span class="zone-badge" style="background:#e67e2222;color:#e67e22;font-size:0.7rem;">Fear</span></td>
+              <td>0.9954</td>
+              <td>0.8960</td>
+              <td>0.9958</td>
+              <td>1.238</td>
+              <td>0.402</td>
+              <td><span style="color:#2ecc71;">0.387</span></td>
+              <td>0.000578</td>
+              <td>0.108760</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center text-muted" style="font-size:0.75rem;">
+    <p>Generated by <a href="https://charts.bgeometrics.com" style="color:#a7f3d0;">BGeometrics</a> ·
+       Data from Bitcoin full node on <a href="https://api.bitcoin-data.com/scalar.html" style="color:#a7f3d0;">bitcoin-data.com</a> ·
+       <a href="https://charts.bgeometrics.com/index.html" style="color:#a7f3d0;">View all charts</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(isLight) {
+        if (isLight) {
+            document.documentElement.classList.add('light');
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            themeIcon.className = 'bi bi-moon-stars';
+            themeToggleBtn.title = 'Switch to dark mode';
+        } else {
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            themeIcon.className = 'bi bi-sun';
+            themeToggleBtn.title = 'Switch to light mode';
+        }
+    }
+    applyTheme(document.documentElement.classList.contains('light'));
+    themeToggleBtn.addEventListener('click', function() {
+        const isNowLight = !document.documentElement.classList.contains('light');
+        applyTheme(isNowLight);
+        localStorage.setItem('profile-theme', isNowLight ? 'light' : 'dark');
+    });
+</script>
+</body>
+</html>
