@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcoin Daily Report — 27 Apr 2026</title>
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Apply saved theme before CSS renders to avoid flash -->
+<script>
+    if (localStorage.getItem('profile-theme') === 'light') {
+        document.documentElement.classList.add('light');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+    }
+</script>
+<style>
+  :root {
+    --bg-body:    #0f1117;
+    --bg-card:    #1a1d27;
+    --bg-card2:   #111318;
+    --border:     #2a2d3a;
+    --text:       #e0e0e0;
+    --text-muted: #9ca3af;
+    --text-dim:   #6b7280;
+    --text-strong:#ffffff;
+  }
+  html.light {
+    --bg-body:    #f3f4f6;
+    --bg-card:    #ffffff;
+    --bg-card2:   #f9fafb;
+    --border:     #e5e7eb;
+    --text:       #374151;
+    --text-muted: #6b7280;
+    --text-dim:   #9ca3af;
+    --text-strong:#111827;
+  }
+  * { box-sizing: border-box; }
+  body { background:var(--bg-body); color:var(--text); font-family:"Nunito",sans-serif;
+         margin:0; transition:background 0.25s, color 0.25s; }
+  /* ── Header ── */
+  .header { background:#000000; border-bottom:1px solid #333333; height:60px; padding:0 20px;
+            box-shadow:0px 2px 20px rgba(1,41,112,0.1); display:flex; align-items:center; }
+  .header-content { width:100%; display:flex; align-items:center; }
+  .logo { display:flex; align-items:center; text-decoration:none; line-height:1; }
+  .logo img { max-height:26px; margin-right:6px; }
+  .logo span { font-size:26px; font-weight:700; color:#ffffff; font-family:"Nunito",sans-serif; }
+  .logo span:hover { color:#a7f3d0; }
+  @media (max-width:576px) { .logo span { display:none; } }
+  .header-nav { margin-left:auto; display:flex; align-items:center; }
+  .header-nav a { color:#ffffff; text-decoration:none; font-size:22px; margin-right:25px; transition:color 0.2s; }
+  .header-nav a:hover { color:#a7f3d0; }
+  .header-nav .nav-label { font-size:0.6em; font-weight:600; letter-spacing:0.5px; }
+  .theme-toggle-btn { background:transparent; border:1px solid #444; color:#ccc;
+                      width:32px; height:32px; border-radius:8px; cursor:pointer;
+                      font-size:16px; display:flex; align-items:center; justify-content:center;
+                      margin-right:20px; transition:border-color 0.2s, color 0.2s; }
+  .theme-toggle-btn:hover { border-color:#10b981; color:#10b981; }
+  /* ── Content ── */
+  .card { background:var(--bg-card); border:1px solid var(--border); }
+  .card-header { background:var(--bg-card2); border-bottom:1px solid var(--border); }
+  .table { color:var(--text); }
+  .table thead th { color:var(--text-muted); border-color:var(--border); font-size:0.75rem;
+                    text-transform:uppercase; letter-spacing:.4px; }
+  .table td { border-color:var(--border); vertical-align:middle; font-size:0.85rem; }
+  .table-hover tbody tr:hover { background:var(--border) !important; }
+  .metric-card { background:var(--bg-card2); border:1px solid var(--border); border-radius:8px;
+                 padding:16px 20px; text-align:center; }
+  .metric-card .label { font-size:0.7rem; font-weight:600; color:var(--text-muted);
+                        text-transform:uppercase; letter-spacing:.5px; }
+  .metric-card .value { font-size:1.5rem; font-weight:700; color:var(--text-strong); margin:4px 0 0; }
+  .metric-card .sub { font-size:0.8rem; color:var(--text-muted); margin-top:2px; }
+  .zone-badge { display:inline-block; padding:2px 10px; border-radius:12px;
+                font-size:0.75rem; font-weight:700; }
+  .change-item { padding:8px 12px; border-left:3px solid; margin-bottom:8px;
+                 background:var(--bg-card2); border-radius:0 6px 6px 0; font-size:0.9rem; }
+  .section-title { font-size:0.75rem; font-weight:700; color:var(--text-muted);
+                   text-transform:uppercase; letter-spacing:.5px; }
+  .back-link { color:#a7f3d0; text-decoration:none; font-size:0.85rem; }
+  .back-link:hover { color:#fff; }
+  h2 { color:var(--text-strong); }
+  .price-hero { font-size:2.5rem; font-weight:800; color:var(--text-strong); }
+  .pct-positive { color:#2ecc71; }
+  .pct-negative { color:#e74c3c; }
+  @media (max-width:576px) { .price-hero { font-size:1.8rem; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <a href="https://charts.bgeometrics.com/index.html" class="logo">
+      <img src="/assets/img/logo.png" alt="BGeometrics">
+      <span>BGeometrics</span>
+    </a>
+    <nav class="header-nav">
+      <a href="https://charts.bgeometrics.com/index.html" title="BGeometrics Charts"><span class="nav-label">Charts</span></a>
+      <a href="https://charts.bgeometrics.com/reports/weekly/index.html" title="Weekly Reports"><span class="nav-label">Reports</span></a>
+      <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html" title="Bitcoin API BGeometrics"><span class="nav-label">API</span></a>
+      <a href="https://bitcoin-data.com/bguser/pricing" title="Pricing API BGeometrics"><span class="nav-label">Pricing</span></a>
+      <a href="https://bitcoin-data.com/bguser/workspace_bg_dark.html" title="BGeometrics Workspace"><i class="bi bi-person-workspace"></i></a>
+      <a href="https://bitcoin-data.com/bguser/login" target="_blank" title="Login"><i class="bi bi-person"></i></a>
+      <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+      <button id="themeToggleBtn" class="theme-toggle-btn" title="Switch to light mode">
+        <i class="bi bi-sun" id="themeIcon"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="container py-4" style="max-width:960px;">
+
+  <!-- Breadcrumb -->
+  <div class="mb-3">
+    <a href="index.html" class="back-link"><i class="bi bi-arrow-left me-1"></i>Daily Reports</a>
+  </div>
+
+  <!-- Header -->
+  <div class="text-center mb-4">
+    <p class="section-title mb-1">Bitcoin Daily Report</p>
+    <h2 class="mb-0">27 Apr 2026</h2>
+  </div>
+
+  <!-- Price hero -->
+  <div class="text-center mb-4">
+    <div class="price-hero">$77,302</div>
+    
+      
+        <div class="pct-negative mt-1">▼ 1.4% (24h)</div>
+      
+    
+  </div>
+
+  <!-- Notable changes -->
+  
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="bi bi-lightning-charge-fill me-1" style="color:#f1c40f;"></i>Notable changes (24h)</h5>
+    </div>
+    <div class="card-body">
+      
+      <div class="change-item" style="border-left-color:#e74c3c;">SOPR LTH crossed <strong>below 1.0</strong> (1.424 → 0.847) — sellers at loss</div>
+      
+      <div class="change-item" style="border-left-color:#e74c3c;">BTC price -1.4% vs previous day ($78,410 → $77,302)</div>
+      
+    </div>
+  </div>
+  
+
+  <!-- Key metrics -->
+  <p class="section-title mb-3">Key metrics — 27 Apr 2026</p>
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">NUPL</div>
+        <div class="value">0.3062</div>
+        
+        <div class="sub">
+          <span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;">
+            Hope
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">SOPR</div>
+        <div class="value">1.0009</div>
+        <div class="sub">LTH 0.8471 / STH 1.0028</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">MVRV</div>
+        <div class="value">1.441</div>
+        <div class="sub">Z-Score 0.833</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">VDD Multiple</div>
+        <div class="value">0.398</div>
+        
+        <div class="sub">
+          <span class="zone-badge" style="background:#2ecc7122;color:#2ecc71;">
+            Green
+          </span>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">Reserve Risk</div>
+        <div class="value" style="font-size:1.1rem;">0.000646</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="metric-card">
+        <div class="label">Supply-Adj. CDD</div>
+        <div class="value" style="font-size:1.1rem;">0.269281</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7-day context table -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="bi bi-table me-1"></i>Last 7 days</h5>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-sm table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Price</th>
+              <th>NUPL</th>
+              <th>Zone</th>
+              <th>SOPR</th>
+              <th>SOPR LTH</th>
+              <th>SOPR STH</th>
+              <th>MVRV</th>
+              <th>MVRV Z</th>
+              <th>VDD×</th>
+              <th>Res.Risk</th>
+              <th>SA-CDD</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>21-04-2026</td>
+              <td> $76,349</td>
+              <td>0.2966</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>1.0005</td>
+              <td>1.0716</td>
+              <td>0.9979</td>
+              <td>1.422</td>
+              <td>0.746</td>
+              <td><span style="color:#2ecc71;">0.342</span></td>
+              <td>0.000640</td>
+              <td>1.312324</td>
+            </tr>
+            
+            <tr>
+              <td>22-04-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $78,192</td>
+              <td>0.3133</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>0.9980</td>
+              <td>0.7708</td>
+              <td>1.0082</td>
+              <td>1.456</td>
+              <td>0.762</td>
+              <td><span style="color:#2ecc71;">0.354</span></td>
+              <td>0.000655</td>
+              <td>0.706995</td>
+            </tr>
+            
+            <tr>
+              <td>23-04-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $78,241</td>
+              <td>0.3141</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>0.9998</td>
+              <td>1.0328</td>
+              <td>0.9995</td>
+              <td>1.458</td>
+              <td>0.824</td>
+              <td><span style="color:#2ecc71;">0.350</span></td>
+              <td>0.000655</td>
+              <td>0.361102</td>
+            </tr>
+            
+            <tr>
+              <td>24-04-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $77,445</td>
+              <td>0.3079</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>0.9834</td>
+              <td>1.1957</td>
+              <td>0.9793</td>
+              <td>1.445</td>
+              <td>0.825</td>
+              <td><span style="color:#2ecc71;">0.402</span></td>
+              <td>0.000648</td>
+              <td>1.879521</td>
+            </tr>
+            
+            <tr>
+              <td>25-04-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $77,637</td>
+              <td>0.3093</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>1.0001</td>
+              <td>1.0928</td>
+              <td>0.9999</td>
+              <td>1.448</td>
+              <td>0.801</td>
+              <td><span style="color:#2ecc71;">0.396</span></td>
+              <td>0.000649</td>
+              <td>0.081450</td>
+            </tr>
+            
+            <tr>
+              <td>26-04-2026</td>
+              <td><span style="color:#2ecc71">▲</span> $78,410</td>
+              <td>0.3164</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>1.0034</td>
+              <td>1.4242</td>
+              <td>1.0020</td>
+              <td>1.463</td>
+              <td>0.807</td>
+              <td><span style="color:#2ecc71;">0.393</span></td>
+              <td>0.000655</td>
+              <td>0.137615</td>
+            </tr>
+            
+            <tr>
+              <td>27-04-2026</td>
+              <td><span style="color:#e74c3c">▼</span> $77,302</td>
+              <td>0.3062</td>
+              <td><span class="zone-badge" style="background:#f1c40f22;color:#f1c40f;font-size:0.7rem;">Hope</span></td>
+              <td>1.0009</td>
+              <td>0.8471</td>
+              <td>1.0028</td>
+              <td>1.441</td>
+              <td>0.833</td>
+              <td><span style="color:#2ecc71;">0.398</span></td>
+              <td>0.000646</td>
+              <td>0.269281</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center text-muted" style="font-size:0.75rem;">
+    <p>Generated by <a href="https://bgeometrics.com" style="color:#a7f3d0;">BGeometrics</a> ·
+       Data from Bitcoin full node on <a href="https://api.bitcoin-data.com/scalar.html" style="color:#a7f3d0;">bitcoin-data.com</a> ·
+       <a href="https://charts.bgeometrics.com/index.html" style="color:#a7f3d0;">View all charts</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(isLight) {
+        if (isLight) {
+            document.documentElement.classList.add('light');
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            themeIcon.className = 'bi bi-moon-stars';
+            themeToggleBtn.title = 'Switch to dark mode';
+        } else {
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+            themeIcon.className = 'bi bi-sun';
+            themeToggleBtn.title = 'Switch to light mode';
+        }
+    }
+    applyTheme(document.documentElement.classList.contains('light'));
+    themeToggleBtn.addEventListener('click', function() {
+        const isNowLight = !document.documentElement.classList.contains('light');
+        applyTheme(isNowLight);
+        localStorage.setItem('profile-theme', isNowLight ? 'light' : 'dark');
+    });
+</script>
+</body>
+</html>
