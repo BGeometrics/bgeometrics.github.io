@@ -28,5 +28,15 @@
     "price_pct_month": 3.8157280757820757,
     "nupl_zone": "Fear",
     "mvrv": 1.272
+  },
+  {
+    "month": "2026-04",
+    "month_start": "2026-04-01",
+    "month_end": "2026-04-30",
+    "filename": "2026-04.html",
+    "price": 76346.77,
+    "price_pct_month": 12.04207559718678,
+    "nupl_zone": "Hope",
+    "mvrv": 1.4246
   }
 ]
