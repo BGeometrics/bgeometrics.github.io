@@ -79,5 +79,14 @@
     "price_pct_7d": 3.3662833281217206,
     "nupl_zone": "Hope",
     "mvrv": 1.4628
+  },
+  {
+    "week_end": "2026-05-03",
+    "week_start": "2026-04-27",
+    "filename": "2026-05-03.html",
+    "price": 78574.5,
+    "price_pct_7d": 1.6463909447915932,
+    "nupl_zone": "Hope",
+    "mvrv": 1.4642
   }
 ]
