@@ -857,7 +857,7 @@
                   <h6 class="card-title mb-0">Block API</h6>
                   <span id="block-badge" class="badge bg-secondary">–</span>
                 </div>
-                <div class="small text-muted mb-2">bgeometrics.com/api-block</div>
+                <div class="small text-muted mb-2">api-block.bgeometrics.com</div>
                 <div class="small" id="block-db"></div>
                 <div class="small mt-1" id="block-summary"></div>
                 <div class="small text-muted mt-1" id="block-refresh-ms"></div>
@@ -1136,8 +1136,8 @@
 
     function loadStatus() {
       var apiUrl     = 'https://api.bitcoin-data.com/v1/status';
-      var blockUrl   = 'https://bgeometrics.com/api-block/v1/status';
-      var venusUrl   = 'https://bgeometrics.com/api-block/v1/node/venus';
+      var blockUrl   = 'https://api-block.bitcoin-data.com/v1/status';
+      var venusUrl   = 'https://api-block.bitcoin-data.com/v1/node/venus';
       var saturnoUrl = 'https://bgeometrics.com/api-block/v1/node/saturno';
 
       Promise.allSettled([
