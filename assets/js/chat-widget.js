@@ -119,8 +119,8 @@
     // Suggested questions (quick chips)
     var suggestions = el('div', { class: 'bgcw-msg bgcw-msg--assistant' });
     var sugBubble = el('div', { class: 'bgcw-bubble' });
-    var chips = ['¿Cuál es el MVRV ahora?', 'Bitcoin market overview', '¿Cómo está el hashrate?'];
-    sugBubble.innerHTML = '<span style="font-size:12px;opacity:.7">Prueba:</span><br>';
+    var chips = ['What is the current MVRV?', 'Bitcoin market overview', 'What is the hashrate?'];
+    sugBubble.innerHTML = '<span style="font-size:12px;opacity:.7">Try:</span><br>';
     chips.forEach(function (chip) {
       var chipEl = el('button', { class: 'bgcw-chip' });
       chipEl.style.cssText =
@@ -138,7 +138,7 @@
     var inputArea = el('div', { class: 'bgcw-input-area' });
     var textarea = el('textarea', {
       id: 'bgcw-input',
-      placeholder: '¿Qué indica el MVRV ahora? / What is the hashrate?',
+      placeholder: 'Ask about Bitcoin on-chain metrics...',
       rows: '1',
       maxlength: '500',
       'aria-label': 'Your question',
