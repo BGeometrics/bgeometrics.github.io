@@ -110,9 +110,8 @@
     var welcome = el('div', { class: 'bgcw-msg bgcw-msg--assistant' });
     var welcomeBubble = el('div', { class: 'bgcw-bubble' });
     welcomeBubble.innerHTML =
-      '¡Hola! Soy el asistente de <strong>BGeometrics</strong>. ' +
-      'Pregúntame sobre métricas on-chain de Bitcoin como MVRV, SOPR, hashrate, etc.<br><br>' +
-      '<em style="font-size:12px;opacity:.75">Hello! Ask me about Bitcoin on-chain metrics like MVRV, SOPR, hashrate, and more.</em>';
+      'Hi! I\'m the <strong>BGeometrics</strong> assistant. ' +
+      'Ask me about Bitcoin on-chain metrics like MVRV, SOPR, hashrate, and more.';
     welcome.appendChild(welcomeBubble);
     messages.appendChild(welcome);
 
