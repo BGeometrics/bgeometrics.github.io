@@ -223,7 +223,7 @@
 
       var assistantDiv = appendMessage('assistant', '');
       var bubble = assistantDiv.querySelector('.bgcw-bubble');
-      bubble.innerHTML = '<span class="bgcw-thinking">Pensando…</span>';
+      bubble.innerHTML = '<span class="bgcw-thinking">Thinking…</span>';
 
       var accumulated = '';
 
@@ -280,7 +280,7 @@
           function handleEvent(name, data) {
             switch (name) {
               case 'start':
-                bubble.innerHTML = '<span class="bgcw-thinking">Pensando…</span>';
+                bubble.innerHTML = '<span class="bgcw-thinking">Thinking…</span>';
                 break;
               case 'tool_call':
                 var tools = data.tools || [];
@@ -288,8 +288,8 @@
                   tools.some(function (t) {
                     return t === 'get_latest_values' || t === 'get_market_overview';
                   })
-                    ? 'Obteniendo datos en tiempo real…'
-                    : 'Buscando métricas…';
+                    ? 'Fetching real-time data…'
+                    : 'Searching metrics…';
                 bubble.innerHTML = '<span class="bgcw-thinking">' + escapeHtml(label) + '</span>';
                 break;
               case 'chunk':
