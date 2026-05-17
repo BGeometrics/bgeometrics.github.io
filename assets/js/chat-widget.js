@@ -118,20 +118,36 @@
     // Suggested questions (quick chips)
     var suggestions = el('div', { class: 'bgcw-msg bgcw-msg--assistant' });
     var sugBubble = el('div', { class: 'bgcw-bubble' });
-    var chips = ['What is the current MVRV?', 'Bitcoin market overview', 'What is the hashrate?'];
-    sugBubble.innerHTML = '<span style="font-size:12px;opacity:.7">Try:</span><br>';
-    chips.forEach(function (chip) {
-      var chipEl = el('button', { class: 'bgcw-chip' });
-      chipEl.style.cssText =
-        'display:inline-block;margin:3px 3px 0 0;padding:3px 9px;border-radius:12px;' +
-        'border:1px solid var(--bgcw-accent);background:transparent;color:var(--bgcw-accent);' +
-        'font-size:11px;cursor:pointer;font-family:inherit;';
-      chipEl.textContent = chip;
-      chipEl.addEventListener('click', function () { submitQuery(chip); });
-      sugBubble.appendChild(chipEl);
-    });
+    var defaultChips = ['What is the current MVRV?', 'Bitcoin market overview', 'What is the hashrate?'];
+
+    function renderChips(chips, label) {
+      sugBubble.innerHTML = '<span style="font-size:12px;opacity:.7">' + label + '</span><br>';
+      chips.forEach(function (chip) {
+        var chipEl = el('button', { class: 'bgcw-chip' });
+        chipEl.style.cssText =
+          'display:inline-block;margin:3px 3px 0 0;padding:3px 9px;border-radius:12px;' +
+          'border:1px solid var(--bgcw-accent);background:transparent;color:var(--bgcw-accent);' +
+          'font-size:11px;cursor:pointer;font-family:inherit;';
+        var display = chip.length > 45 ? chip.slice(0, 42) + '…' : chip;
+        chipEl.textContent = display;
+        chipEl.addEventListener('click', function () { submitQuery(chip); });
+        sugBubble.appendChild(chipEl);
+      });
+    }
+
+    renderChips(defaultChips, 'Try:');
     suggestions.appendChild(sugBubble);
     messages.appendChild(suggestions);
+
+    // Load recent queries from server
+    var recentUrl = ENDPOINT.replace(/\/chat$/, '/chat/recent');
+    fetch(recentUrl)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var queries = (data.queries || []).slice(0, 5);
+        if (queries.length > 0) renderChips(queries, 'Recent questions:');
+      })
+      .catch(function () {});
 
     // Input area
     var inputArea = el('div', { class: 'bgcw-input-area' });
