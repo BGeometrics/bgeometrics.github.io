@@ -75,7 +75,6 @@ def search_replace_dark(_file, _file_out):
     filedata = filedata.replace('portal.bgeometrics.com/dashboard_dark.html', 'portal.bgeometrics.com/dashboard.html')
     filedata = filedata.replace('portal.bgeometrics.com/public-reports_dark.html', 'portal.bgeometrics.com/public-reports.html')
     filedata = filedata.replace('bgeometrics.com/reports/index_dark.html', 'bgeometrics.com/reports/index.html')
-    filedata = filedata.replace('charts.bgeometrics.com/bitcoin_api_dark.html', 'charts.bgeometrics.com/bitcoin_api.html')
     filedata = filedata.replace('"bg_alert_modal_dark.html"', '"bg_alert_modal.html"')
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
 
