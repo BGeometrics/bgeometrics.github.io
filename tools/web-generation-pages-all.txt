@@ -79,6 +79,7 @@
 /tmp/web/choppiness.html,web-generation-end-choppiness-global.html,Bitcoin Choppiness Index (14 day),graphics/choppiness.html,Bitcoin Choppiness Index (14 day),,charts-nav
 /tmp/web/terminal_price.html,web-generation-end-terminal-price.html,Bitcoin Terminal Price,graphics/terminal_price.html,Bitcoin Terminal Price,,charts-nav
 /tmp/web/google_trends.html,web-generation-end-google-trends.html,Bitcoin Google Trends,graphics/google_trends.html,Bitcoin Google Trends,,charts-nav
+/tmp/web/wikipedia_pageviews.html,web-generation-end-wikipedia-pageviews.html,Bitcoin Wikipedia Pageviews,graphics/wikipedia_pageviews.html,Bitcoin Wikipedia Pageviews,,charts-nav
 /tmp/web/hashribbons.html,web-generation-end-ribbons.html,Bitcoin Hash Ribbons,graphics/hashribbons.html,Bitcoin Hash Ribbons,,miners-nav
 /tmp/web/dca.html,web-generation-end-dca.html,Bitcoin DCA,graphics/dca.html,Bitcoin DCA,,tools-nav
 /tmp/web/bitcoin_monthly_history.html,web-generation-end-monthly-history.html,Bitcoin Monthly Returns,graphics/bitcoin_monthly_history.html,Bitcoin Monthly Returns,,tools-nav

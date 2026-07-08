@@ -81,6 +81,7 @@ var names = [
 { name: "Choppiness Index", link: "choppiness.html" },
 { name: "M2 Growth Global YoY", link: "m2_global.html" },
 { name: "Google Trends", link: "google_trends.html" },
+{ name: "Wikipedia Pageviews", link: "wikipedia_pageviews.html" },
 { name: "Terminal Price", link: "terminal_price.html" },
 { name: "Crypto, altcoins", link: "workspace_crypto.html" },
 { name: "ETH, ADA, SOL, XMR...", link: "workspace_crypto.html" },
