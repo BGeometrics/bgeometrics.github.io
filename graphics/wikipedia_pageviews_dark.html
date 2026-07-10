@@ -54,12 +54,20 @@
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/wikipedia_pageviews_btc_price.json'
-            ).then(response => response.json());
+            const data_price = await fetch('https://bitcoin-data.com/bguser/api/bitcoin/history')
+                .then(response => response.json())
+                .then(rows => rows
+                    .map(r => [ +r.unixTs * 1000, parseFloat(r.btcPrice) ])
+                    .filter(([ts, v]) => ts && !isNaN(v))
+                    .sort((a, b) => a[0] - b[0]));
             const data_wikipedia_pageviews = await fetch(
-                'https://charts.bgeometrics.com/files/wikipedia_pageviews.json'
-            ).then(response => response.json());
+                'https://bitcoin-data.com/bguser/api/public/metric?endpoint=' + encodeURIComponent('/v1/wikipedia-pageviews') + '&size=1000'
+            )
+                .then(response => response.json())
+                .then(rows => rows
+                    .map(r => [ r.unixTs * 1000, r.views ])
+                    .filter(([ts, v]) => ts && v != null)
+                    .sort((a, b) => a[0] - b[0]));
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
