@@ -30,7 +30,7 @@
                     .filter(([ts, v]) => ts && !isNaN(v))
                     .sort((a, b) => a[0] - b[0]));
             const data_wikipedia_pageviews = await fetch(
-                'https://bitcoin-data.com/bguser/api/public/metric?endpoint=' + encodeURIComponent('/v1/wikipedia-pageviews') + '&size=1000'
+                'https://bitcoin-data.com/bguser/api/bitcoin/metric?endpoint=' + encodeURIComponent('/v1/wikipedia-pageviews') + '&size=1000'
             )
                 .then(response => response.json())
                 .then(rows => rows
