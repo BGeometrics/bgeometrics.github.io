@@ -17,6 +17,9 @@ if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
         source $VENV_DIR/bin/activate
 fi
 
+cd $DIR_PROYECT
+git pull
+
 cd $DIR_PROYECT/tools
 python3 web-generation-pages-dark.py
 python3 web-generation-pages-all-es.py
