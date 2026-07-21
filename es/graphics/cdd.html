@@ -15,6 +15,8 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
 
     
 
@@ -22,12 +24,12 @@
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/cdd_btc_price.json'
-            ).then(response => response.json());
-            const data_cdd = await fetch(
-                'https://charts.bgeometrics.com/files/cdd.json'
-            ).then(response => response.json());
+            const data_price = await bgSeries(
+                'btc-price', 'https://charts.bgeometrics.com/files/cdd_btc_price.json'
+            );
+            const data_cdd = await bgSeries(
+                'cdd', 'https://charts.bgeometrics.com/files/cdd.json'
+            );
             const data_cdd_terminal_ajusted = await fetch(
                 'https://charts.bgeometrics.com/files/cdd_terminal_ajusted.json'
             ).then(response => response.json());
@@ -213,6 +215,14 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_cdd, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
     })();
     </script>
 
