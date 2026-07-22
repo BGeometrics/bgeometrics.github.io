@@ -24,13 +24,13 @@
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/funding_rate_btc_price.json'
+                'https://charts.bgeometrics.com/files/funding_rate_btc_price_alfabitcoin.json'
             ).then(response => response.json());
             const data_funding_rate = await fetch(
-                'https://charts.bgeometrics.com/files/funding_rate.json'
+                'https://charts.bgeometrics.com/files/funding_rate_alfabitcoin.json'
             ).then(response => response.json());
             const data_funding_rate_7sma = await fetch(
-                'https://charts.bgeometrics.com/files/funding_rate_7sma.json'
+                'https://charts.bgeometrics.com/files/funding_rate_7sma_alfabitcoin.json'
             ).then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {

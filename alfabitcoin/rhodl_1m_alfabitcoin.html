@@ -22,16 +22,16 @@
     <script>
         (async () => {
             const data_rhodl_1m = await fetch(
-                'https://charts.bgeometrics.com/files/rhodl_1m.json'
+                'https://charts.bgeometrics.com/files/rhodl_1m_alfabitcoin.json'
             ).then(response => response.json());
             const data_rhodl = await fetch(
-                'https://charts.bgeometrics.com/files/rhodl.json'
+                'https://charts.bgeometrics.com/files/rhodl_alfabitcoin.json'
             ).then(response => response.json());
             const data_realized_cap = await fetch(
-                'https://charts.bgeometrics.com/files/realized_cap.json'
+                'https://charts.bgeometrics.com/files/realized_cap_alfabitcoin.json'
             ).then(response => response.json());
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/rhodl_1m_btc_price.json'
+                'https://charts.bgeometrics.com/files/rhodl_1m_btc_price_alfabitcoin.json'
             ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container', {
