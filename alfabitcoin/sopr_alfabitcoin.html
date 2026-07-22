@@ -22,19 +22,19 @@
     <script>
         (async () => {
             const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
+                'https://charts.bgeometrics.com/files/sopr_btc_price_alfabitcoin.json'
             ).then(response => response.json());
             const data_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_data.json'
+                'https://charts.bgeometrics.com/files/sopr_data_alfabitcoin.json'
             ).then(response => response.json());
             const data_lth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/lth_sopr.json'
+                'https://charts.bgeometrics.com/files/lth_sopr_alfabitcoin.json'
             ).then(response => response.json());
             const data_sth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sth_sopr.json'
+                'https://charts.bgeometrics.com/files/sth_sopr_alfabitcoin.json'
             ).then(response => response.json());
             const data_sopr_7sma = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_7sma.json'
+                'https://charts.bgeometrics.com/files/sopr_7sma_alfabitcoin.json'
             ).then(response => response.json());
         
         var chart = Highcharts.stockChart('container', {
