@@ -15,28 +15,24 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
 
     <div id="container-iframe" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_sopr = SOPR_DATA;
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
-            ).then(response => response.json());
-            const data_lth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/lth_sopr.json'
-            ).then(response => response.json());
-            const data_sth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sth_sopr.json'
-            ).then(response => response.json());
+            const data_sopr = await bgSeries('sopr', 'https://charts.bgeometrics.com/files/sopr_data.json');
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/sopr_btc_price.json');
+            const data_lth_sopr = await bgSeries('lth-sopr', 'https://charts.bgeometrics.com/files/lth_sopr.json');
+            const data_sth_sopr = await bgSeries('sth-sopr', 'https://charts.bgeometrics.com/files/sth_sopr.json');
             const data_sopr_7sma = await fetch(
                 'https://charts.bgeometrics.com/files/sopr_7sma.json'
             ).then(response => response.json());
             const data_sopr_7ema = await fetch(
                 'https://charts.bgeometrics.com/files/sopr_7ema.json'
             ).then(response => response.json());
-        
+
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -243,6 +239,14 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_sopr, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
     })();
 
     </script>

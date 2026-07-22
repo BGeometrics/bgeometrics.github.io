@@ -46,24 +46,20 @@
             color: #000000 !important;
         }
     </style>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
 
     <div id="container" style="width:100%; height:600px;"></div>
 
     <script>
         (async () => {
-            const data_metrics = NUPL_DATA;
-            const data_lth_nupl = await fetch(
-                'https://charts.bgeometrics.com/files/lth_nupl.json'
-            ).then(response => response.json());
-            const data_sth_nupl = await fetch(
-                'https://charts.bgeometrics.com/files/sth_nupl.json'
-            ).then(response => response.json());
+            const data_metrics = await bgSeries('nupl', 'https://charts.bgeometrics.com/files/nupl_data.json');
+            const data_lth_nupl = await bgSeries('nupl-lth', 'https://charts.bgeometrics.com/files/lth_nupl.json');
+            const data_sth_nupl = await bgSeries('nupl-sth', 'https://charts.bgeometrics.com/files/sth_nupl.json');
             const data_nupl_7dma = await fetch(
                 'https://charts.bgeometrics.com/files/nupl_7dma.json'
             ).then(response => response.json());
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/nupl_btc_price.json'
-            ).then(response => response.json());
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/nupl_btc_price.json');
 
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -254,6 +250,14 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_metrics, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
     })();
 
     </script>
