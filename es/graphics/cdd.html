@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bitcoin: Días Monedas Destruídas</title>
+    <title>Bitcoin: Coin Days Destroyed</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
@@ -80,7 +80,7 @@
                 }
             },
             title: {
-                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Días Monedas Destruídas</a>',
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Coin Days Destroyed</a>',
                 align: 'left',
             },
 
@@ -123,14 +123,14 @@
                 },
             }, {
                 title: {
-                    text: 'Precio BTC'
+                    text: 'BTC price'
                 },
                 type: 'logarithmic',
                 opposite: false
             }],
 
             series: [{
-                name: 'Precio BTC',
+                name: 'BTC price',
                 color: 'black',
                 data: data_price,
                 tooltip: {
@@ -139,7 +139,7 @@
                 yAxis: 1
             }, {
                 id:'cdd',
-                name: 'Días Monedas Destruídas',
+                name: 'Coin Days Destroyed',
                 data: data_cdd,
                 visible: false,
                 tooltip: {
