@@ -1,8 +1,17 @@
 {
+<<<<<<< HEAD
     "last_24h": -1.88,
     "last_week": -4.43,
     "last_month": 6.76,
     "last_6month": -28.77,
     "last_year": -46.13,
     "last_4year": 166.77
+=======
+    "last_24h": -1.85,
+    "last_week": -0.24,
+    "last_month": 7.44,
+    "last_6month": -26.91,
+    "last_year": -45.24,
+    "last_4year": 203.79
+>>>>>>> f67822bd3d82e9c8149a79432abcc0af1a4d94e0
 }
