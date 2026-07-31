@@ -14,17 +14,33 @@ function bgIsSubscriber() {
     return document.cookie.split('; ').indexOf('bg_full=1') !== -1;
 }
 
+// Cache en memoria: una sola promesa compartida por slug durante la carga de
+// la pagina, para no repetir N fetches identicos a /chart/<slug> cuando varias
+// series (p.ej. los 21 paises de m2-bank) provienen del mismo endpoint.
+const _bgChartRowsCache = {};
+
+function _bgFetchChartRows(slug) {
+    if (!_bgChartRowsCache[slug]) {
+        _bgChartRowsCache[slug] = fetch('https://api.bgeometrics.com/chart/' + slug, {
+            credentials: 'include'
+        }).then(r => r.json());
+    }
+    return _bgChartRowsCache[slug];
+}
+
 // Devuelve la serie en formato Highcharts [[tsMs, val], ...].
-// slug      : metrica en la API (p.ej. 'aviv', 'cdd', 'btc-price').
+// slug      : metrica en la API (p.ej. 'aviv', 'cdd', 'btc-price', 'm2-bank').
 // staticUrl : URL del JSON estatico recortado (fallback para no suscriptores o error).
-async function bgSeries(slug, staticUrl) {
+// field     : opcional. Campo a extraer de la respuesta cuando el endpoint
+//             devuelve varios campos ademas de d/unixTs (p.ej. 'usm2d' en
+//             /chart/m2-bank). Si se omite, se autodetecta el primer campo
+//             que no sea 'd' ni 'unixTs' (comportamiento igual que antes).
+async function bgSeries(slug, staticUrl, field) {
     if (bgIsSubscriber()) {
         try {
-            const rows = await fetch('https://api.bgeometrics.com/chart/' + slug, {
-                credentials: 'include'
-            }).then(r => r.json());
+            const rows = await _bgFetchChartRows(slug);
             if (Array.isArray(rows) && rows.length) {
-                const k = Object.keys(rows[0]).find(x => x !== 'd' && x !== 'unixTs');
+                const k = field || Object.keys(rows[0]).find(x => x !== 'd' && x !== 'unixTs');
                 return rows.map(o => [
                     Number(o.unixTs) * 1000,
                     o[k] == null ? null : Number(o[k])

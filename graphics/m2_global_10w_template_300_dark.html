@@ -15,6 +15,8 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
     <script src="../assets/themes/brand-dark.js"></script>
     <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
     <style>
@@ -53,7 +55,9 @@
 
     <script>
         (async () => {
-            const data = DDD;
+            const data = await fetch(
+                'https://charts.bgeometrics.com/files/m2_weeks10.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/glm2_btc_price.json'
             ).then(response => response.json());
@@ -243,6 +247,13 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data, {
+                color: 'rgba(247,147,26,0.35)', label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
 
     })();
 
