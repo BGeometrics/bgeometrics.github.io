@@ -15,15 +15,19 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
 
-    
+
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
-            const data = EEE;
-            const data_m2_10w = DDD;
+            const data = await bgSeries('m2global', 'https://charts.bgeometrics.com/files/glm2_in.json');
+            const data_m2_10w = await fetch(
+                'https://charts.bgeometrics.com/files/m2_weeks10.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/glm2_btc_price.json'
             ).then(response => response.json());
@@ -246,6 +250,13 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_m2_10w, {
+                color: 'rgba(247,147,26,0.35)', label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
 
     })();
 

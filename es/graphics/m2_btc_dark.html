@@ -15,6 +15,8 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
 
     <div id="container" style="width:100%; height:600px;"></div>
 
@@ -23,69 +25,27 @@
             const data_btc_m2_btc_price = await fetch(
                 'https://charts.bgeometrics.com/files/btc_m2_btc_price.json'
             ).then(response => response.json());
-            const data_aem2d = await fetch(
-                'https://charts.bgeometrics.com/files/aem2d.json'
-            ).then(response => response.json());
-            const data_brm2d = await fetch(
-                'https://charts.bgeometrics.com/files/brm2d.json'
-            ).then(response => response.json());
-            const data_cam2d = await fetch(
-                'https://charts.bgeometrics.com/files/cam2d.json'
-            ).then(response => response.json());
-            const data_chm2d = await fetch(
-                'https://charts.bgeometrics.com/files/chm2d.json'
-            ).then(response => response.json());
-            const data_cnm2d = await fetch(
-                'https://charts.bgeometrics.com/files/cnm2d.json'
-            ).then(response => response.json());
-            const data_com2d = await fetch(
-                'https://charts.bgeometrics.com/files/com2d.json'
-            ).then(response => response.json());
-            const data_eum2d = await fetch(
-                'https://charts.bgeometrics.com/files/eum2d.json'
-            ).then(response => response.json());
-            const data_fim2d = await fetch(
-                'https://charts.bgeometrics.com/files/fim2d.json'
-            ).then(response => response.json());
-            const data_gbm2d = await fetch(
-                'https://charts.bgeometrics.com/files/gbm2d.json'
-            ).then(response => response.json());
-            const data_hkm2d = await fetch(
-                'https://charts.bgeometrics.com/files/hkm2d.json'
-            ).then(response => response.json());
-            const data_inm2d = await fetch(
-                'https://charts.bgeometrics.com/files/inm2d.json'
-            ).then(response => response.json());
-            const data_jpm2d = await fetch(
-                'https://charts.bgeometrics.com/files/jpm2d.json'
-            ).then(response => response.json());
-            const data_mxm2d = await fetch(
-                'https://charts.bgeometrics.com/files/mxm2d.json'
-            ).then(response => response.json());
-            const data_nzm2d = await fetch(
-                'https://charts.bgeometrics.com/files/nzm2d.json'
-            ).then(response => response.json());
-            const data_phm2d = await fetch(
-                'https://charts.bgeometrics.com/files/phm2d.json'
-            ).then(response => response.json());
-            const data_rum2d = await fetch(
-                'https://charts.bgeometrics.com/files/rum2d.json'
-            ).then(response => response.json());
-            const data_sgm2d = await fetch(
-                'https://charts.bgeometrics.com/files/sgm2d.json'
-            ).then(response => response.json());
-            const data_trm2d = await fetch(
-                'https://charts.bgeometrics.com/files/trm2d.json'
-            ).then(response => response.json());
-            const data_twm2d = await fetch(
-                'https://charts.bgeometrics.com/files/twm2d.json'
-            ).then(response => response.json());
-            const data_usm2d = await fetch(
-                'https://charts.bgeometrics.com/files/usm2d.json'
-            ).then(response => response.json());
-            const data_zam2d = await fetch(
-                'https://charts.bgeometrics.com/files/zam2d.json'
-            ).then(response => response.json());
+            const data_aem2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/aem2d.json', 'aem2d');
+            const data_brm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/brm2d.json', 'brm2d');
+            const data_cam2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/cam2d.json', 'cam2d');
+            const data_chm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/chm2d.json', 'chm2d');
+            const data_cnm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/cnm2d.json', 'cnm2d');
+            const data_com2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/com2d.json', 'com2d');
+            const data_eum2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/eum2d.json', 'eum2d');
+            const data_fim2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/fim2d.json', 'fim2d');
+            const data_gbm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/gbm2d.json', 'gbm2d');
+            const data_hkm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/hkm2d.json', 'hkm2d');
+            const data_inm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/inm2d.json', 'inm2d');
+            const data_jpm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/jpm2d.json', 'jpm2d');
+            const data_mxm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/mxm2d.json', 'mxm2d');
+            const data_nzm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/nzm2d.json', 'nzm2d');
+            const data_phm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/phm2d.json', 'phm2d');
+            const data_rum2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/rum2d.json', 'rum2d');
+            const data_sgm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/sgm2d.json', 'sgm2d');
+            const data_trm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/trm2d.json', 'trm2d');
+            const data_twm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/twm2d.json', 'twm2d');
+            const data_usm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/usm2d.json', 'usm2d');
+            const data_zam2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/zam2d.json', 'zam2d');
 
         var chart = Highcharts.stockChart('container', {
             stockTools: {
@@ -438,6 +398,13 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_usm2d, {
+                color: 'rgba(247,147,26,0.35)', label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
     })();
 
     </script>
