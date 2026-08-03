@@ -130,6 +130,10 @@
 		gridLineWidth: 0,
             }],
 
+            xAxis: {
+                min: bgIsSubscriber() ? Date.UTC(2013, 4, 20) : undefined
+            },
+
             series: [{
                 id:'BTC price',
                 name: 'BTC price',
