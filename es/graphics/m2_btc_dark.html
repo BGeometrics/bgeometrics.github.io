@@ -22,9 +22,7 @@
 
     <script>
         (async () => {
-            const data_btc_m2_btc_price = await fetch(
-                'https://charts.bgeometrics.com/files/btc_m2_btc_price.json'
-            ).then(response => response.json());
+            const data_btc_m2_btc_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/btc_m2_btc_price.json');
             const data_aem2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/aem2d.json', 'aem2d');
             const data_brm2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/brm2d.json', 'brm2d');
             const data_cam2d = await bgSeries('m2-bank', 'https://charts.bgeometrics.com/files/cam2d.json', 'cam2d');
