@@ -28,6 +28,12 @@ python3 web-generation-pages-all.py
 cp -r $DIR_PROYECT/graphics/* $DIR_ES/graphics
 cp -r $DIR_PROYECT/reports/* $DIR_ES/reports
 
+# JS compartido raiz -> es. Copia NOMINAL a proposito: NO usar assets/js/* porque
+# bgeometrics.js y main.js son versiones propias del sitio ES y se machacarian.
+cp $DIR_PROYECT/assets/js/bg-chart-data.js      $DIR_ES/assets/js/
+cp $DIR_PROYECT/assets/js/chart-upgrade-band.js $DIR_ES/assets/js/
+cp $DIR_PROYECT/assets/js/bg-auth-badge.js      $DIR_ES/assets/js/
+
 # Sobreescribo los gráficos que ya están traducidos
 cp $DIR_PROYECT/tools/es/graphics/* $DIR_ES/graphics/
 
