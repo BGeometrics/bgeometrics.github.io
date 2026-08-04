@@ -84,12 +84,10 @@
 
         if (isSub) {
             setLoginIconVisible(false);
-            // El .html de este href va dentro del JS, no de la plantilla, asi que no lo
-            // toca el replace('.html', '_dark.html') del generador de paginas.
             // Fallback a "Subscriber"/"Suscriptor": sesiones emitidas antes de este cambio
             // tienen bg_full pero todavia no tienen bg_user.
             host.innerHTML =
-                '<a href="' + PORTAL + '/dashboard.html" style="' + PILL +
+                '<a href="' + PORTAL + '/profile" style="' + PILL +
                     'background:#10b981;" title="' +
                     (isEs ? 'Sesion iniciada — historico completo desbloqueado'
                           : 'Signed in — full history unlocked') + '">' +
