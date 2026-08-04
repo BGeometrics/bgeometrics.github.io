@@ -1,9 +1,12 @@
 /*
  * bg-auth-badge.js — indicador de sesion/suscripcion en la cabecera.
  *
- * Rellena el placeholder <li id="bg-auth-status"></li> con un badge que refleja el estado
- * de sesion, y oculta el icono estatico de Login (<li id="bg-login-icon">, solo existe en
- * la plantilla raiz) cuando ya no hace falta.
+ * Rellena dos placeholders:
+ *   - <li id="bg-profile-status"></li> (a la izquierda de Dashboard): icono de perfil +
+ *     username, solo para suscriptor logado.
+ *   - <li id="bg-auth-status"></li> (tras Pricing): pill "Log in" para anonimos.
+ * Tambien oculta el icono estatico de Login (<li id="bg-login-icon">, solo existe en la
+ * plantilla raiz) cuando ya no hace falta.
  *
  * Nace porque hay suscriptores que ven las graficas recortadas (AVIV, M2...) sin darse
  * cuenta de que simplemente no han iniciado sesion en ese navegador.
@@ -16,11 +19,12 @@
  *     el tier. Es la unica forma de detectar "logado" en JS, porque `bg_token` es HttpOnly.
  *
  * Estados:
- *   - Suscriptor (bg_full=1): oculta el icono de Login, pill verde con el username.
- *   - Logado pero no suscriptor (bg_user si, bg_full no): sin badge (no se ofrece login,
- *     ya esta logado) ni banda de upgrade en la cabecera — el icono de Login sigue visible
- *     por si quiere cambiar de cuenta.
- *   - Anonimo (ninguna cookie): pill ambar "Log in / Upgrade", icono de Login visible.
+ *   - Suscriptor (bg_full=1): oculta el icono de Login; a la izquierda de Dashboard aparece
+ *     un icono de perfil + el username, enlazando a /profile.
+ *   - Logado pero no suscriptor (bg_user si, bg_full no): sin badge de ningun tipo (no se le
+ *     ofrece login, ya esta logado) — el icono de Login sigue visible por si quiere cambiar
+ *     de cuenta.
+ *   - Anonimo (ninguna cookie): pill ambar "Log in" (sin "/ Upgrade"), icono de Login visible.
  */
 
 (function () {
@@ -33,9 +37,6 @@
                'padding:4px 10px;border-radius:12px;font-size:12px;font-weight:bold;' +
                'color:#000000;text-decoration:none;white-space:nowrap;' +
                'box-shadow:0 1px 3px rgba(0,0,0,0.4);';
-
-    // Para los <a> anidados dentro del pill: heredan el #000000 del contenedor.
-    var LINK = 'color:inherit;text-decoration:none;';
 
     var MAX_USERNAME_CHARS = 16;
 
@@ -72,8 +73,9 @@
     }
 
     function render() {
-        var host = document.getElementById('bg-auth-status');
-        if (!host) {
+        var authHost = document.getElementById('bg-auth-status');
+        var profileHost = document.getElementById('bg-profile-status');
+        if (!authHost && !profileHost) {
             return; // pagina sin cabecera (p.ej. un grafico embebido) → no hace nada
         }
 
@@ -84,50 +86,45 @@
 
         if (isSub) {
             setLoginIconVisible(false);
-            // Fallback a "Subscriber"/"Suscriptor": sesiones emitidas antes de este cambio
-            // tienen bg_full pero todavia no tienen bg_user.
-            host.innerHTML =
-                '<a href="' + PORTAL + '/profile" style="' + PILL +
-                    'background:#10b981;" title="' +
-                    (isEs ? 'Sesion iniciada — historico completo desbloqueado'
-                          : 'Signed in — full history unlocked') + '">' +
-                  '<i class="bi bi-patch-check-fill"></i>' +
-                  '<span class="d-none d-md-inline">' +
-                    (username ? displayName(username) : (isEs ? 'Suscriptor' : 'Subscriber')) +
-                  '</span>' +
-                '</a>';
+            if (authHost) authHost.innerHTML = '';
+            if (profileHost) {
+                // Fallback a "Subscriber"/"Suscriptor": sesiones emitidas antes de este
+                // cambio tienen bg_full pero todavia no tienen bg_user.
+                profileHost.innerHTML =
+                    '<a href="' + PORTAL + '/profile" style="' + PILL +
+                        'background:#10b981;" title="' +
+                        (isEs ? 'Sesion iniciada — historico completo desbloqueado'
+                              : 'Signed in — full history unlocked') + '">' +
+                      '<i class="bi bi-person-circle"></i>' +
+                      '<span class="d-none d-md-inline">' +
+                        (username ? displayName(username) : (isEs ? 'Suscriptor' : 'Subscriber')) +
+                      '</span>' +
+                    '</a>';
+            }
             return;
         }
 
         setLoginIconVisible(true);
+        if (profileHost) profileHost.innerHTML = '';
 
         if (isLoggedIn) {
             // Logado pero sin acceso completo (FREE): ya se le ha ofrecido iniciar sesion,
-            // asi que no tiene sentido seguir mostrando el aviso de "Log in / Upgrade".
-            host.innerHTML = '';
+            // asi que no tiene sentido seguir mostrando el aviso de "Log in".
+            if (authHost) authHost.innerHTML = '';
             return;
         }
 
-        // El icono es en si mismo el enlace de login: en movil el texto se oculta y el
-        // badge queda reducido al candado, que debe seguir siendo pulsable.
-        // Los dos textos van juntos en un unico hijo flex para que el separador " / "
-        // no herede el `gap` del contenedor y quede pegado como en el pill verde.
-        host.innerHTML =
-            '<span style="' + PILL + 'background:#F7931A;" title="' +
-                (isEs ? 'Historico limitado. Inicia sesion con tu suscripcion para verlo completo'
-                      : 'Limited history. Log in with your subscription to see it in full') + '">' +
-              '<a href="' + PORTAL + '/login" style="' + LINK + 'display:inline-flex;">' +
-                '<i class="bi bi-lock-fill"></i>' +
-              '</a>' +
-              '<span class="d-none d-md-inline">' +
-                '<a href="' + PORTAL + '/login" style="' + LINK + '">' +
-                  (isEs ? 'Iniciar sesion' : 'Log in') +
-                '</a> / ' +
-                '<a href="' + PORTAL + '/pricing" style="' + LINK + '">' +
-                  (isEs ? 'Mejorar' : 'Upgrade') +
-                '</a>' +
-              '</span>' +
-            '</span>';
+        if (authHost) {
+            authHost.innerHTML =
+                '<a href="' + PORTAL + '/login" style="' + PILL + 'background:#F7931A;" title="' +
+                    (isEs ? 'Historico limitado. Inicia sesion con tu suscripcion para verlo completo'
+                          : 'Limited history. Log in with your subscription to see it in full') + '">' +
+                  '<i class="bi bi-lock-fill"></i>' +
+                  '<span class="d-none d-md-inline">' +
+                    (isEs ? 'Iniciar sesion' : 'Log in') +
+                  '</span>' +
+                '</a>';
+        }
     }
 
     if (document.readyState === 'loading') {
