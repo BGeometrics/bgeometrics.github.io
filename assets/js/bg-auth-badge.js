@@ -1,19 +1,26 @@
 /*
  * bg-auth-badge.js — indicador de sesion/suscripcion en la cabecera.
  *
- * Rellena el placeholder <li id="bg-auth-status"></li> con un badge que refleja si el
- * usuario tiene acceso al historico completo. Reutiliza bgIsSubscriber() de
- * bg-chart-data.js (la misma fuente de verdad que usa el gating de las graficas), de modo
- * que el badge y la banda naranja "Login / Upgrade" de los graficos nunca pueden discrepar.
+ * Rellena el placeholder <li id="bg-auth-status"></li> con un badge que refleja el estado
+ * de sesion, y oculta el icono estatico de Login (<li id="bg-login-icon">, solo existe en
+ * la plantilla raiz) cuando ya no hace falta.
  *
  * Nace porque hay suscriptores que ven las graficas recortadas (AVIV, M2...) sin darse
  * cuenta de que simplemente no han iniciado sesion en ese navegador.
  *
- * Limitacion conocida: la unica cookie legible por JS es `bg_full`, que BGUser solo emite
- * para tiers de pago activos (`bg_token` es HttpOnly). Un usuario FREE logado es por tanto
- * indistinguible de un anonimo, asi que el estado negativo dice "Log in / Upgrade" —
- * correcto en los tres casos (anonimo, FREE logado, suscriptor deslogado) — y nunca afirma
- * que la sesion este cerrada.
+ * Fuentes de verdad, ambas cookies de dominio padre `.bgeometrics.com` emitidas por BGUser:
+ *   - bgIsSubscriber() (bg-chart-data.js), lee `bg_full=1`: suscriptor de pago activo.
+ *     Se reutiliza tal cual para que el badge y la banda naranja de las graficas
+ *     (chart-upgrade-band.js) nunca puedan discrepar.
+ *   - cookie `bg_user` (username URL-encoded): se emite en TODO login exitoso, sea cual sea
+ *     el tier. Es la unica forma de detectar "logado" en JS, porque `bg_token` es HttpOnly.
+ *
+ * Estados:
+ *   - Suscriptor (bg_full=1): oculta el icono de Login, pill verde con el username.
+ *   - Logado pero no suscriptor (bg_user si, bg_full no): sin badge (no se ofrece login,
+ *     ya esta logado) ni banda de upgrade en la cabecera — el icono de Login sigue visible
+ *     por si quiere cambiar de cuenta.
+ *   - Anonimo (ninguna cookie): pill ambar "Log in / Upgrade", icono de Login visible.
  */
 
 (function () {
@@ -30,6 +37,40 @@
     // Para los <a> anidados dentro del pill: heredan el #000000 del contenedor.
     var LINK = 'color:inherit;text-decoration:none;';
 
+    var MAX_USERNAME_CHARS = 16;
+
+    function getCookie(name) {
+        var re = new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\/+^])/g, '\\$1') + '=([^;]*)');
+        var m = document.cookie.match(re);
+        if (!m || !m[1]) return null;
+        try {
+            return decodeURIComponent(m[1]);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function displayName(username) {
+        var safe = escapeHtml(username);
+        if (safe.length > MAX_USERNAME_CHARS) {
+            return safe.slice(0, MAX_USERNAME_CHARS - 1) + '…';
+        }
+        return safe;
+    }
+
+    function setLoginIconVisible(visible) {
+        var loginIcon = document.getElementById('bg-login-icon');
+        if (loginIcon) {
+            loginIcon.style.display = visible ? '' : 'none';
+        }
+    }
+
     function render() {
         var host = document.getElementById('bg-auth-status');
         if (!host) {
@@ -37,11 +78,16 @@
         }
 
         var isSub = (typeof bgIsSubscriber === 'function') && bgIsSubscriber();
+        var username = getCookie('bg_user');
+        var isLoggedIn = !!username;
         var isEs = (document.documentElement.lang || '').toLowerCase().indexOf('es') === 0;
 
         if (isSub) {
+            setLoginIconVisible(false);
             // El .html de este href va dentro del JS, no de la plantilla, asi que no lo
             // toca el replace('.html', '_dark.html') del generador de paginas.
+            // Fallback a "Subscriber"/"Suscriptor": sesiones emitidas antes de este cambio
+            // tienen bg_full pero todavia no tienen bg_user.
             host.innerHTML =
                 '<a href="' + PORTAL + '/dashboard.html" style="' + PILL +
                     'background:#10b981;" title="' +
@@ -49,9 +95,18 @@
                           : 'Signed in — full history unlocked') + '">' +
                   '<i class="bi bi-patch-check-fill"></i>' +
                   '<span class="d-none d-md-inline">' +
-                    (isEs ? 'Suscriptor' : 'Subscriber') +
+                    (username ? displayName(username) : (isEs ? 'Suscriptor' : 'Subscriber')) +
                   '</span>' +
                 '</a>';
+            return;
+        }
+
+        setLoginIconVisible(true);
+
+        if (isLoggedIn) {
+            // Logado pero sin acceso completo (FREE): ya se le ha ofrecido iniciar sesion,
+            // asi que no tiene sentido seguir mostrando el aviso de "Log in / Upgrade".
+            host.innerHTML = '';
             return;
         }
 
