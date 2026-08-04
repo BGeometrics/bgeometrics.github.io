@@ -41,6 +41,10 @@
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://charts.bgeometrics.com/assets/js/bgeometrics.js"></script>
 
+  <!-- Estado de sesion / suscripcion (el orden importa: bg-auth-badge usa bgIsSubscriber) -->
+  <script src="assets/js/bg-chart-data.js" defer></script>
+  <script src="assets/js/bg-auth-badge.js" defer></script>
+
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -67,6 +71,9 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
+
+        <!-- Badge de estado de sesion/suscripcion; lo rellena bg-auth-badge.js -->
+        <li id="bg-auth-status"></li>
 
         <li class="nav-item dropdown">
           <a class="nav-link nav-icon" href="workspace_dark.html" alt="BGeometrics Workspace">
