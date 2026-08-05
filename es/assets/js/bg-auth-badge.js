@@ -116,7 +116,7 @@
 
         if (authHost) {
             authHost.innerHTML =
-                '<a href="' + PORTAL + '/login" style="' + PILL + 'background:#F7931A;" title="' +
+                '<a href="' + PORTAL + '/login" style="' + PILL + 'background:#F7931A;margin-right:10px;" title="' +
                     (isEs ? 'Historico limitado. Inicia sesion con tu suscripcion para verlo completo'
                           : 'Limited history. Log in with your subscription to see it in full') + '">' +
                   '<i class="bi bi-lock-fill"></i>' +
