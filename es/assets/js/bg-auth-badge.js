@@ -92,7 +92,7 @@
                 // cambio tienen bg_full pero todavia no tienen bg_user.
                 profileHost.innerHTML =
                     '<a href="' + PORTAL + '/profile" style="' + PILL +
-                        'background:#10b981;" title="' +
+                        'background:#10b981;margin-right:10px;" title="' +
                         (isEs ? 'Sesion iniciada — historico completo desbloqueado'
                               : 'Signed in — full history unlocked') + '">' +
                       '<i class="bi bi-person-circle"></i>' +
