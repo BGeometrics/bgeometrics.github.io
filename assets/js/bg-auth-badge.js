@@ -1,10 +1,10 @@
 /*
  * bg-auth-badge.js — indicador de sesion/suscripcion en la cabecera.
  *
- * Rellena dos placeholders:
- *   - <li id="bg-profile-status"></li> (a la izquierda de Dashboard): icono de perfil +
- *     username, solo para suscriptor logado.
- *   - <li id="bg-auth-status"></li> (tras Pricing): pill "Log in" para anonimos.
+ * Rellena <li id="bg-profile-status"></li> (a la izquierda de Dashboard) con el indicador
+ * de identidad que corresponda: pill verde de perfil (suscriptor) o pill ambar "Log in"
+ * (anonimo). <li id="bg-auth-status"></li> (tras Pricing) ya no se usa — se deja vacio a
+ * proposito por si algun dia se necesita, en vez de tocar otra vez las plantillas.
  * Tambien oculta el icono estatico de Login (<li id="bg-login-icon">, solo existe en la
  * plantilla raiz) cuando ya no hace falta.
  *
@@ -24,8 +24,8 @@
  *   - Logado pero no suscriptor (bg_user si, bg_full no): sin badge de ningun tipo (no se le
  *     ofrece login, ya esta logado) — el icono de Login sigue visible por si quiere cambiar
  *     de cuenta.
- *   - Anonimo (ninguna cookie): solo el pill ambar "Log in"; el icono de Login se oculta
- *     porque seria redundante (el propio pill ya lleva a /login).
+ *   - Anonimo (ninguna cookie): a la izquierda de Dashboard aparece el pill ambar "Log in";
+ *     el icono de Login se oculta porque seria redundante (el propio pill ya lleva a /login).
  */
 
 (function () {
@@ -117,10 +117,12 @@
         }
 
         // Anonimo: el propio pill "Log in" ya lleva a /login, asi que el icono de Login
-        // por separado sobra.
+        // por separado sobra. Va en profileHost (a la izquierda de Dashboard), igual que
+        // el pill de suscriptor, para que se vea nada mas cargar la pagina.
         setLoginIconVisible(false);
-        if (authHost) {
-            authHost.innerHTML =
+        if (authHost) authHost.innerHTML = '';
+        if (profileHost) {
+            profileHost.innerHTML =
                 '<a href="' + PORTAL + '/login" style="' + PILL + 'background:#F7931A;margin-right:10px;" title="' +
                     (isEs ? 'Historico limitado. Inicia sesion con tu suscripcion para verlo completo'
                           : 'Limited history. Log in with your subscription to see it in full') + '">' +
