@@ -52,3 +52,38 @@ async function bgSeries(slug, staticUrl, field) {
     }
     return fetch(staticUrl).then(r => r.json());
 }
+
+// Media movil de `window` puntos sobre una serie [[tsMs, val], ...] ya resuelta
+// (tipicamente el resultado de bgSeries). Se usa para derivar en el cliente
+// metricas como el MVRV 365D MA a partir del historico completo del suscriptor,
+// sin depender de un JSON estatico recortado ni de un endpoint dedicado.
+// Replica pandas .rolling(window).mean(): null mientras no haya `window` puntos.
+function bgRollingMean(series, window) {
+    const result = [];
+    const buffer = [];
+    let sum = 0;
+
+    for (const [ts, val] of series) {
+        if (val == null) {
+            result.push([ts, null]);
+            continue;
+        }
+        buffer.push(val);
+        sum += val;
+        if (buffer.length > window) {
+            sum -= buffer.shift();
+        }
+        result.push([ts, buffer.length === window ? sum / window : null]);
+    }
+
+    return result;
+}
+
+// Resta punto a punto dos series [[tsMs, val], ...] alineadas por indice
+// (mismo origen y misma longitud, p.ej. mvrv menos su propio rolling mean).
+function bgDiffSeries(seriesA, seriesB) {
+    return seriesA.map(([ts, val], i) => {
+        const other = seriesB[i] ? seriesB[i][1] : null;
+        return [ts, (val == null || other == null) ? null : val - other];
+    });
+}
