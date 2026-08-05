@@ -24,7 +24,8 @@
  *   - Logado pero no suscriptor (bg_user si, bg_full no): sin badge de ningun tipo (no se le
  *     ofrece login, ya esta logado) — el icono de Login sigue visible por si quiere cambiar
  *     de cuenta.
- *   - Anonimo (ninguna cookie): pill ambar "Log in" (sin "/ Upgrade"), icono de Login visible.
+ *   - Anonimo (ninguna cookie): solo el pill ambar "Log in"; el icono de Login se oculta
+ *     porque seria redundante (el propio pill ya lleva a /login).
  */
 
 (function () {
@@ -104,19 +105,23 @@
             return;
         }
 
-        setLoginIconVisible(true);
         if (profileHost) profileHost.innerHTML = '';
 
         if (isLoggedIn) {
             // Logado pero sin acceso completo (FREE): ya se le ha ofrecido iniciar sesion,
-            // asi que no tiene sentido seguir mostrando el aviso de "Log in".
+            // asi que no tiene sentido seguir mostrando el aviso de "Log in". El icono de
+            // Login se deja visible por si quiere cambiar de cuenta.
+            setLoginIconVisible(true);
             if (authHost) authHost.innerHTML = '';
             return;
         }
 
+        // Anonimo: el propio pill "Log in" ya lleva a /login, asi que el icono de Login
+        // por separado sobra.
+        setLoginIconVisible(false);
         if (authHost) {
             authHost.innerHTML =
-                '<a href="' + PORTAL + '/login" style="' + PILL + 'background:#F7931A;margin-right:10px;" title="' +
+                '<a href="' + PORTAL + '/login" style="' + PILL + 'background:#F7931A;" title="' +
                     (isEs ? 'Historico limitado. Inicia sesion con tu suscripcion para verlo completo'
                           : 'Limited history. Log in with your subscription to see it in full') + '">' +
                   '<i class="bi bi-lock-fill"></i>' +
