@@ -27,37 +27,6 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
-    <script src="../assets/themes/brand-dark.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-
-        .highcharts-popup input[type="text"],
-        .highcharts-popup input[type="number"],
-        .highcharts-popup select,
-        .highcharts-annotation-toolbar input {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
-        }
-    </style>
     <script src="../assets/js/bg-chart-data.js"></script>
     <script src="../assets/js/chart-upgrade-band.js"></script>
 
@@ -153,7 +122,6 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 title: {
                     text: null,
                 },
@@ -173,8 +141,8 @@
             }],
 
             series: [{
-                id:'BTC price',
-                name: 'BTC price',
+                id:'Precio BTC',
+                name: 'Precio BTC',
                 color: 'orange',
                 zIndex: 2,
                 data: data_price,
@@ -257,7 +225,6 @@
                             enabled: false
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
