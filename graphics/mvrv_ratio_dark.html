@@ -123,6 +123,8 @@
                             .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
                             .attr({zIndex: 1})
                             .add();
+
+                        this.xAxis[0].setExtremes(Date.UTC(2011, 2, 1), null);
                     }
                 }
             },
@@ -131,6 +133,10 @@
                 series:{
                     showInLegend:true,
                 }
+            },
+
+            xAxis: {
+                min: Date.UTC(2011, 2, 1)
             },
 
             yAxis: [{
