@@ -58,9 +58,7 @@
             const data = await bgSeries('m2global', 'https://charts.bgeometrics.com/files/glm2_in.json');
             const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/glm2_btc_price.json');
             const data_change = await bgSeries('m2yoy-change', 'https://charts.bgeometrics.com/files/m2_yoy_change_in.json');
-            const data_weeks7_change = await fetch(
-                'https://charts.bgeometrics.com/files/m2_weeks7_change_in.json'
-            ).then(response => response.json());
+            const data_weeks7_change = await bgSeries('m2-weeks7-change', 'https://charts.bgeometrics.com/files/m2_weeks7_change_in.json');
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
