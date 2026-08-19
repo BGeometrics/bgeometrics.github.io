@@ -1,0 +1,70 @@
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/onchain_risk_index.html">
+          <h5>Bitcoin On-Chain Risk Index</h5>
+        </a>
+        <p>
+	  The On-Chain Risk Index is a composite market risk indicator (0-100) combining three equal-weight components: the Macro Risk Index (MVRV + Mayer Multiple long-cycle composite), the STH Risk Index (SOPR STH + Loss Ratio + MVRV STH short-cycle composite), and an Options Skew Risk Score (normalized percentile of UpVol minus DownVol from Deribit options; high positive skew means calls are expensive, i.e. bullish sentiment, which reads as elevated risk).
+          <br><br>
+	  Each component is normalized by its own cumulative historical percentile rank, so the composite has no look-ahead bias. Higher values indicate historically elevated risk; lower values indicate accumulation zones.
+          <br><br>
+	  The line color follows the score itself, matching the five documented risk zones: Accumulation (0-20), Low Risk (20-40), Moderate (40-60), Elevated (60-80) and High Risk (80-100).
+          <br><br>
+	  The index is only available for dates where options data (upvol, downvol) is present, so its history is shorter than most other on-chain metrics on this site.
+        </p>
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
+      </div>
+      <div class="credits">
+        <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
