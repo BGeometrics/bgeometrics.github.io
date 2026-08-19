@@ -30,6 +30,8 @@
             const data = await bgSeries(
                 'sth-risk-index', 'https://charts.bgeometrics.com/files/sth_risk_index.json', 'sthRiskIndex'
             );
+            const data_7dma = bgRollingMean(data, 7);
+            const data_30dma = bgRollingMean(data, 30);
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -154,6 +156,24 @@
                     color: '#e74c3c'
                 }],
 
+            }, {
+                id: 'STH Risk Index 7D MA',
+                name: 'STH Risk Index 7D MA',
+                data: data_7dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id: 'STH Risk Index 30D MA',
+                name: 'STH Risk Index 30D MA',
+                data: data_30dma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
             }],
 
             legend:{
