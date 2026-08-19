@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <link rel="canonical" href="https://charts.bgeometrics.com/bitcoin_distribution_coin_g.html">
+  <link rel="canonical" href="https://charts.bgeometrics.com/bitcoin_macro_index.html">
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="BTC Address Coins" name="keywords">
+  <meta content="Bitcoin Macro Index" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -412,7 +412,7 @@
         <a class="nav-link collapsed" data-bs-target="#cycles-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Cycles</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="cycles-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="cycles-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="https://charts.bgeometrics.com/regime_score_dark.html">
               <i class="bi bi-circle"></i><span>Regime Score</span>
@@ -440,7 +440,7 @@
         <a class="nav-link collapsed" data-bs-target="#address-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Address</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="address-nav" class="nav-content" data-bs-parent="#sidebar-nav">
+        <ul id="address-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="https://charts.bgeometrics.com/address_active_dark.html">
               <i class="bi bi-circle"></i><span>Active Addresses</span>
@@ -852,7 +852,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="reports/bitcoin_distribution_coin_g.html" allow="fullscreen" title="Bitcoin Address Coins" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/bitcoin_macro_index_dark.html" allow="fullscreen" title="Bitcoin Macro Index" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -860,6 +860,22 @@
         </div><!-- End Left side columns -->
 
       </div>
+    </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/bitcoin_macro_index.html">
+          <h5>Bitcoin Macro Index</h5>
+        </a>
+        <p>
+	  The Bitcoin Macro Index is a composite on-chain indicator (0-4) that combines four signals to assess the state of the Bitcoin market cycle: Hash Ribbons (30-day vs 60-day hashrate SMA crossover, detects miner capitulation and recovery), % UTXOs in Profit, 2-Year Cost Basis (price vs. the average acquisition cost of coins moved in the last 2 years), and LTH Net Position Change (30d, how much long-term holders have accumulated or distributed).
+          <br><br>
+	  Each signal contributes 1 point when bullish, so the macro_score ranges from 0 (all four bearish) to 4 (all four bullish).
+          <br><br>
+	  Unlike the STH Risk Index or Cycle Extreme, which score how stretched or overheated the market is, the Macro Index is a directional read: it counts how many independent on-chain signals currently favor a bullish regime, so the line color runs from red (0, all bearish) to green (4, all bullish).
+        </p>
+      </div>
+
     </section>
 
   </main><!-- End #main -->
@@ -878,6 +894,11 @@
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
       </div>
       <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
+      </div>
+      <div class="credits">
         <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
         <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
         <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
@@ -894,8 +915,9 @@
   </div>
 
   <!-- Vendor JS Files -->
-  
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 
