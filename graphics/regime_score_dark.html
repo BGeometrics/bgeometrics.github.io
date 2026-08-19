@@ -145,16 +145,6 @@
                 },
                 min: 0,
                 max: 100,
-
-                plotBands: [{
-                    from: 60,
-                    to: 100,
-                    color: 'rgba(255, 0, 0, 0.1)'
-                }, {
-                    from: 40,
-                    to: 0,
-                    color: 'rgba(0, 255, 0, 0.1)'
-                }],
             }, {
                 title: {
                     text: 'BTC price'
@@ -182,6 +172,19 @@
                     valueDecimals: 2
                 },
                 yAxis: 0,
+                zoneAxis: 'y',
+                zones: [{
+                    value: 25,
+                    color: '#e74c3c'
+                }, {
+                    value: 50,
+                    color: '#e67e22'
+                }, {
+                    value: 75,
+                    color: '#f1c40f'
+                }, {
+                    color: '#2ecc71'
+                }],
 
             }],
 
