@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="__keywords__" name="keywords">
+  <meta content="Cycle Extreme" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -410,7 +410,7 @@
         <a class="nav-link collapsed" data-bs-target="#cycles-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Cycles</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="cycles-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="cycles-nav" class="nav-content" data-bs-parent="#sidebar-nav">
           <li>
             <a href="https://charts.bgeometrics.com/regime_score.html">
               <i class="bi bi-circle"></i><span>Regime Score</span>
@@ -840,108 +840,42 @@
       <div class="row">
         <div id="searchResults"></div>
 
+        <!-- Left side columns -->
         <div class="col-lg-12">
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
+              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                <iframe class="iframe" width="100%" height="600px" src="graphics/cycle_extreme.html" allow="fullscreen" title="Cycle Extreme" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
           </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-12">
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe"></div>
-                <iframe class="iframe" width="100%" height="500px" src="graphics/workspace_dashboard_400.html" allow="fullscreen" title="Bitcoin workspace" scrolling="no" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        </div><!-- End Left side columns -->
 
       </div>
     </section>
     <br>
     <section>
       <div class="container">
-        <a href="dashboard_workspace_8.html">
-          <h5>Bitcoin Dashboard Workspace</h5>
-	      </a>
-        <p> 
-          Dashboard with four workspaces to be able to select different bitcoin graphics on the same page.
+        <a href="graphics/cycle_extreme.html">
+          <h5>Bitcoin Cycle Extreme</h5>
+        </a>
+        <p>
+	  Cycle Extreme is a composite on-chain signal (0-10) aggregating 7 indicators to identify Bitcoin cycle extremes: MVRV Z-Score (2yr), Puell Multiple, Reserve Risk, S2F Deviation, Power Law Oscillator, Rainbow Band and LTH MVRV.
           <br><br>
-          Initially, only the BTC price appears on the graph in the workbench, but different metrics can be selected and incorporated.
+	  Each indicator is scored 0-10 by percentile rank over its full history (Rainbow Band is scaled directly, 1-9 to 0-10), and the composite is the mean of all available indicator scores, requiring at least 4 to be present.
           <br><br>
-          In the drop-down menus of each graph, different data and formula options can be chosen.
+	  The line color follows the score itself: Maximum Opportunity (0-2), Opportunity (2-4), Neutral (4-6), Caution (6-8) and Maximum Risk (8-10).
+          <br><br>
+	  Unlike the STH Risk Index or the Macro Risk Index, which focus on valuation and short-term holder behavior, Cycle Extreme blends models built on very different time horizons (from the fast-moving Puell Multiple to the multi-year Power Law trend), making it useful as a broad gauge of how stretched the current cycle is.
         </p>
       </div>
 
     </section>
 
-  </main>
+  </main><!-- End #main -->
 
+  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
@@ -955,6 +889,11 @@
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
       </div>
       <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
+      </div>
+      <div class="credits">
         <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
         <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
         <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
@@ -962,7 +901,7 @@
         <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
       </div>
     </div>
-  </footer>
+  </footer><!-- End Footer -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -971,7 +910,9 @@
   </div>
 
   <!-- Vendor JS Files -->
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 
