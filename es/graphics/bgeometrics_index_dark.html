@@ -138,32 +138,77 @@
             }, {
                 id: 'demand-index',
                 name: 'Demand Index',
-                color: '#3498db',
                 data: data_demand,
                 tooltip: {
                     valueDecimals: 0
                 },
-                yAxis: 0
+                yAxis: 0,
+                zoneAxis: 'y',
+                zones: [{
+                    value: 20,
+                    color: '#2ecc71'
+                }, {
+                    value: 40,
+                    color: '#a3d977'
+                }, {
+                    value: 60,
+                    color: '#f1c40f'
+                }, {
+                    value: 80,
+                    color: '#e67e22'
+                }, {
+                    color: '#e74c3c'
+                }],
             }, {
                 id: 'short-term-trends-index',
                 name: 'Short-Term Trends Index',
-                color: '#9b59b6',
                 data: data_stt,
                 visible: false,
                 tooltip: {
                     valueDecimals: 0
                 },
-                yAxis: 0
+                yAxis: 0,
+                zoneAxis: 'y',
+                zones: [{
+                    value: 20,
+                    color: '#2ecc71'
+                }, {
+                    value: 40,
+                    color: '#a3d977'
+                }, {
+                    value: 60,
+                    color: '#f1c40f'
+                }, {
+                    value: 80,
+                    color: '#e67e22'
+                }, {
+                    color: '#e74c3c'
+                }],
             }, {
                 id: 'market-peaks-index',
                 name: 'Market Peaks Index',
-                color: '#e74c3c',
                 data: data_peaks,
                 visible: false,
                 tooltip: {
                     valueDecimals: 0
                 },
-                yAxis: 0
+                yAxis: 0,
+                zoneAxis: 'y',
+                zones: [{
+                    value: 20,
+                    color: '#2ecc71'
+                }, {
+                    value: 40,
+                    color: '#a3d977'
+                }, {
+                    value: 60,
+                    color: '#f1c40f'
+                }, {
+                    value: 80,
+                    color: '#e67e22'
+                }, {
+                    color: '#e74c3c'
+                }],
             }],
 
             legend:{
