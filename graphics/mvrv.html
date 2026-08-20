@@ -23,10 +23,7 @@
     <script>
         (async () => {
             const data_mvrv_zscore = await bgSeries('mvrv-zscore', 'https://charts.bgeometrics.com/files/mvrv_zscore_data.json');
-            // btc-price viene sin recortar para suscriptores (histórico completo desde 2009);
-            // el MVRV no tiene dato antes de ~2012, así que se alinea aquí para no arrastrar el eje X.
-            const data_price = (await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json'))
-                .filter(([ts]) => ts >= 1325376000000);
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json');
             const data_lth_mvrv = await bgSeries('lth-mvrv', 'https://charts.bgeometrics.com/files/lth_mvrv.json');
             const data_sth_mvrv = await bgSeries('sth-mvrv', 'https://charts.bgeometrics.com/files/sth_mvrv.json');
 
