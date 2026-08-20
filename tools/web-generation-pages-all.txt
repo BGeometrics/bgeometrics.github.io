@@ -34,7 +34,7 @@
 /tmp/web/cycle_extreme.html,web-generation-end-cycle-extreme.html,Cycle Extreme,graphics/cycle_extreme.html,Cycle Extreme,,cycles-nav
 /tmp/web/bitcoin_macro_index.html,web-generation-end-bitcoin-macro-index.html,Bitcoin Macro Index,graphics/bitcoin_macro_index.html,Bitcoin Macro Index,,cycles-nav
 /tmp/web/bgeometrics_index.html,web-generation-end-bgeometrics-index.html,BGeometrics Index,graphics/bgeometrics_index.html,BGeometrics Index,,cycles-nav
-/tmp/web/coinbase_premium.html,web-generation-end-coinbase-premium.html,Coinbase Premium Index,graphics/coinbase_premium.html,Coinbase Premium Index,,cycles-nav
+/tmp/web/coinbase_premium.html,web-generation-end-coinbase-premium.html,Coinbase Premium Index,graphics/coinbase_premium.html,Coinbase Premium Index,,charts-nav
 /tmp/web/cdd.html,web-generation-end-cdd.html,Coins Days Destroyed (CDD),graphics/cdd.html,Coins Days Destroyed (CDD),,market-nav
 /tmp/web/vdd.html,web-generation-end-vdd.html,Values Days Destroyed (VDD) Multiple,graphics/vdd.html,Values Days Destroyed (CDD) Multiple,,market-nav
 /tmp/web/bitcoin_cdd_ajusted_90dma_g.html,web-generation-end.html,CDD Ajusted 90 dma,reports/bitcoin_cdd_ajusted_90dma_g.html,CDD Ajusted 90 dma,,market-nav
