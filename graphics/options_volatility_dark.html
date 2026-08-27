@@ -263,6 +263,14 @@
                 }]
             }
         });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_upvol, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
     })();
     </script>
 
