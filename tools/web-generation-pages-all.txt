@@ -99,7 +99,9 @@
 /tmp/web/miner_outflow.html,web-generation-end-mineroutflow.html,Bitcoin Miner Outflow,graphics/miner_outflow.html,Bitcoin Miner Outflow,,miners-nav
 /tmp/web/miner_balance.html,web-generation-end-miner-balance.html,Bitcoin Miner Balances,graphics/miner_balance.html,Bitcoin Miner Balance,,miners-nav
 /tmp/web/nrpl.html,web-generation-end-nrpl.html,NRPL (Net Realized Profit Loss),graphics/nrpl.html,NRPL(Net Realized Profit Loss),,market-nav
-/tmp/web/btc_liquidations.html,web-generation-end-btc-liquidations.html,Bitcoin Liquidations,graphics/btc_liquidations.html,Bitcoin Liquidations,,charts-nav
-/tmp/web/orderbook_depth.html,web-generation-end-orderbook-depth.html,Bitcoin Order Book Liquidity,graphics/orderbook_depth.html,Bitcoin Order Book Liquidity,,charts-nav
-/tmp/web/orderflow.html,web-generation-end-orderflow.html,Bitcoin CVD Order Flow,graphics/orderflow.html,Bitcoin CVD Order Flow,,charts-nav
+/tmp/web/btc_liquidations.html,web-generation-end-btc-liquidations.html,Bitcoin Liquidations,graphics/btc_liquidations.html,Bitcoin Liquidations,,derivatives-nav
+/tmp/web/orderbook_depth.html,web-generation-end-orderbook-depth.html,Bitcoin Order Book Liquidity,graphics/orderbook_depth.html,Bitcoin Order Book Liquidity,,derivatives-nav
+/tmp/web/orderflow.html,web-generation-end-orderflow.html,Bitcoin CVD Order Flow,graphics/orderflow.html,Bitcoin CVD Order Flow,,derivatives-nav
 /tmp/web/taker_cohorts.html,web-generation-end-taker-cohorts.html,Bitcoin Taker Cohorts,graphics/taker_cohorts.html,Bitcoin Taker Cohorts,,charts-nav
+/tmp/web/options_day.html,web-generation-end-options-day.html,Bitcoin Options Day,graphics/options_day.html,Bitcoin Options Day,,derivatives-nav
+/tmp/web/options_volatility.html,web-generation-end-options-volatility.html,Bitcoin Options Volatility,graphics/options_volatility.html,Bitcoin Options Volatility,,derivatives-nav
