@@ -8,6 +8,8 @@
 	  Taker buy minus taker sell volume, accumulated over time, for BTC spot and perpetual futures separately. Reconstructed directly from Binance's kline data (the taker_buy_volume field on every candle), not from Binance's own 30-day-limited aggregate ratio — history goes back to 2017 for spot and 2020 for perpetuals.
           <br><br>
 	  A rising CVD while price stays flat or falls is a classic absorption signal: aggressive buyers are being met by hidden supply. The CVD Ratio Divergence line (perp taker-buy ratio minus spot taker-buy ratio) shows when a move is being driven by leverage rather than real spot demand — a common precursor to a squeeze.
+	  <br><br>
+	  <b>API:</b> <a href="https://api.bgeometrics.com/scalar.html#tag/order-flow/GET/v1/orderflow-1d" target="_blank" rel="noopener noreferrer">Full endpoint documentation &rarr;</a>
         </p>
       </div>
 
