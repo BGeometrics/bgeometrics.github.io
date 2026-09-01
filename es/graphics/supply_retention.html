@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supply Retention Rate</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <script src="../assets/stock/highstock.js"></script>
+    <script src="../assets/stock/indicators/indicators-all.js"></script>
+    <script src="../assets/stock/modules/drag-panes.js"></script>
+    <script src="../assets/modules/annotations-advanced.js"></script>
+    <script src="../assets/modules/price-indicator.js"></script>
+    <script src="../assets/modules/full-screen.js"></script>
+    <script src="../assets/modules/stock-tools.js"></script>
+    <script src="../assets/stock/modules/heikinashi.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
+
+
+
+    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+    <script>
+        (async () => {
+            const data_price = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_btc_price.json', 'priceUsd'
+            );
+            const data_1m = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_1m.json', 'r1m'
+            );
+            const data_6m = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_6m.json', 'r6m'
+            );
+            const data_1y = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_1y.json', 'r1y'
+            );
+            const data_2y = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_2y.json', 'r2y'
+            );
+            const data_3y = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_3y.json', 'r3y'
+            );
+            const data_5y = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_5y.json', 'r5y'
+            );
+            const data_10y = await bgSeries(
+                'supply-retention-rate', 'https://charts.bgeometrics.com/files/supply_retention_r_10y.json', 'r10y'
+            );
+
+        var chart = Highcharts.stockChart('container-iframe', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = '../assets/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Supply Retention Rate</a>',
+                align: 'left',
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'Supply Retention Rate'
+                },
+                labels: {
+                    align: 'left',
+                    format: '{value:.0%}'
+                },
+                min: 0,
+                max: 1,
+                plotLines: [{
+                    value: 0.5,
+                    color: '#999999',
+                    width: 1,
+                    dashStyle: 'Dash',
+                    zIndex: 3
+                }]
+            }, {
+                title: {
+                    text: 'Precio BTC'
+                },
+                type: 'logarithmic',
+                opposite: false
+            }],
+
+            series: [{
+                id: 'Precio BTC',
+                name: 'Precio BTC',
+                color: 'black',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                id: 'r-1y',
+                name: 'Retention 1y',
+                data: data_1y,
+                lineWidth: 2,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id: 'r-6m',
+                name: 'Retention 6m',
+                data: data_6m,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id: 'r-1m',
+                name: 'Retention 1m',
+                data: data_1m,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id: 'r-2y',
+                name: 'Retention 2y',
+                data: data_2y,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id: 'r-3y',
+                name: 'Retention 3y',
+                data: data_3y,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id: 'r-5y',
+                name: 'Retention 5y',
+                data: data_5y,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }, {
+                id: 'r-10y',
+                name: 'Retention 10y',
+                data: data_10y,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                y: 25,
+                verticalAlign: 'top',
+                align:'center'
+            },
+
+            rangeSelector: {
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'ytd',
+                    text: 'YTD'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                selected: 5
+            },
+
+            credits: {
+                text: 'Powered by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        stockTools: {
+                            gui: {
+                                enabled: false
+                            }
+                        },
+                        navigator: {
+                            enabled: false
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
+                    }
+                }]
+            }
+        });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_1y, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>

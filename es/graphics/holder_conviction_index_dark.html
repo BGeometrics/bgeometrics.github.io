@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Holder Conviction Index</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <script src="../assets/stock/highstock.js"></script>
+    <script src="../assets/stock/indicators/indicators-all.js"></script>
+    <script src="../assets/stock/modules/drag-panes.js"></script>
+    <script src="../assets/modules/annotations-advanced.js"></script>
+    <script src="../assets/modules/price-indicator.js"></script>
+    <script src="../assets/modules/full-screen.js"></script>
+    <script src="../assets/modules/stock-tools.js"></script>
+    <script src="../assets/stock/modules/heikinashi.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+    <script src="../assets/js/chart-upgrade-band.js"></script>
+
+
+
+    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+    <script>
+        (async () => {
+            const data_price = await bgSeries(
+                'holder-conviction-index', 'https://charts.bgeometrics.com/files/holder_conviction_index_btc_price.json', 'priceUsd'
+            );
+            const data = await bgSeries(
+                'holder-conviction-index', 'https://charts.bgeometrics.com/files/holder_conviction_index.json', 'hcri'
+            );
+            const data_retention = await bgSeries(
+                'holder-conviction-index', 'https://charts.bgeometrics.com/files/holder_conviction_index_retention_score.json', 'retentionScore'
+            );
+            const data_momentum = await bgSeries(
+                'holder-conviction-index', 'https://charts.bgeometrics.com/files/holder_conviction_index_retention_momentum_score.json', 'retentionMomentumScore'
+            );
+            const data_spend = await bgSeries(
+                'holder-conviction-index', 'https://charts.bgeometrics.com/files/holder_conviction_index_spend_pressure_score.json', 'spendPressureScore'
+            );
+            const data_lth = await bgSeries(
+                'holder-conviction-index', 'https://charts.bgeometrics.com/files/holder_conviction_index_lth_positioning_score.json', 'lthPositioningScore'
+            );
+
+        var chart = Highcharts.stockChart('container-iframe', {
+            stockTools: {
+                gui: {
+                    buttons: ['linLogSwitch', 'separator', 'indicators', 'separator', 'simpleShapes', 'lines', 'crookedLines', 'measure', 'advanced', 'separator', 'verticalLabels', 'flags', 'separator', 'zoomChange', 'fullScreen', 'separator', 'currentPriceIndicator', 'toggleAnnotations'],
+                    definitions: {
+                        linLogSwitch: {
+                            className: 'highcharts-lin-log-switch',
+                            symbol: 'logarithmic.svg'
+                        }
+                    }
+                }
+            },
+            navigation: {
+                bindings: {
+                    linLogSwitch: {
+                        className: 'highcharts-lin-log-switch',
+                        init: function (button) {
+                            const chart = this.chart,
+                                isLogarithmic = chart.yAxis[1].logarithmic,
+                                axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
+                                iconURL = '../assets/9.2.2/gfx/stock-icons/' + axisTypeIcon;
+
+                            chart.yAxis[1].update({
+                                type: isLogarithmic ? 'linear' : 'logarithmic',
+                                minorTickInterval: isLogarithmic ? null : 'auto'
+                            });
+
+                            button.firstChild.style['background-image'] = `url(${iconURL})`;
+
+                            Highcharts.fireEvent(
+                                this,
+                                'deselectButton',
+                                { button: button }
+                            );
+                        }
+                    }
+                }
+            },
+            title: {
+                text: '<a href="https://charts.bgeometrics.com">Bitcoin: Holder Conviction Index</a>',
+                align: 'left',
+            },
+
+            chart: {
+                renderTo: 'container-iframe',
+                events: {
+                    load: function() {
+                        var image = new Image();
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        image.src = adresse_image;
+
+                        var height_image = 128;
+                        var width_image = 128;
+                        var textX = this.plotLeft + (this.plotWidth * 0.5);
+                        var textY = this.plotTop + (this.plotHeight * 0.5);
+                        var position_x = textX - width_image / 2;
+                        var position_y = textY - height_image / 2;
+                        this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
+                            .attr({zIndex: 1})
+                            .add();
+                    }
+                }
+            },
+
+            plotOptions:{
+                series:{
+                    showInLegend:true
+                }
+            },
+
+            yAxis: [{
+                title: {
+                    text: 'Holder Conviction Index'
+                },
+                labels: {
+                    align: 'left',
+                },
+                min: 0,
+                max: 100,
+                plotBands: [{
+                    from: 0, to: 20,
+                    color: 'rgba(231,76,60,0.10)',
+                    label: { text: 'Capitulation', style: { color: '#999999' } }
+                }, {
+                    from: 80, to: 100,
+                    color: 'rgba(46,204,113,0.10)',
+                    label: { text: 'Diamond Hands', style: { color: '#999999' } }
+                }],
+                plotLines: [{
+                    value: 50,
+                    color: '#999999',
+                    width: 1,
+                    dashStyle: 'Dash',
+                    zIndex: 3
+                }]
+            }, {
+                title: {
+                    text: 'Precio BTC'
+                },
+                type: 'logarithmic',
+                opposite: false
+            }],
+
+            series: [{
+                id: 'Precio BTC',
+                name: 'Precio BTC',
+                color: 'white',
+                data: data_price,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 1
+            }, {
+                id: 'holder-conviction-index',
+                name: 'Holder Conviction Index',
+                data: data,
+                lineWidth: 2,
+                tooltip: {
+                    valueDecimals: 1
+                },
+                yAxis: 0,
+                zoneAxis: 'y',
+                zones: [{
+                    value: 20,
+                    color: '#e74c3c'
+                }, {
+                    value: 80,
+                    color: '#7f8c8d'
+                }, {
+                    color: '#2ecc71'
+                }],
+            }, {
+                id: 'retention-score',
+                name: 'Retention Score',
+                data: data_retention,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 1
+                },
+                yAxis: 0
+            }, {
+                id: 'retention-momentum-score',
+                name: 'Retention Momentum Score',
+                data: data_momentum,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 1
+                },
+                yAxis: 0
+            }, {
+                id: 'spend-pressure-score',
+                name: 'Spend Pressure Score',
+                data: data_spend,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 1
+                },
+                yAxis: 0
+            }, {
+                id: 'lth-positioning-score',
+                name: 'LTH Positioning Score',
+                data: data_lth,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 1
+                },
+                yAxis: 0
+            }],
+
+            legend:{
+                enabled:true,
+                floating: true,
+                y: 25,
+                verticalAlign: 'top',
+                align:'center'
+            },
+
+            rangeSelector: {
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'ytd',
+                    text: 'YTD'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'year',
+                    count: 4,
+                    text: '4y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                selected: 5
+            },
+
+            credits: {
+                text: 'Powered by BGeometrics.com',
+                href: 'https://charts.bgeometrics.com',
+                style: {
+                    font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                },
+                position: {
+                    align: 'right',
+                    x: -70,
+                    y: -124
+                }
+            },
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 800
+                    },
+                    chartOptions: {
+                        rangeSelector: {
+                            inputEnabled: false
+                        },
+                        stockTools: {
+                            gui: {
+                                enabled: false
+                            }
+                        },
+                        navigator: {
+                            enabled: false
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
+                    }
+                }]
+            }
+        });
+
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
+    })();
+    </script>
+
+</body>
+</html>
