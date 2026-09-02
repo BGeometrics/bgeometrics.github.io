@@ -46,6 +46,7 @@
             color: #000000 !important;
         }
     </style>
+    <script src="../assets/js/bg-chart-data.js"></script>
     <script src="../assets/js/chart-upgrade-band.js"></script>
 
 
@@ -54,20 +55,12 @@
 
     <script>
         (async () => {
-            const data_price = await fetch('https://bitcoin-data.com/bguser/api/bitcoin/history')
-                .then(response => response.json())
-                .then(rows => rows
-                    .map(r => [ +r.unixTs * 1000, parseFloat(r.btcPrice) ])
-                    .filter(([ts, v]) => ts && !isNaN(v))
-                    .sort((a, b) => a[0] - b[0]));
-            const data_wikipedia_pageviews = await fetch(
-                'https://bitcoin-data.com/bguser/api/bitcoin/metric?endpoint=' + encodeURIComponent('/v1/wikipedia-pageviews') + '&size=1000'
-            )
-                .then(response => response.json())
-                .then(rows => rows
-                    .map(r => [ r.unixTs * 1000, r.views ])
-                    .filter(([ts, v]) => ts && v != null)
-                    .sort((a, b) => a[0] - b[0]));
+            const data_price = await bgSeries(
+                'btc-price', 'https://charts.bgeometrics.com/files/wikipedia_pageviews_btc_price.json'
+            );
+            const data_wikipedia_pageviews = await bgSeries(
+                'wikipedia-pageviews', 'https://charts.bgeometrics.com/files/wikipedia_pageviews.json'
+            );
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -229,11 +222,13 @@
             }
         });
 
-        addUpgradePlotBand(chart, 0, data_wikipedia_pageviews, {
-            color: 'rgba(247,147,26,0.35)',
-            label: 'Upgrade',
-            url: 'https://portal.bgeometrics.com/pricing'
-        });
+        if (!bgIsSubscriber()) {
+            addUpgradePlotBand(chart, 0, data_wikipedia_pageviews, {
+                color: 'rgba(247,147,26,0.35)',
+                label: 'Upgrade',
+                url: 'https://portal.bgeometrics.com/pricing'
+            });
+        }
     })();
 
     </script>
