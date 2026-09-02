@@ -106,4 +106,4 @@
 /tmp/web/options_day.html,web-generation-end-options-day.html,Bitcoin Options Day,graphics/options_day.html,Bitcoin Options Day,,derivatives-nav
 /tmp/web/options_volatility.html,web-generation-end-options-volatility.html,Bitcoin Options Volatility,graphics/options_volatility.html,Bitcoin Options Volatility,,derivatives-nav
 /tmp/web/supply_retention.html,web-generation-end-supply-retention.html,Bitcoin Supply Retention Rate,graphics/supply_retention.html,Supply Retention Rate,,market-nav
-/tmp/web/holder_conviction_index.html,web-generation-end-holder-conviction-index.html,Bitcoin Holder Conviction Index,graphics/holder_conviction_index.html,Holder Conviction Index,,market-nav
+/tmp/web/holder_conviction_index.html,web-generation-end-holder-conviction-index.html,Bitcoin Holder Conviction Index,graphics/holder_conviction_index.html,Holder Conviction Index,,cycles-nav
