@@ -103,6 +103,7 @@
 /tmp/web/orderbook_depth.html,web-generation-end-orderbook-depth.html,Bitcoin Order Book Liquidity,graphics/orderbook_depth.html,Bitcoin Order Book Liquidity,,derivatives-nav
 /tmp/web/orderflow.html,web-generation-end-orderflow.html,Bitcoin CVD Order Flow,graphics/orderflow.html,Bitcoin CVD Order Flow,,derivatives-nav
 /tmp/web/taker_cohorts.html,web-generation-end-taker-cohorts.html,Bitcoin Taker Cohorts,graphics/taker_cohorts.html,Bitcoin Taker Cohorts,,charts-nav
+/tmp/web/liquidity_stress_index.html,web-generation-end-liquidity-stress-index.html,Liquidity Stress Index,graphics/liquidity_stress_index.html,Liquidity Stress Index,,derivatives-nav
 /tmp/web/options_day.html,web-generation-end-options-day.html,Bitcoin Options Day,graphics/options_day.html,Bitcoin Options Day,,derivatives-nav
 /tmp/web/options_volatility.html,web-generation-end-options-volatility.html,Bitcoin Options Volatility,graphics/options_volatility.html,Bitcoin Options Volatility,,derivatives-nav
 /tmp/web/supply_retention.html,web-generation-end-supply-retention.html,Bitcoin Supply Retention Rate,graphics/supply_retention.html,Supply Retention Rate,,cycles-nav

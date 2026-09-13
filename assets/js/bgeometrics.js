@@ -108,6 +108,7 @@ var names = [
 { name: "Bitcoin Liquidations", link: "btc_liquidations.html" },
 { name: "Order Book Liquidity", link: "orderbook_depth.html" },
 { name: "CVD Order Flow", link: "orderflow.html" },
+{ name: "Liquidity Stress Index", link: "liquidity_stress_index.html" },
 { name: "Taker Cohorts", link: "taker_cohorts.html" },
 { name: "Options Day", link: "options_day.html" },
 { name: "Options Volatility", link: "options_volatility.html" },
