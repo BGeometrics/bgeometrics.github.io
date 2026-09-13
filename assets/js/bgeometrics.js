@@ -2,99 +2,160 @@
  */
 var names = [
 { name: "System Status", link: "status.html" },
-{ name: "Bitcoin Price USD", link: "reports/bitcoin_price_usd_g.html" },
+{ name: "Bitcoin Price", link: "btc_price.html" },
+{ name: "Bitcoin Price History (Plotly)", link: "bitcoin_price_usd_g.html" },
+{ name: "Bitcoin Price day like today", link: "bitcoin_price_usd_day_g.html" },
+{ name: "Bitcoin Price Log", link: "bitcoin_price_g_log.html" },
+{ name: "Bitcoin OHLC (Open High Low Close)", link: "ohlc.html" },
+{ name: "Bitcoin OHLC Weekly", link: "ohlc_7d.html" },
+{ name: "Bitcoin OHLC 4H", link: "ohlc_4h.html" },
+{ name: "Bitcoin OHLC candle 10 minutes Binance", link: "ohlc_1m.html" },
+{ name: "Bitcoin Moving Average", link: "moving_average.html" },
 { name: "Bitcoin Capitalization", link: "capitalization.html" },
 { name: "Bitcoin Realized Capitalization", link: "capitalization.html" },
 { name: "Bitcoin Investor Capitalization", link: "capitalization.html" },
 { name: "Bitcoin Thermo Capitalization", link: "capitalization.html" },
-{ name: "SOPR (Spent Output Profit Ratio)", link: "sopr.html" },
-{ name: "LTH-SOPR (Long Term Hodler)", link: "sopr.html" },
-{ name: "STH-SOPR (Short Term Hodler)", link: "sopr.html" },
-{ name: "Bitcoin MVRV (Market Value Realized Value)", link: "mvrv.html" },
-{ name: "Bitcoin MVRV Z-Score", link: "mvrv.html" },
-{ name: "MVRV, LTH (Long Term Hodler) and STH (Short Term Hodler)", link: "mvrv.html" },
-{ name: "Bitcoin Coin Days Destroyed (CDD)", link: "cdd.html" },
-{ name: "CDD Terminal Adjusted 90-Day", link: "cdd.html" },
-{ name: "Bitcoin, SP500 or S&P 500, Gold, Tesla", link: "workspace_stocks.html" },
-{ name: "Bitcoin Coin and Address Distribution Table", link: "reports/bitcoin_distribution_tables.html" },
-{ name: "Bitcoin Coin Distribution", link: "graphics/distribution_coin.html" },
-{ name: "Bitcoin Address Distribution", link: "graphics/distribution_addr.html" },
-{ name: "Bitcoin OHLC (Open High Low Close)", link: "ohlc.html" },
-{ name: "NUPL (Net Unrealized Profit / Loss)", link: "nupl.html" },
-{ name: "Hodl Waves Realized Cap", link: "reports/bitcoin_reacap_hodl_waves_g.html" },
-{ name: "Short Term Hodler (STH) Realized Price", link: "reports/bitcoin_realized_short_g.html" },
+{ name: "Bitcoin Halving Radar", link: "bitcoin_halving_radar_g.html" },
+{ name: "Bitcoin Years Candles", link: "bitcoin_year_candle_g.html" },
+{ name: "Halving Month", link: "bitcoin_halving_month_g.html" },
+{ name: "Halving Cycle", link: "bitcoin_halving_cycle_g.html" },
+{ name: "Bitcoin Realized and Delta Price", link: "realized_price_g.html" },
+{ name: "Bitcoin Hodl Waves Realized Cap", link: "hodl_waves_realized_cap.html" },
+{ name: "Bitcoin Hodl Waves (10 bands)", link: "hodl_waves_10.html" },
+{ name: "Bitcoin Hodl Waves Supply", link: "hodl_waves_supply.html" },
+{ name: "Hodl Waves Realized", link: "bitcoin_reacap_hodl_waves_g.html" },
 { name: "Hodl Waves", link: "hodl_waves.html" },
-{ name: "Change BTC on exchanges", link: "reports/bitcoin_ex_change_held_g.html" },
-{ name: "Bitcoin Fear and Greed", link: "reports/bitcoin_fear_greed_g.html" },
+{ name: "NUPL (Net Unrealized Profit / Loss)", link: "nupl.html" },
+{ name: "Short Term Hodler (STH) Realized Price", link: "sth_realized_price.html" },
+{ name: "Long Term Hodler (LTH) Realized Price", link: "lth_realized_price.html" },
+{ name: "Realized Profit Loss LTH STH", link: "realized_profit_loss_lth_sth.html" },
+{ name: "Bitcoin MVRV (Market Value Realized Value)", link: "mvrv.html" },
+{ name: "MVRV Ratio", link: "mvrv_ratio.html" },
+{ name: "STH MVRV (Short Term Hodler)", link: "sth_mvrv.html" },
+{ name: "LTH MVRV (Long Term Hodler)", link: "lth_mvrv.html" },
+{ name: "Bitcoin realized price distribution (URPD)", link: "distribution_realized_price.html" },
 { name: "AVIV (Asset Value to Investor Value) Ratio", link: "aviv.html" },
-{ name: "Bitcoin Halving Cycle", link: "reports/bitcoin_halving_cycle_g.html" },
-{ name: "BTC price history and halving timeline", link: "reports/bitcoin_price_g_log.html" },
-{ name: "Bitcoin Halving Radar", link: "reports/bitcoin_halving_radar_g.html" },
-{ name: "Bitcoin Years Candles", link: "reports/bitcoin_year_candle_g.html" },
-{ name: "Influence of the halving on the monthly price of bitcoin", link: "reports/bitcoin_halving_month_g.html" },
-{ name: "Bitcoin Distribution Coin", link: "reports/bitcoin_distribution_coin_g.html" },
-{ name: "Whale Accumulation Heat Map", link: "reports/bitcoin_whale_accumulation_heatmap_g.html" },
-{ name: "Bitcoin distribution Humpback >10K", link: "reports/bitcoin_distribution_coin_g_humpback.html" },
-{ name: "Bitcoin distribution Whale 1000-10K", link: "reports/bitcoin_distribution_coin_g_whale.html" },
-{ name: "Whale (1K-10K) Net Position BTC in 30d", link: "reports/bitcoin_whale_30d_sum_g.html" },
-{ name: "Shark (100-1000) Net Position BTC 30d", link: "reports/bitcoin_shark_30d_sum_g.html" },
-{ name: "Bitcoin realized price distribution (URPD)", link: "graphics/distribution_realized_price.html" },
-{ name: "History bitcoin price on a day like today", link: "reports/bitcoin_price_usd_day_g.html" },
-{ name: "Bitcoin Volatility", link: "reports/bitcoin_volatility_g.html" },
-{ name: "Bitcoin Dominance", link: "reports/bitcoin_dominance_g.html" },
-{ name: "Bitcoin Daily Price Performance", link: "reports/bitcoin_daily_price_performance_g.html" },
-{ name: "Bitcoin Liveniness", link: "reports/bitcoin_liveliness_g.html" },
-{ name: "Bitcoin S&P 500 correlation (Plotly)", link: "reports/bitcoin_sp500_correlation_g.html" },
-{ name: "MVRV Z-Score (Plotly)", link: "reports/bitcoin_mvrv_zscore_g.html" },
-{ name: "Bitcoin Realized Price (Plotly)", link: "reports/bitcoin_realized_price_g.html" },
-{ name: "Day moving average (Plotly)", link: "reports/bitcoin_200_moving_average_g.html" },
-{ name: "Bitcoin Coin Destroyed Days Terminal Adjusted 90d (Plotly)", link: "reports/bitcoin_cdd_ajusted_90dma_g.html" },
-{ name: "Long Term Hodler vs Short Term Hodler", link: "reports/bitcoin_lth_sth_g.html" },
-{ name: "Services, custom charts, graphics", link: "services.html" },
-{ name: "Open Interest Futures", link: "open_interest_futures.html" },
-{ name: "ETF Total Balance", link: "etf.html" },
-{ name: "ETF BTC Held", link: "etf_btc.html" },
-{ name: "Price Live", link: "ohlc_1m.html" },
-{ name: "OHLC Week", link: "ohlc_7d.html" },
-{ name: "Pi Cycle", link: "pi_cycle.html" },
-{ name: "Addresses Active", link: "address_active.html" },
+{ name: "Regime Score", link: "regime_score.html" },
+{ name: "On-Chain Risk Index", link: "onchain_risk_index.html" },
+{ name: "STH Risk Index", link: "sth_risk_index.html" },
+{ name: "Cycle Extreme", link: "cycle_extreme.html" },
+{ name: "Bitcoin Macro Index", link: "bitcoin_macro_index.html" },
+{ name: "BGeometrics Index", link: "bgeometrics_index.html" },
+{ name: "Coinbase Premium Index", link: "coinbase_premium.html" },
+{ name: "Bitcoin Coin Days Destroyed (CDD)", link: "cdd.html" },
+{ name: "Value Days Destroyed Multiple (VDD)", link: "vdd.html" },
+{ name: "CDD Terminal Adjusted 90-Day", link: "bitcoin_cdd_ajusted_90dma_g.html" },
+{ name: "Net Realized Profit and Loss Ratio", link: "realized_profit_loss_ratio.html" },
+{ name: "Bitcoin Liveliness", link: "bitcoin_liveliness_g.html" },
+{ name: "Bitcoin Coin and Address Distribution Table", link: "bitcoin_distribution_coins_tables.html" },
+{ name: "Bitcoin Address Distribution Table", link: "bitcoin_distribution_addr_tables.html" },
+{ name: "Bitcoin Coin Distribution", link: "bitcoin_distribution_coin_g.html" },
+{ name: "Coins Humpback Addresses > 10K BTC", link: "distribution_coin_humpback.html" },
+{ name: "Coins Whale Addresses 1K to 10K BTC", link: "distribution_coin_whale.html" },
+{ name: "Address Coins Shark 100 to 1K BTC", link: "distribution_coin_shark.html" },
+{ name: "Address Coins Fish 10 to 100 BTC", link: "distribution_coin_fish.html" },
+{ name: "Address Coins Crab 1 to 10 BTC", link: "distribution_coin_crab.html" },
+{ name: "Address Coins Shrimp < 1 BTC", link: "distribution_coin_shrimp.html" },
+{ name: "Address Humpback > 10K BTC", link: "bitcoin_distribution_addr_g_humpback.html" },
+{ name: "Address Whale 1K to 10K BTC", link: "distribution_addr_whale.html" },
+{ name: "Address Shark 100 to 1K BTC", link: "bitcoin_distribution_addr_g_shark.html" },
+{ name: "Address Fish 10 to 100 BTC", link: "bitcoin_distribution_addr_g_fish.html" },
+{ name: "Address Crab 1 to 10 BTC", link: "bitcoin_distribution_addr_g_crab.html" },
+{ name: "Address Shrimp < 1 BTC", link: "bitcoin_distribution_addr_g_shimp.html" },
 { name: "Stablecoin Supply", link: "stablecoin_supply.html" },
-{ name: "BTC Power Law", link: "power_law.html" },
+{ name: "Bitcoin Fear and Greed", link: "fear_greed.html" },
+{ name: "Fear and Greed index color", link: "bitcoin_fear_greed_img.html" },
 { name: "S&P 500 Gold Tesla MSTR", link: "sp500_gold.html" },
+{ name: "Bitcoin Volatility", link: "bitcoin_volatility_g.html" },
+{ name: "Bitcoin Dominance", link: "bitcoin_dominance_g.html" },
+{ name: "SOPR (Spent Output Profit Ratio)", link: "sopr.html" },
+{ name: "STH-SOPR (Short Term Hodler)", link: "sth_sopr.html" },
+{ name: "LTH-SOPR (Long Term Hodler)", link: "lth_sopr.html" },
+{ name: "Open Interest Futures", link: "open_interest_futures.html" },
+{ name: "Pi Cycle", link: "pi_cycle.html" },
+{ name: "Bitcoin Simulation Montecarlo next 100 days", link: "montecarlo_100.html" },
+{ name: "Bitcoin Simulation Montecarlo last 365 days", link: "montecarlo_365.html" },
 { name: "M2 Money Stock", link: "m2.html" },
 { name: "Fed Funds", link: "fedfunds.html" },
-{ name: "Donation", link: "donation.html" },
-{ name: "BGeometrics Workspace", link: "workspace.html" },
-{ name: "Dashboard OHLC", link: "ohlc_dashboard.html" },
-{ name: "Dashboard Trend", link: "dashboard_trend.html" },
-{ name: "Dashboard Market Peaks", link: "dashboard_market_peaks.html" },
+{ name: "Funding Rate", link: "funding_rate.html" },
+{ name: "Addresses Active", link: "address_active.html" },
+{ name: "Supply in Profit", link: "supply_in_profit.html" },
+{ name: "Supply LTH and STH", link: "supply_lth_sth.html" },
+{ name: "Reserve Risk", link: "reserve_risk.html" },
+{ name: "RHodl 1m", link: "rhodl_1m.html" },
+{ name: "ETF Total Balance", link: "etf.html" },
+{ name: "ETF BTC Held", link: "etf_btc.html" },
+{ name: "BTC Power Law", link: "power_law.html" },
+{ name: "M2 Growth Global YoY", link: "m2_global.html" },
+{ name: "Bitcoin and Money Supply (M2)", link: "m2_btc.html" },
+{ name: "Global liquidity (M2) lead 10 weeks", link: "m2_global_10w.html" },
+{ name: "Choppiness Index", link: "choppiness.html" },
+{ name: "Terminal Price", link: "terminal_price.html" },
+{ name: "Google Trends", link: "google_trends.html" },
+{ name: "Wikipedia Pageviews", link: "wikipedia_pageviews.html" },
+{ name: "Hash Ribbons", link: "hashribbons.html" },
 { name: "DCA Calculator", link: "dca.html" },
-{ name: "Dynamic Range NVT NVTS", link: "nvts_bg.html" },
-{ name: "Net Realized Profit Loss", link: "nrpl.html" },
-{ name: "Value Days Destroyed Multiple VDD", link: "vdd.html" },
+{ name: "Bitcoin Monthly Returns", link: "bitcoin_monthly_history.html" },
 { name: "Miner Puell Multiple", link: "puell_multiple.html" },
+{ name: "Bitcoin Hash Rate", link: "hashrate.html" },
+{ name: "Bitcoin Hash Price", link: "hashprice.html" },
+{ name: "Dynamic Range NVT NVTS", link: "nvts_bg.html" },
 { name: "Miner Reserves", link: "miner_reserves.html" },
 { name: "Miner Sell Pressure", link: "miner_sell_pressure.html" },
 { name: "Miner Outflow", link: "miner_outflow.html" },
-{ name: "Funding Rate", link: "funding_rate.html" },
-{ name: "Power Law", link: "power_law.html" },
-{ name: "Choppiness Index", link: "choppiness.html" },
-{ name: "M2 Growth Global YoY", link: "m2_global.html" },
-{ name: "Google Trends", link: "google_trends.html" },
-{ name: "Wikipedia Pageviews", link: "wikipedia_pageviews.html" },
-{ name: "Terminal Price", link: "terminal_price.html" },
+{ name: "Miner Balances", link: "miner_balance.html" },
+{ name: "Net Realized Profit Loss (NRPL)", link: "nrpl.html" },
+{ name: "Bitcoin Liquidations", link: "btc_liquidations.html" },
+{ name: "Order Book Liquidity", link: "orderbook_depth.html" },
+{ name: "CVD Order Flow", link: "orderflow.html" },
+{ name: "Taker Cohorts", link: "taker_cohorts.html" },
+{ name: "Options Day", link: "options_day.html" },
+{ name: "Options Volatility", link: "options_volatility.html" },
+{ name: "Supply Retention Rate", link: "supply_retention.html" },
+{ name: "Holder Conviction Index", link: "holder_conviction_index.html" },
+{ name: "Services, custom charts, graphics", link: "services.html" },
+{ name: "Donation", link: "donation.html" },
+{ name: "BGeometrics Workspace", link: "workspace.html" },
 { name: "Crypto, altcoins", link: "workspace_crypto.html" },
 { name: "ETH, ADA, SOL, XMR...", link: "workspace_crypto.html" },
 { name: "Ethereum, Cardano, Solana, Monero", link: "workspace_crypto.html" },
 { name: "SP500", link: "workspace_stocks.html" },
+{ name: "Bitcoin, SP500 or S&P 500, Gold, Tesla", link: "workspace_stocks.html" },
+{ name: "Dashboard OHLC", link: "ohlc_dashboard.html" },
+{ name: "Dashboard Trend", link: "dashboard_trend.html" },
+{ name: "Dashboard Market Peaks", link: "dashboard_market_peaks.html" },
+{ name: "Dashboard Market Floors", link: "dashboard_market_floors.html" },
+{ name: "Dashboard Short Term Trend", link: "dashboard_short_term_trend.html" },
+{ name: "Dashboard Demand", link: "dashboard_demand.html" },
+{ name: "Dashboard Workspace", link: "dashboard_workspace.html" },
 ];
 
+function normalizeSearchText(text) {
+    return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+}
+
+function matchesQuery(name, query) {
+    var normalizedName = normalizeSearchText(name);
+    var words = normalizeSearchText(query).split(/\s+/).filter(Boolean);
+
+    if (words.length === 0) {
+        return false;
+    }
+
+    return words.every(function(word) {
+        return normalizedName.includes(word);
+    });
+}
+
 function search() {
-    var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    var searchQuery = document.getElementById('searchInput').value;
     var results = [];
 
     for (var i = 0; i < names.length; i++) {
-        if (names[i].name.toLowerCase().includes(searchQuery)) {
+        if (matchesQuery(names[i].name, searchQuery)) {
             results.push(names[i]);
         }
     }
@@ -103,11 +164,11 @@ function search() {
 }
 
 function searchDark() {
-    var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    var searchQuery = document.getElementById('searchInput').value;
     var results = [];
 
     for (var i = 0; i < names.length; i++) {
-        if (names[i].name.toLowerCase().includes(searchQuery)) {
+        if (matchesQuery(names[i].name, searchQuery)) {
             // Create a copy of the matching item
             let darkItem = {
                 name: names[i].name,
