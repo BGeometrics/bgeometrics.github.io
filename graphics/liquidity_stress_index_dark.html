@@ -59,16 +59,16 @@
                 'btc-price', 'https://charts.bgeometrics.com/files/liquidity_stress_btc_price.json'
             );
             const data_lsi = await bgSeries(
-                'liquidity-stress-1d', 'https://charts.bgeometrics.com/files/liquidity_stress_lsi.json', 'lsiMax'
+                'liquidity-stress-index', 'https://charts.bgeometrics.com/files/liquidity_stress_lsi.json', 'lsiMax'
             );
             const data_price_sub = await bgSeries(
-                'liquidity-stress-1d', 'https://charts.bgeometrics.com/files/liquidity_stress_price_sub.json', 'priceSubMax'
+                'liquidity-stress-index', 'https://charts.bgeometrics.com/files/liquidity_stress_price_sub.json', 'priceSubMax'
             );
             const data_flow_sub = await bgSeries(
-                'liquidity-stress-1d', 'https://charts.bgeometrics.com/files/liquidity_stress_flow_sub.json', 'flowSubMax'
+                'liquidity-stress-index', 'https://charts.bgeometrics.com/files/liquidity_stress_flow_sub.json', 'flowSubMax'
             );
             const data_leverage_sub = await bgSeries(
-                'liquidity-stress-1d', 'https://charts.bgeometrics.com/files/liquidity_stress_leverage_sub.json', 'leverageSubMax'
+                'liquidity-stress-index', 'https://charts.bgeometrics.com/files/liquidity_stress_leverage_sub.json', 'leverageSubMax'
             );
 
         var chart = Highcharts.stockChart('container-iframe', {
