@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
     <script src="../assets/highcharts.js"></script>
+    <script src="../assets/highcharts-more.js"></script>
     <script src="../assets/modules/data.js"></script>
-    <script src="../assets/modules/heatmap.js"></script>
     <script src="../assets/modules/export-data.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
 
@@ -29,7 +29,7 @@
 
                 const chartOptions = {
                     chart: {
-                        type: 'heatmap',
+                        zooming: { type: 'x' }
                     },
 
                     title: {
@@ -40,14 +40,18 @@
                         }
                     },
 
+                    subtitle: {
+                        text: 'Bubble size = USD liquidated. Only liquidations above ~' +
+                            Highcharts.numberFormat(json.threshold, 0) + ' USD are shown.',
+                        align: 'left'
+                    },
+
                     xAxis: {
-                        categories: json.categories_x,
-                        labels: {
-                            rotation: -45
-                        },
+                        type: 'datetime',
                         plotBands: hasGap ? [{
-                            from: json.gap_x_range[0] - 0.5,
-                            to: json.gap_x_range[1] + 0.5,
+                            from: json.gap_x_range[0],
+                            to: json.gap_x_range[1],
+                            color: 'rgba(127,127,127,0.25)',
                             label: {
                                 text: 'WebSocket down',
                                 style: { color: '#7f7f7f' }
@@ -56,50 +60,50 @@
                     },
 
                     yAxis: {
-                        categories: json.categories_y_label,
                         title: {
                             text: 'Precio BTC (USD)'
-                        },
-                        reversed: false
-                    },
-
-                    colorAxis: {
-                        min: 0,
-                        stops: [
-                            [0, '#2c3e50'],
-                            [0.25, '#2980b9'],
-                            [0.5, '#f39c12'],
-                            [0.8, '#e74c3c'],
-                            [1.0, '#c0392b']
-                        ],
-                        nullColor: '#7f7f7f',
-                        startOnTick: false,
-                        endOnTick: false
-                    },
-
-                    legend: {
-                        enabled: true,
-                        title: {
-                            text: 'USD liquidated'
                         }
                     },
 
                     tooltip: {
                         formatter: function () {
-                            if (this.point.value == null) {
-                                return '<b>No data</b><br>' + this.series.xAxis.categories[this.point.x];
+                            if (this.series.type === 'line') {
+                                return '<b>' + Highcharts.numberFormat(this.y, 0) + ' USD</b><br>' +
+                                    Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x);
                             }
-                            return '<b>' + Highcharts.numberFormat(this.point.value, 0) + ' USD liquidated</b><br>' +
-                                this.series.xAxis.categories[this.point.x] + '<br>' +
-                                this.series.yAxis.categories[this.point.y];
+                            return '<b>' + this.series.name + '</b><br>' +
+                                Highcharts.numberFormat(this.point.z, 0) + ' USD liquidated<br>' +
+                                'Price: ' + Highcharts.numberFormat(this.y, 0) + '<br>' +
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x);
                         }
                     },
 
+                    legend: {
+                        enabled: true
+                    },
+
                     series: [{
-                        name: 'Liquidations (USD)',
-                        data: json.data,
-                        borderWidth: 0,
-                        nullColor: '#7f7f7f'
+                        type: 'line',
+                        name: 'Precio BTC',
+                        data: json.price,
+                        color: '#7f7f7f',
+                        lineWidth: 1,
+                        marker: { enabled: false },
+                        enableMouseTracking: true
+                    }, {
+                        type: 'bubble',
+                        name: 'Long liquidated',
+                        data: json.long,
+                        color: 'rgba(46, 204, 113, 0.6)',
+                        minSize: 4,
+                        maxSize: 30
+                    }, {
+                        type: 'bubble',
+                        name: 'Short liquidated',
+                        data: json.short,
+                        color: 'rgba(231, 76, 60, 0.6)',
+                        minSize: 4,
+                        maxSize: 30
                     }],
 
                     credits: {
@@ -113,9 +117,7 @@
                             },
                             chartOptions: {
                                 yAxis: {
-                                    labels: {
-                                        enabled: false
-                                    }
+                                    title: { text: null }
                                 }
                             }
                         }]
@@ -123,10 +125,9 @@
                 };
 
                 if (chart) {
-                    chart.update(chartOptions, true, true);
-                } else {
-                    chart = Highcharts.chart('container', chartOptions);
+                    chart.destroy();
                 }
+                chart = Highcharts.chart('container', chartOptions);
             }
 
             function load(variant) {
