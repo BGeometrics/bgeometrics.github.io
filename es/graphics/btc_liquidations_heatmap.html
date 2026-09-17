@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bitcoin Liquidation Heatmap</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <script src="../assets/highcharts.js"></script>
+    <script src="../assets/highcharts-more.js"></script>
+    <script src="../assets/modules/data.js"></script>
+    <script src="../assets/modules/export-data.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
+
+    <div style="text-align:center; margin-bottom: 8px;">
+        <button type="button" class="bg-heatmap-range" data-variant="">Full</button>
+        <button type="button" class="bg-heatmap-range" data-variant="_30d">30d</button>
+        <button type="button" class="bg-heatmap-range" data-variant="_7d">7d</button>
+    </div>
+
+    <div id="container" style="height: 600px; width: 100%; margin: 0 auto"></div>
+
+    <script>
+        (() => {
+            let chart = null;
+
+            function render(json) {
+                const hasGap = Array.isArray(json.gap_x_range);
+
+                const chartOptions = {
+                    chart: {
+                        zooming: { type: 'x' }
+                    },
+
+                    title: {
+                        text: '<a href="https://charts.bgeometrics.com/btc_liquidations.html" target="_blank">BTC Liquidation Heatmap</a>',
+                        align: 'left',
+                        style: {
+                            fontSize: '14px'
+                        }
+                    },
+
+                    subtitle: {
+                        text: 'Bubble size = USD liquidated. Only liquidations above ~' +
+                            Highcharts.numberFormat(json.threshold, 0) + ' USD are shown.',
+                        align: 'left'
+                    },
+
+                    xAxis: {
+                        type: 'datetime',
+                        plotBands: hasGap ? [{
+                            from: json.gap_x_range[0],
+                            to: json.gap_x_range[1],
+                            color: 'rgba(127,127,127,0.25)',
+                            label: {
+                                text: 'WebSocket down',
+                                style: { color: '#7f7f7f' }
+                            }
+                        }] : []
+                    },
+
+                    yAxis: {
+                        title: {
+                            text: 'Precio BTC (USD)'
+                        }
+                    },
+
+                    tooltip: {
+                        formatter: function () {
+                            if (this.series.type === 'line') {
+                                return '<b>' + Highcharts.numberFormat(this.y, 0) + ' USD</b><br>' +
+                                    Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x);
+                            }
+                            return '<b>' + this.series.name + '</b><br>' +
+                                Highcharts.numberFormat(this.point.z, 0) + ' USD liquidated<br>' +
+                                'Price: ' + Highcharts.numberFormat(this.y, 0) + '<br>' +
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M', this.x);
+                        }
+                    },
+
+                    legend: {
+                        enabled: true
+                    },
+
+                    series: [{
+                        type: 'line',
+                        name: 'Precio BTC',
+                        data: json.price,
+                        color: '#7f7f7f',
+                        lineWidth: 1,
+                        marker: { enabled: false },
+                        enableMouseTracking: true
+                    }, {
+                        type: 'bubble',
+                        name: 'Long liquidated',
+                        data: json.long,
+                        color: 'rgba(46, 204, 113, 0.6)',
+                        minSize: 4,
+                        maxSize: 30
+                    }, {
+                        type: 'bubble',
+                        name: 'Short liquidated',
+                        data: json.short,
+                        color: 'rgba(231, 76, 60, 0.6)',
+                        minSize: 4,
+                        maxSize: 30
+                    }],
+
+                    credits: {
+                        enabled: false
+                    },
+
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                yAxis: {
+                                    title: { text: null }
+                                }
+                            }
+                        }]
+                    }
+                };
+
+                if (chart) {
+                    chart.destroy();
+                }
+                chart = Highcharts.chart('container', chartOptions);
+            }
+
+            function load(variant) {
+                fetch('https://charts.bgeometrics.com/files/btc_liquidations_heatmap' + variant + '.json')
+                    .then(response => response.json())
+                    .then(render);
+            }
+
+            document.querySelectorAll('.bg-heatmap-range').forEach(btn => {
+                btn.addEventListener('click', () => load(btn.dataset.variant));
+            });
+
+            load('');
+        })();
+    </script>
+
+</body>
+</html>
