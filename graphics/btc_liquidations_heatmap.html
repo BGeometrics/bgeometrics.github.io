@@ -13,10 +13,18 @@
     <script src="../assets/modules/export-data.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
 
+    <div style="text-align:center; margin-bottom: 8px;">
+        <button type="button" class="bg-heatmap-range" data-variant="">Full</button>
+        <button type="button" class="bg-heatmap-range" data-variant="_30d">30d</button>
+        <button type="button" class="bg-heatmap-range" data-variant="_7d">7d</button>
+    </div>
+
     <div id="container" style="height: 650px; width: 100%; margin: 0 auto"></div>
 
     <script>
         (() => {
+            let chart = null;
+
             function render(json) {
                 const hasGap = Array.isArray(json.gap_x_range);
 
@@ -138,12 +146,23 @@
                     }
                 };
 
-                Highcharts.stockChart('container', chartOptions);
+                if (chart) {
+                    chart.destroy();
+                }
+                chart = Highcharts.stockChart('container', chartOptions);
             }
 
-            fetch('https://charts.bgeometrics.com/files/btc_liquidations_heatmap.json')
-                .then(response => response.json())
-                .then(render);
+            function load(variant) {
+                fetch('https://charts.bgeometrics.com/files/btc_liquidations_heatmap' + variant + '.json')
+                    .then(response => response.json())
+                    .then(render);
+            }
+
+            document.querySelectorAll('.bg-heatmap-range').forEach(btn => {
+                btn.addEventListener('click', () => load(btn.dataset.variant));
+            });
+
+            load('');
         })();
     </script>
 
