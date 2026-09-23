@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Bitcoin Liquidation Heatmap</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
-    <script src="../assets/highcharts.js"></script>
+    <script src="../assets/stock/highstock.js"></script>
     <script src="../assets/highcharts-more.js"></script>
     <script src="../assets/modules/data.js"></script>
     <script src="../assets/modules/export-data.js"></script>
@@ -49,7 +50,7 @@
         <button type="button" class="bg-heatmap-range" data-variant="_7d">7d</button>
     </div>
 
-    <div id="container" style="height: 600px; width: 100%; margin: 0 auto"></div>
+    <div id="container" style="height: 650px; width: 100%; margin: 0 auto"></div>
 
     <script>
         (() => {
@@ -59,10 +60,6 @@
                 const hasGap = Array.isArray(json.gap_x_range);
 
                 const chartOptions = {
-                    chart: {
-                        zooming: { type: 'x' }
-                    },
-
                     title: {
                         text: '<a href="https://charts.bgeometrics.com/btc_liquidations.html" target="_blank">BTC Liquidation Heatmap</a>',
                         align: 'left',
@@ -75,6 +72,10 @@
                         text: 'Bubble size = USD liquidated. Only liquidations above ~' +
                             Highcharts.numberFormat(json.threshold, 0) + ' USD are shown.',
                         align: 'left'
+                    },
+
+                    chart: {
+                        renderTo: 'container'
                     },
 
                     xAxis: {
@@ -93,7 +94,8 @@
                     yAxis: {
                         title: {
                             text: 'BTC price (USD)'
-                        }
+                        },
+                        opposite: false
                     },
 
                     tooltip: {
@@ -137,8 +139,25 @@
                         maxSize: 30
                     }],
 
+                    rangeSelector: {
+                        selected: undefined
+                    },
+
+                    navigator: {
+                        enabled: true,
+                        adaptToUpdatedData: true
+                    },
+
+                    scrollbar: {
+                        enabled: true
+                    },
+
                     credits: {
-                        enabled: false
+                        text: 'Powered by BGeometrics.com',
+                        href: 'https://charts.bgeometrics.com',
+                        style: {
+                            font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                        }
                     },
 
                     responsive: {
@@ -147,6 +166,9 @@
                                 maxWidth: 500
                             },
                             chartOptions: {
+                                rangeSelector: {
+                                    inputEnabled: false
+                                },
                                 yAxis: {
                                     title: { text: null }
                                 }
@@ -158,7 +180,7 @@
                 if (chart) {
                     chart.destroy();
                 }
-                chart = Highcharts.chart('container', chartOptions);
+                chart = Highcharts.stockChart('container', chartOptions);
             }
 
             function load(variant) {
