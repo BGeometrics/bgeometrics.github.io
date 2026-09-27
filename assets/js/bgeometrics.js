@@ -105,6 +105,7 @@ var names = [
 { name: "Miner Outflow", link: "miner_outflow.html" },
 { name: "Miner Balances", link: "miner_balance.html" },
 { name: "Net Realized Profit Loss (NRPL)", link: "nrpl.html" },
+{ name: "Net Capital Flow (capital inflows / outflows)", link: "net_capital_flow.html" },
 { name: "Bitcoin Liquidations", link: "btc_liquidations.html" },
 { name: "Order Book Liquidity", link: "orderbook_depth.html" },
 { name: "CVD Order Flow", link: "orderflow.html" },

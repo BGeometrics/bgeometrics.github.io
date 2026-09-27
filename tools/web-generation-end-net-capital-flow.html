@@ -1,0 +1,86 @@
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/net_capital_flow.html">
+          <h5>Bitcoin Net Capital Flow</h5>
+        </a>
+        <p>
+	  Net Capital Flow estimates how many US dollars are entering (positive) or leaving (negative) Bitcoin, measured on-chain.
+          <br><br>
+	  It is the sum of two flows: the <b>NRPL</b> (Net Realized Profit/Loss), i.e. the profit or loss realized by existing holders when their coins move, which is the change in Realized Cap caused by coins that were already in circulation; and the <b>issuance</b>, the dollars needed to absorb the newly mined bitcoin (block subsidy &times; block price, fees excluded because they are already part of NRPL).
+          <br><br>
+	  <b>Net Capital Flow = NRPL + Issuance (USD)</b>. It is the theoretical daily change of the Realized Cap, computed from clean flows instead of differencing Realized Cap snapshots, which are noisy from one day to the next.
+          <br><br>
+	  <b>Windows</b>
+          <br>
+          - <b>1D</b>: daily flow (hidden by default, enable it from the legend).
+          <br>
+          - <b>7D / 30D / 90D</b>: rolling calendar sums of the daily flow. The 30D area is green when capital is flowing in and red when it is flowing out.
+          <br><br>
+	  <b>How to read it</b>
+          <br>
+          - Sustained positive 30D/90D flows accompany bull phases: new capital is paying higher prices than the coins' cost basis.
+          <br>
+          - Negative flows mean coins are being sold below their cost basis faster than new money arrives: capital is leaving the network, typical of corrections and bear markets.
+          <br>
+          - Crosses of the 30D and 90D flows through zero mark changes in the capital regime.
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/capital-flows/GET/v1/capital-flows" target="_blank" rel="noopener noreferrer">Capital Flows (all windows, LTH/STH split, % of Realized Cap)</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/capital-flows/GET/v1/net-capital-flow-30d" target="_blank" rel="noopener noreferrer">Net Capital Flow 30D</a>
+        </p>
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
+      </div>
+      <div class="credits">
+        <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
