@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <link rel="canonical" href="https://charts.bgeometrics.com/nvts_bg.html">
+  <link rel="canonical" href="https://charts.bgeometrics.com/net_capital_flow.html">
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin NVT Signal" name="keywords">
+  <meta content="Bitcoin Net Capital Flow (NRPL + issuance)" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -915,7 +915,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/nvts_bg_dark.html" allow="fullscreen" title="Bitcoin NVT Signal" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/net_capital_flow_dark.html" allow="fullscreen" title="Net Capital Flow" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -927,33 +927,34 @@
     <br>
     <section>
       <div class="container">
-        <a href="graphics/nvts_bg.html">
-	  <h5>Dynamic Range NVT Signal</h5>
+        <a href="graphics/net_capital_flow.html">
+          <h5>Bitcoin Net Capital Flow</h5>
         </a>
-        <p> 
-	  It is the PE (Price Earning Ratio) ratio of Bitcoin, which arises from dividing the market capitalization by dollar value of on-chain transactions.
-	  <br>
-	  Only how you activate addresses that made successful transactions are taken into account.
+        <p>
+	  Net Capital Flow estimates how many US dollars are entering (positive) or leaving (negative) Bitcoin, measured on-chain.
           <br><br>
-          Dynamic range bands identify regions of undervaluation and overvaluation (green/red).
+	  It is the sum of two flows: the <b>NRPL</b> (Net Realized Profit/Loss), i.e. the profit or loss realized by existing holders when their coins move, which is the change in Realized Cap caused by coins that were already in circulation; and the <b>issuance</b>, the dollars needed to absorb the newly mined bitcoin (block subsidy &times; block price, fees excluded because they are already part of NRPL).
           <br><br>
-	  The number of unique Bitcoin addresses that sent or received transactions. Only how you activate addresses that made successful transactions are taken into account.
+	  <b>Net Capital Flow = NRPL + Issuance (USD)</b>. It is the theoretical daily change of the Realized Cap, computed from clean flows instead of differencing Realized Cap snapshots, which are noisy from one day to the next.
           <br><br>
-          The formula is:
+	  <b>Windows</b>
           <br>
-	  The number of unique Bitcoin addresses that sent or received transactions. Only how you activate addresses that made successful transactions are taken into account.
+          - <b>1D</b>: daily flow (hidden by default, enable it from the legend).
+          <br>
+          - <b>7D / 30D / 90D</b>: rolling calendar sums of the daily flow (90D hidden by default, enable it from the legend). The 30D area is green when capital is flowing in and red when it is flowing out.
           <br><br>
-          NVT Signal = Circulating Market Cap / On-Chain Transaction Value 90 DMA
-          <br><br>
-	  The number of unique Bitcoin addresses that sent or received transactions. Only how you activate addresses that made successful transactions are taken into account.
-          <br><br>
-          NVT (by Willy Woo and Dmitry Kalichkin) can be used to identify when Bitcoin is overbought or oversold based on the relative value of the value of transactions sent over the network.
-        <br><br>
-	  Currently there are daily movements that occur in exchanges and in layers 2 such as the Lightning Network that are not reflected in this graph.
+	  <b>How to read it</b>
+          <br>
+          - Sustained positive 30D/90D flows accompany bull phases: new capital is paying higher prices than the coins' cost basis.
+          <br>
+          - Negative flows mean coins are being sold below their cost basis faster than new money arrives: capital is leaving the network, typical of corrections and bear markets.
+          <br>
+          - Crosses of the 30D and 90D flows through zero mark changes in the capital regime.
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/capital-flows/GET/v1/capital-flows" target="_blank" rel="noopener noreferrer">Capital Flows (all windows, LTH/STH split, % of Realized Cap)</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/capital-flows/GET/v1/net-capital-flow-30d" target="_blank" rel="noopener noreferrer">Net Capital Flow 30D</a>
         </p>
-	<p>
-           <a href='https://bitcoin-data.com/api/swagger-ui/index.html' target='_blank'>BGeometrics Bitcoin API</a>                                                          </p>
-
       </div>
 
     </section>
@@ -994,7 +995,15 @@
     <div class="line"></div>
   </div>
 
+  <!-- Vendor JS Files -->
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 

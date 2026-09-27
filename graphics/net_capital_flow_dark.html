@@ -154,6 +154,7 @@
             },
 
             yAxis: [{
+                gridLineWidth: 0,
                 title: {
                     text: 'Net Capital Flow (USD)'
                 },
@@ -161,13 +162,13 @@
                     align: 'left',
                     formatter: function () { return usd(this.value); }
                 },
-                gridLineWidth: 0,
                 plotLines: [{ value: 0, width: 1, color: '#888888', zIndex: 3 }]
             }, {
                 title: {
                     text: 'BTC price'
                 },
                 gridLineWidth: 0,
+                
                 type: 'logarithmic',
                 opposite: false
             }],
