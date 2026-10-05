@@ -7,7 +7,7 @@
 
   <title>BGeometrics</title>
   <meta content="Bitcoin Price" name="description">
-  <meta content="Bitcoin Taker Sell Ratio" name="keywords">
+  <meta content="Bitcoin Taker Buy Ratio" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -916,7 +916,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/taker_sell_ratio.html" allow="fullscreen" title="Bitcoin Taker Sell Ratio" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/taker_buy_ratio.html" allow="fullscreen" title="Bitcoin Taker Buy Ratio" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -928,15 +928,15 @@
     <br>
     <section>
       <div class="container">
-        <a href="graphics/taker_sell_ratio.html">
-          <h5>Bitcoin Taker Sell Ratio</h5>
+        <a href="graphics/taker_buy_ratio.html">
+          <h5>Bitcoin Taker Buy Ratio</h5>
         </a>
         <p>
-	  Taker sell volume divided by taker buy volume on BTC perpetual futures (the inverse of the taker buy/sell ratio). Sourced from Binance's futures taker long/short data.
+	  Taker buy volume divided by taker sell volume on BTC perpetual futures (the inverse of the taker sell ratio). Sourced from Binance's futures taker long/short data.
           <br><br>
-	  Values above 1 (red) mean sell-side (short) taker flow dominates; values below 1 (green) mean buy-side (long) taker flow dominates. Extreme, sustained readings often mark short-term exhaustion points rather than confirming trend continuation.
+	  Values above 1 (green) mean buy-side (long) taker flow dominates; values below 1 (red) mean sell-side (short) taker flow dominates. Extreme, sustained readings often mark short-term exhaustion points rather than confirming trend continuation.
 	  <br><br>
-	  <b>API:</b> <a href="https://api.bgeometrics.com/scalar.html#tag/derivatives/GET/v1/taker-sell-ratio-1h" target="_blank" rel="noopener noreferrer">Full endpoint documentation &rarr;</a>
+	  <b>API:</b> <a href="https://api.bgeometrics.com/scalar.html#tag/derivatives/GET/v1/taker-buy-ratio-1h" target="_blank" rel="noopener noreferrer">Full endpoint documentation &rarr;</a>
         </p>
       </div>
 
