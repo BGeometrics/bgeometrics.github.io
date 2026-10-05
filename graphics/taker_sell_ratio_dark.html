@@ -16,25 +16,26 @@
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
     <script src="../assets/themes/brand-dark.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
     <style>
         :root {
             --highcharts-neutral-color-3: #000000;
         }
 
         .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important;
-            fill: #000000 !important;
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
         }
 
-        .highcharts-menu-item {
-            background-color: #000000 !important;
-            color: #FFFFFF !important;
-        }
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
 
         .highcharts-menu {
-            background-color: #000000 !important;
+            background-color: #000000 !important; 
             border: 1px solid #ccc !important;
-            color: #dddddd !important;
+            color: #dddddd !important; 
         }
 
         .highcharts-popup input[type="text"],
@@ -45,6 +46,8 @@
             color: #000000 !important;
         }
     </style>
+
+
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
@@ -129,13 +132,13 @@
             },
 
             yAxis: [{
+                gridLineWidth: 0,
                 title: {
                     text: 'Taker Sell Ratio'
                 },
                 labels: {
                     align: 'left',
                 },
-                gridLineWidth: 0,
                 plotLines: [{
                     value: 1,
                     color: '#888888',
@@ -149,9 +152,10 @@
                 title: {
                     text: 'BTC price'
                 },
-                type: 'logarithmic',
-                opposite: false,
                 gridLineWidth: 0,
+                
+                type: 'logarithmic',
+                opposite: false
             }],
 
             series: [{
@@ -231,6 +235,7 @@
                             enabled: false
                         },
                         yAxis: [{
+                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
