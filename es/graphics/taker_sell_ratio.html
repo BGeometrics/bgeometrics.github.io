@@ -1,20 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
-    <title>Bitcoin and M2 Growth Global of YoY (Fed, ECB, GBM, CNM, JPM...)</title>
-
-    <script>
-    (function(){
-        const start = new Date();
-        debugger;
-        const end = new Date();
-        if(end - start > 100) {
-            window.location.href = "about:blank";
-        }
-    })();
-    </script>
-    </head>
+    <title>Bitcoin Taker Sell Ratio</title>
+</head>
 <body>
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
@@ -27,60 +15,19 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
-    <script src="../assets/themes/brand-dark.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-
-        .highcharts-popup input[type="text"],
-        .highcharts-popup input[type="number"],
-        .highcharts-popup select,
-        .highcharts-annotation-toolbar input {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
-        }
-    </style>
-    <script src="../assets/js/bg-chart-data.js"></script>
-    <script src="../assets/js/chart-upgrade-band.js"></script>
 
 
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
     <script>
-
-    function decoder(encoded) {
-        const compressed = atob(encoded);
-        const charData = compressed.split('').map(x => x.charCodeAt(0));
-        const binData = new Uint8Array(charData);
-        const data = pako.inflate(binData);
-        const str = String.fromCharCode.apply(null, new Uint8Array(data));
-        return JSON.parse(str);
-    }
-    
         (async () => {
-            const data = await bgSeries('m2global', 'https://charts.bgeometrics.com/files/glm2_in.json');
-            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/glm2_btc_price.json');
-            const data_change = await bgSeries('m2yoy-change', 'https://charts.bgeometrics.com/files/m2_yoy_change_in.json');
-            const data_weeks7_change = await bgSeries('m2-weeks7-change', 'https://charts.bgeometrics.com/files/m2_weeks7_change_in.json');
+            const data_price = await fetch(
+                'https://charts.bgeometrics.com/files/taker_sell_ratio_btc_price.json'
+            ).then(response => response.json());
+            const data_taker_sell_ratio = await fetch(
+                'https://charts.bgeometrics.com/files/taker_sell_ratio.json'
+            ).then(response => response.json());
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -104,11 +51,6 @@
                                 axisTypeIcon = isLogarithmic ? 'logarithmic.svg' : 'linear.svg',
                                 iconURL = '../assets/9.2.2/gfx/stock-icons/' + axisTypeIcon;
 
-                            chart.yAxis[0].update({
-                                type: isLogarithmic ? 'linear' : 'logarithmic',
-                                minorTickInterval: isLogarithmic ? null : 'auto'
-                            });
-
                             chart.yAxis[1].update({
                                 type: isLogarithmic ? 'linear' : 'logarithmic',
                                 minorTickInterval: isLogarithmic ? null : 'auto'
@@ -126,28 +68,25 @@
                 }
             },
             title: {
-                text: 'Bitcoin and M2 Growth Global of YoY (Fed, ECB, GBM, CNM, JPM...)',
+                text: 'Bitcoin Taker Sell Ratio (Perpetual Futures)',
                 align: 'left',
             },
 
             chart: {
                 renderTo: 'container-iframe',
-                backgroundColor: 'black',
                 events: {
                     load: function() {
                         var image = new Image();
-                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png";
+                        var adresse_image = "https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png";
                         image.src = adresse_image;
-
                         var height_image = 128;
                         var width_image = 128;
                         var textX = this.plotLeft + (this.plotWidth * 0.5);
                         var textY = this.plotTop + (this.plotHeight * 0.5);
                         var position_x = textX - width_image / 2;
                         var position_y = textY - height_image / 2;
-                        console.log(position_x + " " + position_y);
                         this.renderer.image(adresse_image, position_x, position_y, width_image, height_image)
-                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.3})
+                            .css({position: 'relative', "margin-left": "-90px", opacity: 0.1})
                             .attr({zIndex: 1})
                             .add();
                     }
@@ -161,106 +100,87 @@
             },
 
             yAxis: [{
-                gridLineWidth: 0,
                 title: {
-                    text: 'M2 Growth Global of YoY (%)',
-                    labels: {
-                        align: 'left',
-                    },
-        	},
-		gridLineWidth: 0,
+                    text: 'Taker Sell Ratio'
+                },
+                labels: {
+                    align: 'left',
+                },
+                plotLines: [{
+                    value: 1,
+                    color: '#888888',
+                    dashStyle: 'Dash',
+                    width: 1,
+                    label: {
+                        text: 'sell = buy'
+                    }
+                }]
             }, {
                 title: {
-                    text: 'BTC price'
+                    text: 'Precio BTC'
                 },
-                gridLineWidth: 0,
-                
                 type: 'logarithmic',
-                opposite: false,
-		gridLineWidth: 0,
-            }, {
-                title: {
-                    text: 'M2 Growth Global (USD)'
-                },
-		gridLineWidth: 0,
+                opposite: false
             }],
 
-            xAxis: {
-                min: bgIsSubscriber() ? Date.UTC(2013, 4, 20) : undefined
-            },
-
             series: [{
-                id:'BTC price',
-                name: 'BTC price',
-                color: 'white',
-                zIndex: 2,
+                id: 'Precio BTC',
+                name: 'Precio BTC',
+                color: 'black',
                 data: data_price,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 1
-            },{
-                id: 'M2 Growth YoY (%)',
-                name: 'M2 Growth YoY (%)',
-                type: 'area',
-                data: data_change,
-                color: 'green',
+            }, {
+                id:'Taker Sell Ratio',
+                name: 'Taker Sell Ratio (sell/buy)',
+                color: '#e74c3c',
+                data: data_taker_sell_ratio,
                 tooltip: {
-                    valueDecimals: 2
+                    valueDecimals: 4
                 },
                 yAxis: 0,
                 zones: [{
-                    value: 0,
-                    color: '#f7a35c'
+                    value: 1,
+                    color: '#2ecc71'
                 }, {
-                    color: '#90ed7d'
+                    color: '#e74c3c'
                 }]
-            },{
-                id: 'M2 Growth 7 weeks (%)',
-                name: 'M2 Growth 7 weeks (%)',
-                type: 'area',
-                data: data_weeks7_change,
-                visible: false, 
-                color: 'green',
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 0,
-                zones: [{
-                    value: 0,
-                    color: '#f7a35c'
-                }, {
-                    color: '#90ed7d'
-                }]
-            },{
-                id: 'M2 Global Supply (USD)',
-                name: 'M2 Global Supply (USD)',
-                type: 'line',
-                data: data,
-                tooltip: {
-                    valueDecimals: 2
-                },
-                yAxis: 2
             }],
 
             legend:{
                 enabled:true,
                 floating: true,
-                verticalAlign: 'top',
                 y: 25,
+                verticalAlign: 'top',
                 align:'center'
             },
+
+            rangeSelector: {
+                buttons: [
+                    {type: 'month', count: 1, text: '1m'},
+                    {type: 'month', count: 3, text: '3m'},
+                    {type: 'month', count: 6, text: '6m'},
+                    {type: 'ytd', text: 'YTD'},
+                    {type: 'year', count: 1, text: '1y'},
+                    {type: 'year', count: 4, text: '4y'},
+                    {type: 'all', text: 'All'}
+                ],
+                selected: 2
+            },
+
             credits: {
-                text: 'Powered by BGeometrics.com',
+                text: 'Source: binance.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Powered by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
                 },
                 position: {
                     align: 'right',
-                    x: -70,
+                    x: -85,
                     y: -124
-                }                
+                }
             },
             responsive: {
                 rules: [{
@@ -273,33 +193,22 @@
                         },
                         stockTools: {
                             gui: {
-                                enabled: false 
+                                enabled: false
                             }
                         },
                         navigator: {
-                            enabled: false 
+                            enabled: false
                         },
                         yAxis: [{
-                gridLineWidth: 0,
                             title: { text: null }
                         }, {
                             title: { text: null }
                         }],
-                        legend: {enabled:false}
                     }
                 }]
             }
         });
-
-        if (!bgIsSubscriber()) {
-            addUpgradePlotBand(chart, 0, data, {
-                color: 'rgba(247,147,26,0.35)', label: 'Upgrade',
-                url: 'https://portal.bgeometrics.com/pricing'
-            });
-        }
-
     })();
-
     </script>
 
 </body>
