@@ -104,6 +104,7 @@
 /tmp/web/btc_liquidations_heatmap.html,web-generation-end-btc-liquidations-heatmap.html,Bitcoin Liquidation Heatmap,graphics/btc_liquidations_heatmap.html,Bitcoin Liquidation Heatmap,,derivatives-nav
 /tmp/web/orderbook_depth.html,web-generation-end-orderbook-depth.html,Bitcoin Order Book Liquidity,graphics/orderbook_depth.html,Bitcoin Order Book Liquidity,,derivatives-nav
 /tmp/web/orderflow.html,web-generation-end-orderflow.html,Bitcoin CVD Order Flow,graphics/orderflow.html,Bitcoin CVD Order Flow,,derivatives-nav
+/tmp/web/taker_sell_ratio.html,web-generation-end-taker-sell-ratio.html,Bitcoin Taker Sell Ratio,graphics/taker_sell_ratio.html,Bitcoin Taker Sell Ratio,,derivatives-nav
 /tmp/web/taker_cohorts.html,web-generation-end-taker-cohorts.html,Bitcoin Taker Cohorts,graphics/taker_cohorts.html,Bitcoin Taker Cohorts,,charts-nav
 /tmp/web/liquidity_stress_index.html,web-generation-end-liquidity-stress-index.html,Liquidity Stress Index,graphics/liquidity_stress_index.html,Liquidity Stress Index,,derivatives-nav
 /tmp/web/options_day.html,web-generation-end-options-day.html,Bitcoin Options Day,graphics/options_day.html,Bitcoin Options Day,,derivatives-nav
