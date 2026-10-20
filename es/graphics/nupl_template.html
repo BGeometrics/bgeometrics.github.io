@@ -25,9 +25,9 @@
             const data_metrics = await bgSeries('nupl', 'https://charts.bgeometrics.com/files/nupl_data.json');
             const data_lth_nupl = await bgSeries('nupl-lth', 'https://charts.bgeometrics.com/files/lth_nupl.json');
             const data_sth_nupl = await bgSeries('nupl-sth', 'https://charts.bgeometrics.com/files/sth_nupl.json');
-            const data_nupl_7dma = await fetch(
-                'https://charts.bgeometrics.com/files/nupl_7dma.json'
-            ).then(response => response.json());
+            const data_nupl_7dma = bgIsSubscriber()
+                ? bgRollingMean(data_metrics, 7)
+                : await fetch('https://charts.bgeometrics.com/files/nupl_7dma.json').then(response => response.json());
             const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/nupl_btc_price.json');
 
         var chart = Highcharts.stockChart('container', {

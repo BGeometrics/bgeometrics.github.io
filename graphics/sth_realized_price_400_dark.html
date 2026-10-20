@@ -61,9 +61,9 @@
             const data_sth_3m = await fetch(
                 'https://charts.bgeometrics.com/files/sth_realized_price_3m.json'
             ).then(response => response.json());
-            const data_sth_diff = await fetch(
-                'https://charts.bgeometrics.com/files/sth_realized_price_diff.json'
-            ).then(response => response.json());
+            const data_sth_diff = bgIsSubscriber()
+                ? bgDiffSeriesByTs(data_price, data_metrics)
+                : await fetch('https://charts.bgeometrics.com/files/sth_realized_price_diff.json').then(response => response.json());
  
         var chart = Highcharts.stockChart('container', {
             stockTools: {

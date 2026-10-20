@@ -56,9 +56,9 @@
     <script>
         (async () => {
             const data = await bgSeries('m2global', 'https://charts.bgeometrics.com/files/glm2_in.json');
-            const data_m2_10w = await fetch(
-                'https://charts.bgeometrics.com/files/m2_weeks10.json'
-            ).then(response => response.json());
+            const data_m2_10w = bgIsSubscriber()
+                ? bgShiftSeries(data, 10 * 7 * 24 * 3600 * 1000)
+                : await fetch('https://charts.bgeometrics.com/files/m2_weeks10.json').then(response => response.json());
             const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/glm2_btc_price.json');
 
         var chart = Highcharts.stockChart('container-iframe', {

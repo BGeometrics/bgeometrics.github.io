@@ -87,3 +87,45 @@ function bgDiffSeries(seriesA, seriesB) {
         return [ts, (val == null || other == null) ? null : val - other];
     });
 }
+
+// Media movil exponencial de `span` puntos sobre una serie [[tsMs, val], ...].
+// Replica pandas .ewm(span=span, adjust=False).mean(): arranca en el primer
+// valor y en los huecos (null) repite la ultima media sin actualizarla.
+function bgEma(series, span) {
+    const alpha = 2 / (span + 1);
+    const result = [];
+    let ema = null;
+
+    for (const [ts, val] of series) {
+        if (val != null) {
+            ema = (ema == null) ? val : alpha * val + (1 - alpha) * ema;
+        }
+        result.push([ts, ema]);
+    }
+
+    return result;
+}
+
+// Resta dos series [[tsMs, val], ...] emparejando por timestamp (no por indice),
+// para series de distinto origen y longitud (p.ej. precio menos STH realized
+// price). Devuelve un punto por cada timestamp de seriesA presente en seriesB.
+function bgDiffSeriesByTs(seriesA, seriesB) {
+    const byTs = new Map(seriesB.map(([ts, val]) => [ts, val]));
+    const result = [];
+
+    for (const [ts, val] of seriesA) {
+        if (!byTs.has(ts)) {
+            continue;
+        }
+        const other = byTs.get(ts);
+        result.push([ts, (val == null || other == null) ? null : val - other]);
+    }
+
+    return result;
+}
+
+// Desplaza en el tiempo una serie [[tsMs, val], ...] `ms` milisegundos
+// (p.ej. M2 global adelantado 10 semanas).
+function bgShiftSeries(series, ms) {
+    return series.map(([ts, val]) => [ts + ms, val]);
+}
