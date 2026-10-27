@@ -23,6 +23,7 @@ git add *
 """
 
 import os
+import re
 import fileinput
 import shutil
 
@@ -74,7 +75,10 @@ def search_replace_dark(_file, _file_out):
     # Don't add _dark to these specific menu links
     filedata = filedata.replace('portal.bgeometrics.com/dashboard_dark.html', 'portal.bgeometrics.com/dashboard.html')
     filedata = filedata.replace('portal.bgeometrics.com/public-reports_dark.html', 'portal.bgeometrics.com/public-reports.html')
+    filedata = filedata.replace('portal.bgeometrics.com/premium-features_dark.html', 'portal.bgeometrics.com/premium-features.html')
     filedata = filedata.replace('bgeometrics.com/reports/index_dark.html', 'bgeometrics.com/reports/index.html')
+    # Los informes de reports/ solo existen en versión light
+    filedata = re.sub(r'(reports/bitcoin_[A-Za-z0-9_]+)_dark\.html', r'\1.html', filedata)
     filedata = filedata.replace('"bg_alert_modal_dark.html"', '"bg_alert_modal.html"')
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
 

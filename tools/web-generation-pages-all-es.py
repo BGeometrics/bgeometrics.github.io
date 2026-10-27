@@ -76,6 +76,10 @@ def search_replace_dark(_file, _file_out):
     filedata = filedata.replace('.html', '_dark.html')
     filedata = filedata.replace('index_dark_dark.html', 'index.html')
     filedata = filedata.replace('swagger-ui/index_dark.html', 'swagger-ui/index.html')
+    filedata = filedata.replace('portal.bgeometrics.com/dashboard_dark.html', 'portal.bgeometrics.com/dashboard.html')
+    filedata = filedata.replace('portal.bgeometrics.com/premium-features_dark.html', 'portal.bgeometrics.com/premium-features.html')
+    # Los informes de reports/ solo existen en versión light
+    filedata = re.sub(r'(reports/bitcoin_[A-Za-z0-9_]+)_dark\.html', r'\1.html', filedata)
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
 
     with open(_file_out, 'w') as file:
