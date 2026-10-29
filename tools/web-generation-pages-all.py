@@ -24,6 +24,7 @@ git add *
 
 import os
 import re
+import html
 import fileinput
 import shutil
 
@@ -163,6 +164,11 @@ def generate_pages(_mode):
 
             repWords = (title,description,keywords,iframe)
 
+            # Título y descripción propios de cada gráfica (la plantilla trae unos genéricos)
+            meta_text = keywords if keywords.endswith('.') else keywords + '. Free chart updated daily by BGeometrics.'
+            title_tag = '<title>' + html.escape(title) + ' | BGeometrics</title>'
+            description_tag = '<meta content="' + html.escape(meta_text) + '" name="description">'
+
             f_model = open(file_model, 'r')
             f_out = open(file_out, 'w')
             
@@ -175,6 +181,9 @@ def generate_pages(_mode):
             for line in f_model:
                 for check, rep in zip(checkWords, repWords):
                     line = line.replace(check, rep)
+
+                line = line.replace('<title>BGeometrics</title>', title_tag)
+                line = line.replace('<meta content="Bitcoin Price" name="description">', description_tag)
 
                 # Para que el grupo de menu de la gráfica aparezca desplegado
                 if line.find(menu_file) != -1:

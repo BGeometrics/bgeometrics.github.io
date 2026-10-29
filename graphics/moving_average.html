@@ -55,7 +55,9 @@
             const data_350dma_x2 = await fetch(
                 'https://charts.bgeometrics.com/files/350dma_x2.json'
             ).then(response => response.json());
- 
+            // 50 week SMA = 350 day SMA
+            const data_50wma = data_350dma_x2.map(([t, v]) => [t, v === null ? null : v / 2]);
+
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
                 gui: {
@@ -192,6 +194,14 @@
                 id:'200 SMA',
                 name: '200 SMA',
                 data: data_200dma,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'50 WMA',
+                name: '50 WMA',
+                data: data_50wma,
                 tooltip: {
                     valueDecimals: 2
                 },
