@@ -23,7 +23,8 @@
     <script>
         (async () => {
             const data_mvrv = await bgSeries('mvrv', 'https://charts.bgeometrics.com/files/mvrv_data.json');
-            const data_mvrv_zscore = await bgSeries('mvrv-zscore', 'https://charts.bgeometrics.com/files/mvrv_zscore_data.json');
+            const data_sth_mvrv = await bgSeries('sth-mvrv', 'https://charts.bgeometrics.com/files/sth_mvrv.json');
+            const data_lth_mvrv = await bgSeries('lth-mvrv', 'https://charts.bgeometrics.com/files/lth_mvrv.json');
             const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json');
             const data_mvrv_365sma = bgIsSubscriber()
                 ? bgRollingMean(data_mvrv, 365)
@@ -133,10 +134,19 @@
                 },
                 yAxis: 0
             }, {
-                id:'mvrv_zscore',
-                name: 'MVRV Z-Score',
-                data: data_mvrv_zscore,
-                visible: false,
+                id: 'mvrv_sth',
+                name: 'MVRV STH',
+                color: '#90ed7d',
+                data: data_sth_mvrv,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id: 'mvrv_lth',
+                name: 'MVRV LTH',
+                color: '#f7a35c',
+                data: data_lth_mvrv,
                 tooltip: {
                     valueDecimals: 2
                 },
