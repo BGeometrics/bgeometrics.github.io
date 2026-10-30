@@ -22,8 +22,8 @@
 /tmp/web/sth_realized_price.html,web-generation-end-sth-realized-price.html,STH Realized Price,graphics/sth_realized_price.html,STH Realized Price,,market-nav
 /tmp/web/lth_realized_price.html,web-generation-end-lth-realized-price.html,LTH Realized Price,graphics/lth_realized_price.html,LTH Realized Price,,market-nav
 /tmp/web/realized_profit_loss_lth_sth.html,web-generation-end-realized-profit-loss-lth-sth.html,Realized Profit Loss LTH STH,graphics/realized_profit_loss_lth_sth.html,Realized Profit Loss LTH STH,,market-nav
-/tmp/web/mvrv.html,web-generation-end-mvrv.html,MVRV,graphics/mvrv.html,MVRV,,market-nav
-/tmp/web/mvrv_ratio.html,web-generation-end-mvrv.html,MVRV Ratio,graphics/mvrv_ratio.html,MVRV Ratio,,market-nav
+/tmp/web/mvrv.html,web-generation-end-mvrv.html,Bitcoin MVRV Z-Score Chart (Live),graphics/mvrv.html,Bitcoin MVRV Z-Score chart updated daily: market value vs realized value in standard deviations plus STH-MVRV and LTH-MVRV. Spot Bitcoin cycle tops and bottoms.,,market-nav
+/tmp/web/mvrv_ratio.html,web-generation-end-mvrv-ratio.html,Bitcoin MVRV Ratio Chart (Live),graphics/mvrv_ratio.html,Bitcoin MVRV Ratio chart updated daily: market cap divided by realized cap with its 365-day average. See when holders are in profit or at a loss.,,market-nav
 /tmp/web/sth_mvrv.html,web-generation-end.html,STH MVRV,graphics/sth_mvrv.html,STH MVRV,,market-nav
 /tmp/web/lth_mvrv.html,web-generation-end.html,LTH MVRV,graphics/lth_mvrv.html,LTH MVRV,,market-nav
 /tmp/web/distribution_realized_price.html,web-generation-end-urpd.html,Bitcoin Realized Price Distribution (URPD),graphics/distribution_realized_price.html,Realized Price Distribution (URPD),,market-nav
@@ -61,9 +61,9 @@
 /tmp/web/sp500_gold.html,web-generation-end-btc-sp500.html,BTC S&P 500 Gold Tesla MicroStrategy,graphics/sp500_gold.html,BTC S&P 500 Gold Tesla MicroStrategy,,macro-nav
 /tmp/web/bitcoin_volatility_g.html,web-generation-end.html,Bitcoin Volatility,reports/bitcoin_volatility_g.html,Bitcoin Volatility,,charts-nav
 /tmp/web/bitcoin_dominance_g.html,web-generation-end.html,Bitcoin Dominace,reports/bitcoin_dominance_g.html,BTC Dominance,,charts-nav
-/tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR,graphics/sopr.html,Bitcoin SOPR (Spend Out Profit Ratio),,market-nav
-/tmp/web/sth_sopr.html,web-generation-end.html,Bitcoin STH SOPR,graphics/sth_sopr.html,Bitcoin STH SOPR (Short Term Hodler Spend Out Profit Ratio),,market-nav
-/tmp/web/lth_sopr.html,web-generation-end.html,Bitcoin LTH SOPR,graphics/lth_sopr.html,Bitcoin LTH SOPR (Long Term Hodler Spend Out Profit Ratio),,market-nav
+/tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR Chart (Spent Output Profit Ratio),graphics/sopr.html,Bitcoin SOPR chart updated daily with STH-SOPR and LTH-SOPR. See whether coins are being sold at a profit or at a loss and how to read SOPR = 1.,,market-nav
+/tmp/web/sth_sopr.html,web-generation-end.html,Bitcoin STH SOPR,graphics/sth_sopr.html,Bitcoin STH SOPR (Short Term Holder Spent Output Profit Ratio),,market-nav
+/tmp/web/lth_sopr.html,web-generation-end.html,Bitcoin LTH SOPR,graphics/lth_sopr.html,Bitcoin LTH SOPR (Long Term Holder Spent Output Profit Ratio),,market-nav
 /tmp/web/open_interest_futures.html,web-generation-end-open-interest.html,Bitcoin Open Interest Futures,graphics/open_interest_futures.html,Bitcoin Open Interest Future,,derivatives-nav
 /tmp/web/hodl_waves.html,web-generation-end-hodl-waves.html,Bitcoin Hodl Waves,graphics/hodl_waves.html,Bitcoin Hodl Waves,,market-nav
 /tmp/web/pi_cycle.html,web-generation-end-pi-cycle.html,Bitcoin Pi Cycle,graphics/pi_cycle.html,Bitcoin Pi Cycle,,components-nav

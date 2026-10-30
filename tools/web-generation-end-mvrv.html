@@ -2,9 +2,15 @@
     <section>
       <div class="container">
         <a href="graphics/mvrv.html">
-          <h5>Bitcoin MVRV</h5>
+          <h1 class="h5">Bitcoin MVRV Z-Score</h1>
         </a>
-        <p> 
+        <p id="bg-latest-mvrv"></p>
+        <p>
+          The <strong>Bitcoin MVRV Z-Score</strong> shows how far the market value of Bitcoin is from its realized value (the aggregate price at which every coin last moved),
+          measured in standard deviations. It is one of the most followed on-chain indicators to spot cycle tops and bottoms.
+          This chart also shows STH-MVRV and LTH-MVRV, the MVRV of short and long term holders. The plain ratio is in the <a href="mvrv_ratio.html">Bitcoin MVRV Ratio</a> chart.
+        </p>
+        <p>
           <strong>Market Value Realized Value (MVRV)</strong> along with its Z-Score statistical correction, are a powerful tool for investors and traders seeking information on market valuation trends.
           <br>MVRV provides a relationship between Bitcoin's current market value and the value it was purchased for (realized value), offering a unique perspective on the cryptocurrency's price dynamics.
         </p>
@@ -44,7 +50,7 @@
                 </ul>
             </div>
         </div>
-        <h5>MVRV Z-Score</h5>
+        <h2 class="h5">How to read the MVRV Z-Score</h2>
         <p>
             Adds a layer of statistical analysis to the MVRV index, allowing investors to make more informed decisions based on historical patterns. Here's how to interpret the MVRV Z-Score:
         </p>
@@ -80,6 +86,50 @@
           <a href="https://api.bgeometrics.com/scalar.html#tag/mvrv/GET/v1/lth-mvrv" target="_blank" rel="noopener noreferrer">LTH MVRV</a> &middot;
           <a href="https://api.bgeometrics.com/scalar.html#tag/mvrv/GET/v1/sth-mvrv" target="_blank" rel="noopener noreferrer">STH MVRV</a>
         </p>
+        <h2 class="h5">Bitcoin MVRV Z-Score FAQ</h2>
+        <p>
+          <strong>What is a high MVRV Z-Score?</strong>
+          <br>Readings above 5 to 7 have historically appeared near Bitcoin cycle tops, when the market value is far above the price paid by holders.
+        </p>
+        <p>
+          <strong>What does a negative MVRV Z-Score mean?</strong>
+          <br>The market value is below the realized value: the average holder is at a loss. Readings below 0 have historically marked cycle bottoms.
+        </p>
+        <p>
+          <strong>What is the difference between MVRV and MVRV Z-Score?</strong>
+          <br>MVRV is the plain ratio Market Value / Realized Value. The Z-Score uses the difference between both values divided by the standard deviation of the market value,
+          which makes extremes comparable across cycles.
+        </p>
+        <p>
+          Related charts: <a href="mvrv_ratio.html">MVRV Ratio</a> &middot; <a href="sth_mvrv.html">STH MVRV</a> &middot; <a href="lth_mvrv.html">LTH MVRV</a> &middot;
+          <a href="sopr.html">SOPR</a> &middot; <a href="nupl.html">NUPL</a>
+        </p>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What is a high Bitcoin MVRV Z-Score?",
+             "acceptedAnswer": {"@type": "Answer", "text": "Readings above 5 to 7 have historically appeared near Bitcoin cycle tops, when the market value is far above the price paid by holders."}},
+            {"@type": "Question", "name": "What does a negative MVRV Z-Score mean?",
+             "acceptedAnswer": {"@type": "Answer", "text": "The market value is below the realized value: the average holder is at a loss. Readings below 0 have historically marked cycle bottoms."}},
+            {"@type": "Question", "name": "What is the difference between MVRV and MVRV Z-Score?",
+             "acceptedAnswer": {"@type": "Answer", "text": "MVRV is the plain ratio Market Value / Realized Value. The Z-Score uses the difference between both values divided by the standard deviation of the market value, which makes extremes comparable across cycles."}}
+          ]
+        }
+        </script>
+
+        <script>
+          (async () => {
+            const latest = async f => (await (await fetch('files/' + f + '.json')).json()).filter(p => p[1] !== null).pop();
+            const [z, ratio] = await Promise.all(['mvrv_zscore_data', 'mvrv_data'].map(latest));
+            const date = new Date(z[0]).toISOString().slice(0, 10);
+            document.getElementById('bg-latest-mvrv').innerHTML =
+              'Latest public values (' + date + '): <strong>MVRV Z-Score ' + z[1].toFixed(2) + '</strong> &middot; MVRV Ratio ' + ratio[1].toFixed(2);
+          })();
+        </script>
+
         <p>Can MVRV be traded? <a href="https://bgeometrics.com/lab/">BG Lab</a> backtests Bitcoin on-chain trading rules built on MVRV, MVRV Z-Score and other metrics, validated on data they never saw.</p>
       </div>
     </section>
