@@ -7,9 +7,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>MVRV Ratio | BGeometrics</title>
-  <meta content="MVRV Ratio. Free chart updated daily by BGeometrics." name="description">
-  <meta content="MVRV Ratio" name="keywords">
+  <title>Bitcoin MVRV Ratio Chart (Live) | BGeometrics</title>
+  <meta content="Bitcoin MVRV Ratio chart updated daily: market cap divided by realized cap with its 365-day average. See when holders are in profit or at a loss." name="description">
+  <meta content="Bitcoin MVRV Ratio chart updated daily: market cap divided by realized cap with its 365-day average. See when holders are in profit or at a loss." name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -937,7 +937,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/mvrv_ratio_dark.html" allow="fullscreen" title="MVRV Ratio" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/mvrv_ratio_dark.html" allow="fullscreen" title="Bitcoin MVRV Ratio Chart (Live)" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -949,10 +949,16 @@
     <br>
     <section>
       <div class="container">
-        <a href="graphics/mvrv.html">
-          <h5>Bitcoin MVRV</h5>
+        <a href="graphics/mvrv_ratio.html">
+          <h1 class="h5">Bitcoin MVRV Ratio</h1>
         </a>
-        <p> 
+        <p id="bg-latest-mvrv-ratio"></p>
+        <p>
+          The <strong>Bitcoin MVRV Ratio</strong> divides the market capitalization of Bitcoin by its realized capitalization.
+          A value of 2 means that, on average, holders are sitting on a 100% unrealized profit; a value below 1 means that the average holder is at a loss.
+          The chart also shows the 365-day moving average of the ratio. For the volatility-adjusted version see the <a href="mvrv.html">Bitcoin MVRV Z-Score</a> chart.
+        </p>
+        <p>
           <strong>Market Value Realized Value (MVRV)</strong> along with its Z-Score statistical correction, are a powerful tool for investors and traders seeking information on market valuation trends.
           <br>MVRV provides a relationship between Bitcoin's current market value and the value it was purchased for (realized value), offering a unique perspective on the cryptocurrency's price dynamics.
         </p>
@@ -992,7 +998,7 @@
                 </ul>
             </div>
         </div>
-        <h5>MVRV Z-Score</h5>
+        <h2 class="h5">MVRV Z-Score</h2>
         <p>
             Adds a layer of statistical analysis to the MVRV index, allowing investors to make more informed decisions based on historical patterns. Here's how to interpret the MVRV Z-Score:
         </p>
@@ -1028,6 +1034,21 @@
           <a href="https://api.bgeometrics.com/scalar.html#tag/mvrv/GET/v1/lth-mvrv" target="_blank" rel="noopener noreferrer">LTH MVRV</a> &middot;
           <a href="https://api.bgeometrics.com/scalar.html#tag/mvrv/GET/v1/sth-mvrv" target="_blank" rel="noopener noreferrer">STH MVRV</a>
         </p>
+        <p>
+          Related charts: <a href="mvrv.html">MVRV Z-Score</a> &middot; <a href="sth_mvrv.html">STH MVRV</a> &middot; <a href="lth_mvrv.html">LTH MVRV</a> &middot;
+          <a href="sopr.html">SOPR</a> &middot; <a href="nupl.html">NUPL</a>
+        </p>
+
+        <script>
+          (async () => {
+            const data = await (await fetch('files/mvrv_data.json')).json();
+            const last = data.filter(p => p[1] !== null).pop();
+            const date = new Date(last[0]).toISOString().slice(0, 10);
+            document.getElementById('bg-latest-mvrv-ratio').innerHTML =
+              'Latest public value (' + date + '): <strong>MVRV Ratio ' + last[1].toFixed(2) + '</strong>';
+          })();
+        </script>
+
         <p>Can MVRV be traded? <a href="https://bgeometrics.com/lab/">BG Lab</a> backtests Bitcoin on-chain trading rules built on MVRV, MVRV Z-Score and other metrics, validated on data they never saw.</p>
       </div>
     </section>

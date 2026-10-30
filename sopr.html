@@ -7,9 +7,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Bitcoin SOPR | BGeometrics</title>
-  <meta content="Bitcoin SOPR (Spend Out Profit Ratio). Free chart updated daily by BGeometrics." name="description">
-  <meta content="Bitcoin SOPR (Spend Out Profit Ratio)" name="keywords">
+  <title>Bitcoin SOPR Chart (Spent Output Profit Ratio) | BGeometrics</title>
+  <meta content="Bitcoin SOPR chart updated daily with STH-SOPR and LTH-SOPR. See whether coins are being sold at a profit or at a loss and how to read SOPR = 1." name="description">
+  <meta content="Bitcoin SOPR chart updated daily with STH-SOPR and LTH-SOPR. See whether coins are being sold at a profit or at a loss and how to read SOPR = 1." name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -937,7 +937,7 @@
           <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="600px" src="graphics/sopr.html" allow="fullscreen" title="Bitcoin SOPR" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="600px" src="graphics/sopr.html" allow="fullscreen" title="Bitcoin SOPR Chart (Spent Output Profit Ratio)" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
 
@@ -951,12 +951,25 @@
     <section>
       <div class="container">
         <a href="graphics/sopr.html">
-          <h5>Bitcoin SOPR (Spend Out Profit Ratio)</h5>
+          <h1 class="h5">Bitcoin SOPR (Spent Output Profit Ratio)</h1>
         </a>
-        <p> 
-	SOPR, STH-SOPR (Short Term Hodler SOPR) and LTH-SOPR (Long Term Hodler SOPR) offer valuable insights into investor behavior and market sentiment.
+        <p id="bg-latest-sopr"></p>
+        <p>
+	The Bitcoin SOPR (Spent Output Profit Ratio) measures whether the coins moved on-chain each day were sold at a profit or at a loss.
+	SOPR, STH-SOPR (Short Term Holder SOPR) and LTH-SOPR (Long Term Holder SOPR) offer valuable insights into investor behavior and market sentiment.
 	<br>These indices offer a nuanced view of profit and loss dynamics, shedding light on both short- and long-term investor motivations.
         </p>
+
+        <h2 class="h5">How is SOPR calculated?</h2>
+        <p>
+          Every spent output (UTXO) is valued twice: at the price when it was spent and at the price when it was created.
+          SOPR is the ratio between both values for all the outputs spent that day:
+        </p>
+        <span class="katex-mathml">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <semantics><mrow><mtext>SOPR</mtext><mo>=</mo><mo>Value of spent outputs at spending price</mo><mo>/</mo><mtext>Value of the same outputs at creation price</mtext></mrow></semantics>
+            </math>
+        </span>
 
         <div class="row">
           <div class="col-lg-6">
@@ -973,7 +986,7 @@
               <li>
                 <strong>STH-SOPR (Short Term Hodler SOPR):</strong>
 		<p> 
-		  STH-SOPR specifically focuses on short-term investors, defined as those who have spent or transferred bitcoin in the last 155 days.
+		  STH-SOPR specifically focuses on short-term investors: it only takes into account outputs spent less than 155 days after they were created.
 		  <br>This index measures short-term investors' BTC gains and provides insight into the earnings dynamics within this specific investor group.
 		  <br>Values greater than 1 mean that more short-term investors are selling at a profit.
 		  <br>Values less than 1 indicate that more short-term investors are selling at a loss.
@@ -999,6 +1012,58 @@
 	  <br>By analyzing investor behaviors based on their holding periods, these indices provide analysts and traders with valuable information to navigate the complexities of the cryptocurrency landscape.
 	  <br>As Bitcoin continues to mature, these metrics serve as valuable tools for understanding market sentiment and making informed investment decisions.
 	</p>
+
+        <h2 class="h5">Bitcoin SOPR FAQ</h2>
+        <p>
+          <strong>What does a SOPR above 1 mean?</strong>
+          <br>On average, the coins spent that day were sold at a higher price than they were bought: the market is realizing profits.
+        </p>
+        <p>
+          <strong>What does a SOPR below 1 mean?</strong>
+          <br>On average, the coins spent that day were sold at a loss. Sustained readings below 1 are typical of bear markets and capitulation phases.
+        </p>
+        <p>
+          <strong>Why is SOPR = 1 important?</strong>
+          <br>In bull markets holders tend to refuse to sell at break-even, so SOPR bounces on 1 and it acts as support.
+          In bear markets holders tend to exit at break-even, so SOPR is rejected at 1 and it acts as resistance.
+          Reclaiming 1 after a long period below it has historically been an early sign of trend change.
+        </p>
+        <p>
+          <strong>What is the difference between SOPR, STH-SOPR and LTH-SOPR?</strong>
+          <br>SOPR includes every spent output. STH-SOPR only includes coins held for less than 155 days, which react quickly to price,
+          and LTH-SOPR only coins held for more than 155 days, whose spending usually marks distribution near cycle tops.
+        </p>
+        <p>
+          Related charts: <a href="sth_sopr.html">STH SOPR</a> &middot; <a href="lth_sopr.html">LTH SOPR</a> &middot;
+          <a href="mvrv.html">MVRV Z-Score</a> &middot; <a href="mvrv_ratio.html">MVRV Ratio</a> &middot; <a href="nupl.html">NUPL</a>
+        </p>
+
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {"@type": "Question", "name": "What does a Bitcoin SOPR above 1 mean?",
+             "acceptedAnswer": {"@type": "Answer", "text": "On average, the coins spent that day were sold at a higher price than they were bought: the market is realizing profits."}},
+            {"@type": "Question", "name": "What does a Bitcoin SOPR below 1 mean?",
+             "acceptedAnswer": {"@type": "Answer", "text": "On average, the coins spent that day were sold at a loss. Sustained readings below 1 are typical of bear markets and capitulation phases."}},
+            {"@type": "Question", "name": "Why is SOPR = 1 important?",
+             "acceptedAnswer": {"@type": "Answer", "text": "In bull markets SOPR bounces on 1 and it acts as support; in bear markets SOPR is rejected at 1 and it acts as resistance. Reclaiming 1 after a long period below it has historically been an early sign of trend change."}},
+            {"@type": "Question", "name": "What is the difference between SOPR, STH-SOPR and LTH-SOPR?",
+             "acceptedAnswer": {"@type": "Answer", "text": "SOPR includes every spent output. STH-SOPR only includes coins held for less than 155 days and LTH-SOPR only coins held for more than 155 days."}}
+          ]
+        }
+        </script>
+
+        <script>
+          (async () => {
+            const latest = async f => (await (await fetch('files/' + f + '.json')).json()).filter(p => p[1] !== null).pop();
+            const [s, sth, lth] = await Promise.all(['sopr_data', 'sth_sopr', 'lth_sopr'].map(latest));
+            const date = new Date(s[0]).toISOString().slice(0, 10);
+            document.getElementById('bg-latest-sopr').innerHTML =
+              'Latest public values (' + date + '): <strong>SOPR ' + s[1].toFixed(3) + '</strong> &middot; STH-SOPR ' + sth[1].toFixed(3) + ' &middot; LTH-SOPR ' + lth[1].toFixed(3);
+          })();
+        </script>
 	<p>
 	  <b>API:</b>
 	  <a href="https://api.bgeometrics.com/scalar.html#tag/sopr/GET/v1/sopr" target="_blank" rel="noopener noreferrer">SOPR</a> &middot;
