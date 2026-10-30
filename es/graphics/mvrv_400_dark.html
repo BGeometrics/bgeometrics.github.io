@@ -25,8 +25,8 @@
             const data_mvrv = await bgSeries('mvrv', 'https://charts.bgeometrics.com/files/mvrv_data.json');
             const data_mvrv_zscore = await bgSeries('mvrv-zscore', 'https://charts.bgeometrics.com/files/mvrv_zscore_data.json');
             const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/mvrv_zscore_btc_price.json');
-            const data_lth_mvrv = await bgSeries('lth-mvrv', 'https://charts.bgeometrics.com/files/lth_mvrv.json');
-            const data_sth_mvrv = await bgSeries('sth-mvrv', 'https://charts.bgeometrics.com/files/sth_mvrv.json');
+            const data_lth_mvrv_zscore = await bgSeries('lth-mvrv-zscore', 'https://charts.bgeometrics.com/files/lth_mvrv_zscore.json');
+            const data_sth_mvrv_zscore = await bgSeries('sth-mvrv-zscore', 'https://charts.bgeometrics.com/files/sth_mvrv_zscore.json');
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -173,31 +173,31 @@
                     color: '#008F39'
                 }]
             }, {
-                id: 'LTH-MVRV',
-                name: 'LTH-MVRV',
-                data: data_lth_mvrv,
+                id: 'LTH MVRV Z-Score',
+                name: 'LTH MVRV Z-Score',
+                data: data_lth_mvrv_zscore,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0,
                 zones: [{
-                    value: 1,
+                    value: 0,
                     color: '#ff2222'
                 }, {
                     color: 'green'
                 }]
             }, {
-                name: 'STH-MVRV',
-                id: 'STH-MVRV',
+                name: 'STH MVRV Z-Score',
+                id: 'STH MVRV Z-Score',
                 color: '#90ed7d',
-                data: data_sth_mvrv,
+                data: data_sth_mvrv_zscore,
                 tooltip: {
                     valueDecimals: 2
                 },
                 yAxis: 0,
                 zones: [{
-                    value: 1,
+                    value: 0,
                     color: '#BE2414'
                 }, {
                     color: '#90ed7d'
