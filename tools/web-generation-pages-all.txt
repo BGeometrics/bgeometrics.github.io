@@ -112,3 +112,18 @@
 /tmp/web/options_volatility.html,web-generation-end-options-volatility.html,Bitcoin Options Volatility,graphics/options_volatility.html,Bitcoin Options Volatility,,derivatives-nav
 /tmp/web/supply_retention.html,web-generation-end-supply-retention.html,Bitcoin Supply Retention Rate,graphics/supply_retention.html,Supply Retention Rate,,cycles-nav
 /tmp/web/holder_conviction_index.html,web-generation-end-holder-conviction-index.html,Bitcoin Holder Conviction Index,graphics/holder_conviction_index.html,Holder Conviction Index,,cycles-nav
+/tmp/web/eth_sopr.html,web-generation-end.html,Ethereum SOPR Chart (Live),graphics/eth_sopr.html,Ethereum SOPR chart updated daily,,ethereum-nav
+/tmp/web/eth_mvrv.html,web-generation-end.html,Ethereum MVRV Chart (Live),graphics/eth_mvrv.html,Ethereum MVRV ratio chart updated daily,,ethereum-nav
+/tmp/web/eth_supply.html,web-generation-end.html,Ethereum Supply Chart (Live),graphics/eth_supply.html,Ethereum circulating supply chart updated daily,,ethereum-nav
+/tmp/web/eth_market_cap.html,web-generation-end.html,Ethereum Market Cap Chart (Live),graphics/eth_market_cap.html,Ethereum market capitalization chart updated daily,,ethereum-nav
+/tmp/web/eth_active_addresses.html,web-generation-end.html,Ethereum Active Addresses Chart (Live),graphics/eth_active_addresses.html,Ethereum active addresses chart updated daily,,ethereum-nav
+/tmp/web/eth_new_addresses.html,web-generation-end.html,Ethereum New Addresses Chart (Live),graphics/eth_new_addresses.html,Ethereum new addresses chart updated daily,,ethereum-nav
+/tmp/web/eth_addresses.html,web-generation-end.html,Ethereum Total Addresses Chart (Live),graphics/eth_addresses.html,Ethereum total addresses chart updated daily,,ethereum-nav
+/tmp/web/eth_txs.html,web-generation-end.html,Ethereum Transactions Chart (Live),graphics/eth_txs.html,Ethereum transactions chart updated daily,,ethereum-nav
+/tmp/web/eth_total_volume.html,web-generation-end.html,Ethereum Total Volume Chart (Live),graphics/eth_total_volume.html,Ethereum on-chain volume chart updated daily,,ethereum-nav
+/tmp/web/eth_active_1y.html,web-generation-end.html,Ethereum Supply Last Active 1y+ Chart (Live),graphics/eth_active_1y.html,Ethereum supply not moved in 1 year chart updated daily,,ethereum-nav
+/tmp/web/eth_total_tx_fees.html,web-generation-end.html,Ethereum Total Fees Chart (Live),graphics/eth_total_tx_fees.html,Ethereum total fees chart updated daily,,ethereum-nav
+/tmp/web/eth_total_tx_fees_usd.html,web-generation-end.html,Ethereum Total Fees USD Chart (Live),graphics/eth_total_tx_fees_usd.html,Ethereum total fees in USD chart updated daily,,ethereum-nav
+/tmp/web/eth_total_gas_used.html,web-generation-end.html,Ethereum Total Gas Used Chart (Live),graphics/eth_total_gas_used.html,Ethereum total gas used chart updated daily,,ethereum-nav
+/tmp/web/eth_mean_tx_gas_price.html,web-generation-end.html,Ethereum Mean Gas Price Chart (Live),graphics/eth_mean_tx_gas_price.html,Ethereum mean gas price chart updated daily,,ethereum-nav
+/tmp/web/eth_etf_flows_usd.html,web-generation-end.html,Ethereum ETF Flows USD Chart (Live),graphics/eth_etf_flows_usd.html,Ethereum spot ETF net flows chart updated daily,,ethereum-nav
