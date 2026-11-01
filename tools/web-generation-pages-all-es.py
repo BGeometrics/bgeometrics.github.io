@@ -148,6 +148,10 @@ def generate_pages(_mode):
             #file_out = fields[0]    # Nombre del fichero final
             file_out = fields[0].replace(replace_ini, replace_end) # Nombre con el directorio del idioma
             file_end = lang + '/' + fields[1]    # Nombre del fichero que se va a concatenar al final
+            # Sin traducción se usa el texto en inglés: si no, se aborta aquí y no se generan las páginas siguientes
+            if not os.path.exists(file_end):
+                print("Sin traducción, se usa el texto en inglés: " + fields[1])
+                file_end = fields[1]
             title = fields[2]       # Título
             #iframe = lang + '/' + fields[3]      # URL del gráfico que se añade al iframe 
             iframe = fields[3]      # URL del gráfico que se añade al iframe 
