@@ -20,7 +20,9 @@
 
     <script>
         (async () => {
-            const data_puell_multiple = PUELL_MULTIPLE_DATA;
+            const data_puell_multiple = await fetch(
+                'https://charts.bgeometrics.com/files/puell_multiple.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/puell_multiple_btc_price.json'
             ).then(response => response.json());

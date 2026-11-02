@@ -20,7 +20,9 @@
 
     <script>
         (async () => {
-            const data_puell_multiple = PUELL_MULTIPLE_DATA;
+            const data_puell_multiple = await fetch(
+                'https://charts.bgeometrics.com/files/puell_multiple.json'
+            ).then(response => response.json());
             const data_price = await fetch(
                 'https://charts.bgeometrics.com/files/puell_multiple_btc_price.json'
             ).then(response => response.json());
@@ -167,7 +169,16 @@
             },
 
             rangeSelector: {
-                selected: 5
+                buttons: [
+                    {type: 'month', count: 1, text: '1m'},
+                    {type: 'month', count: 3, text: '3m'},
+                    {type: 'month', count: 6, text: '6m'},
+                    {type: 'ytd', text: 'YTD'},
+                    {type: 'year', count: 1, text: '1y'},
+                    {type: 'year', count: 4, text: '4y'},
+                    {type: 'all', text: 'All'}
+                ],
+                selected: 6
             },
 
             credits: {
