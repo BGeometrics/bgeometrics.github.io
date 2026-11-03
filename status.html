@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <script>location.replace('https://portal.bgeometrics.com/system-status' + (location.pathname.indexOf('_dark') >= 0 ? '_dark' : '') + '.html');</script>
+
   <link rel="canonical" href="https://charts.bgeometrics.com/status.html">
 
   <meta charset="utf-8">
@@ -1053,7 +1055,7 @@
                   <h6 class="card-title mb-0">Block API</h6>
                   <span id="block-badge" class="badge bg-secondary">–</span>
                 </div>
-                <div class="small text-muted mb-2">api-block.bgeometrics.com</div>
+                <div class="small text-muted mb-2">api-block.bitcoin-data.com</div>
                 <div class="small" id="block-db"></div>
                 <div class="small mt-1" id="block-summary"></div>
                 <div class="small text-muted mt-1" id="block-refresh-ms"></div>
@@ -1337,24 +1339,31 @@
 
     function loadStatus() {
       var apiUrl     = 'https://api.bitcoin-data.com/v1/status';
-      var blockUrl   = 'https://api-block.bitcoin-data.com/v1/status';
-      var venusUrl   = 'https://api-block.bitcoin-data.com/v1/node/venus';
-      var saturnoUrl = 'https://bgeometrics.com/api-block/v1/node/saturno';
+      var blockUrl   = 'https://api-block.bitcoin-data.com/api-block/v1/status';
+      var venusUrl   = 'https://api-block.bitcoin-data.com/api-block/v1/node/venus';
+
+      function getJson(url) {
+        return fetchWithTimeout(url, 12000).then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        });
+      }
 
       Promise.allSettled([
-        fetchWithTimeout(apiUrl,     12000).then(function (r) { return r.json(); }),
-        fetchWithTimeout(blockUrl,   12000).then(function (r) { return r.json(); }),
-        fetchWithTimeout(venusUrl,   12000).then(function (r) { return r.json(); }),
-        fetchWithTimeout(saturnoUrl, 12000).then(function (r) { return r.json(); })
+        getJson(apiUrl),
+        getJson(blockUrl),
+        getJson(venusUrl)
       ]).then(function (results) {
         var apiData     = results[0].status === 'fulfilled' ? results[0].value : null;
         var blockData   = results[1].status === 'fulfilled' ? results[1].value : null;
         var venusData   = results[2].status === 'fulfilled' ? results[2].value : null;
-        var saturnoData = results[3].status === 'fulfilled' ? results[3].value : null;
+        // Si el Block API responde pero no el nodo, el nodo se muestra caído
+        if (!venusData && blockData) venusData = { name: 'Venus', status: 'down' };
 
         var statuses = [];
         if (apiData)   statuses.push(apiData.overallStatus);
         if (blockData) statuses.push(blockData.overallStatus);
+        if (venusData) statuses.push(venusData.status);
         var overall = !statuses.length ? 'unknown'
           : statuses.every(function (s) { return s === 'operational'; }) ? 'operational'
           : statuses.some(function (s) { return s === 'down' || s === 'major_outage'; }) ? 'down'
@@ -1375,7 +1384,6 @@
 
         var nodes = [];
         if (venusData)   nodes.push(venusData);
-        if (saturnoData) nodes.push(saturnoData);
         renderNodesCards(nodes.length ? nodes : null);
 
         updateTimestamp();
