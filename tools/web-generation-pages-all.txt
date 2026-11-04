@@ -114,8 +114,17 @@
 /tmp/web/holder_conviction_index.html,web-generation-end-holder-conviction-index.html,Bitcoin Holder Conviction Index,graphics/holder_conviction_index.html,Holder Conviction Index,,cycles-nav
 /tmp/web/eth_sopr.html,web-generation-end.html,Ethereum SOPR Chart (Live),graphics/eth_sopr.html,Ethereum SOPR chart updated daily,,ethereum-nav
 /tmp/web/eth_mvrv.html,web-generation-end.html,Ethereum MVRV Chart (Live),graphics/eth_mvrv.html,Ethereum MVRV ratio chart updated daily,,ethereum-nav
+/tmp/web/eth_mvrv_zscore.html,web-generation-end.html,Ethereum MVRV Z-Score Chart (Live),graphics/eth_mvrv_zscore.html,Ethereum MVRV Z-Score chart updated daily: market cap minus realized cap in standard deviations,,ethereum-nav
+/tmp/web/eth_nupl.html,web-generation-end.html,Ethereum NUPL Chart (Live),graphics/eth_nupl.html,Ethereum NUPL (Net Unrealized Profit/Loss) chart updated daily,,ethereum-nav
+/tmp/web/eth_realized_price.html,web-generation-end.html,Ethereum Realized Price Chart (Live),graphics/eth_realized_price.html,Ethereum realized price chart updated daily: average acquisition cost of the ETH in circulation,,ethereum-nav
+/tmp/web/eth_realized_cap.html,web-generation-end.html,Ethereum Realized Cap Chart (Live),graphics/eth_realized_cap.html,Ethereum realized capitalization chart updated daily,,ethereum-nav
+/tmp/web/eth_net_realized_pl.html,web-generation-end.html,Ethereum Net Realized Profit/Loss Chart (Live),graphics/eth_net_realized_pl.html,Ethereum net realized profit and loss chart updated daily,,ethereum-nav
 /tmp/web/eth_supply.html,web-generation-end.html,Ethereum Supply Chart (Live),graphics/eth_supply.html,Ethereum circulating supply chart updated daily,,ethereum-nav
 /tmp/web/eth_market_cap.html,web-generation-end.html,Ethereum Market Cap Chart (Live),graphics/eth_market_cap.html,Ethereum market capitalization chart updated daily,,ethereum-nav
+/tmp/web/eth_staked.html,web-generation-end.html,Ethereum Staked Chart (Live),graphics/eth_staked.html,Ethereum staked ETH chart updated daily: balance of the staking deposit contract net of withdrawals,,ethereum-nav
+/tmp/web/eth_staking_deposits.html,web-generation-end.html,Ethereum Staking Deposits Chart (Live),graphics/eth_staking_deposits.html,Ethereum daily staking deposits chart updated daily,,ethereum-nav
+/tmp/web/eth_staking_realized_price.html,web-generation-end.html,Ethereum Staking Realized Price Chart (Live),graphics/eth_staking_realized_price.html,Ethereum staking realized price chart updated daily: average acquisition cost of the staked ETH,,ethereum-nav
+/tmp/web/eth_staking_mvrv.html,web-generation-end.html,Ethereum Staking MVRV Chart (Live),graphics/eth_staking_mvrv.html,Ethereum staking MVRV chart updated daily: market value of the staked ETH over its cost,,ethereum-nav
 /tmp/web/eth_active_addresses.html,web-generation-end.html,Ethereum Active Addresses Chart (Live),graphics/eth_active_addresses.html,Ethereum active addresses chart updated daily,,ethereum-nav
 /tmp/web/eth_new_addresses.html,web-generation-end.html,Ethereum New Addresses Chart (Live),graphics/eth_new_addresses.html,Ethereum new addresses chart updated daily,,ethereum-nav
 /tmp/web/eth_addresses.html,web-generation-end.html,Ethereum Total Addresses Chart (Live),graphics/eth_addresses.html,Ethereum total addresses chart updated daily,,ethereum-nav
