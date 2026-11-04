@@ -3,22 +3,29 @@
     <section>
       <div class="container">
         <a href="graphics/miner_sell_pressure.html">
-          <h5>Bitcoin Miner Sell Presure</h5>
+          <h5>Bitcoin Miner Sell Pressure</h5>
         </a>
         <p> 
-          This indicator shows when Bitcoin miners are selling more BTC than usual.
+          Este indicador muestra cuándo los mineros de Bitcoin están vendiendo más BTC de lo habitual.
 	  <br>
-	  It indicates how much bitcoin miners are selling in the last 30 days in relation to the reserves they have.
+	  Indica cuánto bitcoin han vendido los mineros en los últimos 30 días en relación con las reservas que tienen.
 	  <br><br>
-	  It is an indicator proposed by <a href="https://capriole.com/">Capriole</a>, where the mining outputs of the last 30 days are added and divided by the average of the mining reserve of the last 30 days.
+	  Es un indicador propuesto por <a href="https://capriole.com/">Capriole</a>: se suman las salidas de los mineros de los últimos 30 días y se dividen por la media de la reserva de los mineros de los últimos 30 días.
 	  <br><br>
-          The graph shows the positive and negative standard deviation of this metric for the last 200 days and the relevant information is the intersection with these lines.
+          El gráfico muestra la desviación estándar positiva y negativa de esta métrica en los últimos 200 días; lo relevante es el cruce con esas líneas.
 	  <br>
-          When it is high it indicates more selling than usual
+          Cuando está alto indica más ventas de lo habitual.
 	  <br>
-          When it is low it indicates less selling than usual
+          Cuando está bajo indica menos ventas de lo habitual.
 	  <br><br>
-          Bitcoin miner sell pressure represents industry stress, excess, and miner capitulation.
+          La presión de venta de los mineros refleja el estrés, los excesos y la capitulación de la industria minera.
+	  <br><br>
+	  <strong>Fuente de datos e histórico.</strong> Las salidas y reservas de los mineros las calcula BGeometrics con su propio nodo de Bitcoin, siguiendo las salidas coinbase y las direcciones conocidas de los pools de minería.
+	  El gráfico empieza el 2026-01-18, cuando se actualizaron el conjunto de direcciones de mineros y el método: los valores anteriores no son comparables y no se muestran.
+	  El primer valor de 30 días es del 2026-02-16 y las bandas de 200 días empiezan en septiembre de 2026.
+	  <br><br>
+	  <strong>API.</strong> El campo <code>minerSellPressure</code> de la <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html">API</a> (endpoint <code>miner-sell-pressure</code>) es el valor diario: <code>minerOutflowBtc</code> de ese día dividido por <code>minerReserveBtc</code> de ese día.
+	  El valor de 30 días de este gráfico es la suma de 30 días de <code>minerOutflowBtc</code> dividida por la media de 30 días de <code>minerReserveBtc</code>, con datos desde el 2026-01-18.
         </p>
       </div>
     </section>
