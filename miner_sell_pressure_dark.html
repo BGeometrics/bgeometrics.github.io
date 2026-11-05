@@ -1069,14 +1069,14 @@
     <section>
       <div class="container">
         <a href="graphics/miner_sell_pressure.html">
-          <h5>Bitcoin Miner Sell Presure</h5>
+          <h5>Bitcoin Miner Sell Pressure</h5>
         </a>
         <p> 
           This indicator shows when Bitcoin miners are selling more BTC than usual.
 	  <br>
 	  It indicates how much bitcoin miners are selling in the last 30 days in relation to the reserves they have.
 	  <br><br>
-	  It is an indicator proposed by <a href="https://capriole.com/">Capriole</a>, where the mining outputs of the last 30 days are added and divided by the average of the mining reserve of the last 30 days.
+	  It is an indicator proposed by <a href="https://capriole.com/">Capriole</a>: the miner outflows of the last 30 days are added up and divided by the average miner reserve of the last 30 days.
 	  <br><br>
           The graph shows the positive and negative standard deviation of this metric for the last 200 days and the relevant information is the intersection with these lines.
 	  <br>
@@ -1085,6 +1085,13 @@
           When it is low, it indicates fewer sales than usual in relation to their reservations.
 	  <br><br>
           Bitcoin miner sell pressure represents industry stress, excess, and miner capitulation.
+	  <br><br>
+	  <strong>Data source and history.</strong> Miner outflows and reserves are calculated by BGeometrics from its own Bitcoin node, by tracking coinbase outputs and known mining pool addresses.
+	  The chart starts on 2026-01-18, when the set of miner addresses and the method were updated: earlier values are not comparable and are not shown.
+	  The first 30-day value is from 2026-02-16 and the 200-day bands start in September 2026.
+	  <br><br>
+	  <strong>API.</strong> The <a href="https://charts.bgeometrics.com/bitcoin_api_dark.html">API</a> field <code>minerSellPressure</code> (endpoint <code>miner-sell-pressure</code>) is the daily value: that day's <code>minerOutflowBtc</code> divided by that day's <code>minerReserveBtc</code>.
+	  The 30-day value shown in this chart is the 30-day sum of <code>minerOutflowBtc</code> divided by the 30-day average of <code>minerReserveBtc</code>, using data from 2026-01-18 onwards.
         </p>
       </div>
     </section>
