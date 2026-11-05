@@ -77,6 +77,15 @@ var names = [
 { name: "Ethereum Gas total usado", link: "eth_total_gas_used.html" },
 { name: "Ethereum Precio medio del gas", link: "eth_mean_tx_gas_price.html" },
 { name: "Ethereum Flujos de ETF USD", link: "eth_etf_flows_usd.html" },
+{ name: "Ethereum MVRV Z-Score", link: "eth_mvrv_zscore.html" },
+{ name: "Ethereum NUPL", link: "eth_nupl.html" },
+{ name: "Ethereum Precio realizado", link: "eth_realized_price.html" },
+{ name: "Ethereum Capitalización realizada", link: "eth_realized_cap.html" },
+{ name: "Ethereum Beneficio/pérdida realizado neto", link: "eth_net_realized_pl.html" },
+{ name: "Ethereum en staking", link: "eth_staked.html" },
+{ name: "Ethereum Depósitos de staking", link: "eth_staking_deposits.html" },
+{ name: "Ethereum Precio realizado del staking", link: "eth_staking_realized_price.html" },
+{ name: "Ethereum MVRV del staking", link: "eth_staking_mvrv.html" },
 { name: "Espacio de trabajo BGeometrics", link: "workspace.html" },
 ];
 
