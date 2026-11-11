@@ -13,7 +13,7 @@ LOG_AXIS = "\n                type: 'logarithmic',"
 COLUMNS = "\n                type: 'column',"
 PERCENT = ".map(([ts, val]) => [ts, val == null ? null : val * 100])"
 
-# pagina, nombre, decimales y opciones
+# pagina, nombre, decimales y opciones ('selected': boton de zoom inicial, 4 = 1y, por defecto 6 = All)
 CHARTS = [
     ('eth_sopr', 'SOPR', 3, {'axis': ONE_LINE}),
     ('eth_mvrv', 'MVRV', 3, {'axis': ONE_LINE}),
@@ -38,7 +38,7 @@ CHARTS = [
     ('eth_total_tx_fees_usd', 'Total Fees USD', 0, {'suffix': ' USD'}),
     ('eth_total_gas_used', 'Total Gas Used', 0, {}),
     ('eth_mean_tx_gas_price', 'Mean Gas Price', 0, {'suffix': ' wei'}),
-    ('eth_etf_flows_usd', 'ETF Flows USD', 0, {'axis': ZERO_LINE, 'series': COLUMNS, 'suffix': ' USD'}),
+    ('eth_etf_flows_usd', 'ETF Flows USD', 0, {'axis': ZERO_LINE, 'series': COLUMNS, 'suffix': ' USD', 'selected': 4}),
 ]
 
 
@@ -63,6 +63,7 @@ def main():
         page = page.replace('__AXIS_OPTIONS__', options.get('axis', ''))
         page = page.replace('__SERIES_OPTIONS__', options.get('series', ''))
         page = page.replace('__SUFFIX__', tooltip_suffix(options.get('suffix')))
+        page = page.replace('__SELECTED__', str(options.get('selected', 6)))
 
         with open('../graphics/' + metric + '.html', 'w', encoding='utf-8', newline='\n') as file:
             file.write(page)
