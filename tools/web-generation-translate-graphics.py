@@ -30,6 +30,7 @@ directory_path = direc + project + '/' + lang + '/graphics/'
 replacements = {
     "BTC price": "Precio BTC",
     "ETH price": "Precio ETH",
+    "Bitcoin and Ethereum price (USD)": "Precio de Bitcoin y Ethereum (USD)",
     "Active Addresses": "Direcciones Activas",
     "Capitalization": "Capitalización",
     "Coin Days Destroyed": "Días Monedas Destruídas",
