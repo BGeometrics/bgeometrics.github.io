@@ -168,6 +168,18 @@
                         text: null
                     },
                     visible: true,
+                }, {
+                    gridLineWidth: 0,
+                    opposite: false,
+                    labels: {
+                        enabled: true,
+                        align: 'right',
+                        style: { color: '#627EEA' }
+                    },
+                    title: {
+                        text: null
+                    },
+                    visible: true,
                 }],
                 series: [
                     {
@@ -183,7 +195,7 @@
                     },
                 ],
                 legend: {
-                    enabled: false,
+                    enabled: true,
                 },
                 rangeSelector: {
                     enabled: true,
@@ -252,6 +264,40 @@
             
             returnButtons[6].querySelectorAll('span')[1].textContent = data_returns.last_4year.toFixed(2) + '%';
             returnButtons[6].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_4year)}`;
+
+
+            // ETH en eje propio, misma resolucion que BTC: cierre diario hasta hace un año,
+            // velas de 4h el último año y de 1h la última semana (eth_ohlc_*, Mercurio cada hora).
+            const getJson = url => fetch(url).then(response => response.json()).catch(() => []);
+            const [eth_daily, eth_4h, eth_1h] = await Promise.all([
+                getJson('https://charts.bgeometrics.com/files/eth_price_full.json'),
+                getJson('https://charts.bgeometrics.com/files/eth_ohlc_4h.json'),
+                getJson('https://charts.bgeometrics.com/files/eth_ohlc_1h.json')
+            ]);
+
+            // Si falta algún tramo intradía, el diario cubre ese periodo
+            const eth_1h_week = eth_1h.filter(item => item[0] >= cutoffTimestampWeek);
+            const eth_1h_start = eth_1h_week.length ? eth_1h_week[0][0] : Infinity;
+            const eth_4h_year = eth_4h.filter(item => item[0] >= cutoffTimestamp && item[0] < eth_1h_start);
+            const eth_4h_start = eth_4h_year.length ? eth_4h_year[0][0] : eth_1h_start;
+            const eth_prices = eth_daily.filter(item => item[0] < eth_4h_start)
+                .concat(eth_4h_year.map(item => [item[0], item[4]]))
+                .concat(eth_1h_week.map(item => [item[0], item[4]]));
+
+            if (eth_prices.length > 0) {
+                chart.addSeries({
+                    id: 'ETH price',
+                    name: 'ETH price',
+                    color: '#627EEA',
+                    lineWidth: 1.5,
+                    data: eth_prices,
+                    tooltip: {
+                        valuePrefix: '$',
+                        valueDecimals: 2
+                    },
+                    yAxis: 1
+                });
+            }
 
         })();
     </script>
