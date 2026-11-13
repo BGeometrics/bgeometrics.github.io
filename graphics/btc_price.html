@@ -145,7 +145,7 @@
                     }
                 },
                 title: {
-                    text: 'Bitcoin price (USD)',
+                    text: 'Bitcoin and Ethereum price (USD)',
                     align: 'left',
                 },
 
@@ -191,6 +191,17 @@
                     title: {
                         text: ''
                     },
+                }, {
+                    gridLineWidth: 0,
+                    opposite: false,
+                    labels: {
+                        align: 'right',
+                        style: { color: '#627EEA' }
+                    },
+                    title: {
+                        text: 'ETH',
+                        style: { color: '#627EEA' }
+                    },
                 }],
 
                 series: [
@@ -208,7 +219,7 @@
                 ],
 
                 legend: {
-                    enabled: false,
+                    enabled: true,
                 },
 
                 rangeSelector: {
@@ -237,6 +248,9 @@
                         type: 'year',
                         count: 1,
                         text: '1y'
+                    }, {
+                        type: 'all',
+                        text: 'All'
                     }]
                 },
 
@@ -292,6 +306,55 @@
             returnButtons[3].querySelectorAll('span')[1].textContent = data_returns.last_month.toFixed(2) + '%';
             returnButtons[3].querySelectorAll('span')[1].className = `fw-bold ${getButtonClass(data_returns.last_month)}`;
             
+            // ETH en eje propio: cierre diario hasta hace un año, velas 4h de Binance el último año
+            // y 1h la última semana (misma resolución que BTC). Si Binance falla, solo el diario.
+            const binanceKlines = async (interval, startMs, endMs) => {
+                const out = [];
+                let start = startMs;
+                while (start <= endMs) {
+                    const url = 'https://data-api.binance.vision/api/v3/klines?symbol=ETHUSDT&interval=' + interval +
+                        '&startTime=' + start + '&endTime=' + endMs + '&limit=1000';
+                    const rows = await fetch(url).then(r => {
+                        if (!r.ok) throw new Error('Binance ' + r.status);
+                        return r.json();
+                    });
+                    rows.forEach(k => out.push([k[0], parseFloat(k[4])]));
+                    if (rows.length < 1000) break;
+                    start = rows[rows.length - 1][0] + 1;
+                }
+                return out;
+            };
+
+            const eth_daily = await fetch(
+                'https://charts.bgeometrics.com/files/eth_price_full.json'
+            ).then(response => response.json()).catch(() => []);
+
+            let eth_prices = eth_daily;
+            try {
+                const [eth_4h, eth_1h] = await Promise.all([
+                    binanceKlines('4h', cutoffTimestamp, cutoffTimestampWeek - 1),
+                    binanceKlines('1h', cutoffTimestampWeek, Date.now())
+                ]);
+                eth_prices = eth_daily.filter(item => item[0] < cutoffTimestamp).concat(eth_4h, eth_1h);
+            } catch (e) {
+                console.warn('ETH intradía no disponible, se usa el cierre diario', e);
+            }
+
+            if (eth_prices.length > 0) {
+                chart.addSeries({
+                    id: 'ETH price',
+                    name: 'ETH price',
+                    color: '#627EEA',
+                    lineWidth: 1.5,
+                    data: eth_prices,
+                    tooltip: {
+                        valuePrefix: '$',
+                        valueDecimals: 2
+                    },
+                    yAxis: 1
+                });
+            }
+
         })();
 
     </script>
