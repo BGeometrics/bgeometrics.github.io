@@ -112,6 +112,7 @@
 /tmp/web/options_volatility.html,web-generation-end-options-volatility.html,Bitcoin Options Volatility,graphics/options_volatility.html,Bitcoin Options Volatility,,derivatives-nav
 /tmp/web/supply_retention.html,web-generation-end-supply-retention.html,Bitcoin Supply Retention Rate,graphics/supply_retention.html,Supply Retention Rate,,cycles-nav
 /tmp/web/holder_conviction_index.html,web-generation-end-holder-conviction-index.html,Bitcoin Holder Conviction Index,graphics/holder_conviction_index.html,Holder Conviction Index,,cycles-nav
+/tmp/web/eth_ohlc.html,web-generation-end-eth-ohlc.html,Ethereum OHLC Chart (Live),graphics/eth_ohlc.html,Ethereum OHLC daily candlestick chart updated hourly,,ethereum-nav
 /tmp/web/eth_sopr.html,web-generation-end.html,Ethereum SOPR Chart (Live),graphics/eth_sopr.html,Ethereum SOPR chart updated daily,,ethereum-nav
 /tmp/web/eth_mvrv.html,web-generation-end.html,Ethereum MVRV Chart (Live),graphics/eth_mvrv.html,Ethereum MVRV ratio chart updated daily,,ethereum-nav
 /tmp/web/eth_mvrv_zscore.html,web-generation-end.html,Ethereum MVRV Z-Score Chart (Live),graphics/eth_mvrv_zscore.html,Ethereum MVRV Z-Score chart updated daily: market cap minus realized cap in standard deviations,,ethereum-nav
