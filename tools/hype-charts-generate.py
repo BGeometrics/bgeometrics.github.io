@@ -28,6 +28,9 @@ CHARTS = [
     ('hype_cex_open_interest_usd', 'CEX Open Interest', 0, {'suffix': ' USD'}),
     ('hype_cex_avg_order_size_usd', 'CEX Average Order Size', 0, {'suffix': ' USD'}),
     ('hype_cex_taker_cvd_90d_usd', 'CEX Taker CVD (90-day)', 0, {'axis': ZERO_LINE, 'suffix': ' USD'}),
+    ('hype_futures_retail_activity', 'Futures Retail Activity', 1, {'axis': ZERO_LINE, 'suffix': ' %'}),
+    ('hype_spot_avg_order_size_usd', 'Spot Average Order Size', 0, {'suffix': ' USD'}),
+    ('hype_spot_retail_activity', 'Spot Retail Activity', 1, {'axis': ZERO_LINE, 'suffix': ' %'}),
 ]
 
 

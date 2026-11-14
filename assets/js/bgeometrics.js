@@ -140,6 +140,7 @@ var names = [
 { name: "Ethereum Staking Realized Price", link: "eth_staking_realized_price.html" },
 { name: "Ethereum Staking MVRV", link: "eth_staking_mvrv.html" },
 { name: "Hyperliquid Market Cap", link: "hype_market_cap.html" },
+
 { name: "Hyperliquid Market Cap / FDV", link: "hype_mcap_fdv_ratio.html" },
 { name: "Hyperliquid Funding Rate (annualized)", link: "hype_funding_rate.html" },
 { name: "Hyperliquid CEX Futures Volume", link: "hype_cex_futures_volume_usd.html" },
@@ -147,6 +148,9 @@ var names = [
 { name: "Hyperliquid CEX Open Interest", link: "hype_cex_open_interest_usd.html" },
 { name: "Hyperliquid CEX Average Order Size", link: "hype_cex_avg_order_size_usd.html" },
 { name: "Hyperliquid CEX Taker CVD (90-day)", link: "hype_cex_taker_cvd_90d_usd.html" },
+{ name: "Hyperliquid Futures Retail Activity", link: "hype_futures_retail_activity.html" },
+{ name: "Hyperliquid Spot Average Order Size", link: "hype_spot_avg_order_size_usd.html" },
+{ name: "Hyperliquid Spot Retail Activity", link: "hype_spot_retail_activity.html" },
 { name: "Services, custom charts, graphics", link: "services.html" },
 { name: "Donation", link: "donation.html" },
 { name: "BGeometrics Workspace", link: "workspace.html" },
