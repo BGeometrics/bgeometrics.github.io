@@ -89,6 +89,11 @@ var names = [
 { name: "Hyperliquid Capitalización", link: "hype_market_cap.html" },
 { name: "Hyperliquid Capitalización / FDV", link: "hype_mcap_fdv_ratio.html" },
 { name: "Hyperliquid Funding rate (anualizado)", link: "hype_funding_rate.html" },
+{ name: "Hyperliquid Volumen de futuros CEX", link: "hype_cex_futures_volume_usd.html" },
+{ name: "Hyperliquid Funding CEX (anualizado)", link: "hype_cex_funding_rate.html" },
+{ name: "Hyperliquid Interés abierto CEX", link: "hype_cex_open_interest_usd.html" },
+{ name: "Hyperliquid Tamaño medio de orden CEX", link: "hype_cex_avg_order_size_usd.html" },
+{ name: "Hyperliquid CVD taker CEX (90 días)", link: "hype_cex_taker_cvd_90d_usd.html" },
 { name: "Espacio de trabajo BGeometrics", link: "workspace.html" },
 ];
 

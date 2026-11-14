@@ -23,6 +23,11 @@ CHARTS = [
     ('hype_market_cap', 'Market Cap', 0, {'axis': LOG_AXIS, 'suffix': ' USD'}),
     ('hype_mcap_fdv_ratio', 'Market Cap / FDV', 2, {'suffix': ' %'}),
     ('hype_funding_rate', 'Funding Rate (annualized)', 2, {'axis': ZERO_LINE, 'suffix': ' %', 'transform': ANNUALIZED}),
+    ('hype_cex_futures_volume_usd', 'CEX Futures Volume', 0, {'series': COLUMNS, 'suffix': ' USD'}),
+    ('hype_cex_funding_rate', 'CEX Funding Rate (annualized)', 2, {'axis': ZERO_LINE, 'suffix': ' %', 'transform': ANNUALIZED}),
+    ('hype_cex_open_interest_usd', 'CEX Open Interest', 0, {'suffix': ' USD'}),
+    ('hype_cex_avg_order_size_usd', 'CEX Average Order Size', 0, {'suffix': ' USD'}),
+    ('hype_cex_taker_cvd_90d_usd', 'CEX Taker CVD (90-day)', 0, {'axis': ZERO_LINE, 'suffix': ' USD'}),
 ]
 
 
