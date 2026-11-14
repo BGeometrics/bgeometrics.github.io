@@ -22,18 +22,7 @@ ANNUALIZED = ".map(([ts, val]) => [ts, val == null ? null : val * 24 * 365 * 100
 CHARTS = [
     ('hype_market_cap', 'Market Cap', 0, {'axis': LOG_AXIS, 'suffix': ' USD'}),
     ('hype_fdv', 'FDV', 0, {'axis': LOG_AXIS, 'suffix': ' USD'}),
-    ('hype_circulating_supply', 'Circulating Supply', 0, {'suffix': ' HYPE'}),
-    ('hype_total_supply', 'Total Supply', 0, {'suffix': ' HYPE'}),
-    ('hype_future_emissions', 'Future Emissions', 0, {'suffix': ' HYPE'}),
-    ('hype_staked', 'Staked', 0, {'suffix': ' HYPE'}),
-    ('hype_staked_pct', 'Staked %', 2, {'suffix': ' %'}),
-    ('hype_af_balance', 'Assistance Fund Balance', 0, {'suffix': ' HYPE'}),
-    ('hype_af_buyback', 'Assistance Fund Buyback', 0, {'axis': ZERO_LINE, 'series': COLUMNS, 'suffix': ' HYPE'}),
     ('hype_funding_rate', 'Funding Rate (annualized)', 2, {'axis': ZERO_LINE, 'suffix': ' %', 'transform': ANNUALIZED}),
-    ('hype_open_interest', 'Open Interest', 0, {'suffix': ' HYPE'}),
-    ('hype_open_interest_usd', 'Open Interest USD', 0, {'suffix': ' USD'}),
-    ('hype_exchange_open_interest_usd', 'Exchange Open Interest', 0, {'suffix': ' USD'}),
-    ('hype_exchange_volume_usd', 'Exchange Perp Volume', 0, {'series': COLUMNS, 'suffix': ' USD'}),
 ]
 
 

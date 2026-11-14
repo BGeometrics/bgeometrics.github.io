@@ -139,15 +139,4 @@
 /tmp/web/eth_etf_flows_usd.html,web-generation-end.html,Ethereum ETF Flows USD Chart (Live),graphics/eth_etf_flows_usd.html,Ethereum spot ETF net flows chart updated daily,,ethereum-nav
 /tmp/web/hype_market_cap.html,web-generation-end.html,Hyperliquid Market Cap Chart (Live),graphics/hype_market_cap.html,Hyperliquid (HYPE) Market Cap chart updated daily,,hyperliquid-nav
 /tmp/web/hype_fdv.html,web-generation-end.html,Hyperliquid FDV Chart (Live),graphics/hype_fdv.html,Hyperliquid (HYPE) FDV chart updated daily,,hyperliquid-nav
-/tmp/web/hype_circulating_supply.html,web-generation-end.html,Hyperliquid Circulating Supply Chart (Live),graphics/hype_circulating_supply.html,Hyperliquid (HYPE) Circulating Supply chart updated daily,,hyperliquid-nav
-/tmp/web/hype_total_supply.html,web-generation-end.html,Hyperliquid Total Supply Chart (Live),graphics/hype_total_supply.html,Hyperliquid (HYPE) Total Supply chart updated daily,,hyperliquid-nav
-/tmp/web/hype_future_emissions.html,web-generation-end.html,Hyperliquid Future Emissions Chart (Live),graphics/hype_future_emissions.html,Hyperliquid (HYPE) Future Emissions chart updated daily,,hyperliquid-nav
-/tmp/web/hype_staked.html,web-generation-end.html,Hyperliquid Staked Chart (Live),graphics/hype_staked.html,Hyperliquid (HYPE) Staked chart updated daily,,hyperliquid-nav
-/tmp/web/hype_staked_pct.html,web-generation-end.html,Hyperliquid Staked % Chart (Live),graphics/hype_staked_pct.html,Hyperliquid (HYPE) Staked % chart updated daily,,hyperliquid-nav
-/tmp/web/hype_af_balance.html,web-generation-end.html,Hyperliquid Assistance Fund Balance Chart (Live),graphics/hype_af_balance.html,Hyperliquid (HYPE) Assistance Fund Balance chart updated daily,,hyperliquid-nav
-/tmp/web/hype_af_buyback.html,web-generation-end.html,Hyperliquid Assistance Fund Buyback Chart (Live),graphics/hype_af_buyback.html,Hyperliquid (HYPE) Assistance Fund Buyback chart updated daily,,hyperliquid-nav
 /tmp/web/hype_funding_rate.html,web-generation-end.html,Hyperliquid Funding Rate (annualized) Chart (Live),graphics/hype_funding_rate.html,Hyperliquid (HYPE) Funding Rate (annualized) chart updated daily,,hyperliquid-nav
-/tmp/web/hype_open_interest.html,web-generation-end.html,Hyperliquid Open Interest Chart (Live),graphics/hype_open_interest.html,Hyperliquid (HYPE) Open Interest chart updated daily,,hyperliquid-nav
-/tmp/web/hype_open_interest_usd.html,web-generation-end.html,Hyperliquid Open Interest USD Chart (Live),graphics/hype_open_interest_usd.html,Hyperliquid (HYPE) Open Interest USD chart updated daily,,hyperliquid-nav
-/tmp/web/hype_exchange_open_interest_usd.html,web-generation-end.html,Hyperliquid Exchange Open Interest Chart (Live),graphics/hype_exchange_open_interest_usd.html,Hyperliquid (HYPE) Exchange Open Interest chart updated daily,,hyperliquid-nav
-/tmp/web/hype_exchange_volume_usd.html,web-generation-end.html,Hyperliquid Exchange Perp Volume Chart (Live),graphics/hype_exchange_volume_usd.html,Hyperliquid (HYPE) Exchange Perp Volume chart updated daily,,hyperliquid-nav
