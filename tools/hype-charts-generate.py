@@ -21,7 +21,7 @@ ANNUALIZED = ".map(([ts, val]) => [ts, val == null ? null : val * 24 * 365 * 100
 # pagina, nombre, decimales y opciones ('selected': boton de zoom inicial, 4 = 1y, por defecto 6 = All)
 CHARTS = [
     ('hype_market_cap', 'Market Cap', 0, {'axis': LOG_AXIS, 'suffix': ' USD'}),
-    ('hype_fdv', 'FDV', 0, {'axis': LOG_AXIS, 'suffix': ' USD'}),
+    ('hype_mcap_fdv_ratio', 'Market Cap / FDV', 2, {'suffix': ' %'}),
     ('hype_funding_rate', 'Funding Rate (annualized)', 2, {'axis': ZERO_LINE, 'suffix': ' %', 'transform': ANNUALIZED}),
 ]
 

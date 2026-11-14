@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hyperliquid FDV</title>
+    <title>Hyperliquid Market Cap / FDV</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
@@ -22,7 +22,7 @@
 
     <script>
         (async () => {
-            const data_metric = (await bgSeries('hype-fdv', 'https://charts.bgeometrics.com/files/hype_fdv.json'));
+            const data_metric = (await bgSeries('hype-mcap-fdv-ratio', 'https://charts.bgeometrics.com/files/hype_mcap_fdv_ratio.json'));
             const data_price = await fetch('https://charts.bgeometrics.com/files/' +
                 (bgIsSubscriber() ? 'hype_price_full.json' : 'hype_price.json')).then(r => r.json());
 
@@ -65,7 +65,7 @@
                 }
             },
             title: {
-                text: 'Hyperliquid: FDV',
+                text: 'Hyperliquid: Market Cap / FDV',
                 align: 'left',
             },
 
@@ -94,23 +94,22 @@
 
             yAxis: [{
                 title: {
-                    text: 'FDV'
+                    text: 'Market Cap / FDV'
                 },
                 labels: {
                     align: 'left',
                 },
-                type: 'logarithmic',
             }, {
                 title: {
-                    text: 'Precio HYPE'
+                    text: 'HYPE price'
                 },
                 type: 'logarithmic',
                 opposite: false
             }],
 
             series: [{
-                id: 'Precio HYPE',
-                name: 'Precio HYPE',
+                id: 'HYPE price',
+                name: 'HYPE price',
                 color: 'black',
                 data: data_price,
                 tooltip: {
@@ -118,12 +117,12 @@
                 },
                 yAxis: 1
             }, {
-                id: 'hype_fdv',
-                name: 'FDV',
+                id: 'hype_mcap_fdv_ratio',
+                name: 'Market Cap / FDV',
                 data: data_metric,
                 tooltip: {
-                    valueDecimals: 0,
-                    valueSuffix: ' USD'
+                    valueDecimals: 2,
+                    valueSuffix: ' %'
                 },
                 yAxis: 0
             }],

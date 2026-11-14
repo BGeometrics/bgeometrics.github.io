@@ -138,5 +138,5 @@
 /tmp/web/eth_mean_tx_gas_price.html,web-generation-end.html,Ethereum Mean Gas Price Chart (Live),graphics/eth_mean_tx_gas_price.html,Ethereum mean gas price chart updated daily,,ethereum-nav
 /tmp/web/eth_etf_flows_usd.html,web-generation-end.html,Ethereum ETF Flows USD Chart (Live),graphics/eth_etf_flows_usd.html,Ethereum spot ETF net flows chart updated daily,,ethereum-nav
 /tmp/web/hype_market_cap.html,web-generation-end.html,Hyperliquid Market Cap Chart (Live),graphics/hype_market_cap.html,Hyperliquid (HYPE) Market Cap chart updated daily,,hyperliquid-nav
-/tmp/web/hype_fdv.html,web-generation-end.html,Hyperliquid FDV Chart (Live),graphics/hype_fdv.html,Hyperliquid (HYPE) FDV chart updated daily,,hyperliquid-nav
+/tmp/web/hype_mcap_fdv_ratio.html,web-generation-end.html,Hyperliquid Market Cap / FDV Chart (Live),graphics/hype_mcap_fdv_ratio.html,Hyperliquid (HYPE) market cap divided by fully diluted value chart updated daily,,hyperliquid-nav
 /tmp/web/hype_funding_rate.html,web-generation-end.html,Hyperliquid Funding Rate (annualized) Chart (Live),graphics/hype_funding_rate.html,Hyperliquid (HYPE) Funding Rate (annualized) chart updated daily,,hyperliquid-nav
