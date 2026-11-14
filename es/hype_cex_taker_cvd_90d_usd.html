@@ -1027,6 +1027,29 @@
 
       </div>
     </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/hype_cex_taker_cvd_90d_usd.html">
+          <h5>Hyperliquid (HYPE) CVD taker CEX (90 días)</h5>
+        </a>
+        <p>
+          Delta de volumen acumulado (CVD) del perpetuo de HYPE en Binance en los últimos 90 días, en USD.
+          <br><br>
+          Cada día se resta el volumen de ventas a mercado (taker sell) del volumen de compras a mercado (taker buy), y el resultado se suma en una ventana móvil de 90 días.
+          <br><br>
+          CVD taker (90d) = &Sigma; en 90 días (Volumen comprador taker &minus; Volumen vendedor taker)
+          <br><br>
+          Cuando es positivo y creciente dominan los compradores agresivos; cuando es negativo y decreciente, los vendedores agresivos. Las divergencias entre el CVD y el precio pueden anticipar cambios de tendencia.
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/hyperliquid/GET/v1/hype-cex-taker-cvd-90d-usd" target="_blank" rel="noopener noreferrer">CEX Taker CVD</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/hyperliquid/GET/v1/hype-cex-avg-order-size-usd" target="_blank" rel="noopener noreferrer">CEX Average Order Size</a>
+        </p>
+
+      </div>
+
+    </section>
 
   </main><!-- End #main -->
 
@@ -1037,9 +1060,8 @@
         &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <strong>Rendimientos pasado sno son garantía de resultados futuros.</strong></br>
-        <strong>
-          No es un consejo de inversión. Descúbrelo por tí mismo y actúa bajo tu propio criterio.</strong>
+        <strong>Rendimientos pasados no garantizan resultados futuros.</strong></br>
+        <strong>No es un consejo de inversión. Descúbrelo por tí mismo y actúa bajo tu propio criterio.</strong>
       </div>
       <div class="credits">
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>

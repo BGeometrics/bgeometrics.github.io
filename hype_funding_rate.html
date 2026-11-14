@@ -1123,6 +1123,29 @@
 
       </div>
     </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/hype_funding_rate.html">
+          <h5>Hyperliquid (HYPE) Funding Rate</h5>
+        </a>
+        <p>
+          Funding rate of the HYPE perpetual on the Hyperliquid exchange, shown annualized.
+          <br><br>
+          Perpetual futures have no expiry; to keep their price close to the spot price, longs and shorts pay each other a funding rate every hour. When it is positive, longs pay shorts; when it is negative, shorts pay longs.
+          <br><br>
+          The chart shows the daily mean of the hourly rate, annualized (hourly rate &times; 24 &times; 365).
+          <br><br>
+          High positive values point to crowded long positions and leverage-driven optimism, which can precede corrections. Negative values show that shorts dominate. Compare it with the <a href="hype_cex_funding_rate.html">funding rate on centralized exchanges</a>.
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/hyperliquid/GET/v1/hype-funding-rate" target="_blank" rel="noopener noreferrer">Funding Rate</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/hyperliquid/GET/v1/hype-cex-funding-rate" target="_blank" rel="noopener noreferrer">CEX Funding Rate</a>
+        </p>
+
+      </div>
+
+    </section>
 
   </main><!-- End #main -->
 
@@ -1138,6 +1161,11 @@
       </div>
       <div class="credits">
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
       </div>
       <div class="credits">
         <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
@@ -1158,6 +1186,12 @@
   <!-- Vendor JS Files -->
   
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 

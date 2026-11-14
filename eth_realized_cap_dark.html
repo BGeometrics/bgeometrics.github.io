@@ -1123,6 +1123,30 @@
 
       </div>
     </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/eth_realized_cap.html">
+          <h5>Ethereum Realized Cap</h5>
+        </a>
+        <p>
+          Sum of the acquisition cost of every ETH in circulation, in USD.
+          <br><br>
+          Instead of valuing all ETH at the current price, as the market cap does, each address is valued at the average price at which it acquired its ETH.
+          <br><br>
+          It measures the capital actually invested in Ethereum. It grows when ETH changes hands at higher prices, as new money enters the network, and falls when it is sold below its cost.
+          <br><br>
+          Calculated by BGeometrics from every address balance change since genesis, valuing each address at its average acquisition cost; ETH sent to the staking deposit contract keeps its cost and is not counted as a sale. Derived from <a href="https://github.com/ethpandaops/xatu-data" target="_blank" rel="noopener noreferrer">ethpandaops xatu</a> public data (CC BY 4.0).
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/ethereum/GET/v1/eth-realized-cap" target="_blank" rel="noopener noreferrer">Realized Cap</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/ethereum/GET/v1/eth-realized-price" target="_blank" rel="noopener noreferrer">Realized Price</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/ethereum/GET/v1/eth-mvrv" target="_blank" rel="noopener noreferrer">MVRV</a>
+        </p>
+
+      </div>
+
+    </section>
 
   </main><!-- End #main -->
 
@@ -1138,6 +1162,11 @@
       </div>
       <div class="credits">
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
       </div>
       <div class="credits">
         <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
@@ -1158,6 +1187,12 @@
   <!-- Vendor JS Files -->
   
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 

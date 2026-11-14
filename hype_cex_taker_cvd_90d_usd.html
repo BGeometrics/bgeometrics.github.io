@@ -1123,6 +1123,29 @@
 
       </div>
     </section>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/hype_cex_taker_cvd_90d_usd.html">
+          <h5>Hyperliquid (HYPE) CEX Taker CVD (90-day)</h5>
+        </a>
+        <p>
+          Cumulative volume delta of the HYPE perpetual on Binance over the last 90 days, in USD.
+          <br><br>
+          Each day the volume of market sells (taker sells) is subtracted from the volume of market buys (taker buys), and the result is summed over a rolling 90-day window.
+          <br><br>
+          Taker CVD (90d) = &Sigma; over 90 days (Taker Buy Volume &minus; Taker Sell Volume)
+          <br><br>
+          When it is positive and rising, aggressive buyers dominate; when it is negative and falling, aggressive sellers dominate. Divergences between the CVD and the price can anticipate changes in trend.
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/hyperliquid/GET/v1/hype-cex-taker-cvd-90d-usd" target="_blank" rel="noopener noreferrer">CEX Taker CVD</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/hyperliquid/GET/v1/hype-cex-avg-order-size-usd" target="_blank" rel="noopener noreferrer">CEX Average Order Size</a>
+        </p>
+
+      </div>
+
+    </section>
 
   </main><!-- End #main -->
 
@@ -1138,6 +1161,11 @@
       </div>
       <div class="credits">
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
       </div>
       <div class="credits">
         <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
@@ -1158,6 +1186,12 @@
   <!-- Vendor JS Files -->
   
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
 
