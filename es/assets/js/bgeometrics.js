@@ -87,7 +87,6 @@ var names = [
 { name: "Ethereum Precio realizado del staking", link: "eth_staking_realized_price.html" },
 { name: "Ethereum MVRV del staking", link: "eth_staking_mvrv.html" },
 { name: "Hyperliquid Capitalización", link: "hype_market_cap.html" },
-
 { name: "Hyperliquid Capitalización / FDV", link: "hype_mcap_fdv_ratio.html" },
 { name: "Hyperliquid Funding rate (anualizado)", link: "hype_funding_rate.html" },
 { name: "Hyperliquid Volumen de futuros CEX", link: "hype_cex_futures_volume_usd.html" },
