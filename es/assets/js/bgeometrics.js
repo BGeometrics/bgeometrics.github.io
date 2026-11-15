@@ -97,6 +97,17 @@ var names = [
 { name: "Hyperliquid Actividad minorista en futuros", link: "hype_futures_retail_activity.html" },
 { name: "Hyperliquid Tamaño medio de orden spot", link: "hype_spot_avg_order_size_usd.html" },
 { name: "Hyperliquid Actividad minorista en spot", link: "hype_spot_retail_activity.html" },
+{ name: "Bitcoin Netflow de exchanges", link: "exchange_netflow.html" },
+{ name: "Bitcoin Entradas y salidas de exchanges (BTC)", link: "exchange_inflow_outflow.html" },
+{ name: "Bitcoin Entradas y salidas de exchanges (USD)", link: "exchange_inflow_outflow_usd.html" },
+{ name: "Bitcoin Reservas en exchanges (BTC)", link: "exchange_reserve.html" },
+{ name: "Bitcoin Reservas en exchanges (USD)", link: "exchange_reserve_usd.html" },
+{ name: "Bitcoin Variación de reservas en exchanges a 30 días", link: "exchange_reserve_change.html" },
+{ name: "Bitcoin Ratio de oferta en exchanges", link: "exchange_supply_ratio.html" },
+{ name: "Bitcoin Transacciones de entrada y salida de exchanges", link: "exchange_tx_count.html" },
+{ name: "Bitcoin Tamaño medio de entradas y salidas de exchanges", link: "exchange_mean_size.html" },
+{ name: "Bitcoin Flujo entre exchanges", link: "exchange_to_exchange.html" },
+{ name: "Coinbase Premium Index", link: "coinbase_premium.html" },
 { name: "Espacio de trabajo BGeometrics", link: "workspace.html" },
 ];
 

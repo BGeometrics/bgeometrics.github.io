@@ -34,7 +34,7 @@
 /tmp/web/cycle_extreme.html,web-generation-end-cycle-extreme.html,Cycle Extreme,graphics/cycle_extreme.html,Cycle Extreme,,cycles-nav
 /tmp/web/bitcoin_macro_index.html,web-generation-end-bitcoin-macro-index.html,Bitcoin Macro Index,graphics/bitcoin_macro_index.html,Bitcoin Macro Index,,cycles-nav
 /tmp/web/bgeometrics_index.html,web-generation-end-bgeometrics-index.html,BGeometrics Index,graphics/bgeometrics_index.html,BGeometrics Index,,cycles-nav
-/tmp/web/coinbase_premium.html,web-generation-end-coinbase-premium.html,Coinbase Premium Index,graphics/coinbase_premium.html,Coinbase Premium Index,,charts-nav
+/tmp/web/coinbase_premium.html,web-generation-end-coinbase-premium.html,Coinbase Premium Index,graphics/coinbase_premium.html,Coinbase Premium Index,,exchange-nav
 /tmp/web/cdd.html,web-generation-end-cdd.html,Coins Days Destroyed (CDD),graphics/cdd.html,Coins Days Destroyed (CDD),,market-nav
 /tmp/web/vdd.html,web-generation-end-vdd.html,Values Days Destroyed (VDD) Multiple,graphics/vdd.html,Values Days Destroyed (CDD) Multiple,,market-nav
 /tmp/web/bitcoin_cdd_ajusted_90dma_g.html,web-generation-end.html,CDD Ajusted 90 dma,reports/bitcoin_cdd_ajusted_90dma_g.html,CDD Ajusted 90 dma,,market-nav
@@ -148,3 +148,13 @@
 /tmp/web/hype_futures_retail_activity.html,web-generation-end-hype-futures-retail-activity.html,Hyperliquid Futures Retail Activity Chart (Live),graphics/hype_futures_retail_activity.html,Hyperliquid (HYPE) Futures Retail Activity chart updated daily,,hyperliquid-nav
 /tmp/web/hype_spot_avg_order_size_usd.html,web-generation-end-hype-spot-avg-order-size-usd.html,Hyperliquid Spot Average Order Size Chart (Live),graphics/hype_spot_avg_order_size_usd.html,Hyperliquid (HYPE) Spot Average Order Size chart updated daily,,hyperliquid-nav
 /tmp/web/hype_spot_retail_activity.html,web-generation-end-hype-spot-retail-activity.html,Hyperliquid Spot Retail Activity Chart (Live),graphics/hype_spot_retail_activity.html,Hyperliquid (HYPE) Spot Retail Activity chart updated daily,,hyperliquid-nav
+/tmp/web/exchange_netflow.html,web-generation-end-exchange-netflow.html,Bitcoin Exchange Netflow Chart (Live),graphics/exchange_netflow.html,Bitcoin exchange netflow: BTC entering minus BTC leaving exchanges. Chart updated daily,,exchange-nav
+/tmp/web/exchange_inflow_outflow.html,web-generation-end-exchange-inflow-outflow.html,Bitcoin Exchange Inflow and Outflow Chart (Live),graphics/exchange_inflow_outflow.html,Bitcoin exchange inflow and outflow in BTC. Chart updated daily,,exchange-nav
+/tmp/web/exchange_inflow_outflow_usd.html,web-generation-end-exchange-inflow-outflow-usd.html,Bitcoin Exchange Inflow and Outflow USD Chart (Live),graphics/exchange_inflow_outflow_usd.html,Bitcoin exchange inflow and outflow in USD. Chart updated daily,,exchange-nav
+/tmp/web/exchange_reserve.html,web-generation-end-exchange-reserve.html,Bitcoin Exchange Reserve Chart (Live),graphics/exchange_reserve.html,Bitcoin held on exchange addresses (exchange reserve) in BTC. Chart updated daily,,exchange-nav
+/tmp/web/exchange_reserve_usd.html,web-generation-end-exchange-reserve-usd.html,Bitcoin Exchange Reserve USD Chart (Live),graphics/exchange_reserve_usd.html,Bitcoin exchange reserve in USD. Chart updated daily,,exchange-nav
+/tmp/web/exchange_reserve_change.html,web-generation-end-exchange-reserve-change.html,Bitcoin Exchange Reserve 30-Day Change Chart (Live),graphics/exchange_reserve_change.html,30-day change of the Bitcoin exchange reserve. Chart updated daily,,exchange-nav
+/tmp/web/exchange_supply_ratio.html,web-generation-end-exchange-supply-ratio.html,Bitcoin Exchange Supply Ratio Chart (Live),graphics/exchange_supply_ratio.html,Share of the Bitcoin supply held on exchanges. Chart updated daily,,exchange-nav
+/tmp/web/exchange_tx_count.html,web-generation-end-exchange-tx-count.html,Bitcoin Exchange Inflow and Outflow Transactions Chart (Live),graphics/exchange_tx_count.html,Number of Bitcoin transactions into and out of exchanges. Chart updated daily,,exchange-nav
+/tmp/web/exchange_mean_size.html,web-generation-end-exchange-mean-size.html,Bitcoin Exchange Mean Inflow and Outflow Size Chart (Live),graphics/exchange_mean_size.html,Average BTC per exchange inflow and outflow transaction. Chart updated daily,,exchange-nav
+/tmp/web/exchange_to_exchange.html,web-generation-end-exchange-to-exchange.html,Bitcoin Exchange to Exchange Flow Chart (Live),graphics/exchange_to_exchange.html,Bitcoin moved directly between exchanges. Chart updated daily,,exchange-nav
