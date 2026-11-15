@@ -25,12 +25,12 @@ CHARTS = [
     ('hype_funding_rate', 'Funding Rate (annualized)', 2, {'axis': ZERO_LINE, 'suffix': ' %', 'transform': ANNUALIZED}),
     ('hype_cex_futures_volume_usd', 'CEX Futures Volume', 0, {'series': COLUMNS, 'suffix': ' USD'}),
     ('hype_cex_funding_rate', 'CEX Funding Rate (annualized)', 2, {'axis': ZERO_LINE, 'suffix': ' %', 'transform': ANNUALIZED}),
-    ('hype_cex_open_interest_usd', 'CEX Open Interest', 0, {'suffix': ' USD'}),
-    ('hype_cex_avg_order_size_usd', 'CEX Average Order Size', 0, {'suffix': ' USD'}),
-    ('hype_cex_taker_cvd_90d_usd', 'CEX Taker CVD (90-day)', 0, {'axis': ZERO_LINE, 'suffix': ' USD'}),
-    ('hype_futures_retail_activity', 'Futures Retail Activity', 1, {'axis': ZERO_LINE, 'suffix': ' %'}),
+    ('hype_cex_open_interest_usd', 'CEX Open Interest', 0, {'suffix': ' USD', 'selected': 1}),
+    ('hype_cex_avg_order_size_usd', 'CEX Average Order Size', 0, {'suffix': ' USD', 'selected': 4}),
+    ('hype_cex_taker_cvd_90d_usd', 'CEX Taker CVD (90-day)', 0, {'axis': ZERO_LINE, 'suffix': ' USD', 'selected': 4}),
+    ('hype_futures_retail_activity', 'Futures Retail Activity', 1, {'axis': ZERO_LINE, 'suffix': ' %', 'selected': 4}),
     ('hype_spot_avg_order_size_usd', 'Spot Average Order Size', 0, {'suffix': ' USD'}),
-    ('hype_spot_retail_activity', 'Spot Retail Activity', 1, {'axis': ZERO_LINE, 'suffix': ' %'}),
+    ('hype_spot_retail_activity', 'Spot Retail Activity', 1, {'axis': ZERO_LINE, 'suffix': ' %', 'selected': 4}),
 ]
 
 
