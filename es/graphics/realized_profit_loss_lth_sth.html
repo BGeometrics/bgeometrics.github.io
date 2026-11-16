@@ -15,6 +15,7 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
 
     
 
@@ -22,9 +23,7 @@
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/profit_loss_btc_price.json'
-            ).then(response => response.json());
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/profit_loss_btc_price.json');
             const data_realized_profit_lth = await fetch(
                 'https://charts.bgeometrics.com/files/realized_profit_lth.json'
             ).then(response => response.json());
