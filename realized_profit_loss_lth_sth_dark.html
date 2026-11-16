@@ -1203,12 +1203,38 @@
         <a href="graphics/realized_profit_loss_lth_sth.html">
           <h5>Bitcoin Realized Profit Loss LTH STH</h5>
         </a>
-        <p> 
-	BTC moved/spent in the last day both in profit and loss for STH and LTH investors.
+        <p>
+	Profit and loss realized each day by long-term holders (LTH, coins held for more than 155 days) and short-term holders (STH), expressed in BTC.
         <br><br>
-        This metric is used to measure the profit or loss of bitcoin transactions based on the price at which they were bought and sold by LTH and STH.
+	Every time coins move on-chain, the price at which they move is compared with the price at which they were acquired. If it is higher, the difference is a realized profit; if it is lower, a realized loss. The chart adds up those profits and losses for each group of holders, valued in BTC at the price of the day.
         <br><br>
-        This metric provides information on how much BTC is being sold and who is doing it.
+	<b>LTH Profit / LTH Loss</b> and <b>STH Profit / STH Loss</b> show both sides separately: how much profit and how much loss each group took that day. Losses are shown as negative values.
+        <br><br>
+	<b>NRPL LTH</b> and <b>NRPL STH</b> (Net Realized Profit/Loss) show the net result of each group: its realized profit plus its realized loss.
+        <br>
+	NRPL LTH = LTH Profit + LTH Loss &nbsp;&middot;&nbsp; NRPL STH = STH Profit + STH Loss
+        <br>
+	Above 0, that group sold more coins at a profit than at a loss; below 0, the reverse. The <b>7D MA</b> lines are the 7-day moving averages of each NRPL and smooth out the daily noise to show the trend.
+        <br><br>
+	<b>How to read it.</b>
+        <br>
+	&bull; <b>Long-term holders taking profits</b> (high NRPL LTH) is typical of the later stages of bull markets, when experienced holders distribute coins to new buyers.
+        <br>
+	&bull; <b>Long-term holders realizing losses</b> (negative NRPL LTH) is rare and usually happens in deep bear markets and capitulations, close to cycle bottoms.
+        <br>
+	&bull; <b>Short-term holders</b> react faster to price: their NRPL swings between profit and loss with every move. Persistent losses by short-term holders often mark panic selling after a drop; persistent profits, euphoria after a rally.
+        <br>
+	&bull; Comparing both groups shows who is driving the market: whether the selling comes from recent buyers or from long-term holders.
+        <br><br>
+	<b>Note:</b> values in BTC measure the size of the profit or loss, not the amount of BTC sold. For example, selling 10,000 BTC with a 10% profit realizes about 900 BTC of profit, while selling 1,000 BTC with a 100% profit realizes about 500. The data is calculated by BGeometrics from the Bitcoin blockchain since January 2015; earlier values come from an external source.
+        <br><br>
+	<b>API:</b>
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-profit/GET/v1/realized-profit-lth-btc" target="_blank" rel="noopener noreferrer">LTH Profit</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-loss/GET/v1/realized-loss-lth-btc" target="_blank" rel="noopener noreferrer">LTH Loss</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-profit/GET/v1/realized-profit-sth-btc" target="_blank" rel="noopener noreferrer">STH Profit</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-loss/GET/v1/realized-loss-sth-btc" target="_blank" rel="noopener noreferrer">STH Loss</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-lth-btc" target="_blank" rel="noopener noreferrer">NRPL LTH</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-sth-btc" target="_blank" rel="noopener noreferrer">NRPL STH</a>
         </p>
       </div>
     </section>
