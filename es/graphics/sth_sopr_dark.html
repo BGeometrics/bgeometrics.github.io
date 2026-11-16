@@ -15,6 +15,7 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
 
     
 
@@ -22,18 +23,16 @@
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
-            ).then(response => response.json());
-            const data_sth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sth_sopr.json'
-            ).then(response => response.json());
-            const data_sth_sopr_30sma = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_sth_30sma.json'
-            ).then(response => response.json());
-            const data_sth_sopr_365sma = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_sth_365sma.json'
-            ).then(response => response.json());
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/sopr_btc_price.json');
+            const data_sth_sopr = await bgSeries('sth-sopr', 'https://charts.bgeometrics.com/files/sth_sopr.json');
+            // 7D: en el navegador con la serie que ve cada usuario (completa o recortada)
+            const data_sth_sopr_7sma = bgRollingMean(data_sth_sopr, 7);
+            const data_sth_sopr_30sma = bgIsSubscriber()
+                ? bgRollingMean(data_sth_sopr, 30)
+                : await fetch('https://charts.bgeometrics.com/files/sopr_sth_30sma.json').then(response => response.json());
+            const data_sth_sopr_365sma = bgIsSubscriber()
+                ? bgRollingMean(data_sth_sopr, 365)
+                : await fetch('https://charts.bgeometrics.com/files/sopr_sth_365sma.json').then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -156,6 +155,15 @@
                 }, {
                     color: '#90ed7d'
                 }]
+            }, {
+                id:'STH SOPR 7D MA',
+                name: 'STH SOPR 7D MA',
+                data: data_sth_sopr_7sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0,
             }, {
                 id:'STH SOPR 30D MA',
                 name: 'STH SOPR 30D MA',
