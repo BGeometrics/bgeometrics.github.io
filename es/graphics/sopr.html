@@ -32,6 +32,8 @@
             const data_sopr_7ema = bgIsSubscriber()
                 ? bgEma(data_sopr, 7)
                 : await fetch('https://charts.bgeometrics.com/files/sopr_7ema.json').then(response => response.json());
+            // 30D: se calcula en el navegador con la serie que ve cada usuario (completa o recortada)
+            const data_sopr_30sma = bgRollingMean(data_sopr, 30);
 
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -116,10 +118,17 @@
                 title: {
                     text: 'SOPR',
                 },
-                plotBands: [{ 
+                plotBands: [{
                     from: 1,
                     to: 0.8,
                     color: 'rgba(0, 255, 0, 0.1)'
+                }],
+                plotLines: [{
+                    value: 1,
+                    width: 1,
+                    color: '#888888',
+                    dashStyle: 'Dash',
+                    zIndex: 3
                 }]
             }, {
                 title: {
@@ -182,6 +191,15 @@
                 id:'SOPR 7D EMA',
                 name: 'SOPR 7D EMA',
                 data: data_sopr_7ema,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'SOPR 30D MA',
+                name: 'SOPR 30D MA',
+                data: data_sopr_30sma,
                 visible: false,
                 tooltip: {
                     valueDecimals: 2

@@ -1207,9 +1207,30 @@
           <h5>Bitcoin Liquidation Heatmap</h5>
         </a>
         <p>
-	  Time x price heatmap of real BTC perpetual futures liquidations: darker/redder cells mean more USD forcibly liquidated at that price level and time, built from Binance's public liquidation feed (the same real-time data behind our <a href="btc_liquidations.html">Bitcoin Liquidations</a> chart).
+	  Time &times; price map of the real liquidations of BTC perpetual futures on Binance, built from its public liquidation feed (the same real-time data behind our <a href="btc_liquidations.html">Bitcoin Liquidations</a> chart). Each bubble is a liquidation: its position shows when and at what price it happened, and its size the USD liquidated. The line is the BTC price.
           <br><br>
-	  Unlike predictive open-interest liquidation maps, this shows liquidations that actually happened — useful to spot where leverage got flushed out and where dense liquidation levels may act as support/resistance in future moves.
+	  <b>What a liquidation is.</b> Traders who open leveraged positions only put up part of the value as margin. When the price moves against them and the margin no longer covers the losses, the exchange closes the position by force. A long position is liquidated with a forced sell, usually when the price falls; a short position with a forced buy, usually when the price rises. Because these forced orders push the price further in the same direction, they can trigger new liquidations in a chain: a liquidation cascade.
+          <br><br>
+	  <b>How to read it.</b>
+          <br>
+	  &bull; <b style="color:#e74c3c;">Red bubbles: longs liquidated.</b> Many large red bubbles during a drop mean the market was crowded with leveraged longs that were forced out (a long squeeze).
+          <br>
+	  &bull; <b style="color:#2ecc71;">Green bubbles: shorts liquidated.</b> Many green bubbles during a rally mean leveraged shorts were forced to buy back (a short squeeze), which accelerates the move up.
+          <br>
+	  &bull; <b>Clusters</b> mark the price levels where leverage was flushed out. After a large cascade the market is often less leveraged and can rebound or stabilize, and those levels may act as support or resistance in future moves.
+          <br>
+	  &bull; <b>Who pays the move.</b> Comparing the volume of red and green bubbles in a period shows whether the move is being paid for by longs or by shorts.
+          <br><br>
+	  <b>Ranges.</b> The buttons above the chart switch between Full history, 30, 14, 7 days and the last 24 hours. To keep the chart readable, each range only shows its largest liquidations: the top 1% in Full, 10% in 30 days, 15% in 14 days, 25% in 7 days and 50% in 1 day. The subtitle shows the minimum USD value displayed. The grey band in the Full range marks a period with no data (24 April to 29 May 2026), when the connection to the feed was down.
+          <br><br>
+	  <b>What it does not show.</b> Unlike predictive liquidation maps based on open interest, this chart shows only liquidations that actually happened: the leverage that has already been flushed, not how much remains open. To judge how leveraged the market still is, combine it with <a href="open_interest_futures.html">open interest</a> (rising open interest means new leverage; a sharp drop means positions closed or liquidated), the <a href="funding_rate.html">funding rate</a> (very positive values mean crowded longs, negative values crowded shorts) and the <a href="taker_buy_ratio.html">taker buy ratio</a>. Large long liquidations with falling open interest and a cooling funding rate point to a market that has cleared its excess leverage; high open interest after a cascade means there is still fuel for another one.
+          <br><br>
+	  <b>Limitations.</b> The data comes only from Binance, the largest perpetual futures exchange but not the whole market. Binance's public feed sends at most one liquidation per second for each contract, so in the most violent moments some events are missed and the figures should be read as a minimum.
+          <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/liquidations/GET/v1/btc-liquidations" target="_blank" rel="noopener noreferrer">Liquidations</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/liquidations/GET/v1/btc-liquidations-1h" target="_blank" rel="noopener noreferrer">Liquidations 1h</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/liquidations/GET/v1/btc-liquidations-1d" target="_blank" rel="noopener noreferrer">Liquidations 1d</a>
         </p>
       </div>
 
