@@ -1,0 +1,86 @@
+    <script>
+      var _bgLiqHeatmapIframe = document.querySelector('#container-iframe iframe');
+      if (_bgLiqHeatmapIframe) { _bgLiqHeatmapIframe.style.height = '700px'; }
+    </script>
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/btc_liquidations_heatmap.html">
+          <h5>Bitcoin Mapa de calor de liquidaciones</h5>
+        </a>
+        <p>
+	  Mapa tiempo &times; precio de las liquidaciones reales de los futuros perpetuos de BTC en Binance, construido con su flujo público de liquidaciones (los mismos datos en tiempo real que nuestra gráfica de <a href="btc_liquidations.html">Liquidaciones de Bitcoin</a>). Cada burbuja es una liquidación: su posición indica cuándo y a qué precio ocurrió, y su tamaño los USD liquidados. La línea es el precio de BTC.
+          <br><br>
+	  <b>Qué es una liquidación.</b> Quien abre una posición apalancada solo aporta como garantía (margen) una parte de su valor. Cuando el precio va en su contra y el margen ya no cubre las pérdidas, el exchange cierra la posición a la fuerza. Una posición larga se liquida con una venta forzada, normalmente cuando el precio cae; una posición corta, con una compra forzada, normalmente cuando sube. Como esas órdenes forzadas empujan el precio en la misma dirección, pueden provocar nuevas liquidaciones en cadena: una cascada de liquidaciones.
+          <br><br>
+	  <b>Cómo leerla.</b>
+          <br>
+	  &bull; <b style="color:#e74c3c;">Burbujas rojas: largos liquidados.</b> Muchas burbujas rojas grandes durante una caída indican que el mercado estaba cargado de largos apalancados que han sido expulsados (un <i>long squeeze</i>).
+          <br>
+	  &bull; <b style="color:#2ecc71;">Burbujas verdes: cortos liquidados.</b> Muchas burbujas verdes durante una subida indican que los cortos apalancados se han visto obligados a recomprar (un <i>short squeeze</i>), lo que acelera la subida.
+          <br>
+	  &bull; <b>Las agrupaciones</b> marcan los niveles de precio donde se limpió el apalancamiento. Después de una cascada grande el mercado suele quedar menos apalancado y puede rebotar o estabilizarse, y esos niveles pueden actuar como soporte o resistencia en movimientos futuros.
+          <br>
+	  &bull; <b>Quién paga el movimiento.</b> Comparar el volumen de burbujas rojas y verdes de un periodo muestra si el movimiento lo están pagando los largos o los cortos.
+          <br><br>
+	  <b>Rangos.</b> Los botones sobre la gráfica cambian entre todo el histórico (Full), 30, 14, 7 días y las últimas 24 horas. Para que la gráfica se pueda leer, cada rango muestra solo sus liquidaciones más grandes: el 1 % mayor en Full, el 10 % en 30 días, el 15 % en 14 días, el 25 % en 7 días y el 50 % en 1 día. El subtítulo indica el valor mínimo en USD que se muestra. La banda gris del rango Full marca un periodo sin datos (del 24 de abril al 29 de mayo de 2026), cuando la conexión con el flujo estuvo caída.
+          <br><br>
+	  <b>Lo que no muestra.</b> A diferencia de los mapas predictivos de liquidaciones basados en el interés abierto, esta gráfica muestra solo liquidaciones que han ocurrido: el apalancamiento que ya se ha limpiado, no cuánto sigue abierto. Para valorar cuánto apalancamiento queda, combínala con el <a href="open_interest_futures.html">interés abierto</a> (si sube, entra apalancamiento nuevo; si cae de golpe, se cierran o liquidan posiciones), el <a href="funding_rate.html">funding rate</a> (muy positivo indica exceso de largos; negativo, de cortos) y el <a href="taker_buy_ratio.html">ratio de compras taker</a>. Grandes liquidaciones de largos con el interés abierto cayendo y el funding enfriándose apuntan a un mercado que ha limpiado su exceso de apalancamiento; un interés abierto alto después de una cascada indica que todavía queda combustible para otra.
+          <br><br>
+	  <b>Limitaciones.</b> Los datos son solo de Binance, el mayor exchange de futuros perpetuos pero no todo el mercado. El flujo público de Binance envía como mucho una liquidación por segundo para cada contrato, así que en los momentos más violentos se pierden eventos y las cifras deben leerse como un mínimo.
+          <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/liquidations/GET/v1/btc-liquidations" target="_blank" rel="noopener noreferrer">Liquidaciones</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/liquidations/GET/v1/btc-liquidations-1h" target="_blank" rel="noopener noreferrer">Liquidaciones 1h</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/liquidations/GET/v1/btc-liquidations-1d" target="_blank" rel="noopener noreferrer">Liquidaciones 1d</a>
+        </p>
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Rendimientos pasados no garantizan resultados futuros.</strong></br>
+        <strong>No es un consejo de inversión. Descúbrelo por tí mismo y actúa bajo tu propio criterio.</strong>
+      </div>
+      <div class="credits">
+        Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
