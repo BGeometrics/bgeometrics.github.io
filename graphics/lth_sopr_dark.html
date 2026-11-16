@@ -59,6 +59,8 @@
         (async () => {
             const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/sopr_btc_price.json');
             const data_lth_sopr = await bgSeries('lth-sopr', 'https://charts.bgeometrics.com/files/lth_sopr.json');
+            // 7D: en el navegador con la serie que ve cada usuario (completa o recortada)
+            const data_lth_sopr_7sma = bgRollingMean(data_lth_sopr, 7);
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -179,6 +181,15 @@
                 }, {
                     color: '#90ed7d'
                 }]
+            }, {
+                id:'LTH SOPR 7D MA',
+                name: 'LTH SOPR 7D MA',
+                data: data_lth_sopr_7sma,
+                visible: false,
+                tooltip: {
+                    valueDecimals: 4
+                },
+                yAxis: 0
             }],
 
             legend:{
