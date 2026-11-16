@@ -2,15 +2,41 @@
   
     <section>
       <div class="container">
-        <a href="graphics/supply_realized_lth_sth.html">
-          <h5>Bitcoin Realized Supply LTH STH</h5>
+        <a href="graphics/realized_profit_loss_lth_sth.html">
+          <h5>Bitcoin Beneficio y pérdida realizados LTH STH</h5>
         </a>
-        <p> 
-	BTC moved/spent in the last day both in profit and loss for STH and LTH investors.
+        <p>
+	Beneficio y pérdida realizados cada día por los poseedores de largo plazo (LTH, monedas guardadas más de 155 días) y de corto plazo (STH), expresados en BTC.
         <br><br>
-        This metric is used to measure the profit or loss of bitcoin transactions based on the price at which they were bought and sold divided by LTH and STH.
+	Cada vez que se mueven monedas en la cadena se compara el precio al que se mueven con el precio al que se adquirieron. Si es mayor, la diferencia es un beneficio realizado; si es menor, una pérdida realizada. La gráfica suma esos beneficios y pérdidas para cada grupo de poseedores, valorados en BTC al precio del día.
         <br><br>
-        This metric provides information on how much BTC is being sold and who is doing it.
+	<b>LTH Profit / LTH Loss</b> y <b>STH Profit / STH Loss</b> muestran los dos lados por separado: cuánto beneficio y cuánta pérdida realizó cada grupo ese día. Las pérdidas se muestran con valores negativos.
+        <br><br>
+	<b>NRPL LTH</b> y <b>NRPL STH</b> (beneficio / pérdida neta realizada) muestran el resultado neto de cada grupo: su beneficio realizado más su pérdida realizada.
+        <br>
+	NRPL LTH = LTH Profit + LTH Loss &nbsp;&middot;&nbsp; NRPL STH = STH Profit + STH Loss
+        <br>
+	Por encima de 0, ese grupo vendió más monedas con beneficio que con pérdida; por debajo de 0, al revés. Las líneas <b>7D MA</b> son las medias móviles de 7 días de cada NRPL y suavizan el ruido diario para ver la tendencia.
+        <br><br>
+	<b>Cómo leerla.</b>
+        <br>
+	&bull; <b>Los poseedores de largo plazo tomando beneficios</b> (NRPL LTH alto) es típico de las fases finales de los mercados alcistas, cuando los inversores veteranos reparten monedas a los nuevos compradores.
+        <br>
+	&bull; <b>Los poseedores de largo plazo realizando pérdidas</b> (NRPL LTH negativo) es poco habitual y suele ocurrir en mercados bajistas profundos y capitulaciones, cerca de los mínimos de ciclo.
+        <br>
+	&bull; <b>Los poseedores de corto plazo</b> reaccionan más rápido al precio: su NRPL oscila entre beneficio y pérdida con cada movimiento. Pérdidas sostenidas de los de corto plazo suelen marcar ventas de pánico tras una caída; beneficios sostenidos, euforia tras una subida.
+        <br>
+	&bull; Comparar los dos grupos muestra quién mueve el mercado: si las ventas vienen de compradores recientes o de poseedores de largo plazo.
+        <br><br>
+	<b>Nota:</b> los valores en BTC miden el tamaño del beneficio o la pérdida, no la cantidad de BTC vendida. Por ejemplo, vender 10.000 BTC ganando un 10 % realiza unos 900 BTC de beneficio, y vender 1.000 BTC ganando un 100 % realiza unos 500. Los datos los calcula BGeometrics a partir de la blockchain de Bitcoin desde enero de 2015; los valores anteriores proceden de una fuente externa.
+        <br><br>
+	<b>API:</b>
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-profit/GET/v1/realized-profit-lth-btc" target="_blank" rel="noopener noreferrer">LTH Profit</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-loss/GET/v1/realized-loss-lth-btc" target="_blank" rel="noopener noreferrer">LTH Loss</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-profit/GET/v1/realized-profit-sth-btc" target="_blank" rel="noopener noreferrer">STH Profit</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/realized-loss/GET/v1/realized-loss-sth-btc" target="_blank" rel="noopener noreferrer">STH Loss</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-lth-btc" target="_blank" rel="noopener noreferrer">NRPL LTH</a> &middot;
+	<a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-sth-btc" target="_blank" rel="noopener noreferrer">NRPL STH</a>
         </p>
       </div>
     </section>
