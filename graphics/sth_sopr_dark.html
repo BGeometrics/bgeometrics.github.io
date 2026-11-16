@@ -15,6 +15,7 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
     <script src="../assets/themes/brand-dark.js"></script>
     <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
     <style>
@@ -53,18 +54,14 @@
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_btc_price.json'
-            ).then(response => response.json());
-            const data_sth_sopr = await fetch(
-                'https://charts.bgeometrics.com/files/sth_sopr.json'
-            ).then(response => response.json());
-            const data_sth_sopr_30sma = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_sth_30sma.json'
-            ).then(response => response.json());
-            const data_sth_sopr_365sma = await fetch(
-                'https://charts.bgeometrics.com/files/sopr_sth_365sma.json'
-            ).then(response => response.json());
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/sopr_btc_price.json');
+            const data_sth_sopr = await bgSeries('sth-sopr', 'https://charts.bgeometrics.com/files/sth_sopr.json');
+            const data_sth_sopr_30sma = bgIsSubscriber()
+                ? bgRollingMean(data_sth_sopr, 30)
+                : await fetch('https://charts.bgeometrics.com/files/sopr_sth_30sma.json').then(response => response.json());
+            const data_sth_sopr_365sma = bgIsSubscriber()
+                ? bgRollingMean(data_sth_sopr, 365)
+                : await fetch('https://charts.bgeometrics.com/files/sopr_sth_365sma.json').then(response => response.json());
         
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
