@@ -47,7 +47,9 @@
     <div style="text-align:center; margin-bottom: 8px;">
         <button type="button" class="bg-heatmap-range" data-variant="">Full</button>
         <button type="button" class="bg-heatmap-range" data-variant="_30d">30d</button>
+        <button type="button" class="bg-heatmap-range" data-variant="_14d">14d</button>
         <button type="button" class="bg-heatmap-range" data-variant="_7d">7d</button>
+        <button type="button" class="bg-heatmap-range" data-variant="_1d">1d</button>
     </div>
 
     <div id="container" style="height: 650px; width: 100%; margin: 0 auto"></div>
@@ -185,8 +187,12 @@
 
             function load(variant) {
                 fetch('https://charts.bgeometrics.com/files/btc_liquidations_heatmap' + variant + '.json')
-                    .then(response => response.json())
-                    .then(render);
+                    .then(response => {
+                        if (!response.ok) throw new Error(response.status);
+                        return response.json();
+                    })
+                    .then(render)
+                    .catch(error => console.warn('Heatmap ' + (variant || 'full') + ' not available yet:', error));
             }
 
             document.querySelectorAll('.bg-heatmap-range').forEach(btn => {
