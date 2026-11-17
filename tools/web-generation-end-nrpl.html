@@ -31,11 +31,27 @@
           <br><br>
 	  <b>NRPL BTC</b>
           <br>
-	  The total amount of bitcoin sold at a price higher than the price at which it was purchased minus the bitcoin sold at a price lower than the price at which it was purchased.
+	  The same net profit or loss expressed in BTC: the realized profit minus the realized loss, valued at the price of each day. It measures the size of the profit or loss, not the amount of bitcoin sold.
+	  <br><br>
+	  <b>NRPL LTH and NRPL STH</b>
+          <br>
+	  The NRPL split by type of holder: long-term holders (LTH, coins held for more than 155 days) and short-term holders (STH). Each one is the realized profit minus the realized loss of that group, in BTC, and together they add up to NRPL BTC.
+          <br>
+	  &bull; <b>NRPL LTH</b> high and positive: experienced holders taking profits, typical of the later stages of bull markets. Negative: long-term holders selling at a loss, which is rare and usually happens near cycle bottoms.
+          <br>
+	  &bull; <b>NRPL STH</b> swings with every price move, because recent buyers react quickly: persistent losses often mark panic selling after a drop, and persistent profits euphoria after a rally.
+          <br>
+	  &bull; Comparing both lines shows who is behind the profits or losses of the whole market: recent buyers or long-term holders.
+          <br><br>
+	  <b>NRPL LTH 7D MA and NRPL STH 7D MA</b>
+          <br>
+	  7-day moving averages of NRPL LTH and NRPL STH. They smooth out the daily noise and make it easier to see when a group changes from realizing profits to realizing losses, or the other way round. These four lines are hidden by default: click their names in the legend to show them, or see them together with profit and loss by group in <a href="realized_profit_loss_lth_sth.html">Realized Profit Loss LTH STH</a>.
 	  <br><br>
 	  <b>API:</b>
 	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-btc" target="_blank" rel="noopener noreferrer">NRPL BTC</a> &middot;
-	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-usd" target="_blank" rel="noopener noreferrer">NRPL USD</a>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-usd" target="_blank" rel="noopener noreferrer">NRPL USD</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-lth-btc" target="_blank" rel="noopener noreferrer">NRPL LTH</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-sth-btc" target="_blank" rel="noopener noreferrer">NRPL STH</a>
         </p>
 
       </div>

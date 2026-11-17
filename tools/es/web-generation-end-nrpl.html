@@ -24,6 +24,34 @@
           - Comprender el sentimiento general del mercado (¿el mercado está en general en ganancias o pérdidas?).
           <br>
           - Anticipar posibles correcciones o repuntes del mercado en función del comportamiento de toma de ganancias o reducción de pérdidas.
+          <br><br>
+	  <b>NRPL USD</b>
+          <br>
+	  Mide el valor neto en dólares del beneficio o la pérdida realizados por los poseedores de bitcoin cada día.
+          <br><br>
+	  <b>NRPL BTC</b>
+          <br>
+	  El mismo beneficio o pérdida neta expresado en BTC: el beneficio realizado menos la pérdida realizada, valorados al precio de cada día. Mide el tamaño del beneficio o la pérdida, no la cantidad de bitcoin vendida.
+          <br><br>
+	  <b>NRPL LTH y NRPL STH</b>
+          <br>
+	  El NRPL dividido por tipo de poseedor: los de largo plazo (LTH, monedas guardadas más de 155 días) y los de corto plazo (STH). Cada uno es el beneficio realizado menos la pérdida realizada de ese grupo, en BTC, y entre los dos suman el NRPL BTC.
+          <br>
+	  &bull; <b>NRPL LTH</b> alto y positivo: inversores veteranos tomando beneficios, típico de las fases finales de los mercados alcistas. Negativo: poseedores de largo plazo vendiendo con pérdida, algo poco habitual que suele ocurrir cerca de los mínimos de ciclo.
+          <br>
+	  &bull; <b>NRPL STH</b> oscila con cada movimiento del precio, porque los compradores recientes reaccionan rápido: las pérdidas sostenidas suelen marcar ventas de pánico tras una caída, y los beneficios sostenidos, euforia tras una subida.
+          <br>
+	  &bull; Comparar las dos líneas muestra quién está detrás de los beneficios o pérdidas de todo el mercado: los compradores recientes o los poseedores de largo plazo.
+          <br><br>
+	  <b>NRPL LTH 7D MA y NRPL STH 7D MA</b>
+          <br>
+	  Medias móviles de 7 días de NRPL LTH y NRPL STH. Suavizan el ruido diario y facilitan ver cuándo un grupo pasa de realizar beneficios a realizar pérdidas, o al revés. Estas cuatro líneas están ocultas por defecto: haz clic en su nombre en la leyenda para mostrarlas, o míralas junto al beneficio y la pérdida de cada grupo en <a href="realized_profit_loss_lth_sth.html">Beneficio y pérdida realizados LTH STH</a>.
+	  <br><br>
+	  <b>API:</b>
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-btc" target="_blank" rel="noopener noreferrer">NRPL BTC</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-usd" target="_blank" rel="noopener noreferrer">NRPL USD</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-lth-btc" target="_blank" rel="noopener noreferrer">NRPL LTH</a> &middot;
+	  <a href="https://api.bgeometrics.com/scalar.html#tag/nrpl/GET/v1/nrpl-sth-btc" target="_blank" rel="noopener noreferrer">NRPL STH</a>
         </p>
       </div>
 
