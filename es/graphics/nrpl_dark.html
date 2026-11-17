@@ -15,6 +15,7 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
 
     
 
@@ -37,6 +38,15 @@
             const data_nrpl_7dma = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_7dma.json'
             ).then(response => response.json());
+            // NRPL por grupo: beneficio + perdida realizados de LTH y STH (btc-file-nrpl.py), en BTC
+            const data_nrpl_lth = await fetch(
+                'https://charts.bgeometrics.com/files/realized_lth.json'
+            ).then(response => response.json());
+            const data_nrpl_sth = await fetch(
+                'https://charts.bgeometrics.com/files/realized_sth.json'
+            ).then(response => response.json());
+            const data_nrpl_lth_7sma = bgRollingMean(data_nrpl_lth, 7);
+            const data_nrpl_sth_7sma = bgRollingMean(data_nrpl_sth, 7);
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -206,6 +216,46 @@
                 }, {
                     color: '#329542',
                 }]
+            }, {
+                id:'NRPL LTH',
+                name: 'NRPL LTH',
+                data: data_nrpl_lth,
+                color: '#2b908f',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NRPL LTH 7D MA',
+                name: 'NRPL LTH 7D MA',
+                data: data_nrpl_lth_7sma,
+                color: '#1f5f5e',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NRPL STH',
+                name: 'NRPL STH',
+                data: data_nrpl_sth,
+                color: '#f7a35c',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
+            }, {
+                id:'NRPL STH 7D MA',
+                name: 'NRPL STH 7D MA',
+                data: data_nrpl_sth_7sma,
+                color: '#c06a1f',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                yAxis: 0
             }],
 
             legend:{
