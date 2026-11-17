@@ -32,9 +32,8 @@
             const data_nrpl_usd = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_usd.json'
             ).then(response => response.json());
-            const data_nrpl_usd_7dma = await fetch(
-                'https://charts.bgeometrics.com/files/nrpl_usd_7dma.json'
-            ).then(response => response.json());
+            // 7D USD: media de 7 dias del NRPL en USD, en el navegador (nrpl_usd_7dma.json usaba el NRPL en BTC)
+            const data_nrpl_usd_7dma = bgRollingMean(data_nrpl_usd, 7);
             const data_nrpl_7dma = await fetch(
                 'https://charts.bgeometrics.com/files/nrpl_7dma.json'
             ).then(response => response.json());
@@ -47,6 +46,10 @@
             ).then(response => response.json());
             const data_nrpl_lth_7sma = bgRollingMean(data_nrpl_lth, 7);
             const data_nrpl_sth_7sma = bgRollingMean(data_nrpl_sth, 7);
+            // NRPL en USD por grupo (btc-file-nrpl-venus-mercurio.py). Si un fichero no carga, la serie queda vacia
+            const safeJson = url => fetch(url).then(r => r.ok ? r.json() : []).catch(() => []);
+            const data_nrpl_lth_usd = await safeJson('https://charts.bgeometrics.com/files/nrpl_lth_usd.json');
+            const data_nrpl_sth_usd = await safeJson('https://charts.bgeometrics.com/files/nrpl_sth_usd.json');
  
         var chart = Highcharts.stockChart('container-iframe', {
             stockTools: {
@@ -209,7 +212,7 @@
                 tooltip: {
                     valueDecimals: 2
                 },
-                yAxis: 0,
+                yAxis: 2,
                 zones: [{
                     value: 0,
                     color: '#BB0E22'
@@ -256,6 +259,26 @@
                     valueDecimals: 2
                 },
                 yAxis: 0
+            }, {
+                id:'NRPL LTH USD',
+                name: 'NRPL LTH USD',
+                data: data_nrpl_lth_usd,
+                color: '#1b6e8f',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 0
+                },
+                yAxis: 2
+            }, {
+                id:'NRPL STH USD',
+                name: 'NRPL STH USD',
+                data: data_nrpl_sth_usd,
+                color: '#d9822b',
+                visible: false,
+                tooltip: {
+                    valueDecimals: 0
+                },
+                yAxis: 2
             }],
 
             legend:{
