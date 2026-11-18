@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bitcoin URPD: Supply Moved in the Last 90 Days</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <script src="../assets/stock/highstock.js"></script>
+    <script src="../assets/stock/indicators/indicators-all.js"></script>
+    <script src="../assets/stock/modules/drag-panes.js"></script>
+    <script src="../assets/modules/annotations-advanced.js"></script>
+    <script src="../assets/modules/price-indicator.js"></script>
+    <script src="../assets/modules/full-screen.js"></script>
+    <script src="../assets/modules/stock-tools.js"></script>
+    <script src="../assets/stock/modules/heikinashi.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/themes/brand-dark.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+
+        .highcharts-popup input[type="text"],
+        .highcharts-popup input[type="number"],
+        .highcharts-popup select,
+        .highcharts-annotation-toolbar input {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+    </style>
+
+    <div id="container" style="width:100%; height:600px;"></div>
+
+    <script>
+        (async () => {
+            const T = {
+                title: 'Bitcoin Realized Price Distribution (URPD) — Moved in the Last 90 Days',
+                xAxis: 'BTC price',
+                yAxis: 'Volume BTC',
+                old: 'Last moved more than 90 days ago',
+                moved: 'Moved in the last 90 days',
+                total: 'Total',
+                snapshot: 'UTXO set at'
+            };
+            // Las variantes _dark las generan web-generation-pages-dark(-es).py copiando
+            // este fichero; el tema oscuro se decide aqui por la URL para no depender de
+            // sus sustituciones de texto (la version ES no recibe tema ni fondo).
+            const DARK = /_dark\.html$/.test(window.location.pathname);
+            const COLOR_OLD = DARK ? '#8087E8' : '#2caffe';
+            const COLOR_MOVED = DARK ? '#F19E53' : '#f7931a';
+            const COLOR_PRICE = DARK ? '#FFFFFF' : '#000000';
+            const COLOR_TEXT = DARK ? '#FFFFFF' : '#333333';
+            const COLOR_BG = DARK ? '#000000' : '#FFFFFF';
+            const LOGO = DARK
+                ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
+            const LOGO_OPACITY = DARK ? 0.3 : 0.1;
+            const textStyle = { color: COLOR_TEXT };
+
+            const data = await fetch(
+                'https://charts.bgeometrics.com/files/urpd_90d.json'
+            ).then(response => response.json());
+
+            const step = data.bucket_size;
+            const fmtUsd = v => '$' + Highcharts.numberFormat(v, 0, '.', ',');
+            const categories = data.buckets.map(v => v);
+            const priceIndex = data.price != null
+                ? Math.floor((data.price - data.buckets[0]) / step)
+                : null;
+
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'column',
+                    renderTo: 'container',
+                    backgroundColor: COLOR_BG,
+                    backgroundColor: 'black',
+                events: {
+                        load: function() {
+                            var height_image = 128;
+                            var width_image = 128;
+                            var textX = this.plotLeft + (this.plotWidth * 0.5);
+                            var textY = this.plotTop + (this.plotHeight * 0.5);
+                            this.renderer.image(LOGO, textX - width_image / 2, textY - height_image / 2, width_image, height_image)
+                                .css({position: 'relative', "margin-left": "-90px", opacity: LOGO_OPACITY})
+                                .attr({zIndex: 1})
+                                .add();
+                        }
+                    }
+                },
+                title: {
+                    text: T.title,
+                    align: 'left',
+                    style: textStyle
+                },
+                subtitle: {
+                    text: T.snapshot + ' ' + data.date,
+                    align: 'left',
+                    style: textStyle
+                },
+                xAxis: {
+                    title: {
+                        text: T.xAxis,
+                        style: textStyle
+                    },
+                    labels: { style: textStyle },
+                    categories: categories,
+                    crosshair: true,
+                    accessibility: {
+                        description: T.xAxis
+                    },
+                    plotLines: priceIndex == null ? [] : [{
+                        color: COLOR_PRICE,
+                        width: 2,
+                        value: priceIndex,
+                        zIndex: 5,
+                        label: {
+                            text: fmtUsd(data.price),
+                            style: {
+                                color: 'gray'
+                            }
+                        }
+                    }]
+                },
+                yAxis: {
+                    min: 0,
+                    gridLineWidth: DARK ? 0 : 1,
+                    title: {
+                        text: T.yAxis,
+                        style: textStyle
+                    },
+                    labels: { style: textStyle }
+                },
+                tooltip: {
+                    shared: true,
+                    formatter: function () {
+                        const lo = this.points[0].category;
+                        let s = '<b>' + fmtUsd(lo) + ' – ' + fmtUsd(lo + step) + '</b>';
+                        let total = 0;
+                        this.points.forEach(p => {
+                            total += p.y;
+                            s += '<br><span style="color:' + p.color + '">●</span> ' +
+                                p.series.name + ': <b>' + Highcharts.numberFormat(p.y, 0, '.', ',') + ' BTC</b>';
+                        });
+                        const moved = this.points.find(p => p.series.options.id === 'moved');
+                        const pct = total > 0 && moved ? ' (' + (moved.y / total * 100).toFixed(1) + '% moved)' : '';
+                        return s + '<br>' + T.total + ': <b>' + Highcharts.numberFormat(total, 0, '.', ',') + ' BTC</b>' + pct;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        borderWidth: 0,
+                        groupPadding: 0,
+                        pointPadding: 0.05
+                    },
+                },
+                series: [
+                    {
+                        id: 'old',
+                        name: T.old,
+                        data: data.old,
+                        color: COLOR_OLD,
+                        legendIndex: 1
+                    },
+                    {
+                        id: 'moved',
+                        name: T.moved,
+                        data: data.moved90d,
+                        color: COLOR_MOVED,
+                        legendIndex: 0
+                    }
+                ],
+                legend: {
+                    enabled: true,
+                    align: 'left',
+                    verticalAlign: 'top',
+                    floating: true,
+                    x: 60,
+                    y: 50,
+                    itemStyle: textStyle,
+                    itemHoverStyle: textStyle
+                },
+                credits: {
+                    text: 'Powered by BGeometrics.com',
+                    href: 'https://charts.bgeometrics.com',
+                    style: {
+                        font: '11px sans-serif, Verdana, "Trebuchet MS"'
+                    },
+                    position: {
+                        align: 'right',
+                        x: -15,
+                        y: -16
+                    }
+                },
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 800
+                        },
+                        chartOptions: {
+                            title: { style: { fontSize: '14px', color: '#FFFFFF', } },
+                            legend: { floating: false, align: 'center', verticalAlign: 'bottom', x: 0, y: 0 },
+                            yAxis: [{
+                gridLineWidth: 0,
+                                title: { text: null }
+                            }],
+                        }
+                    }]
+                }
+            });
+
+        })();
+
+    </script>
+
+</body>
+</html>
