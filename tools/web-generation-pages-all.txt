@@ -27,6 +27,7 @@
 /tmp/web/sth_mvrv.html,web-generation-end.html,STH MVRV,graphics/sth_mvrv.html,STH MVRV,,market-nav
 /tmp/web/lth_mvrv.html,web-generation-end.html,LTH MVRV,graphics/lth_mvrv.html,LTH MVRV,,market-nav
 /tmp/web/distribution_realized_price.html,web-generation-end-urpd.html,Bitcoin Realized Price Distribution (URPD),graphics/distribution_realized_price.html,Realized Price Distribution (URPD),,market-nav
+/tmp/web/distribution_realized_price_30d.html,web-generation-end-urpd-30d.html,Bitcoin URPD: Supply Moved in the Last 30 Days,graphics/distribution_realized_price_30d.html,Realized Price Distribution (URPD) with supply moved in the last 30 days,,market-nav
 /tmp/web/aviv.html,web-generation-end-aviv.html,AVIV Ratio,graphics/aviv.html,AVIV Ratio,,market-nav
 /tmp/web/regime_score.html,web-generation-end-regime-score.html,Regime Score,graphics/regime_score.html,Regime Score,,cycles-nav
 /tmp/web/onchain_risk_index.html,web-generation-end-onchain-risk-index.html,On-Chain Risk Index,graphics/onchain_risk_index.html,On-Chain Risk Index,,cycles-nav
