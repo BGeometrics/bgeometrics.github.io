@@ -16,6 +16,37 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
+    <script src="../assets/themes/brand-dark.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
+    <style>
+        :root {
+            --highcharts-neutral-color-3: #000000;
+        }
+
+        .highcharts-contextbutton .highcharts-button-symbol {
+            stroke: #000000 !important; 
+            fill: #000000 !important; 
+        }
+
+        .highcharts-menu-item { 
+            background-color: #000000 !important; 
+            color: #FFFFFF !important; 
+        }   
+
+        .highcharts-menu {
+            background-color: #000000 !important; 
+            border: 1px solid #ccc !important;
+            color: #dddddd !important; 
+        }
+
+        .highcharts-popup input[type="text"],
+        .highcharts-popup input[type="number"],
+        .highcharts-popup select,
+        .highcharts-annotation-toolbar input {
+            background-color: #FFFFFF !important;
+            color: #000000 !important;
+        }
+    </style>
 
     <div id="container" style="width:100%; height:600px;"></div>
 
@@ -41,7 +72,7 @@
             const COLOR_BG = DARK ? '#000000' : '#FFFFFF';
             const LOGO = DARK
                 ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
-                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png';
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
             const LOGO_OPACITY = DARK ? 0.3 : 0.1;
             const textStyle = { color: COLOR_TEXT };
 
@@ -61,7 +92,8 @@
                     type: 'column',
                     renderTo: 'container',
                     backgroundColor: COLOR_BG,
-                    events: {
+                    backgroundColor: 'black',
+                events: {
                         load: function() {
                             var height_image = 128;
                             var width_image = 128;
@@ -185,9 +217,10 @@
                             maxWidth: 800
                         },
                         chartOptions: {
-                            title: { style: { fontSize: '14px' } },
+                            title: { style: { fontSize: '14px', color: '#FFFFFF', } },
                             legend: { floating: false, align: 'center', verticalAlign: 'bottom', x: 0, y: 0 },
                             yAxis: [{
+                gridLineWidth: 0,
                                 title: { text: null }
                             }],
                         }
