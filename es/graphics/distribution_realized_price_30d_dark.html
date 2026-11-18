@@ -16,37 +16,6 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
-    <script src="../assets/themes/brand-dark.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-
-        .highcharts-popup input[type="text"],
-        .highcharts-popup input[type="number"],
-        .highcharts-popup select,
-        .highcharts-annotation-toolbar input {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
-        }
-    </style>
 
     <div id="container" style="width:100%; height:600px;"></div>
 
@@ -61,11 +30,11 @@
                 total: 'Total',
                 snapshot: 'UTXO set a'
             };
-            const COLOR_OLD = '#8087E8';
-            const COLOR_MOVED = '#F19E53';
-            const COLOR_PRICE = 'white';
+            const COLOR_OLD = '#2caffe';
+            const COLOR_MOVED = '#f7931a';
+            const COLOR_PRICE = 'black';
             const LOGO = 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
-            const LOGO_OPACITY = 0.3;
+            const LOGO_OPACITY = 0.1;
 
             const data = await fetch(
                 'https://charts.bgeometrics.com/files/urpd_30d.json'
@@ -81,7 +50,6 @@
             Highcharts.chart('container', {
                 chart: {
                     type: 'column',
-                    backgroundColor: 'black',
                     renderTo: 'container',
                     events: {
                         load: function() {
@@ -128,7 +96,6 @@
                 },
                 yAxis: {
                     min: 0,
-                    gridLineWidth: 0,
                     title: {
                         text: T.yAxis
                     }

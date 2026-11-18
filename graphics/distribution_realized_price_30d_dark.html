@@ -61,11 +61,11 @@
                 total: 'Total',
                 snapshot: 'UTXO set at'
             };
-            const COLOR_OLD = '#8087E8';
-            const COLOR_MOVED = '#F19E53';
-            const COLOR_PRICE = 'white';
+            const COLOR_OLD = '#2caffe';
+            const COLOR_MOVED = '#f7931a';
+            const COLOR_PRICE = 'black';
             const LOGO = 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
-            const LOGO_OPACITY = 0.3;
+            const LOGO_OPACITY = 0.1;
 
             const data = await fetch(
                 'https://charts.bgeometrics.com/files/urpd_30d.json'
@@ -81,9 +81,9 @@
             Highcharts.chart('container', {
                 chart: {
                     type: 'column',
-                    backgroundColor: 'black',
                     renderTo: 'container',
-                    events: {
+                    backgroundColor: 'black',
+                events: {
                         load: function() {
                             var height_image = 128;
                             var width_image = 128;
@@ -128,7 +128,6 @@
                 },
                 yAxis: {
                     min: 0,
-                    gridLineWidth: 0,
                     title: {
                         text: T.yAxis
                     }
@@ -199,9 +198,10 @@
                             maxWidth: 800
                         },
                         chartOptions: {
-                            title: { style: { fontSize: '14px' } },
+                            title: { style: { fontSize: '14px', color: '#FFFFFF', } },
                             legend: { floating: false, align: 'center', verticalAlign: 'bottom', x: 0, y: 0 },
                             yAxis: [{
+                gridLineWidth: 0,
                                 title: { text: null }
                             }],
                         }
