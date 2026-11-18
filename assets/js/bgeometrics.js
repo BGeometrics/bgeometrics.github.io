@@ -819,8 +819,8 @@ function switchMode(mode) {
     let currentPath = window.location.pathname;
     let filename = currentPath.split('/').pop();
     
-    // Manejo especial para index.html
-    if (filename === 'index.html' || filename === 'index_light.html') {
+    // Manejo especial para index.html (incluye la raíz "/", donde filename es "")
+    if (filename === '' || filename === 'index.html' || filename === 'index_light.html' || filename === 'index_dark.html') {
         if (mode === 'dark') {
             window.location.href = 'index.html';
         } else {
