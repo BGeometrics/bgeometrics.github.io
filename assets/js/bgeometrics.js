@@ -35,6 +35,7 @@ var names = [
 { name: "LTH MVRV (Long Term Hodler)", link: "lth_mvrv.html" },
 { name: "Bitcoin realized price distribution (URPD)", link: "distribution_realized_price.html" },
 { name: "Bitcoin URPD supply moved last 30 days", link: "distribution_realized_price_30d.html" },
+{ name: "Bitcoin URPD supply moved last 30 days by STH and LTH", link: "distribution_realized_price_30d_holders.html" },
 { name: "AVIV (Asset Value to Investor Value) Ratio", link: "aviv.html" },
 { name: "Regime Score", link: "regime_score.html" },
 { name: "On-Chain Risk Index", link: "onchain_risk_index.html" },

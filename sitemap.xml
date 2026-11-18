@@ -263,6 +263,11 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>https://charts.bgeometrics.com/distribution_realized_price_30d_holders.html</loc>
+  <lastmod>2026-11-18T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://charts.bgeometrics.com/nvts_bg.html</loc>
   <lastmod>2025-07-07T16:04:41+00:00</lastmod>
   <priority>0.64</priority>
@@ -958,6 +963,11 @@
   <priority>0.51</priority>
 </url>
 <url>
+  <loc>https://charts.bgeometrics.com/es/distribution_realized_price_30d_holders.html</loc>
+  <lastmod>2026-11-18T00:00:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
   <loc>https://charts.bgeometrics.com/es/aviv.html</loc>
   <lastmod>2025-07-07T18:24:46+00:00</lastmod>
   <priority>0.51</priority>
@@ -1388,6 +1398,11 @@
   <priority>0.51</priority>
 </url>
 <url>
+  <loc>https://charts.bgeometrics.com/graphics/distribution_realized_price_30d_holders.html</loc>
+  <lastmod>2026-11-18T00:00:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
   <loc>https://bgeometrics.com/reports/bitcoin_cdd_ajusted_90dma_g.html</loc>
   <lastmod>2025-07-07T18:24:46+00:00</lastmod>
   <priority>0.51</priority>
@@ -1749,6 +1764,11 @@
 </url>
 <url>
   <loc>https://charts.bgeometrics.com/es/graphics/distribution_realized_price_30d.html</loc>
+  <lastmod>2026-11-18T00:00:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://charts.bgeometrics.com/es/graphics/distribution_realized_price_30d_holders.html</loc>
   <lastmod>2026-11-18T00:00:00+00:00</lastmod>
   <priority>0.41</priority>
 </url>
