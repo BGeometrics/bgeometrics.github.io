@@ -30,11 +30,20 @@
                 total: 'Total',
                 snapshot: 'UTXO set at'
             };
-            const COLOR_OLD = '#2caffe';
-            const COLOR_MOVED = '#f7931a';
-            const COLOR_PRICE = 'black';
-            const LOGO = 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png';
-            const LOGO_OPACITY = 0.1;
+            // Las variantes _dark las generan web-generation-pages-dark(-es).py copiando
+            // este fichero; el tema oscuro se decide aqui por la URL para no depender de
+            // sus sustituciones de texto (la version ES no recibe tema ni fondo).
+            const DARK = /_dark\.html$/.test(window.location.pathname);
+            const COLOR_OLD = DARK ? '#8087E8' : '#2caffe';
+            const COLOR_MOVED = DARK ? '#F19E53' : '#f7931a';
+            const COLOR_PRICE = DARK ? '#FFFFFF' : '#000000';
+            const COLOR_TEXT = DARK ? '#FFFFFF' : '#333333';
+            const COLOR_BG = DARK ? '#000000' : '#FFFFFF';
+            const LOGO = DARK
+                ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png';
+            const LOGO_OPACITY = DARK ? 0.3 : 0.1;
+            const textStyle = { color: COLOR_TEXT };
 
             const data = await fetch(
                 'https://charts.bgeometrics.com/files/urpd_30d.json'
@@ -51,6 +60,7 @@
                 chart: {
                     type: 'column',
                     renderTo: 'container',
+                    backgroundColor: COLOR_BG,
                     events: {
                         load: function() {
                             var height_image = 128;
@@ -66,16 +76,20 @@
                 },
                 title: {
                     text: T.title,
-                    align: 'left'
+                    align: 'left',
+                    style: textStyle
                 },
                 subtitle: {
                     text: T.snapshot + ' ' + data.date,
-                    align: 'left'
+                    align: 'left',
+                    style: textStyle
                 },
                 xAxis: {
                     title: {
-                        text: T.xAxis
+                        text: T.xAxis,
+                        style: textStyle
                     },
+                    labels: { style: textStyle },
                     categories: categories,
                     crosshair: true,
                     accessibility: {
@@ -96,9 +110,12 @@
                 },
                 yAxis: {
                     min: 0,
+                    gridLineWidth: DARK ? 0 : 1,
                     title: {
-                        text: T.yAxis
-                    }
+                        text: T.yAxis,
+                        style: textStyle
+                    },
+                    labels: { style: textStyle }
                 },
                 tooltip: {
                     shared: true,
@@ -146,7 +163,9 @@
                     verticalAlign: 'top',
                     floating: true,
                     x: 60,
-                    y: 50
+                    y: 50,
+                    itemStyle: textStyle,
+                    itemHoverStyle: textStyle
                 },
                 credits: {
                     text: 'Powered by BGeometrics.com',
