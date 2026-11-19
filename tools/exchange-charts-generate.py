@@ -41,7 +41,7 @@ CHARTS = [
         s('data_netflow_7dma', None, None, 'Netflow 7D MA', ORANGE, 2, suffix=' BTC',
           ma_of='data_netflow', ma=7, visible=False),
         s('data_netflow_30dma', None, None, 'Netflow 30D MA', BLUE, 2, suffix=' BTC',
-          ma_of='data_netflow', ma=30),
+          ma_of='data_netflow', ma=30, visible=False),
     ], {'axis': ZERO_LINE, 'selected': 4}),
     ('exchange_inflow_outflow', 'Exchange Inflow and Outflow (BTC)', 'BTC', [
         s('data_inflow', 'exchange-inflow-btc', 'exchange_inflow_btc', 'Exchange Inflow', RED, 2, suffix=' BTC'),
