@@ -115,6 +115,7 @@
             Highcharts.stockChart('container', {
                 chart: {
                     backgroundColor: COLOR_BG,
+                    spacingBottom: 24,
                     zooming: { type: 'x' },
                     backgroundColor: 'black',
                 events: {
@@ -197,7 +198,7 @@
                 legend: {
                     enabled: true,
                     align: 'center',
-                    verticalAlign: 'bottom',
+                    verticalAlign: 'top',
                     itemStyle: textStyle,
                     itemHoverStyle: textStyle
                 },
@@ -205,7 +206,7 @@
                     text: 'Powered by BGeometrics.com',
                     href: 'https://charts.bgeometrics.com',
                     style: { font: '11px sans-serif, Verdana, "Trebuchet MS"' },
-                    position: { align: 'right', x: -15, y: -16 }
+                    position: { align: 'right', x: -15, y: -6 }
                 },
                 responsive: {
                     rules: [{
