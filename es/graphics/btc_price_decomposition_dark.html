@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Descomposición del precio de Bitcoin: qué mueve a BTC</title>
+</head>
+<body>
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <script src="../assets/stock/highstock.js"></script>
+    <script src="../assets/stock/indicators/indicators-all.js"></script>
+    <script src="../assets/stock/modules/drag-panes.js"></script>
+    <script src="../assets/modules/annotations-advanced.js"></script>
+    <script src="../assets/modules/price-indicator.js"></script>
+    <script src="../assets/modules/full-screen.js"></script>
+    <script src="../assets/modules/stock-tools.js"></script>
+    <script src="../assets/stock/modules/heikinashi.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
+
+    <div id="container" style="width:100%; height:650px;"></div>
+
+    <script>
+        (async () => {
+            const T = {
+                title: 'Descomposición del precio de Bitcoin: política monetaria, primas de riesgo y adopción',
+                subtitle: 'Contribución acumulada de cada shock estructural al rendimiento logarítmico de BTC desde',
+                updated: 'actualizado',
+                contrib: 'Contribución (log %)',
+                price: 'Precio BTC',
+                mp: 'Política monetaria',
+                crp: 'Prima de riesgo convencional',
+                cryp: 'Prima de riesgo cripto',
+                adop: 'Adopción cripto',
+                rest: 'Tendencia (rendimiento medio)',
+                y2y: 'Bono EEUU 2 años (%)',
+                spx: 'S&P 500',
+                stable: 'Capitalización USDT + USDC (miles de M$)'
+            };
+            // Las variantes _dark las generan web-generation-pages-dark(-es).py copiando
+            // este fichero; el tema oscuro se decide aqui por la URL para no depender de
+            // sus sustituciones de texto (la version ES no recibe tema ni fondo).
+            const DARK = /_dark\.html$/.test(window.location.pathname);
+            const COLOR_TEXT = DARK ? '#FFFFFF' : '#333333';
+            const COLOR_BG = DARK ? '#000000' : '#FFFFFF';
+            const COLOR_PRICE = DARK ? '#FFFFFF' : '#000000';
+            const COLOR_GRID = DARK ? '#333333' : '#e6e6e6';
+            const C = {
+                mp: '#d62728',
+                crp: '#9467bd',
+                cryp: '#f7931a',
+                adop: '#2ca02c',
+                rest: '#8c8c8c',
+                y2y: '#1f77b4',
+                spx: '#17becf',
+                stable: '#26a17b'
+            };
+            const LOGO = DARK
+                ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
+            const LOGO_OPACITY = DARK ? 0.3 : 0.1;
+            const textStyle = { color: COLOR_TEXT };
+
+            const data = await fetch(
+                'https://charts.bgeometrics.com/files/btc_price_decomposition.json'
+            ).then(response => response.json());
+            const S = data.series;
+
+            const axisBase = {
+                labels: { style: textStyle },
+                gridLineColor: COLOR_GRID,
+                showEmpty: false
+            };
+
+            const line = (key, yAxis, extra) => Object.assign({
+                id: key,
+                name: T[key],
+                data: S[key],
+                yAxis: yAxis,
+                color: C[key] || COLOR_PRICE,
+                lineWidth: 1.5,
+                tooltip: { valueDecimals: 1, valueSuffix: ' %' }
+            }, extra || {});
+
+            Highcharts.stockChart('container', {
+                chart: {
+                    backgroundColor: COLOR_BG,
+                    zooming: { type: 'x' },
+                    events: {
+                        load: function() {
+                            var height_image = 128;
+                            var width_image = 128;
+                            var textX = this.plotLeft + (this.plotWidth * 0.5);
+                            var textY = this.plotTop + (this.plotHeight * 0.5);
+                            this.renderer.image(LOGO, textX - width_image / 2, textY - height_image / 2, width_image, height_image)
+                                .css({position: 'relative', "margin-left": "-90px", opacity: LOGO_OPACITY})
+                                .attr({zIndex: 1})
+                                .add();
+                        }
+                    }
+                },
+                title: { text: T.title, align: 'left', style: textStyle },
+                subtitle: {
+                    text: T.subtitle + ' ' + data.start + ' (' + T.updated + ' ' + data.end + ')',
+                    align: 'left',
+                    style: textStyle
+                },
+                rangeSelector: {
+                    selected: 5,
+                    buttons: [
+                        { type: 'month', count: 6, text: '6m' },
+                        { type: 'ytd', text: 'Año' },
+                        { type: 'year', count: 1, text: '1y' },
+                        { type: 'year', count: 2, text: '2y' },
+                        { type: 'year', count: 4, text: '4y' },
+                        { type: 'all', text: 'Todo' }
+                    ],
+                    labelStyle: textStyle
+                },
+                navigator: { series: { data: S.btc, color: COLOR_PRICE } },
+                xAxis: { labels: { style: textStyle } },
+                yAxis: [
+                    Object.assign({}, axisBase, {
+                        id: 'contrib',
+                        opposite: false,
+                        title: { text: T.contrib, style: textStyle },
+                        plotLines: [{ value: 0, width: 1, color: '#999999', zIndex: 2 }]
+                    }),
+                    Object.assign({}, axisBase, {
+                        id: 'price',
+                        type: 'logarithmic',
+                        opposite: true,
+                        gridLineWidth: 0,
+                        title: { text: T.price, style: textStyle }
+                    }),
+                    Object.assign({}, axisBase, {
+                        id: 'y2y', opposite: true, gridLineWidth: 0,
+                        title: { text: T.y2y, style: { color: C.y2y } }
+                    }),
+                    Object.assign({}, axisBase, {
+                        id: 'spx', opposite: true, gridLineWidth: 0,
+                        title: { text: T.spx, style: { color: C.spx } }
+                    }),
+                    Object.assign({}, axisBase, {
+                        id: 'stable', opposite: true, gridLineWidth: 0,
+                        title: { text: T.stable, style: { color: C.stable } }
+                    })
+                ],
+                tooltip: { shared: true, split: false },
+                plotOptions: { series: { showInNavigator: false, dataGrouping: { enabled: false } } },
+                series: [
+                    line('mp', 'contrib'),
+                    line('crp', 'contrib'),
+                    line('cryp', 'contrib'),
+                    line('adop', 'contrib'),
+                    line('rest', 'contrib', { dashStyle: 'ShortDash', lineWidth: 1 }),
+                    {
+                        id: 'btc', name: T.price, data: S.btc, yAxis: 'price',
+                        color: COLOR_PRICE, lineWidth: 1.5,
+                        tooltip: { valueDecimals: 0, valuePrefix: '$' }
+                    },
+                    line('y2y', 'y2y', { visible: false, tooltip: { valueDecimals: 2, valueSuffix: ' %' } }),
+                    line('spx', 'spx', { visible: false, tooltip: { valueDecimals: 0 } }),
+                    line('stable', 'stable', { visible: false, tooltip: { valueDecimals: 1, valuePrefix: '$', valueSuffix: 'bn' } })
+                ],
+                legend: {
+                    enabled: true,
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    itemStyle: textStyle,
+                    itemHoverStyle: textStyle
+                },
+                credits: {
+                    text: 'Powered by BGeometrics.com',
+                    href: 'https://charts.bgeometrics.com',
+                    style: { font: '11px sans-serif, Verdana, "Trebuchet MS"' },
+                    position: { align: 'right', x: -15, y: -16 }
+                },
+                responsive: {
+                    rules: [{
+                        condition: { maxWidth: 800 },
+                        chartOptions: {
+                            title: { style: { fontSize: '14px' } },
+                            subtitle: { text: null },
+                            yAxis: [{ title: { text: null } }, { title: { text: null } }]
+                        }
+                    }]
+                }
+            });
+
+        })();
+
+    </script>
+
+</body>
+</html>
