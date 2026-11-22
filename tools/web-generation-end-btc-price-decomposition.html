@@ -5,9 +5,9 @@
           <h5>Bitcoin Price Decomposition: Monetary Policy, Risk Premia and Adoption</h5>
         </a>
         <p>
-          This chart splits Bitcoin's daily returns into four structural drivers and shows the cumulative contribution of each one since January 2019. It is our own replication of the method in <i>"What Drives Crypto Asset Prices?"</i> (Adams, Ibert &amp; Liao, 2024).
+          This chart splits Bitcoin's returns into four structural drivers and shows the cumulative contribution of each one since May 2020. It is our own replication of the method in <i>"What Drives Crypto Asset Prices?"</i> (Adams, Ibert &amp; Liao, 2024).
           <br><br>
-          A daily VAR with four series is identified with sign restrictions: the change in the US 2-year Treasury yield, S&amp;P 500 returns, BTC returns and the change in USDT + USDC market capitalization:
+          A weekly VAR with four series is identified with sign restrictions: the change in the US 2-year Treasury yield, S&amp;P 500 returns, BTC returns and the change in USDT + USDC market capitalization:
           <br><br>
           &bull; <b>Monetary policy</b>: a contractionary shock raises the 2-year yield and pushes equities and BTC down.<br>
           &bull; <b>Conventional risk premium</b>: a risk-off move in traditional markets. Yields fall while equities and BTC fall.<br>
@@ -19,7 +19,7 @@
           <br><br>
           The input series (2-year yield, S&amp;P 500 and stablecoin market cap) are hidden by default. Click them in the legend to show them.
           <br><br>
-          The model is re-estimated every day on the full sample, so past values can change slightly. Like the original paper, it explains low-frequency moves much better than day-to-day noise.
+          The paper works with daily data. We use weekly changes because daily stablecoin supply is very noisy (Tether issues in large blocks), and with daily data the split between crypto risk premium and adoption is not well identified. The sample starts in May 2020 because before that our stablecoin series misses part of the USDT supply (Omni) and has one-day jumps from chain migrations. The model is re-estimated every day on the full sample, so past values can change slightly.
           <br><br>
           <b>Sources:</b> US Treasury yields and S&amp;P 500 from FRED, stablecoin supply and BTC price from BGeometrics.
         </p>
