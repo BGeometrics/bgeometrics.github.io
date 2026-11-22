@@ -15,9 +15,11 @@
           &bull; <b>Crypto adoption</b>: new demand for the asset class. BTC and stablecoin market cap rise together.<br>
           The two crypto shocks are restricted to have only a small impact on yields and equities.
           <br><br>
-          <b>How to read it.</b> Each line is the cumulative log-return contribution of a shock, measured against BTC's average return. The dashed <i>Trend</i> line is that average return. The lines add up to BTC's cumulative log return since the start. A falling line means that driver is pulling BTC below its trend. Over the whole sample each shock sums to about zero by construction, so what matters is the shape over sub-periods, for example monetary policy in 2022 or the compression of the crypto risk premium in 2023-2024.
+          <b>How to read it.</b> Each line is the cumulative log-return contribution of a shock, measured against BTC's average return. A falling line means that driver is pulling BTC below its trend. Over the whole sample each shock sums to about zero by construction, so what matters is the shape over sub-periods, for example monetary policy in 2022 or the compression of the crypto risk premium in 2023-2024.
           <br><br>
-          The input series (2-year yield, S&amp;P 500 and stablecoin market cap) are hidden by default. Click them in the legend to show them.
+          The dashed <i>Trend (average return)</i> line, hidden by default, is just BTC's average weekly return over the sample accumulated over time: a mechanical straight line that carries no market information. It is only there for the accounting: the four shocks plus the trend add up to BTC's cumulative log return.
+          <br><br>
+          The trend and the input series (2-year yield, S&amp;P 500 and stablecoin market cap) are hidden by default. Click them in the legend to show them.
           <br><br>
           The paper works with daily data. We use weekly changes because daily stablecoin supply is very noisy (Tether issues in large blocks), and with daily data the split between crypto risk premium and adoption is not well identified. The sample starts in May 2020 because before that our stablecoin series misses part of the USDT supply (Omni) and has one-day jumps from chain migrations. The model is re-estimated every day on the full sample, so past values can change slightly.
           <br><br>
