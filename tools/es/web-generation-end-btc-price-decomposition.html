@@ -1,0 +1,76 @@
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/btc_price_decomposition.html">
+          <h5>Descomposición del precio de Bitcoin: política monetaria, primas de riesgo y adopción</h5>
+        </a>
+        <p>
+          Este gráfico separa los rendimientos diarios de Bitcoin en cuatro factores estructurales y muestra la contribución acumulada de cada uno desde enero de 2019. Es una réplica propia del método de <i>"What Drives Crypto Asset Prices?"</i> (Adams, Ibert y Liao, 2024).
+          <br><br>
+          Se estima un VAR diario con cuatro series, identificado con restricciones de signo: la variación del rendimiento del bono del Tesoro EEUU a 2 años, el rendimiento del S&amp;P 500, el rendimiento de BTC y la variación de la capitalización de USDT + USDC:
+          <br><br>
+          &bull; <b>Política monetaria</b>: un shock restrictivo sube el bono a 2 años y hace bajar la bolsa y BTC.<br>
+          &bull; <b>Prima de riesgo convencional</b>: aversión al riesgo en los mercados tradicionales. Bajan los tipos, la bolsa y BTC.<br>
+          &bull; <b>Prima de riesgo cripto</b>: apetito por el riesgo dentro de cripto. Si sube la aversión, BTC cae mientras el dinero se refugia en stablecoins.<br>
+          &bull; <b>Adopción cripto</b>: nueva demanda por el activo. Suben a la vez BTC y la capitalización de las stablecoins.<br>
+          Los dos shocks cripto solo pueden tener un impacto pequeño en los tipos y en la bolsa.
+          <br><br>
+          <b>Cómo leerlo.</b> Cada línea es la contribución acumulada de un shock al rendimiento logarítmico de BTC, medida respecto a su rendimiento medio. La línea discontinua <i>Tendencia</i> es ese rendimiento medio. Todas las líneas suman el rendimiento logarítmico acumulado de BTC desde el inicio. Si una línea cae, ese factor está empujando a BTC por debajo de su tendencia. En la muestra completa cada shock suma aproximadamente cero por construcción, así que lo relevante es su forma en cada periodo: por ejemplo, la política monetaria en 2022 o la compresión de la prima de riesgo cripto en 2023-2024.
+          <br><br>
+          Las series de entrada (bono a 2 años, S&amp;P 500 y capitalización de las stablecoins) están ocultas por defecto. Se muestran pulsando en la leyenda.
+          <br><br>
+          El modelo se vuelve a estimar cada día con toda la muestra, así que los valores pasados pueden cambiar ligeramente. Igual que en el paper original, explica mucho mejor los movimientos de fondo que el ruido diario.
+          <br><br>
+          <b>Fuentes:</b> rendimientos del Tesoro EEUU y S&amp;P 500 de FRED; supply de stablecoins y precio de BTC de BGeometrics.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Rendimientos pasados no garantizan resultados futuros.</strong></br>
+        <strong>No es un consejo de inversión. Descúbrelo por tí mismo y actúa bajo tu propio criterio.</strong>
+      </div>
+      <div class="credits">
+        Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>

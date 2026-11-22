@@ -1,0 +1,81 @@
+    <br>
+    <section>
+      <div class="container">
+        <a href="graphics/btc_price_decomposition.html">
+          <h5>Bitcoin Price Decomposition: Monetary Policy, Risk Premia and Adoption</h5>
+        </a>
+        <p>
+          This chart splits Bitcoin's daily returns into four structural drivers and shows the cumulative contribution of each one since January 2019. It is our own replication of the method in <i>"What Drives Crypto Asset Prices?"</i> (Adams, Ibert &amp; Liao, 2024).
+          <br><br>
+          A daily VAR with four series is identified with sign restrictions: the change in the US 2-year Treasury yield, S&amp;P 500 returns, BTC returns and the change in USDT + USDC market capitalization:
+          <br><br>
+          &bull; <b>Monetary policy</b>: a contractionary shock raises the 2-year yield and pushes equities and BTC down.<br>
+          &bull; <b>Conventional risk premium</b>: a risk-off move in traditional markets. Yields fall while equities and BTC fall.<br>
+          &bull; <b>Crypto risk premium</b>: risk appetite inside crypto. A risk-off move lowers BTC while money flows into stablecoins.<br>
+          &bull; <b>Crypto adoption</b>: new demand for the asset class. BTC and stablecoin market cap rise together.<br>
+          The two crypto shocks are restricted to have only a small impact on yields and equities.
+          <br><br>
+          <b>How to read it.</b> Each line is the cumulative log-return contribution of a shock, measured against BTC's average return. The dashed <i>Trend</i> line is that average return. The lines add up to BTC's cumulative log return since the start. A falling line means that driver is pulling BTC below its trend. Over the whole sample each shock sums to about zero by construction, so what matters is the shape over sub-periods, for example monetary policy in 2022 or the compression of the crypto risk premium in 2023-2024.
+          <br><br>
+          The input series (2-year yield, S&amp;P 500 and stablecoin market cap) are hidden by default. Click them in the legend to show them.
+          <br><br>
+          The model is re-estimated every day on the full sample, so past values can change slightly. Like the original paper, it explains low-frequency moves much better than day-to-day noise.
+          <br><br>
+          <b>Sources:</b> US Treasury yields and S&amp;P 500 from FRED, stablecoin supply and BTC price from BGeometrics.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>BGeometrics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <strong>Past performance is no guarantee of future results.</strong></br>
+        <strong>It is not investment advice. Find out for yourself and act under your own criteria.</strong>
+      </div>
+      <div class="credits">
+        Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
+      </div>
+      <div class="credits">
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
+      </div>
+      <div class="credits">
+        <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/changelog">What's new</a> &nbsp;&middot;&nbsp;
+        <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader">
+    <div class="line"></div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  
+  
+  
+  
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/bgeometrics.js"></script>
+
+</body>
+
+</html>
