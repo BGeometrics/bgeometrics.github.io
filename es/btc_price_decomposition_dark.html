@@ -1135,9 +1135,9 @@
           <h5>Descomposición del precio de Bitcoin: política monetaria, primas de riesgo y adopción</h5>
         </a>
         <p>
-          Este gráfico separa los rendimientos diarios de Bitcoin en cuatro factores estructurales y muestra la contribución acumulada de cada uno desde enero de 2019. Es una réplica propia del método de <i>"What Drives Crypto Asset Prices?"</i> (Adams, Ibert y Liao, 2024).
+          Este gráfico separa los rendimientos de Bitcoin en cuatro factores estructurales y muestra la contribución acumulada de cada uno desde mayo de 2020. Es una réplica propia del método de <i>"What Drives Crypto Asset Prices?"</i> (Adams, Ibert y Liao, 2024).
           <br><br>
-          Se estima un VAR diario con cuatro series, identificado con restricciones de signo: la variación del rendimiento del bono del Tesoro EEUU a 2 años, el rendimiento del S&amp;P 500, el rendimiento de BTC y la variación de la capitalización de USDT + USDC:
+          Se estima un VAR semanal con cuatro series, identificado con restricciones de signo: la variación del rendimiento del bono del Tesoro EEUU a 2 años, el rendimiento del S&amp;P 500, el rendimiento de BTC y la variación de la capitalización de USDT + USDC:
           <br><br>
           &bull; <b>Política monetaria</b>: un shock restrictivo sube el bono a 2 años y hace bajar la bolsa y BTC.<br>
           &bull; <b>Prima de riesgo convencional</b>: aversión al riesgo en los mercados tradicionales. Bajan los tipos, la bolsa y BTC.<br>
@@ -1149,7 +1149,7 @@
           <br><br>
           Las series de entrada (bono a 2 años, S&amp;P 500 y capitalización de las stablecoins) están ocultas por defecto. Se muestran pulsando en la leyenda.
           <br><br>
-          El modelo se vuelve a estimar cada día con toda la muestra, así que los valores pasados pueden cambiar ligeramente. Igual que en el paper original, explica mucho mejor los movimientos de fondo que el ruido diario.
+          El paper trabaja con datos diarios. Aquí se usan variaciones semanales porque el supply diario de stablecoins es muy ruidoso (Tether emite en bloques grandes) y, con datos diarios, la separación entre prima de riesgo cripto y adopción no queda bien identificada. La muestra empieza en mayo de 2020 porque antes nuestra serie de stablecoins no recoge todo el USDT (falta Omni) y tiene saltos de un día por migraciones entre cadenas. El modelo se vuelve a estimar cada día con toda la muestra, así que los valores pasados pueden cambiar ligeramente.
           <br><br>
           <b>Fuentes:</b> rendimientos del Tesoro EEUU y S&amp;P 500 de FRED; supply de stablecoins y precio de BTC de BGeometrics.
         </p>
