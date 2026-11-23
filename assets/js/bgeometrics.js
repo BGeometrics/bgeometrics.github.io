@@ -79,6 +79,7 @@ var names = [
 { name: "Bitcoin Simulation Montecarlo last 365 days", link: "montecarlo_365.html" },
 { name: "M2 Money Stock", link: "m2.html" },
 { name: "Fed Funds", link: "fedfunds.html" },
+{ name: "BTC Price Decomposition (Monetary Policy, Risk Premium, Crypto Adoption)", link: "btc_price_decomposition.html" },
 { name: "Funding Rate", link: "funding_rate.html" },
 { name: "Addresses Active", link: "address_active.html" },
 { name: "Supply in Profit", link: "supply_in_profit.html" },

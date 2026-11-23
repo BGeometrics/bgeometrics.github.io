@@ -63,6 +63,7 @@ var names = [
 { name: "S&P 500 Oro Tesla MSTR", link: "sp500_gold.html" },
 { name: "M2 Masa monetaria", link: "m2.html" },
 { name: "Fed Funds", link: "fedfunds.html" },
+{ name: "Descomposición del precio de BTC (política monetaria, prima de riesgo, adopción cripto)", link: "btc_price_decomposition.html" },
 { name: "Donación", link: "donation.html" },
 { name: "Ethereum SOPR", link: "eth_sopr.html" },
 { name: "Ethereum MVRV", link: "eth_mvrv.html" },
