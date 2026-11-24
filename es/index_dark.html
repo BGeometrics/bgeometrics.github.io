@@ -1152,87 +1152,153 @@
     <main id="main" class="main"></main>
   </body>
 </html>
+  
 
     <section class="section">
       <div class="row">
         <div id="searchResults"></div>
 
       	<div class="pagetitle">
-	        <h1>Análisis de la cadena de bitcoin</h1>
-      	</div>
+	  <!-- Show mode responsive -->
+          <div id="btc_price" class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div id="container-iframe" class="row d-flex justify-content-center">
+                  <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                    <iframe class="iframe" width="100%" height="700px" src="graphics/btc_price_dark.html" allow="fullscreen" title="BTC Price" scrolling="no" frameBorder="0"></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+	    <div class="col-12">
+	      <h1>Análisis on-chain de Bitcoin y Ethereum</h1>
+            </div>
+          </div>
+        </div>
 
         <div class="col-lg-12">
-          <div class="row">
+          <div id="btc_price_300" class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="200px" src="graphics/price_heatmap_dark.html" allow="fullscreen" title="BTC Price" scrolling="no" frameBorder="0"></iframe>
+                <iframe class="iframe" width="100%" height="400px" src="graphics/btc_price_300_dark.html" allow="fullscreen" title="BTC Price 1h" scrolling="no" frameBorder="0"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div id="btc" class="row">
+            <div class="col-lg-6">
+              <div id="container-iframe" class="row d-flex justify-content-center">
+                <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                  <iframe class="iframe" width="100%" height="300px" src="graphics/etf_300_dark.html" allow="fullscreen" title="ETF BTC" scrolling="no" frameBorder="0"></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div id="container-iframe" class="row d-flex justify-content-center">
+                <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                  <iframe class="iframe" width="100%" height="300px" src="graphics/moving_average_300_dark.html" allow="fullscreen" title="Moving avergage BTC price" scrolling="no" frameBorder="0"></iframe>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-xs-12 center-block text-center">
-              <p>Históricamente en Bitcoin, los períodos verdes han sido buenos para comprar y los rojos han sido buenos para vender.
-                &nbsp;&nbsp;<a href="index_dark.html">4 años</a>
-                &nbsp;&nbsp;<a href="index_6m_dark.html">180 días</a>
-                &nbsp;&nbsp;<a href="index_3m_dark.html">90 días</a>
-              </p>
-            </div>
-          </div>
 
-          <div class="row">
-            <div id="container-iframe" class="row d-flex justify-content-center">
-              <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
-                <iframe class="iframe" width="100%" height="80px" src="graphics/mvrv_heatmap_dark.html" allow="fullscreen" title="MVRV Z-Score" scrolling="no" frameBorder="0"></iframe>
+            <div class="col-lg-6">
+              <div id="container-iframe" class="row d-flex justify-content-center">
+                <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                  <iframe class="iframe" width="100%" height="300px" src="graphics/dashboard_demand_300_dark.html" allow="fullscreen" title="Bitcoin BGeometrics Demand Index" scrolling="no" frameBorder="0"></iframe>
+                </div>
               </div>
             </div>
+
+            <div class="col-lg-6">
+              <div id="container-iframe" class="row d-flex justify-content-center">
+                <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+                  <iframe class="iframe" width="100%" height="300px" src="graphics/mvrv_ratio_300_dark.html" allow="fullscreen" title="Bitcoin MVRV 365D MA" scrolling="no" frameBorder="0"></iframe>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div class="row">
+         <div class="row">
+
+	   <div class="col-lg-4" style="text-align: center;">
+	     <h5 class="card-title"><a href="dashboard_short_term_trend_dark.html">Bitcoin Short Term Trend</a></h5>
+	     <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+	       <iframe class="iframe" width="100%" height="150px" src="graphics/short_term_trends_speedmeter.html" title="Bitcoin Short Term Trends" scrolling="no" frameBorder="0"></iframe>
+	    </div>
+	   </div>
+
+	   <div class="col-lg-4" style="text-align: center;">
+	     <h5 class="card-title"><a href="dashboard_demand_dark.html">Bitcoin Demand</a></h5>
+	     <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+	       <iframe class="iframe" width="100%" height="150px" src="graphics/demand_speedmeter.html" title="Bitcoin Demand" scrolling="no" frameBorder="0"></iframe>
+	     </div>
+	   </div>
+
+	   <div class="col-lg-4" style="text-align: center;">
+	     <h5 class="card-title"><a href="dashboard_market_peaks_dark.html">Bitcoin Market Peaks</a></h5>
+	     <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+	       <iframe class="iframe" width="100%" height="150px" src="graphics/market_peaks_speedmeter.html" title="Bitcoin Market Peaks" scrolling="no" frameBorder="0"></iframe>
+	     </div>
+	   </div>
+
+	   <div class="col-lg-4" style="text-align: center;">
+             <h5 class="card-title"><a href="ohlc_dashboard_dark.html">Bitcoin Dashboard Price</a></h5>
+             <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+               <iframe class="iframe" width="100%" height="150px" src="graphics/ohlc_1m_200.html" title="Bitcoin Price USD" scrolling="no" frameBorder="0"></iframe>
+             </div>
+           </div>
+
+	   <div class="col-lg-4">
+	     <h5 class="card-title" style="text-align: center;"><a href="https://x.com/BGeometrics" target="_blank">Alertas en X</a></h5>
+	     <div id="latest-tweet"></div>
+	     <div class="d-flex justify-content-center">
+	       <button id="next-tweet" class="btn btn-primary mt-3">Siguiente</button>
+	     </div>
+	   </div>
+
+	   <div class="col-lg-4" style="text-align: center;">
+             <h5 class="card-title"><a href="../dashboard_market_floors_dark.html">Bitcoin dashboard market floors</a></h5>
+             <div class="col-lg-4-iframe col-md-6-iframe col-sm-3-iframe">
+               <img src="assets/img/gallery/bitcoin-realized-price-main.png" class="card-img-top" alt="Bitcoin Realized Price">
+             </div>
+           </div>
+
+	</div>
+
+        <div class="row">
+          <div id="container-iframe" class="row d-flex justify-content-center">
+            <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
+              <iframe class="iframe" width="100%" height="80px" src="graphics/mvrv_heatmap_dark.html" allow="fullscreen" title="MVRV Z-Score" scrolling="no" frameBorder="0"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
             <div id="container-iframe" class="row d-flex justify-content-center">
               <div class="col-lg-12-iframe col-md-6-iframe col-sm-3-iframe">
                 <iframe class="iframe" width="100%" height="80px" src="graphics/lth_heatmap_dark.html" allow="fullscreen" title="LTH diff" scrolling="no" frameBorder="0"></iframe>
               </div>
             </div>
-          </div>
-
         </div>
+
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-lg-4">
+    <div class="row">
+      <div class="col-xs-12 center-block text-center">
+        <p>Históricamente en Bitcoin, los períodos verdes han sido buenos para comprar y los rojos han sido buenos para vender.</p>
+      </div> 
+    </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bitcoin Price History</h5>
-              <a href="bitcoin_price_usd_g_dark.html">
-                <img src="assets/img/gallery/bitcoin-price-history.png" class="card-img-top" alt="Bitcoin Price USD">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bitcoin Price Live</h5>
-              <a href="ohlc_1m.html">
-                <img src="assets/img/gallery/Price-Live.png" class="card-img-top" alt="Price Live BTC">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bitcoin OHLC</h5>
-              <a href="ohlc.html">
-                <img src="assets/img/gallery/OHLC.png" class="card-img-top" alt="Bitcoin OHLC">
-              </a>
-            </div>
-          </div>
-        </div>
+    <div class="row">
 
         <div class="col-lg-4">
           <div class="card">
@@ -1240,17 +1306,6 @@
               <h5 class="card-title">Bitcoin Realized Price</h5>
               <a href="realized_price_g_dark.html">
                 <img src="assets/img/gallery/realized_price.png" class="card-img-top" alt="Bitcoin Realized Price">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bitcoin SOPR</h5>
-              <a href="sopr_dark.html">
-                <img src="assets/img/gallery/sopr.png" class="card-img-top" alt="Bitcoin SOPR">
               </a>
             </div>
           </div>
@@ -1271,7 +1326,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Hodl Waves</h5>
-              <a href="hodl_waves_dark.html">
+              <a href="hodl_waves_10_dark.html">
                 <img src="assets/img/gallery/bitcoin-hodl-waves-relative.png" class="card-img-top" alt="Bitcoin Hodl Waves">
               </a>
             </div>
@@ -1293,7 +1348,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin NUPL</h5>
-              <a href="bitcoin_nupl_g_dark.html">
+              <a href="nupl_dark.html">
                 <img src="assets/img/gallery/bitcoin-nupl.png" class="card-img-top" alt="Bitcoin NUPL">
               </a>
             </div>
@@ -1304,7 +1359,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin STH Realized Price</h5>
-              <a href="bitcoin_realized_short_g_dark.html">
+              <a href="sth_realized_price_dark.html">
                 <img src="assets/img/gallery/bitcoin-realized-short.png" class="card-img-top" alt="Bitcoin STH Realized Price">
               </a>
             </div>
@@ -1326,7 +1381,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Coin Days Destroyed</h5>
-              <a href="bitcoin_cdd_ajusted_90dma_g_dark.html">
+              <a href="cdd_dark.html">
                 <img src="assets/img/gallery/cdd.png" class="card-img-top" alt="Bitcoin CDD Ajusted">
               </a>
             </div>
@@ -1336,9 +1391,9 @@
         <div class="col-lg-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Bitcoin S&P 500, Gold, Tesla</h5>
-              <a href="sp500_gold_dark.html">
-                <img src="assets/img/gallery/sp500_gold.png" class="card-img-top" alt="Bitcoin S&P 500, Gold, Tesla">
+              <h5 class="card-title">Bitcoin and S&P 500</h5>
+              <a href="../workspace_stocks.html">
+                <img src="assets/img/gallery/sp500_gold.png" class="card-img-top" alt="Bitcoin and S&P 500">
               </a>
             </div>
           </div>
@@ -1348,7 +1403,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin Fear and Greed</h5>
-              <a href="bitcoin_fear_greed_img_dark.html">
+              <a href="fear_greed_dark.html">
                 <img src="assets/img/gallery/bitcoin-fear-greed.png" class="card-img-top" alt="Bitcoin Fear and Greed">
               </a>
             </div>
@@ -1359,7 +1414,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Bitcoin AVIV</h5>
-              <a href="bitcoin_aviv_g_dark.html">
+              <a href="aviv_dark.html">
                 <img src="assets/img/gallery/bitcoin-aviv.png" class="card-img-top" alt="Bitcoin AVIV">
               </a>
             </div>
@@ -1411,15 +1466,20 @@
       </div>
       <div class="credits">
         <strong>Rendimientos pasados no garantizan resultados futuros.</strong></br>
-        <strong>No es un consejo de inversión. Descúbrelo por tí mismo y actúa bajo tu propio criterio.</strong>
+        <strong>No es un consejo de inversión. Descúbrelo por ti mismo y actúa bajo tu propio criterio.</strong>
       </div>
       <div class="credits">
         Powered by <a href="https://bgeometrics.com/">BGeometrics</a>
       </div>
       <div class="credits">
-        <a href="terms_dark.html">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
-        <a href="privacy_dark.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
-        <a href="subscription_dark.html">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
+        <a href="https://x.com/BGeometrics" target="_blank" title="X / Twitter"><i class="bi bi-twitter-x"></i> X</a> &nbsp;&middot;&nbsp;
+        <a href="https://t.me/bgeometrics_signals" target="_blank" title="Telegram"><i class="bi bi-telegram"></i> Telegram</a> &nbsp;&middot;&nbsp;
+        <a href="https://primal.net/p/npub1hvuxjwcnlpkjw8aqwsjul70rrv4wwk2slsma2xxtpwvcunyne3dskpt32h" target="_blank" title="Nostr"><i class="bi bi-broadcast"></i> Nostr</a>
+      </div>
+      <div class="credits">
+        <a href="https://bgeometrics.com/terms">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+        <a href="https://bgeometrics.com/subscription">Subscription &amp; Refund</a> &nbsp;&middot;&nbsp;
         <a href="https://portal.bgeometrics.com/changelog">What's new</a> &nbsp;&middot;&nbsp;
         <a href="https://portal.bgeometrics.com/system-status.html">Status</a>
       </div>
@@ -1432,17 +1492,38 @@
     <div class="line"></div>
   </div>
 
-  <!-- Vendor JS Files -->
-  
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-  
-  
-  
-  
-  
   <script src="assets/js/main.js"></script>
   <script src="assets/js/bgeometrics.js"></script>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let tweets = [];
+            let currentIndex = 0;
+
+            function displayTweet(index) {
+                const tweetContainer = document.getElementById('latest-tweet');
+                const tweetText = tweets[index].tweet;
+                tweetContainer.innerText = tweetText.length > 200 ? tweetText.substring(0, 200) + '...' : tweetText;
+            }
+
+            fetch('https://bitcoin-data.com/suggestion/api/alerts-x/latest')
+                .then(response => response.json())
+                .then(data => {
+                    tweets = data;
+                    if (tweets.length > 0) {
+                        displayTweet(currentIndex);
+                    }
+                })
+                .catch(error => console.error('Error fetching the tweets:', error));
+
+            document.getElementById('next-tweet').addEventListener('click', function() {
+                if (tweets.length > 0) {
+                    currentIndex = (currentIndex + 1) % tweets.length;
+                    displayTweet(currentIndex);
+                }
+            });
+        });
+  </script>
 
 </body>
 
