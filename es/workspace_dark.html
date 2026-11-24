@@ -81,6 +81,8 @@
     <!-- Estado de sesion / suscripcion (el orden importa: bg-auth-badge usa bgIsSubscriber) -->
     <script src="assets/js/bg-chart-data.js" defer></script>
     <script src="assets/js/bg-auth-badge.js" defer></script>
+    <!-- Selector Claro/Oscuro: enlaza a la misma pagina en el otro tema -->
+    <script src="assets/js/bg-theme-switch.js" defer></script>
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -127,19 +129,76 @@
           </li>
           <!-- End Search Icon-->
 
-          <!-- Icono de perfil + username (solo suscriptor logado); lo rellena bg-auth-badge.js -->
+          <!-- Icono de perfil + username (solo suscriptor logado); lo rellena bg-auth-badge.js.
+               A la izquierda de Dashboard a proposito, para que se vea nada mas cargar. -->
           <li id="bg-profile-status"></li>
+
+          <li class="nav-item dropdown">
+            <a href="https://portal.bgeometrics.com/dashboard.html" id="Dashboard" class="nav-link nav-icon" alt="Panel" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Panel">
+              <i class="bi bi-bar-chart-line"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="https://portal.bgeometrics.com/public-reports.html" id="ai-reports" class="nav-link nav-icon" alt="Informes IA" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Informes IA">
+              <i class="bi bi-robot"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="https://bgeometrics.com/reports/index.html" id="reports" class="nav-link nav-icon" alt="Informes" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Informes">
+              <i class="bi bi-file-earmark-text"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="https://bgeometrics.com/api/" id="api" class="nav-link nav-icon" alt="API Bitcoin" data-bs-toggle="tooltip" data-bs-placement="bottom" title="API Bitcoin">
+              <span style="font-size: 0.6em;">API</span>
+            </a>
+            <a href="https://portal.bgeometrics.com/pricing" id="pricing" class="nav-link nav-icon" alt="Precios API" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Precios API BGeometrics">
+              <span style="font-size: 0.6em;">Precios</span>
+            </a>
+          </li>
 
           <!-- Badge de estado de sesion/suscripcion; lo rellena bg-auth-badge.js -->
           <li id="bg-auth-status"></li>
 
+          <!-- bg-auth-badge.js oculta este icono cuando detecta suscriptor logado -->
+          <li id="bg-login-icon">
+            <a class="nav-link nav-icon" href="https://portal.bgeometrics.com/login" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión" target="_blank">
+              <i class="bi bi-person"></i>
+            </a>
+          </li>
+
           <li class="nav-item dropdown">
-            <a
-              class="nav-link nav-icon"
-              href="https://portal.bgeometrics.com/profile"
-              alt="Profile"
-              target="_blank"
-            >
+            <a href="https://portal.bgeometrics.com/alerts" class="nav-link nav-icon" alt="Alertas BGeometrics" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alertas">
+              <i class="bi bi-bell"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="https://bgeometrics.com/signals/" alt="Últimas señales on-chain" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Últimas señales on-chain">
+              <i class="bi bi-fire"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="https://bgeometrics.com/lab/" alt="Lab" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lab">
+              <i class="bi"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.125em"><path d="M5.5 1.5h5M6.5 1.5v4.3L2.7 12.4a1.4 1.4 0 0 0 1.2 2.1h8.2a1.4 1.4 0 0 0 1.2-2.1L9.5 5.8V1.5"/><path d="M4.2 10h7.6"/></svg></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="https://bgeometrics.com/vector/" alt="BG Vector" data-bs-toggle="tooltip" data-bs-placement="bottom" title="BG Vector: Bitcoin risk-on / risk-off">
+              <i class="bi bi-compass"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="https://bitcoin-data.com/api/mcp_dark.html" alt="MCP" data-bs-toggle="tooltip" data-bs-placement="bottom" title="MCP: conecta Claude y otros asistentes de IA a los datos de BGeometrics" target="_blank">
+              <i class="bi bi-plug"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="https://portal.bgeometrics.com/profile" alt="Perfil" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil" target="_blank">
               <i class="bi bi-person"></i>
             </a>
           </li>
@@ -180,12 +239,12 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="modeDropdown">
                 <li>
-                  <a class="dropdown-item" href="index_dark.html">
+                  <a class="dropdown-item" data-theme-link="light" href="index.html">
                     <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Claro
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="index.html">
+                  <a class="dropdown-item" data-theme-link="dark" href="index_dark.html">
                     <i class="fa-solid fa-flag-usa" aria-hidden="true"></i>
                     Oscuro
                   </a>
@@ -194,21 +253,6 @@
             </div>
           </li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="https://twitter.com/BGeometrics">
-              <i class="bi bi-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a
-              class="nav-link nav-icon"
-              href="mailto:bgeometrics@gmail.com"
-              target="_blank"
-            >
-              <i class="bi bi-envelope"></i>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- End Icons Navigation -->
