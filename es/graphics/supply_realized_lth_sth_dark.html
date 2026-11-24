@@ -6,6 +6,7 @@
 <body>
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">
     <script src="../assets/stock/highstock.js"></script>
     <script src="../assets/stock/indicators/indicators-all.js"></script>
     <script src="../assets/stock/modules/drag-panes.js"></script>
@@ -15,16 +16,16 @@
     <script src="../assets/modules/stock-tools.js"></script>
     <script src="../assets/stock/modules/heikinashi.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
-    <script src="../assets/modules/exporting.js"></script>
-    <script src="../assets/modules/export-data.js"></script>
+    <script src="../assets/js/bg-chart-data.js"></script>
+
+    
+    <script src="../assets/themes/brand-dark.js"></script>
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
     <script>
         (async () => {
-            const data_price = await fetch(
-                'https://charts.bgeometrics.com/files/profit_loss_btc_price.json'
-            ).then(response => response.json());
+            const data_price = await bgSeries('btc-price', 'https://charts.bgeometrics.com/files/profit_loss_btc_price.json');
             const data_lth_supply_profit = await fetch(
                 'https://charts.bgeometrics.com/files/lth_supply_profit.json'
             ).then(response => response.json());
@@ -180,7 +181,7 @@
             },
 
             credits: {
-                text: 'Power by BGeometrics.com',
+                text: 'Powered by BGeometrics.com',
                 href: 'https://charts.bgeometrics.com',
                 style: {
                     font: '11px sans-serif, Verdana, "Trebuchet MS"'
@@ -199,7 +200,20 @@
                     chartOptions: {
                         rangeSelector: {
                             inputEnabled: false
-                        }
+                        },
+                        stockTools: {
+                            gui: {
+                                enabled: false 
+                            }
+                        },
+                        navigator: {
+                            enabled: false 
+                        },
+                        yAxis: [{
+                            title: { text: null }
+                        }, {
+                            title: { text: null }
+                        }],
                     }
                 }]
             }
