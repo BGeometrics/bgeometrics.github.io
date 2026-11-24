@@ -81,6 +81,14 @@
     <script src="assets/js/bg-auth-badge.js" defer></script>
     <!-- Selector Claro/Oscuro: enlaza a la misma pagina en el otro tema -->
     <script src="assets/js/bg-theme-switch.js" defer></script>
+    <!-- La cabecera ES es mas ancha que la inglesa (selector de idioma, "Iniciar sesion"):
+         el buscador encoge en vez de desbordar la cabecera y ocultar el selector de tema -->
+    <style>
+      @media (min-width: 1200px) {
+        .header .search-bar { min-width: 0; flex: 0 1 360px; }
+        .header .header-nav { flex-shrink: 0; }
+      }
+    </style>
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
