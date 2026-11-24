@@ -18,7 +18,7 @@ if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
 fi
 
 cd $DIR_PROYECT
-git pull
+git pull --no-rebase --no-edit
 
 cd $DIR_PROYECT/tools
 python3 web-generation-pages-dark.py
@@ -56,7 +56,7 @@ cp -r $DIR_TEMP/* $DIR_PROYECT
 
 cd $DIR_PROYECT
 
-git pull
+git pull --no-rebase --no-edit
 git add *
 git commit -a -m"daily"
 git push
