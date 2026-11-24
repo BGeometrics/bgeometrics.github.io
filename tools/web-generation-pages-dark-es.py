@@ -122,6 +122,30 @@ word_to_exclude = 'dark'
 
 remove_all_files(dest_directory)
 copy_files_excluding_word(src_directory, dest_directory, word_to_exclude)
+
+# Solo se genera X_dark.html desde X.html cuando no hay un dark bueno.
+# web-generation-pages-all.sh ya copio a es/graphics los X_dark.html ingleses (tema
+# brand-dark completo; la traduccion la hace luego web-generation-translate-graphics.py)
+# y los de tools/es/graphics. Regenerarlos todos desde el claro dejaba los graficos
+# oscuros en ES con tema claro (solo cambia color del texto y logo).
+# Se genera cuando:
+#  - el ingles no tiene X_dark.html, o
+#  - X.html es una traduccion propia (tools/es/graphics/X.html) sin su X_dark.html.
+base_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+en_graphics = os.path.join(base_directory, 'graphics')
+es_overrides = os.path.join(base_directory, 'tools', 'es', 'graphics')
+kept = 0
+for filename in os.listdir(dest_directory):
+    name, ext = os.path.splitext(filename)
+    dark_name = f"{name}_dark{ext}"
+    translated = os.path.isfile(os.path.join(es_overrides, filename))
+    has_es_dark = os.path.isfile(os.path.join(es_overrides, dark_name))
+    has_en_dark = os.path.isfile(os.path.join(en_graphics, dark_name))
+    if has_es_dark or (has_en_dark and not translated):
+        os.remove(os.path.join(dest_directory, filename))
+        kept += 1
+print(f"Dark ES: {kept} graficos mantienen su X_dark.html; se generan {len(os.listdir(dest_directory))} desde el claro")
+
 remove_extension_from_files(dest_directory)
 
 word_to_add = 'dark.html'
