@@ -80,6 +80,9 @@ def search_replace_dark(_file, _file_out):
     filedata = filedata.replace('portal.bgeometrics.com/premium-features_dark.html', 'portal.bgeometrics.com/premium-features.html')
     filedata = filedata.replace('portal.bgeometrics.com/public-reports_dark.html', 'portal.bgeometrics.com/public-reports.html')
     filedata = filedata.replace('bgeometrics.com/reports/index_dark.html', 'bgeometrics.com/reports/index.html')
+    # El reemplazo global .html -> _dark.html invierte el selector de tema: Claro debe ir a index.html y Oscuro a index_dark.html
+    filedata = re.sub(r'href="[^"]*"(>\s*<i class="fa-solid fa-flag-es"[^>]*></i>\s*Claro)', r'href="index.html"\1', filedata)
+    filedata = re.sub(r'href="[^"]*"(>\s*<i class="fa-solid fa-flag-usa"[^>]*></i>\s*Oscuro)', r'href="index_dark.html"\1', filedata)
     # Los informes de reports/ solo existen en versión light
     filedata = re.sub(r'(reports/bitcoin_[A-Za-z0-9_]+)_dark\.html', r'\1.html', filedata)
     filedata = filedata.replace('css/style.css', 'css/style-dark.css')
