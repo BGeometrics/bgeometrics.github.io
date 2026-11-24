@@ -64,6 +64,8 @@
     <!-- Estado de sesion / suscripcion (el orden importa: bg-auth-badge usa bgIsSubscriber) -->
     <script src="assets/js/bg-chart-data.js" defer></script>
     <script src="assets/js/bg-auth-badge.js" defer></script>
+    <!-- Selector Claro/Oscuro: enlaza a la misma pagina en el otro tema -->
+    <script src="assets/js/bg-theme-switch.js" defer></script>
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -220,12 +222,12 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="modeDropdown">
                 <li>
-                  <a class="dropdown-item" href="index.html">
+                  <a class="dropdown-item" data-theme-link="light" href="index.html">
                     <i class="fa-solid fa-flag-es" aria-hidden="true"></i> Claro
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="index_dark.html">
+                  <a class="dropdown-item" data-theme-link="dark" href="index_dark.html">
                     <i class="fa-solid fa-flag-usa" aria-hidden="true"></i>
                     Oscuro
                   </a>
