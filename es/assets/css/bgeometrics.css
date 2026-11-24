@@ -60,3 +60,39 @@
 .flag-germany { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/de.svg'); }
 .flag-china { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/cn.svg'); }
 .flag-japan { background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/jp.svg'); }
+
+#latest-tweet {
+    font-size: 0.9rem; /* Tamaño de letra más pequeño */
+}
+#next-tweet {
+    font-size: 0.8rem; /* Tamaño de letra más pequeño */
+    padding: 0.25rem 0.5rem; /* Tamaño del botón más pequeño */
+}
+
+/* Hide btc_price by default for larger screens */
+#btc_price {
+  display: none;
+}
+
+/* Show btc_price only on screens smaller than 768px (common breakpoint for mobile) */
+@media (max-width: 767px) {
+  #btc_price {
+    display: block;
+  }
+}
+
+/* Show btc_price_300 by default for larger screens */
+#btc_price_300 {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  #btc_price_300 {
+    display: none;
+  }
+}
+
+/* ES: tools/es/web-generation-model.html deja un <main id="main"></main> vacio antes del <main> real de cada pagina; su margin/padding dejaba un hueco arriba */
+main.main:empty {
+  display: none;
+}
