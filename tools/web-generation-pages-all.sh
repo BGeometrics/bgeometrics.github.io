@@ -17,8 +17,24 @@ if [ -d "$VENV_DIR" ] && [ -f "$VENV_DIR/bin/activate" ]; then
         source $VENV_DIR/bin/activate
 fi
 
+# Mismo criterio que bitcoin-scripts/git-deploy.sh: si el pull falla o deja
+# archivos sin fusionar, abortar. Sin esto se generaban las paginas con
+# plantillas viejas y el push final se rechazaba (2026-11-24).
+safe_pull() {
+    if ! git pull --no-rebase --no-edit; then
+        echo "$(date '+%F %T') ERROR web-generation: git pull fallo o genero conflictos ($1). Abortando sin commit/push." >&2
+        git merge --abort 2>/dev/null || true
+        exit 1
+    fi
+    if git diff --name-only --diff-filter=U | grep -q .; then
+        echo "$(date '+%F %T') ERROR web-generation: quedan archivos sin fusionar tras el pull ($1). Abortando sin commit/push." >&2
+        git merge --abort 2>/dev/null || true
+        exit 1
+    fi
+}
+
 cd $DIR_PROYECT
-git pull --no-rebase --no-edit
+safe_pull "inicio"
 
 cd $DIR_PROYECT/tools
 python3 web-generation-pages-dark.py
@@ -56,7 +72,7 @@ cp -r $DIR_TEMP/* $DIR_PROYECT
 
 cd $DIR_PROYECT
 
-git pull --no-rebase --no-edit
+safe_pull "antes del push"
 git add *
 git commit -a -m"daily"
 git push
