@@ -62,7 +62,7 @@
 /tmp/web/fear_greed.html,web-generation-end.html,Fear and Greed index,graphics/fear_greed.html,Fear and Greed index,,charts-nav
 /tmp/web/bitcoin_fear_greed_img.html,web-generation-end.html,Fear and Greed index color,reports/bitcoin_fear_greed_img.html,Fear and Greed index color,,charts-nav
 /tmp/web/sp500_gold.html,web-generation-end-btc-sp500.html,BTC S&P 500 Gold Tesla MicroStrategy,graphics/sp500_gold.html,BTC S&P 500 Gold Tesla MicroStrategy,,macro-nav
-/tmp/web/btc_vs_markets.html,web-generation-end-btc-vs-markets.html,Bitcoin vs S&P 500 - Nasdaq 100 and Gold,graphics/btc_vs_markets.html,Bitcoin compared with the S&P 500 - Nasdaq 100 and gold as percentage change from the start of the selected range,,macro-nav
+/tmp/web/btc_vs_markets.html,web-generation-end-btc-vs-markets.html,Bitcoin vs S&P 500 - Nasdaq 100 - MSCI World and Gold,graphics/btc_vs_markets.html,Bitcoin compared with the S&P 500 - Nasdaq 100 - MSCI World and gold as percentage change from the start of the selected range,,macro-nav
 /tmp/web/bitcoin_volatility_g.html,web-generation-end.html,Bitcoin Volatility,reports/bitcoin_volatility_g.html,Bitcoin Volatility,,charts-nav
 /tmp/web/bitcoin_dominance_g.html,web-generation-end.html,Bitcoin Dominace,reports/bitcoin_dominance_g.html,BTC Dominance,,charts-nav
 /tmp/web/sopr.html,web-generation-end-sopr.html,Bitcoin SOPR Chart (Spent Output Profit Ratio),graphics/sopr.html,Bitcoin SOPR chart updated daily with STH-SOPR and LTH-SOPR. See whether coins are being sold at a profit or at a loss and how to read SOPR = 1.,,market-nav

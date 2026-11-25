@@ -16,36 +16,6 @@
     <script src="../assets/modules/full-screen.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
     <script src="../assets/themes/brand-dark.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-
-        .highcharts-popup input[type="text"],
-        .highcharts-popup input[type="number"],
-        .highcharts-popup select,
-        .highcharts-annotation-toolbar input {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
-        }
-    </style>
 
     <style>
         #performance .btn { cursor: default; min-width: 120px; }
@@ -54,7 +24,7 @@
 
     <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
 
-    <div class="d-flex justify-content-center my-3">
+    <div id="performance-row" class="d-flex justify-content-center my-2">
         <div class="vr mx-2"></div>
         <div id="performance" class="d-flex flex-wrap gap-2 justify-content-center"></div>
         <div class="vr mx-2"></div>
@@ -72,7 +42,7 @@
             const COLOR_GRID = DARK ? '#262626' : '#e6e6e6';
             const LOGO = DARK
                 ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
-                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png';
 
             // Paleta validada (dataviz validate_palette, all-pairs, superficie blanca y negra).
             // BTC usa el color de texto como en el grafico de precio de la portada.
@@ -146,12 +116,21 @@
                 });
             };
 
+            // En el menú la página va en un iframe de 600px de alto fijo: el gráfico ocupa lo
+            // que dejan libre las cajas de rentabilidad para que se vean sin scroll
+            const container = document.getElementById('container-iframe');
+            const perfRow = document.getElementById('performance-row');
+            const chartHeight = () => {
+                const free = window.innerHeight - perfRow.offsetHeight - 44;   // márgenes del body y de la fila
+                return Math.max(360, Math.min(free, 800));
+            };
+            container.style.height = chartHeight() + 'px';
+
             const chart = Highcharts.stockChart('container-iframe', {
                 chart: {
                     backgroundColor: COLOR_BG,
                     style: { color: COLOR_TEXT },
-                    backgroundColor: 'black',
-                events: {
+                    events: {
                         load: function () {
                             const w = 128, h = 128;
                             this.renderer.image(LOGO,
@@ -184,8 +163,7 @@
                     lineColor: COLOR_GRID,
                     tickColor: COLOR_GRID,
                     labels: { style: { color: COLOR_TEXT } },
-                    backgroundColor: 'black',
-                events: {
+                    events: {
                         afterSetExtremes: e => updatePerformance(e.min, e.max)
                     }
                 },
@@ -281,6 +259,11 @@
             // afterSetExtremes no salta en la carga inicial
             const ext = chart.xAxis[0].getExtremes();
             updatePerformance(ext.min, ext.max);
+
+            window.addEventListener('resize', () => {
+                const h = chartHeight();
+                if (Math.abs(h - chart.chartHeight) > 2) chart.setSize(null, h, false);
+            });
         })();
     </script>
 
