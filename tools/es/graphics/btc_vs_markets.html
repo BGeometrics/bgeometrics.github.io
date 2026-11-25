@@ -63,22 +63,26 @@
                 ...ASSETS.slice(1).flatMap(a => [getJson(a.file), getJson(a.file1h)])
             ]);
 
-            // SPY, QQQ, URTH y oro: cierre diario hasta el día en que empiezan las velas de 1h
-            // (*_1h.json, últimos 400 días, Twelve Data cada hora en Mercurio) y 1h desde ahí
+            // Intradía solo el último mes (32 días, para que el zoom 1m sea entero intradía);
+            // para rangos mayores todas las series van con cierre diario
             const DAY = 86400000;
+            const cutMonth = Math.floor((Date.now() - 32 * DAY) / DAY) * DAY;
+            const oneWeekAgo = new Date(); oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const cutWeek = oneWeekAgo.getTime();
+
+            // SPY, QQQ, URTH y oro: diario hasta cutMonth, 1h desde ahí (*_1h.json, Twelve Data
+            // cada hora en Mercurio). Si falta el horario, el diario cubre todo.
             const others = ASSETS.slice(1).map((a, k) => {
-                const daily = rest[2 * k], hourly = rest[2 * k + 1];
+                const daily = rest[2 * k];
+                const hourly = rest[2 * k + 1].filter(i => i[0] >= cutMonth);
                 const start = hourly.length ? Math.floor(hourly[0][0] / DAY) * DAY : Infinity;
                 return daily.filter(i => i[0] < start).concat(hourly);
             });
 
-            // BTC igual que en btc_price: diario hasta hace un año, 4h el último año, 1h la última semana
-            const oneYearAgo = new Date(); oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-            const oneWeekAgo = new Date(); oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-            const cutYear = oneYearAgo.getTime(), cutWeek = oneWeekAgo.getTime();
+            // BTC: diario hasta cutMonth, 4h hasta la última semana y 1h la última semana
             const b1h = btc_1h.filter(i => i[0] >= cutWeek);
             const b1hStart = b1h.length ? b1h[0][0] : Infinity;
-            const b4h = btc_4h.filter(i => i[0] >= cutYear && i[0] < b1hStart);
+            const b4h = btc_4h.filter(i => i[0] >= cutMonth && i[0] < b1hStart);
             const b4hStart = b4h.length ? b4h[0][0] : b1hStart;
             const btc = btc_daily.filter(i => i[0] < b4hStart)
                 .concat(b4h.map(i => [i[0], i[4]]))
@@ -142,6 +146,9 @@
                 stockTools: { gui: { enabled: false } },
 
                 xAxis: {
+                    // Eje temporal lineal: con el ordinal por defecto el último mes (velas
+                    // intradía) ocupaba casi todo el ancho frente a los tramos diarios
+                    ordinal: false,
                     lineColor: COLOR_GRID,
                     tickColor: COLOR_GRID,
                     labels: { style: { color: COLOR_TEXT } },
