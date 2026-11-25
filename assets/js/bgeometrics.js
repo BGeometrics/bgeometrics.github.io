@@ -67,7 +67,11 @@ var names = [
 { name: "Stablecoin Supply", link: "stablecoin_supply.html" },
 { name: "Bitcoin Fear and Greed", link: "fear_greed.html" },
 { name: "Fear and Greed index color", link: "bitcoin_fear_greed_img.html" },
-{ name: "S&P 500 Gold Tesla MSTR", link: "sp500_gold.html" },
+{ name: "SP500 (S&P 500), Gold, Tesla, MSTR", link: "sp500_gold.html" },
+{ name: "Bitcoin vs SP500 (S&P 500), Nasdaq 100, MSCI World and Gold", link: "btc_vs_markets.html" },
+{ name: "Bitcoin SP500 (S&P 500) correlation (Plotly)", link: "reports/bitcoin_sp500_correlation_g.html" },
+{ name: "Bitcoin SP500 (S&P 500) correlation heatmap (Plotly)", link: "reports/bitcoin_sp500_corr_heatmap_g.html" },
+{ name: "Bitcoin, SP500 (S&P 500) and Gold volatility (Plotly)", link: "reports/bitcoin_SP500_gold_volatility_g.html" },
 { name: "Bitcoin Volatility", link: "bitcoin_volatility_g.html" },
 { name: "Bitcoin Dominance", link: "bitcoin_dominance_g.html" },
 { name: "SOPR (Spent Output Profit Ratio)", link: "sopr.html" },
@@ -79,7 +83,7 @@ var names = [
 { name: "Bitcoin Simulation Montecarlo last 365 days", link: "montecarlo_365.html" },
 { name: "M2 Money Stock", link: "m2.html" },
 { name: "Fed Funds", link: "fedfunds.html" },
-{ name: "BTC Price Decomposition (Monetary Policy, Risk Premium, Crypto Adoption)", link: "btc_price_decomposition.html" },
+{ name: "BTC Price Decomposition (Monetary Policy, Risk Premium, Crypto Adoption; SP500 / S&P 500 input)", link: "btc_price_decomposition.html" },
 { name: "Funding Rate", link: "funding_rate.html" },
 { name: "Addresses Active", link: "address_active.html" },
 { name: "Supply in Profit", link: "supply_in_profit.html" },
@@ -178,6 +182,7 @@ var names = [
 { name: "Dashboard Short Term Trend", link: "dashboard_short_term_trend.html" },
 { name: "Dashboard Demand", link: "dashboard_demand.html" },
 { name: "Dashboard Workspace", link: "dashboard_workspace.html" },
+{ name: "Dashboard Workspace: SP500 (S&P 500), Gold and on-chain metrics", link: "dashboard_workspace.html" },
 ];
 
 function normalizeSearchText(text) {
@@ -222,7 +227,8 @@ function searchDark() {
             // Create a copy of the matching item
             let darkItem = {
                 name: names[i].name,
-                link: names[i].link.replace('.html', '_dark.html')
+                // los informes Plotly de reports/ no tienen variante _dark
+                link: names[i].link.startsWith('reports/') ? names[i].link : names[i].link.replace('.html', '_dark.html')
             };
             results.push(darkItem);
         }
