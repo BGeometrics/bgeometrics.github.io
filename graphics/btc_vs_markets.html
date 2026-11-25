@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bitcoin vs S&amp;P 500, Nasdaq and Gold</title>
+    <title>Bitcoin vs S&amp;P 500, Nasdaq, MSCI World and Gold</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
@@ -49,6 +49,7 @@
                 { id: 'btc',    name: 'Bitcoin',          color: DARK ? '#FFFFFF' : '#000000', width: 2 },
                 { id: 'sp500',  name: 'S&P 500 (SPY)',    color: DARK ? '#4ea2f5' : '#2b7fd9', width: 1.5, file: 'sp500_yf.json', file1h: 'sp500_1h.json' },
                 { id: 'nasdaq', name: 'Nasdaq 100 (QQQ)', color: DARK ? '#d866b3' : '#c0479a', width: 1.5, file: 'nasdaq_yf.json', file1h: 'nasdaq_1h.json' },
+                { id: 'msci',   name: 'MSCI World (URTH)', color: DARK ? '#16936f' : '#0b7a5a', width: 1.5, file: 'msci_yf.json', file1h: 'msci_1h.json' },
                 { id: 'gold',   name: 'Gold (spot)',      color: DARK ? '#c9940f' : '#b07a00', width: 1.5, file: 'gold_spot.json', file1h: 'gold_1h.json' }
             ];
 
@@ -62,7 +63,7 @@
                 ...ASSETS.slice(1).flatMap(a => [getJson(a.file), getJson(a.file1h)])
             ]);
 
-            // SPY, QQQ y oro: cierre diario hasta el día en que empiezan las velas de 1h
+            // SPY, QQQ, URTH y oro: cierre diario hasta el día en que empiezan las velas de 1h
             // (*_1h.json, últimos 400 días, Twelve Data cada hora en Mercurio) y 1h desde ahí
             const DAY = 86400000;
             const others = ASSETS.slice(1).map((a, k) => {
@@ -128,12 +129,12 @@
                 },
 
                 title: {
-                    text: 'Bitcoin vs S&P 500, Nasdaq 100 and Gold (% change)',
+                    text: 'Bitcoin vs S&P 500, Nasdaq 100, MSCI World and Gold (% change)',
                     align: 'left',
                     style: { color: COLOR_TEXT }
                 },
                 subtitle: {
-                    text: 'Change from the first day of the selected range. S&P 500 and Nasdaq 100 via SPY and QQQ ETFs; gold is XAU/USD spot.',
+                    text: 'Change from the first day of the selected range. S&P 500, Nasdaq 100 and MSCI World via SPY, QQQ and URTH ETFs; gold is XAU/USD spot.',
                     align: 'left',
                     style: { color: DARK ? '#aaaaaa' : '#666666' }
                 },
