@@ -47,20 +47,29 @@
             // BTC usa el color de texto como en el grafico de precio de la portada.
             const ASSETS = [
                 { id: 'btc',    name: 'Bitcoin',          color: DARK ? '#FFFFFF' : '#000000', width: 2 },
-                { id: 'sp500',  name: 'S&P 500 (SPY)',    color: DARK ? '#4ea2f5' : '#2b7fd9', width: 1.5, file: 'sp500_yf.json' },
-                { id: 'nasdaq', name: 'Nasdaq 100 (QQQ)', color: DARK ? '#d866b3' : '#c0479a', width: 1.5, file: 'nasdaq_yf.json' },
-                { id: 'gold',   name: 'Gold (spot)',      color: DARK ? '#c9940f' : '#b07a00', width: 1.5, file: 'gold_spot.json' }
+                { id: 'sp500',  name: 'S&P 500 (SPY)',    color: DARK ? '#4ea2f5' : '#2b7fd9', width: 1.5, file: 'sp500_yf.json', file1h: 'sp500_1h.json' },
+                { id: 'nasdaq', name: 'Nasdaq 100 (QQQ)', color: DARK ? '#d866b3' : '#c0479a', width: 1.5, file: 'nasdaq_yf.json', file1h: 'nasdaq_1h.json' },
+                { id: 'gold',   name: 'Gold (spot)',      color: DARK ? '#c9940f' : '#b07a00', width: 1.5, file: 'gold_spot.json', file1h: 'gold_1h.json' }
             ];
 
             const FILES = 'https://charts.bgeometrics.com/files/';
             const getJson = name => fetch(FILES + name).then(r => r.json()).catch(() => []);
 
-            const [btc_daily, btc_4h, btc_1h, ...others] = await Promise.all([
+            const [btc_daily, btc_4h, btc_1h, ...rest] = await Promise.all([
                 getJson('realized_price_btc_price.json'),
                 getJson('btc_ohlc_4h.json'),
                 getJson('btc_ohlc_1h.json'),
-                ...ASSETS.slice(1).map(a => getJson(a.file))
+                ...ASSETS.slice(1).flatMap(a => [getJson(a.file), getJson(a.file1h)])
             ]);
+
+            // SPY, QQQ y oro: cierre diario hasta el día en que empiezan las velas de 1h
+            // (*_1h.json, últimos 400 días, Twelve Data cada hora en Mercurio) y 1h desde ahí
+            const DAY = 86400000;
+            const others = ASSETS.slice(1).map((a, k) => {
+                const daily = rest[2 * k], hourly = rest[2 * k + 1];
+                const start = hourly.length ? Math.floor(hourly[0][0] / DAY) * DAY : Infinity;
+                return daily.filter(i => i[0] < start).concat(hourly);
+            });
 
             // BTC igual que en btc_price: diario hasta hace un año, 4h el último año, 1h la última semana
             const oneYearAgo = new Date(); oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
