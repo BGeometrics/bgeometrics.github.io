@@ -16,36 +16,6 @@
     <script src="../assets/modules/full-screen.js"></script>
     <script src="../assets/modules/accessibility.js"></script>
     <script src="../assets/themes/brand-dark.js"></script>
-    <!--<link rel="stylesheet" type="text/css" href="../assets/css/highcharts-dark.css">-->
-    <style>
-        :root {
-            --highcharts-neutral-color-3: #000000;
-        }
-
-        .highcharts-contextbutton .highcharts-button-symbol {
-            stroke: #000000 !important; 
-            fill: #000000 !important; 
-        }
-
-        .highcharts-menu-item { 
-            background-color: #000000 !important; 
-            color: #FFFFFF !important; 
-        }   
-
-        .highcharts-menu {
-            background-color: #000000 !important; 
-            border: 1px solid #ccc !important;
-            color: #dddddd !important; 
-        }
-
-        .highcharts-popup input[type="text"],
-        .highcharts-popup input[type="number"],
-        .highcharts-popup select,
-        .highcharts-annotation-toolbar input {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
-        }
-    </style>
 
     <style>
         #performance .btn { cursor: default; min-width: 120px; }
@@ -72,7 +42,7 @@
             const COLOR_GRID = DARK ? '#262626' : '#e6e6e6';
             const LOGO = DARK
                 ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
-                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png';
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png';
 
             // Paleta validada (dataviz validate_palette, all-pairs, superficie blanca y negra).
             // BTC usa el color de texto como en el grafico de precio de la portada.
@@ -136,8 +106,7 @@
                 chart: {
                     backgroundColor: COLOR_BG,
                     style: { color: COLOR_TEXT },
-                    backgroundColor: 'black',
-                events: {
+                    events: {
                         load: function () {
                             const w = 128, h = 128;
                             this.renderer.image(LOGO,
@@ -167,8 +136,7 @@
                     lineColor: COLOR_GRID,
                     tickColor: COLOR_GRID,
                     labels: { style: { color: COLOR_TEXT } },
-                    backgroundColor: 'black',
-                events: {
+                    events: {
                         afterSetExtremes: e => updatePerformance(e.min, e.max)
                     }
                 },
@@ -227,15 +195,16 @@
                 },
 
                 rangeSelector: {
-                    selected: 4,
+                    selected: 1,
                     buttons: [
+                        { type: 'day', count: 1, text: '1d' },
+                        { type: 'week', count: 1, text: '1w' },
                         { type: 'month', count: 1, text: '1m' },
                         { type: 'month', count: 3, text: '3m' },
                         { type: 'month', count: 6, text: '6m' },
-                        { type: 'ytd', text: 'YTD' },
                         { type: 'year', count: 1, text: '1y' },
-                        { type: 'year', count: 3, text: '3y' },
-                        { type: 'year', count: 5, text: '5y' },
+                        { type: 'year', count: 2, text: '2y' },
+                        { type: 'year', count: 4, text: '4y' },
                         { type: 'all', text: 'All' }
                     ],
                     labelStyle: { color: COLOR_TEXT },
