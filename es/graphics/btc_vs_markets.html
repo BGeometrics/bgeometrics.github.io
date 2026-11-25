@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bitcoin frente al S&amp;P 500, Nasdaq y Oro</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../assets/css/stocktools/gui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/annotations/popup.css">
+</head>
+
+<body>
+    <script src="../assets/stock/highstock.js"></script>
+    <script src="../assets/modules/full-screen.js"></script>
+    <script src="../assets/modules/accessibility.js"></script>
+
+    <style>
+        #performance .btn { cursor: default; min-width: 120px; }
+        #performance .swatch { display: inline-block; width: 12px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+    </style>
+
+    <div id="container-iframe" style="width:100%; height:600px; margin: 0 auto;"></div>
+
+    <div class="d-flex justify-content-center my-3">
+        <div class="vr mx-2"></div>
+        <div id="performance" class="d-flex flex-wrap gap-2 justify-content-center"></div>
+        <div class="vr mx-2"></div>
+    </div>
+
+    <script>
+        (async () => {
+            // Las variantes _dark las genera web-generation-pages-dark.py copiando este fichero,
+            // asi que los colores se eligen aqui segun la URL.
+            const DARK = /_dark\.html$/.test(window.location.pathname);
+            if (DARK) document.body.setAttribute('data-bs-theme', 'dark');
+            const COLOR_BG = DARK ? '#000000' : '#FFFFFF';
+            document.body.style.backgroundColor = COLOR_BG;
+            const COLOR_TEXT = DARK ? '#FFFFFF' : '#333333';
+            const COLOR_GRID = DARK ? '#262626' : '#e6e6e6';
+            const LOGO = DARK
+                ? 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo_write.png'
+                : 'https://charts.bgeometrics.com/assets/img/BGeometrics_logo.png';
+
+            // Paleta validada (dataviz validate_palette, all-pairs, superficie blanca y negra).
+            // BTC usa el color de texto como en el grafico de precio de la portada.
+            const ASSETS = [
+                { id: 'btc',    name: 'Bitcoin',          color: DARK ? '#FFFFFF' : '#000000', width: 2 },
+                { id: 'sp500',  name: 'S&P 500 (SPY)',    color: DARK ? '#4ea2f5' : '#2b7fd9', width: 1.5, file: 'sp500_yf.json' },
+                { id: 'nasdaq', name: 'Nasdaq 100 (QQQ)', color: DARK ? '#d866b3' : '#c0479a', width: 1.5, file: 'nasdaq_yf.json' },
+                { id: 'gold',   name: 'Oro (contado)',      color: DARK ? '#c9940f' : '#b07a00', width: 1.5, file: 'gold_spot.json' }
+            ];
+
+            const FILES = 'https://charts.bgeometrics.com/files/';
+            const getJson = name => fetch(FILES + name).then(r => r.json()).catch(() => []);
+
+            const [btc_daily, btc_4h, btc_1h, ...others] = await Promise.all([
+                getJson('realized_price_btc_price.json'),
+                getJson('btc_ohlc_4h.json'),
+                getJson('btc_ohlc_1h.json'),
+                ...ASSETS.slice(1).map(a => getJson(a.file))
+            ]);
+
+            // BTC igual que en btc_price: diario hasta hace un año, 4h el último año, 1h la última semana
+            const oneYearAgo = new Date(); oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+            const oneWeekAgo = new Date(); oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const cutYear = oneYearAgo.getTime(), cutWeek = oneWeekAgo.getTime();
+            const b1h = btc_1h.filter(i => i[0] >= cutWeek);
+            const b1hStart = b1h.length ? b1h[0][0] : Infinity;
+            const b4h = btc_4h.filter(i => i[0] >= cutYear && i[0] < b1hStart);
+            const b4hStart = b4h.length ? b4h[0][0] : b1hStart;
+            const btc = btc_daily.filter(i => i[0] < b4hStart)
+                .concat(b4h.map(i => [i[0], i[4]]))
+                .concat(b1h.map(i => [i[0], i[4]]));
+
+            const data = [btc, ...others];
+
+            const fmtPrice = v => '$' + Highcharts.numberFormat(v, v >= 1000 ? 0 : 2);
+            const fmtPct = v => (v >= 0 ? '+' : '') + Highcharts.numberFormat(v, 2) + '%';
+
+            // Rentabilidad de cada activo en el rango visible (primer y último punto dentro del zoom)
+            const perf = document.getElementById('performance');
+            perf.innerHTML = ASSETS.map(a => `
+                <button class="btn btn-outline-secondary d-flex flex-column align-items-center py-1 px-3" data-id="${a.id}">
+                    <span class="small"><span class="swatch" style="background:${a.color}"></span>${a.name}</span>
+                    <span class="fw-bold">&ndash;</span>
+                    <span class="small text-body-secondary"></span>
+                </button>`).join('');
+
+            const updatePerformance = (min, max) => {
+                ASSETS.forEach((a, k) => {
+                    const pts = data[k].filter(p => p[0] >= min && p[0] <= max);
+                    const btn = perf.querySelector(`[data-id="${a.id}"]`);
+                    const [, value, last] = btn.querySelectorAll(':scope > span');
+                    if (pts.length < 2) { value.textContent = '–'; last.textContent = ''; return; }
+                    const chg = (pts[pts.length - 1][1] / pts[0][1] - 1) * 100;
+                    value.textContent = fmtPct(chg);
+                    value.className = 'fw-bold ' + (chg >= 0 ? 'text-success' : 'text-danger');
+                    last.textContent = fmtPrice(pts[pts.length - 1][1]);
+                });
+            };
+
+            const chart = Highcharts.stockChart('container-iframe', {
+                chart: {
+                    backgroundColor: COLOR_BG,
+                    style: { color: COLOR_TEXT },
+                    events: {
+                        load: function () {
+                            const w = 128, h = 128;
+                            this.renderer.image(LOGO,
+                                this.plotLeft + this.plotWidth / 2 - w / 2,
+                                this.plotTop + this.plotHeight / 2 - h / 2, w, h)
+                                .css({ opacity: DARK ? 0.3 : 0.1 })
+                                .attr({ zIndex: 1 })
+                                .add();
+                        }
+                    }
+                },
+
+                title: {
+                    text: 'Bitcoin frente al S&P 500, Nasdaq 100 y Oro (% de variación)',
+                    align: 'left',
+                    style: { color: COLOR_TEXT }
+                },
+                subtitle: {
+                    text: 'Variación desde el primer día del rango seleccionado. S&P 500 y Nasdaq 100 a través de los ETF SPY y QQQ; el oro es XAU/USD al contado.',
+                    align: 'left',
+                    style: { color: DARK ? '#aaaaaa' : '#666666' }
+                },
+
+                stockTools: { gui: { enabled: false } },
+
+                xAxis: {
+                    lineColor: COLOR_GRID,
+                    tickColor: COLOR_GRID,
+                    labels: { style: { color: COLOR_TEXT } },
+                    events: {
+                        afterSetExtremes: e => updatePerformance(e.min, e.max)
+                    }
+                },
+
+                yAxis: {
+                    gridLineColor: COLOR_GRID,
+                    labels: {
+                        align: 'left',
+                        style: { color: COLOR_TEXT },
+                        formatter: function () { return (this.value > 0 ? '+' : '') + this.value + '%'; }
+                    },
+                    plotLines: [{ value: 0, width: 1, color: DARK ? '#666666' : '#999999' }],
+                    title: { text: '' }
+                },
+
+                plotOptions: {
+                    series: {
+                        compare: 'percent',
+                        compareStart: true,
+                        showInLegend: true,
+                        dataGrouping: { enabled: false },
+                        states: { hover: { lineWidthPlus: 1 } }
+                    }
+                },
+
+                tooltip: {
+                    shared: true,
+                    split: false,
+                    backgroundColor: DARK ? '#111111' : '#FFFFFF',
+                    style: { color: COLOR_TEXT },
+                    pointFormatter: function () {
+                        return `<span style="color:${this.series.color}">●</span> ${this.series.name}: ` +
+                            `<b>${fmtPrice(this.y)}</b> (${fmtPct(this.change)})<br/>`;
+                    }
+                },
+
+                series: ASSETS.map((a, k) => ({
+                    id: a.id,
+                    name: a.name,
+                    color: a.color,
+                    lineWidth: a.width,
+                    data: data[k],
+                    showInNavigator: a.id === 'btc'
+                })),
+
+                legend: {
+                    enabled: true,
+                    itemStyle: { color: COLOR_TEXT },
+                    itemHoverStyle: { color: DARK ? '#cccccc' : '#000000' }
+                },
+
+                navigator: {
+                    xAxis: { labels: { style: { color: COLOR_TEXT } } }
+                },
+
+                rangeSelector: {
+                    selected: 4,
+                    buttons: [
+                        { type: 'month', count: 1, text: '1m' },
+                        { type: 'month', count: 3, text: '3m' },
+                        { type: 'month', count: 6, text: '6m' },
+                        { type: 'ytd', text: 'Año' },
+                        { type: 'year', count: 1, text: '1a' },
+                        { type: 'year', count: 3, text: '3a' },
+                        { type: 'year', count: 5, text: '5a' },
+                        { type: 'all', text: 'Todo' }
+                    ],
+                    labelStyle: { color: COLOR_TEXT },
+                    inputStyle: { color: COLOR_TEXT }
+                },
+
+                credits: {
+                    text: 'Powered by BGeometrics.com',
+                    href: 'https://charts.bgeometrics.com',
+                    style: { font: '11px sans-serif, Verdana, "Trebuchet MS"' }
+                },
+
+                responsive: {
+                    rules: [{
+                        condition: { maxWidth: 800 },
+                        chartOptions: {
+                            subtitle: { text: '' },
+                            rangeSelector: { inputEnabled: false },
+                            navigator: { enabled: false }
+                        }
+                    }]
+                }
+            });
+
+            // afterSetExtremes no salta en la carga inicial
+            const ext = chart.xAxis[0].getExtremes();
+            updatePerformance(ext.min, ext.max);
+        })();
+    </script>
+
+</body>
+
+</html>
