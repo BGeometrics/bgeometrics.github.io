@@ -103,6 +103,12 @@
 /tmp/web/miner_sell_pressure.html,web-generation-end-minersellpressure.html,Bitcoin Miner Sell Pressure,graphics/miner_sell_pressure.html,Bitcoin Miner Sell Pressure,,miners-nav
 /tmp/web/miner_outflow.html,web-generation-end-mineroutflow.html,Bitcoin Miner Outflow,graphics/miner_outflow.html,Bitcoin Miner Outflow,,miners-nav
 /tmp/web/miner_balance.html,web-generation-end-miner-balance.html,Bitcoin Miner Balances,graphics/miner_balance.html,Bitcoin Miner Balance,,miners-nav
+/tmp/web/miner_netflow.html,web-generation-end-miner-netflow.html,Bitcoin Miner Netflow Chart (Live),graphics/miner_netflow.html,Bitcoin miner netflow: BTC received minus BTC sent by miner addresses. Chart updated daily,,miners-nav
+/tmp/web/miner_inflow_outflow.html,web-generation-end-miner-inflow-outflow.html,Bitcoin Miner Inflow and Outflow Chart (Live),graphics/miner_inflow_outflow.html,Bitcoin miner inflow and outflow in BTC. Chart updated daily,,miners-nav
+/tmp/web/miner_inflow_outflow_usd.html,web-generation-end-miner-inflow-outflow-usd.html,Bitcoin Miner Inflow and Outflow USD Chart (Live),graphics/miner_inflow_outflow_usd.html,Bitcoin miner inflow and outflow in USD. Chart updated daily,,miners-nav
+/tmp/web/miner_reserve_btc.html,web-generation-end-miner-reserve-btc.html,Bitcoin Miner Reserve Chart (Live),graphics/miner_reserve_btc.html,Bitcoin held on miner addresses (miner reserve) in BTC. Chart updated daily,,miners-nav
+/tmp/web/miner_reserve_usd.html,web-generation-end-miner-reserve-usd.html,Bitcoin Miner Reserve USD Chart (Live),graphics/miner_reserve_usd.html,Bitcoin miner reserve in USD. Chart updated daily,,miners-nav
+/tmp/web/miner_reserve_change.html,web-generation-end-miner-reserve-change.html,Bitcoin Miner Reserve 30-Day Change Chart (Live),graphics/miner_reserve_change.html,30-day percentage change of the Bitcoin miner reserve. Chart updated daily,,miners-nav
 /tmp/web/nrpl.html,web-generation-end-nrpl.html,NRPL (Net Realized Profit Loss),graphics/nrpl.html,NRPL(Net Realized Profit Loss),,market-nav
 /tmp/web/net_capital_flow.html,web-generation-end-net-capital-flow.html,Net Capital Flow,graphics/net_capital_flow.html,Bitcoin Net Capital Flow (NRPL + issuance),,market-nav
 /tmp/web/btc_liquidations.html,web-generation-end-btc-liquidations.html,Bitcoin Liquidations,graphics/btc_liquidations.html,Bitcoin Liquidations,,derivatives-nav
