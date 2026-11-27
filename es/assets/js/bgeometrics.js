@@ -113,6 +113,12 @@ var names = [
 { name: "Bitcoin Transacciones de entrada y salida de exchanges", link: "exchange_tx_count.html" },
 { name: "Bitcoin Tamaño medio de entradas y salidas de exchanges", link: "exchange_mean_size.html" },
 { name: "Bitcoin Flujo entre exchanges", link: "exchange_to_exchange.html" },
+{ name: "Bitcoin Netflow de mineros", link: "miner_netflow.html" },
+{ name: "Bitcoin Entradas y salidas de mineros (BTC)", link: "miner_inflow_outflow.html" },
+{ name: "Bitcoin Entradas y salidas de mineros (USD)", link: "miner_inflow_outflow_usd.html" },
+{ name: "Bitcoin Reservas de mineros (BTC)", link: "miner_reserve_btc.html" },
+{ name: "Bitcoin Reservas de mineros (USD)", link: "miner_reserve_usd.html" },
+{ name: "Bitcoin Variación de reservas de mineros a 30 días", link: "miner_reserve_change.html" },
 { name: "Coinbase Premium Index", link: "coinbase_premium.html" },
 { name: "Espacio de trabajo BGeometrics", link: "workspace.html" },
 ];
